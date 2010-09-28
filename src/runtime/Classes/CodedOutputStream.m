@@ -28,9 +28,10 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 - (id)initWithOutputStream:(NSOutputStream*)_output data:(NSMutableData*)data {
-	if (![super init]) return nil;
-    output = [_output retain];
-	buffer = [[RingBuffer alloc] initWithData:data];
+	if ( (self = [super init]) ) {
+		output = [_output retain];
+		buffer = [[RingBuffer alloc] initWithData:data];
+	}
 	return self;
 }
 
