@@ -1,3 +1,5 @@
+# Build stuff
+*.o
 .deps
 Makefile
 Makefile.in
@@ -16,6 +18,9 @@ ltmain.sh
 missing
 m4
 stamp-h1
+
+# Targets
+src/compiler/protoc-gen-objc
 
 # Mac stuff
 .DS_Store
