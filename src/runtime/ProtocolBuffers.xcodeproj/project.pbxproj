@@ -62,7 +62,6 @@
 		C5B03FCE12517AD90087887C /* MicroTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8712517A1A0087887C /* MicroTest.m */; };
 		C5B03FCF12517AD90087887C /* TestUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8B12517A1A0087887C /* TestUtilities.m */; };
 		C5B03FD012517AD90087887C /* Unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8D12517A1A0087887C /* Unittest.pb.m */; };
-		C5B03FD112517AD90087887C /* UnittestCustomOptions.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8F12517A1A0087887C /* UnittestCustomOptions.pb.m */; };
 		C5B03FD212517AD90087887C /* UnittestEmbedOptimizeFor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */; };
 		C5B03FD312517AD90087887C /* UnittestImport.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9312517A1A0087887C /* UnittestImport.pb.m */; };
 		C5B03FD412517AD90087887C /* UnittestMset.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9512517A1A0087887C /* UnittestMset.pb.m */; };
@@ -80,7 +79,7 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* ProtocolBuffers */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = ProtocolBuffers;
 		};
 /* End PBXContainerItemProxy section */
@@ -153,8 +152,6 @@
 		C5B03F8B12517A1A0087887C /* TestUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestUtilities.m; path = Tests/TestUtilities.m; sourceTree = "<group>"; };
 		C5B03F8C12517A1A0087887C /* Unittest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest.pb.h; path = Tests/Unittest.pb.h; sourceTree = "<group>"; };
 		C5B03F8D12517A1A0087887C /* Unittest.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest.pb.m; path = Tests/Unittest.pb.m; sourceTree = "<group>"; };
-		C5B03F8E12517A1A0087887C /* UnittestCustomOptions.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestCustomOptions.pb.h; path = Tests/UnittestCustomOptions.pb.h; sourceTree = "<group>"; };
-		C5B03F8F12517A1A0087887C /* UnittestCustomOptions.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestCustomOptions.pb.m; path = Tests/UnittestCustomOptions.pb.m; sourceTree = "<group>"; };
 		C5B03F9012517A1A0087887C /* UnittestEmbedOptimizeFor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestEmbedOptimizeFor.pb.h; path = Tests/UnittestEmbedOptimizeFor.pb.h; sourceTree = "<group>"; };
 		C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestEmbedOptimizeFor.pb.m; path = Tests/UnittestEmbedOptimizeFor.pb.m; sourceTree = "<group>"; };
 		C5B03F9212517A1A0087887C /* UnittestImport.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestImport.pb.h; path = Tests/UnittestImport.pb.h; sourceTree = "<group>"; };
@@ -378,8 +375,6 @@
 				C5B03F8D12517A1A0087887C /* Unittest.pb.m */,
 				C5B03F9412517A1A0087887C /* UnittestMset.pb.h */,
 				C5B03F9512517A1A0087887C /* UnittestMset.pb.m */,
-				C5B03F8E12517A1A0087887C /* UnittestCustomOptions.pb.h */,
-				C5B03F8F12517A1A0087887C /* UnittestCustomOptions.pb.m */,
 				C5B03F9012517A1A0087887C /* UnittestEmbedOptimizeFor.pb.h */,
 				C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */,
 				C5B03F9212517A1A0087887C /* UnittestImport.pb.h */,
@@ -531,7 +526,6 @@
 				C5B03FCE12517AD90087887C /* MicroTest.m in Sources */,
 				C5B03FCF12517AD90087887C /* TestUtilities.m in Sources */,
 				C5B03FD012517AD90087887C /* Unittest.pb.m in Sources */,
-				C5B03FD112517AD90087887C /* UnittestCustomOptions.pb.m in Sources */,
 				C5B03FD212517AD90087887C /* UnittestEmbedOptimizeFor.pb.m in Sources */,
 				C5B03FD312517AD90087887C /* UnittestImport.pb.m in Sources */,
 				C5B03FD412517AD90087887C /* UnittestMset.pb.m in Sources */,
@@ -652,12 +646,12 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Headers/Foundation.h";
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
-					Cocoa,
+					Foundation,
 					"-framework",
 					SenTestingKit,
 				);
@@ -681,12 +675,12 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Headers/Foundation.h";
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
 				OTHER_LDFLAGS = (
 					"-framework",
-					Cocoa,
+					Foundation,
 					"-framework",
 					SenTestingKit,
 				);
