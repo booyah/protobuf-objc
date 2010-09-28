@@ -1,5 +1,4 @@
 .deps
-.DS_Store
 Makefile
 Makefile.in
 aclocal.m4
@@ -17,3 +16,14 @@ ltmain.sh
 missing
 m4
 stamp-h1
+
+# Mac stuff
+.DS_Store
+
+# Xcode stuff
+build/
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
