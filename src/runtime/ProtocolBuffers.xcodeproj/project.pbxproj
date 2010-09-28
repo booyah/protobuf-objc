@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		C57A9FDF125275F300726D16 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FDE125275F300726D16 /* Descriptor.pb.m */; };
+		C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */; };
 		C5B03EC512516B730087887C /* ConcreteExtensionField.h in Headers */ = {isa = PBXBuildFile; fileRef = C5B03EC312516B730087887C /* ConcreteExtensionField.h */; };
 		C5B03EC612516B730087887C /* ConcreteExtensionField.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03EC412516B730087887C /* ConcreteExtensionField.m */; };
 		C5B03ECB12516B830087887C /* ExtendableMessage_Builder.h in Headers */ = {isa = PBXBuildFile; fileRef = C5B03EC712516B830087887C /* ExtendableMessage_Builder.h */; };
@@ -87,6 +89,10 @@
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C57A9FDD125275F300726D16 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Descriptor.pb.h; path = Tests/Descriptor.pb.h; sourceTree = "<group>"; };
+		C57A9FDE125275F300726D16 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Descriptor.pb.m; path = Tests/Descriptor.pb.m; sourceTree = "<group>"; };
+		C57A9FE2125276A400726D16 /* UnittestCustomOptions.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestCustomOptions.pb.h; path = Tests/UnittestCustomOptions.pb.h; sourceTree = "<group>"; };
+		C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestCustomOptions.pb.m; path = Tests/UnittestCustomOptions.pb.m; sourceTree = "<group>"; };
 		C5B03EC312516B730087887C /* ConcreteExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConcreteExtensionField.h; path = Classes/ConcreteExtensionField.h; sourceTree = "<group>"; };
 		C5B03EC412516B730087887C /* ConcreteExtensionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConcreteExtensionField.m; path = Classes/ConcreteExtensionField.m; sourceTree = "<group>"; };
 		C5B03EC712516B830087887C /* ExtendableMessage_Builder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExtendableMessage_Builder.h; path = Classes/ExtendableMessage_Builder.h; sourceTree = "<group>"; };
@@ -371,10 +377,14 @@
 		C5B040B212517E930087887C /* Protocol Buffers */ = {
 			isa = PBXGroup;
 			children = (
+				C57A9FDD125275F300726D16 /* Descriptor.pb.h */,
+				C57A9FDE125275F300726D16 /* Descriptor.pb.m */,
 				C5B03F8C12517A1A0087887C /* Unittest.pb.h */,
 				C5B03F8D12517A1A0087887C /* Unittest.pb.m */,
 				C5B03F9412517A1A0087887C /* UnittestMset.pb.h */,
 				C5B03F9512517A1A0087887C /* UnittestMset.pb.m */,
+				C57A9FE2125276A400726D16 /* UnittestCustomOptions.pb.h */,
+				C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */,
 				C5B03F9012517A1A0087887C /* UnittestEmbedOptimizeFor.pb.h */,
 				C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */,
 				C5B03F9212517A1A0087887C /* UnittestImport.pb.h */,
@@ -534,6 +544,8 @@
 				C5B03FD712517AD90087887C /* UtilitiesTests.m in Sources */,
 				C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */,
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
+				C57A9FDF125275F300726D16 /* Descriptor.pb.m in Sources */,
+				C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
