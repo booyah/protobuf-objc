@@ -149,7 +149,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       basename += file->name().substr(last_slash + 1);
     }
 
-    return UnderscoresToCapitalizedCamelCase(StripProto(basename));
+    return StripProto(basename);
   }
 
 
