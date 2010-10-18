@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		C57A9FDF125275F300726D16 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FDE125275F300726D16 /* Descriptor.pb.m */; };
 		C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */; };
 		C586262012668B9F00204EE1 /* Bootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C586261F12668B9F00204EE1 /* Bootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262212668BB100204EE1 /* ForwardDeclarations.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262112668BB100204EE1 /* ForwardDeclarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +73,8 @@
 		C5B03FF512517C6A0087887C /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
 		C5B03FF712517CA00087887C /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5B03FF612517CA00087887C /* SenTestingKit.framework */; };
 		C5B0406312517D0A0087887C /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8312517A1A0087887C /* Main.m */; };
+		C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */; };
+		C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,8 +90,6 @@
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C57A9FDD125275F300726D16 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Descriptor.pb.h; path = Tests/Descriptor.pb.h; sourceTree = "<group>"; };
-		C57A9FDE125275F300726D16 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Descriptor.pb.m; path = Tests/Descriptor.pb.m; sourceTree = "<group>"; };
 		C57A9FE2125276A400726D16 /* UnittestCustomOptions.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestCustomOptions.pb.h; path = Tests/UnittestCustomOptions.pb.h; sourceTree = "<group>"; };
 		C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestCustomOptions.pb.m; path = Tests/UnittestCustomOptions.pb.m; sourceTree = "<group>"; };
 		C586261F12668B9F00204EE1 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
@@ -173,6 +172,8 @@
 		C5B03F9C12517A1A0087887C /* WireFormatTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WireFormatTests.h; path = Tests/WireFormatTests.h; sourceTree = "<group>"; };
 		C5B03F9D12517A1A0087887C /* WireFormatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WireFormatTests.m; path = Tests/WireFormatTests.m; sourceTree = "<group>"; };
 		C5B03FF612517CA00087887C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pb.h; sourceTree = "<group>"; };
+		C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pb.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libProtocolBuffers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libProtocolBuffers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -230,6 +231,7 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				C5CBB7FA126CBD3500354923 /* Descriptors */,
 				C5B03EC212516B5D0087887C /* Extensions */,
 				C5B03ED512516B970087887C /* Fields */,
 				C5B03EF312516C0B0087887C /* IO */,
@@ -377,8 +379,6 @@
 		C5B040B212517E930087887C /* Protocol Buffers */ = {
 			isa = PBXGroup;
 			children = (
-				C57A9FDD125275F300726D16 /* Descriptor.pb.h */,
-				C57A9FDE125275F300726D16 /* Descriptor.pb.m */,
 				C5B03F8C12517A1A0087887C /* Unittest.pb.h */,
 				C5B03F8D12517A1A0087887C /* Unittest.pb.m */,
 				C5B03F9412517A1A0087887C /* UnittestMset.pb.h */,
@@ -393,6 +393,23 @@
 				C5B03F9712517A1A0087887C /* UnittestOptimizeFor.pb.m */,
 			);
 			name = "Protocol Buffers";
+			sourceTree = "<group>";
+		};
+		C5CBB7FA126CBD3500354923 /* Descriptors */ = {
+			isa = PBXGroup;
+			children = (
+				C5CBB803126CBD6700354923 /* Internal */,
+			);
+			name = Descriptors;
+			sourceTree = "<group>";
+		};
+		C5CBB803126CBD6700354923 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */,
+				C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */,
+			);
+			name = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,6 +445,7 @@
 				C586266E12668C5F00204EE1 /* Message.h in Headers */,
 				C586267112668C6C00204EE1 /* RingBuffer.h in Headers */,
 				C586267512668C7400204EE1 /* Utilities.h in Headers */,
+				C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,7 +562,6 @@
 				C5B03FD712517AD90087887C /* UtilitiesTests.m in Sources */,
 				C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */,
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
-				C57A9FDF125275F300726D16 /* Descriptor.pb.m in Sources */,
 				C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,6 +589,7 @@
 				C586266A12668C5800204EE1 /* GeneratedMessage.m in Sources */,
 				C586267212668C6C00204EE1 /* RingBuffer.m in Sources */,
 				C586267612668C7400204EE1 /* Utilities.m in Sources */,
+				C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
