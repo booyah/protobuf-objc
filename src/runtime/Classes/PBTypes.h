@@ -18,25 +18,25 @@
 
 typedef enum _PBType
 {
-	PBTypeDouble,		// double, exactly eight bytes on the wire.
-	PBTypeFloat,		// float, exactly four bytes on the wire.
-	PBTypeInt64,		// int64, varint on the wire.
-	PBTypeUInt64,		// uint64, varint on the wire.
-	PBTypeInt32,		// int32, varint on the wire.
-	PBTypeFixed64,		// uint64, exactly eight bytes on the wire.
-	PBTypeFixed32,		// uint32, exactly four bytes on the wire.
-	PBTypeBool,			// bool, varint on the wire.
-	PBTypeString,		// UTF-8 text.
-	PBTypeGroup,		// Tag-delimited message.  Deprecated.
-	PBTypeMessage,		// Length-delimited message.
-	PBTypeBytes,		// Arbitrary byte array.
-	PBTypeUInt32,		// uint32, varint on the wire
-	PBTypeEnum,			// Enum, varint on the wire
-	PBTypeSFixed32,		// int32, exactly four bytes on the wire
-	PBTypeSFixed64,		// int64, exactly eight bytes on the wire
-	PBTypeSInt32,		// int32, ZigZag-encoded varint on the wire
-	PBTypeSInt64,		// int64, ZigZag-encoded varint on the wire
-	PBType_Count
+	PBTypeDouble	= 1,	// double, exactly eight bytes on the wire.
+	PBTypeFloat		= 2,	// float, exactly four bytes on the wire.
+	PBTypeInt64		= 3,	// int64, varint on the wire.
+	PBTypeUInt64	= 4,	// uint64, varint on the wire.
+	PBTypeInt32		= 5,	// int32, varint on the wire.
+	PBTypeFixed64	= 6,	// uint64, exactly eight bytes on the wire.
+	PBTypeFixed32	= 7,	// uint32, exactly four bytes on the wire.
+	PBTypeBool		= 8,	// bool, varint on the wire.
+	PBTypeString	= 9,	// UTF-8 text.
+	PBTypeGroup		= 10,	// Tag-delimited message.  Deprecated.
+	PBTypeMessage	= 11,	// Length-delimited message.
+	PBTypeBytes		= 12,	// Arbitrary byte array.
+	PBTypeUInt32	= 13,	// uint32, varint on the wire
+	PBTypeEnum		= 14,	// Enum, varint on the wire
+	PBTypeSFixed32	= 15,	// int32, exactly four bytes on the wire
+	PBTypeSFixed64	= 16,	// int64, exactly eight bytes on the wire
+	PBTypeSInt32	= 17,	// int32, ZigZag-encoded varint on the wire
+	PBTypeSInt64	= 18,	// int64, ZigZag-encoded varint on the wire
+	PBType_Count	= 18
 } PBType;
 
 typedef enum _PBObjCType
