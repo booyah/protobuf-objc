@@ -10,6 +10,7 @@
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		C55591B1127A04EF002343CA /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
+		C5291BCA126E62900038760B /* DescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5291BC9126E62900038760B /* DescriptorTests.m */; };
 		C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */; };
 		C586262012668B9F00204EE1 /* Bootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C586261F12668B9F00204EE1 /* Bootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262212668BB100204EE1 /* ForwardDeclarations.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262112668BB100204EE1 /* ForwardDeclarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -126,6 +127,8 @@
 /* Begin PBXFileReference section */
 		AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C5291BC8126E62900038760B /* DescriptorTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DescriptorTests.h; path = Tests/DescriptorTests.h; sourceTree = "<group>"; };
+		C5291BC9126E62900038760B /* DescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DescriptorTests.m; path = Tests/DescriptorTests.m; sourceTree = "<group>"; };
 		C57A9FE2125276A400726D16 /* UnittestCustomOptions.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestCustomOptions.pb.h; path = Tests/UnittestCustomOptions.pb.h; sourceTree = "<group>"; };
 		C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestCustomOptions.pb.m; path = Tests/UnittestCustomOptions.pb.m; sourceTree = "<group>"; };
 		C586261F12668B9F00204EE1 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
@@ -428,6 +431,8 @@
 				C5B03F7E12517A1A0087887C /* CodedOuputStreamTests.m */,
 				C5B03F7F12517A1A0087887C /* CoreTests.h */,
 				C5B03F8012517A1A0087887C /* CoreTests.m */,
+				C5291BC8126E62900038760B /* DescriptorTests.h */,
+				C5291BC9126E62900038760B /* DescriptorTests.m */,
 				C5B03F8112517A1A0087887C /* GeneratedMessageTests.h */,
 				C5B03F8212517A1A0087887C /* GeneratedMessageTests.m */,
 				C5B03F8412517A1A0087887C /* MessageTests.h */,
@@ -692,6 +697,7 @@
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
 				C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */,
 				C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */,
+				C5291BCA126E62900038760B /* DescriptorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
