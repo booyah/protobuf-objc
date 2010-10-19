@@ -43,6 +43,38 @@ PBObjCType PBTypeToObjCType(PBType type)
 	return kTypeToObjCTypeMap[type];
 }
 
+NSObject * PBDefaultValue(PBObjCType type)
+{
+	switch (type)
+	{
+		case PBObjCTypeInt32:
+			return [NSNumber numberWithLong:0];
+
+		case PBObjCTypeInt64:
+			return [NSNumber numberWithLongLong:0];
+
+		case PBObjCTypeUInt32:
+			return [NSNumber numberWithUnsignedLong:0];
+
+		case PBObjCTypeUInt64:
+			return [NSNumber numberWithUnsignedLongLong:0];
+
+		case PBObjCTypeDouble:
+			return [NSNumber numberWithDouble:0];
+
+		case PBObjCTypeFloat:
+			return [NSNumber numberWithFloat:0.f];
+
+		case PBObjCTypeBool:
+			return [NSNumber numberWithChar:FALSE];
+
+		case PBObjCTypeString:
+			return @"";
+	}
+
+	return nil;
+}
+
 BOOL PBIsTypePackable(PBType type)
 {
 	return (type != PBTypeString &&

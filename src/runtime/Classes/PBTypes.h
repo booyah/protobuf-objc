@@ -55,4 +55,5 @@ typedef enum _PBObjCType
 } PBObjCType;
 
 PBObjCType PBTypeToObjCType(PBType type);
+NSObject * PBDefaultValue(PBObjCType type);
 BOOL PBIsTypePackable(PBType type);
