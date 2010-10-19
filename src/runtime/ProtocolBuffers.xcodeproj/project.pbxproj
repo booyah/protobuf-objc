@@ -55,6 +55,22 @@
 		C586267212668C6C00204EE1 /* RingBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = C586267012668C6C00204EE1 /* RingBuffer.m */; };
 		C586267512668C7400204EE1 /* Utilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C586267312668C7400204EE1 /* Utilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586267612668C7400204EE1 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C586267412668C7400204EE1 /* Utilities.m */; };
+		C58E123A126CC81500471C77 /* PBServiceDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E1238126CC81500471C77 /* PBServiceDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C58E123B126CC81500471C77 /* PBServiceDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E1239126CC81500471C77 /* PBServiceDescriptor.m */; };
+		C58E1260126CCAD700471C77 /* PBMethodDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E125E126CCAD700471C77 /* PBMethodDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C58E1261126CCAD700471C77 /* PBMethodDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E125F126CCAD700471C77 /* PBMethodDescriptor.m */; };
+		C58E1278126CCD8400471C77 /* PBMethodDescriptor+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E1276126CCD8400471C77 /* PBMethodDescriptor+Internal.h */; };
+		C58E1279126CCD8400471C77 /* PBMethodDescriptor+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E1277126CCD8400471C77 /* PBMethodDescriptor+Internal.m */; };
+		C58E1315126CE7D200471C77 /* PBServiceDescriptor+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E1313126CE7D200471C77 /* PBServiceDescriptor+Internal.h */; };
+		C58E1316126CE7D200471C77 /* PBServiceDescriptor+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E1314126CE7D200471C77 /* PBServiceDescriptor+Internal.m */; };
+		C58E1354126CEC4A00471C77 /* PBFileDescriptor+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E1352126CEC4A00471C77 /* PBFileDescriptor+Internal.h */; };
+		C58E1355126CEC4A00471C77 /* PBFileDescriptor+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E1353126CEC4A00471C77 /* PBFileDescriptor+Internal.m */; };
+		C58E1382126CEF0C00471C77 /* PBDescriptor+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E1380126CEF0C00471C77 /* PBDescriptor+Internal.h */; };
+		C58E1383126CEF0C00471C77 /* PBDescriptor+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E1381126CEF0C00471C77 /* PBDescriptor+Internal.m */; };
+		C58E13A2126CF23400471C77 /* PBFieldDescriptor+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E13A0126CF23400471C77 /* PBFieldDescriptor+Internal.h */; };
+		C58E13A3126CF23400471C77 /* PBFieldDescriptor+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E13A1126CF23400471C77 /* PBFieldDescriptor+Internal.m */; };
+		C58E14D3126D0C0B00471C77 /* PBExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = C58E14D1126D0C0B00471C77 /* PBExceptions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C58E14D4126D0C0B00471C77 /* PBExceptions.m in Sources */ = {isa = PBXBuildFile; fileRef = C58E14D2126D0C0B00471C77 /* PBExceptions.m */; };
 		C5B03FC712517AAE0087887C /* SmallBlockInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8912517A1A0087887C /* SmallBlockInputStream.m */; };
 		C5B03FC912517AD90087887C /* CodedInputStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F7C12517A1A0087887C /* CodedInputStreamTests.m */; };
 		C5B03FCA12517AD90087887C /* CodedOuputStreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F7E12517A1A0087887C /* CodedOuputStreamTests.m */; };
@@ -78,6 +94,23 @@
 		C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
 		C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */; };
 		C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F36E031275FA5A00013BB4 /* PBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB81B126CC3D000354923 /* PBTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB819126CC3D000354923 /* PBTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB81C126CC3D000354923 /* PBTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB81A126CC3D000354923 /* PBTypes.m */; };
+		C5CBB835126CC58A00354923 /* PBDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB824126CC58A00354923 /* PBDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB836126CC58A00354923 /* PBDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB825126CC58A00354923 /* PBDescriptor.m */; };
+		C5CBB837126CC58A00354923 /* PBDescriptorPool.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB826126CC58A00354923 /* PBDescriptorPool.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB838126CC58A00354923 /* PBDescriptorPool.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB827126CC58A00354923 /* PBDescriptorPool.m */; };
+		C5CBB839126CC58A00354923 /* PBDescriptorPool+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB828126CC58A00354923 /* PBDescriptorPool+Internal.h */; };
+		C5CBB83A126CC58A00354923 /* PBDescriptorPool+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB829126CC58A00354923 /* PBDescriptorPool+Internal.m */; };
+		C5CBB83D126CC58A00354923 /* PBEnumDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB82C126CC58A00354923 /* PBEnumDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB83E126CC58A00354923 /* PBEnumDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB82D126CC58A00354923 /* PBEnumDescriptor.m */; };
+		C5CBB83F126CC58A00354923 /* PBEnumDescriptor+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB82E126CC58A00354923 /* PBEnumDescriptor+Internal.h */; };
+		C5CBB840126CC58A00354923 /* PBEnumDescriptor+Internal.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB82F126CC58A00354923 /* PBEnumDescriptor+Internal.m */; };
+		C5CBB841126CC58A00354923 /* PBFieldDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB830126CC58A00354923 /* PBFieldDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB842126CC58A00354923 /* PBFieldDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB831126CC58A00354923 /* PBFieldDescriptor.m */; };
+		C5CBB843126CC58A00354923 /* PBFileDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB832126CC58A00354923 /* PBFileDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5CBB844126CC58A00354923 /* PBFileDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB833126CC58A00354923 /* PBFileDescriptor.m */; };
+		C5CBB845126CC58A00354923 /* PBGenericDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB834126CC58A00354923 /* PBGenericDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +172,22 @@
 		C586267012668C6C00204EE1 /* RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingBuffer.m; sourceTree = "<group>"; };
 		C586267312668C7400204EE1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		C586267412668C7400204EE1 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
+		C58E1238126CC81500471C77 /* PBServiceDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBServiceDescriptor.h; sourceTree = "<group>"; };
+		C58E1239126CC81500471C77 /* PBServiceDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBServiceDescriptor.m; sourceTree = "<group>"; };
+		C58E125E126CCAD700471C77 /* PBMethodDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBMethodDescriptor.h; sourceTree = "<group>"; };
+		C58E125F126CCAD700471C77 /* PBMethodDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBMethodDescriptor.m; sourceTree = "<group>"; };
+		C58E1276126CCD8400471C77 /* PBMethodDescriptor+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBMethodDescriptor+Internal.h"; sourceTree = "<group>"; };
+		C58E1277126CCD8400471C77 /* PBMethodDescriptor+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBMethodDescriptor+Internal.m"; sourceTree = "<group>"; };
+		C58E1313126CE7D200471C77 /* PBServiceDescriptor+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBServiceDescriptor+Internal.h"; sourceTree = "<group>"; };
+		C58E1314126CE7D200471C77 /* PBServiceDescriptor+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBServiceDescriptor+Internal.m"; sourceTree = "<group>"; };
+		C58E1352126CEC4A00471C77 /* PBFileDescriptor+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBFileDescriptor+Internal.h"; sourceTree = "<group>"; };
+		C58E1353126CEC4A00471C77 /* PBFileDescriptor+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBFileDescriptor+Internal.m"; sourceTree = "<group>"; };
+		C58E1380126CEF0C00471C77 /* PBDescriptor+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBDescriptor+Internal.h"; sourceTree = "<group>"; };
+		C58E1381126CEF0C00471C77 /* PBDescriptor+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBDescriptor+Internal.m"; sourceTree = "<group>"; };
+		C58E13A0126CF23400471C77 /* PBFieldDescriptor+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBFieldDescriptor+Internal.h"; sourceTree = "<group>"; };
+		C58E13A1126CF23400471C77 /* PBFieldDescriptor+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBFieldDescriptor+Internal.m"; sourceTree = "<group>"; };
+		C58E14D1126D0C0B00471C77 /* PBExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBExceptions.h; sourceTree = "<group>"; };
+		C58E14D2126D0C0B00471C77 /* PBExceptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBExceptions.m; sourceTree = "<group>"; };
 		C5B03F76125179F30087887C /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B03F77125179F30087887C /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		C5B03F7B12517A1A0087887C /* CodedInputStreamTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodedInputStreamTests.h; path = Tests/CodedInputStreamTests.h; sourceTree = "<group>"; };
@@ -181,6 +230,23 @@
 		C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayTests.m; path = Tests/ArrayTests.m; sourceTree = "<group>"; };
 		C5F36E031275FA5A00013BB4 /* PBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBArray.h; sourceTree = "<group>"; };
 		C5F36E041275FA5A00013BB4 /* PBArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBArray.m; sourceTree = "<group>"; };
+		C5CBB819126CC3D000354923 /* PBTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBTypes.h; sourceTree = "<group>"; };
+		C5CBB81A126CC3D000354923 /* PBTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBTypes.m; sourceTree = "<group>"; };
+		C5CBB824126CC58A00354923 /* PBDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBDescriptor.h; sourceTree = "<group>"; };
+		C5CBB825126CC58A00354923 /* PBDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBDescriptor.m; sourceTree = "<group>"; };
+		C5CBB826126CC58A00354923 /* PBDescriptorPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBDescriptorPool.h; sourceTree = "<group>"; };
+		C5CBB827126CC58A00354923 /* PBDescriptorPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBDescriptorPool.m; sourceTree = "<group>"; };
+		C5CBB828126CC58A00354923 /* PBDescriptorPool+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBDescriptorPool+Internal.h"; sourceTree = "<group>"; };
+		C5CBB829126CC58A00354923 /* PBDescriptorPool+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBDescriptorPool+Internal.m"; sourceTree = "<group>"; };
+		C5CBB82C126CC58A00354923 /* PBEnumDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBEnumDescriptor.h; sourceTree = "<group>"; };
+		C5CBB82D126CC58A00354923 /* PBEnumDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBEnumDescriptor.m; sourceTree = "<group>"; };
+		C5CBB82E126CC58A00354923 /* PBEnumDescriptor+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PBEnumDescriptor+Internal.h"; sourceTree = "<group>"; };
+		C5CBB82F126CC58A00354923 /* PBEnumDescriptor+Internal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PBEnumDescriptor+Internal.m"; sourceTree = "<group>"; };
+		C5CBB830126CC58A00354923 /* PBFieldDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBFieldDescriptor.h; sourceTree = "<group>"; };
+		C5CBB831126CC58A00354923 /* PBFieldDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBFieldDescriptor.m; sourceTree = "<group>"; };
+		C5CBB832126CC58A00354923 /* PBFileDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBFileDescriptor.h; sourceTree = "<group>"; };
+		C5CBB833126CC58A00354923 /* PBFileDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBFileDescriptor.m; sourceTree = "<group>"; };
+		C5CBB834126CC58A00354923 /* PBGenericDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBGenericDescriptor.h; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libProtocolBuffers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libProtocolBuffers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -341,6 +407,8 @@
 			children = (
 				C5F36E031275FA5A00013BB4 /* PBArray.h */,
 				C5F36E041275FA5A00013BB4 /* PBArray.m */,
+				C58E14D1126D0C0B00471C77 /* PBExceptions.h */,
+				C58E14D2126D0C0B00471C77 /* PBExceptions.m */,
 				C586266F12668C6C00204EE1 /* RingBuffer.h */,
 				C586267012668C6C00204EE1 /* RingBuffer.m */,
 				C586267312668C7400204EE1 /* Utilities.h */,
@@ -410,6 +478,23 @@
 			isa = PBXGroup;
 			children = (
 				C5CBB803126CBD6700354923 /* Internal */,
+				C5CBB819126CC3D000354923 /* PBTypes.h */,
+				C5CBB81A126CC3D000354923 /* PBTypes.m */,
+				C5CBB824126CC58A00354923 /* PBDescriptor.h */,
+				C5CBB825126CC58A00354923 /* PBDescriptor.m */,
+				C5CBB826126CC58A00354923 /* PBDescriptorPool.h */,
+				C5CBB827126CC58A00354923 /* PBDescriptorPool.m */,
+				C5CBB82C126CC58A00354923 /* PBEnumDescriptor.h */,
+				C5CBB82D126CC58A00354923 /* PBEnumDescriptor.m */,
+				C5CBB830126CC58A00354923 /* PBFieldDescriptor.h */,
+				C5CBB831126CC58A00354923 /* PBFieldDescriptor.m */,
+				C5CBB832126CC58A00354923 /* PBFileDescriptor.h */,
+				C5CBB833126CC58A00354923 /* PBFileDescriptor.m */,
+				C5CBB834126CC58A00354923 /* PBGenericDescriptor.h */,
+				C58E125E126CCAD700471C77 /* PBMethodDescriptor.h */,
+				C58E125F126CCAD700471C77 /* PBMethodDescriptor.m */,
+				C58E1238126CC81500471C77 /* PBServiceDescriptor.h */,
+				C58E1239126CC81500471C77 /* PBServiceDescriptor.m */,
 			);
 			name = Descriptors;
 			sourceTree = "<group>";
@@ -419,6 +504,20 @@
 			children = (
 				C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */,
 				C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */,
+				C58E1380126CEF0C00471C77 /* PBDescriptor+Internal.h */,
+				C58E1381126CEF0C00471C77 /* PBDescriptor+Internal.m */,
+				C5CBB828126CC58A00354923 /* PBDescriptorPool+Internal.h */,
+				C5CBB829126CC58A00354923 /* PBDescriptorPool+Internal.m */,
+				C5CBB82E126CC58A00354923 /* PBEnumDescriptor+Internal.h */,
+				C5CBB82F126CC58A00354923 /* PBEnumDescriptor+Internal.m */,
+				C58E13A0126CF23400471C77 /* PBFieldDescriptor+Internal.h */,
+				C58E13A1126CF23400471C77 /* PBFieldDescriptor+Internal.m */,
+				C58E1352126CEC4A00471C77 /* PBFileDescriptor+Internal.h */,
+				C58E1353126CEC4A00471C77 /* PBFileDescriptor+Internal.m */,
+				C58E1276126CCD8400471C77 /* PBMethodDescriptor+Internal.h */,
+				C58E1277126CCD8400471C77 /* PBMethodDescriptor+Internal.m */,
+				C58E1313126CE7D200471C77 /* PBServiceDescriptor+Internal.h */,
+				C58E1314126CE7D200471C77 /* PBServiceDescriptor+Internal.m */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -458,6 +557,23 @@
 				C586267512668C7400204EE1 /* Utilities.h in Headers */,
 				C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */,
 				C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */,
+				C5CBB81B126CC3D000354923 /* PBTypes.h in Headers */,
+				C5CBB835126CC58A00354923 /* PBDescriptor.h in Headers */,
+				C5CBB837126CC58A00354923 /* PBDescriptorPool.h in Headers */,
+				C5CBB839126CC58A00354923 /* PBDescriptorPool+Internal.h in Headers */,
+				C5CBB83D126CC58A00354923 /* PBEnumDescriptor.h in Headers */,
+				C5CBB83F126CC58A00354923 /* PBEnumDescriptor+Internal.h in Headers */,
+				C5CBB841126CC58A00354923 /* PBFieldDescriptor.h in Headers */,
+				C5CBB843126CC58A00354923 /* PBFileDescriptor.h in Headers */,
+				C5CBB845126CC58A00354923 /* PBGenericDescriptor.h in Headers */,
+				C58E123A126CC81500471C77 /* PBServiceDescriptor.h in Headers */,
+				C58E1260126CCAD700471C77 /* PBMethodDescriptor.h in Headers */,
+				C58E1278126CCD8400471C77 /* PBMethodDescriptor+Internal.h in Headers */,
+				C58E1315126CE7D200471C77 /* PBServiceDescriptor+Internal.h in Headers */,
+				C58E1354126CEC4A00471C77 /* PBFileDescriptor+Internal.h in Headers */,
+				C58E1382126CEF0C00471C77 /* PBDescriptor+Internal.h in Headers */,
+				C58E13A2126CF23400471C77 /* PBFieldDescriptor+Internal.h in Headers */,
+				C58E14D3126D0C0B00471C77 /* PBExceptions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +720,22 @@
 				C586267612668C7400204EE1 /* Utilities.m in Sources */,
 				C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */,
 				C55591B1127A04EF002343CA /* PBArray.m in Sources */,
+				C5CBB81C126CC3D000354923 /* PBTypes.m in Sources */,
+				C5CBB836126CC58A00354923 /* PBDescriptor.m in Sources */,
+				C5CBB838126CC58A00354923 /* PBDescriptorPool.m in Sources */,
+				C5CBB83A126CC58A00354923 /* PBDescriptorPool+Internal.m in Sources */,
+				C5CBB83E126CC58A00354923 /* PBEnumDescriptor.m in Sources */,
+				C5CBB840126CC58A00354923 /* PBEnumDescriptor+Internal.m in Sources */,
+				C5CBB842126CC58A00354923 /* PBFieldDescriptor.m in Sources */,
+				C5CBB844126CC58A00354923 /* PBFileDescriptor.m in Sources */,
+				C58E123B126CC81500471C77 /* PBServiceDescriptor.m in Sources */,
+				C58E1261126CCAD700471C77 /* PBMethodDescriptor.m in Sources */,
+				C58E1279126CCD8400471C77 /* PBMethodDescriptor+Internal.m in Sources */,
+				C58E1316126CE7D200471C77 /* PBServiceDescriptor+Internal.m in Sources */,
+				C58E1355126CEC4A00471C77 /* PBFileDescriptor+Internal.m in Sources */,
+				C58E1383126CEF0C00471C77 /* PBDescriptor+Internal.m in Sources */,
+				C58E13A3126CF23400471C77 /* PBFieldDescriptor+Internal.m in Sources */,
+				C58E14D4126D0C0B00471C77 /* PBExceptions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
