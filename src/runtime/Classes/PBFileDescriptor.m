@@ -84,17 +84,17 @@
 	[super dealloc];
 }
 
-- (NSString *)getName
+- (NSString *)name
 {
 	return _proto.name;
 }
 
-- (NSString *)getPackage
+- (NSString *)package
 {
 	return _proto.package;
 }
 
-- (PBFileOptions *)getOptions
+- (PBFileOptions *)options
 {
 	return _proto.options;
 }
