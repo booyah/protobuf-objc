@@ -854,6 +854,7 @@
 					Foundation,
 					"-framework",
 					SenTestingKit,
+					"-all_load",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
@@ -883,6 +884,7 @@
 					Foundation,
 					"-framework",
 					SenTestingKit,
+					"-all_load",
 				);
 				PREBINDING = NO;
 				PRODUCT_NAME = UnitTests;
