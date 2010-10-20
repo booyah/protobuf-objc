@@ -17,6 +17,8 @@
 #import "DescriptorTests.h"
 
 #import "Descriptor.pb.h"
+#import "PBExceptions.h"
+#import "PBFileDescriptor.h"
 #import "PBTypes.h"
 
 @implementation DescriptorTests
@@ -25,6 +27,30 @@
 {
 	STAssertEquals(PBTypeDouble, PBFieldDescriptorProto_TypeTypeDouble, @"Type values are out of sync");
 	STAssertEquals(PBTypeSInt64, PBFieldDescriptorProto_TypeTypeSint64, @"Type values are out of sync");
+}
+
+- (void)testInvalidDescriptorException
+{
+	PBFieldDescriptorProto *field = [[[[[[[PBFieldDescriptorProto builder]
+										setLabel:PBFieldDescriptorProto_LabelLabelOptional]
+										setType:PBFieldDescriptorProto_TypeTypeInt32]
+										setName:@"foo"]
+										setNumber:-1]
+										setDefaultValue:@"invalid"]
+									 build];
+
+	PBDescriptorProto *messageType = [[[[PBDescriptorProto builder]
+										setName:@"Foo"]
+										addField:field]
+									  build];
+
+	PBFileDescriptorProto *file = [[[[PBFileDescriptorProto builder]
+										setName:@"foo.proto"]
+										addMessageType:messageType]
+								   build];
+
+	STAssertThrowsSpecificNamed([PBFileDescriptor buildFrom:file dependencies:[NSArray array]],
+								NSException, PBInvalidDescriptorException, nil);
 }
 
 @end
