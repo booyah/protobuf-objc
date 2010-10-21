@@ -226,7 +226,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::GenerateEnumHeader(io::Printer* printer) {
     for (int i = 0; i < descriptor_->enum_type_count(); i++) {
-      EnumGenerator(descriptor_->enum_type(i)).GenerateHeader(printer);
+      EnumGenerator(descriptor_->enum_type(i)).GenerateDefinition(printer);
     }
 
     for (int i = 0; i < descriptor_->nested_type_count(); i++) {
@@ -404,7 +404,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print("@end\n\n");
 
     for (int i = 0; i < descriptor_->enum_type_count(); i++) {
-      EnumGenerator(descriptor_->enum_type(i)).GenerateSource(printer);
+      EnumGenerator(descriptor_->enum_type(i)).GenerateValidationFunction(printer);
     }
 
     for (int i = 0; i < descriptor_->nested_type_count(); i++) {

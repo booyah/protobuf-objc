@@ -18,80 +18,80 @@
 #include "objc_enum.h"
 
 #include <map>
-#include <string>
+#include <set>
 
 #include <google/protobuf/io/printer.h>
-#include <google/protobuf/descriptor.pb.h>
+#include <google/protobuf/descriptor.h>
 #include <google/protobuf/stubs/strutil.h>
 
 #include "objc_helpers.h"
 
 namespace google { namespace protobuf { namespace compiler { namespace objectivec {
 
-  EnumGenerator::EnumGenerator(const EnumDescriptor* descriptor)
-    : descriptor_(descriptor) {
-      for (int i = 0; i < descriptor_->value_count(); i++) {
-        const EnumValueDescriptor* value = descriptor_->value(i);
-        const EnumValueDescriptor* canonical_value =
-          descriptor_->FindValueByNumber(value->number());
+EnumGenerator::EnumGenerator(const EnumDescriptor *pDescriptor)
+    : mpDescriptor(pDescriptor)
+    , mClassname(ClassName(pDescriptor))
+{
+}
 
-        if (value == canonical_value) {
-          canonical_values_.push_back(value);
-        } else {
-          Alias alias;
-          alias.value = value;
-          alias.canonical_value = canonical_value;
-          aliases_.push_back(alias);
-        }
-      }
-  }
+EnumGenerator::~EnumGenerator()
+{
+}
 
+void EnumGenerator::GenerateDefinition(io::Printer *pPrinter)
+{
+    map<string, string> vars;
+    vars["classname"] = mClassname;
 
-  EnumGenerator::~EnumGenerator() {
-  }
+    pPrinter->Print(vars, "typedef enum _$classname${\n");
+    pPrinter->Indent();
 
-
-  void EnumGenerator::GenerateHeader(io::Printer* printer) {
-    printer->Print(
-      "typedef enum {\n");
-    printer->Indent();
-    
-    for (int i = 0; i < canonical_values_.size(); i++) {
-      printer->Print(
-        "$name$ = $value$,\n",
-        "name", EnumValueName(canonical_values_[i]),
-        "value", SimpleItoa(canonical_values_[i]->number()));
+    for (size_t i = 0; i < mpDescriptor->value_count(); ++i)
+    {
+        const EnumValueDescriptor *pValue = mpDescriptor->value(i);
+        pPrinter->Print("$name$ = $value$,\n",
+                        "name", EnumValueName(pValue),
+                        "value", SimpleItoa(pValue->number()));
     }
 
-    printer->Outdent();
-    printer->Print(
-      "} $classname$;\n"
-      "\n"
-      "BOOL $classname$IsValidValue($classname$ value);\n"
-      "\n",
-      "classname", ClassName(descriptor_));
-  }
+    pPrinter->Outdent();
+    pPrinter->Print(vars,
+        "} $classname$;\n"
+        "\n"
+        "BOOL $classname$_IsValid(int value);\n"
+        "\n");
+}
 
+void EnumGenerator::GenerateValidationFunction(io::Printer *pPrinter)
+{
+    pPrinter->Print(
+        "BOOL $classname$_IsValid(int value) {\n"
+        "  switch (value) {\n",
+        "classname", mClassname);
 
-  void EnumGenerator::GenerateSource(io::Printer* printer) {
-    printer->Print(
-      "BOOL $classname$IsValidValue($classname$ value) {\n"
-      "  switch (value) {\n",
-      "classname", ClassName(descriptor_));
-
-    for (int i = 0; i < canonical_values_.size(); i++) {
-      printer->Print(
-        "    case $name$:\n",
-        "name", EnumValueName(canonical_values_[i]));
+    // Collapse all of the enums values into a single set.  It's possible
+    // for multiple values to have the same number, and we can't have
+    // duplicate case statements.
+    set<int> numbers;
+    for (size_t i = 0; i < mpDescriptor->value_count(); ++i)
+    {
+        const EnumValueDescriptor *pValue = mpDescriptor->value(i);
+        numbers.insert(pValue->number());
     }
 
-    printer->Print(
-      "      return YES;\n"
-      "    default:\n"
-      "      return NO;\n"
-      "  }\n"
-      "}\n");
-  }
+    for (set<int>::iterator it(numbers.begin()); it != numbers.end(); ++it)
+    {
+        pPrinter->Print("    case $name$:\n", "name", SimpleItoa(*it));
+    }
+
+    pPrinter->Print(
+        "      return YES;\n"
+        "    default:\n"
+        "      return NO;\n"
+        "  }\n"
+        "}\n");
+}
+
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

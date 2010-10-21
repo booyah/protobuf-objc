@@ -18,41 +18,44 @@
 #ifndef OBJC_ENUM_H
 #define OBJC_ENUM_H
 
+#include <google/protobuf/stubs/common.h>
 #include <string>
-#include <set>
-#include <vector>
-#include <google/protobuf/descriptor.h>
 
-namespace google {
-namespace protobuf {
-  namespace io {
-    class Printer;             // printer.h
-  }
+namespace google
+{
+    namespace protobuf
+    {
+        namespace io
+        {
+            class Printer;
+        }
+
+        class EnumDescriptor;
+    }
 }
 
+namespace google {
 namespace protobuf {
 namespace compiler {
 namespace objectivec {
 
-class EnumGenerator {
- public:
-  explicit EnumGenerator(const EnumDescriptor* descriptor);
-  ~EnumGenerator();
+class EnumGenerator
+{
+public:
+    explicit EnumGenerator(const EnumDescriptor *pDescriptor);
+    ~EnumGenerator();
 
-  void GenerateHeader(io::Printer* printer);
-  void GenerateSource(io::Printer* printer);
+    // Generate the header code that defines the enum.
+    void GenerateDefinition(io::Printer *pPrinter);
 
- private:
-  const EnumDescriptor* descriptor_;
-  vector<const EnumValueDescriptor*> canonical_values_;
+    // Generate the source code for the enum value validation function.
+    void GenerateValidationFunction(io::Printer *pPrinter);
 
-  struct Alias {
-    const EnumValueDescriptor* value;
-    const EnumValueDescriptor* canonical_value;
-  };
-  vector<Alias> aliases_;
+private:
+    GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(EnumGenerator);
 
-  GOOGLE_DISALLOW_EVIL_CONSTRUCTORS(EnumGenerator);
+    const EnumDescriptor *mpDescriptor;
+    string mClassname;
 };
 
 }  // namespace objectivec

@@ -70,7 +70,7 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
 
     // need to write out all enums first
     for (int i = 0; i < file_->enum_type_count(); i++) {
-      EnumGenerator(file_->enum_type(i)).GenerateHeader(printer);
+      EnumGenerator(file_->enum_type(i)).GenerateDefinition(printer);
     }
     for (int i = 0; i < file_->message_type_count(); i++) {
       MessageGenerator(file_->message_type(i)).GenerateEnumHeader(printer);
@@ -214,7 +214,7 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
       "@end\n\n");
 
     for (int i = 0; i < file_->enum_type_count(); i++) {
-      EnumGenerator(file_->enum_type(i)).GenerateSource(printer);
+      EnumGenerator(file_->enum_type(i)).GenerateValidationFunction(printer);
     }
     for (int i = 0; i < file_->message_type_count(); i++) {
       MessageGenerator(file_->message_type(i)).GenerateSource(printer);
