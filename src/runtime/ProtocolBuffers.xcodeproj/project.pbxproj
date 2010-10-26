@@ -75,6 +75,9 @@
 		C5B0406312517D0A0087887C /* Main.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8312517A1A0087887C /* Main.m */; };
 		C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */; };
 		C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
+		C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */; };
+		C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F36E031275FA5A00013BB4 /* PBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C5F36E051275FA5A00013BB4 /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +177,10 @@
 		C5B03FF612517CA00087887C /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		C5CBB7FB126CBD5100354923 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pb.h; sourceTree = "<group>"; };
 		C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pb.m; sourceTree = "<group>"; };
+		C5D8D6E912767BC300F0BAE4 /* ArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayTests.h; path = Tests/ArrayTests.h; sourceTree = "<group>"; };
+		C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayTests.m; path = Tests/ArrayTests.m; sourceTree = "<group>"; };
+		C5F36E031275FA5A00013BB4 /* PBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PBArray.h; sourceTree = "<group>"; };
+		C5F36E041275FA5A00013BB4 /* PBArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PBArray.m; sourceTree = "<group>"; };
 		D2AAC07E0554694100DB518D /* libProtocolBuffers.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libProtocolBuffers.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -332,6 +339,8 @@
 		C5B03F1512516C7D0087887C /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C5F36E031275FA5A00013BB4 /* PBArray.h */,
+				C5F36E041275FA5A00013BB4 /* PBArray.m */,
 				C586266F12668C6C00204EE1 /* RingBuffer.h */,
 				C586267012668C6C00204EE1 /* RingBuffer.m */,
 				C586267312668C7400204EE1 /* Utilities.h */,
@@ -343,6 +352,8 @@
 		C5B03FC112517A2B0087887C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C5D8D6E912767BC300F0BAE4 /* ArrayTests.h */,
+				C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */,
 				C5B03F7B12517A1A0087887C /* CodedInputStreamTests.h */,
 				C5B03F7C12517A1A0087887C /* CodedInputStreamTests.m */,
 				C5B03F7D12517A1A0087887C /* CodedOuputStreamTests.h */,
@@ -446,6 +457,7 @@
 				C586267112668C6C00204EE1 /* RingBuffer.h in Headers */,
 				C586267512668C7400204EE1 /* Utilities.h in Headers */,
 				C5CBB7FD126CBD5100354923 /* Descriptor.pb.h in Headers */,
+				C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +575,8 @@
 				C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */,
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
 				C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */,
+				C5F36E051275FA5A00013BB4 /* PBArray.m in Sources */,
+				C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
