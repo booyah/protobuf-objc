@@ -33,6 +33,7 @@
 #import "Message_Builder.h"
 #import "MutableExtensionRegistry.h"
 #import "MutableField.h"
+#import "PBArray.h"
 #import "UnknownFieldSet.h"
 #import "UnknownFieldSet_Builder.h"
 #import "Utilities.h"

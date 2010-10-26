@@ -147,7 +147,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
     vars["default"] = descriptor_->is_repeated() 
-      ? "[NSArray array]"
+      ? string("[PBArray arrayWithValueType:") + GetArrayValueType(descriptor_) + "]"
       : BoxValue(descriptor_, DefaultValue(descriptor_));
 
     printer->Print(vars,

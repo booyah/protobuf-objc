@@ -436,6 +436,32 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     GOOGLE_LOG(FATAL) << "Can't get here.";
     return "";
   }
+
+  const char* GetArrayValueType(const FieldDescriptor* field) {
+    switch (field->type()) {
+      case FieldDescriptor::TYPE_INT32   : return "PBArrayValueTypeInt32" ;
+      case FieldDescriptor::TYPE_UINT32  : return "PBArrayValueTypeUInt32";
+      case FieldDescriptor::TYPE_SINT32  : return "PBArrayValueTypeInt32" ;
+      case FieldDescriptor::TYPE_FIXED32 : return "PBArrayValueTypeUInt32";
+      case FieldDescriptor::TYPE_SFIXED32: return "PBArrayValueTypeInt32" ;
+      case FieldDescriptor::TYPE_INT64   : return "PBArrayValueTypeInt64" ;
+      case FieldDescriptor::TYPE_UINT64  : return "PBArrayValueTypeUInt64";
+      case FieldDescriptor::TYPE_SINT64  : return "PBArrayValueTypeInt64" ;
+      case FieldDescriptor::TYPE_FIXED64 : return "PBArrayValueTypeUInt64";
+      case FieldDescriptor::TYPE_SFIXED64: return "PBArrayValueTypeInt64" ;
+      case FieldDescriptor::TYPE_FLOAT   : return "PBArrayValueTypeFloat" ;
+      case FieldDescriptor::TYPE_DOUBLE  : return "PBArrayValueTypeDouble";
+      case FieldDescriptor::TYPE_BOOL    : return "PBArrayValueTypeBool"  ;
+      case FieldDescriptor::TYPE_STRING  : return "PBArrayValueTypeObject";
+      case FieldDescriptor::TYPE_BYTES   : return "PBArrayValueTypeObject";
+      case FieldDescriptor::TYPE_ENUM    : return "PBArrayValueTypeObject";
+      case FieldDescriptor::TYPE_GROUP   : return "PBArrayValueTypeObject";
+      case FieldDescriptor::TYPE_MESSAGE : return "PBArrayValueTypeObject";
+    }
+
+    GOOGLE_LOG(FATAL) << "Can't get here.";
+    return NULL;
+  }
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

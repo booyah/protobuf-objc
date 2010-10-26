@@ -98,6 +98,8 @@ bool ReturnsReferenceType(const FieldDescriptor* field);
 string DefaultValue(const FieldDescriptor* field);
 string BoxValue(const FieldDescriptor* field, const string& value);
 
+const char* GetArrayValueType(const FieldDescriptor* field);
+
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

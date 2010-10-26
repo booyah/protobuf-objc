@@ -13,11 +13,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
+// Author: Jon Parise <jon@booyah.com>
 
 #import "PBArray.h"
+#import "CodedInputStream.h"
 
 NSString * const PBArrayTypeMismatchException = @"PBArrayTypeMismatchException";
 NSString * const PBArrayNumberExpectedException = @"PBArrayNumberExpectedException";
+NSString * const PBArrayAllocationFailureException = @"PBArrayAllocationFailureException";
+
+#pragma mark NSNumber Setters
 
 typedef void (*PBArrayValueSetter)(NSNumber *number, void *value);
 
@@ -48,41 +54,90 @@ static void PBArraySetUInt64Value(NSNumber *number, void *value)
 
 static void PBArraySetFloatValue(NSNumber *number, void *value)
 {
-	*((float *)value) = [number floatValue];
+	*((Float32 *)value) = [number floatValue];
 }
 
 static void PBArraySetDoubleValue(NSNumber *number, void *value)
 {
-	*((double *)value) = [number doubleValue];
+	*((Float64 *)value) = [number doubleValue];
 }
+
+#pragma mark PBCodedInputStream Getters
+
+typedef void (*PBInputStreamGetter)(PBCodedInputStream *input, void *value);
+
+static void PBStreamGetBoolValue(PBCodedInputStream *input, void *value)
+{
+	*(BOOL *)(value) = [input readBool];
+}
+
+static void PBStreamGetInt32Value(PBCodedInputStream *input, void *value)
+{
+	*(int32_t *)(value) = [input readInt32];
+}
+
+static void PBStreamGetUInt32Value(PBCodedInputStream *input, void *value)
+{
+	*(uint32_t *)(value) = [input readUInt32];
+}
+
+static void PBStreamGetInt64Value(PBCodedInputStream *input, void *value)
+{
+	*(int64_t *)(value) = [input readInt64];
+}
+
+static void PBStreamGetUInt64Value(PBCodedInputStream *input, void *value)
+{
+	*(uint64_t *)(value) = [input readUInt64];
+}
+
+static void PBStreamGetFloatValue(PBCodedInputStream *input, void *value)
+{
+	*(Float32 *)(value) = [input readFloat];
+}
+
+static void PBStreamGetDoubleValue(PBCodedInputStream *input, void *value)
+{
+	*(Float64 *)(value) = [input readDouble];
+}
+
+#pragma mark Array Value Types
 
 typedef struct _PBArrayValueTypeInfo
 {
-	const char * const name;
 	const size_t size;
 	const PBArrayValueSetter setter;
+	const PBInputStreamGetter getter;
 } PBArrayValueTypeInfo;
 
 static PBArrayValueTypeInfo PBValueTypes[] =
 {
-	{ "BOOL",		sizeof(BOOL),		PBArraySetBoolValue		},
-	{ "int32_t",	sizeof(int32_t),	PBArraySetInt32Value	},
-	{ "uint32_t",	sizeof(uint32_t),	PBArraySetUInt32Value	},
-	{ "int64_t",	sizeof(int64_t),	PBArraySetInt64Value	},
-	{ "uint64_t",	sizeof(uint64_t),	PBArraySetUInt64Value	},
-	{ "float",		sizeof(float),		PBArraySetFloatValue	},
-	{ "double",		sizeof(double),		PBArraySetDoubleValue	},
-	{ "id",			sizeof(id),			NULL					},
+	{ sizeof(id),		NULL,					NULL					},
+	{ sizeof(BOOL),		PBArraySetBoolValue,	PBStreamGetBoolValue	},
+	{ sizeof(int32_t),	PBArraySetInt32Value,	PBStreamGetInt32Value	},
+	{ sizeof(uint32_t),	PBArraySetUInt32Value,	PBStreamGetUInt32Value	},
+	{ sizeof(int64_t),	PBArraySetInt64Value,	PBStreamGetInt64Value	},
+	{ sizeof(uint64_t),	PBArraySetUInt64Value,	PBStreamGetUInt64Value	},
+	{ sizeof(Float32),	PBArraySetFloatValue,	PBStreamGetFloatValue	},
+	{ sizeof(Float64),	PBArraySetDoubleValue,	PBStreamGetDoubleValue	},
 };
 
-#define PBArrayValueTypeName(type)		PBValueTypes[type].name
 #define PBArrayValueTypeSize(type)		PBValueTypes[type].size
 #define PBArrayValueTypeSetter(type)	PBValueTypes[type].setter
+#define PBArrayValueTypeGetter(type)	PBValueTypes[type].getter
+
+#pragma mark Helper Macros
+
+#define PBArraySlot(index) (_data + (index * PBArrayValueTypeSize(_valueType)))
+
+#define PBArrayForEachObject(__data, __count, x) \
+	if (_valueType == PBArrayValueTypeObject) \
+		for (NSUInteger i = 0; i < __count; ++i) { id object = ((id *)__data)[i]; [object x]; }
 
 #define PBArrayValueTypeAssert(type) \
 	if (__builtin_expect(_valueType != type, 0)) \
 		[NSException raise:PBArrayTypeMismatchException \
-					format:@"array value type mismatch (expected '%s')", PBArrayValueTypeName(type)];
+					format:@"array value type mismatch (expected '%s')", #type];
 
 #define PBArrayValueRangeAssert(index) \
 	if (__builtin_expect(index >= _count, 0)) \
@@ -92,6 +147,10 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	if (__builtin_expect(![value isKindOfClass:[NSNumber class]], 0)) \
 		[NSException raise:PBArrayNumberExpectedException format:@"NSNumber expected (got '%@')", [value class]];
 
+#define PBArrayAllocationAssert(p, size) \
+	if (__builtin_expect(p == NULL, 0)) \
+		[NSException raise:PBArrayAllocationFailureException format:@"failed to allocate %lu bytes", size];
+
 #pragma mark -
 #pragma mark PBArray
 
@@ -100,23 +159,52 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 @synthesize valueType = _valueType;
 @dynamic data;
 
+- (id)initWithCount:(NSUInteger)count valueType:(PBArrayValueType)valueType
+{
+	if (self = [super init])
+	{
+		_valueType = valueType;
+		_count = count;
+		_capacity = (count > 0) ? count : 1;
+
+		_data = malloc(_capacity * PBArrayValueTypeSize(_valueType));
+		if (_data == NULL)
+		{
+			[self release];
+			self = nil;
+		}
+	}
+
+	return self;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+	PBArray *copy = [[[self class] allocWithZone:zone] initWithCount:_count valueType:_valueType];
+	if (copy)
+	{
+		memcpy(copy->_data, _data, _count * PBArrayValueTypeSize(_valueType));
+		PBArrayForEachObject(_data, _count, retain);
+	}
+
+	return copy;
+}
+
 - (void)dealloc
 {
 	if (_data)
 	{
-		if (_valueType == PBArrayValueTypeObject)
-		{
-			for (NSUInteger i = 0; i < _count; ++i)
-			{
-				id object = ((id *)_data)[i];
-				[object release];
-			}
-		}
-
+		PBArrayForEachObject(_data, _count, release);
 		free(_data);
 	}
 
 	[super dealloc];
+}
+
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"<%@ %p>{valueType = %d, count = %d, capacity = %d, data = %p}",
+			[self class], self, _valueType, _count, _capacity, _data];	
 }
 
 - (NSUInteger)count
@@ -127,6 +215,25 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 - (const void *)data
 {
 	return _data;
+}
+
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
+{
+	// TODO: We only support enumeration of object values.  In the future, we
+	// can extend this code to return a new list of NSNumber* objects wrapping
+	// our primitive values.
+	PBArrayValueTypeAssert(PBArrayValueTypeObject);
+
+	if (state->state >= _count)
+	{
+		return 0; // terminate iteration
+	}
+
+	state->itemsPtr = (id *)_data;
+    state->state = _count;
+    state->mutationsPtr = (unsigned long *)self;
+
+    return _count;
 }
 
 - (id)objectAtIndex:(NSUInteger)index
@@ -171,66 +278,102 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return ((uint64_t *)_data)[index];
 }
 
-- (float_t)floatAtIndex:(NSUInteger)index
+- (Float32)floatAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeFloat);
-	return ((float *)_data)[index];
+	return ((Float32 *)_data)[index];
 }
 
-- (double)doubleAtIndex:(NSUInteger)index
+- (Float64)doubleAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeDouble);
-	return ((double *)_data)[index];
+	return ((Float64 *)_data)[index];
+}
+
+@end
+
+@implementation PBArray (PBArrayExtended)
+
+- (id)arrayByAppendingArray:(PBArray *)array
+{
+	PBArrayValueTypeAssert(array.valueType);
+
+	PBArray *result = [[[self class] alloc] initWithCount:_count + array.count valueType:_valueType];
+	if (result)
+	{
+		const size_t elementSize = PBArrayValueTypeSize(_valueType);
+		const size_t originalSize = _count * elementSize;
+
+		memcpy(result->_data, _data, originalSize);
+		memcpy(result->_data + originalSize, array.data, array.count * elementSize);
+
+		PBArrayForEachObject(result->_data, result->_count, retain);
+	}
+	
+	return [result autorelease];
+}
+
+- (id)arrayByAppendingInputStream:(PBCodedInputStream *)input count:(NSUInteger)count
+{
+	NSAssert(_valueType != PBArrayValueTypeObject, @"Object types are unsupported");
+
+	PBArray *result = [[[self class] alloc] initWithCount:_count + count valueType:_valueType];
+	if (result)
+	{
+		PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
+		const size_t elementSize = PBArrayValueTypeSize(_valueType);
+		const size_t originalSize = _count * elementSize;
+
+		memcpy(result->_data, _data, originalSize);
+
+		size_t offset = originalSize;
+		while (input.bytesUntilLimit > 0)
+		{
+			getter(input, _data + offset);
+			offset += elementSize;
+		}
+	}
+
+	return [result autorelease];
 }
 
 @end
 
 @implementation PBArray (PBArrayCreation)
 
++ (id)arrayWithValueType:(PBArrayValueType)valueType
+{
+	return [[[self alloc] initWithValueType:valueType] autorelease];
+}
+
 + (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
-	return [[[PBArray alloc] initWithValues:values count:count valueType:valueType] autorelease];
+	return [[[self alloc] initWithValues:values count:count valueType:valueType] autorelease];
 }
 
 + (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
-	return [[[PBArray alloc] initWithArray:array valueType:valueType] autorelease];
+	return [[[self alloc] initWithArray:array valueType:valueType] autorelease];
 }
 
-- (id)initWithCapacity:(NSUInteger)count valueType:(PBArrayValueType)valueType
++ (id)arrayWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType
 {
-	if (self = [super init])
-	{
-		_valueType = valueType;
-		_count = count;
+	return [[[self alloc] initWithInputStream:input length:length valueType:valueType] autorelease];
+}
 
-		_data = malloc(_count * PBArrayValueTypeSize(_valueType));
-		if (_data == NULL)
-		{
-			[self release];
-			self = nil;
-		}
-	}
-
-	return self;
+- (id)initWithValueType:(PBArrayValueType)valueType
+{
+	return [self initWithCount:0 valueType:valueType];
 }
 
 - (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
-	if (self = [self initWithCapacity:count valueType:valueType])
+	if (self = [self initWithCount:count valueType:valueType])
 	{
-		if (valueType == PBArrayValueTypeObject)
-		{
-			for (NSUInteger i = 0; i < count; ++i)
-			{
-				id object = ((id *)values)[i];
-				[object retain];
-			}
-		}
-
 		memcpy(_data, values, count * PBArrayValueTypeSize(_valueType));
+		PBArrayForEachObject(_data, _count, retain);
 	}
 
 	return self;
@@ -238,7 +381,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (id)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
-	if (self = [self initWithCapacity:[array count] valueType:valueType])
+	if (self = [self initWithCount:[array count] valueType:valueType])
 	{
 		const size_t elementSize = PBArrayValueTypeSize(valueType);
 		size_t offset = 0;
@@ -264,6 +407,157 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	}
 
 	return self;
+}
+
+- (id)initWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType
+{
+	NSAssert(valueType != PBArrayValueTypeObject, @"Object types are unsupported");
+
+	const size_t elementSize = PBArrayValueTypeSize(_valueType);
+	const NSUInteger count = length / elementSize;
+
+	if (self = [self initWithCount:count valueType:valueType])
+	{
+		PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
+
+		size_t offset = 0;
+		while (input.bytesUntilLimit > 0)
+		{
+			getter(input, _data + offset);
+			offset += elementSize;
+		}
+	}
+
+	return self;
+}
+
+@end
+
+#pragma mark -
+#pragma mark PBAppendableArray
+
+@implementation PBAppendableArray
+
+- (void)ensureAdditionalCapacity:(NSUInteger)additionalSlots
+{
+	const NSUInteger requiredSlots = _count + additionalSlots;
+	
+	if (requiredSlots > _capacity)
+	{
+		while (_capacity < requiredSlots)
+		{
+			_capacity *= 2;
+		}
+		
+		const size_t size = _capacity * PBArrayValueTypeSize(_valueType);
+		_data = realloc(_data, size);
+		PBArrayAllocationAssert(_data, size);
+	}
+}
+
+- (void)addObject:(id)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeObject);
+	[self ensureAdditionalCapacity:1];
+	*(id *)PBArraySlot(_count) = [value retain];
+	_count++;
+}
+
+- (void)addBool:(BOOL)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeBool);
+	[self ensureAdditionalCapacity:1];
+	*(BOOL *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)addInt32:(int32_t)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
+	[self ensureAdditionalCapacity:1];
+	*(int32_t *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)addUint32:(uint32_t)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
+	[self ensureAdditionalCapacity:1];
+	*(uint32_t *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)addInt64:(int64_t)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeInt64);
+	[self ensureAdditionalCapacity:1];
+	*(int64_t *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)addUint64:(uint64_t)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeUInt64);
+	[self ensureAdditionalCapacity:1];
+	*(uint64_t *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)addFloat:(Float32)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeFloat);
+	[self ensureAdditionalCapacity:1];
+	*(Float32 *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)addDouble:(Float64)value
+{
+	PBArrayValueTypeAssert(PBArrayValueTypeDouble);
+	[self ensureAdditionalCapacity:1];
+	*(Float64 *)PBArraySlot(_count) = value;
+	_count++;
+}
+
+- (void)appendArray:(PBArray *)array
+{
+	PBArrayValueTypeAssert(array.valueType);
+	[self ensureAdditionalCapacity:array.count];
+	
+	const size_t elementSize = PBArrayValueTypeSize(_valueType);
+	memcpy(_data + (_count * elementSize), array.data, array.count * elementSize);
+	_count += array.count;
+
+	PBArrayForEachObject(array->_data, array->_count, retain);
+}
+
+- (void)appendValues:(const void *)values count:(NSUInteger)count
+{
+	[self ensureAdditionalCapacity:count];
+
+	const size_t elementSize = PBArrayValueTypeSize(_valueType);
+	memcpy(_data + (_count * elementSize), values, count * elementSize);
+	_count += count;
+
+	PBArrayForEachObject(values, count, retain);
+}
+
+- (void)appendInputStream:(PBCodedInputStream *)input length:(NSUInteger)length
+{
+	const size_t elementSize = PBArrayValueTypeSize(_valueType);
+	const NSUInteger count = length / elementSize;
+
+	[self ensureAdditionalCapacity:count];
+
+	PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
+	const size_t originalSize = _count * elementSize;
+
+	size_t offset = originalSize;
+	while (input.bytesUntilLimit > 0)
+	{
+		getter(input, _data + offset);
+		offset += elementSize;
+	}
 }
 
 @end

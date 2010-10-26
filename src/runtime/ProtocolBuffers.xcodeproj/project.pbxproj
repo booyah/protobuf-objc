@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+		C55591B1127A04EF002343CA /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
 		C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */; };
 		C586262012668B9F00204EE1 /* Bootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C586261F12668B9F00204EE1 /* Bootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262212668BB100204EE1 /* ForwardDeclarations.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262112668BB100204EE1 /* ForwardDeclarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -77,7 +78,6 @@
 		C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5CBB7FC126CBD5100354923 /* Descriptor.pb.m */; };
 		C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */; };
 		C5D8D7351276810200F0BAE4 /* PBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = C5F36E031275FA5A00013BB4 /* PBArray.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C5F36E051275FA5A00013BB4 /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -575,7 +575,6 @@
 				C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */,
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
 				C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */,
-				C5F36E051275FA5A00013BB4 /* PBArray.m in Sources */,
 				C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,6 +603,7 @@
 				C586267212668C6C00204EE1 /* RingBuffer.m in Sources */,
 				C586267612668C7400204EE1 /* Utilities.m in Sources */,
 				C5CBB7FE126CBD5100354923 /* Descriptor.pb.m in Sources */,
+				C55591B1127A04EF002343CA /* PBArray.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

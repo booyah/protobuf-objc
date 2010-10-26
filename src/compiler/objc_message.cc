@@ -866,7 +866,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
               break;
             case FieldDescriptor::LABEL_REPEATED:
               printer->Print(vars,
-                "for ($type$* element in self.$name$List) {\n"
+                "for ($type$* element in self.$name$) {\n"
                 "  if (!element.isInitialized) {\n"
                 "    return NO;\n"
                 "  }\n"

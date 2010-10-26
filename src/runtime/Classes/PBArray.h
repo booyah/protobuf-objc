@@ -13,14 +13,20 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+//
+// Author: Jon Parise <jon@booyah.com>
 
 #import <Foundation/Foundation.h>
 
-NSString * const PBArrayTypeMismatchException;
-NSString * const PBArrayNumberExpectedException;
+@class PBCodedInputStream;
+
+extern NSString * const PBArrayTypeMismatchException;
+extern NSString * const PBArrayNumberExpectedException;
+extern NSString * const PBArrayAllocationFailureException;
 
 typedef enum _PBArrayValueType
 {
+	PBArrayValueTypeObject,
 	PBArrayValueTypeBool,
 	PBArrayValueTypeInt32,
 	PBArrayValueTypeUInt32,
@@ -28,13 +34,16 @@ typedef enum _PBArrayValueType
 	PBArrayValueTypeUInt64,
 	PBArrayValueTypeFloat,
 	PBArrayValueTypeDouble,
-	PBArrayValueTypeObject,
 } PBArrayValueType;
 
-@interface PBArray : NSObject
+// PBArray is an immutable array class that's optimized for storing primitive
+// values.  All values stored in an PBArray instance must have the same type
+// (PBArrayValueType).  Object values (PBArrayValueTypeObject) are retained.
+@interface PBArray : NSObject <NSCopying, NSFastEnumeration>
 {
-@private
+@protected
 	PBArrayValueType	_valueType;
+	NSUInteger			_capacity;
 	NSUInteger			_count;
 	void *				_data;
 }
@@ -46,8 +55,8 @@ typedef enum _PBArrayValueType
 - (uint32_t)uint32AtIndex:(NSUInteger)index;
 - (int64_t)int64AtIndex:(NSUInteger)index;
 - (uint64_t)uint64AtIndex:(NSUInteger)index;
-- (float_t)floatAtIndex:(NSUInteger)index;
-- (double)doubleAtIndex:(NSUInteger)index;
+- (Float32)floatAtIndex:(NSUInteger)index;
+- (Float64)doubleAtIndex:(NSUInteger)index;
 
 @property (nonatomic,assign,readonly) PBArrayValueType valueType;
 @property (nonatomic,assign,readonly) const void * data;
@@ -55,11 +64,41 @@ typedef enum _PBArrayValueType
 
 @end
 
+@interface PBArray (PBArrayExtended)
+
+- (id)arrayByAppendingArray:(PBArray *)array;
+- (id)arrayByAppendingInputStream:(PBCodedInputStream *)input count:(NSUInteger)count;
+
+@end
+
 @interface PBArray (PBArrayCreation)
 
++ (id)arrayWithValueType:(PBArrayValueType)valueType;
 + (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType;
 + (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType;
++ (id)arrayWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType;
+- (id)initWithValueType:(PBArrayValueType)valueType;
 - (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType;
 - (id)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType;
+- (id)initWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType;
+
+@end
+
+// PBAppendableArray extends PBArray with the ability to append new values to
+// the end of the array.
+@interface PBAppendableArray : PBArray
+
+- (void)addObject:(id)value;
+- (void)addBool:(BOOL)value;
+- (void)addInt32:(int32_t)value;
+- (void)addUint32:(uint32_t)value;
+- (void)addInt64:(int64_t)value;
+- (void)addUint64:(uint64_t)value;
+- (void)addFloat:(Float32)value;
+- (void)addDouble:(Float64)value;
+
+- (void)appendArray:(PBArray *)array;
+- (void)appendValues:(const void *)values count:(NSUInteger)count;
+- (void)appendInputStream:(PBCodedInputStream *)input length:(NSUInteger)length;
 
 @end

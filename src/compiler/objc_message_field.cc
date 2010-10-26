@@ -34,8 +34,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         (*variables)["classname"] = ClassName(descriptor->containing_type());
         (*variables)["name"] = UnderscoresToCamelCase(descriptor);
         (*variables)["capitalized_name"] = UnderscoresToCapitalizedCamelCase(descriptor);
-        (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "List";
-        (*variables)["mutable_list_name"] = "mutable" + UnderscoresToCapitalizedCamelCase(descriptor) + "List";
+        (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "Array";
         (*variables)["number"] = SimpleItoa(descriptor->number());
         (*variables)["type"] = ClassName(descriptor->message_type());
         if (IsPrimitiveType(GetObjectiveCType(descriptor))) {
@@ -46,29 +45,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         (*variables)["group_or_message"] =
           (descriptor->type() == FieldDescriptor::TYPE_GROUP) ?
           "Group" : "Message";
-
-        (*variables)["boxed_value"] = BoxValue(descriptor, "value");
-
-        string unboxed_value = "value";
-        switch (GetObjectiveCType(descriptor)) {
-          case OBJECTIVECTYPE_INT:
-            unboxed_value = "[value intValue]";
-            break;
-          case OBJECTIVECTYPE_LONG:
-            unboxed_value = "[value longLongValue]";
-            break;
-          case OBJECTIVECTYPE_FLOAT:
-            unboxed_value = "[value floatValue]";
-            break;
-          case OBJECTIVECTYPE_DOUBLE:
-            unboxed_value = "[value doubleValue]";
-            break;
-          case OBJECTIVECTYPE_BOOLEAN:
-            unboxed_value = "[value boolValue]";
-            break;
-        } 
-
-        (*variables)["unboxed_value"] = unboxed_value;
     }
   }  // namespace
 
@@ -271,7 +247,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "NSMutableArray* $mutable_list_name$;\n");
+    printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
   }
 
 
@@ -280,24 +256,25 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
+    printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
   }
 
 
   void RepeatedMessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "@property (retain) NSMutableArray* $mutable_list_name$;\n");
+      "@property (retain) PBAppendableArray * $list_name$;\n");
   }
 
 
   void RepeatedMessageFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "@synthesize $mutable_list_name$;\n");
+    printer->Print(variables_, "@synthesize $list_name$;\n");
+    printer->Print(variables_, "@dynamic $name$;\n");
   }
 
 
   void RepeatedMessageFieldGenerator::GenerateDeallocSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "self.$mutable_list_name$ = nil;\n");
+      "self.$list_name$ = nil;\n");
   }
 
 
@@ -307,64 +284,55 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedMessageFieldGenerator::GenerateMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (NSArray*) $list_name$;\n"
-      "- ($storage_type$) $name$AtIndex:(int32_t) index;\n");
+      "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (NSArray*) $list_name$ {\n"
-      "  return $mutable_list_name$;\n"
+      "- (PBArray *)$name$ {\n"
+      "  return $list_name$;\n"
       "}\n"
-      "- ($storage_type$) $name$AtIndex:(int32_t) index {\n"
-      "  id value = [$mutable_list_name$ objectAtIndex:index];\n"
-      "  return $unboxed_value$;\n"
+      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
+      "  return [$list_name$ objectAtIndex:index];\n"
       "}\n");
   }
 
 
   void RepeatedMessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (NSArray*) $list_name$;\n"
-      "- ($storage_type$) $name$AtIndex:(int32_t) index;\n"
-      "- ($classname$_Builder*) replace$capitalized_name$AtIndex:(int32_t) index with:($storage_type$) value;\n"
-      "- ($classname$_Builder*) add$capitalized_name$:($storage_type$) value;\n"
-      "- ($classname$_Builder*) addAll$capitalized_name$:(NSArray*) values;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$List;\n");
+      "- (PBAppendableArray *)$name$;\n"
+      "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
+      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
+      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count;\n"
+      "- ($classname$_Builder *)clear$capitalized_name$;\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "- (NSArray*) $list_name$ {\n"
-      "  if (result.$mutable_list_name$ == nil) { return [NSArray array]; }\n"
-      "  return result.$mutable_list_name$;\n"
+      "- (PBAppendableArray *)$name$ {\n"
+      "  return result.$list_name$;\n"
       "}\n"
-      "- ($storage_type$) $name$AtIndex:(int32_t) index {\n"
+      "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
       "  return [result $name$AtIndex:index];\n"
       "}\n"
-      "- ($classname$_Builder*) replace$capitalized_name$AtIndex:(int32_t) index with:($storage_type$) value {\n"
-      "  [result.$mutable_list_name$ replaceObjectAtIndex:index withObject:$boxed_value$];\n"
+      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value {\n"
+      "  if (result.$list_name$ == nil) {\n"
+      "    result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];\n"
+      "  }\n"
+      "  [result.$list_name$ addObject:value];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) addAll$capitalized_name$:(NSArray*) values {\n"
-      "  if (result.$mutable_list_name$ == nil) {\n"
-      "    result.$mutable_list_name$ = [NSMutableArray array];\n"
-      "  }\n"
-      "  [result.$mutable_list_name$ addObjectsFromArray:values];\n"
+      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+      "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$List {\n"
-      "  result.$mutable_list_name$ = nil;\n"
+      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count {\n"
+      "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];\n"
       "  return self;\n"
-      "}\n");
-
-    printer->Print(
-      variables_,
-      "- ($classname$_Builder*) add$capitalized_name$:($storage_type$) value {\n"
-      "  if (result.$mutable_list_name$ == nil) {\n"
-      "    result.$mutable_list_name$ = [NSMutableArray array];\n"
-      "  }\n"
-      "  [result.$mutable_list_name$ addObject:$boxed_value$];\n"
+      "}\n"
+      "- ($classname$_Builder *)clear$capitalized_name$ {\n"
+      "  result.$list_name$ = nil;\n"
       "  return self;\n"
       "}\n");
   }
@@ -392,11 +360,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedMessageFieldGenerator::GenerateMergingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "if (other.$mutable_list_name$.count > 0) {\n"
-      "  if (result.$mutable_list_name$ == nil) {\n"
-      "    result.$mutable_list_name$ = [NSMutableArray array];\n"
+      "if (other.$list_name$.count > 0) {\n"
+      "  if (result.$list_name$ == nil) {\n"
+      "    result.$list_name$ = [other.$list_name$ copyWithZone:[other.$list_name$ zone]];\n"
+      "  } else {\n"
+      "    [result.$list_name$ appendArray:other.$list_name$];\n"
       "  }\n"
-      "  [result.$mutable_list_name$ addObjectsFromArray:other.$mutable_list_name$];\n"
       "}\n");
   }
 
@@ -422,14 +391,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedMessageFieldGenerator::GenerateSerializationCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for ($type$* element in self.$list_name$) {\n"
+      "for ($type$ *element in self.$list_name$) {\n"
       "  [output write$group_or_message$:$number$ value:element];\n"
       "}\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for ($type$* element in self.$list_name$) {\n"
+      "for ($type$ *element in self.$list_name$) {\n"
       "  size += compute$group_or_message$Size($number$, element);\n"
       "}\n");
   }
