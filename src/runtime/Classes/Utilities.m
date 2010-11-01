@@ -154,29 +154,29 @@ int32_t computeBoolSizeNoTag(BOOL value) {
 }
 
 
-int32_t computeStringSizeNoTag(NSString* value) {
+int32_t computeStringSizeNoTag(const NSString* value) {
 	NSData* data = [value dataUsingEncoding:NSUTF8StringEncoding];
 	return computeRawVarint32Size(data.length) + data.length;
 }
 
 
-int32_t computeGroupSizeNoTag(id<PBMessage> value) {
+int32_t computeGroupSizeNoTag(const id<PBMessage> value) {
 	return [value serializedSize];
 }
 
 
-int32_t computeUnknownGroupSizeNoTag(PBUnknownFieldSet* value) {
+int32_t computeUnknownGroupSizeNoTag(const PBUnknownFieldSet* value) {
 	return value.serializedSize;
 }
 
 
-int32_t computeMessageSizeNoTag(id<PBMessage> value) {
+int32_t computeMessageSizeNoTag(const id<PBMessage> value) {
 	int32_t size = [value serializedSize];
 	return computeRawVarint32Size(size) + size;
 }
 
 
-int32_t computeDataSizeNoTag(NSData* value) {
+int32_t computeDataSizeNoTag(const NSData* value) {
 	return computeRawVarint32Size(value.length) + value.length;
 }
 
@@ -251,27 +251,27 @@ int32_t computeBoolSize(int32_t fieldNumber, BOOL value) {
 }
 
 
-int32_t computeStringSize(int32_t fieldNumber, NSString* value) {
+int32_t computeStringSize(int32_t fieldNumber, const NSString* value) {
 	return computeTagSize(fieldNumber) + computeStringSizeNoTag(value);
 }
 
 
-int32_t computeGroupSize(int32_t fieldNumber, id<PBMessage> value) {
+int32_t computeGroupSize(int32_t fieldNumber, const id<PBMessage> value) {
 	return computeTagSize(fieldNumber) * 2 + computeGroupSizeNoTag(value);
 }
 
 
-int32_t computeUnknownGroupSize(int32_t fieldNumber, PBUnknownFieldSet* value) {
+int32_t computeUnknownGroupSize(int32_t fieldNumber, const PBUnknownFieldSet* value) {
 	return computeTagSize(fieldNumber) * 2 + computeUnknownGroupSizeNoTag(value);
 }
 
 
-int32_t computeMessageSize(int32_t fieldNumber, id<PBMessage> value) {
+int32_t computeMessageSize(int32_t fieldNumber, const id<PBMessage> value) {
 	return computeTagSize(fieldNumber) + computeMessageSizeNoTag(value);
 }
 
 
-int32_t computeDataSize(int32_t fieldNumber, NSData* value) {
+int32_t computeDataSize(int32_t fieldNumber, const NSData* value) {
 	return computeTagSize(fieldNumber) + computeDataSizeNoTag(value);
 }
 
@@ -335,14 +335,14 @@ int32_t computeRawVarint64Size(int64_t value) {
 }
 
 
-int32_t computeMessageSetExtensionSize(int32_t fieldNumber, id<PBMessage> value) {
+int32_t computeMessageSetExtensionSize(int32_t fieldNumber, const id<PBMessage> value) {
 	return computeTagSize(PBWireFormatMessageSetItem) * 2 +
 	computeUInt32Size(PBWireFormatMessageSetTypeId, fieldNumber) +
 	computeMessageSize(PBWireFormatMessageSetMessage, value);
 }
 
 
-int32_t computeRawMessageSetExtensionSize(int32_t fieldNumber, NSData* value) {
+int32_t computeRawMessageSetExtensionSize(int32_t fieldNumber, const NSData* value) {
 	return computeTagSize(PBWireFormatMessageSetItem) * 2 +
 	computeUInt32Size(PBWireFormatMessageSetTypeId, fieldNumber) +
 	computeDataSize(PBWireFormatMessageSetMessage, value);

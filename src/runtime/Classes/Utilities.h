@@ -126,32 +126,32 @@ int32_t computeBoolSize(int32_t fieldNumber, BOOL value);
  * Compute the number of bytes that would be needed to encode a
  * {@code string} field, including tag.
  */
-int32_t computeStringSize(int32_t fieldNumber, NSString* value);
+int32_t computeStringSize(int32_t fieldNumber, const NSString* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field, including tag.
  */
-int32_t computeGroupSize(int32_t fieldNumber, id<PBMessage> value);
+int32_t computeGroupSize(int32_t fieldNumber, const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field represented by an {@code PBUnknownFieldSet}, including
  * tag.
  */
-int32_t computeUnknownGroupSize(int32_t fieldNumber, PBUnknownFieldSet* value);
+int32_t computeUnknownGroupSize(int32_t fieldNumber, const PBUnknownFieldSet* value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * embedded message field, including tag.
  */
-int32_t computeMessageSize(int32_t fieldNumber, id<PBMessage> value);
+int32_t computeMessageSize(int32_t fieldNumber, const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code bytes} field, including tag.
  */
-int32_t computeDataSize(int32_t fieldNumber, NSData* value);
+int32_t computeDataSize(int32_t fieldNumber, const NSData* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
@@ -237,32 +237,32 @@ int32_t computeBoolSizeNoTag(BOOL value);
  * Compute the number of bytes that would be needed to encode a
  * {@code string} field, including tag.
  */
-int32_t computeStringSizeNoTag(NSString* value);
+int32_t computeStringSizeNoTag(const NSString* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field, including tag.
  */
-int32_t computeGroupSizeNoTag(id<PBMessage> value);
+int32_t computeGroupSizeNoTag(const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field represented by an {@code PBUnknownFieldSet}, including
  * tag.
  */
-int32_t computeUnknownGroupSizeNoTag(PBUnknownFieldSet* value);
+int32_t computeUnknownGroupSizeNoTag(const PBUnknownFieldSet* value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * embedded message field, including tag.
  */
-int32_t computeMessageSizeNoTag(id<PBMessage> value);
+int32_t computeMessageSizeNoTag(const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code bytes} field, including tag.
  */
-int32_t computeDataSizeNoTag(NSData* value);
+int32_t computeDataSizeNoTag(const NSData* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
@@ -316,14 +316,14 @@ int32_t computeRawVarint64Size(int64_t value);
  * MessageSet extension to the stream.  For historical reasons,
  * the wire format differs from normal fields.
  */
-int32_t computeMessageSetExtensionSize(int32_t fieldNumber, id<PBMessage> value);
+int32_t computeMessageSetExtensionSize(int32_t fieldNumber, const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * unparsed MessageSet extension field to the stream.  For
  * historical reasons, the wire format differs from normal fields.
  */
-int32_t computeRawMessageSetExtensionSize(int32_t fieldNumber, NSData* value);
+int32_t computeRawMessageSetExtensionSize(int32_t fieldNumber, const NSData* value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
