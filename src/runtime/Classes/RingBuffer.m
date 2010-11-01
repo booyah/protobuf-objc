@@ -21,7 +21,7 @@
 }
 
 
-- (NSInteger)appendData:(NSData*)value offset:(NSInteger)offset length:(NSInteger)length {
+- (NSInteger)appendData:(const NSData*)value offset:(NSInteger)offset length:(NSInteger)length {
 	NSInteger totalWritten = 0;
 	const uint8_t *input = value.bytes;
 	uint8_t *data = buffer.mutableBytes;

@@ -76,12 +76,12 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
 }
 
 
-- (void)writeRawData:(NSData*)data {
+- (void)writeRawData:(const NSData*)data {
 	[self writeRawData:data offset:0 length:data.length];
 }
 
 
-- (void)writeRawData:(NSData*)value offset:(int32_t)offset length:(int32_t)length {
+- (void)writeRawData:(const NSData*)value offset:(int32_t)offset length:(int32_t)length {
 	while (length > 0) {
 		int32_t written = [buffer appendData:value offset:offset length:length];
 		offset += written;
@@ -194,7 +194,7 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
 }
 
 
-- (void)writeStringNoTag:(NSString*)value {
+- (void)writeStringNoTag:(const NSString*)value {
 	NSData* data = [value dataUsingEncoding:NSUTF8StringEncoding];
 	[self writeRawVarint32:data.length];
 	[self writeRawData:data];
@@ -202,59 +202,59 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 /** Write a {@code string} field, including tag, to the stream. */
-- (void)writeString:(int32_t)fieldNumber value:(NSString*)value {
+- (void)writeString:(int32_t)fieldNumber value:(const NSString*)value {
 	[self writeTag:fieldNumber format:PBWireFormatLengthDelimited];
 	[self writeStringNoTag:value];
 }
 
 
-- (void)writeGroupNoTag:(int32_t)fieldNumber value:(id<PBMessage>)value {
+- (void)writeGroupNoTag:(int32_t)fieldNumber value:(const id<PBMessage>)value {
 	[value writeToCodedOutputStream:self];
 	[self writeTag:fieldNumber format:PBWireFormatEndGroup];
 }
 
 
 /** Write a {@code group} field, including tag, to the stream. */
-- (void)writeGroup:(int32_t)fieldNumber value:(id<PBMessage>)value {
+- (void)writeGroup:(int32_t)fieldNumber value:(const id<PBMessage>)value {
 	[self writeTag:fieldNumber format:PBWireFormatStartGroup];
 	[self writeGroupNoTag:fieldNumber value:value];
 }
 
 
-- (void)writeUnknownGroupNoTag:(int32_t)fieldNumber value:(PBUnknownFieldSet*)value {
+- (void)writeUnknownGroupNoTag:(int32_t)fieldNumber value:(const PBUnknownFieldSet*)value {
 	[value writeToCodedOutputStream:self];
 	[self writeTag:fieldNumber format:PBWireFormatEndGroup];
 }
 
 
 /** Write a group represented by an {@link PBUnknownFieldSet}. */
-- (void)writeUnknownGroup:(int32_t)fieldNumber value:(PBUnknownFieldSet*)value {
+- (void)writeUnknownGroup:(int32_t)fieldNumber value:(const PBUnknownFieldSet*)value {
 	[self writeTag:fieldNumber format:PBWireFormatStartGroup];
 	[self writeUnknownGroupNoTag:fieldNumber value:value];
 }
 
 
-- (void)writeMessageNoTag:(id<PBMessage>)value {
+- (void)writeMessageNoTag:(const id<PBMessage>)value {
 	[self writeRawVarint32:[value serializedSize]];
 	[value writeToCodedOutputStream:self];
 }
 
 
 /** Write an embedded message field, including tag, to the stream. */
-- (void)writeMessage:(int32_t)fieldNumber value:(id<PBMessage>)value {
+- (void)writeMessage:(int32_t)fieldNumber value:(const id<PBMessage>)value {
 	[self writeTag:fieldNumber format:PBWireFormatLengthDelimited];
 	[self writeMessageNoTag:value];
 }
 
 
-- (void)writeDataNoTag:(NSData*)value {
+- (void)writeDataNoTag:(const NSData*)value {
 	[self writeRawVarint32:value.length];
 	[self writeRawData:value];
 }
 
 
 /** Write a {@code bytes} field, including tag, to the stream. */
-- (void)writeData:(int32_t)fieldNumber value:(NSData*)value {
+- (void)writeData:(int32_t)fieldNumber value:(const NSData*)value {
 	[self writeTag:fieldNumber format:PBWireFormatLengthDelimited];
 	[self writeDataNoTag:value];
 }
@@ -335,7 +335,7 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
  * Write a MessageSet extension field to the stream.  For historical reasons,
  * the wire format differs from normal fields.
  */
-- (void)writeMessageSetExtension:(int32_t)fieldNumber value:(id<PBMessage>)value {
+- (void)writeMessageSetExtension:(int32_t)fieldNumber value:(const id<PBMessage>)value {
 	[self writeTag:PBWireFormatMessageSetItem format:PBWireFormatStartGroup];
 	[self writeUInt32:PBWireFormatMessageSetTypeId value:fieldNumber];
 	[self writeMessage:PBWireFormatMessageSetMessage value:value];
@@ -347,7 +347,7 @@ const int32_t DEFAULT_BUFFER_SIZE = 4 * 1024;
  * Write an unparsed MessageSet extension field to the stream.  For
  * historical reasons, the wire format differs from normal fields.
  */
-- (void)writeRawMessageSetExtension:(int32_t)fieldNumber value:(NSData*)value {
+- (void)writeRawMessageSetExtension:(int32_t)fieldNumber value:(const NSData*)value {
 	[self writeTag:PBWireFormatMessageSetItem format:PBWireFormatStartGroup];
 	[self writeUInt32:PBWireFormatMessageSetTypeId value:fieldNumber];
 	[self writeData:PBWireFormatMessageSetMessage value:value];

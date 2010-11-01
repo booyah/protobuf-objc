@@ -13,7 +13,7 @@
 - (BOOL)appendByte:(uint8_t)byte;
 
 // Returns number of bytes written
-- (NSInteger)appendData:(NSData*)value offset:(NSInteger)offset length:(NSInteger)length;
+- (NSInteger)appendData:(const NSData*)value offset:(NSInteger)offset length:(NSInteger)length;
 
 // Returns number of bytes written
 - (NSInteger)flushToOutputStream:(NSOutputStream*)stream;
