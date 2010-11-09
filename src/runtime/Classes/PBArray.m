@@ -165,13 +165,16 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	{
 		_valueType = valueType;
 		_count = count;
-		_capacity = (count > 0) ? count : 1;
+		_capacity = count;
 
-		_data = malloc(_capacity * PBArrayValueTypeSize(_valueType));
-		if (_data == NULL)
-		{
-			[self release];
-			self = nil;
+		if (_capacity)
+		{		
+			_data = malloc(_capacity * PBArrayValueTypeSize(_valueType));
+			if (_data == NULL)
+			{
+				[self release];
+				self = nil;
+			}
 		}
 	}
 
@@ -444,11 +447,22 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	
 	if (requiredSlots > _capacity)
 	{
-		while (_capacity < requiredSlots)
+		// If we haven't allocated any capacity yet, simply reserve
+		// enough capacity to cover the required number of slots.
+		if (_capacity == 0)
 		{
-			_capacity *= 2;
+			_capacity = requiredSlots;
 		}
-		
+		else
+		{
+			// Otherwise, continue to double our capacity until we
+			// can accomodate the required number of slots.
+			while (_capacity < requiredSlots)
+			{
+				_capacity *= 2;
+			}			
+		}
+
 		const size_t size = _capacity * PBArrayValueTypeSize(_valueType);
 		_data = realloc(_data, size);
 		PBArrayAllocationAssert(_data, size);
