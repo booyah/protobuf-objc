@@ -464,7 +464,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 		}
 
 		const size_t size = _capacity * PBArrayValueTypeSize(_valueType);
-		_data = realloc(_data, size);
+		_data = reallocf(_data, size);
 		PBArrayAllocationAssert(_data, size);
 	}
 }
