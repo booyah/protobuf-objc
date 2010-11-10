@@ -30,7 +30,9 @@
  * @author Cyrus Najmabadi
  */
 
+@class PBUnknownFieldSet;
 @class RingBuffer;
+@protocol PBMessage;
 
 @interface PBCodedOutputStream : NSObject {
     NSOutputStream *output;
