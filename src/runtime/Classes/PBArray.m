@@ -318,30 +318,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return [result autorelease];
 }
 
-- (id)arrayByAppendingInputStream:(PBCodedInputStream *)input count:(NSUInteger)count
-{
-	NSAssert(_valueType != PBArrayValueTypeObject, @"Object types are unsupported");
-
-	PBArray *result = [[[self class] alloc] initWithCount:_count + count valueType:_valueType];
-	if (result)
-	{
-		PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
-		const size_t elementSize = PBArrayValueTypeSize(_valueType);
-		const size_t originalSize = _count * elementSize;
-
-		memcpy(result->_data, _data, originalSize);
-
-		size_t offset = originalSize;
-		while (input.bytesUntilLimit > 0)
-		{
-			getter(input, _data + offset);
-			offset += elementSize;
-		}
-	}
-
-	return [result autorelease];
-}
-
 @end
 
 @implementation PBArray (PBArrayCreation)
@@ -359,11 +335,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 + (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
 	return [[[self alloc] initWithArray:array valueType:valueType] autorelease];
-}
-
-+ (id)arrayWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType
-{
-	return [[[self alloc] initWithInputStream:input length:length valueType:valueType] autorelease];
 }
 
 - (id)initWithValueType:(PBArrayValueType)valueType
@@ -406,28 +377,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 				setter((NSNumber *)object, _data + offset);
 				offset += elementSize;
 			}
-		}
-	}
-
-	return self;
-}
-
-- (id)initWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType
-{
-	NSAssert(valueType != PBArrayValueTypeObject, @"Object types are unsupported");
-
-	const size_t elementSize = PBArrayValueTypeSize(_valueType);
-	const NSUInteger count = length / elementSize;
-
-	if (self = [self initWithCount:count valueType:valueType])
-	{
-		PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
-
-		size_t offset = 0;
-		while (input.bytesUntilLimit > 0)
-		{
-			getter(input, _data + offset);
-			offset += elementSize;
 		}
 	}
 
@@ -556,21 +505,20 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	PBArrayForEachObject(values, count, retain);
 }
 
-- (void)appendInputStream:(PBCodedInputStream *)input length:(NSUInteger)length
+- (void)appendInputStream:(PBCodedInputStream *)input
 {
 	const size_t elementSize = PBArrayValueTypeSize(_valueType);
-	const NSUInteger count = length / elementSize;
-
-	[self ensureAdditionalCapacity:count];
+	const size_t originalSize = _count * elementSize;
 
 	PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
-	const size_t originalSize = _count * elementSize;
 
 	size_t offset = originalSize;
 	while (input.bytesUntilLimit > 0)
 	{
+		[self ensureAdditionalCapacity:1];
 		getter(input, _data + offset);
 		offset += elementSize;
+		_count++;
 	}
 }
 

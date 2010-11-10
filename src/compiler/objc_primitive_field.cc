@@ -523,10 +523,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "int32_t length = [input readRawVarint32];\n"
         "int32_t limit = [input pushLimit:length];\n"
         "if (result.$list_name$ == nil) {\n"
-        "  result.$list_name$ = [PBAppendableArray arrayWithInputStream:input length:length valueType:$array_value_type$];\n"
-        "} else {\n"
-        "  [result.$list_name$ appendInputStream:input length:length];\n"
+        "  result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
         "}\n"
+        "[result.$list_name$ appendInputStream:input];\n"
         "[input popLimit:limit];\n");
     } else {
       printer->Print(variables_,
