@@ -125,6 +125,45 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
 
+  string FilenameToCamelCase(const string& filename) {
+    string result;
+    bool need_uppercase = true;
+
+    result.reserve(filename.length());
+
+    for (string::const_iterator it(filename.begin()), itEnd(filename.end()); it != itEnd; ++it) {
+      const char c = *it;
+
+      // Ignore non-alphanumeric characters.  The next alphanumeric character
+      // must be uppercased, though.
+      if (!isalnum(c)) {
+        need_uppercase = true;
+        continue;
+      }
+
+      // If an uppercased character has been requested, transform the current
+      // character, append it to the result, reset the flag, and move on.
+      // This is safe to do even if the character is already uppercased.
+      if (need_uppercase && isalpha(c)) {
+        result += toupper(c);
+        need_uppercase = false;
+        continue;
+      }
+
+      // Simply append this character.
+      result += c;
+
+      // If this character was a digit, we want the next character to be an
+      // uppercased letter.
+      if (isdigit(c)) {
+        need_uppercase = true;
+      }
+    }
+
+    return result;
+  }
+
+
   string StripProto(const string& filename) {
     if (HasSuffixString(filename, ".protodevel")) {
       return StripSuffixString(filename, ".protodevel");
@@ -149,7 +188,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       basename += file->name().substr(last_slash + 1);
     }
 
-    return StripProto(basename);
+    return FilenameToCamelCase(StripProto(basename));
   }
 
 

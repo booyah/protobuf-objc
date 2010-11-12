@@ -67,7 +67,6 @@ typedef enum _PBArrayValueType
 @interface PBArray (PBArrayExtended)
 
 - (id)arrayByAppendingArray:(PBArray *)array;
-- (id)arrayByAppendingInputStream:(PBCodedInputStream *)input count:(NSUInteger)count;
 
 @end
 
@@ -76,11 +75,9 @@ typedef enum _PBArrayValueType
 + (id)arrayWithValueType:(PBArrayValueType)valueType;
 + (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType;
 + (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType;
-+ (id)arrayWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType;
 - (id)initWithValueType:(PBArrayValueType)valueType;
 - (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType;
 - (id)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType;
-- (id)initWithInputStream:(PBCodedInputStream *)input length:(NSUInteger)length valueType:(PBArrayValueType)valueType;
 
 @end
 
@@ -99,6 +96,6 @@ typedef enum _PBArrayValueType
 
 - (void)appendArray:(PBArray *)array;
 - (void)appendValues:(const void *)values count:(NSUInteger)count;
-- (void)appendInputStream:(PBCodedInputStream *)input length:(NSUInteger)length;
+- (void)appendInputStream:(PBCodedInputStream *)input;
 
 @end

@@ -17,6 +17,8 @@
 #import "ArrayTests.h"
 
 #import "PBArray.h"
+#import "CodedInputStream.h"
+#import "CodedOutputStream.h"
 
 @implementation ArrayTests
 
@@ -104,7 +106,7 @@
 	[array release];
 }
 
-- (void)testAppendArray
+- (void)testArrayAppendingArray
 {
 	const int32_t kValues[3] = { 1, 2, 3 };
 	PBArray *a = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
@@ -119,7 +121,7 @@
 	[b release];
 }
 
-- (void)testAppendArrayObjects
+- (void)testArrayAppendingArrayObjects
 {
 	const id kValues[1] = { [NSString stringWithFormat:@"Test"] };
 	PBArray *a = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
@@ -191,7 +193,7 @@
 	[array release];
 }
 
-- (void)testAddArray
+- (void)testAppendArray
 {
 	const int32_t kValues[3] = { 1, 2, 3 };
 	PBArray *source = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
@@ -203,7 +205,7 @@
 	[source release];
 }
 
-- (void)testAddValues
+- (void)testAppendValues
 {
 	const int32_t kValues[3] = { 1, 2, 3 };
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
@@ -211,6 +213,29 @@
 	STAssertEquals(array.count, (NSUInteger)3, nil);
 	STAssertEquals([array int32AtIndex:1], 2, nil);
 	[array release];
+}
+
+- (void)testAppendInputStream
+{
+	NSOutputStream *memoryStream = [NSOutputStream outputStreamToMemory];
+	[memoryStream open];
+	
+	PBCodedOutputStream *output = [PBCodedOutputStream streamWithOutputStream:memoryStream];
+	[output writeInt32NoTag:-5];
+	[output writeInt32NoTag:10];
+	[output writeInt32NoTag:20];
+	[output flush];
+	
+	NSData *data = [memoryStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+	PBCodedInputStream *input = [PBCodedInputStream streamWithData:data];
+	PBAppendableArray *array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+	
+	int oldLimit = [input pushLimit:[data length]];
+	[array appendInputStream:input];
+	[input popLimit:oldLimit];
+	
+	STAssertEquals(array.count, (NSUInteger)3, nil);
+	STAssertEquals([array int32AtIndex:1], 10, nil);
 }
 
 @end

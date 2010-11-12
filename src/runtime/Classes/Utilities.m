@@ -155,8 +155,8 @@ int32_t computeBoolSizeNoTag(BOOL value) {
 
 
 int32_t computeStringSizeNoTag(const NSString* value) {
-	NSData* data = [value dataUsingEncoding:NSUTF8StringEncoding];
-	return computeRawVarint32Size(data.length) + data.length;
+	const NSUInteger length = [value lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+	return computeRawVarint32Size(length) + length;
 }
 
 
