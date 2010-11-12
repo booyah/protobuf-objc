@@ -36,6 +36,11 @@ string UnderscoresToCapitalizedCamelCase(const string& name);
 // of lower-casing the first letter of the name.)
 string UnderscoresToCamelCase(const MethodDescriptor* method);
 
+// Apply CamelCase-formatting to the given filename string.  Existing
+// capitalization is not modified, but non-alphanumeric characters are
+// removed and the following legal character is capitalized.
+string FilenameToCamelCase(const string& filename);
+
 // Strips ".proto" or ".protodevel" from the end of a filename.
 string StripProto(const string& filename);
 
