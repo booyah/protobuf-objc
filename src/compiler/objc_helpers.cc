@@ -442,9 +442,31 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         case FieldDescriptor::CPPTYPE_UINT32: return SimpleItoa(static_cast<int32>(field->default_value_uint32()));
         case FieldDescriptor::CPPTYPE_INT64:  return SimpleItoa(field->default_value_int64()) + "L";
         case FieldDescriptor::CPPTYPE_UINT64: return SimpleItoa(static_cast<int64>(field->default_value_uint64())) + "L";
-        case FieldDescriptor::CPPTYPE_DOUBLE: return SimpleDtoa(field->default_value_double());
-        case FieldDescriptor::CPPTYPE_FLOAT:  return SimpleFtoa(field->default_value_float());
         case FieldDescriptor::CPPTYPE_BOOL:   return field->default_value_bool() ? "YES" : "NO";
+        case FieldDescriptor::CPPTYPE_DOUBLE: {
+          const double value = field->default_value_double();
+          if (value == numeric_limits<double>::infinity()) {
+            return "HUGE_VAL";
+          } else if (value == -numeric_limits<double>::infinity()) {
+            return "-HUGE_VAL";
+          } else if (value != value) {
+            return "NAN";
+          } else {
+            return SimpleDtoa(field->default_value_double());
+          }
+        }
+        case FieldDescriptor::CPPTYPE_FLOAT: {
+          const float value = field->default_value_float();
+          if (value == numeric_limits<float>::infinity()) {
+            return "HUGE_VALF";
+          } else if (value == -numeric_limits<float>::infinity()) {
+            return "-HUGE_VALF";
+          } else if (value != value) {
+            return "NAN";
+          } else {
+            return SimpleFtoa(value);
+          }
+        }
         case FieldDescriptor::CPPTYPE_STRING:
           if (field->type() == FieldDescriptor::TYPE_BYTES) {
             if (field->has_default_value()) {
