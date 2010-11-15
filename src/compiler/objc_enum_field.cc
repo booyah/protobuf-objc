@@ -172,7 +172,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void EnumFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "int32_t value = [input readEnum];\n"
-      "if ($type$_IsValid(value)) {\n"
+      "if (IsValid$type$Value(value)) {\n"
       "  [self set$capitalized_name$:value];\n"
       "} else {\n"
       "  [unknownFields mergeVarintField:$number$ value:value];\n"
@@ -362,7 +362,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(variables_,
       "int32_t value = [input readEnum];\n"
-      "if ($type$_IsValid(value)) {\n"
+      "if (IsValid$type$Value(value)) {\n"
       "  [self add$capitalized_name$:value];\n"
       "} else {\n"
       "  [unknownFields mergeVarintField:$number$ value:value];\n"

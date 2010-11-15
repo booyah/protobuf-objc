@@ -58,14 +58,14 @@ void EnumGenerator::GenerateDefinition(io::Printer *pPrinter)
     pPrinter->Print(vars,
         "} $classname$;\n"
         "\n"
-        "BOOL $classname$_IsValid(int value);\n"
+        "BOOL IsValid$classname$Value(int value);\n"
         "\n");
 }
 
 void EnumGenerator::GenerateValidationFunction(io::Printer *pPrinter)
 {
     pPrinter->Print(
-        "BOOL $classname$_IsValid(int value) {\n"
+        "BOOL IsValid$classname$Value(int value) {\n"
         "  switch (value) {\n",
         "classname", mClassname);
 
