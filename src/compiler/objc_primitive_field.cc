@@ -532,7 +532,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "if (result.$list_name$ == nil) {\n"
         "  result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
         "}\n"
-        "[result.$list_name$ appendInputStream:input];\n"
+        "while (input.bytesUntilLimit > 0) {\n"
+        "  [result.$list_name$ add$array_value_type_name_cap$:[input read$capitalized_type$]];\n"
+        "}\n"
         "[input popLimit:limit];\n");
     } else {
       printer->Print(variables_,

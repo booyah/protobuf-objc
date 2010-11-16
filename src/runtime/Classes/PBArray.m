@@ -17,7 +17,6 @@
 // Author: Jon Parise <jon@booyah.com>
 
 #import "PBArray.h"
-#import "CodedInputStream.h"
 
 NSString * const PBArrayTypeMismatchException = @"PBArrayTypeMismatchException";
 NSString * const PBArrayNumberExpectedException = @"PBArrayNumberExpectedException";
@@ -62,69 +61,28 @@ static void PBArraySetDoubleValue(NSNumber *number, void *value)
 	*((Float64 *)value) = [number doubleValue];
 }
 
-#pragma mark PBCodedInputStream Getters
-
-typedef void (*PBInputStreamGetter)(PBCodedInputStream *input, void *value);
-
-static void PBStreamGetBoolValue(PBCodedInputStream *input, void *value)
-{
-	*(BOOL *)(value) = [input readBool];
-}
-
-static void PBStreamGetInt32Value(PBCodedInputStream *input, void *value)
-{
-	*(int32_t *)(value) = [input readInt32];
-}
-
-static void PBStreamGetUInt32Value(PBCodedInputStream *input, void *value)
-{
-	*(uint32_t *)(value) = [input readUInt32];
-}
-
-static void PBStreamGetInt64Value(PBCodedInputStream *input, void *value)
-{
-	*(int64_t *)(value) = [input readInt64];
-}
-
-static void PBStreamGetUInt64Value(PBCodedInputStream *input, void *value)
-{
-	*(uint64_t *)(value) = [input readUInt64];
-}
-
-static void PBStreamGetFloatValue(PBCodedInputStream *input, void *value)
-{
-	*(Float32 *)(value) = [input readFloat];
-}
-
-static void PBStreamGetDoubleValue(PBCodedInputStream *input, void *value)
-{
-	*(Float64 *)(value) = [input readDouble];
-}
-
 #pragma mark Array Value Types
 
 typedef struct _PBArrayValueTypeInfo
 {
 	const size_t size;
 	const PBArrayValueSetter setter;
-	const PBInputStreamGetter getter;
 } PBArrayValueTypeInfo;
 
 static PBArrayValueTypeInfo PBValueTypes[] =
 {
-	{ sizeof(id),		NULL,					NULL					},
-	{ sizeof(BOOL),		PBArraySetBoolValue,	PBStreamGetBoolValue	},
-	{ sizeof(int32_t),	PBArraySetInt32Value,	PBStreamGetInt32Value	},
-	{ sizeof(uint32_t),	PBArraySetUInt32Value,	PBStreamGetUInt32Value	},
-	{ sizeof(int64_t),	PBArraySetInt64Value,	PBStreamGetInt64Value	},
-	{ sizeof(uint64_t),	PBArraySetUInt64Value,	PBStreamGetUInt64Value	},
-	{ sizeof(Float32),	PBArraySetFloatValue,	PBStreamGetFloatValue	},
-	{ sizeof(Float64),	PBArraySetDoubleValue,	PBStreamGetDoubleValue	},
+	{ sizeof(id),		NULL					},
+	{ sizeof(BOOL),		PBArraySetBoolValue		},
+	{ sizeof(int32_t),	PBArraySetInt32Value	},
+	{ sizeof(uint32_t),	PBArraySetUInt32Value	},
+	{ sizeof(int64_t),	PBArraySetInt64Value	},
+	{ sizeof(uint64_t),	PBArraySetUInt64Value	},
+	{ sizeof(Float32),	PBArraySetFloatValue	},
+	{ sizeof(Float64),	PBArraySetDoubleValue	},
 };
 
 #define PBArrayValueTypeSize(type)		PBValueTypes[type].size
 #define PBArrayValueTypeSetter(type)	PBValueTypes[type].setter
-#define PBArrayValueTypeGetter(type)	PBValueTypes[type].getter
 
 #pragma mark Helper Macros
 
@@ -503,23 +461,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	_count += count;
 
 	PBArrayForEachObject(values, count, retain);
-}
-
-- (void)appendInputStream:(PBCodedInputStream *)input
-{
-	const size_t elementSize = PBArrayValueTypeSize(_valueType);
-	const size_t originalSize = _count * elementSize;
-
-	PBInputStreamGetter getter = PBArrayValueTypeGetter(_valueType);
-
-	size_t offset = originalSize;
-	while (input.bytesUntilLimit > 0)
-	{
-		[self ensureAdditionalCapacity:1];
-		getter(input, _data + offset);
-		offset += elementSize;
-		_count++;
-	}
 }
 
 @end
