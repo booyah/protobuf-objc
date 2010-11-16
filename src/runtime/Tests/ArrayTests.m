@@ -17,8 +17,6 @@
 #import "ArrayTests.h"
 
 #import "PBArray.h"
-#import "CodedInputStream.h"
-#import "CodedOutputStream.h"
 
 @implementation ArrayTests
 
@@ -213,29 +211,6 @@
 	STAssertEquals(array.count, (NSUInteger)3, nil);
 	STAssertEquals([array int32AtIndex:1], 2, nil);
 	[array release];
-}
-
-- (void)testAppendInputStream
-{
-	NSOutputStream *memoryStream = [NSOutputStream outputStreamToMemory];
-	[memoryStream open];
-	
-	PBCodedOutputStream *output = [PBCodedOutputStream streamWithOutputStream:memoryStream];
-	[output writeInt32NoTag:-5];
-	[output writeInt32NoTag:10];
-	[output writeInt32NoTag:20];
-	[output flush];
-	
-	NSData *data = [memoryStream propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-	PBCodedInputStream *input = [PBCodedInputStream streamWithData:data];
-	PBAppendableArray *array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
-	
-	int oldLimit = [input pushLimit:[data length]];
-	[array appendInputStream:input];
-	[input popLimit:oldLimit];
-	
-	STAssertEquals(array.count, (NSUInteger)3, nil);
-	STAssertEquals([array int32AtIndex:1], 10, nil);
 }
 
 @end
