@@ -473,32 +473,32 @@
 
   // -----------------------------------------------------------------
 
-  STAssertTrue(2 == message.repeatedInt32List.count, @"");
-  STAssertTrue(2 == message.repeatedInt64List.count, @"");
-  STAssertTrue(2 == message.repeatedUint32List.count, @"");
-  STAssertTrue(2 == message.repeatedUint64List.count, @"");
-  STAssertTrue(2 == message.repeatedSint32List.count, @"");
-  STAssertTrue(2 == message.repeatedSint64List.count, @"");
-  STAssertTrue(2 == message.repeatedFixed32List.count, @"");
-  STAssertTrue(2 == message.repeatedFixed64List.count, @"");
-  STAssertTrue(2 == message.repeatedSfixed32List.count, @"");
-  STAssertTrue(2 == message.repeatedSfixed64List.count, @"");
-  STAssertTrue(2 == message.repeatedFloatList.count, @"");
-  STAssertTrue(2 == message.repeatedDoubleList.count, @"");
-  STAssertTrue(2 == message.repeatedBoolList.count, @"");
-  STAssertTrue(2 == message.repeatedStringList.count, @"");
-  STAssertTrue(2 == message.repeatedBytesList.count, @"");
+  STAssertTrue(2 == message.repeatedInt32.count, @"");
+  STAssertTrue(2 == message.repeatedInt64.count, @"");
+  STAssertTrue(2 == message.repeatedUint32.count, @"");
+  STAssertTrue(2 == message.repeatedUint64.count, @"");
+  STAssertTrue(2 == message.repeatedSint32.count, @"");
+  STAssertTrue(2 == message.repeatedSint64.count, @"");
+  STAssertTrue(2 == message.repeatedFixed32.count, @"");
+  STAssertTrue(2 == message.repeatedFixed64.count, @"");
+  STAssertTrue(2 == message.repeatedSfixed32.count, @"");
+  STAssertTrue(2 == message.repeatedSfixed64.count, @"");
+  STAssertTrue(2 == message.repeatedFloat.count, @"");
+  STAssertTrue(2 == message.repeatedDouble.count, @"");
+  STAssertTrue(2 == message.repeatedBool.count, @"");
+  STAssertTrue(2 == message.repeatedString.count, @"");
+  STAssertTrue(2 == message.repeatedBytes.count, @"");
 
-  STAssertTrue(2 == message.repeatedGroupList.count, @"");
-  STAssertTrue(2 == message.repeatedNestedMessageList.count, @"");
-  STAssertTrue(2 == message.repeatedForeignMessageList.count, @"");
-  STAssertTrue(2 == message.repeatedImportMessageList.count, @"");
-  STAssertTrue(2 == message.repeatedNestedEnumList.count, @"");
-  STAssertTrue(2 == message.repeatedForeignEnumList.count, @"");
-  STAssertTrue(2 == message.repeatedImportEnumList.count, @"");
+  STAssertTrue(2 == message.repeatedGroup.count, @"");
+  STAssertTrue(2 == message.repeatedNestedMessage.count, @"");
+  STAssertTrue(2 == message.repeatedForeignMessage.count, @"");
+  STAssertTrue(2 == message.repeatedImportMessage.count, @"");
+  STAssertTrue(2 == message.repeatedNestedEnum.count, @"");
+  STAssertTrue(2 == message.repeatedForeignEnum.count, @"");
+  STAssertTrue(2 == message.repeatedImportEnum.count, @"");
 
-  STAssertTrue(2 == message.repeatedStringPieceList.count, @"");
-  STAssertTrue(2 == message.repeatedCordList.count, @"");
+  STAssertTrue(2 == message.repeatedStringPiece.count, @"");
+  STAssertTrue(2 == message.repeatedCord.count, @"");
 
   STAssertTrue(201 == [message repeatedInt32AtIndex:0], @"");
   STAssertTrue(202 == [message repeatedInt64AtIndex:0], @"");
@@ -1060,32 +1060,32 @@
   STAssertEqualObjects(@"", message.optionalCord, @"");
 
   // Repeated fields are empty.
-  STAssertTrue(0 == message.repeatedInt32List.count, @"");
-  STAssertTrue(0 == message.repeatedInt64List.count, @"");
-  STAssertTrue(0 == message.repeatedUint32List.count, @"");
-  STAssertTrue(0 == message.repeatedUint64List.count, @"");
-  STAssertTrue(0 == message.repeatedSint32List.count, @"");
-  STAssertTrue(0 == message.repeatedSint64List.count, @"");
-  STAssertTrue(0 == message.repeatedFixed32List.count, @"");
-  STAssertTrue(0 == message.repeatedFixed64List.count, @"");
-  STAssertTrue(0 == message.repeatedSfixed32List.count, @"");
-  STAssertTrue(0 == message.repeatedSfixed64List.count, @"");
-  STAssertTrue(0 == message.repeatedFloatList.count, @"");
-  STAssertTrue(0 == message.repeatedDoubleList.count, @"");
-  STAssertTrue(0 == message.repeatedBoolList.count, @"");
-  STAssertTrue(0 == message.repeatedStringList.count, @"");
-  STAssertTrue(0 == message.repeatedBytesList.count, @"");
+  STAssertTrue(0 == message.repeatedInt32.count, @"");
+  STAssertTrue(0 == message.repeatedInt64.count, @"");
+  STAssertTrue(0 == message.repeatedUint32.count, @"");
+  STAssertTrue(0 == message.repeatedUint64.count, @"");
+  STAssertTrue(0 == message.repeatedSint32.count, @"");
+  STAssertTrue(0 == message.repeatedSint64.count, @"");
+  STAssertTrue(0 == message.repeatedFixed32.count, @"");
+  STAssertTrue(0 == message.repeatedFixed64.count, @"");
+  STAssertTrue(0 == message.repeatedSfixed32.count, @"");
+  STAssertTrue(0 == message.repeatedSfixed64.count, @"");
+  STAssertTrue(0 == message.repeatedFloat.count, @"");
+  STAssertTrue(0 == message.repeatedDouble.count, @"");
+  STAssertTrue(0 == message.repeatedBool.count, @"");
+  STAssertTrue(0 == message.repeatedString.count, @"");
+  STAssertTrue(0 == message.repeatedBytes.count, @"");
 
-  STAssertTrue(0 == message.repeatedGroupList.count, @"");
-  STAssertTrue(0 == message.repeatedNestedMessageList.count, @"");
-  STAssertTrue(0 == message.repeatedForeignMessageList.count, @"");
-  STAssertTrue(0 == message.repeatedImportMessageList.count, @"");
-  STAssertTrue(0 == message.repeatedNestedEnumList.count, @"");
-  STAssertTrue(0 == message.repeatedForeignEnumList.count, @"");
-  STAssertTrue(0 == message.repeatedImportEnumList.count, @"");
+  STAssertTrue(0 == message.repeatedGroup.count, @"");
+  STAssertTrue(0 == message.repeatedNestedMessage.count, @"");
+  STAssertTrue(0 == message.repeatedForeignMessage.count, @"");
+  STAssertTrue(0 == message.repeatedImportMessage.count, @"");
+  STAssertTrue(0 == message.repeatedNestedEnum.count, @"");
+  STAssertTrue(0 == message.repeatedForeignEnum.count, @"");
+  STAssertTrue(0 == message.repeatedImportEnum.count, @"");
 
-  STAssertTrue(0 == message.repeatedStringPieceList.count, @"");
-  STAssertTrue(0 == message.repeatedCordList.count, @"");
+  STAssertTrue(0 == message.repeatedStringPiece.count, @"");
+  STAssertTrue(0 == message.repeatedCord.count, @"");
 
   // hasBlah() should also be NO for all default fields.
   STAssertFalse(message.hasDefaultInt32, @"");
@@ -1297,146 +1297,6 @@
   [[[[TestUtilities alloc] init] autorelease] assertExtensionsClear:message];
 }
 
-
-/**
- * Modify the repeated fields of {@code message} to contain the values
- * expected by {@code assertRepeatedFieldsModified()}.
- */
-- (void) modifyRepeatedFields:(TestAllTypes_Builder*) message {
-  [message replaceRepeatedInt32AtIndex:1 with:501];
-  [message replaceRepeatedInt64AtIndex:1 with:502];
-  [message replaceRepeatedUint32AtIndex:1 with:503];
-  [message replaceRepeatedUint64AtIndex:1 with:504];
-  [message replaceRepeatedSint32AtIndex:1 with:505];
-  [message replaceRepeatedSint64AtIndex:1 with:506];
-  [message replaceRepeatedFixed32AtIndex:1 with:507];
-  [message replaceRepeatedFixed64AtIndex:1 with:508];
-  [message replaceRepeatedSfixed32AtIndex:1 with:509];
-  [message replaceRepeatedSfixed64AtIndex:1 with:510];
-  [message replaceRepeatedFloatAtIndex:1 with:511];
-  [message replaceRepeatedDoubleAtIndex:1 with:512];
-  [message replaceRepeatedBoolAtIndex:1 with:YES];
-  [message replaceRepeatedStringAtIndex:1 with:@"515"];
-  [message replaceRepeatedBytesAtIndex:1 with:[TestUtilities getData:@"516"]];
-
-  [message replaceRepeatedGroupAtIndex:1 with:[[[TestAllTypes_RepeatedGroup builder] setA:517] build]];
-  [message replaceRepeatedNestedMessageAtIndex:1 with:[[[TestAllTypes_NestedMessage builder] setBb:518] build]];
-  [message replaceRepeatedForeignMessageAtIndex:1 with:[[[ForeignMessage builder] setC:519] build]];
-  [message replaceRepeatedImportMessageAtIndex:1 with:[[[ImportMessage builder] setD:520] build]];
-
-  [message replaceRepeatedNestedEnumAtIndex:1 with:TestAllTypes_NestedEnumFoo];
-  [message replaceRepeatedForeignEnumAtIndex:1 with:ForeignEnumForeignFoo];
-  [message replaceRepeatedImportEnumAtIndex:1 with:ImportEnumImportFoo];
-
-  [message replaceRepeatedStringPieceAtIndex:1 with:@"524"];
-  [message replaceRepeatedCordAtIndex:1 with:@"525"];
-}
-
-
-+ (void) modifyRepeatedFields:(TestAllTypes_Builder*) message {
-  [[[[TestUtilities alloc] init] autorelease] modifyRepeatedFields:message];
-}
-
-/**
- * Assert (using {@code junit.framework.Assert}} that all fields of
- * {@code message} are set to the values assigned by {@code setAllFields}
- * followed by {@code modifyRepeatedFields}.
- */
-- (void) assertRepeatedFieldsModified:(TestAllTypes*) message {
-  // ModifyRepeatedFields only sets the second repeated element of each
-  // field.  In addition to verifying this, we also verify that the first
-  // element and size were *not* modified.
-  STAssertTrue(2 == message.repeatedInt32List.count, @"");
-  STAssertTrue(2 == message.repeatedInt64List.count, @"");
-  STAssertTrue(2 == message.repeatedUint32List.count, @"");
-  STAssertTrue(2 == message.repeatedUint64List.count, @"");
-  STAssertTrue(2 == message.repeatedSint32List.count, @"");
-  STAssertTrue(2 == message.repeatedSint64List.count, @"");
-  STAssertTrue(2 == message.repeatedFixed32List.count, @"");
-  STAssertTrue(2 == message.repeatedFixed64List.count, @"");
-  STAssertTrue(2 == message.repeatedSfixed32List.count, @"");
-  STAssertTrue(2 == message.repeatedSfixed64List.count, @"");
-  STAssertTrue(2 == message.repeatedFloatList.count, @"");
-  STAssertTrue(2 == message.repeatedDoubleList.count, @"");
-  STAssertTrue(2 == message.repeatedBoolList.count, @"");
-  STAssertTrue(2 == message.repeatedStringList.count, @"");
-  STAssertTrue(2 == message.repeatedBytesList.count, @"");
-
-  STAssertTrue(2 == message.repeatedGroupList.count, @"");
-  STAssertTrue(2 == message.repeatedNestedMessageList.count, @"");
-  STAssertTrue(2 == message.repeatedForeignMessageList.count, @"");
-  STAssertTrue(2 == message.repeatedImportMessageList.count, @"");
-  STAssertTrue(2 == message.repeatedNestedEnumList.count, @"");
-  STAssertTrue(2 == message.repeatedForeignEnumList.count, @"");
-  STAssertTrue(2 == message.repeatedImportEnumList.count, @"");
-
-  STAssertTrue(2 == message.repeatedStringPieceList.count, @"");
-  STAssertTrue(2 == message.repeatedCordList.count, @"");
-
-  STAssertTrue(201 == [message repeatedInt32AtIndex:0], @"");
-  STAssertTrue(202L == [message repeatedInt64AtIndex:0], @"");
-  STAssertTrue(203 == [message repeatedUint32AtIndex:0], @"");
-  STAssertTrue(204L == [message repeatedUint64AtIndex:0], @"");
-  STAssertTrue(205 == [message repeatedSint32AtIndex:0], @"");
-  STAssertTrue(206L == [message repeatedSint64AtIndex:0], @"");
-  STAssertTrue(207 == [message repeatedFixed32AtIndex:0], @"");
-  STAssertTrue(208L == [message repeatedFixed64AtIndex:0], @"");
-  STAssertTrue(209 == [message repeatedSfixed32AtIndex:0], @"");
-  STAssertTrue(210L == [message repeatedSfixed64AtIndex:0], @"");
-  STAssertTrue(211.0 == [message repeatedFloatAtIndex:0], @"");
-  STAssertTrue(212.0 == [message repeatedDoubleAtIndex:0], @"");
-  STAssertTrue(YES == [message repeatedBoolAtIndex:0], @"");
-  STAssertEqualObjects(@"215", [message repeatedStringAtIndex:0], @"");
-  STAssertEqualObjects([TestUtilities getData:@"216"], [message repeatedBytesAtIndex:0], @"");
-
-  STAssertTrue(217 == [message repeatedGroupAtIndex:0].a, @"");
-  STAssertTrue(218 == [message repeatedNestedMessageAtIndex:0].bb, @"");
-  STAssertTrue(219 == [message repeatedForeignMessageAtIndex:0].c, @"");
-  STAssertTrue(220 == [message repeatedImportMessageAtIndex:0].d, @"");
-
-  STAssertTrue(TestAllTypes_NestedEnumBar == [message repeatedNestedEnumAtIndex:0], @"");
-  STAssertTrue(ForeignEnumForeignBar == [message repeatedForeignEnumAtIndex:0], @"");
-  STAssertTrue(ImportEnumImportBar == [message repeatedImportEnumAtIndex:0], @"");
-
-  STAssertEqualObjects(@"224", [message repeatedStringPieceAtIndex:0], @"");
-  STAssertEqualObjects(@"225", [message repeatedCordAtIndex:0], @"");
-
-  // Actually verify the second (modified) elements now.
-  STAssertTrue(501 == [message repeatedInt32AtIndex:1], @"");
-  STAssertTrue(502L == [message repeatedInt64AtIndex:1], @"");
-  STAssertTrue(503 == [message repeatedUint32AtIndex:1], @"");
-  STAssertTrue(504L == [message repeatedUint64AtIndex:1], @"");
-  STAssertTrue(505 == [message repeatedSint32AtIndex:1], @"");
-  STAssertTrue(506L == [message repeatedSint64AtIndex:1], @"");
-  STAssertTrue(507 == [message repeatedFixed32AtIndex:1], @"");
-  STAssertTrue(508L == [message repeatedFixed64AtIndex:1], @"");
-  STAssertTrue(509 == [message repeatedSfixed32AtIndex:1], @"");
-  STAssertTrue(510L == [message repeatedSfixed64AtIndex:1], @"");
-  STAssertTrue(511.0 == [message repeatedFloatAtIndex:1], @"");
-  STAssertTrue(512.0 == [message repeatedDoubleAtIndex:1], @"");
-  STAssertTrue(YES == [message repeatedBoolAtIndex:1], @"");
-  STAssertEqualObjects(@"515", [message repeatedStringAtIndex:1], @"");
-  STAssertEqualObjects([TestUtilities getData:@"516"], [message repeatedBytesAtIndex:1], @"");
-
-  STAssertTrue(517 == [message repeatedGroupAtIndex:1].a, @"");
-  STAssertTrue(518 == [message repeatedNestedMessageAtIndex:1].bb, @"");
-  STAssertTrue(519 == [message repeatedForeignMessageAtIndex:1].c, @"");
-  STAssertTrue(520 == [message repeatedImportMessageAtIndex:1].d, @"");
-
-  STAssertTrue(TestAllTypes_NestedEnumFoo == [message repeatedNestedEnumAtIndex:1], @"");
-  STAssertTrue(ForeignEnumForeignFoo == [message repeatedForeignEnumAtIndex:1], @"");
-  STAssertTrue(ImportEnumImportFoo == [message repeatedImportEnumAtIndex:1], @"");
-
-  STAssertEqualObjects(@"524", [message repeatedStringPieceAtIndex:1], @"");
-  STAssertEqualObjects(@"525", [message repeatedCordAtIndex:1], @"");
-}
-
-
-+ (void) assertRepeatedFieldsModified:(TestAllTypes*) message {
-  [[[[TestUtilities alloc] init] autorelease] assertRepeatedFieldsModified:message];
-}
-
-
 + (void) setPackedFields:(TestPackedTypes_Builder*) message {
   [message addPackedInt32   :601];
   [message addPackedInt64   :602];
@@ -1471,20 +1331,20 @@
 
 
 - (void) assertPackedFieldsSet:(TestPackedTypes*) message {
-  STAssertTrue(2 ==  message.packedInt32List.count, @"");
-  STAssertTrue(2 ==  message.packedInt64List.count, @"");
-  STAssertTrue(2 ==  message.packedUint32List.count, @"");
-  STAssertTrue(2 ==  message.packedUint64List.count, @"");
-  STAssertTrue(2 ==  message.packedSint32List.count, @"");
-  STAssertTrue(2 ==  message.packedSint64List.count, @"");
-  STAssertTrue(2 ==  message.packedFixed32List.count, @"");
-  STAssertTrue(2 ==  message.packedFixed64List.count, @"");
-  STAssertTrue(2 ==  message.packedSfixed32List.count, @"");
-  STAssertTrue(2 ==  message.packedSfixed64List.count, @"");
-  STAssertTrue(2 ==  message.packedFloatList.count, @"");
-  STAssertTrue(2 ==  message.packedDoubleList.count, @"");
-  STAssertTrue(2 ==  message.packedBoolList.count, @"");
-  STAssertTrue(2 ==  message.packedEnumList.count, @"");
+  STAssertTrue(2 ==  message.packedInt32.count, @"");
+  STAssertTrue(2 ==  message.packedInt64.count, @"");
+  STAssertTrue(2 ==  message.packedUint32.count, @"");
+  STAssertTrue(2 ==  message.packedUint64.count, @"");
+  STAssertTrue(2 ==  message.packedSint32.count, @"");
+  STAssertTrue(2 ==  message.packedSint64.count, @"");
+  STAssertTrue(2 ==  message.packedFixed32.count, @"");
+  STAssertTrue(2 ==  message.packedFixed64.count, @"");
+  STAssertTrue(2 ==  message.packedSfixed32.count, @"");
+  STAssertTrue(2 ==  message.packedSfixed64.count, @"");
+  STAssertTrue(2 ==  message.packedFloat.count, @"");
+  STAssertTrue(2 ==  message.packedDouble.count, @"");
+  STAssertTrue(2 ==  message.packedBool.count, @"");
+  STAssertTrue(2 ==  message.packedEnum.count, @"");
   STAssertTrue(601   ==  [message packedInt32AtIndex:0], @"");
   STAssertTrue(602   ==  [message packedInt64AtIndex:0], @"");
   STAssertTrue(603   ==  [message packedUint32AtIndex:0], @"");

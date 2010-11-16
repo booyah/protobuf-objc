@@ -100,9 +100,6 @@
 
   [builder addRepeatedMessage:self.testRequiredUninitialized];
   STAssertFalse(builder.isInitialized, @"");
-
-  [builder replaceRepeatedMessageAtIndex:0 with:self.testRequiredInitialized];
-  STAssertTrue(builder.isInitialized, @"");
 }
 
 

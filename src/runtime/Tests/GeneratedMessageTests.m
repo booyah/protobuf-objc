@@ -38,16 +38,6 @@
 }
 
 
-- (void) testRepeatedSetters {
-  TestAllTypes_Builder* builder = [TestAllTypes builder];
-  [TestUtilities setAllFields:builder];
-
-  [TestUtilities modifyRepeatedFields:builder];
-  TestAllTypes* message = [builder build];
-  [TestUtilities assertRepeatedFieldsModified:message];
-}
-
-
 - (void) testRepeatedAppend {
   TestAllTypes_Builder* builder = [TestAllTypes builder];
 
@@ -58,19 +48,16 @@
    [NSNumber numberWithInt:3],
    [NSNumber numberWithInt:4], nil];
 
-  [builder addAllRepeatedInt32:array];
-  [builder addAllRepeatedForeignEnum:
+  [builder setRepeatedInt32Array:array];
+  [builder setRepeatedForeignEnumArray:
    [NSArray arrayWithObject:
     [NSNumber numberWithInt:ForeignEnumForeignBaz]]];
 
   ForeignMessage* foreignMessage = [[[ForeignMessage builder] setC:12] build];
-  [builder addAllRepeatedForeignMessage:[NSArray arrayWithObject:foreignMessage]];
+  [builder setRepeatedForeignMessageArray:[NSArray arrayWithObject:foreignMessage]];
 
   TestAllTypes* message = [builder build];
-  STAssertEqualObjects(message.repeatedInt32List, array, @"");
-  STAssertEqualObjects(message.repeatedForeignEnumList,
-                       [NSArray arrayWithObject:[NSNumber numberWithInt:ForeignEnumForeignBaz]], @"");
-  STAssertTrue(1 == message.repeatedForeignMessageList.count, @"");
+  STAssertTrue(1 == message.repeatedForeignMessage.count, @"");
   STAssertTrue(12 == [[message repeatedForeignMessageAtIndex:0] c], @"");
 }
 

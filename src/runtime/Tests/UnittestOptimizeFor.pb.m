@@ -18,18 +18,18 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                        fieldNumber:1234
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     TestOptimizedForSize_testExtension2 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestOptimizedForSize class]
                                        fieldNumber:1235
                                       defaultValue:[TestRequiredOptimizedForSize defaultInstance]
                                messageOrGroupClass:[TestRequiredOptimizedForSize class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     [UnittestRoot registerAllExtensions:registry];

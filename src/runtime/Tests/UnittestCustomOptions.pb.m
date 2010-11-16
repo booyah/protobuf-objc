@@ -50,306 +50,306 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                        fieldNumber:7736974
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_messageOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7739036
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_fieldOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
                                      extendedClass:[PBFieldOptions class]
                                        fieldNumber:7740936
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_fieldOpt2 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[PBFieldOptions class]
                                        fieldNumber:7753913
                                       defaultValue:[NSNumber numberWithInt:42]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_enumOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
                                      extendedClass:[PBEnumOptions class]
                                        fieldNumber:7753576
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_enumValueOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[PBEnumValueOptions class]
                                        fieldNumber:1560678
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_serviceOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
                                      extendedClass:[PBServiceOptions class]
                                        fieldNumber:7887650
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_methodOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
                                      extendedClass:[PBMethodOptions class]
                                        fieldNumber:7890860
                                       defaultValue:[NSNumber numberWithInt:MethodOpt1Methodopt1Val1]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_boolOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeBool
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7706090
                                       defaultValue:[NSNumber numberWithBool:NO]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_int32Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7705709
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_int64Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt64
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7705542
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_uint32Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7704880
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_uint64Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt64
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7702367
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_sint32Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt32
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7701568
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_sint64Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7700863
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_fixed32Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed32
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7700307
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_fixed64Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7700194
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_sfixed32Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7698645
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_sfixed64Opt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed64
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7685475
                                       defaultValue:[NSNumber numberWithLongLong:0L]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_floatOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeFloat
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7675390
                                       defaultValue:[NSNumber numberWithFloat:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_doubleOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeDouble
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7673293
                                       defaultValue:[NSNumber numberWithDouble:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_stringOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeString
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7673285
                                       defaultValue:@""
                                messageOrGroupClass:[NSString class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_bytesOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7673238
                                       defaultValue:[NSData data]
                                messageOrGroupClass:[NSData class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_enumOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7673233
                                       defaultValue:[NSNumber numberWithInt:DummyMessageContainingEnum_TestEnumTypeTestOptionEnumType1]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_messageTypeOpt =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7665967
                                       defaultValue:[DummyMessageInvalidAsOptionType defaultInstance]
                                messageOrGroupClass:[DummyMessageInvalidAsOptionType class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_quux =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[ComplexOptionType1 class]
                                        fieldNumber:7663707
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_corge =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[ComplexOptionType1 class]
                                        fieldNumber:7663442
                                       defaultValue:[ComplexOptionType3 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType3 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_grault =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[ComplexOptionType2 class]
                                        fieldNumber:7650927
                                       defaultValue:[NSNumber numberWithInt:0]
                                messageOrGroupClass:[NSNumber class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_garply =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[ComplexOptionType2 class]
                                        fieldNumber:7649992
                                       defaultValue:[ComplexOptionType1 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType1 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_complexOpt1 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7646756
                                       defaultValue:[ComplexOptionType1 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType1 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_complexOpt2 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7636949
                                       defaultValue:[ComplexOptionType2 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType2 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_complexOpt3 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7636463
                                       defaultValue:[ComplexOptionType3 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType3 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     UnittestCustomOptionsRoot_complexOpt6 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeGroup
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7595468
                                       defaultValue:[ComplexOpt6 defaultInstance]
                                messageOrGroupClass:[ComplexOpt6 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     ComplexOptionType2_ComplexOptionType4_complexOpt4 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7633546
                                       defaultValue:[ComplexOptionType2_ComplexOptionType4 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType2_ComplexOptionType4 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:false] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     [PBDescriptorRoot registerAllExtensions:registry];
@@ -1951,6 +1951,8 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 
 @interface ComplexOptionType1 ()
 @property int32_t foo;
+@property int32_t foo2;
+@property int32_t foo3;
 @end
 
 @implementation ComplexOptionType1
@@ -1962,12 +1964,28 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
   hasFoo_ = !!value;
 }
 @synthesize foo;
+- (BOOL) hasFoo2 {
+  return !!hasFoo2_;
+}
+- (void) setHasFoo2:(BOOL) value {
+  hasFoo2_ = !!value;
+}
+@synthesize foo2;
+- (BOOL) hasFoo3 {
+  return !!hasFoo3_;
+}
+- (void) setHasFoo3:(BOOL) value {
+  hasFoo3_ = !!value;
+}
+@synthesize foo3;
 - (void) dealloc {
   [super dealloc];
 }
 - (id) init {
   if ((self = [super init])) {
     self.foo = 0;
+    self.foo2 = 0;
+    self.foo3 = 0;
   }
   return self;
 }
@@ -1993,6 +2011,12 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   if (self.hasFoo) {
     [output writeInt32:1 value:self.foo];
   }
+  if (self.hasFoo2) {
+    [output writeInt32:2 value:self.foo2];
+  }
+  if (self.hasFoo3) {
+    [output writeInt32:3 value:self.foo3];
+  }
   [self writeExtensionsToCodedOutputStream:output
                                       from:100
                                         to:536870912];
@@ -2007,6 +2031,12 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   size = 0;
   if (self.hasFoo) {
     size += computeInt32Size(1, self.foo);
+  }
+  if (self.hasFoo2) {
+    size += computeInt32Size(2, self.foo2);
+  }
+  if (self.hasFoo3) {
+    size += computeInt32Size(3, self.foo3);
   }
   size += [self extensionsSerializedSize];
   size += self.unknownFields.serializedSize;
@@ -2087,6 +2117,12 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   if (other.hasFoo) {
     [self setFoo:other.foo];
   }
+  if (other.hasFoo2) {
+    [self setFoo2:other.foo2];
+  }
+  if (other.hasFoo3) {
+    [self setFoo3:other.foo3];
+  }
   [self mergeExtensionFields:other];
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -2113,6 +2149,14 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
         [self setFoo:[input readInt32]];
         break;
       }
+      case 16: {
+        [self setFoo2:[input readInt32]];
+        break;
+      }
+      case 24: {
+        [self setFoo3:[input readInt32]];
+        break;
+      }
     }
   }
 }
@@ -2130,6 +2174,38 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (ComplexOptionType1_Builder*) clearFoo {
   result.hasFoo = NO;
   result.foo = 0;
+  return self;
+}
+- (BOOL) hasFoo2 {
+  return result.hasFoo2;
+}
+- (int32_t) foo2 {
+  return result.foo2;
+}
+- (ComplexOptionType1_Builder*) setFoo2:(int32_t) value {
+  result.hasFoo2 = YES;
+  result.foo2 = value;
+  return self;
+}
+- (ComplexOptionType1_Builder*) clearFoo2 {
+  result.hasFoo2 = NO;
+  result.foo2 = 0;
+  return self;
+}
+- (BOOL) hasFoo3 {
+  return result.hasFoo3;
+}
+- (int32_t) foo3 {
+  return result.foo3;
+}
+- (ComplexOptionType1_Builder*) setFoo3:(int32_t) value {
+  result.hasFoo3 = YES;
+  result.foo3 = value;
+  return self;
+}
+- (ComplexOptionType1_Builder*) clearFoo3 {
+  result.hasFoo3 = NO;
+  result.foo3 = 0;
   return self;
 }
 @end

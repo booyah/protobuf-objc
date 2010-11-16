@@ -44,13 +44,11 @@
 
 + (void) assertAllFieldsSet:(TestAllTypes*) message;
 + (void) assertAllExtensionsSet:(TestAllExtensions*) message;
-+ (void) assertRepeatedFieldsModified:(TestAllTypes*) message;
 + (void) assertRepeatedExtensionsModified:(TestAllExtensions*) message;
 + (void) assertExtensionsClear:(TestAllExtensions*) message;
 + (void) assertPackedFieldsSet:(TestPackedTypes*) message;
 + (void) assertPackedExtensionsSet:(TestPackedExtensions*) message;
 
-+ (void) modifyRepeatedFields:(TestAllTypes_Builder*) message;
 + (void) modifyRepeatedExtensions:(TestAllExtensions_Builder*) message;
 
 + (PBExtensionRegistry*) extensionRegistry;

@@ -18,18 +18,18 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                        fieldNumber:1545008
                                       defaultValue:[TestMessageSetExtension1 defaultInstance]
                                messageOrGroupClass:[TestMessageSetExtension1 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:true] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:YES] retain];
     TestMessageSetExtension2_messageSetExtension =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestMessageSet class]
                                        fieldNumber:1547769
                                       defaultValue:[TestMessageSetExtension2 defaultInstance]
                                messageOrGroupClass:[TestMessageSetExtension2 class]
-                                        isRepeated:false
-                                          isPacked:false
-                            isMessageSetWireFormat:true] retain];
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:YES] retain];
     PBMutableExtensionRegistry* registry = [PBMutableExtensionRegistry registry];
     [self registerAllExtensions:registry];
     extensionRegistry = [registry retain];
@@ -752,14 +752,15 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 @end
 
 @interface RawMessageSet ()
-@property (retain) NSMutableArray* mutableItemList;
+@property (retain) PBAppendableArray * itemArray;
 @end
 
 @implementation RawMessageSet
 
-@synthesize mutableItemList;
+@synthesize itemArray;
+@dynamic item;
 - (void) dealloc {
-  self.mutableItemList = nil;
+  self.itemArray = nil;
   [super dealloc];
 }
 - (id) init {
@@ -779,15 +780,14 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 - (RawMessageSet*) defaultInstance {
   return defaultRawMessageSetInstance;
 }
-- (NSArray*) itemList {
-  return mutableItemList;
+- (PBArray *)item {
+  return itemArray;
 }
-- (RawMessageSet_Item*) itemAtIndex:(int32_t) index {
-  id value = [mutableItemList objectAtIndex:index];
-  return value;
+- (RawMessageSet_Item*)itemAtIndex:(NSUInteger)index {
+  return [itemArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (RawMessageSet_Item* element in self.itemList) {
+  for (RawMessageSet_Item* element in self.item) {
     if (!element.isInitialized) {
       return NO;
     }
@@ -795,7 +795,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (RawMessageSet_Item* element in self.itemList) {
+  for (RawMessageSet_Item *element in self.itemArray) {
     [output writeGroup:1 value:element];
   }
   [self.unknownFields writeToCodedOutputStream:output];
@@ -807,7 +807,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   }
 
   size = 0;
-  for (RawMessageSet_Item* element in self.itemList) {
+  for (RawMessageSet_Item *element in self.itemArray) {
     size += computeGroupSize(1, element);
   }
   size += self.unknownFields.serializedSize;
@@ -1107,11 +1107,12 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
   if (other == [RawMessageSet defaultInstance]) {
     return self;
   }
-  if (other.mutableItemList.count > 0) {
-    if (result.mutableItemList == nil) {
-      result.mutableItemList = [NSMutableArray array];
+  if (other.itemArray.count > 0) {
+    if (result.itemArray == nil) {
+      result.itemArray = [other.itemArray copyWithZone:[other.itemArray zone]];
+    } else {
+      [result.itemArray appendArray:other.itemArray];
     }
-    [result.mutableItemList addObjectsFromArray:other.mutableItemList];
   }
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -1143,33 +1144,29 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
     }
   }
 }
-- (NSArray*) itemList {
-  if (result.mutableItemList == nil) { return [NSArray array]; }
-  return result.mutableItemList;
+- (PBAppendableArray *)item {
+  return result.itemArray;
 }
-- (RawMessageSet_Item*) itemAtIndex:(int32_t) index {
+- (RawMessageSet_Item*)itemAtIndex:(NSUInteger)index {
   return [result itemAtIndex:index];
 }
-- (RawMessageSet_Builder*) replaceItemAtIndex:(int32_t) index with:(RawMessageSet_Item*) value {
-  [result.mutableItemList replaceObjectAtIndex:index withObject:value];
-  return self;
-}
-- (RawMessageSet_Builder*) addAllItem:(NSArray*) values {
-  if (result.mutableItemList == nil) {
-    result.mutableItemList = [NSMutableArray array];
+- (RawMessageSet_Builder *)addItem:(RawMessageSet_Item*)value {
+  if (result.itemArray == nil) {
+    result.itemArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
   }
-  [result.mutableItemList addObjectsFromArray:values];
+  [result.itemArray addObject:value];
   return self;
 }
-- (RawMessageSet_Builder*) clearItemList {
-  result.mutableItemList = nil;
+- (RawMessageSet_Builder *)setItemArray:(NSArray *)array {
+  result.itemArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
   return self;
 }
-- (RawMessageSet_Builder*) addItem:(RawMessageSet_Item*) value {
-  if (result.mutableItemList == nil) {
-    result.mutableItemList = [NSMutableArray array];
-  }
-  [result.mutableItemList addObject:value];
+- (RawMessageSet_Builder *)setItemValues:(const RawMessageSet_Item* *)values count:(NSUInteger)count {
+  result.itemArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  return self;
+}
+- (RawMessageSet_Builder *)clearItem {
+  result.itemArray = nil;
   return self;
 }
 @end
