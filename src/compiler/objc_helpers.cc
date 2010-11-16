@@ -134,9 +134,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     for (string::const_iterator it(filename.begin()), itEnd(filename.end()); it != itEnd; ++it) {
       const char c = *it;
 
-      // Ignore non-alphanumeric characters.  The next alphanumeric character
-      // must be uppercased, though.
-      if (!isalnum(c)) {
+      // Ignore undesirable characters.  The good character must be
+      // uppercased, though.
+      if (!isalnum(c) && c != '_') {
         need_uppercase = true;
         continue;
       }
