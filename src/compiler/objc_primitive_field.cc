@@ -36,17 +36,24 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   namespace {
 
-    const char* PrimitiveTypeName(ObjectiveCType type) {
-      switch (type) {
-        case OBJECTIVECTYPE_INT    : return "int32_t";
-        case OBJECTIVECTYPE_LONG   : return "int64_t";
-        case OBJECTIVECTYPE_FLOAT  : return "Float32";
-        case OBJECTIVECTYPE_DOUBLE : return "Float64";
-        case OBJECTIVECTYPE_BOOLEAN: return "BOOL";
-        case OBJECTIVECTYPE_STRING : return "NSString";
-        case OBJECTIVECTYPE_DATA   : return "NSData";
-        case OBJECTIVECTYPE_ENUM   : return "int32_t";
-        case OBJECTIVECTYPE_MESSAGE: return NULL;
+    const char* PrimitiveTypeName(const FieldDescriptor* field) {
+      switch (field->type()) {
+        case FieldDescriptor::TYPE_INT32   : return "int32_t" ;
+        case FieldDescriptor::TYPE_UINT32  : return "uint32_t";
+        case FieldDescriptor::TYPE_SINT32  : return "int32_t" ;
+        case FieldDescriptor::TYPE_FIXED32 : return "uint32_t";
+        case FieldDescriptor::TYPE_SFIXED32: return "int32_t" ;
+        case FieldDescriptor::TYPE_INT64   : return "int64_t" ;
+        case FieldDescriptor::TYPE_UINT64  : return "uint64_t";
+        case FieldDescriptor::TYPE_SINT64  : return "int64_t" ;
+        case FieldDescriptor::TYPE_FIXED64 : return "uint64_t";
+        case FieldDescriptor::TYPE_SFIXED64: return "int64_t" ;
+        case FieldDescriptor::TYPE_FLOAT   : return "Float32" ;
+        case FieldDescriptor::TYPE_DOUBLE  : return "Float64" ;
+        case FieldDescriptor::TYPE_BOOL    : return "BOOL"    ;
+        case FieldDescriptor::TYPE_STRING  : return "NSString";
+        case FieldDescriptor::TYPE_BYTES   : return "NSData"  ;
+        default                            : return NULL;
       }
 
       GOOGLE_LOG(FATAL) << "Can't get here.";
@@ -121,7 +128,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         case FieldDescriptor::TYPE_DOUBLE  : return "Double"  ;
         case FieldDescriptor::TYPE_BOOL    : return "Bool"    ;
         case FieldDescriptor::TYPE_STRING  : return "String"  ;
-        case FieldDescriptor::TYPE_BYTES   : return "Data"   ;
+        case FieldDescriptor::TYPE_BYTES   : return "Data"    ;
         case FieldDescriptor::TYPE_ENUM    : return "Enum"    ;
         case FieldDescriptor::TYPE_GROUP   : return "Group"   ;
         case FieldDescriptor::TYPE_MESSAGE : return "Message" ;
@@ -170,12 +177,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         (*variables)["capitalized_name"] = UnderscoresToCapitalizedCamelCase(descriptor);
         (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "Array";
         (*variables)["number"] = SimpleItoa(descriptor->number());
-        (*variables)["type"] = PrimitiveTypeName(GetObjectiveCType(descriptor));
+        (*variables)["type"] = PrimitiveTypeName(descriptor);
 
         if (IsPrimitiveType(GetObjectiveCType(descriptor))) {
-          (*variables)["storage_type"] = PrimitiveTypeName(GetObjectiveCType(descriptor));
+          (*variables)["storage_type"] = PrimitiveTypeName(descriptor);
         } else {
-          (*variables)["storage_type"] = string(PrimitiveTypeName(GetObjectiveCType(descriptor))) + "*";
+          (*variables)["storage_type"] = string(PrimitiveTypeName(descriptor)) + "*";
         }    
 
         (*variables)["array_value_type"] = GetArrayValueType(descriptor);
