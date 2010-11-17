@@ -150,8 +150,8 @@
   STAssertEqualObjects(@"115", [message getExtension:[UnittestRoot optionalStringExtension]], @"");
   STAssertEqualObjects([TestUtilities getData:@"116"], [message getExtension:[UnittestRoot optionalBytesExtension]], @"");
 
-  STAssertTrue(117 == [[message getExtension:[UnittestRoot optionalGroupExtension]] a], @"");
-  STAssertTrue(118 == [[message getExtension:[UnittestRoot optionalNestedMessageExtension]] bb], @"");
+  STAssertTrue(117 == [(OptionalGroup_extension *)[message getExtension:[UnittestRoot optionalGroupExtension]] a], @"");
+  STAssertTrue(118 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot optionalNestedMessageExtension]] bb], @"");
   STAssertTrue(119 == [[message getExtension:[UnittestRoot optionalForeignMessageExtension]] c], @"");
   STAssertTrue(120 == [[message getExtension:[UnittestRoot optionalImportMessageExtension]] d], @"");
 
@@ -207,8 +207,8 @@
   STAssertEqualObjects(@"215", [[message getExtension:[UnittestRoot repeatedStringExtension]] objectAtIndex:0], @"");
   STAssertEqualObjects([TestUtilities getData:@"216"], [[message getExtension:[UnittestRoot repeatedBytesExtension]] objectAtIndex:0], @"");
 
-  STAssertTrue(217 == [[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:0] a], @"");
-  STAssertTrue(218 == [[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:0] bb], @"");
+  STAssertTrue(217 == [(RepeatedGroup_extension *)[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:0] a], @"");
+  STAssertTrue(218 == [(TestAllTypes_NestedMessage *)[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:0] bb], @"");
   STAssertTrue(219 == [[[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] objectAtIndex:0] c], @"");
   STAssertTrue(220 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:0] d], @"");
 
@@ -235,8 +235,8 @@
   STAssertEqualObjects(@"315", [[message getExtension:[UnittestRoot repeatedStringExtension]] objectAtIndex:1], @"");
   STAssertEqualObjects([TestUtilities getData:@"316"], [[message getExtension:[UnittestRoot repeatedBytesExtension]] objectAtIndex:1], @"");
 
-  STAssertTrue(317 == [[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:1] a], @"");
-  STAssertTrue(318 == [[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:1] bb], @"");
+  STAssertTrue(317 == [(RepeatedGroup_extension *)[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:1] a], @"");
+  STAssertTrue(318 == [(TestAllTypes_NestedMessage *)[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:1] bb], @"");
   STAssertTrue(319 == [[[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] objectAtIndex:1] c], @"");
   STAssertTrue(320 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:1] d], @"");
 
@@ -348,8 +348,8 @@
   STAssertEqualObjects(@"215", [[message getExtension:[UnittestRoot repeatedStringExtension]] objectAtIndex:0], @"");
   STAssertEqualObjects([TestUtilities getData:@"216"], [[message getExtension:[UnittestRoot repeatedBytesExtension]] objectAtIndex:0], @"");
 
-  STAssertTrue(217 == [[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:0] a], @"");
-  STAssertTrue(218 == [[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:0] bb], @"");
+  STAssertTrue(217 == [(RepeatedGroup_extension *)[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:0] a], @"");
+  STAssertTrue(218 == [(TestAllTypes_NestedMessage *)[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:0] bb], @"");
   STAssertTrue(219 == [[[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] objectAtIndex:0] c], @"");
   STAssertTrue(220 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:0] d], @"");
 
@@ -380,8 +380,8 @@
   STAssertEqualObjects(@"515", [[message getExtension:[UnittestRoot repeatedStringExtension]] objectAtIndex:1], @"");
   STAssertEqualObjects([TestUtilities getData:@"516"], [[message getExtension:[UnittestRoot repeatedBytesExtension]] objectAtIndex:1], @"");
 
-  STAssertTrue(517 == [[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:1] a], @"");
-  STAssertTrue(518 == [[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:1] bb], @"");
+  STAssertTrue(517 == [(RepeatedGroup_extension *)[[message getExtension:[UnittestRoot repeatedGroupExtension]] objectAtIndex:1] a], @"");
+  STAssertTrue(518 == [(TestAllTypes_NestedMessage *)[[message getExtension:[UnittestRoot repeatedNestedMessageExtension]] objectAtIndex:1] bb], @"");
   STAssertTrue(519 == [[[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] objectAtIndex:1] c], @"");
   STAssertTrue(520 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:1] d], @"");
 
@@ -1196,8 +1196,8 @@
   STAssertFalse([[message getExtension:[UnittestRoot optionalForeignMessageExtension]] hasC], @"");
   STAssertFalse([[message getExtension:[UnittestRoot optionalImportMessageExtension]] hasD], @"");
 
-  STAssertTrue(0 == [[message getExtension:[UnittestRoot optionalGroupExtension]] a], @"");
-  STAssertTrue(0 == [[message getExtension:[UnittestRoot optionalNestedMessageExtension]] bb], @"");
+  STAssertTrue(0 == [(OptionalGroup_extension *)[message getExtension:[UnittestRoot optionalGroupExtension]] a], @"");
+  STAssertTrue(0 == [(TestAllTypes_NestedMessage *)[message getExtension:[UnittestRoot optionalNestedMessageExtension]] bb], @"");
   STAssertTrue(0 == [[message getExtension:[UnittestRoot optionalForeignMessageExtension]] c], @"");
   STAssertTrue(0 == [[message getExtension:[UnittestRoot optionalImportMessageExtension]] d], @"");
 
