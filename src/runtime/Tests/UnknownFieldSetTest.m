@@ -68,7 +68,7 @@
 
   for (NSNumber* key in unknownFields.fields) {
     PBField* field = [unknownFields.fields objectForKey:key];
-    if (field.varintList.count == 0) {
+    if (field.varintArray.count == 0) {
       // Original field is not a varint, so use a varint.
       [bizarroFields addField:varintField forNumber:key.intValue];
     } else {
@@ -158,8 +158,8 @@
   STAssertTrue(1 == destination.unknownFields.fields.count, @"");
 
   PBField* field = [destination.unknownFields getField:123456];
-  STAssertTrue(1 == field.varintList.count, @"");
-  STAssertTrue(654321 == [[field.varintList objectAtIndex:0] longLongValue], @"");
+  STAssertTrue(1 == field.varintArray.count, @"");
+  STAssertTrue(654321 == [field.varintArray int64AtIndex:0], @"");
 }
 
 
@@ -210,8 +210,8 @@
 
   PBUnknownFieldSet* parsed = [PBUnknownFieldSet parseFromData:data];
   PBField* field = [parsed getField:1];
-  STAssertTrue(1 == field.varintList.count, @"");
-  STAssertTrue(0x7FFFFFFFFFFFFFFFL == [[field.varintList objectAtIndex:0] longLongValue], @"");
+  STAssertTrue(1 == field.varintArray.count, @"");
+  STAssertTrue(0x7FFFFFFFFFFFFFFFL == [field.varintArray int64AtIndex:0], @"");
 }
 
 @end

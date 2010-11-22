@@ -18,131 +18,123 @@
 #import "Field.h"
 
 #import "CodedOutputStream.h"
-#import "MutableField.h"
-
-@interface PBField ()
-@property (retain) NSMutableArray* mutableVarintList;
-@property (retain) NSMutableArray* mutableFixed32List;
-@property (retain) NSMutableArray* mutableFixed64List;
-@property (retain) NSMutableArray* mutableLengthDelimitedList;
-@property (retain) NSMutableArray* mutableGroupList;
-@end
+#import "PBArray.h"
 
 @implementation PBField
 
-static PBField* defaultInstance = nil;
+@synthesize varintArray = _varintArray;
+@synthesize fixed32Array = _fixed32Array;
+@synthesize fixed64Array = _fixed64Array;
+@synthesize lengthDelimitedArray = _lengthDelimitedArray;
+@synthesize groupArray = _groupArray;
 
-+ (void) initialize {
-  if (self == [PBField class]) {
-    defaultInstance = [[PBField alloc] init];
-  }
+static PBField *sDefaultInstance = nil;
+
++ (void)initialize {
+	if (self == [PBField class]) {
+		sDefaultInstance = [[PBField alloc] init];
+	}
 }
 
-
-@synthesize mutableVarintList;
-@synthesize mutableFixed32List;
-@synthesize mutableFixed64List;
-@synthesize mutableLengthDelimitedList;
-@synthesize mutableGroupList;
-
-
-- (void) dealloc {
-  self.mutableVarintList = nil;
-  self.mutableFixed32List = nil;
-  self.mutableFixed64List = nil;
-  self.mutableLengthDelimitedList = nil;
-  self.mutableGroupList = nil;
-
-  [super dealloc];
+- (void)dealloc {
+	[_varintArray release];
+	[_fixed32Array release];
+	[_fixed64Array release];
+	[_lengthDelimitedArray release];
+	[_groupArray release];
+	[super dealloc];
 }
 
-
-+ (PBField*) defaultInstance {
-  return defaultInstance;
++ (PBField *)defaultInstance {
+	return sDefaultInstance;
 }
 
+- (int32_t)getSerializedSize:(int32_t)fieldNumber {
+	int32_t result = 0;
 
-- (NSArray*) varintList {
-  return mutableVarintList;
+	const int64_t *varintValues = (const int64_t *)_varintArray.data;
+	if (varintValues) {
+		const NSUInteger count = _varintArray.count;
+		for (NSUInteger i = 0; i < count; ++i) {
+			result += computeInt64Size(fieldNumber, varintValues[i]);
+		}
+	}
+
+	const int32_t *fixed32Values = (const int32_t *)_fixed32Array.data;
+	if (fixed32Values) {
+		const NSUInteger count = _fixed32Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
+			result += computeFixed32Size(fieldNumber, fixed32Values[i]);
+		}
+	}
+
+	const int64_t *fixed64Values = (const int64_t *)_fixed64Array.data;
+	if (fixed64Values) {
+		const NSUInteger count = _fixed64Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
+			result += computeFixed64Size(fieldNumber, fixed64Values[i]);
+		}
+	}
+
+	for (NSData *value in _lengthDelimitedArray) {
+		result += computeDataSize(fieldNumber, value);
+	}
+
+	for (PBUnknownFieldSet *value in _groupArray) {
+		result += computeUnknownGroupSize(fieldNumber, value);
+	}
+
+	return result;
 }
 
+- (int32_t)getSerializedSizeAsMessageSetExtension:(int32_t)fieldNumber {
+	int32_t result = 0;
 
-- (NSArray*) fixed32List {
-  return mutableFixed32List;
+	for (NSData *value in _lengthDelimitedArray) {
+		result += computeRawMessageSetExtensionSize(fieldNumber, value);
+	}
+
+	return result;
 }
 
+- (void)writeTo:(int32_t)fieldNumber output:(PBCodedOutputStream *) output {
+	const int64_t *varintValues = (const int64_t *)_varintArray.data;
+	if (varintValues) {
+		const NSUInteger count = _varintArray.count;
+		for (NSUInteger i = 0; i < count; ++i) {
+			[output writeInt64:fieldNumber value:varintValues[i]];
+		}
+	}
 
-- (NSArray*) fixed64List {
-  return mutableFixed64List;
+	const int32_t *fixed32Values = (const int32_t *)_fixed32Array.data;
+	if (fixed32Values) {
+		const NSUInteger count = _fixed32Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
+			[output writeFixed32:fieldNumber value:fixed32Values[i]];
+		}
+	}
+
+	const int64_t *fixed64Values = (const int64_t *)_fixed64Array.data;
+	if (fixed64Values) {
+		const NSUInteger count = _fixed64Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
+			[output writeFixed64:fieldNumber value:fixed64Values[i]];
+		}
+	}
+
+	for (NSData *value in _lengthDelimitedArray) {
+		[output writeData:fieldNumber value:value];
+	}
+
+	for (PBUnknownFieldSet *value in _groupArray) {
+		[output writeUnknownGroup:fieldNumber value:value];
+	}
 }
 
-
-- (NSArray*) lengthDelimitedList {
-  return mutableLengthDelimitedList;
+- (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *) output {
+	for (NSData *value in _lengthDelimitedArray) {
+		[output writeRawMessageSetExtension:fieldNumber value:value];
+	}
 }
-
-
-- (NSArray*) groupList {
-  return mutableGroupList;
-}
-
-
-- (void) writeTo:(int32_t) fieldNumber
-          output:(PBCodedOutputStream*) output {
-  for (NSNumber* value in self.varintList) {
-    [output writeUInt64:fieldNumber value:value.longLongValue];
-  }
-  for (NSNumber* value in self.fixed32List) {
-    [output writeFixed32:fieldNumber value:value.intValue];
-  }
-  for (NSNumber* value in self.fixed64List) {
-    [output writeFixed64:fieldNumber value:value.longLongValue];
-  }
-  for (NSData* value in self.lengthDelimitedList) {
-    [output writeData:fieldNumber value:value];
-  }
-  for (PBUnknownFieldSet* value in self.groupList) {
-    [output writeUnknownGroup:fieldNumber value:value];
-  }
-}
-
-
-- (int32_t) getSerializedSize:(int32_t) fieldNumber {
-  int32_t result = 0;
-  for (NSNumber* value in self.varintList) {
-    result += computeUInt64Size(fieldNumber, value.longLongValue);
-  }
-  for (NSNumber* value in self.fixed32List) {
-    result += computeFixed32Size(fieldNumber, value.intValue);
-  }
-  for (NSNumber* value in self.fixed64List) {
-    result += computeFixed64Size(fieldNumber, value.longLongValue);
-  }
-  for (NSData* value in self.lengthDelimitedList) {
-    result += computeDataSize(fieldNumber, value);
-  }
-  for (PBUnknownFieldSet* value in self.groupList) {
-    result += computeUnknownGroupSize(fieldNumber, value);
-  }
-  return result;
-}
-
-
-- (void) writeAsMessageSetExtensionTo:(int32_t) fieldNumber
-                               output:(PBCodedOutputStream*) output {
-  for (NSData* value in self.lengthDelimitedList) {
-    [output writeRawMessageSetExtension:fieldNumber value:value];
-  }
-}
-
-
-- (int32_t) getSerializedSizeAsMessageSetExtension:(int32_t) fieldNumber {
-  int32_t result = 0;
-  for (NSData* value in self.lengthDelimitedList) {
-    result += computeRawMessageSetExtensionSize(fieldNumber, value);
-  }
-  return result;
-}
-
 
 @end

@@ -18,128 +18,115 @@
 #import "MutableField.h"
 
 #import "Field.h"
-
-@interface PBField ()
-@property (retain) NSMutableArray* mutableVarintList;
-@property (retain) NSMutableArray* mutableFixed32List;
-@property (retain) NSMutableArray* mutableFixed64List;
-@property (retain) NSMutableArray* mutableLengthDelimitedList;
-@property (retain) NSMutableArray* mutableGroupList;
-@end
-
+#import "PBArray.h"
 
 @implementation PBMutableField
 
-- (void) dealloc {
-  [super dealloc];
+- (void)dealloc {
+	[super dealloc];
 }
 
-
-+ (PBMutableField*) field {
-  return [[[PBMutableField alloc] init] autorelease];
++ (PBMutableField *)field {
+	return [[[PBMutableField alloc] init] autorelease];
 }
 
+- (PBMutableField *)clear {
+	[_varintArray release];		_varintArray = nil;
+	[_fixed32Array release];	_fixed32Array = nil;
+	[_fixed64Array release];	_fixed64Array = nil;
+	[_lengthDelimitedArray release];	_lengthDelimitedArray = nil;
+	[_groupArray release];		_groupArray = nil;
 
-- (id) init {
-  if ((self = [super init])) {
-  }
-
-  return self;
+	return self;
 }
 
+- (PBMutableField *)mergeFromField:(PBField *)other {
+	if (other.varintArray.count > 0) {
+		if (_varintArray == nil) {
+			_varintArray = [other.varintArray copy];
+		} else {
+			[_varintArray appendArray:other.varintArray];
+		}
+	}
 
-- (PBMutableField*) clear {
-  self.mutableVarintList = nil;
-  self.mutableFixed32List = nil;
-  self.mutableFixed64List = nil;
-  self.mutableLengthDelimitedList = nil;
-  self.mutableGroupList = nil;
-  return self;
+	if (other.fixed32Array.count > 0) {
+		if (_fixed32Array == nil) {
+			_fixed32Array = [other.fixed32Array copy];
+		} else {
+			[_fixed32Array appendArray:other.fixed32Array];
+		}
+	}
+
+	if (other.fixed64Array.count > 0) {
+		if (_fixed64Array == nil) {
+			_fixed64Array = [other.fixed64Array copy];
+		} else {
+			[_fixed64Array appendArray:other.fixed64Array];
+		}
+	}
+
+	if (other.lengthDelimitedArray.count > 0) {
+		if (_lengthDelimitedArray == nil) {
+			_lengthDelimitedArray = [other.lengthDelimitedArray copy];
+		} else {
+			[_lengthDelimitedArray appendArray:other.lengthDelimitedArray];
+		}
+	}
+
+	if (other.groupArray.count > 0) {
+		if (_groupArray == nil) {
+			_groupArray = [other.groupArray copy];
+		} else {
+			[_groupArray appendArray:other.groupArray];
+		}
+	}
+
+	return self;
 }
 
+- (PBMutableField *)addVarint:(int64_t)value {
+	if (_varintArray == nil) {
+		_varintArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt64];
+	}
+	[_varintArray addInt64:value];
 
-- (PBMutableField*) mergeFromField:(PBField*) other {
-  if (other.varintList.count > 0) {
-    if (mutableVarintList == nil) {
-      self.mutableVarintList = [NSMutableArray array];
-    }
-    [mutableVarintList addObjectsFromArray:other.varintList];
-  }
-
-  if (other.fixed32List.count > 0) {
-    if (mutableFixed32List == nil) {
-      self.mutableFixed32List = [NSMutableArray array];
-    }
-    [mutableFixed32List addObjectsFromArray:other.fixed32List];
-  }
-
-  if (other.fixed64List.count > 0) {
-    if (mutableFixed64List == nil) {
-      self.mutableFixed64List = [NSMutableArray array];
-    }
-    [mutableFixed64List addObjectsFromArray:other.fixed64List];
-  }
-
-  if (other.lengthDelimitedList.count > 0) {
-    if (mutableLengthDelimitedList == nil) {
-      self.mutableLengthDelimitedList = [NSMutableArray array];
-    }
-    [mutableLengthDelimitedList addObjectsFromArray:other.lengthDelimitedList];
-  }
-
-  if (other.groupList.count > 0) {
-    if (mutableGroupList == nil) {
-      self.mutableGroupList = [NSMutableArray array];
-    }
-    [mutableGroupList addObjectsFromArray:other.groupList];
-  }
-
-  return self;
+	return self;
 }
 
+- (PBMutableField *)addFixed32:(int32_t)value {
+	if (_fixed32Array == nil) {
+		_fixed32Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
+	}
+	[_fixed32Array addInt32:value];
 
-- (PBMutableField*) addVarint:(int64_t) value {
-  if (mutableVarintList == nil) {
-    self.mutableVarintList = [NSMutableArray array];
-  }
-  [mutableVarintList addObject:[NSNumber numberWithLongLong:value]];
-  return self;
+	return self;
 }
 
+- (PBMutableField *)addFixed64:(int64_t)value {
+	if (_fixed64Array == nil) {
+		_fixed64Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt64];
+	}
+	[_fixed64Array addInt64:value];
 
-- (PBMutableField*) addFixed32:(int32_t) value {
-  if (mutableFixed32List == nil) {
-    self.mutableFixed32List = [NSMutableArray array];
-  }
-  [mutableFixed32List addObject:[NSNumber numberWithInt:value]];
-  return self;
+	return self;
 }
 
+- (PBMutableField *)addLengthDelimited:(NSData *)value {
+	if (_lengthDelimitedArray == nil) {
+		_lengthDelimitedArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeObject];
+	}
+	[_lengthDelimitedArray addObject:value];
 
-- (PBMutableField*) addFixed64:(int64_t) value {
-  if (mutableFixed64List == nil) {
-    self.mutableFixed64List = [NSMutableArray array];
-  }
-  [mutableFixed64List addObject:[NSNumber numberWithLongLong:value]];
-  return self;
+	return self;
 }
 
+- (PBMutableField *)addGroup:(PBUnknownFieldSet *)value {
+	if (_groupArray == nil) {
+		_groupArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeObject];
+	}
+	[_groupArray addObject:value];
 
-- (PBMutableField*) addLengthDelimited:(NSData*) value {
-  if (mutableLengthDelimitedList == nil) {
-    self.mutableLengthDelimitedList = [NSMutableArray array];
-  }
-  [mutableLengthDelimitedList addObject:value];
-  return self;
-}
-
-
-- (PBMutableField*) addGroup:(PBUnknownFieldSet*) value {
-  if (mutableGroupList == nil) {
-    self.mutableGroupList = [NSMutableArray array];
-  }
-  [mutableGroupList addObject:value];
-  return self;
+	return self;
 }
 
 @end

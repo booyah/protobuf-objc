@@ -15,29 +15,33 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@interface PBField : NSObject {
+#import <Foundation/Foundation.h>
+
+@class PBArray;
+@class PBAppendableArray;
+
+@interface PBField : NSObject
+{
 @protected
-  NSMutableArray* mutableVarintList;
-  NSMutableArray* mutableFixed32List;
-  NSMutableArray* mutableFixed64List;
-  NSMutableArray* mutableLengthDelimitedList;
-  NSMutableArray* mutableGroupList;
+	PBAppendableArray *	_varintArray;
+	PBAppendableArray *	_fixed32Array;
+	PBAppendableArray *	_fixed64Array;
+	PBAppendableArray *	_lengthDelimitedArray;
+	PBAppendableArray *	_groupArray;
 }
 
-- (NSArray*) varintList;
-- (NSArray*) fixed32List;
-- (NSArray*) fixed64List;
-- (NSArray*) lengthDelimitedList;
-- (NSArray*) groupList;
+@property (nonatomic,retain,readonly) PBArray *	varintArray;
+@property (nonatomic,retain,readonly) PBArray *	fixed32Array;
+@property (nonatomic,retain,readonly) PBArray *	fixed64Array;
+@property (nonatomic,retain,readonly) PBArray *	lengthDelimitedArray;
+@property (nonatomic,retain,readonly) PBArray *	groupArray;
 
-+ (PBField*) defaultInstance;
++ (PBField *)defaultInstance;
 
-- (void) writeTo:(int32_t) fieldNumber
-          output:(PBCodedOutputStream*) output;
+- (int32_t)getSerializedSize:(int32_t)fieldNumber;
+- (int32_t)getSerializedSizeAsMessageSetExtension:(int32_t)fieldNumber;
 
-- (int32_t) getSerializedSize:(int32_t) fieldNumber;
-- (void) writeAsMessageSetExtensionTo:(int32_t) fieldNumber
-                               output:(PBCodedOutputStream*) output;
-- (int32_t) getSerializedSizeAsMessageSetExtension:(int32_t) fieldNumber;
+- (void)writeTo:(int32_t) fieldNumber output:(PBCodedOutputStream *)output;
+- (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *)output;
 
 @end
