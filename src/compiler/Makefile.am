@@ -2,7 +2,7 @@ MAINTAINERCLEANFILES = \
 	Makefile.in
 
 bin_PROGRAMS = protoc-gen-objc
-protoc_gen_objc_LDFLAGS = -pthreads -lprotobuf -lprotoc
+protoc_gen_objc_LDFLAGS = -lprotobuf -lprotoc
 protoc_gen_objc_SOURCES = 	\
 	main.cc					\
 	objc_enum_field.cc		\
