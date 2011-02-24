@@ -17,6 +17,7 @@
 
 #include "objc_helpers.h"
 
+#include <limits>
 #include <vector>
 
 #include <google/protobuf/stubs/hash.h>
