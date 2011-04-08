@@ -29,9 +29,6 @@ namespace protobuf {
   namespace io {
     class Printer;             // printer.h
   }
-  namespace compiler {
-    class OutputDirectory;     // code_generator.h
-  }
 }
 
 namespace protobuf {
