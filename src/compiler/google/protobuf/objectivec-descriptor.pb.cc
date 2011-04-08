@@ -2,6 +2,9 @@
 
 #define INTERNAL_SUPPRESS_PROTOBUF_FIELD_DEPRECATION
 #include "google/protobuf/objectivec-descriptor.pb.h"
+
+#include <algorithm>
+
 #include <google/protobuf/stubs/once.h>
 #include <google/protobuf/io/coded_stream.h>
 #include <google/protobuf/wire_format_lite_inl.h>
@@ -103,8 +106,6 @@ struct StaticDescriptorInitializer_google_2fprotobuf_2fobjectivec_2ddescriptor_2
 
 // ===================================================================
 
-const ::std::string ObjectiveCFileOptions::_default_package_;
-const ::std::string ObjectiveCFileOptions::_default_class_prefix_;
 #ifndef _MSC_VER
 const int ObjectiveCFileOptions::kPackageFieldNumber;
 const int ObjectiveCFileOptions::kClassPrefixFieldNumber;
@@ -126,8 +127,8 @@ ObjectiveCFileOptions::ObjectiveCFileOptions(const ObjectiveCFileOptions& from)
 
 void ObjectiveCFileOptions::SharedCtor() {
   _cached_size_ = 0;
-  package_ = const_cast< ::std::string*>(&_default_package_);
-  class_prefix_ = const_cast< ::std::string*>(&_default_class_prefix_);
+  package_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  class_prefix_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -136,10 +137,10 @@ ObjectiveCFileOptions::~ObjectiveCFileOptions() {
 }
 
 void ObjectiveCFileOptions::SharedDtor() {
-  if (package_ != &_default_package_) {
+  if (package_ != &::google::protobuf::internal::kEmptyString) {
     delete package_;
   }
-  if (class_prefix_ != &_default_class_prefix_) {
+  if (class_prefix_ != &::google::protobuf::internal::kEmptyString) {
     delete class_prefix_;
   }
   if (this != default_instance_) {
@@ -168,13 +169,13 @@ ObjectiveCFileOptions* ObjectiveCFileOptions::New() const {
 
 void ObjectiveCFileOptions::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (_has_bit(0)) {
-      if (package_ != &_default_package_) {
+    if (has_package()) {
+      if (package_ != &::google::protobuf::internal::kEmptyString) {
         package_->clear();
       }
     }
-    if (_has_bit(1)) {
-      if (class_prefix_ != &_default_class_prefix_) {
+    if (has_class_prefix()) {
+      if (class_prefix_ != &::google::protobuf::internal::kEmptyString) {
         class_prefix_->clear();
       }
     }
@@ -241,7 +242,7 @@ bool ObjectiveCFileOptions::MergePartialFromCodedStream(
 void ObjectiveCFileOptions::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional string package = 1;
-  if (_has_bit(0)) {
+  if (has_package()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->package().data(), this->package().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
@@ -250,7 +251,7 @@ void ObjectiveCFileOptions::SerializeWithCachedSizes(
   }
   
   // optional string class_prefix = 2;
-  if (_has_bit(1)) {
+  if (has_class_prefix()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->class_prefix().data(), this->class_prefix().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
@@ -267,7 +268,7 @@ void ObjectiveCFileOptions::SerializeWithCachedSizes(
 ::google::protobuf::uint8* ObjectiveCFileOptions::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional string package = 1;
-  if (_has_bit(0)) {
+  if (has_package()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->package().data(), this->package().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
@@ -277,7 +278,7 @@ void ObjectiveCFileOptions::SerializeWithCachedSizes(
   }
   
   // optional string class_prefix = 2;
-  if (_has_bit(1)) {
+  if (has_class_prefix()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
       this->class_prefix().data(), this->class_prefix().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
@@ -338,10 +339,10 @@ void ObjectiveCFileOptions::MergeFrom(const ::google::protobuf::Message& from) {
 void ObjectiveCFileOptions::MergeFrom(const ObjectiveCFileOptions& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from._has_bit(0)) {
+    if (from.has_package()) {
       set_package(from.package());
     }
-    if (from._has_bit(1)) {
+    if (from.has_class_prefix()) {
       set_class_prefix(from.class_prefix());
     }
   }
