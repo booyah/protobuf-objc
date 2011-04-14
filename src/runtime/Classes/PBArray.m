@@ -119,7 +119,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (id)initWithCount:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
-	if (self = [super init])
+	if ((self = [super init]))
 	{
 		_valueType = valueType;
 		_count = count;
@@ -302,7 +302,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
-	if (self = [self initWithCount:count valueType:valueType])
+	if ((self = [self initWithCount:count valueType:valueType]))
 	{
 		memcpy(_data, values, count * PBArrayValueTypeSize(_valueType));
 		PBArrayForEachObject(_data, _count, retain);
@@ -313,7 +313,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (id)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
-	if (self = [self initWithCount:[array count] valueType:valueType])
+	if ((self = [self initWithCount:[array count] valueType:valueType]))
 	{
 		const size_t elementSize = PBArrayValueTypeSize(valueType);
 		size_t offset = 0;
