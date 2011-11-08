@@ -3,8 +3,9 @@
 @implementation RingBuffer
 
 - (id)initWithData:(NSMutableData*)data {
-	if (![super init]) return nil;
-	buffer = [data retain];
+  if ((self = [super init])) {
+    buffer = [data retain];
+  }
 	return self;
 }
 
