@@ -31,16 +31,23 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   namespace {
     void SetMessageVariables(const FieldDescriptor* descriptor,
       map<string, string>* variables) {
+        std::string name = UnderscoresToCamelCase(descriptor);
         (*variables)["classname"] = ClassName(descriptor->containing_type());
-        (*variables)["name"] = UnderscoresToCamelCase(descriptor);
+        (*variables)["name"] = name;
         (*variables)["capitalized_name"] = UnderscoresToCapitalizedCamelCase(descriptor);
         (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "Array";
         (*variables)["number"] = SimpleItoa(descriptor->number());
         (*variables)["type"] = ClassName(descriptor->message_type());
         if (IsPrimitiveType(GetObjectiveCType(descriptor))) {
           (*variables)["storage_type"] = ClassName(descriptor->message_type());
+          (*variables)["storage_attribute"] = "";
         } else {
           (*variables)["storage_type"] = string(ClassName(descriptor->message_type())) + "*";
+          if (IsRetainedName(name)) {
+            (*variables)["storage_attribute"] = " NS_RETURNS_NOT_RETAINED";
+          } else {
+            (*variables)["storage_attribute"] = "";
+          }
         }
         (*variables)["group_or_message"] =
           (descriptor->type() == FieldDescriptor::TYPE_GROUP) ?
@@ -65,7 +72,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
-    printer->Print(variables_, "$storage_type$ $name$;\n");
+    printer->Print(variables_, "$storage_type$ $name$$storage_attribute$;\n");
   }
 
 
@@ -75,13 +82,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "@property (readonly, retain) $storage_type$ $name$;\n");
+    printer->Print(variables_, "@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
   }
 
 
   void MessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "@property (retain) $storage_type$ $name$;\n");
+      "@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
   }
 
 

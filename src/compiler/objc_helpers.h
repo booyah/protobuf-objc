@@ -45,7 +45,10 @@ string FilenameToCamelCase(const string& filename);
 // Strips ".proto" or ".protodevel" from the end of a filename.
 string StripProto(const string& filename);
 
-//
+// Returns true if the name requires a ns_returns_not_retained attribute applied
+// to it.
+bool IsRetainedName(const string& name);
+
 bool IsBootstrapFile(const FileDescriptor* file);
 
 // Gets the name of the file we're going to generate (sans the .pb.h

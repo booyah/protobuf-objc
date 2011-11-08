@@ -173,6 +173,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
   }
 
+  bool IsRetainedName(const string& name) {
+    static std::string retainednames[] = { "new", "alloc", "copy", "mutableCopy" };
+    for (size_t i = 0; i < sizeof(retainednames) / sizeof(retainednames[0]); ++i) {
+      if (name.compare(0, retainednames[i].length(), retainednames[i]) == 0) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   bool IsBootstrapFile(const FileDescriptor* file) {
     return file->name() == "google/protobuf/descriptor.proto";
@@ -201,7 +210,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
       if (options.package() != "") {
         path = options.package() + "/" + path;
-      } 
+      }
     }
 
 	return path;
@@ -279,8 +288,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   string EnumValueName(const EnumValueDescriptor* descriptor) {
-    return 
-      ClassName(descriptor->type()) + 
+    return
+      ClassName(descriptor->type()) +
       UnderscoresToCapitalizedCamelCase(SafeName(descriptor->name()));
   }
 
@@ -396,7 +405,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
     hash_set<string> kKeywords = MakeKeywordsMap();
-  } 
+  }
 
 
   string SafeName(const string& name) {
@@ -483,7 +492,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
             if (AllAscii(field->default_value_string())) {
               return "@\"" + CEscape(field->default_value_string()) + "\"";
             } else {
-              return 
+              return
                 "[NSString stringWithUTF8String:\"" +
                 CEscape(field->default_value_string()) +
                 "\"]";
