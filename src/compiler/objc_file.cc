@@ -68,6 +68,20 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
         "value", *i);
     }
 
+    printer->Print(
+      "#ifndef __has_feature\n"
+      "  #define __has_feature(x) 0 // Compatibility with non-clang compilers.\n"
+      "#endif // __has_feature\n\n");
+    
+    printer->Print(
+      "#ifndef NS_RETURNS_NOT_RETAINED\n"
+      "  #if __has_feature(attribute_ns_returns_not_retained)\n"
+      "    #define NS_RETURNS_NOT_RETAINED __attribute__((ns_returns_not_retained))\n"
+      "  #else\n"
+      "    #define NS_RETURNS_NOT_RETAINED\n"
+      "  #endif\n"
+      "#endif\n\n");
+
     // need to write out all enums first
     for (int i = 0; i < file_->enum_type_count(); i++) {
       EnumGenerator(file_->enum_type(i)).GenerateHeader(printer);

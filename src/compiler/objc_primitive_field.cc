@@ -172,8 +172,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     void SetPrimitiveVariables(const FieldDescriptor* descriptor,
       map<string, string>* variables) {
+        std::string name = UnderscoresToCamelCase(descriptor);
         (*variables)["classname"] = ClassName(descriptor->containing_type());
-        (*variables)["name"] = UnderscoresToCamelCase(descriptor);
+        (*variables)["name"] = name;
         (*variables)["capitalized_name"] = UnderscoresToCapitalizedCamelCase(descriptor);
         (*variables)["list_name"] = UnderscoresToCamelCase(descriptor) + "Array";
         (*variables)["number"] = SimpleItoa(descriptor->number());
@@ -181,9 +182,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
         if (IsPrimitiveType(GetObjectiveCType(descriptor))) {
           (*variables)["storage_type"] = PrimitiveTypeName(descriptor);
+          (*variables)["storage_attribute"] = "";
         } else {
           (*variables)["storage_type"] = string(PrimitiveTypeName(descriptor)) + "*";
-        }    
+          if (IsRetainedName(name)) {
+            (*variables)["storage_attribute"] = " NS_RETURNS_NOT_RETAINED";
+          } else {
+            (*variables)["storage_attribute"] = "";
+          }
+        }
 
         (*variables)["array_value_type"] = GetArrayValueType(descriptor);
         (*variables)["array_value_type_name"] = GetArrayValueTypeName(descriptor);
@@ -235,7 +242,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void PrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
       printer->Print(variables_,
-        "@property (readonly, retain) $storage_type$ $name$;\n");
+        "@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
     } else if (GetObjectiveCType(descriptor_) == OBJECTIVECTYPE_BOOLEAN) {
       printer->Print(variables_,
         "- (BOOL) $name$;\n");
@@ -249,7 +256,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void PrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
       printer->Print(variables_,
-        "@property (retain) $storage_type$ $name$;\n");
+        "@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
     } else {
       printer->Print(variables_,
         "@property $storage_type$ $name$;\n");
@@ -305,7 +312,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void PrimitiveFieldGenerator::GenerateBuilderMembersHeader(io::Printer* printer) const {
     printer->Print(variables_,
       "- (BOOL) has$capitalized_name$;\n"
-      "- ($storage_type$) $name$;\n"
+      "- ($storage_type$) $name$$storage_attribute$;\n"
       "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value;\n"
       "- ($classname$_Builder*) clear$capitalized_name$;\n");
   }
