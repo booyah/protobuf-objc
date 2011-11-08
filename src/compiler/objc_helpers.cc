@@ -174,7 +174,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   bool IsRetainedName(const string& name) {
-    std::string retainednames[] = { "new", "alloc", "copy", "mutableCopy" };
+    static std::string retainednames[] = { "new", "alloc", "copy", "mutableCopy" };
     for (size_t i = 0; i < sizeof(retainednames) / sizeof(retainednames[0]); ++i) {
       if (name.compare(0, retainednames[i].length(), retainednames[i]) == 0) {
         return true;
