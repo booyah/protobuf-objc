@@ -203,6 +203,16 @@
 	[source release];
 }
 
+- (void)testAppendValues
+{
+  const int32_t kValues[3] = { 1, 2, 3 };
+  PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
+  [array appendValues:kValues count:3];
+  STAssertEquals(array.count, (NSUInteger)3, nil);
+  STAssertEquals([array int32AtIndex:1], 2, nil);
+  [array release];
+}
+
 - (void)testEqualValues
 {
 	const int32_t kValues[3] = { 1, 2, 3 };
