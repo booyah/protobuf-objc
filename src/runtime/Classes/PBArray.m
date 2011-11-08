@@ -253,22 +253,30 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return ((Float64 *)_data)[index];
 }
 
-- (BOOL)isEqualToArray:(PBArray *)array {
-  if (self == array) {
-    return YES;
-  } else if (array->_count != _count) {
-    return NO;
-  } else {
-    return memcmp(array->_data, _data, _count * PBArrayValueTypeSize(_valueType)) == 0;
-  }
+- (BOOL)isEqualToArray:(PBArray *)array 
+{
+    if (self == array) 
+	{
+        return YES;
+    } 
+    else if (array->_count != _count) 
+	{
+        return NO;
+    } 
+    else 
+    {
+        return memcmp(array->_data, _data, _count * PBArrayValueTypeSize(_valueType)) == 0;
+    }
 }
 
-- (BOOL)isEqual:(id)object {
-  BOOL equal = NO;
-  if ([object isKindOfClass:[PBArray class]]) {
-    equal = [self isEqualToArray:object];
-  }
-  return equal;
+- (BOOL)isEqual:(id)object 
+{
+    BOOL equal = NO;
+    if ([object isKindOfClass:[PBArray class]]) 
+    {
+        equal = [self isEqualToArray:object];
+    }
+    return equal;
 }
 
 @end
