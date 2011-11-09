@@ -124,11 +124,11 @@
 	const id kValues[1] = { [NSString stringWithFormat:@"Test"] };
 	PBArray *a = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
 	PBArray *b = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
-	
+
 	PBArray *copy = [[a arrayByAppendingArray:b] retain];
 	STAssertEquals(copy.valueType, a.valueType, nil);
 	STAssertEquals(copy.count, a.count + b.count, nil);
-	
+
 	[copy release];
 	[a release];
 	[b release];
@@ -211,6 +211,39 @@
 	STAssertEquals(array.count, (NSUInteger)3, nil);
 	STAssertEquals([array int32AtIndex:1], 2, nil);
 	[array release];
+}
+
+- (void)testEqualValues
+{
+	const int32_t kValues[3] = { 1, 2, 3 };
+	PBArray *array1 = [[PBArray alloc] initWithValues:kValues count:2 valueType:PBArrayValueTypeInt32];
+
+	// Test self equality.
+	STAssertEqualObjects(array1, array1, nil);
+
+	PBArray *array2 = [[PBArray alloc] initWithValues:kValues count:2 valueType:PBArrayValueTypeInt32];
+	// Test other equality.
+	STAssertEqualObjects(array1, array2, nil);
+
+	// Test non equality of nil.
+	STAssertFalse([array1 isEqual:nil], nil);
+
+	// Test non equality of other object type.
+	STAssertFalse([array1 isEqual:@""], nil);
+
+	// Test non equality of arrays of different sizes with same prefix.
+	PBArray *array3 = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
+	STAssertFalse([array1 isEqual:array3], nil);
+
+	// Test non equality of arrays of same sizes with different contents.
+	const int32_t kValues2[2] = { 2, 1 };
+	PBArray *array4 = [[PBArray alloc] initWithValues:kValues2 count:2 valueType:PBArrayValueTypeInt32];
+	STAssertFalse([array1 isEqual:array4], nil);
+
+	[array1 release];
+	[array2 release];
+	[array3 release];
+	[array4 release];
 }
 
 @end
