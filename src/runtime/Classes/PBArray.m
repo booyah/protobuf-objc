@@ -126,7 +126,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 		_capacity = count;
 
 		if (_capacity)
-		{		
+		{
 			_data = malloc(_capacity * PBArrayValueTypeSize(_valueType));
 			if (_data == NULL)
 			{
@@ -165,7 +165,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 - (NSString *)description
 {
 	return [NSString stringWithFormat:@"<%@ %p>{valueType = %d, count = %d, capacity = %d, data = %p}",
-			[self class], self, _valueType, _count, _capacity, _data];	
+			[self class], self, _valueType, _count, _capacity, _data];
 }
 
 - (NSUInteger)count
@@ -191,10 +191,10 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	}
 
 	state->itemsPtr = (id *)_data;
-    state->state = _count;
-    state->mutationsPtr = (unsigned long *)self;
+	state->state = _count;
+	state->mutationsPtr = (unsigned long *)self;
 
-    return _count;
+	return _count;
 }
 
 - (id)objectAtIndex:(NSUInteger)index
@@ -253,6 +253,32 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return ((Float64 *)_data)[index];
 }
 
+- (BOOL)isEqualToArray:(PBArray *)array
+{
+	if (self == array)
+	{
+		return YES;
+	}
+	else if (array->_count != _count)
+	{
+		return NO;
+	}
+	else
+	{
+		return memcmp(array->_data, _data, _count * PBArrayValueTypeSize(_valueType)) == 0;
+	}
+}
+
+- (BOOL)isEqual:(id)object
+{
+	BOOL equal = NO;
+	if ([object isKindOfClass:[PBArray class]])
+	{
+		equal = [self isEqualToArray:object];
+	}
+	return equal;
+}
+
 @end
 
 @implementation PBArray (PBArrayExtended)
@@ -272,7 +298,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 		PBArrayForEachObject(result->_data, result->_count, retain);
 	}
-	
+
 	return [result autorelease];
 }
 
@@ -351,7 +377,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 - (void)ensureAdditionalCapacity:(NSUInteger)additionalSlots
 {
 	const NSUInteger requiredSlots = _count + additionalSlots;
-	
+
 	if (requiredSlots > _capacity)
 	{
 		// If we haven't allocated any capacity yet, simply reserve
@@ -367,7 +393,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 			while (_capacity < requiredSlots)
 			{
 				_capacity *= 2;
-			}			
+			}
 		}
 
 		const size_t size = _capacity * PBArrayValueTypeSize(_valueType);
@@ -444,7 +470,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	PBArrayValueTypeAssert(array.valueType);
 	[self ensureAdditionalCapacity:array.count];
-	
+
 	const size_t elementSize = PBArrayValueTypeSize(_valueType);
 	memcpy(_data + (_count * elementSize), array.data, array.count * elementSize);
 	_count += array.count;
