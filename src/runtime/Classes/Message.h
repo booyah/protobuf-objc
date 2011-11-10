@@ -70,4 +70,16 @@
  * Constructs a new builder for a message of the same type as this message.
  */
 - (id<PBMessage_Builder>) builder;
+
+/**
+ * Constructs a builder initialized with the current message.  Use this to
+ * derive a new message from the current one.
+ */
+- (id<PBMessage_Builder>) toBuilder;
+
+/**
+ * Returns a string description of the message.
+ */
+- (NSString*) description;
+
 @end

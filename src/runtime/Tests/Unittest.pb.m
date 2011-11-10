@@ -2591,6 +2591,640 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
 - (TestAllTypes_Builder*) builder {
   return [TestAllTypes builder];
 }
+- (TestAllTypes_Builder*) toBuilder {
+  return [TestAllTypes builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasOptionalInt32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalInt32", [NSNumber numberWithInt:self.optionalInt32]];
+  }
+  if (self.hasOptionalInt64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalInt64", [NSNumber numberWithLongLong:self.optionalInt64]];
+  }
+  if (self.hasOptionalUint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalUint32", [NSNumber numberWithInt:self.optionalUint32]];
+  }
+  if (self.hasOptionalUint64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalUint64", [NSNumber numberWithLongLong:self.optionalUint64]];
+  }
+  if (self.hasOptionalSint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalSint32", [NSNumber numberWithInt:self.optionalSint32]];
+  }
+  if (self.hasOptionalSint64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalSint64", [NSNumber numberWithLongLong:self.optionalSint64]];
+  }
+  if (self.hasOptionalFixed32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalFixed32", [NSNumber numberWithInt:self.optionalFixed32]];
+  }
+  if (self.hasOptionalFixed64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalFixed64", [NSNumber numberWithLongLong:self.optionalFixed64]];
+  }
+  if (self.hasOptionalSfixed32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalSfixed32", [NSNumber numberWithInt:self.optionalSfixed32]];
+  }
+  if (self.hasOptionalSfixed64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalSfixed64", [NSNumber numberWithLongLong:self.optionalSfixed64]];
+  }
+  if (self.hasOptionalFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalFloat", [NSNumber numberWithFloat:self.optionalFloat]];
+  }
+  if (self.hasOptionalDouble) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalDouble", [NSNumber numberWithDouble:self.optionalDouble]];
+  }
+  if (self.hasOptionalBool) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalBool", [NSNumber numberWithBool:self.optionalBool]];
+  }
+  if (self.hasOptionalString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalString", self.optionalString];
+  }
+  if (self.hasOptionalBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalBytes", self.optionalBytes];
+  }
+  if (self.hasOptionalGroup) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalGroup"];
+    [self.optionalGroup writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalNestedMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalNestedMessage"];
+    [self.optionalNestedMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalForeignMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalForeignMessage"];
+    [self.optionalForeignMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalImportMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalImportMessage"];
+    [self.optionalImportMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalNestedEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"optionalNestedEnum", self.optionalNestedEnum];
+  }
+  if (self.hasOptionalForeignEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"optionalForeignEnum", self.optionalForeignEnum];
+  }
+  if (self.hasOptionalImportEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"optionalImportEnum", self.optionalImportEnum];
+  }
+  if (self.hasOptionalStringPiece) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalStringPiece", self.optionalStringPiece];
+  }
+  if (self.hasOptionalCord) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalCord", self.optionalCord];
+  }
+  for (NSNumber* value in self.repeatedInt32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedInt32", value];
+  }
+  for (NSNumber* value in self.repeatedInt64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedInt64", value];
+  }
+  for (NSNumber* value in self.repeatedUint32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedUint32", value];
+  }
+  for (NSNumber* value in self.repeatedUint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedUint64", value];
+  }
+  for (NSNumber* value in self.repeatedSint32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedSint32", value];
+  }
+  for (NSNumber* value in self.repeatedSint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedSint64", value];
+  }
+  for (NSNumber* value in self.repeatedFixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedFixed32", value];
+  }
+  for (NSNumber* value in self.repeatedFixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedFixed64", value];
+  }
+  for (NSNumber* value in self.repeatedSfixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedSfixed32", value];
+  }
+  for (NSNumber* value in self.repeatedSfixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedSfixed64", value];
+  }
+  for (NSNumber* value in self.repeatedFloatArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedFloat", value];
+  }
+  for (NSNumber* value in self.repeatedDoubleArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedDouble", value];
+  }
+  for (NSNumber* value in self.repeatedBoolArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedBool", value];
+  }
+  for (NSString* element in self.repeatedStringArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedString", element];
+  }
+  for (NSData* element in self.repeatedBytesArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedBytes", element];
+  }
+  for (TestAllTypes_RepeatedGroup* element in self.repeatedGroupArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedGroup"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestAllTypes_NestedMessage* element in self.repeatedNestedMessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedNestedMessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (ForeignMessage* element in self.repeatedForeignMessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedForeignMessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (ImportMessage* element in self.repeatedImportMessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedImportMessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (NSNumber* element in self.repeatedNestedEnumArray) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"repeatedNestedEnum", element.intValue];
+  }
+  for (NSNumber* element in self.repeatedForeignEnumArray) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"repeatedForeignEnum", element.intValue];
+  }
+  for (NSNumber* element in self.repeatedImportEnumArray) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"repeatedImportEnum", element.intValue];
+  }
+  for (NSString* element in self.repeatedStringPieceArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedStringPiece", element];
+  }
+  for (NSString* element in self.repeatedCordArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedCord", element];
+  }
+  if (self.hasDefaultInt32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultInt32", [NSNumber numberWithInt:self.defaultInt32]];
+  }
+  if (self.hasDefaultInt64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultInt64", [NSNumber numberWithLongLong:self.defaultInt64]];
+  }
+  if (self.hasDefaultUint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultUint32", [NSNumber numberWithInt:self.defaultUint32]];
+  }
+  if (self.hasDefaultUint64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultUint64", [NSNumber numberWithLongLong:self.defaultUint64]];
+  }
+  if (self.hasDefaultSint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultSint32", [NSNumber numberWithInt:self.defaultSint32]];
+  }
+  if (self.hasDefaultSint64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultSint64", [NSNumber numberWithLongLong:self.defaultSint64]];
+  }
+  if (self.hasDefaultFixed32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultFixed32", [NSNumber numberWithInt:self.defaultFixed32]];
+  }
+  if (self.hasDefaultFixed64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultFixed64", [NSNumber numberWithLongLong:self.defaultFixed64]];
+  }
+  if (self.hasDefaultSfixed32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultSfixed32", [NSNumber numberWithInt:self.defaultSfixed32]];
+  }
+  if (self.hasDefaultSfixed64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultSfixed64", [NSNumber numberWithLongLong:self.defaultSfixed64]];
+  }
+  if (self.hasDefaultFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultFloat", [NSNumber numberWithFloat:self.defaultFloat]];
+  }
+  if (self.hasDefaultDouble) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultDouble", [NSNumber numberWithDouble:self.defaultDouble]];
+  }
+  if (self.hasDefaultBool) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultBool", [NSNumber numberWithBool:self.defaultBool]];
+  }
+  if (self.hasDefaultString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultString", self.defaultString];
+  }
+  if (self.hasDefaultBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultBytes", self.defaultBytes];
+  }
+  if (self.hasDefaultNestedEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"defaultNestedEnum", self.defaultNestedEnum];
+  }
+  if (self.hasDefaultForeignEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"defaultForeignEnum", self.defaultForeignEnum];
+  }
+  if (self.hasDefaultImportEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"defaultImportEnum", self.defaultImportEnum];
+  }
+  if (self.hasDefaultStringPiece) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultStringPiece", self.defaultStringPiece];
+  }
+  if (self.hasDefaultCord) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"defaultCord", self.defaultCord];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestAllTypes class]]) {
+    return NO;
+  }
+  TestAllTypes *otherMessage = other;
+  return
+      self.hasOptionalInt32 == otherMessage.hasOptionalInt32 &&
+      (!self.hasOptionalInt32 || self.optionalInt32 == otherMessage.optionalInt32) &&
+      
+      self.hasOptionalInt64 == otherMessage.hasOptionalInt64 &&
+      (!self.hasOptionalInt64 || self.optionalInt64 == otherMessage.optionalInt64) &&
+      
+      self.hasOptionalUint32 == otherMessage.hasOptionalUint32 &&
+      (!self.hasOptionalUint32 || self.optionalUint32 == otherMessage.optionalUint32) &&
+      
+      self.hasOptionalUint64 == otherMessage.hasOptionalUint64 &&
+      (!self.hasOptionalUint64 || self.optionalUint64 == otherMessage.optionalUint64) &&
+      
+      self.hasOptionalSint32 == otherMessage.hasOptionalSint32 &&
+      (!self.hasOptionalSint32 || self.optionalSint32 == otherMessage.optionalSint32) &&
+      
+      self.hasOptionalSint64 == otherMessage.hasOptionalSint64 &&
+      (!self.hasOptionalSint64 || self.optionalSint64 == otherMessage.optionalSint64) &&
+      
+      self.hasOptionalFixed32 == otherMessage.hasOptionalFixed32 &&
+      (!self.hasOptionalFixed32 || self.optionalFixed32 == otherMessage.optionalFixed32) &&
+      
+      self.hasOptionalFixed64 == otherMessage.hasOptionalFixed64 &&
+      (!self.hasOptionalFixed64 || self.optionalFixed64 == otherMessage.optionalFixed64) &&
+      
+      self.hasOptionalSfixed32 == otherMessage.hasOptionalSfixed32 &&
+      (!self.hasOptionalSfixed32 || self.optionalSfixed32 == otherMessage.optionalSfixed32) &&
+      
+      self.hasOptionalSfixed64 == otherMessage.hasOptionalSfixed64 &&
+      (!self.hasOptionalSfixed64 || self.optionalSfixed64 == otherMessage.optionalSfixed64) &&
+      
+      self.hasOptionalFloat == otherMessage.hasOptionalFloat &&
+      (!self.hasOptionalFloat || self.optionalFloat == otherMessage.optionalFloat) &&
+      
+      self.hasOptionalDouble == otherMessage.hasOptionalDouble &&
+      (!self.hasOptionalDouble || self.optionalDouble == otherMessage.optionalDouble) &&
+      
+      self.hasOptionalBool == otherMessage.hasOptionalBool &&
+      (!self.hasOptionalBool || self.optionalBool == otherMessage.optionalBool) &&
+      
+      self.hasOptionalString == otherMessage.hasOptionalString &&
+      (!self.hasOptionalString || [self.optionalString isEqual:otherMessage.optionalString]) &&
+      
+      self.hasOptionalBytes == otherMessage.hasOptionalBytes &&
+      (!self.hasOptionalBytes || [self.optionalBytes isEqual:otherMessage.optionalBytes]) &&
+      
+      self.hasOptionalGroup == otherMessage.hasOptionalGroup &&
+      (!self.hasOptionalGroup || [self.optionalGroup isEqual:otherMessage.optionalGroup]) &&
+      
+      self.hasOptionalNestedMessage == otherMessage.hasOptionalNestedMessage &&
+      (!self.hasOptionalNestedMessage || [self.optionalNestedMessage isEqual:otherMessage.optionalNestedMessage]) &&
+      
+      self.hasOptionalForeignMessage == otherMessage.hasOptionalForeignMessage &&
+      (!self.hasOptionalForeignMessage || [self.optionalForeignMessage isEqual:otherMessage.optionalForeignMessage]) &&
+      
+      self.hasOptionalImportMessage == otherMessage.hasOptionalImportMessage &&
+      (!self.hasOptionalImportMessage || [self.optionalImportMessage isEqual:otherMessage.optionalImportMessage]) &&
+      
+      self.hasOptionalNestedEnum == otherMessage.hasOptionalNestedEnum &&
+      (!self.hasOptionalNestedEnum || self.optionalNestedEnum != otherMessage.optionalNestedEnum) &&
+      
+      self.hasOptionalForeignEnum == otherMessage.hasOptionalForeignEnum &&
+      (!self.hasOptionalForeignEnum || self.optionalForeignEnum != otherMessage.optionalForeignEnum) &&
+      
+      self.hasOptionalImportEnum == otherMessage.hasOptionalImportEnum &&
+      (!self.hasOptionalImportEnum || self.optionalImportEnum != otherMessage.optionalImportEnum) &&
+      
+      self.hasOptionalStringPiece == otherMessage.hasOptionalStringPiece &&
+      (!self.hasOptionalStringPiece || [self.optionalStringPiece isEqual:otherMessage.optionalStringPiece]) &&
+      
+      self.hasOptionalCord == otherMessage.hasOptionalCord &&
+      (!self.hasOptionalCord || [self.optionalCord isEqual:otherMessage.optionalCord]) &&
+      
+      [self.repeatedInt32Array isEqualToArray:otherMessage.repeatedInt32Array] &&
+      
+      [self.repeatedInt64Array isEqualToArray:otherMessage.repeatedInt64Array] &&
+      
+      [self.repeatedUint32Array isEqualToArray:otherMessage.repeatedUint32Array] &&
+      
+      [self.repeatedUint64Array isEqualToArray:otherMessage.repeatedUint64Array] &&
+      
+      [self.repeatedSint32Array isEqualToArray:otherMessage.repeatedSint32Array] &&
+      
+      [self.repeatedSint64Array isEqualToArray:otherMessage.repeatedSint64Array] &&
+      
+      [self.repeatedFixed32Array isEqualToArray:otherMessage.repeatedFixed32Array] &&
+      
+      [self.repeatedFixed64Array isEqualToArray:otherMessage.repeatedFixed64Array] &&
+      
+      [self.repeatedSfixed32Array isEqualToArray:otherMessage.repeatedSfixed32Array] &&
+      
+      [self.repeatedSfixed64Array isEqualToArray:otherMessage.repeatedSfixed64Array] &&
+      
+      [self.repeatedFloatArray isEqualToArray:otherMessage.repeatedFloatArray] &&
+      
+      [self.repeatedDoubleArray isEqualToArray:otherMessage.repeatedDoubleArray] &&
+      
+      [self.repeatedBoolArray isEqualToArray:otherMessage.repeatedBoolArray] &&
+      
+      [self.repeatedStringArray isEqualToArray:otherMessage.repeatedStringArray] &&
+      
+      [self.repeatedBytesArray isEqualToArray:otherMessage.repeatedBytesArray] &&
+      
+      [self.repeatedGroupArray isEqualToArray:otherMessage.repeatedGroupArray] &&
+      
+      [self.repeatedNestedMessageArray isEqualToArray:otherMessage.repeatedNestedMessageArray] &&
+      
+      [self.repeatedForeignMessageArray isEqualToArray:otherMessage.repeatedForeignMessageArray] &&
+      
+      [self.repeatedImportMessageArray isEqualToArray:otherMessage.repeatedImportMessageArray] &&
+      
+      [self.repeatedNestedEnumArray isEqualToArray:otherMessage.repeatedNestedEnumArray] &&
+      
+      [self.repeatedForeignEnumArray isEqualToArray:otherMessage.repeatedForeignEnumArray] &&
+      
+      [self.repeatedImportEnumArray isEqualToArray:otherMessage.repeatedImportEnumArray] &&
+      
+      [self.repeatedStringPieceArray isEqualToArray:otherMessage.repeatedStringPieceArray] &&
+      
+      [self.repeatedCordArray isEqualToArray:otherMessage.repeatedCordArray] &&
+      
+      self.hasDefaultInt32 == otherMessage.hasDefaultInt32 &&
+      (!self.hasDefaultInt32 || self.defaultInt32 == otherMessage.defaultInt32) &&
+      
+      self.hasDefaultInt64 == otherMessage.hasDefaultInt64 &&
+      (!self.hasDefaultInt64 || self.defaultInt64 == otherMessage.defaultInt64) &&
+      
+      self.hasDefaultUint32 == otherMessage.hasDefaultUint32 &&
+      (!self.hasDefaultUint32 || self.defaultUint32 == otherMessage.defaultUint32) &&
+      
+      self.hasDefaultUint64 == otherMessage.hasDefaultUint64 &&
+      (!self.hasDefaultUint64 || self.defaultUint64 == otherMessage.defaultUint64) &&
+      
+      self.hasDefaultSint32 == otherMessage.hasDefaultSint32 &&
+      (!self.hasDefaultSint32 || self.defaultSint32 == otherMessage.defaultSint32) &&
+      
+      self.hasDefaultSint64 == otherMessage.hasDefaultSint64 &&
+      (!self.hasDefaultSint64 || self.defaultSint64 == otherMessage.defaultSint64) &&
+      
+      self.hasDefaultFixed32 == otherMessage.hasDefaultFixed32 &&
+      (!self.hasDefaultFixed32 || self.defaultFixed32 == otherMessage.defaultFixed32) &&
+      
+      self.hasDefaultFixed64 == otherMessage.hasDefaultFixed64 &&
+      (!self.hasDefaultFixed64 || self.defaultFixed64 == otherMessage.defaultFixed64) &&
+      
+      self.hasDefaultSfixed32 == otherMessage.hasDefaultSfixed32 &&
+      (!self.hasDefaultSfixed32 || self.defaultSfixed32 == otherMessage.defaultSfixed32) &&
+      
+      self.hasDefaultSfixed64 == otherMessage.hasDefaultSfixed64 &&
+      (!self.hasDefaultSfixed64 || self.defaultSfixed64 == otherMessage.defaultSfixed64) &&
+      
+      self.hasDefaultFloat == otherMessage.hasDefaultFloat &&
+      (!self.hasDefaultFloat || self.defaultFloat == otherMessage.defaultFloat) &&
+      
+      self.hasDefaultDouble == otherMessage.hasDefaultDouble &&
+      (!self.hasDefaultDouble || self.defaultDouble == otherMessage.defaultDouble) &&
+      
+      self.hasDefaultBool == otherMessage.hasDefaultBool &&
+      (!self.hasDefaultBool || self.defaultBool == otherMessage.defaultBool) &&
+      
+      self.hasDefaultString == otherMessage.hasDefaultString &&
+      (!self.hasDefaultString || [self.defaultString isEqual:otherMessage.defaultString]) &&
+      
+      self.hasDefaultBytes == otherMessage.hasDefaultBytes &&
+      (!self.hasDefaultBytes || [self.defaultBytes isEqual:otherMessage.defaultBytes]) &&
+      
+      self.hasDefaultNestedEnum == otherMessage.hasDefaultNestedEnum &&
+      (!self.hasDefaultNestedEnum || self.defaultNestedEnum != otherMessage.defaultNestedEnum) &&
+      
+      self.hasDefaultForeignEnum == otherMessage.hasDefaultForeignEnum &&
+      (!self.hasDefaultForeignEnum || self.defaultForeignEnum != otherMessage.defaultForeignEnum) &&
+      
+      self.hasDefaultImportEnum == otherMessage.hasDefaultImportEnum &&
+      (!self.hasDefaultImportEnum || self.defaultImportEnum != otherMessage.defaultImportEnum) &&
+      
+      self.hasDefaultStringPiece == otherMessage.hasDefaultStringPiece &&
+      (!self.hasDefaultStringPiece || [self.defaultStringPiece isEqual:otherMessage.defaultStringPiece]) &&
+      
+      self.hasDefaultCord == otherMessage.hasDefaultCord &&
+      (!self.hasDefaultCord || [self.defaultCord isEqual:otherMessage.defaultCord]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasOptionalInt32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalInt32] hash];
+  }
+  if (self.hasOptionalInt64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.optionalInt64] hash];
+  }
+  if (self.hasOptionalUint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalUint32] hash];
+  }
+  if (self.hasOptionalUint64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.optionalUint64] hash];
+  }
+  if (self.hasOptionalSint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalSint32] hash];
+  }
+  if (self.hasOptionalSint64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.optionalSint64] hash];
+  }
+  if (self.hasOptionalFixed32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalFixed32] hash];
+  }
+  if (self.hasOptionalFixed64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.optionalFixed64] hash];
+  }
+  if (self.hasOptionalSfixed32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalSfixed32] hash];
+  }
+  if (self.hasOptionalSfixed64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.optionalSfixed64] hash];
+  }
+  if (self.hasOptionalFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.optionalFloat] hash];
+  }
+  if (self.hasOptionalDouble) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithDouble:self.optionalDouble] hash];
+  }
+  if (self.hasOptionalBool) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.optionalBool] hash];
+  }
+  if (self.hasOptionalString) {
+    hashCode = hashCode * 31 + [self.optionalString hash];
+  }
+  if (self.hasOptionalBytes) {
+    hashCode = hashCode * 31 + [self.optionalBytes hash];
+  }
+  if (self.hasOptionalGroup) {
+    hashCode = hashCode * 31 + [self.optionalGroup hash];
+  }
+  if (self.hasOptionalNestedMessage) {
+    hashCode = hashCode * 31 + [self.optionalNestedMessage hash];
+  }
+  if (self.hasOptionalForeignMessage) {
+    hashCode = hashCode * 31 + [self.optionalForeignMessage hash];
+  }
+  if (self.hasOptionalImportMessage) {
+    hashCode = hashCode * 31 + [self.optionalImportMessage hash];
+  }
+  if (self.hasOptionalNestedEnum) {
+    hashCode = hashCode * 31 + self.optionalNestedEnum;
+  }
+  if (self.hasOptionalForeignEnum) {
+    hashCode = hashCode * 31 + self.optionalForeignEnum;
+  }
+  if (self.hasOptionalImportEnum) {
+    hashCode = hashCode * 31 + self.optionalImportEnum;
+  }
+  if (self.hasOptionalStringPiece) {
+    hashCode = hashCode * 31 + [self.optionalStringPiece hash];
+  }
+  if (self.hasOptionalCord) {
+    hashCode = hashCode * 31 + [self.optionalCord hash];
+  }
+  for (NSNumber* value in self.repeatedInt32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedInt64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedUint32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedUint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedSint32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedSint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedFixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedFixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedSfixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedSfixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedFloatArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedDoubleArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedBoolArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSString* element in self.repeatedStringArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSData* element in self.repeatedBytesArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes_RepeatedGroup* element in self.repeatedGroupArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (TestAllTypes_NestedMessage* element in self.repeatedNestedMessageArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (ForeignMessage* element in self.repeatedForeignMessageArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (ImportMessage* element in self.repeatedImportMessageArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSNumber* element in self.repeatedNestedEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  for (NSNumber* element in self.repeatedForeignEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  for (NSNumber* element in self.repeatedImportEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  for (NSString* element in self.repeatedStringPieceArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSString* element in self.repeatedCordArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  if (self.hasDefaultInt32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.defaultInt32] hash];
+  }
+  if (self.hasDefaultInt64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.defaultInt64] hash];
+  }
+  if (self.hasDefaultUint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.defaultUint32] hash];
+  }
+  if (self.hasDefaultUint64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.defaultUint64] hash];
+  }
+  if (self.hasDefaultSint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.defaultSint32] hash];
+  }
+  if (self.hasDefaultSint64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.defaultSint64] hash];
+  }
+  if (self.hasDefaultFixed32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.defaultFixed32] hash];
+  }
+  if (self.hasDefaultFixed64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.defaultFixed64] hash];
+  }
+  if (self.hasDefaultSfixed32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.defaultSfixed32] hash];
+  }
+  if (self.hasDefaultSfixed64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.defaultSfixed64] hash];
+  }
+  if (self.hasDefaultFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.defaultFloat] hash];
+  }
+  if (self.hasDefaultDouble) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithDouble:self.defaultDouble] hash];
+  }
+  if (self.hasDefaultBool) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.defaultBool] hash];
+  }
+  if (self.hasDefaultString) {
+    hashCode = hashCode * 31 + [self.defaultString hash];
+  }
+  if (self.hasDefaultBytes) {
+    hashCode = hashCode * 31 + [self.defaultBytes hash];
+  }
+  if (self.hasDefaultNestedEnum) {
+    hashCode = hashCode * 31 + self.defaultNestedEnum;
+  }
+  if (self.hasDefaultForeignEnum) {
+    hashCode = hashCode * 31 + self.defaultForeignEnum;
+  }
+  if (self.hasDefaultImportEnum) {
+    hashCode = hashCode * 31 + self.defaultImportEnum;
+  }
+  if (self.hasDefaultStringPiece) {
+    hashCode = hashCode * 31 + [self.defaultStringPiece hash];
+  }
+  if (self.hasDefaultCord) {
+    hashCode = hashCode * 31 + [self.defaultCord hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 BOOL TestAllTypes_NestedEnumIsValidValue(TestAllTypes_NestedEnum value) {
@@ -2686,6 +3320,37 @@ static TestAllTypes_NestedMessage* defaultTestAllTypes_NestedMessageInstance = n
 }
 - (TestAllTypes_NestedMessage_Builder*) builder {
   return [TestAllTypes_NestedMessage builder];
+}
+- (TestAllTypes_NestedMessage_Builder*) toBuilder {
+  return [TestAllTypes_NestedMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasBb) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"bb", [NSNumber numberWithInt:self.bb]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestAllTypes_NestedMessage class]]) {
+    return NO;
+  }
+  TestAllTypes_NestedMessage *otherMessage = other;
+  return
+      self.hasBb == otherMessage.hasBb &&
+      (!self.hasBb || self.bb == otherMessage.bb) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasBb) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.bb] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -2864,6 +3529,37 @@ static TestAllTypes_OptionalGroup* defaultTestAllTypes_OptionalGroupInstance = n
 - (TestAllTypes_OptionalGroup_Builder*) builder {
   return [TestAllTypes_OptionalGroup builder];
 }
+- (TestAllTypes_OptionalGroup_Builder*) toBuilder {
+  return [TestAllTypes_OptionalGroup builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestAllTypes_OptionalGroup class]]) {
+    return NO;
+  }
+  TestAllTypes_OptionalGroup *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestAllTypes_OptionalGroup_Builder()
@@ -3040,6 +3736,37 @@ static TestAllTypes_RepeatedGroup* defaultTestAllTypes_RepeatedGroupInstance = n
 }
 - (TestAllTypes_RepeatedGroup_Builder*) builder {
   return [TestAllTypes_RepeatedGroup builder];
+}
+- (TestAllTypes_RepeatedGroup_Builder*) toBuilder {
+  return [TestAllTypes_RepeatedGroup builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestAllTypes_RepeatedGroup class]]) {
+    return NO;
+  }
+  TestAllTypes_RepeatedGroup *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -3250,168 +3977,168 @@ static TestAllTypes_RepeatedGroup* defaultTestAllTypes_RepeatedGroupInstance = n
   }
   if (other.repeatedInt32Array.count > 0) {
     if (result.repeatedInt32Array == nil) {
-      result.repeatedInt32Array = [other.repeatedInt32Array copyWithZone:[other.repeatedInt32Array zone]];
+      result.repeatedInt32Array = [[other.repeatedInt32Array copyWithZone:[other.repeatedInt32Array zone]] autorelease];
     } else {
       [result.repeatedInt32Array appendArray:other.repeatedInt32Array];
     }
   }
   if (other.repeatedInt64Array.count > 0) {
     if (result.repeatedInt64Array == nil) {
-      result.repeatedInt64Array = [other.repeatedInt64Array copyWithZone:[other.repeatedInt64Array zone]];
+      result.repeatedInt64Array = [[other.repeatedInt64Array copyWithZone:[other.repeatedInt64Array zone]] autorelease];
     } else {
       [result.repeatedInt64Array appendArray:other.repeatedInt64Array];
     }
   }
   if (other.repeatedUint32Array.count > 0) {
     if (result.repeatedUint32Array == nil) {
-      result.repeatedUint32Array = [other.repeatedUint32Array copyWithZone:[other.repeatedUint32Array zone]];
+      result.repeatedUint32Array = [[other.repeatedUint32Array copyWithZone:[other.repeatedUint32Array zone]] autorelease];
     } else {
       [result.repeatedUint32Array appendArray:other.repeatedUint32Array];
     }
   }
   if (other.repeatedUint64Array.count > 0) {
     if (result.repeatedUint64Array == nil) {
-      result.repeatedUint64Array = [other.repeatedUint64Array copyWithZone:[other.repeatedUint64Array zone]];
+      result.repeatedUint64Array = [[other.repeatedUint64Array copyWithZone:[other.repeatedUint64Array zone]] autorelease];
     } else {
       [result.repeatedUint64Array appendArray:other.repeatedUint64Array];
     }
   }
   if (other.repeatedSint32Array.count > 0) {
     if (result.repeatedSint32Array == nil) {
-      result.repeatedSint32Array = [other.repeatedSint32Array copyWithZone:[other.repeatedSint32Array zone]];
+      result.repeatedSint32Array = [[other.repeatedSint32Array copyWithZone:[other.repeatedSint32Array zone]] autorelease];
     } else {
       [result.repeatedSint32Array appendArray:other.repeatedSint32Array];
     }
   }
   if (other.repeatedSint64Array.count > 0) {
     if (result.repeatedSint64Array == nil) {
-      result.repeatedSint64Array = [other.repeatedSint64Array copyWithZone:[other.repeatedSint64Array zone]];
+      result.repeatedSint64Array = [[other.repeatedSint64Array copyWithZone:[other.repeatedSint64Array zone]] autorelease];
     } else {
       [result.repeatedSint64Array appendArray:other.repeatedSint64Array];
     }
   }
   if (other.repeatedFixed32Array.count > 0) {
     if (result.repeatedFixed32Array == nil) {
-      result.repeatedFixed32Array = [other.repeatedFixed32Array copyWithZone:[other.repeatedFixed32Array zone]];
+      result.repeatedFixed32Array = [[other.repeatedFixed32Array copyWithZone:[other.repeatedFixed32Array zone]] autorelease];
     } else {
       [result.repeatedFixed32Array appendArray:other.repeatedFixed32Array];
     }
   }
   if (other.repeatedFixed64Array.count > 0) {
     if (result.repeatedFixed64Array == nil) {
-      result.repeatedFixed64Array = [other.repeatedFixed64Array copyWithZone:[other.repeatedFixed64Array zone]];
+      result.repeatedFixed64Array = [[other.repeatedFixed64Array copyWithZone:[other.repeatedFixed64Array zone]] autorelease];
     } else {
       [result.repeatedFixed64Array appendArray:other.repeatedFixed64Array];
     }
   }
   if (other.repeatedSfixed32Array.count > 0) {
     if (result.repeatedSfixed32Array == nil) {
-      result.repeatedSfixed32Array = [other.repeatedSfixed32Array copyWithZone:[other.repeatedSfixed32Array zone]];
+      result.repeatedSfixed32Array = [[other.repeatedSfixed32Array copyWithZone:[other.repeatedSfixed32Array zone]] autorelease];
     } else {
       [result.repeatedSfixed32Array appendArray:other.repeatedSfixed32Array];
     }
   }
   if (other.repeatedSfixed64Array.count > 0) {
     if (result.repeatedSfixed64Array == nil) {
-      result.repeatedSfixed64Array = [other.repeatedSfixed64Array copyWithZone:[other.repeatedSfixed64Array zone]];
+      result.repeatedSfixed64Array = [[other.repeatedSfixed64Array copyWithZone:[other.repeatedSfixed64Array zone]] autorelease];
     } else {
       [result.repeatedSfixed64Array appendArray:other.repeatedSfixed64Array];
     }
   }
   if (other.repeatedFloatArray.count > 0) {
     if (result.repeatedFloatArray == nil) {
-      result.repeatedFloatArray = [other.repeatedFloatArray copyWithZone:[other.repeatedFloatArray zone]];
+      result.repeatedFloatArray = [[other.repeatedFloatArray copyWithZone:[other.repeatedFloatArray zone]] autorelease];
     } else {
       [result.repeatedFloatArray appendArray:other.repeatedFloatArray];
     }
   }
   if (other.repeatedDoubleArray.count > 0) {
     if (result.repeatedDoubleArray == nil) {
-      result.repeatedDoubleArray = [other.repeatedDoubleArray copyWithZone:[other.repeatedDoubleArray zone]];
+      result.repeatedDoubleArray = [[other.repeatedDoubleArray copyWithZone:[other.repeatedDoubleArray zone]] autorelease];
     } else {
       [result.repeatedDoubleArray appendArray:other.repeatedDoubleArray];
     }
   }
   if (other.repeatedBoolArray.count > 0) {
     if (result.repeatedBoolArray == nil) {
-      result.repeatedBoolArray = [other.repeatedBoolArray copyWithZone:[other.repeatedBoolArray zone]];
+      result.repeatedBoolArray = [[other.repeatedBoolArray copyWithZone:[other.repeatedBoolArray zone]] autorelease];
     } else {
       [result.repeatedBoolArray appendArray:other.repeatedBoolArray];
     }
   }
   if (other.repeatedStringArray.count > 0) {
     if (result.repeatedStringArray == nil) {
-      result.repeatedStringArray = [other.repeatedStringArray copyWithZone:[other.repeatedStringArray zone]];
+      result.repeatedStringArray = [[other.repeatedStringArray copyWithZone:[other.repeatedStringArray zone]] autorelease];
     } else {
       [result.repeatedStringArray appendArray:other.repeatedStringArray];
     }
   }
   if (other.repeatedBytesArray.count > 0) {
     if (result.repeatedBytesArray == nil) {
-      result.repeatedBytesArray = [other.repeatedBytesArray copyWithZone:[other.repeatedBytesArray zone]];
+      result.repeatedBytesArray = [[other.repeatedBytesArray copyWithZone:[other.repeatedBytesArray zone]] autorelease];
     } else {
       [result.repeatedBytesArray appendArray:other.repeatedBytesArray];
     }
   }
   if (other.repeatedGroupArray.count > 0) {
     if (result.repeatedGroupArray == nil) {
-      result.repeatedGroupArray = [other.repeatedGroupArray copyWithZone:[other.repeatedGroupArray zone]];
+      result.repeatedGroupArray = [[other.repeatedGroupArray copyWithZone:[other.repeatedGroupArray zone]] autorelease];
     } else {
       [result.repeatedGroupArray appendArray:other.repeatedGroupArray];
     }
   }
   if (other.repeatedNestedMessageArray.count > 0) {
     if (result.repeatedNestedMessageArray == nil) {
-      result.repeatedNestedMessageArray = [other.repeatedNestedMessageArray copyWithZone:[other.repeatedNestedMessageArray zone]];
+      result.repeatedNestedMessageArray = [[other.repeatedNestedMessageArray copyWithZone:[other.repeatedNestedMessageArray zone]] autorelease];
     } else {
       [result.repeatedNestedMessageArray appendArray:other.repeatedNestedMessageArray];
     }
   }
   if (other.repeatedForeignMessageArray.count > 0) {
     if (result.repeatedForeignMessageArray == nil) {
-      result.repeatedForeignMessageArray = [other.repeatedForeignMessageArray copyWithZone:[other.repeatedForeignMessageArray zone]];
+      result.repeatedForeignMessageArray = [[other.repeatedForeignMessageArray copyWithZone:[other.repeatedForeignMessageArray zone]] autorelease];
     } else {
       [result.repeatedForeignMessageArray appendArray:other.repeatedForeignMessageArray];
     }
   }
   if (other.repeatedImportMessageArray.count > 0) {
     if (result.repeatedImportMessageArray == nil) {
-      result.repeatedImportMessageArray = [other.repeatedImportMessageArray copyWithZone:[other.repeatedImportMessageArray zone]];
+      result.repeatedImportMessageArray = [[other.repeatedImportMessageArray copyWithZone:[other.repeatedImportMessageArray zone]] autorelease];
     } else {
       [result.repeatedImportMessageArray appendArray:other.repeatedImportMessageArray];
     }
   }
   if (other.repeatedNestedEnumArray.count > 0) {
     if (result.repeatedNestedEnumArray == nil) {
-      result.repeatedNestedEnumArray = [other.repeatedNestedEnumArray copyWithZone:[other.repeatedNestedEnumArray zone]];
+      result.repeatedNestedEnumArray = [[other.repeatedNestedEnumArray copyWithZone:[other.repeatedNestedEnumArray zone]] autorelease];
     } else {
       [result.repeatedNestedEnumArray appendArray:other.repeatedNestedEnumArray];
     }
   }
   if (other.repeatedForeignEnumArray.count > 0) {
     if (result.repeatedForeignEnumArray == nil) {
-      result.repeatedForeignEnumArray = [other.repeatedForeignEnumArray copyWithZone:[other.repeatedForeignEnumArray zone]];
+      result.repeatedForeignEnumArray = [[other.repeatedForeignEnumArray copyWithZone:[other.repeatedForeignEnumArray zone]] autorelease];
     } else {
       [result.repeatedForeignEnumArray appendArray:other.repeatedForeignEnumArray];
     }
   }
   if (other.repeatedImportEnumArray.count > 0) {
     if (result.repeatedImportEnumArray == nil) {
-      result.repeatedImportEnumArray = [other.repeatedImportEnumArray copyWithZone:[other.repeatedImportEnumArray zone]];
+      result.repeatedImportEnumArray = [[other.repeatedImportEnumArray copyWithZone:[other.repeatedImportEnumArray zone]] autorelease];
     } else {
       [result.repeatedImportEnumArray appendArray:other.repeatedImportEnumArray];
     }
   }
   if (other.repeatedStringPieceArray.count > 0) {
     if (result.repeatedStringPieceArray == nil) {
-      result.repeatedStringPieceArray = [other.repeatedStringPieceArray copyWithZone:[other.repeatedStringPieceArray zone]];
+      result.repeatedStringPieceArray = [[other.repeatedStringPieceArray copyWithZone:[other.repeatedStringPieceArray zone]] autorelease];
     } else {
       [result.repeatedStringPieceArray appendArray:other.repeatedStringPieceArray];
     }
   }
   if (other.repeatedCordArray.count > 0) {
     if (result.repeatedCordArray == nil) {
-      result.repeatedCordArray = [other.repeatedCordArray copyWithZone:[other.repeatedCordArray zone]];
+      result.repeatedCordArray = [[other.repeatedCordArray copyWithZone:[other.repeatedCordArray zone]] autorelease];
     } else {
       [result.repeatedCordArray appendArray:other.repeatedCordArray];
     }
@@ -5291,6 +6018,37 @@ static TestDeprecatedFields* defaultTestDeprecatedFieldsInstance = nil;
 - (TestDeprecatedFields_Builder*) builder {
   return [TestDeprecatedFields builder];
 }
+- (TestDeprecatedFields_Builder*) toBuilder {
+  return [TestDeprecatedFields builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasDeprecatedInt32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"deprecatedInt32", [NSNumber numberWithInt:self.deprecatedInt32]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestDeprecatedFields class]]) {
+    return NO;
+  }
+  TestDeprecatedFields *otherMessage = other;
+  return
+      self.hasDeprecatedInt32 == otherMessage.hasDeprecatedInt32 &&
+      (!self.hasDeprecatedInt32 || self.deprecatedInt32 == otherMessage.deprecatedInt32) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasDeprecatedInt32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.deprecatedInt32] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestDeprecatedFields_Builder()
@@ -5468,6 +6226,37 @@ static ForeignMessage* defaultForeignMessageInstance = nil;
 - (ForeignMessage_Builder*) builder {
   return [ForeignMessage builder];
 }
+- (ForeignMessage_Builder*) toBuilder {
+  return [ForeignMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasC) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"c", [NSNumber numberWithInt:self.c]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ForeignMessage class]]) {
+    return NO;
+  }
+  ForeignMessage *otherMessage = other;
+  return
+      self.hasC == otherMessage.hasC &&
+      (!self.hasC || self.c == otherMessage.c) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasC) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.c] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface ForeignMessage_Builder()
@@ -5637,6 +6426,35 @@ static TestAllExtensions* defaultTestAllExtensionsInstance = nil;
 - (TestAllExtensions_Builder*) builder {
   return [TestAllExtensions builder];
 }
+- (TestAllExtensions_Builder*) toBuilder {
+  return [TestAllExtensions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestAllExtensions class]]) {
+    return NO;
+  }
+  TestAllExtensions *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestAllExtensions_Builder()
@@ -5791,6 +6609,37 @@ static OptionalGroup_extension* defaultOptionalGroup_extensionInstance = nil;
 }
 - (OptionalGroup_extension_Builder*) builder {
   return [OptionalGroup_extension builder];
+}
+- (OptionalGroup_extension_Builder*) toBuilder {
+  return [OptionalGroup_extension builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[OptionalGroup_extension class]]) {
+    return NO;
+  }
+  OptionalGroup_extension *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -5969,6 +6818,37 @@ static RepeatedGroup_extension* defaultRepeatedGroup_extensionInstance = nil;
 - (RepeatedGroup_extension_Builder*) builder {
   return [RepeatedGroup_extension builder];
 }
+- (RepeatedGroup_extension_Builder*) toBuilder {
+  return [RepeatedGroup_extension builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[RepeatedGroup_extension class]]) {
+    return NO;
+  }
+  RepeatedGroup_extension *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface RepeatedGroup_extension_Builder()
@@ -6133,6 +7013,28 @@ static TestNestedExtension* defaultTestNestedExtensionInstance = nil;
 }
 - (TestNestedExtension_Builder*) builder {
   return [TestNestedExtension builder];
+}
+- (TestNestedExtension_Builder*) toBuilder {
+  return [TestNestedExtension builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestNestedExtension class]]) {
+    return NO;
+  }
+  TestNestedExtension *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -6782,6 +7684,325 @@ static TestRequired* defaultTestRequiredInstance = nil;
 }
 - (TestRequired_Builder*) builder {
   return [TestRequired builder];
+}
+- (TestRequired_Builder*) toBuilder {
+  return [TestRequired builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  if (self.hasDummy2) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy2", [NSNumber numberWithInt:self.dummy2]];
+  }
+  if (self.hasB) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"b", [NSNumber numberWithInt:self.b]];
+  }
+  if (self.hasDummy4) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy4", [NSNumber numberWithInt:self.dummy4]];
+  }
+  if (self.hasDummy5) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy5", [NSNumber numberWithInt:self.dummy5]];
+  }
+  if (self.hasDummy6) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy6", [NSNumber numberWithInt:self.dummy6]];
+  }
+  if (self.hasDummy7) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy7", [NSNumber numberWithInt:self.dummy7]];
+  }
+  if (self.hasDummy8) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy8", [NSNumber numberWithInt:self.dummy8]];
+  }
+  if (self.hasDummy9) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy9", [NSNumber numberWithInt:self.dummy9]];
+  }
+  if (self.hasDummy10) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy10", [NSNumber numberWithInt:self.dummy10]];
+  }
+  if (self.hasDummy11) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy11", [NSNumber numberWithInt:self.dummy11]];
+  }
+  if (self.hasDummy12) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy12", [NSNumber numberWithInt:self.dummy12]];
+  }
+  if (self.hasDummy13) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy13", [NSNumber numberWithInt:self.dummy13]];
+  }
+  if (self.hasDummy14) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy14", [NSNumber numberWithInt:self.dummy14]];
+  }
+  if (self.hasDummy15) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy15", [NSNumber numberWithInt:self.dummy15]];
+  }
+  if (self.hasDummy16) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy16", [NSNumber numberWithInt:self.dummy16]];
+  }
+  if (self.hasDummy17) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy17", [NSNumber numberWithInt:self.dummy17]];
+  }
+  if (self.hasDummy18) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy18", [NSNumber numberWithInt:self.dummy18]];
+  }
+  if (self.hasDummy19) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy19", [NSNumber numberWithInt:self.dummy19]];
+  }
+  if (self.hasDummy20) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy20", [NSNumber numberWithInt:self.dummy20]];
+  }
+  if (self.hasDummy21) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy21", [NSNumber numberWithInt:self.dummy21]];
+  }
+  if (self.hasDummy22) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy22", [NSNumber numberWithInt:self.dummy22]];
+  }
+  if (self.hasDummy23) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy23", [NSNumber numberWithInt:self.dummy23]];
+  }
+  if (self.hasDummy24) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy24", [NSNumber numberWithInt:self.dummy24]];
+  }
+  if (self.hasDummy25) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy25", [NSNumber numberWithInt:self.dummy25]];
+  }
+  if (self.hasDummy26) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy26", [NSNumber numberWithInt:self.dummy26]];
+  }
+  if (self.hasDummy27) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy27", [NSNumber numberWithInt:self.dummy27]];
+  }
+  if (self.hasDummy28) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy28", [NSNumber numberWithInt:self.dummy28]];
+  }
+  if (self.hasDummy29) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy29", [NSNumber numberWithInt:self.dummy29]];
+  }
+  if (self.hasDummy30) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy30", [NSNumber numberWithInt:self.dummy30]];
+  }
+  if (self.hasDummy31) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy31", [NSNumber numberWithInt:self.dummy31]];
+  }
+  if (self.hasDummy32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy32", [NSNumber numberWithInt:self.dummy32]];
+  }
+  if (self.hasC) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"c", [NSNumber numberWithInt:self.c]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRequired class]]) {
+    return NO;
+  }
+  TestRequired *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      self.hasDummy2 == otherMessage.hasDummy2 &&
+      (!self.hasDummy2 || self.dummy2 == otherMessage.dummy2) &&
+      
+      self.hasB == otherMessage.hasB &&
+      (!self.hasB || self.b == otherMessage.b) &&
+      
+      self.hasDummy4 == otherMessage.hasDummy4 &&
+      (!self.hasDummy4 || self.dummy4 == otherMessage.dummy4) &&
+      
+      self.hasDummy5 == otherMessage.hasDummy5 &&
+      (!self.hasDummy5 || self.dummy5 == otherMessage.dummy5) &&
+      
+      self.hasDummy6 == otherMessage.hasDummy6 &&
+      (!self.hasDummy6 || self.dummy6 == otherMessage.dummy6) &&
+      
+      self.hasDummy7 == otherMessage.hasDummy7 &&
+      (!self.hasDummy7 || self.dummy7 == otherMessage.dummy7) &&
+      
+      self.hasDummy8 == otherMessage.hasDummy8 &&
+      (!self.hasDummy8 || self.dummy8 == otherMessage.dummy8) &&
+      
+      self.hasDummy9 == otherMessage.hasDummy9 &&
+      (!self.hasDummy9 || self.dummy9 == otherMessage.dummy9) &&
+      
+      self.hasDummy10 == otherMessage.hasDummy10 &&
+      (!self.hasDummy10 || self.dummy10 == otherMessage.dummy10) &&
+      
+      self.hasDummy11 == otherMessage.hasDummy11 &&
+      (!self.hasDummy11 || self.dummy11 == otherMessage.dummy11) &&
+      
+      self.hasDummy12 == otherMessage.hasDummy12 &&
+      (!self.hasDummy12 || self.dummy12 == otherMessage.dummy12) &&
+      
+      self.hasDummy13 == otherMessage.hasDummy13 &&
+      (!self.hasDummy13 || self.dummy13 == otherMessage.dummy13) &&
+      
+      self.hasDummy14 == otherMessage.hasDummy14 &&
+      (!self.hasDummy14 || self.dummy14 == otherMessage.dummy14) &&
+      
+      self.hasDummy15 == otherMessage.hasDummy15 &&
+      (!self.hasDummy15 || self.dummy15 == otherMessage.dummy15) &&
+      
+      self.hasDummy16 == otherMessage.hasDummy16 &&
+      (!self.hasDummy16 || self.dummy16 == otherMessage.dummy16) &&
+      
+      self.hasDummy17 == otherMessage.hasDummy17 &&
+      (!self.hasDummy17 || self.dummy17 == otherMessage.dummy17) &&
+      
+      self.hasDummy18 == otherMessage.hasDummy18 &&
+      (!self.hasDummy18 || self.dummy18 == otherMessage.dummy18) &&
+      
+      self.hasDummy19 == otherMessage.hasDummy19 &&
+      (!self.hasDummy19 || self.dummy19 == otherMessage.dummy19) &&
+      
+      self.hasDummy20 == otherMessage.hasDummy20 &&
+      (!self.hasDummy20 || self.dummy20 == otherMessage.dummy20) &&
+      
+      self.hasDummy21 == otherMessage.hasDummy21 &&
+      (!self.hasDummy21 || self.dummy21 == otherMessage.dummy21) &&
+      
+      self.hasDummy22 == otherMessage.hasDummy22 &&
+      (!self.hasDummy22 || self.dummy22 == otherMessage.dummy22) &&
+      
+      self.hasDummy23 == otherMessage.hasDummy23 &&
+      (!self.hasDummy23 || self.dummy23 == otherMessage.dummy23) &&
+      
+      self.hasDummy24 == otherMessage.hasDummy24 &&
+      (!self.hasDummy24 || self.dummy24 == otherMessage.dummy24) &&
+      
+      self.hasDummy25 == otherMessage.hasDummy25 &&
+      (!self.hasDummy25 || self.dummy25 == otherMessage.dummy25) &&
+      
+      self.hasDummy26 == otherMessage.hasDummy26 &&
+      (!self.hasDummy26 || self.dummy26 == otherMessage.dummy26) &&
+      
+      self.hasDummy27 == otherMessage.hasDummy27 &&
+      (!self.hasDummy27 || self.dummy27 == otherMessage.dummy27) &&
+      
+      self.hasDummy28 == otherMessage.hasDummy28 &&
+      (!self.hasDummy28 || self.dummy28 == otherMessage.dummy28) &&
+      
+      self.hasDummy29 == otherMessage.hasDummy29 &&
+      (!self.hasDummy29 || self.dummy29 == otherMessage.dummy29) &&
+      
+      self.hasDummy30 == otherMessage.hasDummy30 &&
+      (!self.hasDummy30 || self.dummy30 == otherMessage.dummy30) &&
+      
+      self.hasDummy31 == otherMessage.hasDummy31 &&
+      (!self.hasDummy31 || self.dummy31 == otherMessage.dummy31) &&
+      
+      self.hasDummy32 == otherMessage.hasDummy32 &&
+      (!self.hasDummy32 || self.dummy32 == otherMessage.dummy32) &&
+      
+      self.hasC == otherMessage.hasC &&
+      (!self.hasC || self.c == otherMessage.c) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  if (self.hasDummy2) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy2] hash];
+  }
+  if (self.hasB) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.b] hash];
+  }
+  if (self.hasDummy4) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy4] hash];
+  }
+  if (self.hasDummy5) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy5] hash];
+  }
+  if (self.hasDummy6) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy6] hash];
+  }
+  if (self.hasDummy7) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy7] hash];
+  }
+  if (self.hasDummy8) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy8] hash];
+  }
+  if (self.hasDummy9) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy9] hash];
+  }
+  if (self.hasDummy10) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy10] hash];
+  }
+  if (self.hasDummy11) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy11] hash];
+  }
+  if (self.hasDummy12) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy12] hash];
+  }
+  if (self.hasDummy13) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy13] hash];
+  }
+  if (self.hasDummy14) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy14] hash];
+  }
+  if (self.hasDummy15) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy15] hash];
+  }
+  if (self.hasDummy16) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy16] hash];
+  }
+  if (self.hasDummy17) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy17] hash];
+  }
+  if (self.hasDummy18) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy18] hash];
+  }
+  if (self.hasDummy19) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy19] hash];
+  }
+  if (self.hasDummy20) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy20] hash];
+  }
+  if (self.hasDummy21) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy21] hash];
+  }
+  if (self.hasDummy22) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy22] hash];
+  }
+  if (self.hasDummy23) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy23] hash];
+  }
+  if (self.hasDummy24) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy24] hash];
+  }
+  if (self.hasDummy25) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy25] hash];
+  }
+  if (self.hasDummy26) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy26] hash];
+  }
+  if (self.hasDummy27) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy27] hash];
+  }
+  if (self.hasDummy28) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy28] hash];
+  }
+  if (self.hasDummy29) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy29] hash];
+  }
+  if (self.hasDummy30) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy30] hash];
+  }
+  if (self.hasDummy31) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy31] hash];
+  }
+  if (self.hasDummy32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy32] hash];
+  }
+  if (self.hasC) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.c] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -7738,6 +8959,60 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
 - (TestRequiredForeign_Builder*) builder {
   return [TestRequiredForeign builder];
 }
+- (TestRequiredForeign_Builder*) toBuilder {
+  return [TestRequiredForeign builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasOptionalMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalMessage"];
+    [self.optionalMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestRequired* element in self.repeatedMessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedMessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasDummy) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dummy", [NSNumber numberWithInt:self.dummy]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRequiredForeign class]]) {
+    return NO;
+  }
+  TestRequiredForeign *otherMessage = other;
+  return
+      self.hasOptionalMessage == otherMessage.hasOptionalMessage &&
+      (!self.hasOptionalMessage || [self.optionalMessage isEqual:otherMessage.optionalMessage]) &&
+      
+      [self.repeatedMessageArray isEqualToArray:otherMessage.repeatedMessageArray] &&
+      
+      self.hasDummy == otherMessage.hasDummy &&
+      (!self.hasDummy || self.dummy == otherMessage.dummy) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasOptionalMessage) {
+    hashCode = hashCode * 31 + [self.optionalMessage hash];
+  }
+  for (TestRequired* element in self.repeatedMessageArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  if (self.hasDummy) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dummy] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestRequiredForeign_Builder()
@@ -7787,7 +9062,7 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
   }
   if (other.repeatedMessageArray.count > 0) {
     if (result.repeatedMessageArray == nil) {
-      result.repeatedMessageArray = [other.repeatedMessageArray copyWithZone:[other.repeatedMessageArray zone]];
+      result.repeatedMessageArray = [[other.repeatedMessageArray copyWithZone:[other.repeatedMessageArray zone]] autorelease];
     } else {
       [result.repeatedMessageArray appendArray:other.repeatedMessageArray];
     }
@@ -7996,6 +9271,40 @@ static TestForeignNested* defaultTestForeignNestedInstance = nil;
 - (TestForeignNested_Builder*) builder {
   return [TestForeignNested builder];
 }
+- (TestForeignNested_Builder*) toBuilder {
+  return [TestForeignNested builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasForeignNested) {
+    [output appendFormat:@"%@%@ {\n", indent, @"foreignNested"];
+    [self.foreignNested writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestForeignNested class]]) {
+    return NO;
+  }
+  TestForeignNested *otherMessage = other;
+  return
+      self.hasForeignNested == otherMessage.hasForeignNested &&
+      (!self.hasForeignNested || [self.foreignNested isEqual:otherMessage.foreignNested]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasForeignNested) {
+    hashCode = hashCode * 31 + [self.foreignNested hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestForeignNested_Builder()
@@ -8177,6 +9486,28 @@ static TestEmptyMessage* defaultTestEmptyMessageInstance = nil;
 - (TestEmptyMessage_Builder*) builder {
   return [TestEmptyMessage builder];
 }
+- (TestEmptyMessage_Builder*) toBuilder {
+  return [TestEmptyMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestEmptyMessage class]]) {
+    return NO;
+  }
+  TestEmptyMessage *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestEmptyMessage_Builder()
@@ -8322,6 +9653,35 @@ static TestEmptyMessageWithExtensions* defaultTestEmptyMessageWithExtensionsInst
 }
 - (TestEmptyMessageWithExtensions_Builder*) builder {
   return [TestEmptyMessageWithExtensions builder];
+}
+- (TestEmptyMessageWithExtensions_Builder*) toBuilder {
+  return [TestEmptyMessageWithExtensions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestEmptyMessageWithExtensions class]]) {
+    return NO;
+  }
+  TestEmptyMessageWithExtensions *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -8475,6 +9835,49 @@ static TestMultipleExtensionRanges* defaultTestMultipleExtensionRangesInstance =
 }
 - (TestMultipleExtensionRanges_Builder*) builder {
   return [TestMultipleExtensionRanges builder];
+}
+- (TestMultipleExtensionRanges_Builder*) toBuilder {
+  return [TestMultipleExtensionRanges builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:42
+                                              to:43
+                                      withIndent:indent];
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:4143
+                                              to:4244
+                                      withIndent:indent];
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:65536
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestMultipleExtensionRanges class]]) {
+    return NO;
+  }
+  TestMultipleExtensionRanges *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:42 to:43] &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:4143 to:4244] &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:65536 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:42 to:43];
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:4143 to:4244];
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:65536 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -8645,6 +10048,46 @@ static TestReallyLargeTagNumber* defaultTestReallyLargeTagNumberInstance = nil;
 }
 - (TestReallyLargeTagNumber_Builder*) builder {
   return [TestReallyLargeTagNumber builder];
+}
+- (TestReallyLargeTagNumber_Builder*) toBuilder {
+  return [TestReallyLargeTagNumber builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  if (self.hasBb) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"bb", [NSNumber numberWithInt:self.bb]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestReallyLargeTagNumber class]]) {
+    return NO;
+  }
+  TestReallyLargeTagNumber *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      self.hasBb == otherMessage.hasBb &&
+      (!self.hasBb || self.bb == otherMessage.bb) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  if (self.hasBb) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.bb] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -8861,6 +10304,49 @@ static TestRecursiveMessage* defaultTestRecursiveMessageInstance = nil;
 }
 - (TestRecursiveMessage_Builder*) builder {
   return [TestRecursiveMessage builder];
+}
+- (TestRecursiveMessage_Builder*) toBuilder {
+  return [TestRecursiveMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@ {\n", indent, @"a"];
+    [self.a writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasI) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"i", [NSNumber numberWithInt:self.i]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRecursiveMessage class]]) {
+    return NO;
+  }
+  TestRecursiveMessage *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || [self.a isEqual:otherMessage.a]) &&
+      
+      self.hasI == otherMessage.hasI &&
+      (!self.hasI || self.i == otherMessage.i) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [self.a hash];
+  }
+  if (self.hasI) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -9082,6 +10568,40 @@ static TestMutualRecursionA* defaultTestMutualRecursionAInstance = nil;
 - (TestMutualRecursionA_Builder*) builder {
   return [TestMutualRecursionA builder];
 }
+- (TestMutualRecursionA_Builder*) toBuilder {
+  return [TestMutualRecursionA builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasBb) {
+    [output appendFormat:@"%@%@ {\n", indent, @"bb"];
+    [self.bb writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestMutualRecursionA class]]) {
+    return NO;
+  }
+  TestMutualRecursionA *otherMessage = other;
+  return
+      self.hasBb == otherMessage.hasBb &&
+      (!self.hasBb || [self.bb isEqual:otherMessage.bb]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasBb) {
+    hashCode = hashCode * 31 + [self.bb hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestMutualRecursionA_Builder()
@@ -9293,6 +10813,49 @@ static TestMutualRecursionB* defaultTestMutualRecursionBInstance = nil;
 }
 - (TestMutualRecursionB_Builder*) builder {
   return [TestMutualRecursionB builder];
+}
+- (TestMutualRecursionB_Builder*) toBuilder {
+  return [TestMutualRecursionB builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@ {\n", indent, @"a"];
+    [self.a writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOptionalInt32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"optionalInt32", [NSNumber numberWithInt:self.optionalInt32]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestMutualRecursionB class]]) {
+    return NO;
+  }
+  TestMutualRecursionB *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || [self.a isEqual:otherMessage.a]) &&
+      
+      self.hasOptionalInt32 == otherMessage.hasOptionalInt32 &&
+      (!self.hasOptionalInt32 || self.optionalInt32 == otherMessage.optionalInt32) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [self.a hash];
+  }
+  if (self.hasOptionalInt32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalInt32] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -9545,6 +11108,61 @@ static TestDupFieldNumber* defaultTestDupFieldNumberInstance = nil;
 - (TestDupFieldNumber_Builder*) builder {
   return [TestDupFieldNumber builder];
 }
+- (TestDupFieldNumber_Builder*) toBuilder {
+  return [TestDupFieldNumber builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  if (self.hasFoo) {
+    [output appendFormat:@"%@%@ {\n", indent, @"foo"];
+    [self.foo writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasBar) {
+    [output appendFormat:@"%@%@ {\n", indent, @"bar"];
+    [self.bar writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestDupFieldNumber class]]) {
+    return NO;
+  }
+  TestDupFieldNumber *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      self.hasFoo == otherMessage.hasFoo &&
+      (!self.hasFoo || [self.foo isEqual:otherMessage.foo]) &&
+      
+      self.hasBar == otherMessage.hasBar &&
+      (!self.hasBar || [self.bar isEqual:otherMessage.bar]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  if (self.hasFoo) {
+    hashCode = hashCode * 31 + [self.foo hash];
+  }
+  if (self.hasBar) {
+    hashCode = hashCode * 31 + [self.bar hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestDupFieldNumber_Foo ()
@@ -9630,6 +11248,37 @@ static TestDupFieldNumber_Foo* defaultTestDupFieldNumber_FooInstance = nil;
 }
 - (TestDupFieldNumber_Foo_Builder*) builder {
   return [TestDupFieldNumber_Foo builder];
+}
+- (TestDupFieldNumber_Foo_Builder*) toBuilder {
+  return [TestDupFieldNumber_Foo builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestDupFieldNumber_Foo class]]) {
+    return NO;
+  }
+  TestDupFieldNumber_Foo *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -9807,6 +11456,37 @@ static TestDupFieldNumber_Bar* defaultTestDupFieldNumber_BarInstance = nil;
 }
 - (TestDupFieldNumber_Bar_Builder*) builder {
   return [TestDupFieldNumber_Bar builder];
+}
+- (TestDupFieldNumber_Bar_Builder*) toBuilder {
+  return [TestDupFieldNumber_Bar builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInt:self.a]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestDupFieldNumber_Bar class]]) {
+    return NO;
+  }
+  TestDupFieldNumber_Bar *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -10161,6 +11841,40 @@ static TestNestedMessageHasBits* defaultTestNestedMessageHasBitsInstance = nil;
 - (TestNestedMessageHasBits_Builder*) builder {
   return [TestNestedMessageHasBits builder];
 }
+- (TestNestedMessageHasBits_Builder*) toBuilder {
+  return [TestNestedMessageHasBits builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasOptionalNestedMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalNestedMessage"];
+    [self.optionalNestedMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestNestedMessageHasBits class]]) {
+    return NO;
+  }
+  TestNestedMessageHasBits *otherMessage = other;
+  return
+      self.hasOptionalNestedMessage == otherMessage.hasOptionalNestedMessage &&
+      (!self.hasOptionalNestedMessage || [self.optionalNestedMessage isEqual:otherMessage.optionalNestedMessage]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasOptionalNestedMessage) {
+    hashCode = hashCode * 31 + [self.optionalNestedMessage hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestNestedMessageHasBits_NestedMessage ()
@@ -10275,6 +11989,47 @@ static TestNestedMessageHasBits_NestedMessage* defaultTestNestedMessageHasBits_N
 - (TestNestedMessageHasBits_NestedMessage_Builder*) builder {
   return [TestNestedMessageHasBits_NestedMessage builder];
 }
+- (TestNestedMessageHasBits_NestedMessage_Builder*) toBuilder {
+  return [TestNestedMessageHasBits_NestedMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  for (NSNumber* value in self.nestedmessageRepeatedInt32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"nestedmessageRepeatedInt32", value];
+  }
+  for (ForeignMessage* element in self.nestedmessageRepeatedForeignmessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"nestedmessageRepeatedForeignmessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestNestedMessageHasBits_NestedMessage class]]) {
+    return NO;
+  }
+  TestNestedMessageHasBits_NestedMessage *otherMessage = other;
+  return
+      [self.nestedmessageRepeatedInt32Array isEqualToArray:otherMessage.nestedmessageRepeatedInt32Array] &&
+      
+      [self.nestedmessageRepeatedForeignmessageArray isEqualToArray:otherMessage.nestedmessageRepeatedForeignmessageArray] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  for (NSNumber* value in self.nestedmessageRepeatedInt32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (ForeignMessage* element in self.nestedmessageRepeatedForeignmessageArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestNestedMessageHasBits_NestedMessage_Builder()
@@ -10321,14 +12076,14 @@ static TestNestedMessageHasBits_NestedMessage* defaultTestNestedMessageHasBits_N
   }
   if (other.nestedmessageRepeatedInt32Array.count > 0) {
     if (result.nestedmessageRepeatedInt32Array == nil) {
-      result.nestedmessageRepeatedInt32Array = [other.nestedmessageRepeatedInt32Array copyWithZone:[other.nestedmessageRepeatedInt32Array zone]];
+      result.nestedmessageRepeatedInt32Array = [[other.nestedmessageRepeatedInt32Array copyWithZone:[other.nestedmessageRepeatedInt32Array zone]] autorelease];
     } else {
       [result.nestedmessageRepeatedInt32Array appendArray:other.nestedmessageRepeatedInt32Array];
     }
   }
   if (other.nestedmessageRepeatedForeignmessageArray.count > 0) {
     if (result.nestedmessageRepeatedForeignmessageArray == nil) {
-      result.nestedmessageRepeatedForeignmessageArray = [other.nestedmessageRepeatedForeignmessageArray copyWithZone:[other.nestedmessageRepeatedForeignmessageArray zone]];
+      result.nestedmessageRepeatedForeignmessageArray = [[other.nestedmessageRepeatedForeignmessageArray copyWithZone:[other.nestedmessageRepeatedForeignmessageArray zone]] autorelease];
     } else {
       [result.nestedmessageRepeatedForeignmessageArray appendArray:other.nestedmessageRepeatedForeignmessageArray];
     }
@@ -10841,6 +12596,136 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
 - (TestCamelCaseFieldNames_Builder*) builder {
   return [TestCamelCaseFieldNames builder];
 }
+- (TestCamelCaseFieldNames_Builder*) toBuilder {
+  return [TestCamelCaseFieldNames builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasPrimitiveField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"primitiveField", [NSNumber numberWithInt:self.primitiveField]];
+  }
+  if (self.hasStringField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"stringField", self.stringField];
+  }
+  if (self.hasEnumField) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"enumField", self.enumField];
+  }
+  if (self.hasMessageField) {
+    [output appendFormat:@"%@%@ {\n", indent, @"messageField"];
+    [self.messageField writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasStringPieceField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"stringPieceField", self.stringPieceField];
+  }
+  if (self.hasCordField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"cordField", self.cordField];
+  }
+  for (NSNumber* value in self.repeatedPrimitiveFieldArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedPrimitiveField", value];
+  }
+  for (NSString* element in self.repeatedStringFieldArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedStringField", element];
+  }
+  for (NSNumber* element in self.repeatedEnumFieldArray) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"repeatedEnumField", element.intValue];
+  }
+  for (ForeignMessage* element in self.repeatedMessageFieldArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedMessageField"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (NSString* element in self.repeatedStringPieceFieldArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedStringPieceField", element];
+  }
+  for (NSString* element in self.repeatedCordFieldArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedCordField", element];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestCamelCaseFieldNames class]]) {
+    return NO;
+  }
+  TestCamelCaseFieldNames *otherMessage = other;
+  return
+      self.hasPrimitiveField == otherMessage.hasPrimitiveField &&
+      (!self.hasPrimitiveField || self.primitiveField == otherMessage.primitiveField) &&
+      
+      self.hasStringField == otherMessage.hasStringField &&
+      (!self.hasStringField || [self.stringField isEqual:otherMessage.stringField]) &&
+      
+      self.hasEnumField == otherMessage.hasEnumField &&
+      (!self.hasEnumField || self.enumField != otherMessage.enumField) &&
+      
+      self.hasMessageField == otherMessage.hasMessageField &&
+      (!self.hasMessageField || [self.messageField isEqual:otherMessage.messageField]) &&
+      
+      self.hasStringPieceField == otherMessage.hasStringPieceField &&
+      (!self.hasStringPieceField || [self.stringPieceField isEqual:otherMessage.stringPieceField]) &&
+      
+      self.hasCordField == otherMessage.hasCordField &&
+      (!self.hasCordField || [self.cordField isEqual:otherMessage.cordField]) &&
+      
+      [self.repeatedPrimitiveFieldArray isEqualToArray:otherMessage.repeatedPrimitiveFieldArray] &&
+      
+      [self.repeatedStringFieldArray isEqualToArray:otherMessage.repeatedStringFieldArray] &&
+      
+      [self.repeatedEnumFieldArray isEqualToArray:otherMessage.repeatedEnumFieldArray] &&
+      
+      [self.repeatedMessageFieldArray isEqualToArray:otherMessage.repeatedMessageFieldArray] &&
+      
+      [self.repeatedStringPieceFieldArray isEqualToArray:otherMessage.repeatedStringPieceFieldArray] &&
+      
+      [self.repeatedCordFieldArray isEqualToArray:otherMessage.repeatedCordFieldArray] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasPrimitiveField) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.primitiveField] hash];
+  }
+  if (self.hasStringField) {
+    hashCode = hashCode * 31 + [self.stringField hash];
+  }
+  if (self.hasEnumField) {
+    hashCode = hashCode * 31 + self.enumField;
+  }
+  if (self.hasMessageField) {
+    hashCode = hashCode * 31 + [self.messageField hash];
+  }
+  if (self.hasStringPieceField) {
+    hashCode = hashCode * 31 + [self.stringPieceField hash];
+  }
+  if (self.hasCordField) {
+    hashCode = hashCode * 31 + [self.cordField hash];
+  }
+  for (NSNumber* value in self.repeatedPrimitiveFieldArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSString* element in self.repeatedStringFieldArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSNumber* element in self.repeatedEnumFieldArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  for (ForeignMessage* element in self.repeatedMessageFieldArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSString* element in self.repeatedStringPieceFieldArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSString* element in self.repeatedCordFieldArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestCamelCaseFieldNames_Builder()
@@ -10905,42 +12790,42 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
   }
   if (other.repeatedPrimitiveFieldArray.count > 0) {
     if (result.repeatedPrimitiveFieldArray == nil) {
-      result.repeatedPrimitiveFieldArray = [other.repeatedPrimitiveFieldArray copyWithZone:[other.repeatedPrimitiveFieldArray zone]];
+      result.repeatedPrimitiveFieldArray = [[other.repeatedPrimitiveFieldArray copyWithZone:[other.repeatedPrimitiveFieldArray zone]] autorelease];
     } else {
       [result.repeatedPrimitiveFieldArray appendArray:other.repeatedPrimitiveFieldArray];
     }
   }
   if (other.repeatedStringFieldArray.count > 0) {
     if (result.repeatedStringFieldArray == nil) {
-      result.repeatedStringFieldArray = [other.repeatedStringFieldArray copyWithZone:[other.repeatedStringFieldArray zone]];
+      result.repeatedStringFieldArray = [[other.repeatedStringFieldArray copyWithZone:[other.repeatedStringFieldArray zone]] autorelease];
     } else {
       [result.repeatedStringFieldArray appendArray:other.repeatedStringFieldArray];
     }
   }
   if (other.repeatedEnumFieldArray.count > 0) {
     if (result.repeatedEnumFieldArray == nil) {
-      result.repeatedEnumFieldArray = [other.repeatedEnumFieldArray copyWithZone:[other.repeatedEnumFieldArray zone]];
+      result.repeatedEnumFieldArray = [[other.repeatedEnumFieldArray copyWithZone:[other.repeatedEnumFieldArray zone]] autorelease];
     } else {
       [result.repeatedEnumFieldArray appendArray:other.repeatedEnumFieldArray];
     }
   }
   if (other.repeatedMessageFieldArray.count > 0) {
     if (result.repeatedMessageFieldArray == nil) {
-      result.repeatedMessageFieldArray = [other.repeatedMessageFieldArray copyWithZone:[other.repeatedMessageFieldArray zone]];
+      result.repeatedMessageFieldArray = [[other.repeatedMessageFieldArray copyWithZone:[other.repeatedMessageFieldArray zone]] autorelease];
     } else {
       [result.repeatedMessageFieldArray appendArray:other.repeatedMessageFieldArray];
     }
   }
   if (other.repeatedStringPieceFieldArray.count > 0) {
     if (result.repeatedStringPieceFieldArray == nil) {
-      result.repeatedStringPieceFieldArray = [other.repeatedStringPieceFieldArray copyWithZone:[other.repeatedStringPieceFieldArray zone]];
+      result.repeatedStringPieceFieldArray = [[other.repeatedStringPieceFieldArray copyWithZone:[other.repeatedStringPieceFieldArray zone]] autorelease];
     } else {
       [result.repeatedStringPieceFieldArray appendArray:other.repeatedStringPieceFieldArray];
     }
   }
   if (other.repeatedCordFieldArray.count > 0) {
     if (result.repeatedCordFieldArray == nil) {
-      result.repeatedCordFieldArray = [other.repeatedCordFieldArray copyWithZone:[other.repeatedCordFieldArray zone]];
+      result.repeatedCordFieldArray = [[other.repeatedCordFieldArray copyWithZone:[other.repeatedCordFieldArray zone]] autorelease];
     } else {
       [result.repeatedCordFieldArray appendArray:other.repeatedCordFieldArray];
     }
@@ -11421,6 +13306,69 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
 - (TestFieldOrderings_Builder*) builder {
   return [TestFieldOrderings builder];
 }
+- (TestFieldOrderings_Builder*) toBuilder {
+  return [TestFieldOrderings builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasMyInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"myInt", [NSNumber numberWithLongLong:self.myInt]];
+  }
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:2
+                                              to:11
+                                      withIndent:indent];
+  if (self.hasMyString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"myString", self.myString];
+  }
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:12
+                                              to:101
+                                      withIndent:indent];
+  if (self.hasMyFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"myFloat", [NSNumber numberWithFloat:self.myFloat]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestFieldOrderings class]]) {
+    return NO;
+  }
+  TestFieldOrderings *otherMessage = other;
+  return
+      self.hasMyInt == otherMessage.hasMyInt &&
+      (!self.hasMyInt || self.myInt == otherMessage.myInt) &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:2 to:11] &&
+      
+      self.hasMyString == otherMessage.hasMyString &&
+      (!self.hasMyString || [self.myString isEqual:otherMessage.myString]) &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:12 to:101] &&
+      
+      self.hasMyFloat == otherMessage.hasMyFloat &&
+      (!self.hasMyFloat || self.myFloat == otherMessage.myFloat) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasMyInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.myInt] hash];
+  }
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:2 to:11];
+  if (self.hasMyString) {
+    hashCode = hashCode * 31 + [self.myString hash];
+  }
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:12 to:101];
+  if (self.hasMyFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.myFloat] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestFieldOrderings_Builder()
@@ -11581,6 +13529,7 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
 @property Float32 infFloat;
 @property Float32 negInfFloat;
 @property Float32 nanFloat;
+@property (retain) NSString* cppTrigraph;
 @end
 
 @implementation TestExtremeDefaultValues
@@ -11718,9 +13667,17 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
   hasNanFloat_ = !!value;
 }
 @synthesize nanFloat;
+- (BOOL) hasCppTrigraph {
+  return !!hasCppTrigraph_;
+}
+- (void) setHasCppTrigraph:(BOOL) value {
+  hasCppTrigraph_ = !!value;
+}
+@synthesize cppTrigraph;
 - (void) dealloc {
   self.escapedBytes = nil;
   self.utf8String = nil;
+  self.cppTrigraph = nil;
   [super dealloc];
 }
 - (id) init {
@@ -11744,6 +13701,7 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
     self.infFloat = HUGE_VALF;
     self.negInfFloat = -HUGE_VALF;
     self.nanFloat = NAN;
+    self.cppTrigraph = @"\? \? \?\? \?\? \?\?\? \?\?/ \?\?-";
   }
   return self;
 }
@@ -11820,6 +13778,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   if (self.hasNanFloat) {
     [output writeFloat:19 value:self.nanFloat];
   }
+  if (self.hasCppTrigraph) {
+    [output writeString:20 value:self.cppTrigraph];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (int32_t) serializedSize {
@@ -11886,6 +13847,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   if (self.hasNanFloat) {
     size += computeFloatSize(19, self.nanFloat);
   }
+  if (self.hasCppTrigraph) {
+    size += computeStringSize(20, self.cppTrigraph);
+  }
   size += self.unknownFields.serializedSize;
   memoizedSerializedSize = size;
   return size;
@@ -11916,6 +13880,208 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
 }
 - (TestExtremeDefaultValues_Builder*) builder {
   return [TestExtremeDefaultValues builder];
+}
+- (TestExtremeDefaultValues_Builder*) toBuilder {
+  return [TestExtremeDefaultValues builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasEscapedBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"escapedBytes", self.escapedBytes];
+  }
+  if (self.hasLargeUint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"largeUint32", [NSNumber numberWithInt:self.largeUint32]];
+  }
+  if (self.hasLargeUint64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"largeUint64", [NSNumber numberWithLongLong:self.largeUint64]];
+  }
+  if (self.hasSmallInt32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"smallInt32", [NSNumber numberWithInt:self.smallInt32]];
+  }
+  if (self.hasSmallInt64) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"smallInt64", [NSNumber numberWithLongLong:self.smallInt64]];
+  }
+  if (self.hasUtf8String) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"utf8String", self.utf8String];
+  }
+  if (self.hasZeroFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"zeroFloat", [NSNumber numberWithFloat:self.zeroFloat]];
+  }
+  if (self.hasOneFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneFloat", [NSNumber numberWithFloat:self.oneFloat]];
+  }
+  if (self.hasSmallFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"smallFloat", [NSNumber numberWithFloat:self.smallFloat]];
+  }
+  if (self.hasNegativeOneFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"negativeOneFloat", [NSNumber numberWithFloat:self.negativeOneFloat]];
+  }
+  if (self.hasNegativeFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"negativeFloat", [NSNumber numberWithFloat:self.negativeFloat]];
+  }
+  if (self.hasLargeFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"largeFloat", [NSNumber numberWithFloat:self.largeFloat]];
+  }
+  if (self.hasSmallNegativeFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"smallNegativeFloat", [NSNumber numberWithFloat:self.smallNegativeFloat]];
+  }
+  if (self.hasInfDouble) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"infDouble", [NSNumber numberWithDouble:self.infDouble]];
+  }
+  if (self.hasNegInfDouble) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"negInfDouble", [NSNumber numberWithDouble:self.negInfDouble]];
+  }
+  if (self.hasNanDouble) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"nanDouble", [NSNumber numberWithDouble:self.nanDouble]];
+  }
+  if (self.hasInfFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"infFloat", [NSNumber numberWithFloat:self.infFloat]];
+  }
+  if (self.hasNegInfFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"negInfFloat", [NSNumber numberWithFloat:self.negInfFloat]];
+  }
+  if (self.hasNanFloat) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"nanFloat", [NSNumber numberWithFloat:self.nanFloat]];
+  }
+  if (self.hasCppTrigraph) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"cppTrigraph", self.cppTrigraph];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestExtremeDefaultValues class]]) {
+    return NO;
+  }
+  TestExtremeDefaultValues *otherMessage = other;
+  return
+      self.hasEscapedBytes == otherMessage.hasEscapedBytes &&
+      (!self.hasEscapedBytes || [self.escapedBytes isEqual:otherMessage.escapedBytes]) &&
+      
+      self.hasLargeUint32 == otherMessage.hasLargeUint32 &&
+      (!self.hasLargeUint32 || self.largeUint32 == otherMessage.largeUint32) &&
+      
+      self.hasLargeUint64 == otherMessage.hasLargeUint64 &&
+      (!self.hasLargeUint64 || self.largeUint64 == otherMessage.largeUint64) &&
+      
+      self.hasSmallInt32 == otherMessage.hasSmallInt32 &&
+      (!self.hasSmallInt32 || self.smallInt32 == otherMessage.smallInt32) &&
+      
+      self.hasSmallInt64 == otherMessage.hasSmallInt64 &&
+      (!self.hasSmallInt64 || self.smallInt64 == otherMessage.smallInt64) &&
+      
+      self.hasUtf8String == otherMessage.hasUtf8String &&
+      (!self.hasUtf8String || [self.utf8String isEqual:otherMessage.utf8String]) &&
+      
+      self.hasZeroFloat == otherMessage.hasZeroFloat &&
+      (!self.hasZeroFloat || self.zeroFloat == otherMessage.zeroFloat) &&
+      
+      self.hasOneFloat == otherMessage.hasOneFloat &&
+      (!self.hasOneFloat || self.oneFloat == otherMessage.oneFloat) &&
+      
+      self.hasSmallFloat == otherMessage.hasSmallFloat &&
+      (!self.hasSmallFloat || self.smallFloat == otherMessage.smallFloat) &&
+      
+      self.hasNegativeOneFloat == otherMessage.hasNegativeOneFloat &&
+      (!self.hasNegativeOneFloat || self.negativeOneFloat == otherMessage.negativeOneFloat) &&
+      
+      self.hasNegativeFloat == otherMessage.hasNegativeFloat &&
+      (!self.hasNegativeFloat || self.negativeFloat == otherMessage.negativeFloat) &&
+      
+      self.hasLargeFloat == otherMessage.hasLargeFloat &&
+      (!self.hasLargeFloat || self.largeFloat == otherMessage.largeFloat) &&
+      
+      self.hasSmallNegativeFloat == otherMessage.hasSmallNegativeFloat &&
+      (!self.hasSmallNegativeFloat || self.smallNegativeFloat == otherMessage.smallNegativeFloat) &&
+      
+      self.hasInfDouble == otherMessage.hasInfDouble &&
+      (!self.hasInfDouble || self.infDouble == otherMessage.infDouble) &&
+      
+      self.hasNegInfDouble == otherMessage.hasNegInfDouble &&
+      (!self.hasNegInfDouble || self.negInfDouble == otherMessage.negInfDouble) &&
+      
+      self.hasNanDouble == otherMessage.hasNanDouble &&
+      (!self.hasNanDouble || self.nanDouble == otherMessage.nanDouble) &&
+      
+      self.hasInfFloat == otherMessage.hasInfFloat &&
+      (!self.hasInfFloat || self.infFloat == otherMessage.infFloat) &&
+      
+      self.hasNegInfFloat == otherMessage.hasNegInfFloat &&
+      (!self.hasNegInfFloat || self.negInfFloat == otherMessage.negInfFloat) &&
+      
+      self.hasNanFloat == otherMessage.hasNanFloat &&
+      (!self.hasNanFloat || self.nanFloat == otherMessage.nanFloat) &&
+      
+      self.hasCppTrigraph == otherMessage.hasCppTrigraph &&
+      (!self.hasCppTrigraph || [self.cppTrigraph isEqual:otherMessage.cppTrigraph]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasEscapedBytes) {
+    hashCode = hashCode * 31 + [self.escapedBytes hash];
+  }
+  if (self.hasLargeUint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.largeUint32] hash];
+  }
+  if (self.hasLargeUint64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.largeUint64] hash];
+  }
+  if (self.hasSmallInt32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.smallInt32] hash];
+  }
+  if (self.hasSmallInt64) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.smallInt64] hash];
+  }
+  if (self.hasUtf8String) {
+    hashCode = hashCode * 31 + [self.utf8String hash];
+  }
+  if (self.hasZeroFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.zeroFloat] hash];
+  }
+  if (self.hasOneFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.oneFloat] hash];
+  }
+  if (self.hasSmallFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.smallFloat] hash];
+  }
+  if (self.hasNegativeOneFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.negativeOneFloat] hash];
+  }
+  if (self.hasNegativeFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.negativeFloat] hash];
+  }
+  if (self.hasLargeFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.largeFloat] hash];
+  }
+  if (self.hasSmallNegativeFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.smallNegativeFloat] hash];
+  }
+  if (self.hasInfDouble) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithDouble:self.infDouble] hash];
+  }
+  if (self.hasNegInfDouble) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithDouble:self.negInfDouble] hash];
+  }
+  if (self.hasNanDouble) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithDouble:self.nanDouble] hash];
+  }
+  if (self.hasInfFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.infFloat] hash];
+  }
+  if (self.hasNegInfFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.negInfFloat] hash];
+  }
+  if (self.hasNanFloat) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithFloat:self.nanFloat] hash];
+  }
+  if (self.hasCppTrigraph) {
+    hashCode = hashCode * 31 + [self.cppTrigraph hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -12018,6 +14184,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   if (other.hasNanFloat) {
     [self setNanFloat:other.nanFloat];
   }
+  if (other.hasCppTrigraph) {
+    [self setCppTrigraph:other.cppTrigraph];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -12113,6 +14282,10 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
       }
       case 157: {
         [self setNanFloat:[input readFloat]];
+        break;
+      }
+      case 162: {
+        [self setCppTrigraph:[input readString]];
         break;
       }
     }
@@ -12422,6 +14595,235 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   result.nanFloat = NAN;
   return self;
 }
+- (BOOL) hasCppTrigraph {
+  return result.hasCppTrigraph;
+}
+- (NSString*) cppTrigraph {
+  return result.cppTrigraph;
+}
+- (TestExtremeDefaultValues_Builder*) setCppTrigraph:(NSString*) value {
+  result.hasCppTrigraph = YES;
+  result.cppTrigraph = value;
+  return self;
+}
+- (TestExtremeDefaultValues_Builder*) clearCppTrigraph {
+  result.hasCppTrigraph = NO;
+  result.cppTrigraph = @"\? \? \?\? \?\? \?\?\? \?\?/ \?\?-";
+  return self;
+}
+@end
+
+@interface SparseEnumMessage ()
+@property TestSparseEnum sparseEnum;
+@end
+
+@implementation SparseEnumMessage
+
+- (BOOL) hasSparseEnum {
+  return !!hasSparseEnum_;
+}
+- (void) setHasSparseEnum:(BOOL) value {
+  hasSparseEnum_ = !!value;
+}
+@synthesize sparseEnum;
+- (void) dealloc {
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.sparseEnum = TestSparseEnumSparseA;
+  }
+  return self;
+}
+static SparseEnumMessage* defaultSparseEnumMessageInstance = nil;
++ (void) initialize {
+  if (self == [SparseEnumMessage class]) {
+    defaultSparseEnumMessageInstance = [[SparseEnumMessage alloc] init];
+  }
+}
++ (SparseEnumMessage*) defaultInstance {
+  return defaultSparseEnumMessageInstance;
+}
+- (SparseEnumMessage*) defaultInstance {
+  return defaultSparseEnumMessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasSparseEnum) {
+    [output writeEnum:1 value:self.sparseEnum];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size = memoizedSerializedSize;
+  if (size != -1) {
+    return size;
+  }
+
+  size = 0;
+  if (self.hasSparseEnum) {
+    size += computeEnumSize(1, self.sparseEnum);
+  }
+  size += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size;
+  return size;
+}
++ (SparseEnumMessage*) parseFromData:(NSData*) data {
+  return (SparseEnumMessage*)[[[SparseEnumMessage builder] mergeFromData:data] build];
+}
++ (SparseEnumMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (SparseEnumMessage*)[[[SparseEnumMessage builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (SparseEnumMessage*) parseFromInputStream:(NSInputStream*) input {
+  return (SparseEnumMessage*)[[[SparseEnumMessage builder] mergeFromInputStream:input] build];
+}
++ (SparseEnumMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (SparseEnumMessage*)[[[SparseEnumMessage builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (SparseEnumMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (SparseEnumMessage*)[[[SparseEnumMessage builder] mergeFromCodedInputStream:input] build];
+}
++ (SparseEnumMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (SparseEnumMessage*)[[[SparseEnumMessage builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (SparseEnumMessage_Builder*) builder {
+  return [[[SparseEnumMessage_Builder alloc] init] autorelease];
+}
++ (SparseEnumMessage_Builder*) builderWithPrototype:(SparseEnumMessage*) prototype {
+  return [[SparseEnumMessage builder] mergeFrom:prototype];
+}
+- (SparseEnumMessage_Builder*) builder {
+  return [SparseEnumMessage builder];
+}
+- (SparseEnumMessage_Builder*) toBuilder {
+  return [SparseEnumMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasSparseEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"sparseEnum", self.sparseEnum];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[SparseEnumMessage class]]) {
+    return NO;
+  }
+  SparseEnumMessage *otherMessage = other;
+  return
+      self.hasSparseEnum == otherMessage.hasSparseEnum &&
+      (!self.hasSparseEnum || self.sparseEnum != otherMessage.sparseEnum) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasSparseEnum) {
+    hashCode = hashCode * 31 + self.sparseEnum;
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface SparseEnumMessage_Builder()
+@property (retain) SparseEnumMessage* result;
+@end
+
+@implementation SparseEnumMessage_Builder
+@synthesize result;
+- (void) dealloc {
+  self.result = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[[SparseEnumMessage alloc] init] autorelease];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (SparseEnumMessage_Builder*) clear {
+  self.result = [[[SparseEnumMessage alloc] init] autorelease];
+  return self;
+}
+- (SparseEnumMessage_Builder*) clone {
+  return [SparseEnumMessage builderWithPrototype:result];
+}
+- (SparseEnumMessage*) defaultInstance {
+  return [SparseEnumMessage defaultInstance];
+}
+- (SparseEnumMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (SparseEnumMessage*) buildPartial {
+  SparseEnumMessage* returnMe = [[result retain] autorelease];
+  self.result = nil;
+  return returnMe;
+}
+- (SparseEnumMessage_Builder*) mergeFrom:(SparseEnumMessage*) other {
+  if (other == [SparseEnumMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasSparseEnum) {
+    [self setSparseEnum:other.sparseEnum];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (SparseEnumMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (SparseEnumMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        int32_t value = [input readEnum];
+        if (TestSparseEnumIsValidValue(value)) {
+          [self setSparseEnum:value];
+        } else {
+          [unknownFields mergeVarintField:1 value:value];
+        }
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasSparseEnum {
+  return result.hasSparseEnum;
+}
+- (TestSparseEnum) sparseEnum {
+  return result.sparseEnum;
+}
+- (SparseEnumMessage_Builder*) setSparseEnum:(TestSparseEnum) value {
+  result.hasSparseEnum = YES;
+  result.sparseEnum = value;
+  return self;
+}
+- (SparseEnumMessage_Builder*) clearSparseEnum {
+  result.hasSparseEnum = NO;
+  result.sparseEnum = TestSparseEnumSparseA;
+  return self;
+}
 @end
 
 @interface OneString ()
@@ -12508,6 +14910,37 @@ static OneString* defaultOneStringInstance = nil;
 }
 - (OneString_Builder*) builder {
   return [OneString builder];
+}
+- (OneString_Builder*) toBuilder {
+  return [OneString builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", self.data];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[OneString class]]) {
+    return NO;
+  }
+  OneString *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || [self.data isEqual:otherMessage.data]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [self.data hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -12686,6 +15119,37 @@ static OneBytes* defaultOneBytesInstance = nil;
 }
 - (OneBytes_Builder*) builder {
   return [OneBytes builder];
+}
+- (OneBytes_Builder*) toBuilder {
+  return [OneBytes builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", self.data];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[OneBytes class]]) {
+    return NO;
+  }
+  OneBytes *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || [self.data isEqual:otherMessage.data]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [self.data hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -13290,6 +15754,140 @@ static TestPackedTypes* defaultTestPackedTypesInstance = nil;
 - (TestPackedTypes_Builder*) builder {
   return [TestPackedTypes builder];
 }
+- (TestPackedTypes_Builder*) toBuilder {
+  return [TestPackedTypes builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  for (NSNumber* value in self.packedInt32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedInt32", value];
+  }
+  for (NSNumber* value in self.packedInt64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedInt64", value];
+  }
+  for (NSNumber* value in self.packedUint32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedUint32", value];
+  }
+  for (NSNumber* value in self.packedUint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedUint64", value];
+  }
+  for (NSNumber* value in self.packedSint32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedSint32", value];
+  }
+  for (NSNumber* value in self.packedSint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedSint64", value];
+  }
+  for (NSNumber* value in self.packedFixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedFixed32", value];
+  }
+  for (NSNumber* value in self.packedFixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedFixed64", value];
+  }
+  for (NSNumber* value in self.packedSfixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedSfixed32", value];
+  }
+  for (NSNumber* value in self.packedSfixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedSfixed64", value];
+  }
+  for (NSNumber* value in self.packedFloatArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedFloat", value];
+  }
+  for (NSNumber* value in self.packedDoubleArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedDouble", value];
+  }
+  for (NSNumber* value in self.packedBoolArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedBool", value];
+  }
+  for (NSNumber* element in self.packedEnumArray) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"packedEnum", element.intValue];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestPackedTypes class]]) {
+    return NO;
+  }
+  TestPackedTypes *otherMessage = other;
+  return
+      [self.packedInt32Array isEqualToArray:otherMessage.packedInt32Array] &&
+      
+      [self.packedInt64Array isEqualToArray:otherMessage.packedInt64Array] &&
+      
+      [self.packedUint32Array isEqualToArray:otherMessage.packedUint32Array] &&
+      
+      [self.packedUint64Array isEqualToArray:otherMessage.packedUint64Array] &&
+      
+      [self.packedSint32Array isEqualToArray:otherMessage.packedSint32Array] &&
+      
+      [self.packedSint64Array isEqualToArray:otherMessage.packedSint64Array] &&
+      
+      [self.packedFixed32Array isEqualToArray:otherMessage.packedFixed32Array] &&
+      
+      [self.packedFixed64Array isEqualToArray:otherMessage.packedFixed64Array] &&
+      
+      [self.packedSfixed32Array isEqualToArray:otherMessage.packedSfixed32Array] &&
+      
+      [self.packedSfixed64Array isEqualToArray:otherMessage.packedSfixed64Array] &&
+      
+      [self.packedFloatArray isEqualToArray:otherMessage.packedFloatArray] &&
+      
+      [self.packedDoubleArray isEqualToArray:otherMessage.packedDoubleArray] &&
+      
+      [self.packedBoolArray isEqualToArray:otherMessage.packedBoolArray] &&
+      
+      [self.packedEnumArray isEqualToArray:otherMessage.packedEnumArray] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  for (NSNumber* value in self.packedInt32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedInt64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedUint32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedUint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedSint32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedSint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedFixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedFixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedSfixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedSfixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedFloatArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedDoubleArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.packedBoolArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* element in self.packedEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestPackedTypes_Builder()
@@ -13336,98 +15934,98 @@ static TestPackedTypes* defaultTestPackedTypesInstance = nil;
   }
   if (other.packedInt32Array.count > 0) {
     if (result.packedInt32Array == nil) {
-      result.packedInt32Array = [other.packedInt32Array copyWithZone:[other.packedInt32Array zone]];
+      result.packedInt32Array = [[other.packedInt32Array copyWithZone:[other.packedInt32Array zone]] autorelease];
     } else {
       [result.packedInt32Array appendArray:other.packedInt32Array];
     }
   }
   if (other.packedInt64Array.count > 0) {
     if (result.packedInt64Array == nil) {
-      result.packedInt64Array = [other.packedInt64Array copyWithZone:[other.packedInt64Array zone]];
+      result.packedInt64Array = [[other.packedInt64Array copyWithZone:[other.packedInt64Array zone]] autorelease];
     } else {
       [result.packedInt64Array appendArray:other.packedInt64Array];
     }
   }
   if (other.packedUint32Array.count > 0) {
     if (result.packedUint32Array == nil) {
-      result.packedUint32Array = [other.packedUint32Array copyWithZone:[other.packedUint32Array zone]];
+      result.packedUint32Array = [[other.packedUint32Array copyWithZone:[other.packedUint32Array zone]] autorelease];
     } else {
       [result.packedUint32Array appendArray:other.packedUint32Array];
     }
   }
   if (other.packedUint64Array.count > 0) {
     if (result.packedUint64Array == nil) {
-      result.packedUint64Array = [other.packedUint64Array copyWithZone:[other.packedUint64Array zone]];
+      result.packedUint64Array = [[other.packedUint64Array copyWithZone:[other.packedUint64Array zone]] autorelease];
     } else {
       [result.packedUint64Array appendArray:other.packedUint64Array];
     }
   }
   if (other.packedSint32Array.count > 0) {
     if (result.packedSint32Array == nil) {
-      result.packedSint32Array = [other.packedSint32Array copyWithZone:[other.packedSint32Array zone]];
+      result.packedSint32Array = [[other.packedSint32Array copyWithZone:[other.packedSint32Array zone]] autorelease];
     } else {
       [result.packedSint32Array appendArray:other.packedSint32Array];
     }
   }
   if (other.packedSint64Array.count > 0) {
     if (result.packedSint64Array == nil) {
-      result.packedSint64Array = [other.packedSint64Array copyWithZone:[other.packedSint64Array zone]];
+      result.packedSint64Array = [[other.packedSint64Array copyWithZone:[other.packedSint64Array zone]] autorelease];
     } else {
       [result.packedSint64Array appendArray:other.packedSint64Array];
     }
   }
   if (other.packedFixed32Array.count > 0) {
     if (result.packedFixed32Array == nil) {
-      result.packedFixed32Array = [other.packedFixed32Array copyWithZone:[other.packedFixed32Array zone]];
+      result.packedFixed32Array = [[other.packedFixed32Array copyWithZone:[other.packedFixed32Array zone]] autorelease];
     } else {
       [result.packedFixed32Array appendArray:other.packedFixed32Array];
     }
   }
   if (other.packedFixed64Array.count > 0) {
     if (result.packedFixed64Array == nil) {
-      result.packedFixed64Array = [other.packedFixed64Array copyWithZone:[other.packedFixed64Array zone]];
+      result.packedFixed64Array = [[other.packedFixed64Array copyWithZone:[other.packedFixed64Array zone]] autorelease];
     } else {
       [result.packedFixed64Array appendArray:other.packedFixed64Array];
     }
   }
   if (other.packedSfixed32Array.count > 0) {
     if (result.packedSfixed32Array == nil) {
-      result.packedSfixed32Array = [other.packedSfixed32Array copyWithZone:[other.packedSfixed32Array zone]];
+      result.packedSfixed32Array = [[other.packedSfixed32Array copyWithZone:[other.packedSfixed32Array zone]] autorelease];
     } else {
       [result.packedSfixed32Array appendArray:other.packedSfixed32Array];
     }
   }
   if (other.packedSfixed64Array.count > 0) {
     if (result.packedSfixed64Array == nil) {
-      result.packedSfixed64Array = [other.packedSfixed64Array copyWithZone:[other.packedSfixed64Array zone]];
+      result.packedSfixed64Array = [[other.packedSfixed64Array copyWithZone:[other.packedSfixed64Array zone]] autorelease];
     } else {
       [result.packedSfixed64Array appendArray:other.packedSfixed64Array];
     }
   }
   if (other.packedFloatArray.count > 0) {
     if (result.packedFloatArray == nil) {
-      result.packedFloatArray = [other.packedFloatArray copyWithZone:[other.packedFloatArray zone]];
+      result.packedFloatArray = [[other.packedFloatArray copyWithZone:[other.packedFloatArray zone]] autorelease];
     } else {
       [result.packedFloatArray appendArray:other.packedFloatArray];
     }
   }
   if (other.packedDoubleArray.count > 0) {
     if (result.packedDoubleArray == nil) {
-      result.packedDoubleArray = [other.packedDoubleArray copyWithZone:[other.packedDoubleArray zone]];
+      result.packedDoubleArray = [[other.packedDoubleArray copyWithZone:[other.packedDoubleArray zone]] autorelease];
     } else {
       [result.packedDoubleArray appendArray:other.packedDoubleArray];
     }
   }
   if (other.packedBoolArray.count > 0) {
     if (result.packedBoolArray == nil) {
-      result.packedBoolArray = [other.packedBoolArray copyWithZone:[other.packedBoolArray zone]];
+      result.packedBoolArray = [[other.packedBoolArray copyWithZone:[other.packedBoolArray zone]] autorelease];
     } else {
       [result.packedBoolArray appendArray:other.packedBoolArray];
     }
   }
   if (other.packedEnumArray.count > 0) {
     if (result.packedEnumArray == nil) {
-      result.packedEnumArray = [other.packedEnumArray copyWithZone:[other.packedEnumArray zone]];
+      result.packedEnumArray = [[other.packedEnumArray copyWithZone:[other.packedEnumArray zone]] autorelease];
     } else {
       [result.packedEnumArray appendArray:other.packedEnumArray];
     }
@@ -14402,6 +17000,140 @@ static TestUnpackedTypes* defaultTestUnpackedTypesInstance = nil;
 - (TestUnpackedTypes_Builder*) builder {
   return [TestUnpackedTypes builder];
 }
+- (TestUnpackedTypes_Builder*) toBuilder {
+  return [TestUnpackedTypes builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  for (NSNumber* value in self.unpackedInt32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedInt32", value];
+  }
+  for (NSNumber* value in self.unpackedInt64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedInt64", value];
+  }
+  for (NSNumber* value in self.unpackedUint32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedUint32", value];
+  }
+  for (NSNumber* value in self.unpackedUint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedUint64", value];
+  }
+  for (NSNumber* value in self.unpackedSint32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedSint32", value];
+  }
+  for (NSNumber* value in self.unpackedSint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedSint64", value];
+  }
+  for (NSNumber* value in self.unpackedFixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedFixed32", value];
+  }
+  for (NSNumber* value in self.unpackedFixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedFixed64", value];
+  }
+  for (NSNumber* value in self.unpackedSfixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedSfixed32", value];
+  }
+  for (NSNumber* value in self.unpackedSfixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedSfixed64", value];
+  }
+  for (NSNumber* value in self.unpackedFloatArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedFloat", value];
+  }
+  for (NSNumber* value in self.unpackedDoubleArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedDouble", value];
+  }
+  for (NSNumber* value in self.unpackedBoolArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"unpackedBool", value];
+  }
+  for (NSNumber* element in self.unpackedEnumArray) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"unpackedEnum", element.intValue];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestUnpackedTypes class]]) {
+    return NO;
+  }
+  TestUnpackedTypes *otherMessage = other;
+  return
+      [self.unpackedInt32Array isEqualToArray:otherMessage.unpackedInt32Array] &&
+      
+      [self.unpackedInt64Array isEqualToArray:otherMessage.unpackedInt64Array] &&
+      
+      [self.unpackedUint32Array isEqualToArray:otherMessage.unpackedUint32Array] &&
+      
+      [self.unpackedUint64Array isEqualToArray:otherMessage.unpackedUint64Array] &&
+      
+      [self.unpackedSint32Array isEqualToArray:otherMessage.unpackedSint32Array] &&
+      
+      [self.unpackedSint64Array isEqualToArray:otherMessage.unpackedSint64Array] &&
+      
+      [self.unpackedFixed32Array isEqualToArray:otherMessage.unpackedFixed32Array] &&
+      
+      [self.unpackedFixed64Array isEqualToArray:otherMessage.unpackedFixed64Array] &&
+      
+      [self.unpackedSfixed32Array isEqualToArray:otherMessage.unpackedSfixed32Array] &&
+      
+      [self.unpackedSfixed64Array isEqualToArray:otherMessage.unpackedSfixed64Array] &&
+      
+      [self.unpackedFloatArray isEqualToArray:otherMessage.unpackedFloatArray] &&
+      
+      [self.unpackedDoubleArray isEqualToArray:otherMessage.unpackedDoubleArray] &&
+      
+      [self.unpackedBoolArray isEqualToArray:otherMessage.unpackedBoolArray] &&
+      
+      [self.unpackedEnumArray isEqualToArray:otherMessage.unpackedEnumArray] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  for (NSNumber* value in self.unpackedInt32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedInt64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedUint32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedUint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedSint32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedSint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedFixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedFixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedSfixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedSfixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedFloatArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedDoubleArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.unpackedBoolArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* element in self.unpackedEnumArray) {
+    hashCode = hashCode * 31 + element.intValue;
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestUnpackedTypes_Builder()
@@ -14448,98 +17180,98 @@ static TestUnpackedTypes* defaultTestUnpackedTypesInstance = nil;
   }
   if (other.unpackedInt32Array.count > 0) {
     if (result.unpackedInt32Array == nil) {
-      result.unpackedInt32Array = [other.unpackedInt32Array copyWithZone:[other.unpackedInt32Array zone]];
+      result.unpackedInt32Array = [[other.unpackedInt32Array copyWithZone:[other.unpackedInt32Array zone]] autorelease];
     } else {
       [result.unpackedInt32Array appendArray:other.unpackedInt32Array];
     }
   }
   if (other.unpackedInt64Array.count > 0) {
     if (result.unpackedInt64Array == nil) {
-      result.unpackedInt64Array = [other.unpackedInt64Array copyWithZone:[other.unpackedInt64Array zone]];
+      result.unpackedInt64Array = [[other.unpackedInt64Array copyWithZone:[other.unpackedInt64Array zone]] autorelease];
     } else {
       [result.unpackedInt64Array appendArray:other.unpackedInt64Array];
     }
   }
   if (other.unpackedUint32Array.count > 0) {
     if (result.unpackedUint32Array == nil) {
-      result.unpackedUint32Array = [other.unpackedUint32Array copyWithZone:[other.unpackedUint32Array zone]];
+      result.unpackedUint32Array = [[other.unpackedUint32Array copyWithZone:[other.unpackedUint32Array zone]] autorelease];
     } else {
       [result.unpackedUint32Array appendArray:other.unpackedUint32Array];
     }
   }
   if (other.unpackedUint64Array.count > 0) {
     if (result.unpackedUint64Array == nil) {
-      result.unpackedUint64Array = [other.unpackedUint64Array copyWithZone:[other.unpackedUint64Array zone]];
+      result.unpackedUint64Array = [[other.unpackedUint64Array copyWithZone:[other.unpackedUint64Array zone]] autorelease];
     } else {
       [result.unpackedUint64Array appendArray:other.unpackedUint64Array];
     }
   }
   if (other.unpackedSint32Array.count > 0) {
     if (result.unpackedSint32Array == nil) {
-      result.unpackedSint32Array = [other.unpackedSint32Array copyWithZone:[other.unpackedSint32Array zone]];
+      result.unpackedSint32Array = [[other.unpackedSint32Array copyWithZone:[other.unpackedSint32Array zone]] autorelease];
     } else {
       [result.unpackedSint32Array appendArray:other.unpackedSint32Array];
     }
   }
   if (other.unpackedSint64Array.count > 0) {
     if (result.unpackedSint64Array == nil) {
-      result.unpackedSint64Array = [other.unpackedSint64Array copyWithZone:[other.unpackedSint64Array zone]];
+      result.unpackedSint64Array = [[other.unpackedSint64Array copyWithZone:[other.unpackedSint64Array zone]] autorelease];
     } else {
       [result.unpackedSint64Array appendArray:other.unpackedSint64Array];
     }
   }
   if (other.unpackedFixed32Array.count > 0) {
     if (result.unpackedFixed32Array == nil) {
-      result.unpackedFixed32Array = [other.unpackedFixed32Array copyWithZone:[other.unpackedFixed32Array zone]];
+      result.unpackedFixed32Array = [[other.unpackedFixed32Array copyWithZone:[other.unpackedFixed32Array zone]] autorelease];
     } else {
       [result.unpackedFixed32Array appendArray:other.unpackedFixed32Array];
     }
   }
   if (other.unpackedFixed64Array.count > 0) {
     if (result.unpackedFixed64Array == nil) {
-      result.unpackedFixed64Array = [other.unpackedFixed64Array copyWithZone:[other.unpackedFixed64Array zone]];
+      result.unpackedFixed64Array = [[other.unpackedFixed64Array copyWithZone:[other.unpackedFixed64Array zone]] autorelease];
     } else {
       [result.unpackedFixed64Array appendArray:other.unpackedFixed64Array];
     }
   }
   if (other.unpackedSfixed32Array.count > 0) {
     if (result.unpackedSfixed32Array == nil) {
-      result.unpackedSfixed32Array = [other.unpackedSfixed32Array copyWithZone:[other.unpackedSfixed32Array zone]];
+      result.unpackedSfixed32Array = [[other.unpackedSfixed32Array copyWithZone:[other.unpackedSfixed32Array zone]] autorelease];
     } else {
       [result.unpackedSfixed32Array appendArray:other.unpackedSfixed32Array];
     }
   }
   if (other.unpackedSfixed64Array.count > 0) {
     if (result.unpackedSfixed64Array == nil) {
-      result.unpackedSfixed64Array = [other.unpackedSfixed64Array copyWithZone:[other.unpackedSfixed64Array zone]];
+      result.unpackedSfixed64Array = [[other.unpackedSfixed64Array copyWithZone:[other.unpackedSfixed64Array zone]] autorelease];
     } else {
       [result.unpackedSfixed64Array appendArray:other.unpackedSfixed64Array];
     }
   }
   if (other.unpackedFloatArray.count > 0) {
     if (result.unpackedFloatArray == nil) {
-      result.unpackedFloatArray = [other.unpackedFloatArray copyWithZone:[other.unpackedFloatArray zone]];
+      result.unpackedFloatArray = [[other.unpackedFloatArray copyWithZone:[other.unpackedFloatArray zone]] autorelease];
     } else {
       [result.unpackedFloatArray appendArray:other.unpackedFloatArray];
     }
   }
   if (other.unpackedDoubleArray.count > 0) {
     if (result.unpackedDoubleArray == nil) {
-      result.unpackedDoubleArray = [other.unpackedDoubleArray copyWithZone:[other.unpackedDoubleArray zone]];
+      result.unpackedDoubleArray = [[other.unpackedDoubleArray copyWithZone:[other.unpackedDoubleArray zone]] autorelease];
     } else {
       [result.unpackedDoubleArray appendArray:other.unpackedDoubleArray];
     }
   }
   if (other.unpackedBoolArray.count > 0) {
     if (result.unpackedBoolArray == nil) {
-      result.unpackedBoolArray = [other.unpackedBoolArray copyWithZone:[other.unpackedBoolArray zone]];
+      result.unpackedBoolArray = [[other.unpackedBoolArray copyWithZone:[other.unpackedBoolArray zone]] autorelease];
     } else {
       [result.unpackedBoolArray appendArray:other.unpackedBoolArray];
     }
   }
   if (other.unpackedEnumArray.count > 0) {
     if (result.unpackedEnumArray == nil) {
-      result.unpackedEnumArray = [other.unpackedEnumArray copyWithZone:[other.unpackedEnumArray zone]];
+      result.unpackedEnumArray = [[other.unpackedEnumArray copyWithZone:[other.unpackedEnumArray zone]] autorelease];
     } else {
       [result.unpackedEnumArray appendArray:other.unpackedEnumArray];
     }
@@ -15057,6 +17789,35 @@ static TestPackedExtensions* defaultTestPackedExtensionsInstance = nil;
 - (TestPackedExtensions_Builder*) builder {
   return [TestPackedExtensions builder];
 }
+- (TestPackedExtensions_Builder*) toBuilder {
+  return [TestPackedExtensions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestPackedExtensions class]]) {
+    return NO;
+  }
+  TestPackedExtensions *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestPackedExtensions_Builder()
@@ -15334,6 +18095,95 @@ static TestDynamicExtensions* defaultTestDynamicExtensionsInstance = nil;
 - (TestDynamicExtensions_Builder*) builder {
   return [TestDynamicExtensions builder];
 }
+- (TestDynamicExtensions_Builder*) toBuilder {
+  return [TestDynamicExtensions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasScalarExtension) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"scalarExtension", [NSNumber numberWithInt:self.scalarExtension]];
+  }
+  if (self.hasEnumExtension) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"enumExtension", self.enumExtension];
+  }
+  if (self.hasDynamicEnumExtension) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"dynamicEnumExtension", self.dynamicEnumExtension];
+  }
+  if (self.hasMessageExtension) {
+    [output appendFormat:@"%@%@ {\n", indent, @"messageExtension"];
+    [self.messageExtension writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasDynamicMessageExtension) {
+    [output appendFormat:@"%@%@ {\n", indent, @"dynamicMessageExtension"];
+    [self.dynamicMessageExtension writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (NSString* element in self.repeatedExtensionArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedExtension", element];
+  }
+  for (NSNumber* value in self.packedExtensionArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedExtension", value];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestDynamicExtensions class]]) {
+    return NO;
+  }
+  TestDynamicExtensions *otherMessage = other;
+  return
+      self.hasScalarExtension == otherMessage.hasScalarExtension &&
+      (!self.hasScalarExtension || self.scalarExtension == otherMessage.scalarExtension) &&
+      
+      self.hasEnumExtension == otherMessage.hasEnumExtension &&
+      (!self.hasEnumExtension || self.enumExtension != otherMessage.enumExtension) &&
+      
+      self.hasDynamicEnumExtension == otherMessage.hasDynamicEnumExtension &&
+      (!self.hasDynamicEnumExtension || self.dynamicEnumExtension != otherMessage.dynamicEnumExtension) &&
+      
+      self.hasMessageExtension == otherMessage.hasMessageExtension &&
+      (!self.hasMessageExtension || [self.messageExtension isEqual:otherMessage.messageExtension]) &&
+      
+      self.hasDynamicMessageExtension == otherMessage.hasDynamicMessageExtension &&
+      (!self.hasDynamicMessageExtension || [self.dynamicMessageExtension isEqual:otherMessage.dynamicMessageExtension]) &&
+      
+      [self.repeatedExtensionArray isEqualToArray:otherMessage.repeatedExtensionArray] &&
+      
+      [self.packedExtensionArray isEqualToArray:otherMessage.packedExtensionArray] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasScalarExtension) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.scalarExtension] hash];
+  }
+  if (self.hasEnumExtension) {
+    hashCode = hashCode * 31 + self.enumExtension;
+  }
+  if (self.hasDynamicEnumExtension) {
+    hashCode = hashCode * 31 + self.dynamicEnumExtension;
+  }
+  if (self.hasMessageExtension) {
+    hashCode = hashCode * 31 + [self.messageExtension hash];
+  }
+  if (self.hasDynamicMessageExtension) {
+    hashCode = hashCode * 31 + [self.dynamicMessageExtension hash];
+  }
+  for (NSString* element in self.repeatedExtensionArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  for (NSNumber* value in self.packedExtensionArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_DynamicEnumType value) {
@@ -15429,6 +18279,37 @@ static TestDynamicExtensions_DynamicMessageType* defaultTestDynamicExtensions_Dy
 }
 - (TestDynamicExtensions_DynamicMessageType_Builder*) builder {
   return [TestDynamicExtensions_DynamicMessageType builder];
+}
+- (TestDynamicExtensions_DynamicMessageType_Builder*) toBuilder {
+  return [TestDynamicExtensions_DynamicMessageType builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasDynamicField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"dynamicField", [NSNumber numberWithInt:self.dynamicField]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestDynamicExtensions_DynamicMessageType class]]) {
+    return NO;
+  }
+  TestDynamicExtensions_DynamicMessageType *otherMessage = other;
+  return
+      self.hasDynamicField == otherMessage.hasDynamicField &&
+      (!self.hasDynamicField || self.dynamicField == otherMessage.dynamicField) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasDynamicField) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dynamicField] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -15582,14 +18463,14 @@ static TestDynamicExtensions_DynamicMessageType* defaultTestDynamicExtensions_Dy
   }
   if (other.repeatedExtensionArray.count > 0) {
     if (result.repeatedExtensionArray == nil) {
-      result.repeatedExtensionArray = [other.repeatedExtensionArray copyWithZone:[other.repeatedExtensionArray zone]];
+      result.repeatedExtensionArray = [[other.repeatedExtensionArray copyWithZone:[other.repeatedExtensionArray zone]] autorelease];
     } else {
       [result.repeatedExtensionArray appendArray:other.repeatedExtensionArray];
     }
   }
   if (other.packedExtensionArray.count > 0) {
     if (result.packedExtensionArray == nil) {
-      result.packedExtensionArray = [other.packedExtensionArray copyWithZone:[other.packedExtensionArray zone]];
+      result.packedExtensionArray = [[other.packedExtensionArray copyWithZone:[other.packedExtensionArray zone]] autorelease];
     } else {
       [result.packedExtensionArray appendArray:other.packedExtensionArray];
     }
@@ -16056,6 +18937,76 @@ static TestRepeatedScalarDifferentTagSizes* defaultTestRepeatedScalarDifferentTa
 - (TestRepeatedScalarDifferentTagSizes_Builder*) builder {
   return [TestRepeatedScalarDifferentTagSizes builder];
 }
+- (TestRepeatedScalarDifferentTagSizes_Builder*) toBuilder {
+  return [TestRepeatedScalarDifferentTagSizes builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  for (NSNumber* value in self.repeatedFixed32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedFixed32", value];
+  }
+  for (NSNumber* value in self.repeatedInt32Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedInt32", value];
+  }
+  for (NSNumber* value in self.repeatedFixed64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedFixed64", value];
+  }
+  for (NSNumber* value in self.repeatedInt64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedInt64", value];
+  }
+  for (NSNumber* value in self.repeatedFloatArray) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedFloat", value];
+  }
+  for (NSNumber* value in self.repeatedUint64Array) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedUint64", value];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRepeatedScalarDifferentTagSizes class]]) {
+    return NO;
+  }
+  TestRepeatedScalarDifferentTagSizes *otherMessage = other;
+  return
+      [self.repeatedFixed32Array isEqualToArray:otherMessage.repeatedFixed32Array] &&
+      
+      [self.repeatedInt32Array isEqualToArray:otherMessage.repeatedInt32Array] &&
+      
+      [self.repeatedFixed64Array isEqualToArray:otherMessage.repeatedFixed64Array] &&
+      
+      [self.repeatedInt64Array isEqualToArray:otherMessage.repeatedInt64Array] &&
+      
+      [self.repeatedFloatArray isEqualToArray:otherMessage.repeatedFloatArray] &&
+      
+      [self.repeatedUint64Array isEqualToArray:otherMessage.repeatedUint64Array] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  for (NSNumber* value in self.repeatedFixed32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedInt32Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedFixed64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedInt64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedFloatArray) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  for (NSNumber* value in self.repeatedUint64Array) {
+    hashCode = hashCode * 31 + [value intValue];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestRepeatedScalarDifferentTagSizes_Builder()
@@ -16102,42 +19053,42 @@ static TestRepeatedScalarDifferentTagSizes* defaultTestRepeatedScalarDifferentTa
   }
   if (other.repeatedFixed32Array.count > 0) {
     if (result.repeatedFixed32Array == nil) {
-      result.repeatedFixed32Array = [other.repeatedFixed32Array copyWithZone:[other.repeatedFixed32Array zone]];
+      result.repeatedFixed32Array = [[other.repeatedFixed32Array copyWithZone:[other.repeatedFixed32Array zone]] autorelease];
     } else {
       [result.repeatedFixed32Array appendArray:other.repeatedFixed32Array];
     }
   }
   if (other.repeatedInt32Array.count > 0) {
     if (result.repeatedInt32Array == nil) {
-      result.repeatedInt32Array = [other.repeatedInt32Array copyWithZone:[other.repeatedInt32Array zone]];
+      result.repeatedInt32Array = [[other.repeatedInt32Array copyWithZone:[other.repeatedInt32Array zone]] autorelease];
     } else {
       [result.repeatedInt32Array appendArray:other.repeatedInt32Array];
     }
   }
   if (other.repeatedFixed64Array.count > 0) {
     if (result.repeatedFixed64Array == nil) {
-      result.repeatedFixed64Array = [other.repeatedFixed64Array copyWithZone:[other.repeatedFixed64Array zone]];
+      result.repeatedFixed64Array = [[other.repeatedFixed64Array copyWithZone:[other.repeatedFixed64Array zone]] autorelease];
     } else {
       [result.repeatedFixed64Array appendArray:other.repeatedFixed64Array];
     }
   }
   if (other.repeatedInt64Array.count > 0) {
     if (result.repeatedInt64Array == nil) {
-      result.repeatedInt64Array = [other.repeatedInt64Array copyWithZone:[other.repeatedInt64Array zone]];
+      result.repeatedInt64Array = [[other.repeatedInt64Array copyWithZone:[other.repeatedInt64Array zone]] autorelease];
     } else {
       [result.repeatedInt64Array appendArray:other.repeatedInt64Array];
     }
   }
   if (other.repeatedFloatArray.count > 0) {
     if (result.repeatedFloatArray == nil) {
-      result.repeatedFloatArray = [other.repeatedFloatArray copyWithZone:[other.repeatedFloatArray zone]];
+      result.repeatedFloatArray = [[other.repeatedFloatArray copyWithZone:[other.repeatedFloatArray zone]] autorelease];
     } else {
       [result.repeatedFloatArray appendArray:other.repeatedFloatArray];
     }
   }
   if (other.repeatedUint64Array.count > 0) {
     if (result.repeatedUint64Array == nil) {
-      result.repeatedUint64Array = [other.repeatedUint64Array copyWithZone:[other.repeatedUint64Array zone]];
+      result.repeatedUint64Array = [[other.repeatedUint64Array copyWithZone:[other.repeatedUint64Array zone]] autorelease];
     } else {
       [result.repeatedUint64Array appendArray:other.repeatedUint64Array];
     }
@@ -16411,6 +19362,28 @@ static FooRequest* defaultFooRequestInstance = nil;
 - (FooRequest_Builder*) builder {
   return [FooRequest builder];
 }
+- (FooRequest_Builder*) toBuilder {
+  return [FooRequest builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[FooRequest class]]) {
+    return NO;
+  }
+  FooRequest *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface FooRequest_Builder()
@@ -16549,6 +19522,28 @@ static FooResponse* defaultFooResponseInstance = nil;
 }
 - (FooResponse_Builder*) builder {
   return [FooResponse builder];
+}
+- (FooResponse_Builder*) toBuilder {
+  return [FooResponse builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[FooResponse class]]) {
+    return NO;
+  }
+  FooResponse *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -16689,6 +19684,28 @@ static BarRequest* defaultBarRequestInstance = nil;
 - (BarRequest_Builder*) builder {
   return [BarRequest builder];
 }
+- (BarRequest_Builder*) toBuilder {
+  return [BarRequest builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[BarRequest class]]) {
+    return NO;
+  }
+  BarRequest *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface BarRequest_Builder()
@@ -16827,6 +19844,28 @@ static BarResponse* defaultBarResponseInstance = nil;
 }
 - (BarResponse_Builder*) builder {
   return [BarResponse builder];
+}
+- (BarResponse_Builder*) toBuilder {
+  return [BarResponse builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[BarResponse class]]) {
+    return NO;
+  }
+  BarResponse *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 

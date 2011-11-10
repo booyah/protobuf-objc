@@ -70,6 +70,24 @@ class MessageGenerator {
   void GenerateSerializeOneExtensionRangeSource(
       io::Printer* printer, const Descriptor::ExtensionRange* range);
 
+  void GenerateMessageDescriptionSource(io::Printer* printer);
+  void GenerateDescriptionOneFieldSource(io::Printer* printer,
+                                 const FieldDescriptor* field);
+  void GenerateDescriptionOneExtensionRangeSource(
+      io::Printer* printer, const Descriptor::ExtensionRange* range);
+
+  void GenerateMessageIsEqualSource(io::Printer* printer);
+  void GenerateIsEqualOneFieldSource(io::Printer* printer,
+                                 const FieldDescriptor* field);
+  void GenerateIsEqualOneExtensionRangeSource(
+      io::Printer* printer, const Descriptor::ExtensionRange* range);
+
+  void GenerateMessageHashSource(io::Printer* printer);
+  void GenerateHashOneFieldSource(io::Printer* printer,
+                                 const FieldDescriptor* field);
+  void GenerateHashOneExtensionRangeSource(
+      io::Printer* printer, const Descriptor::ExtensionRange* range);
+
   void GenerateBuilderSource(io::Printer* printer);
   void GenerateCommonBuilderMethodsSource(io::Printer* printer);
   void GenerateBuilderParsingMethodsSource(io::Printer* printer);

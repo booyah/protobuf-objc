@@ -113,6 +113,37 @@ static ImportMessage* defaultImportMessageInstance = nil;
 - (ImportMessage_Builder*) builder {
   return [ImportMessage builder];
 }
+- (ImportMessage_Builder*) toBuilder {
+  return [ImportMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasD) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"d", [NSNumber numberWithInt:self.d]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ImportMessage class]]) {
+    return NO;
+  }
+  ImportMessage *otherMessage = other;
+  return
+      self.hasD == otherMessage.hasD &&
+      (!self.hasD || self.d == otherMessage.d) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasD) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.d] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface ImportMessage_Builder()

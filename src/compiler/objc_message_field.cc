@@ -78,7 +78,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageFieldGenerator::GenerateHasPropertyHeader(io::Printer* printer) const {
     printer->Print(variables_, "- (BOOL) has$capitalized_name$;\n");
-}
+  }
 
 
   void MessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
@@ -229,6 +229,33 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  size += compute$group_or_message$Size($number$, self.$name$);\n"
       "}\n");
   }
+
+
+  void MessageFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "if (self.has$capitalized_name$) {\n"
+      "  [output appendFormat:@\"%@%@ {\\n\", indent, @\"$name$\"];\n"
+      "  [self.$name$ writeDescriptionTo:output\n"
+      "                       withIndent:[NSString stringWithFormat:@\"%@  \", indent]];\n"
+      "  [output appendFormat:@\"%@}\\n\", indent];\n"
+      "}\n");
+  }
+
+
+  void MessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
+      "(!self.has$capitalized_name$ || [self.$name$ isEqual:otherMessage.$name$]) &&\n");
+  }
+
+
+  void MessageFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "if (self.has$capitalized_name$) {\n"
+      "  hashCode = hashCode * 31 + [self.$name$ hash];\n"
+      "}\n");
+  }
+
 
   void MessageFieldGenerator::GenerateMembersSource(io::Printer* printer) const {
   }
@@ -407,6 +434,27 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "for ($type$ *element in self.$list_name$) {\n"
       "  size += compute$group_or_message$Size($number$, element);\n"
+      "}\n");
+  }
+
+  void RepeatedMessageFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "for ($type$* element in self.$list_name$) {\n"
+      "  [output appendFormat:@\"%@%@ {\\n\", indent, @\"$name$\"];\n"
+      "  [element writeDescriptionTo:output\n"
+      "                   withIndent:[NSString stringWithFormat:@\"%@  \", indent]];\n"
+      "  [output appendFormat:@\"%@}\\n\", indent];\n"
+      "}\n");
+  }
+
+  void RepeatedMessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
+    printer->Print(variables_, "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&\n");
+  }
+
+  void RepeatedMessageFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "for ($type$* element in self.$list_name$) {\n"
+      "  hashCode = hashCode * 31 + [element hash];\n"
       "}\n");
   }
 

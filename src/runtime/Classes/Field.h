@@ -43,5 +43,7 @@
 
 - (void)writeTo:(int32_t) fieldNumber output:(PBCodedOutputStream *)output;
 - (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *)output;
-
+- (void)writeDescriptionFor:(int32_t) fieldNumber
+                         to:(NSMutableString*) output
+                 withIndent:(NSString*) indent;
 @end

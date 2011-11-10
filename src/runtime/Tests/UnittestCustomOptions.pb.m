@@ -36,7 +36,16 @@ static id<PBExtensionField> UnittestCustomOptionsRoot_complexOpt1 = nil;
 static id<PBExtensionField> UnittestCustomOptionsRoot_complexOpt2 = nil;
 static id<PBExtensionField> UnittestCustomOptionsRoot_complexOpt3 = nil;
 static id<PBExtensionField> UnittestCustomOptionsRoot_complexOpt6 = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_fileopt = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_msgopt = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_fieldopt = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_enumopt = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_enumvalopt = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_serviceopt = nil;
+static id<PBExtensionField> UnittestCustomOptionsRoot_methodopt = nil;
 static id<PBExtensionField> ComplexOptionType2_ComplexOptionType4_complexOpt4 = nil;
+static id<PBExtensionField> AggregateMessageSetElement_messageSetExtension = nil;
+static id<PBExtensionField> Aggregate_nested = nil;
 static PBExtensionRegistry* extensionRegistry = nil;
 + (PBExtensionRegistry*) extensionRegistry {
   return extensionRegistry;
@@ -341,12 +350,93 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:NO
                                           isPacked:NO
                             isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_fileopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBFileOptions class]
+                                       fieldNumber:15478479
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_msgopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBMessageOptions class]
+                                       fieldNumber:15480088
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_fieldopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBFieldOptions class]
+                                       fieldNumber:15481374
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_enumopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBEnumOptions class]
+                                       fieldNumber:15483218
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_enumvalopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBEnumValueOptions class]
+                                       fieldNumber:15486921
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_serviceopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBServiceOptions class]
+                                       fieldNumber:15497145
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    UnittestCustomOptionsRoot_methodopt =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBMethodOptions class]
+                                       fieldNumber:15512713
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
     ComplexOptionType2_ComplexOptionType4_complexOpt4 =
       [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[PBMessageOptions class]
                                        fieldNumber:7633546
                                       defaultValue:[ComplexOptionType2_ComplexOptionType4 defaultInstance]
                                messageOrGroupClass:[ComplexOptionType2_ComplexOptionType4 class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO] retain];
+    AggregateMessageSetElement_messageSetExtension =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[AggregateMessageSet class]
+                                       fieldNumber:15447542
+                                      defaultValue:[AggregateMessageSetElement defaultInstance]
+                               messageOrGroupClass:[AggregateMessageSetElement class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:YES] retain];
+    Aggregate_nested =
+      [[PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[PBFileOptions class]
+                                       fieldNumber:15476903
+                                      defaultValue:[Aggregate defaultInstance]
+                               messageOrGroupClass:[Aggregate class]
                                         isRepeated:NO
                                           isPacked:NO
                             isMessageSetWireFormat:NO] retain];
@@ -390,7 +480,16 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestCustomOptionsRoot_complexOpt2];
   [registry addExtension:UnittestCustomOptionsRoot_complexOpt3];
   [registry addExtension:UnittestCustomOptionsRoot_complexOpt6];
+  [registry addExtension:UnittestCustomOptionsRoot_fileopt];
+  [registry addExtension:UnittestCustomOptionsRoot_msgopt];
+  [registry addExtension:UnittestCustomOptionsRoot_fieldopt];
+  [registry addExtension:UnittestCustomOptionsRoot_enumopt];
+  [registry addExtension:UnittestCustomOptionsRoot_enumvalopt];
+  [registry addExtension:UnittestCustomOptionsRoot_serviceopt];
+  [registry addExtension:UnittestCustomOptionsRoot_methodopt];
   [registry addExtension:ComplexOptionType2_ComplexOptionType4_complexOpt4];
+  [registry addExtension:AggregateMessageSetElement_messageSetExtension];
+  [registry addExtension:Aggregate_nested];
 }
 + (id<PBExtensionField>) fileOpt1 {
   return UnittestCustomOptionsRoot_fileOpt1;
@@ -491,12 +590,41 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (id<PBExtensionField>) complexOpt6 {
   return UnittestCustomOptionsRoot_complexOpt6;
 }
++ (id<PBExtensionField>) fileopt {
+  return UnittestCustomOptionsRoot_fileopt;
+}
++ (id<PBExtensionField>) msgopt {
+  return UnittestCustomOptionsRoot_msgopt;
+}
++ (id<PBExtensionField>) fieldopt {
+  return UnittestCustomOptionsRoot_fieldopt;
+}
++ (id<PBExtensionField>) enumopt {
+  return UnittestCustomOptionsRoot_enumopt;
+}
++ (id<PBExtensionField>) enumvalopt {
+  return UnittestCustomOptionsRoot_enumvalopt;
+}
++ (id<PBExtensionField>) serviceopt {
+  return UnittestCustomOptionsRoot_serviceopt;
+}
++ (id<PBExtensionField>) methodopt {
+  return UnittestCustomOptionsRoot_methodopt;
+}
 @end
 
 BOOL MethodOpt1IsValidValue(MethodOpt1 value) {
   switch (value) {
     case MethodOpt1Methodopt1Val1:
     case MethodOpt1Methodopt1Val2:
+      return YES;
+    default:
+      return NO;
+  }
+}
+BOOL AggregateEnumIsValidValue(AggregateEnum value) {
+  switch (value) {
+    case AggregateEnumValue:
       return YES;
     default:
       return NO;
@@ -586,6 +714,37 @@ static TestMessageWithCustomOptions* defaultTestMessageWithCustomOptionsInstance
 }
 - (TestMessageWithCustomOptions_Builder*) builder {
   return [TestMessageWithCustomOptions builder];
+}
+- (TestMessageWithCustomOptions_Builder*) toBuilder {
+  return [TestMessageWithCustomOptions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasField1) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"field1", self.field1];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestMessageWithCustomOptions class]]) {
+    return NO;
+  }
+  TestMessageWithCustomOptions *otherMessage = other;
+  return
+      self.hasField1 == otherMessage.hasField1 &&
+      (!self.hasField1 || [self.field1 isEqual:otherMessage.field1]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasField1) {
+    hashCode = hashCode * 31 + [self.field1 hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -758,6 +917,28 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 - (CustomOptionFooRequest_Builder*) builder {
   return [CustomOptionFooRequest builder];
 }
+- (CustomOptionFooRequest_Builder*) toBuilder {
+  return [CustomOptionFooRequest builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionFooRequest class]]) {
+    return NO;
+  }
+  CustomOptionFooRequest *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface CustomOptionFooRequest_Builder()
@@ -897,6 +1078,28 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 - (CustomOptionFooResponse_Builder*) builder {
   return [CustomOptionFooResponse builder];
 }
+- (CustomOptionFooResponse_Builder*) toBuilder {
+  return [CustomOptionFooResponse builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionFooResponse class]]) {
+    return NO;
+  }
+  CustomOptionFooResponse *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface CustomOptionFooResponse_Builder()
@@ -1035,6 +1238,28 @@ static DummyMessageContainingEnum* defaultDummyMessageContainingEnumInstance = n
 }
 - (DummyMessageContainingEnum_Builder*) builder {
   return [DummyMessageContainingEnum builder];
+}
+- (DummyMessageContainingEnum_Builder*) toBuilder {
+  return [DummyMessageContainingEnum builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[DummyMessageContainingEnum class]]) {
+    return NO;
+  }
+  DummyMessageContainingEnum *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -1184,6 +1409,28 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 - (DummyMessageInvalidAsOptionType_Builder*) builder {
   return [DummyMessageInvalidAsOptionType builder];
 }
+- (DummyMessageInvalidAsOptionType_Builder*) toBuilder {
+  return [DummyMessageInvalidAsOptionType builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[DummyMessageInvalidAsOptionType class]]) {
+    return NO;
+  }
+  DummyMessageInvalidAsOptionType *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface DummyMessageInvalidAsOptionType_Builder()
@@ -1322,6 +1569,28 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 }
 - (CustomOptionMinIntegerValues_Builder*) builder {
   return [CustomOptionMinIntegerValues builder];
+}
+- (CustomOptionMinIntegerValues_Builder*) toBuilder {
+  return [CustomOptionMinIntegerValues builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionMinIntegerValues class]]) {
+    return NO;
+  }
+  CustomOptionMinIntegerValues *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -1462,6 +1731,28 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 - (CustomOptionMaxIntegerValues_Builder*) builder {
   return [CustomOptionMaxIntegerValues builder];
 }
+- (CustomOptionMaxIntegerValues_Builder*) toBuilder {
+  return [CustomOptionMaxIntegerValues builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionMaxIntegerValues class]]) {
+    return NO;
+  }
+  CustomOptionMaxIntegerValues *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface CustomOptionMaxIntegerValues_Builder()
@@ -1600,6 +1891,28 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 }
 - (CustomOptionOtherValues_Builder*) builder {
   return [CustomOptionOtherValues builder];
+}
+- (CustomOptionOtherValues_Builder*) toBuilder {
+  return [CustomOptionOtherValues builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[CustomOptionOtherValues class]]) {
+    return NO;
+  }
+  CustomOptionOtherValues *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -1740,6 +2053,28 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 - (SettingRealsFromPositiveInts_Builder*) builder {
   return [SettingRealsFromPositiveInts builder];
 }
+- (SettingRealsFromPositiveInts_Builder*) toBuilder {
+  return [SettingRealsFromPositiveInts builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[SettingRealsFromPositiveInts class]]) {
+    return NO;
+  }
+  SettingRealsFromPositiveInts *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface SettingRealsFromPositiveInts_Builder()
@@ -1878,6 +2213,28 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 }
 - (SettingRealsFromNegativeInts_Builder*) builder {
   return [SettingRealsFromNegativeInts builder];
+}
+- (SettingRealsFromNegativeInts_Builder*) toBuilder {
+  return [SettingRealsFromNegativeInts builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[SettingRealsFromNegativeInts class]]) {
+    return NO;
+  }
+  SettingRealsFromNegativeInts *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -2069,6 +2426,62 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 }
 - (ComplexOptionType1_Builder*) builder {
   return [ComplexOptionType1 builder];
+}
+- (ComplexOptionType1_Builder*) toBuilder {
+  return [ComplexOptionType1 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasFoo) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"foo", [NSNumber numberWithInt:self.foo]];
+  }
+  if (self.hasFoo2) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"foo2", [NSNumber numberWithInt:self.foo2]];
+  }
+  if (self.hasFoo3) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"foo3", [NSNumber numberWithInt:self.foo3]];
+  }
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:100
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ComplexOptionType1 class]]) {
+    return NO;
+  }
+  ComplexOptionType1 *otherMessage = other;
+  return
+      self.hasFoo == otherMessage.hasFoo &&
+      (!self.hasFoo || self.foo == otherMessage.foo) &&
+      
+      self.hasFoo2 == otherMessage.hasFoo2 &&
+      (!self.hasFoo2 || self.foo2 == otherMessage.foo2) &&
+      
+      self.hasFoo3 == otherMessage.hasFoo3 &&
+      (!self.hasFoo3 || self.foo3 == otherMessage.foo3) &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:100 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasFoo) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.foo] hash];
+  }
+  if (self.hasFoo2) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.foo2] hash];
+  }
+  if (self.hasFoo3) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.foo3] hash];
+  }
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:100 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -2338,6 +2751,68 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
 - (ComplexOptionType2_Builder*) builder {
   return [ComplexOptionType2 builder];
 }
+- (ComplexOptionType2_Builder*) toBuilder {
+  return [ComplexOptionType2 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasBar) {
+    [output appendFormat:@"%@%@ {\n", indent, @"bar"];
+    [self.bar writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasBaz) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"baz", [NSNumber numberWithInt:self.baz]];
+  }
+  if (self.hasFred) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fred"];
+    [self.fred writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:100
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ComplexOptionType2 class]]) {
+    return NO;
+  }
+  ComplexOptionType2 *otherMessage = other;
+  return
+      self.hasBar == otherMessage.hasBar &&
+      (!self.hasBar || [self.bar isEqual:otherMessage.bar]) &&
+      
+      self.hasBaz == otherMessage.hasBaz &&
+      (!self.hasBaz || self.baz == otherMessage.baz) &&
+      
+      self.hasFred == otherMessage.hasFred &&
+      (!self.hasFred || [self.fred isEqual:otherMessage.fred]) &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:100 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasBar) {
+    hashCode = hashCode * 31 + [self.bar hash];
+  }
+  if (self.hasBaz) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.baz] hash];
+  }
+  if (self.hasFred) {
+    hashCode = hashCode * 31 + [self.fred hash];
+  }
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:100 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface ComplexOptionType2_ComplexOptionType4 ()
@@ -2426,6 +2901,37 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
 }
 - (ComplexOptionType2_ComplexOptionType4_Builder*) builder {
   return [ComplexOptionType2_ComplexOptionType4 builder];
+}
+- (ComplexOptionType2_ComplexOptionType4_Builder*) toBuilder {
+  return [ComplexOptionType2_ComplexOptionType4 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasWaldo) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"waldo", [NSNumber numberWithInt:self.waldo]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ComplexOptionType2_ComplexOptionType4 class]]) {
+    return NO;
+  }
+  ComplexOptionType2_ComplexOptionType4 *otherMessage = other;
+  return
+      self.hasWaldo == otherMessage.hasWaldo &&
+      (!self.hasWaldo || self.waldo == otherMessage.waldo) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasWaldo) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.waldo] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -2796,6 +3302,49 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
 - (ComplexOptionType3_Builder*) builder {
   return [ComplexOptionType3 builder];
 }
+- (ComplexOptionType3_Builder*) toBuilder {
+  return [ComplexOptionType3 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasQux) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"qux", [NSNumber numberWithInt:self.qux]];
+  }
+  if (self.hasComplexOptionType5) {
+    [output appendFormat:@"%@%@ {\n", indent, @"complexOptionType5"];
+    [self.complexOptionType5 writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ComplexOptionType3 class]]) {
+    return NO;
+  }
+  ComplexOptionType3 *otherMessage = other;
+  return
+      self.hasQux == otherMessage.hasQux &&
+      (!self.hasQux || self.qux == otherMessage.qux) &&
+      
+      self.hasComplexOptionType5 == otherMessage.hasComplexOptionType5 &&
+      (!self.hasComplexOptionType5 || [self.complexOptionType5 isEqual:otherMessage.complexOptionType5]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasQux) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.qux] hash];
+  }
+  if (self.hasComplexOptionType5) {
+    hashCode = hashCode * 31 + [self.complexOptionType5 hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface ComplexOptionType3_ComplexOptionType5 ()
@@ -2881,6 +3430,37 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
 }
 - (ComplexOptionType3_ComplexOptionType5_Builder*) builder {
   return [ComplexOptionType3_ComplexOptionType5 builder];
+}
+- (ComplexOptionType3_ComplexOptionType5_Builder*) toBuilder {
+  return [ComplexOptionType3_ComplexOptionType5 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasPlugh) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"plugh", [NSNumber numberWithInt:self.plugh]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ComplexOptionType3_ComplexOptionType5 class]]) {
+    return NO;
+  }
+  ComplexOptionType3_ComplexOptionType5 *otherMessage = other;
+  return
+      self.hasPlugh == otherMessage.hasPlugh &&
+      (!self.hasPlugh || self.plugh == otherMessage.plugh) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasPlugh) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.plugh] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 
@@ -3192,6 +3772,37 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 - (ComplexOpt6_Builder*) builder {
   return [ComplexOpt6 builder];
 }
+- (ComplexOpt6_Builder*) toBuilder {
+  return [ComplexOpt6 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasXyzzy) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"xyzzy", [NSNumber numberWithInt:self.xyzzy]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ComplexOpt6 class]]) {
+    return NO;
+  }
+  ComplexOpt6 *otherMessage = other;
+  return
+      self.hasXyzzy == otherMessage.hasXyzzy &&
+      (!self.hasXyzzy || self.xyzzy == otherMessage.xyzzy) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasXyzzy) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.xyzzy] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface ComplexOpt6_Builder()
@@ -3354,6 +3965,28 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 - (VariousComplexOptions_Builder*) builder {
   return [VariousComplexOptions builder];
 }
+- (VariousComplexOptions_Builder*) toBuilder {
+  return [VariousComplexOptions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[VariousComplexOptions class]]) {
+    return NO;
+  }
+  VariousComplexOptions *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface VariousComplexOptions_Builder()
@@ -3421,6 +4054,1086 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
       }
     }
   }
+}
+@end
+
+@interface AggregateMessageSet ()
+@end
+
+@implementation AggregateMessageSet
+
+- (void) dealloc {
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+  }
+  return self;
+}
+static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
++ (void) initialize {
+  if (self == [AggregateMessageSet class]) {
+    defaultAggregateMessageSetInstance = [[AggregateMessageSet alloc] init];
+  }
+}
++ (AggregateMessageSet*) defaultInstance {
+  return defaultAggregateMessageSetInstance;
+}
+- (AggregateMessageSet*) defaultInstance {
+  return defaultAggregateMessageSetInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.extensionsAreInitialized) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  [self writeExtensionsToCodedOutputStream:output
+                                      from:4
+                                        to:536870912];
+  [self.unknownFields writeAsMessageSetTo:output];
+}
+- (int32_t) serializedSize {
+  int32_t size = memoizedSerializedSize;
+  if (size != -1) {
+    return size;
+  }
+
+  size = 0;
+  size += [self extensionsSerializedSize];
+  size += self.unknownFields.serializedSizeAsMessageSet;
+  memoizedSerializedSize = size;
+  return size;
+}
++ (AggregateMessageSet*) parseFromData:(NSData*) data {
+  return (AggregateMessageSet*)[[[AggregateMessageSet builder] mergeFromData:data] build];
+}
++ (AggregateMessageSet*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessageSet*)[[[AggregateMessageSet builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessageSet*) parseFromInputStream:(NSInputStream*) input {
+  return (AggregateMessageSet*)[[[AggregateMessageSet builder] mergeFromInputStream:input] build];
+}
++ (AggregateMessageSet*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessageSet*)[[[AggregateMessageSet builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessageSet*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (AggregateMessageSet*)[[[AggregateMessageSet builder] mergeFromCodedInputStream:input] build];
+}
++ (AggregateMessageSet*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessageSet*)[[[AggregateMessageSet builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessageSet_Builder*) builder {
+  return [[[AggregateMessageSet_Builder alloc] init] autorelease];
+}
++ (AggregateMessageSet_Builder*) builderWithPrototype:(AggregateMessageSet*) prototype {
+  return [[AggregateMessageSet builder] mergeFrom:prototype];
+}
+- (AggregateMessageSet_Builder*) builder {
+  return [AggregateMessageSet builder];
+}
+- (AggregateMessageSet_Builder*) toBuilder {
+  return [AggregateMessageSet builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:4
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[AggregateMessageSet class]]) {
+    return NO;
+  }
+  AggregateMessageSet *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:4 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:4 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface AggregateMessageSet_Builder()
+@property (retain) AggregateMessageSet* result;
+@end
+
+@implementation AggregateMessageSet_Builder
+@synthesize result;
+- (void) dealloc {
+  self.result = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[[AggregateMessageSet alloc] init] autorelease];
+  }
+  return self;
+}
+- (PBExtendableMessage*) internalGetResult {
+  return result;
+}
+- (AggregateMessageSet_Builder*) clear {
+  self.result = [[[AggregateMessageSet alloc] init] autorelease];
+  return self;
+}
+- (AggregateMessageSet_Builder*) clone {
+  return [AggregateMessageSet builderWithPrototype:result];
+}
+- (AggregateMessageSet*) defaultInstance {
+  return [AggregateMessageSet defaultInstance];
+}
+- (AggregateMessageSet*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (AggregateMessageSet*) buildPartial {
+  AggregateMessageSet* returnMe = [[result retain] autorelease];
+  self.result = nil;
+  return returnMe;
+}
+- (AggregateMessageSet_Builder*) mergeFrom:(AggregateMessageSet*) other {
+  if (other == [AggregateMessageSet defaultInstance]) {
+    return self;
+  }
+  [self mergeExtensionFields:other];
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (AggregateMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (AggregateMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+@end
+
+@interface AggregateMessageSetElement ()
+@property (retain) NSString* s;
+@end
+
+@implementation AggregateMessageSetElement
+
+- (BOOL) hasS {
+  return !!hasS_;
+}
+- (void) setHasS:(BOOL) value {
+  hasS_ = !!value;
+}
+@synthesize s;
+- (void) dealloc {
+  self.s = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.s = @"";
+  }
+  return self;
+}
++ (id<PBExtensionField>) messageSetExtension {
+  return AggregateMessageSetElement_messageSetExtension;
+}
+static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = nil;
++ (void) initialize {
+  if (self == [AggregateMessageSetElement class]) {
+    defaultAggregateMessageSetElementInstance = [[AggregateMessageSetElement alloc] init];
+  }
+}
++ (AggregateMessageSetElement*) defaultInstance {
+  return defaultAggregateMessageSetElementInstance;
+}
+- (AggregateMessageSetElement*) defaultInstance {
+  return defaultAggregateMessageSetElementInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasS) {
+    [output writeString:1 value:self.s];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size = memoizedSerializedSize;
+  if (size != -1) {
+    return size;
+  }
+
+  size = 0;
+  if (self.hasS) {
+    size += computeStringSize(1, self.s);
+  }
+  size += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size;
+  return size;
+}
++ (AggregateMessageSetElement*) parseFromData:(NSData*) data {
+  return (AggregateMessageSetElement*)[[[AggregateMessageSetElement builder] mergeFromData:data] build];
+}
++ (AggregateMessageSetElement*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessageSetElement*)[[[AggregateMessageSetElement builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessageSetElement*) parseFromInputStream:(NSInputStream*) input {
+  return (AggregateMessageSetElement*)[[[AggregateMessageSetElement builder] mergeFromInputStream:input] build];
+}
++ (AggregateMessageSetElement*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessageSetElement*)[[[AggregateMessageSetElement builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessageSetElement*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (AggregateMessageSetElement*)[[[AggregateMessageSetElement builder] mergeFromCodedInputStream:input] build];
+}
++ (AggregateMessageSetElement*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessageSetElement*)[[[AggregateMessageSetElement builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessageSetElement_Builder*) builder {
+  return [[[AggregateMessageSetElement_Builder alloc] init] autorelease];
+}
++ (AggregateMessageSetElement_Builder*) builderWithPrototype:(AggregateMessageSetElement*) prototype {
+  return [[AggregateMessageSetElement builder] mergeFrom:prototype];
+}
+- (AggregateMessageSetElement_Builder*) builder {
+  return [AggregateMessageSetElement builder];
+}
+- (AggregateMessageSetElement_Builder*) toBuilder {
+  return [AggregateMessageSetElement builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasS) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"s", self.s];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[AggregateMessageSetElement class]]) {
+    return NO;
+  }
+  AggregateMessageSetElement *otherMessage = other;
+  return
+      self.hasS == otherMessage.hasS &&
+      (!self.hasS || [self.s isEqual:otherMessage.s]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasS) {
+    hashCode = hashCode * 31 + [self.s hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface AggregateMessageSetElement_Builder()
+@property (retain) AggregateMessageSetElement* result;
+@end
+
+@implementation AggregateMessageSetElement_Builder
+@synthesize result;
+- (void) dealloc {
+  self.result = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[[AggregateMessageSetElement alloc] init] autorelease];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (AggregateMessageSetElement_Builder*) clear {
+  self.result = [[[AggregateMessageSetElement alloc] init] autorelease];
+  return self;
+}
+- (AggregateMessageSetElement_Builder*) clone {
+  return [AggregateMessageSetElement builderWithPrototype:result];
+}
+- (AggregateMessageSetElement*) defaultInstance {
+  return [AggregateMessageSetElement defaultInstance];
+}
+- (AggregateMessageSetElement*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (AggregateMessageSetElement*) buildPartial {
+  AggregateMessageSetElement* returnMe = [[result retain] autorelease];
+  self.result = nil;
+  return returnMe;
+}
+- (AggregateMessageSetElement_Builder*) mergeFrom:(AggregateMessageSetElement*) other {
+  if (other == [AggregateMessageSetElement defaultInstance]) {
+    return self;
+  }
+  if (other.hasS) {
+    [self setS:other.s];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (AggregateMessageSetElement_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (AggregateMessageSetElement_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        [self setS:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasS {
+  return result.hasS;
+}
+- (NSString*) s {
+  return result.s;
+}
+- (AggregateMessageSetElement_Builder*) setS:(NSString*) value {
+  result.hasS = YES;
+  result.s = value;
+  return self;
+}
+- (AggregateMessageSetElement_Builder*) clearS {
+  result.hasS = NO;
+  result.s = @"";
+  return self;
+}
+@end
+
+@interface Aggregate ()
+@property int32_t i;
+@property (retain) NSString* s;
+@property (retain) Aggregate* sub;
+@property (retain) PBFileOptions* file;
+@property (retain) AggregateMessageSet* mset;
+@end
+
+@implementation Aggregate
+
+- (BOOL) hasI {
+  return !!hasI_;
+}
+- (void) setHasI:(BOOL) value {
+  hasI_ = !!value;
+}
+@synthesize i;
+- (BOOL) hasS {
+  return !!hasS_;
+}
+- (void) setHasS:(BOOL) value {
+  hasS_ = !!value;
+}
+@synthesize s;
+- (BOOL) hasSub {
+  return !!hasSub_;
+}
+- (void) setHasSub:(BOOL) value {
+  hasSub_ = !!value;
+}
+@synthesize sub;
+- (BOOL) hasFile {
+  return !!hasFile_;
+}
+- (void) setHasFile:(BOOL) value {
+  hasFile_ = !!value;
+}
+@synthesize file;
+- (BOOL) hasMset {
+  return !!hasMset_;
+}
+- (void) setHasMset:(BOOL) value {
+  hasMset_ = !!value;
+}
+@synthesize mset;
+- (void) dealloc {
+  self.s = nil;
+  self.sub = nil;
+  self.file = nil;
+  self.mset = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.i = 0;
+    self.s = @"";
+    self.sub = [Aggregate defaultInstance];
+    self.file = [PBFileOptions defaultInstance];
+    self.mset = [AggregateMessageSet defaultInstance];
+  }
+  return self;
+}
++ (id<PBExtensionField>) nested {
+  return Aggregate_nested;
+}
+static Aggregate* defaultAggregateInstance = nil;
++ (void) initialize {
+  if (self == [Aggregate class]) {
+    defaultAggregateInstance = [[Aggregate alloc] init];
+  }
+}
++ (Aggregate*) defaultInstance {
+  return defaultAggregateInstance;
+}
+- (Aggregate*) defaultInstance {
+  return defaultAggregateInstance;
+}
+- (BOOL) isInitialized {
+  if (self.hasSub) {
+    if (!self.sub.isInitialized) {
+      return NO;
+    }
+  }
+  if (self.hasFile) {
+    if (!self.file.isInitialized) {
+      return NO;
+    }
+  }
+  if (self.hasMset) {
+    if (!self.mset.isInitialized) {
+      return NO;
+    }
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasI) {
+    [output writeInt32:1 value:self.i];
+  }
+  if (self.hasS) {
+    [output writeString:2 value:self.s];
+  }
+  if (self.hasSub) {
+    [output writeMessage:3 value:self.sub];
+  }
+  if (self.hasFile) {
+    [output writeMessage:4 value:self.file];
+  }
+  if (self.hasMset) {
+    [output writeMessage:5 value:self.mset];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size = memoizedSerializedSize;
+  if (size != -1) {
+    return size;
+  }
+
+  size = 0;
+  if (self.hasI) {
+    size += computeInt32Size(1, self.i);
+  }
+  if (self.hasS) {
+    size += computeStringSize(2, self.s);
+  }
+  if (self.hasSub) {
+    size += computeMessageSize(3, self.sub);
+  }
+  if (self.hasFile) {
+    size += computeMessageSize(4, self.file);
+  }
+  if (self.hasMset) {
+    size += computeMessageSize(5, self.mset);
+  }
+  size += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size;
+  return size;
+}
++ (Aggregate*) parseFromData:(NSData*) data {
+  return (Aggregate*)[[[Aggregate builder] mergeFromData:data] build];
+}
++ (Aggregate*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Aggregate*)[[[Aggregate builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (Aggregate*) parseFromInputStream:(NSInputStream*) input {
+  return (Aggregate*)[[[Aggregate builder] mergeFromInputStream:input] build];
+}
++ (Aggregate*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Aggregate*)[[[Aggregate builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Aggregate*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (Aggregate*)[[[Aggregate builder] mergeFromCodedInputStream:input] build];
+}
++ (Aggregate*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Aggregate*)[[[Aggregate builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Aggregate_Builder*) builder {
+  return [[[Aggregate_Builder alloc] init] autorelease];
+}
++ (Aggregate_Builder*) builderWithPrototype:(Aggregate*) prototype {
+  return [[Aggregate builder] mergeFrom:prototype];
+}
+- (Aggregate_Builder*) builder {
+  return [Aggregate builder];
+}
+- (Aggregate_Builder*) toBuilder {
+  return [Aggregate builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasI) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"i", [NSNumber numberWithInt:self.i]];
+  }
+  if (self.hasS) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"s", self.s];
+  }
+  if (self.hasSub) {
+    [output appendFormat:@"%@%@ {\n", indent, @"sub"];
+    [self.sub writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasFile) {
+    [output appendFormat:@"%@%@ {\n", indent, @"file"];
+    [self.file writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasMset) {
+    [output appendFormat:@"%@%@ {\n", indent, @"mset"];
+    [self.mset writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[Aggregate class]]) {
+    return NO;
+  }
+  Aggregate *otherMessage = other;
+  return
+      self.hasI == otherMessage.hasI &&
+      (!self.hasI || self.i == otherMessage.i) &&
+      
+      self.hasS == otherMessage.hasS &&
+      (!self.hasS || [self.s isEqual:otherMessage.s]) &&
+      
+      self.hasSub == otherMessage.hasSub &&
+      (!self.hasSub || [self.sub isEqual:otherMessage.sub]) &&
+      
+      self.hasFile == otherMessage.hasFile &&
+      (!self.hasFile || [self.file isEqual:otherMessage.file]) &&
+      
+      self.hasMset == otherMessage.hasMset &&
+      (!self.hasMset || [self.mset isEqual:otherMessage.mset]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasI) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
+  }
+  if (self.hasS) {
+    hashCode = hashCode * 31 + [self.s hash];
+  }
+  if (self.hasSub) {
+    hashCode = hashCode * 31 + [self.sub hash];
+  }
+  if (self.hasFile) {
+    hashCode = hashCode * 31 + [self.file hash];
+  }
+  if (self.hasMset) {
+    hashCode = hashCode * 31 + [self.mset hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface Aggregate_Builder()
+@property (retain) Aggregate* result;
+@end
+
+@implementation Aggregate_Builder
+@synthesize result;
+- (void) dealloc {
+  self.result = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[[Aggregate alloc] init] autorelease];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (Aggregate_Builder*) clear {
+  self.result = [[[Aggregate alloc] init] autorelease];
+  return self;
+}
+- (Aggregate_Builder*) clone {
+  return [Aggregate builderWithPrototype:result];
+}
+- (Aggregate*) defaultInstance {
+  return [Aggregate defaultInstance];
+}
+- (Aggregate*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (Aggregate*) buildPartial {
+  Aggregate* returnMe = [[result retain] autorelease];
+  self.result = nil;
+  return returnMe;
+}
+- (Aggregate_Builder*) mergeFrom:(Aggregate*) other {
+  if (other == [Aggregate defaultInstance]) {
+    return self;
+  }
+  if (other.hasI) {
+    [self setI:other.i];
+  }
+  if (other.hasS) {
+    [self setS:other.s];
+  }
+  if (other.hasSub) {
+    [self mergeSub:other.sub];
+  }
+  if (other.hasFile) {
+    [self mergeFile:other.file];
+  }
+  if (other.hasMset) {
+    [self mergeMset:other.mset];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (Aggregate_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (Aggregate_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setI:[input readInt32]];
+        break;
+      }
+      case 18: {
+        [self setS:[input readString]];
+        break;
+      }
+      case 26: {
+        Aggregate_Builder* subBuilder = [Aggregate builder];
+        if (self.hasSub) {
+          [subBuilder mergeFrom:self.sub];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setSub:[subBuilder buildPartial]];
+        break;
+      }
+      case 34: {
+        PBFileOptions_Builder* subBuilder = [PBFileOptions builder];
+        if (self.hasFile) {
+          [subBuilder mergeFrom:self.file];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setFile:[subBuilder buildPartial]];
+        break;
+      }
+      case 42: {
+        AggregateMessageSet_Builder* subBuilder = [AggregateMessageSet builder];
+        if (self.hasMset) {
+          [subBuilder mergeFrom:self.mset];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setMset:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasI {
+  return result.hasI;
+}
+- (int32_t) i {
+  return result.i;
+}
+- (Aggregate_Builder*) setI:(int32_t) value {
+  result.hasI = YES;
+  result.i = value;
+  return self;
+}
+- (Aggregate_Builder*) clearI {
+  result.hasI = NO;
+  result.i = 0;
+  return self;
+}
+- (BOOL) hasS {
+  return result.hasS;
+}
+- (NSString*) s {
+  return result.s;
+}
+- (Aggregate_Builder*) setS:(NSString*) value {
+  result.hasS = YES;
+  result.s = value;
+  return self;
+}
+- (Aggregate_Builder*) clearS {
+  result.hasS = NO;
+  result.s = @"";
+  return self;
+}
+- (BOOL) hasSub {
+  return result.hasSub;
+}
+- (Aggregate*) sub {
+  return result.sub;
+}
+- (Aggregate_Builder*) setSub:(Aggregate*) value {
+  result.hasSub = YES;
+  result.sub = value;
+  return self;
+}
+- (Aggregate_Builder*) setSubBuilder:(Aggregate_Builder*) builderForValue {
+  return [self setSub:[builderForValue build]];
+}
+- (Aggregate_Builder*) mergeSub:(Aggregate*) value {
+  if (result.hasSub &&
+      result.sub != [Aggregate defaultInstance]) {
+    result.sub =
+      [[[Aggregate builderWithPrototype:result.sub] mergeFrom:value] buildPartial];
+  } else {
+    result.sub = value;
+  }
+  result.hasSub = YES;
+  return self;
+}
+- (Aggregate_Builder*) clearSub {
+  result.hasSub = NO;
+  result.sub = [Aggregate defaultInstance];
+  return self;
+}
+- (BOOL) hasFile {
+  return result.hasFile;
+}
+- (PBFileOptions*) file {
+  return result.file;
+}
+- (Aggregate_Builder*) setFile:(PBFileOptions*) value {
+  result.hasFile = YES;
+  result.file = value;
+  return self;
+}
+- (Aggregate_Builder*) setFileBuilder:(PBFileOptions_Builder*) builderForValue {
+  return [self setFile:[builderForValue build]];
+}
+- (Aggregate_Builder*) mergeFile:(PBFileOptions*) value {
+  if (result.hasFile &&
+      result.file != [PBFileOptions defaultInstance]) {
+    result.file =
+      [[[PBFileOptions builderWithPrototype:result.file] mergeFrom:value] buildPartial];
+  } else {
+    result.file = value;
+  }
+  result.hasFile = YES;
+  return self;
+}
+- (Aggregate_Builder*) clearFile {
+  result.hasFile = NO;
+  result.file = [PBFileOptions defaultInstance];
+  return self;
+}
+- (BOOL) hasMset {
+  return result.hasMset;
+}
+- (AggregateMessageSet*) mset {
+  return result.mset;
+}
+- (Aggregate_Builder*) setMset:(AggregateMessageSet*) value {
+  result.hasMset = YES;
+  result.mset = value;
+  return self;
+}
+- (Aggregate_Builder*) setMsetBuilder:(AggregateMessageSet_Builder*) builderForValue {
+  return [self setMset:[builderForValue build]];
+}
+- (Aggregate_Builder*) mergeMset:(AggregateMessageSet*) value {
+  if (result.hasMset &&
+      result.mset != [AggregateMessageSet defaultInstance]) {
+    result.mset =
+      [[[AggregateMessageSet builderWithPrototype:result.mset] mergeFrom:value] buildPartial];
+  } else {
+    result.mset = value;
+  }
+  result.hasMset = YES;
+  return self;
+}
+- (Aggregate_Builder*) clearMset {
+  result.hasMset = NO;
+  result.mset = [AggregateMessageSet defaultInstance];
+  return self;
+}
+@end
+
+@interface AggregateMessage ()
+@property int32_t fieldname;
+@end
+
+@implementation AggregateMessage
+
+- (BOOL) hasFieldname {
+  return !!hasFieldname_;
+}
+- (void) setHasFieldname:(BOOL) value {
+  hasFieldname_ = !!value;
+}
+@synthesize fieldname;
+- (void) dealloc {
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.fieldname = 0;
+  }
+  return self;
+}
+static AggregateMessage* defaultAggregateMessageInstance = nil;
++ (void) initialize {
+  if (self == [AggregateMessage class]) {
+    defaultAggregateMessageInstance = [[AggregateMessage alloc] init];
+  }
+}
++ (AggregateMessage*) defaultInstance {
+  return defaultAggregateMessageInstance;
+}
+- (AggregateMessage*) defaultInstance {
+  return defaultAggregateMessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasFieldname) {
+    [output writeInt32:1 value:self.fieldname];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (int32_t) serializedSize {
+  int32_t size = memoizedSerializedSize;
+  if (size != -1) {
+    return size;
+  }
+
+  size = 0;
+  if (self.hasFieldname) {
+    size += computeInt32Size(1, self.fieldname);
+  }
+  size += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size;
+  return size;
+}
++ (AggregateMessage*) parseFromData:(NSData*) data {
+  return (AggregateMessage*)[[[AggregateMessage builder] mergeFromData:data] build];
+}
++ (AggregateMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessage*)[[[AggregateMessage builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessage*) parseFromInputStream:(NSInputStream*) input {
+  return (AggregateMessage*)[[[AggregateMessage builder] mergeFromInputStream:input] build];
+}
++ (AggregateMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessage*)[[[AggregateMessage builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (AggregateMessage*)[[[AggregateMessage builder] mergeFromCodedInputStream:input] build];
+}
++ (AggregateMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (AggregateMessage*)[[[AggregateMessage builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (AggregateMessage_Builder*) builder {
+  return [[[AggregateMessage_Builder alloc] init] autorelease];
+}
++ (AggregateMessage_Builder*) builderWithPrototype:(AggregateMessage*) prototype {
+  return [[AggregateMessage builder] mergeFrom:prototype];
+}
+- (AggregateMessage_Builder*) builder {
+  return [AggregateMessage builder];
+}
+- (AggregateMessage_Builder*) toBuilder {
+  return [AggregateMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasFieldname) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fieldname", [NSNumber numberWithInt:self.fieldname]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[AggregateMessage class]]) {
+    return NO;
+  }
+  AggregateMessage *otherMessage = other;
+  return
+      self.hasFieldname == otherMessage.hasFieldname &&
+      (!self.hasFieldname || self.fieldname == otherMessage.fieldname) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasFieldname) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.fieldname] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface AggregateMessage_Builder()
+@property (retain) AggregateMessage* result;
+@end
+
+@implementation AggregateMessage_Builder
+@synthesize result;
+- (void) dealloc {
+  self.result = nil;
+  [super dealloc];
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[[AggregateMessage alloc] init] autorelease];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (AggregateMessage_Builder*) clear {
+  self.result = [[[AggregateMessage alloc] init] autorelease];
+  return self;
+}
+- (AggregateMessage_Builder*) clone {
+  return [AggregateMessage builderWithPrototype:result];
+}
+- (AggregateMessage*) defaultInstance {
+  return [AggregateMessage defaultInstance];
+}
+- (AggregateMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (AggregateMessage*) buildPartial {
+  AggregateMessage* returnMe = [[result retain] autorelease];
+  self.result = nil;
+  return returnMe;
+}
+- (AggregateMessage_Builder*) mergeFrom:(AggregateMessage*) other {
+  if (other == [AggregateMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasFieldname) {
+    [self setFieldname:other.fieldname];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (AggregateMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (AggregateMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    int32_t tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setFieldname:[input readInt32]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasFieldname {
+  return result.hasFieldname;
+}
+- (int32_t) fieldname {
+  return result.fieldname;
+}
+- (AggregateMessage_Builder*) setFieldname:(int32_t) value {
+  result.hasFieldname = YES;
+  result.fieldname = value;
+  return self;
+}
+- (AggregateMessage_Builder*) clearFieldname {
+  result.hasFieldname = NO;
+  result.fieldname = 0;
+  return self;
 }
 @end
 

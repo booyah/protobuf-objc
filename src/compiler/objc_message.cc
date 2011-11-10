@@ -302,7 +302,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "- ($classname$_Builder*) builder;\n"
       "+ ($classname$_Builder*) builder;\n"
-      "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype;\n",
+      "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype;\n"
+      "- ($classname$_Builder*) toBuilder;\n",
       "classname", ClassName(descriptor_));
 
     GenerateParseFromMethodsHeader(printer);
@@ -398,8 +399,17 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "}\n"
       "- ($classname$_Builder*) builder {\n"
       "  return [$classname$ builder];\n"
+      "}\n"
+      "- ($classname$_Builder*) toBuilder {\n"
+      "  return [$classname$ builderWithPrototype:self];\n"
       "}\n",
       "classname", ClassName(descriptor_));
+
+    GenerateMessageDescriptionSource(printer);
+
+    GenerateMessageIsEqualSource(printer);
+
+    GenerateMessageHashSource(printer);
 
     printer->Print("@end\n\n");
 
@@ -606,6 +616,138 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "}\n");
   }
 
+  void MessageGenerator::GenerateMessageDescriptionSource(io::Printer* printer) {
+    scoped_array<const FieldDescriptor*> sorted_fields(SortFieldsByNumber(descriptor_));
+
+    vector<const Descriptor::ExtensionRange*> sorted_extensions;
+    for (int i = 0; i < descriptor_->extension_range_count(); ++i) {
+      sorted_extensions.push_back(descriptor_->extension_range(i));
+    }
+    sort(sorted_extensions.begin(), sorted_extensions.end(),
+      ExtensionRangeOrdering());
+
+    printer->Print(
+      "- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {\n");
+    printer->Indent();
+
+    // Merge the fields and the extension ranges, both sorted by field number.
+    for (int i = 0, j = 0;
+      i < descriptor_->field_count() || j < sorted_extensions.size(); ) {
+        if (i == descriptor_->field_count()) {
+          GenerateDescriptionOneExtensionRangeSource(printer, sorted_extensions[j++]);
+        } else if (j == sorted_extensions.size()) {
+          GenerateDescriptionOneFieldSource(printer, sorted_fields[i++]);
+        } else if (sorted_fields[i]->number() < sorted_extensions[j]->start) {
+          GenerateDescriptionOneFieldSource(printer, sorted_fields[i++]);
+        } else {
+          GenerateDescriptionOneExtensionRangeSource(printer, sorted_extensions[j++]);
+        }
+    }
+
+    printer->Print(
+      "[self.unknownFields writeDescriptionTo:output withIndent:indent];\n");
+
+    printer->Outdent();
+    printer->Print(
+      "}\n");
+  }
+
+
+  void MessageGenerator::GenerateMessageIsEqualSource(io::Printer* printer) {
+    scoped_array<const FieldDescriptor*> sorted_fields(SortFieldsByNumber(descriptor_));
+
+    vector<const Descriptor::ExtensionRange*> sorted_extensions;
+    for (int i = 0; i < descriptor_->extension_range_count(); ++i) {
+      sorted_extensions.push_back(descriptor_->extension_range(i));
+    }
+    sort(sorted_extensions.begin(), sorted_extensions.end(),
+      ExtensionRangeOrdering());
+
+    printer->Print(
+      "- (BOOL) isEqual:(id)other {\n");
+    printer->Indent();
+
+    printer->Print(
+      "if (other == self) {\n"
+      "  return YES;\n"
+      "}\n"
+      "if (![other isKindOfClass:[$classname$ class]]) {\n"
+      "  return NO;\n"
+      "}\n"
+      "$classname$ *otherMessage = other;\n",
+      "classname", ClassName(descriptor_));
+
+    printer->Print("return\n");
+    printer->Indent();
+    printer->Indent();
+
+    // Merge the fields and the extension ranges, both sorted by field number.
+    for (int i = 0, j = 0;
+      i < descriptor_->field_count() || j < sorted_extensions.size(); ) {
+        if (i == descriptor_->field_count()) {
+          GenerateIsEqualOneExtensionRangeSource(printer, sorted_extensions[j++]);
+        } else if (j == sorted_extensions.size()) {
+          GenerateIsEqualOneFieldSource(printer, sorted_fields[i++]);
+        } else if (sorted_fields[i]->number() < sorted_extensions[j]->start) {
+          GenerateIsEqualOneFieldSource(printer, sorted_fields[i++]);
+        } else {
+          GenerateIsEqualOneExtensionRangeSource(printer, sorted_extensions[j++]);
+        }
+        printer->Print("\n");
+    }
+
+    printer->Print(
+      "(self.unknownFields == otherMessage.unknownFields ||"
+      " (self.unknownFields != nil &&"
+      " [self.unknownFields isEqual:otherMessage.unknownFields]));\n");
+
+    printer->Outdent();
+    printer->Outdent();
+    printer->Outdent();
+    printer->Print("}\n");
+  }
+
+
+  void MessageGenerator::GenerateMessageHashSource(io::Printer* printer) {
+    scoped_array<const FieldDescriptor*> sorted_fields(SortFieldsByNumber(descriptor_));
+
+    vector<const Descriptor::ExtensionRange*> sorted_extensions;
+    for (int i = 0; i < descriptor_->extension_range_count(); ++i) {
+      sorted_extensions.push_back(descriptor_->extension_range(i));
+    }
+    sort(sorted_extensions.begin(), sorted_extensions.end(),
+      ExtensionRangeOrdering());
+
+    printer->Print(
+      "- (NSUInteger) hash {\n");
+    printer->Indent();
+
+    printer->Print("NSUInteger hashCode = 7;\n");
+
+    // Merge the fields and the extension ranges, both sorted by field number.
+    for (int i = 0, j = 0;
+      i < descriptor_->field_count() || j < sorted_extensions.size(); ) {
+        if (i == descriptor_->field_count()) {
+          GenerateHashOneExtensionRangeSource(printer, sorted_extensions[j++]);
+        } else if (j == sorted_extensions.size()) {
+          GenerateHashOneFieldSource(printer, sorted_fields[i++]);
+        } else if (sorted_fields[i]->number() < sorted_extensions[j]->start) {
+          GenerateHashOneFieldSource(printer, sorted_fields[i++]);
+        } else {
+          GenerateHashOneExtensionRangeSource(printer, sorted_extensions[j++]);
+        }
+    }
+
+    printer->Print(
+      "hashCode = hashCode * 31 + [self.unknownFields hash];\n"
+      "return hashCode;\n");
+
+    printer->Outdent();
+    printer->Print(
+      "}\n");
+  }
+
+
   void MessageGenerator::GenerateParseFromMethodsSource(io::Printer* printer) {
     printer->Print(
       "+ ($classname$*) parseFromData:(NSData*) data {\n"
@@ -644,6 +786,51 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "                                      to:$to$];\n",
         "from", SimpleItoa(range->start),
         "to", SimpleItoa(range->end));
+  }
+
+  void MessageGenerator::GenerateDescriptionOneFieldSource(
+    io::Printer* printer, const FieldDescriptor* field) {
+      field_generators_.get(field).GenerateDescriptionCodeSource(printer);
+  }
+
+
+  void MessageGenerator::GenerateDescriptionOneExtensionRangeSource(
+    io::Printer* printer, const Descriptor::ExtensionRange* range) {
+      printer->Print(
+        "[self writeExtensionDescriptionToMutableString:(NSMutableString*)output\n"
+        "                                          from:$from$\n"
+        "                                            to:$to$\n"
+        "                                    withIndent:indent];\n",
+        "from", SimpleItoa(range->start),
+        "to", SimpleItoa(range->end));
+  }
+
+
+  void MessageGenerator::GenerateIsEqualOneFieldSource(
+    io::Printer* printer, const FieldDescriptor* field) {
+      field_generators_.get(field).GenerateIsEqualCodeSource(printer);
+  }
+
+
+  void MessageGenerator::GenerateIsEqualOneExtensionRangeSource(
+    io::Printer* printer, const Descriptor::ExtensionRange* range) {
+      printer->Print(
+        "[self isEqualExtensionsInOther:otherMessage from:$from$ to:$to$] &&\n",
+        "from", SimpleItoa(range->start), "to", SimpleItoa(range->end));
+  }
+
+
+  void MessageGenerator::GenerateHashOneFieldSource(
+    io::Printer* printer, const FieldDescriptor* field) {
+      field_generators_.get(field).GenerateHashCodeSource(printer);
+  }
+
+
+  void MessageGenerator::GenerateHashOneExtensionRangeSource(
+    io::Printer* printer, const Descriptor::ExtensionRange* range) {
+      printer->Print(
+        "hashCode = hashCode * 31 + [self hashExtensionsFrom:$from$ to:$to$];\n",
+        "from", SimpleItoa(range->start), "to", SimpleItoa(range->end));
   }
 
 

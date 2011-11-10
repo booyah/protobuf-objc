@@ -131,6 +131,28 @@ static PBField *sDefaultInstance = nil;
 	}
 }
 
+- (void)writeDescriptionFor:(int32_t) fieldNumber
+                         to:(NSMutableString*) output
+                 withIndent:(NSString*) indent {
+  for (NSNumber* value in self.varintArray) {
+    [output appendFormat:@"%@%d: %qi\n", indent, fieldNumber, value.longLongValue];
+  }
+  for (NSNumber* value in self.fixed32Array) {
+    [output appendFormat:@"%@%d: %d\n", indent, fieldNumber, value.intValue];
+  }
+  for (NSNumber* value in self.fixed64Array) {
+    [output appendFormat:@"%@%d: %qi\n", indent, fieldNumber, value.longLongValue];
+  }
+  for (NSData* value in self.lengthDelimitedArray) {
+    [output appendFormat:@"%@%d: %@\n", indent, fieldNumber, value];
+  }
+  for (PBUnknownFieldSet* value in self.groupArray) {
+    [output appendFormat:@"%@%d: [\n", indent, fieldNumber];
+    [value writeDescriptionTo:output withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@]", indent];
+  }
+}
+
 - (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *) output {
 	for (NSData *value in _lengthDelimitedArray) {
 		[output writeRawMessageSetExtension:fieldNumber value:value];

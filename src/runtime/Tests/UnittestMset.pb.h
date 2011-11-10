@@ -14,6 +14,18 @@
 @class TestMessageSetExtension2;
 @class TestMessageSetExtension2_Builder;
 @class TestMessageSet_Builder;
+#ifndef __has_feature
+  #define __has_feature(x) 0 // Compatibility with non-clang compilers.
+#endif // __has_feature
+
+#ifndef NS_RETURNS_NOT_RETAINED
+  #if __has_feature(attribute_ns_returns_not_retained)
+    #define NS_RETURNS_NOT_RETAINED __attribute__((ns_returns_not_retained))
+  #else
+    #define NS_RETURNS_NOT_RETAINED
+  #endif
+#endif
+
 
 @interface UnittestMsetRoot : NSObject {
 }
@@ -33,6 +45,7 @@
 - (TestMessageSet_Builder*) builder;
 + (TestMessageSet_Builder*) builder;
 + (TestMessageSet_Builder*) builderWithPrototype:(TestMessageSet*) prototype;
+- (TestMessageSet_Builder*) toBuilder;
 
 + (TestMessageSet*) parseFromData:(NSData*) data;
 + (TestMessageSet*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -76,6 +89,7 @@
 - (TestMessageSetContainer_Builder*) builder;
 + (TestMessageSetContainer_Builder*) builder;
 + (TestMessageSetContainer_Builder*) builderWithPrototype:(TestMessageSetContainer*) prototype;
+- (TestMessageSetContainer_Builder*) toBuilder;
 
 + (TestMessageSetContainer*) parseFromData:(NSData*) data;
 + (TestMessageSetContainer*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -127,6 +141,7 @@
 - (TestMessageSetExtension1_Builder*) builder;
 + (TestMessageSetExtension1_Builder*) builder;
 + (TestMessageSetExtension1_Builder*) builderWithPrototype:(TestMessageSetExtension1*) prototype;
+- (TestMessageSetExtension1_Builder*) toBuilder;
 
 + (TestMessageSetExtension1*) parseFromData:(NSData*) data;
 + (TestMessageSetExtension1*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -176,6 +191,7 @@
 - (TestMessageSetExtension2_Builder*) builder;
 + (TestMessageSetExtension2_Builder*) builder;
 + (TestMessageSetExtension2_Builder*) builderWithPrototype:(TestMessageSetExtension2*) prototype;
+- (TestMessageSetExtension2_Builder*) toBuilder;
 
 + (TestMessageSetExtension2*) parseFromData:(NSData*) data;
 + (TestMessageSetExtension2*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -223,6 +239,7 @@
 - (RawMessageSet_Builder*) builder;
 + (RawMessageSet_Builder*) builder;
 + (RawMessageSet_Builder*) builderWithPrototype:(RawMessageSet*) prototype;
+- (RawMessageSet_Builder*) toBuilder;
 
 + (RawMessageSet*) parseFromData:(NSData*) data;
 + (RawMessageSet*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -252,6 +269,7 @@
 - (RawMessageSet_Item_Builder*) builder;
 + (RawMessageSet_Item_Builder*) builder;
 + (RawMessageSet_Item_Builder*) builderWithPrototype:(RawMessageSet_Item*) prototype;
+- (RawMessageSet_Item_Builder*) toBuilder;
 
 + (RawMessageSet_Item*) parseFromData:(NSData*) data;
 + (RawMessageSet_Item*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;

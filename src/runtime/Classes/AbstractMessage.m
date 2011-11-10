@@ -74,4 +74,22 @@
 }
 
 
+- (id<PBMessage_Builder>) toBuilder {
+  @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
+
+- (void) writeDescriptionTo:(NSMutableString*) output
+                 withIndent:(NSString*) indent {
+  @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
+}
+
+
+- (NSString*) description {
+  NSMutableString* output = [NSMutableString string];
+  [self writeDescriptionTo:output withIndent:@""];
+  return output;
+}
+
+
 @end

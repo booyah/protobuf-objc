@@ -93,6 +93,16 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
+- (void) writeDescriptionTo:(NSMutableString*) output
+                 withIndent:(NSString *)indent {
+  NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
+  for (NSNumber* number in sortedKeys) {
+    PBField* value = [fields objectForKey:number];
+    [value writeDescriptionFor:number.intValue to:output withIndent:indent];
+  }
+}
+
+
 + (PBUnknownFieldSet*) parseFromCodedInputStream:(PBCodedInputStream*) input {
   return [[[PBUnknownFieldSet builder] mergeFromCodedInputStream:input] build];
 }
