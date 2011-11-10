@@ -4,6 +4,14 @@
 
 #import "Descriptor.pb.h"
 
+@class Aggregate;
+@class AggregateMessage;
+@class AggregateMessageSet;
+@class AggregateMessageSetElement;
+@class AggregateMessageSetElement_Builder;
+@class AggregateMessageSet_Builder;
+@class AggregateMessage_Builder;
+@class Aggregate_Builder;
 @class ComplexOpt6;
 @class ComplexOpt6_Builder;
 @class ComplexOptionType1;
@@ -62,6 +70,10 @@
 @class PBServiceDescriptorProto_Builder;
 @class PBServiceOptions;
 @class PBServiceOptions_Builder;
+@class PBSourceCodeInfo;
+@class PBSourceCodeInfo_Builder;
+@class PBSourceCodeInfo_Location;
+@class PBSourceCodeInfo_Location_Builder;
 @class PBUninterpretedOption;
 @class PBUninterpretedOption_Builder;
 @class PBUninterpretedOption_NamePart;
@@ -74,12 +86,30 @@
 @class TestMessageWithCustomOptions_Builder;
 @class VariousComplexOptions;
 @class VariousComplexOptions_Builder;
+#ifndef __has_feature
+  #define __has_feature(x) 0 // Compatibility with non-clang compilers.
+#endif // __has_feature
+
+#ifndef NS_RETURNS_NOT_RETAINED
+  #if __has_feature(attribute_ns_returns_not_retained)
+    #define NS_RETURNS_NOT_RETAINED __attribute__((ns_returns_not_retained))
+  #else
+    #define NS_RETURNS_NOT_RETAINED
+  #endif
+#endif
+
 typedef enum {
   MethodOpt1Methodopt1Val1 = 1,
   MethodOpt1Methodopt1Val2 = 2,
 } MethodOpt1;
 
 BOOL MethodOpt1IsValidValue(MethodOpt1 value);
+
+typedef enum {
+  AggregateEnumValue = 1,
+} AggregateEnum;
+
+BOOL AggregateEnumIsValidValue(AggregateEnum value);
 
 typedef enum {
   TestMessageWithCustomOptions_AnEnumAnenumVal1 = 1,
@@ -133,6 +163,13 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 + (id<PBExtensionField>) complexOpt2;
 + (id<PBExtensionField>) complexOpt3;
 + (id<PBExtensionField>) complexOpt6;
++ (id<PBExtensionField>) fileopt;
++ (id<PBExtensionField>) msgopt;
++ (id<PBExtensionField>) fieldopt;
++ (id<PBExtensionField>) enumopt;
++ (id<PBExtensionField>) enumvalopt;
++ (id<PBExtensionField>) serviceopt;
++ (id<PBExtensionField>) methodopt;
 @end
 
 @interface TestMessageWithCustomOptions : PBGeneratedMessage {
@@ -151,6 +188,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (TestMessageWithCustomOptions_Builder*) builder;
 + (TestMessageWithCustomOptions_Builder*) builder;
 + (TestMessageWithCustomOptions_Builder*) builderWithPrototype:(TestMessageWithCustomOptions*) prototype;
+- (TestMessageWithCustomOptions_Builder*) toBuilder;
 
 + (TestMessageWithCustomOptions*) parseFromData:(NSData*) data;
 + (TestMessageWithCustomOptions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -195,6 +233,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (CustomOptionFooRequest_Builder*) builder;
 + (CustomOptionFooRequest_Builder*) builder;
 + (CustomOptionFooRequest_Builder*) builderWithPrototype:(CustomOptionFooRequest*) prototype;
+- (CustomOptionFooRequest_Builder*) toBuilder;
 
 + (CustomOptionFooRequest*) parseFromData:(NSData*) data;
 + (CustomOptionFooRequest*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -234,6 +273,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (CustomOptionFooResponse_Builder*) builder;
 + (CustomOptionFooResponse_Builder*) builder;
 + (CustomOptionFooResponse_Builder*) builderWithPrototype:(CustomOptionFooResponse*) prototype;
+- (CustomOptionFooResponse_Builder*) toBuilder;
 
 + (CustomOptionFooResponse*) parseFromData:(NSData*) data;
 + (CustomOptionFooResponse*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -273,6 +313,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (DummyMessageContainingEnum_Builder*) builder;
 + (DummyMessageContainingEnum_Builder*) builder;
 + (DummyMessageContainingEnum_Builder*) builderWithPrototype:(DummyMessageContainingEnum*) prototype;
+- (DummyMessageContainingEnum_Builder*) toBuilder;
 
 + (DummyMessageContainingEnum*) parseFromData:(NSData*) data;
 + (DummyMessageContainingEnum*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -312,6 +353,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (DummyMessageInvalidAsOptionType_Builder*) builder;
 + (DummyMessageInvalidAsOptionType_Builder*) builder;
 + (DummyMessageInvalidAsOptionType_Builder*) builderWithPrototype:(DummyMessageInvalidAsOptionType*) prototype;
+- (DummyMessageInvalidAsOptionType_Builder*) toBuilder;
 
 + (DummyMessageInvalidAsOptionType*) parseFromData:(NSData*) data;
 + (DummyMessageInvalidAsOptionType*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -351,6 +393,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (CustomOptionMinIntegerValues_Builder*) builder;
 + (CustomOptionMinIntegerValues_Builder*) builder;
 + (CustomOptionMinIntegerValues_Builder*) builderWithPrototype:(CustomOptionMinIntegerValues*) prototype;
+- (CustomOptionMinIntegerValues_Builder*) toBuilder;
 
 + (CustomOptionMinIntegerValues*) parseFromData:(NSData*) data;
 + (CustomOptionMinIntegerValues*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -390,6 +433,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (CustomOptionMaxIntegerValues_Builder*) builder;
 + (CustomOptionMaxIntegerValues_Builder*) builder;
 + (CustomOptionMaxIntegerValues_Builder*) builderWithPrototype:(CustomOptionMaxIntegerValues*) prototype;
+- (CustomOptionMaxIntegerValues_Builder*) toBuilder;
 
 + (CustomOptionMaxIntegerValues*) parseFromData:(NSData*) data;
 + (CustomOptionMaxIntegerValues*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -429,6 +473,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (CustomOptionOtherValues_Builder*) builder;
 + (CustomOptionOtherValues_Builder*) builder;
 + (CustomOptionOtherValues_Builder*) builderWithPrototype:(CustomOptionOtherValues*) prototype;
+- (CustomOptionOtherValues_Builder*) toBuilder;
 
 + (CustomOptionOtherValues*) parseFromData:(NSData*) data;
 + (CustomOptionOtherValues*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -468,6 +513,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (SettingRealsFromPositiveInts_Builder*) builder;
 + (SettingRealsFromPositiveInts_Builder*) builder;
 + (SettingRealsFromPositiveInts_Builder*) builderWithPrototype:(SettingRealsFromPositiveInts*) prototype;
+- (SettingRealsFromPositiveInts_Builder*) toBuilder;
 
 + (SettingRealsFromPositiveInts*) parseFromData:(NSData*) data;
 + (SettingRealsFromPositiveInts*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -507,6 +553,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (SettingRealsFromNegativeInts_Builder*) builder;
 + (SettingRealsFromNegativeInts_Builder*) builder;
 + (SettingRealsFromNegativeInts_Builder*) builderWithPrototype:(SettingRealsFromNegativeInts*) prototype;
+- (SettingRealsFromNegativeInts_Builder*) toBuilder;
 
 + (SettingRealsFromNegativeInts*) parseFromData:(NSData*) data;
 + (SettingRealsFromNegativeInts*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -558,6 +605,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType1_Builder*) builder;
 + (ComplexOptionType1_Builder*) builder;
 + (ComplexOptionType1_Builder*) builderWithPrototype:(ComplexOptionType1*) prototype;
+- (ComplexOptionType1_Builder*) toBuilder;
 
 + (ComplexOptionType1*) parseFromData:(NSData*) data;
 + (ComplexOptionType1*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -624,6 +672,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType2_Builder*) builder;
 + (ComplexOptionType2_Builder*) builder;
 + (ComplexOptionType2_Builder*) builderWithPrototype:(ComplexOptionType2*) prototype;
+- (ComplexOptionType2_Builder*) toBuilder;
 
 + (ComplexOptionType2*) parseFromData:(NSData*) data;
 + (ComplexOptionType2*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -650,6 +699,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType2_ComplexOptionType4_Builder*) builder;
 + (ComplexOptionType2_ComplexOptionType4_Builder*) builder;
 + (ComplexOptionType2_ComplexOptionType4_Builder*) builderWithPrototype:(ComplexOptionType2_ComplexOptionType4*) prototype;
+- (ComplexOptionType2_ComplexOptionType4_Builder*) toBuilder;
 
 + (ComplexOptionType2_ComplexOptionType4*) parseFromData:(NSData*) data;
 + (ComplexOptionType2_ComplexOptionType4*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -739,6 +789,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType3_Builder*) builder;
 + (ComplexOptionType3_Builder*) builder;
 + (ComplexOptionType3_Builder*) builderWithPrototype:(ComplexOptionType3*) prototype;
+- (ComplexOptionType3_Builder*) toBuilder;
 
 + (ComplexOptionType3*) parseFromData:(NSData*) data;
 + (ComplexOptionType3*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -764,6 +815,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType3_ComplexOptionType5_Builder*) builder;
 + (ComplexOptionType3_ComplexOptionType5_Builder*) builder;
 + (ComplexOptionType3_ComplexOptionType5_Builder*) builderWithPrototype:(ComplexOptionType3_ComplexOptionType5*) prototype;
+- (ComplexOptionType3_ComplexOptionType5_Builder*) toBuilder;
 
 + (ComplexOptionType3_ComplexOptionType5*) parseFromData:(NSData*) data;
 + (ComplexOptionType3_ComplexOptionType5*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -842,6 +894,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOpt6_Builder*) builder;
 + (ComplexOpt6_Builder*) builder;
 + (ComplexOpt6_Builder*) builderWithPrototype:(ComplexOpt6*) prototype;
+- (ComplexOpt6_Builder*) toBuilder;
 
 + (ComplexOpt6*) parseFromData:(NSData*) data;
 + (ComplexOpt6*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -886,6 +939,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (VariousComplexOptions_Builder*) builder;
 + (VariousComplexOptions_Builder*) builder;
 + (VariousComplexOptions_Builder*) builderWithPrototype:(VariousComplexOptions*) prototype;
+- (VariousComplexOptions_Builder*) toBuilder;
 
 + (VariousComplexOptions*) parseFromData:(NSData*) data;
 + (VariousComplexOptions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -911,5 +965,236 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (VariousComplexOptions_Builder*) mergeFrom:(VariousComplexOptions*) other;
 - (VariousComplexOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (VariousComplexOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface AggregateMessageSet : PBExtendableMessage {
+@private
+}
+
++ (AggregateMessageSet*) defaultInstance;
+- (AggregateMessageSet*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (AggregateMessageSet_Builder*) builder;
++ (AggregateMessageSet_Builder*) builder;
++ (AggregateMessageSet_Builder*) builderWithPrototype:(AggregateMessageSet*) prototype;
+- (AggregateMessageSet_Builder*) toBuilder;
+
++ (AggregateMessageSet*) parseFromData:(NSData*) data;
++ (AggregateMessageSet*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (AggregateMessageSet*) parseFromInputStream:(NSInputStream*) input;
++ (AggregateMessageSet*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (AggregateMessageSet*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (AggregateMessageSet*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface AggregateMessageSet_Builder : PBExtendableMessage_Builder {
+@private
+  AggregateMessageSet* result;
+}
+
+- (AggregateMessageSet*) defaultInstance;
+
+- (AggregateMessageSet_Builder*) clear;
+- (AggregateMessageSet_Builder*) clone;
+
+- (AggregateMessageSet*) build;
+- (AggregateMessageSet*) buildPartial;
+
+- (AggregateMessageSet_Builder*) mergeFrom:(AggregateMessageSet*) other;
+- (AggregateMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (AggregateMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface AggregateMessageSetElement : PBGeneratedMessage {
+@private
+  BOOL hasS_:1;
+  NSString* s;
+}
+- (BOOL) hasS;
+@property (readonly, retain) NSString* s;
+
++ (AggregateMessageSetElement*) defaultInstance;
+- (AggregateMessageSetElement*) defaultInstance;
+
++ (id<PBExtensionField>) messageSetExtension;
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (AggregateMessageSetElement_Builder*) builder;
++ (AggregateMessageSetElement_Builder*) builder;
++ (AggregateMessageSetElement_Builder*) builderWithPrototype:(AggregateMessageSetElement*) prototype;
+- (AggregateMessageSetElement_Builder*) toBuilder;
+
++ (AggregateMessageSetElement*) parseFromData:(NSData*) data;
++ (AggregateMessageSetElement*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (AggregateMessageSetElement*) parseFromInputStream:(NSInputStream*) input;
++ (AggregateMessageSetElement*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (AggregateMessageSetElement*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (AggregateMessageSetElement*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface AggregateMessageSetElement_Builder : PBGeneratedMessage_Builder {
+@private
+  AggregateMessageSetElement* result;
+}
+
+- (AggregateMessageSetElement*) defaultInstance;
+
+- (AggregateMessageSetElement_Builder*) clear;
+- (AggregateMessageSetElement_Builder*) clone;
+
+- (AggregateMessageSetElement*) build;
+- (AggregateMessageSetElement*) buildPartial;
+
+- (AggregateMessageSetElement_Builder*) mergeFrom:(AggregateMessageSetElement*) other;
+- (AggregateMessageSetElement_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (AggregateMessageSetElement_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasS;
+- (NSString*) s;
+- (AggregateMessageSetElement_Builder*) setS:(NSString*) value;
+- (AggregateMessageSetElement_Builder*) clearS;
+@end
+
+@interface Aggregate : PBGeneratedMessage {
+@private
+  BOOL hasI_:1;
+  BOOL hasS_:1;
+  BOOL hasSub_:1;
+  BOOL hasFile_:1;
+  BOOL hasMset_:1;
+  int32_t i;
+  NSString* s;
+  Aggregate* sub;
+  PBFileOptions* file;
+  AggregateMessageSet* mset;
+}
+- (BOOL) hasI;
+- (BOOL) hasS;
+- (BOOL) hasSub;
+- (BOOL) hasFile;
+- (BOOL) hasMset;
+@property (readonly) int32_t i;
+@property (readonly, retain) NSString* s;
+@property (readonly, retain) Aggregate* sub;
+@property (readonly, retain) PBFileOptions* file;
+@property (readonly, retain) AggregateMessageSet* mset;
+
++ (Aggregate*) defaultInstance;
+- (Aggregate*) defaultInstance;
+
++ (id<PBExtensionField>) nested;
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (Aggregate_Builder*) builder;
++ (Aggregate_Builder*) builder;
++ (Aggregate_Builder*) builderWithPrototype:(Aggregate*) prototype;
+- (Aggregate_Builder*) toBuilder;
+
++ (Aggregate*) parseFromData:(NSData*) data;
++ (Aggregate*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Aggregate*) parseFromInputStream:(NSInputStream*) input;
++ (Aggregate*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Aggregate*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (Aggregate*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface Aggregate_Builder : PBGeneratedMessage_Builder {
+@private
+  Aggregate* result;
+}
+
+- (Aggregate*) defaultInstance;
+
+- (Aggregate_Builder*) clear;
+- (Aggregate_Builder*) clone;
+
+- (Aggregate*) build;
+- (Aggregate*) buildPartial;
+
+- (Aggregate_Builder*) mergeFrom:(Aggregate*) other;
+- (Aggregate_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (Aggregate_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasI;
+- (int32_t) i;
+- (Aggregate_Builder*) setI:(int32_t) value;
+- (Aggregate_Builder*) clearI;
+
+- (BOOL) hasS;
+- (NSString*) s;
+- (Aggregate_Builder*) setS:(NSString*) value;
+- (Aggregate_Builder*) clearS;
+
+- (BOOL) hasSub;
+- (Aggregate*) sub;
+- (Aggregate_Builder*) setSub:(Aggregate*) value;
+- (Aggregate_Builder*) setSubBuilder:(Aggregate_Builder*) builderForValue;
+- (Aggregate_Builder*) mergeSub:(Aggregate*) value;
+- (Aggregate_Builder*) clearSub;
+
+- (BOOL) hasFile;
+- (PBFileOptions*) file;
+- (Aggregate_Builder*) setFile:(PBFileOptions*) value;
+- (Aggregate_Builder*) setFileBuilder:(PBFileOptions_Builder*) builderForValue;
+- (Aggregate_Builder*) mergeFile:(PBFileOptions*) value;
+- (Aggregate_Builder*) clearFile;
+
+- (BOOL) hasMset;
+- (AggregateMessageSet*) mset;
+- (Aggregate_Builder*) setMset:(AggregateMessageSet*) value;
+- (Aggregate_Builder*) setMsetBuilder:(AggregateMessageSet_Builder*) builderForValue;
+- (Aggregate_Builder*) mergeMset:(AggregateMessageSet*) value;
+- (Aggregate_Builder*) clearMset;
+@end
+
+@interface AggregateMessage : PBGeneratedMessage {
+@private
+  BOOL hasFieldname_:1;
+  int32_t fieldname;
+}
+- (BOOL) hasFieldname;
+@property (readonly) int32_t fieldname;
+
++ (AggregateMessage*) defaultInstance;
+- (AggregateMessage*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (AggregateMessage_Builder*) builder;
++ (AggregateMessage_Builder*) builder;
++ (AggregateMessage_Builder*) builderWithPrototype:(AggregateMessage*) prototype;
+- (AggregateMessage_Builder*) toBuilder;
+
++ (AggregateMessage*) parseFromData:(NSData*) data;
++ (AggregateMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (AggregateMessage*) parseFromInputStream:(NSInputStream*) input;
++ (AggregateMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (AggregateMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (AggregateMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface AggregateMessage_Builder : PBGeneratedMessage_Builder {
+@private
+  AggregateMessage* result;
+}
+
+- (AggregateMessage*) defaultInstance;
+
+- (AggregateMessage_Builder*) clear;
+- (AggregateMessage_Builder*) clone;
+
+- (AggregateMessage*) build;
+- (AggregateMessage*) buildPartial;
+
+- (AggregateMessage_Builder*) mergeFrom:(AggregateMessage*) other;
+- (AggregateMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (AggregateMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasFieldname;
+- (int32_t) fieldname;
+- (AggregateMessage_Builder*) setFieldname:(int32_t) value;
+- (AggregateMessage_Builder*) clearFieldname;
 @end
 

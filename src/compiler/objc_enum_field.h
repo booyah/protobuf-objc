@@ -56,6 +56,9 @@ class EnumFieldGenerator : public FieldGenerator {
   void GenerateParsingCodeSource(io::Printer* printer) const;
   void GenerateSerializationCodeSource(io::Printer* printer) const;
   void GenerateSerializedSizeCodeSource(io::Printer* printer) const;
+  void GenerateDescriptionCodeSource(io::Printer* printer) const;
+  void GenerateIsEqualCodeSource(io::Printer* printer) const;
+  void GenerateHashCodeSource(io::Printer* printer) const;
 
   string GetBoxedType() const;
 
@@ -94,6 +97,9 @@ class RepeatedEnumFieldGenerator : public FieldGenerator {
   void GenerateParsingCodeSource(io::Printer* printer) const;
   void GenerateSerializationCodeSource(io::Printer* printer) const;
   void GenerateSerializedSizeCodeSource(io::Printer* printer) const;
+  void GenerateDescriptionCodeSource(io::Printer* printer) const;
+  void GenerateIsEqualCodeSource(io::Printer* printer) const;
+  void GenerateHashCodeSource(io::Printer* printer) const;
 
   string GetBoxedType() const;
 

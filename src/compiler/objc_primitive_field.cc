@@ -388,6 +388,38 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "}\n");
   }
 
+  void PrimitiveFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "if (self.has$capitalized_name$) {\n"
+      "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", ");
+    printer->Print(variables_,
+      BoxValue(descriptor_, "self.$name$").c_str());
+    printer->Print(variables_,
+      "];\n"
+      "}\n");
+  }
+
+  void PrimitiveFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
+      "(!self.has$capitalized_name$ || ");
+    if (ReturnsPrimitiveType(descriptor_)) {
+      printer->Print(variables_, "self.$name$ == otherMessage.$name$) &&\n");
+    } else {
+      printer->Print(variables_, "[self.$name$ isEqual:otherMessage.$name$]) &&\n");
+    }
+  }
+
+  void PrimitiveFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "if (self.has$capitalized_name$) {\n");
+    printer->Print("  hashCode = hashCode * 31 + [");
+    printer->Print(variables_, BoxValue(descriptor_, "self.$name$").c_str());
+    printer->Print(
+      " hash];\n"
+      "}\n");
+  }
+
   RepeatedPrimitiveFieldGenerator::RepeatedPrimitiveFieldGenerator(const FieldDescriptor* descriptor)
     : descriptor_(descriptor) {
       SetPrimitiveVariables(descriptor, &variables_);
@@ -611,6 +643,42 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Outdent();
     printer->Print("}\n");
+  }
+
+
+  void RepeatedPrimitiveFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
+    if (ReturnsPrimitiveType(descriptor_)) {
+      printer->Print(variables_,
+        "for (NSNumber* value in self.$list_name$) {\n"
+        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", value];\n"
+        "}\n");
+    } else {
+      printer->Print(variables_,
+        "for ($storage_type$ element in self.$list_name$) {\n"
+        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", element];\n"
+        "}\n");
+    }
+  }
+
+
+  void RepeatedPrimitiveFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&\n");
+  }
+
+
+  void RepeatedPrimitiveFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
+    if (ReturnsPrimitiveType(descriptor_)) {
+      printer->Print(variables_,
+        "for (NSNumber* value in self.$list_name$) {\n"
+        "  hashCode = hashCode * 31 + [value intValue];\n"
+        "}\n");
+    } else {
+      printer->Print(variables_,
+        "for ($storage_type$ element in self.$list_name$) {\n"
+        "  hashCode = hashCode * 31 + [element hash];\n"
+        "}\n");
+    }
   }
 }  // namespace objectivec
 }  // namespace compiler

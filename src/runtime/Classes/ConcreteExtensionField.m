@@ -347,6 +347,37 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
+- (void) writeDescriptionOfSingleValue:(id) value
+                                    to:(NSMutableString*) output
+                            withIndent:(NSString*) indent {
+  switch (type) {
+    case PBExtensionTypeBool:
+    case PBExtensionTypeFixed32:
+    case PBExtensionTypeSFixed32:
+    case PBExtensionTypeFloat:
+    case PBExtensionTypeFixed64:
+    case PBExtensionTypeSFixed64:
+    case PBExtensionTypeDouble:
+    case PBExtensionTypeInt32:
+    case PBExtensionTypeInt64:
+    case PBExtensionTypeSInt32:
+    case PBExtensionTypeSInt64:
+    case PBExtensionTypeUInt32:
+    case PBExtensionTypeUInt64:
+    case PBExtensionTypeBytes:
+    case PBExtensionTypeString:
+    case PBExtensionTypeEnum:
+      [output appendFormat:@"%@%@\n", indent, value];
+      return;
+    case PBExtensionTypeGroup:
+    case PBExtensionTypeMessage:
+      [((PBAbstractMessage *)value) writeDescriptionTo:output withIndent:indent];
+      return;
+  }
+  @throw [NSException exceptionWithName:@"InternalError" reason:@"" userInfo:nil];
+}
+
+
 - (void)         writeRepeatedValues:(NSArray*) values
     includingTagsToCodedOutputStream:(PBCodedOutputStream*) output {
   if (isPacked) {
@@ -409,6 +440,19 @@ int32_t typeSize(PBExtensionType type) {
   }
 }
 
+
+- (void) writeDescriptionOf:(id)value
+                         to:(NSMutableString *)output
+                 withIndent:(NSString *)indent {
+  if (isRepeated) {
+    NSArray* values = value;
+    for (id singleValue in values) {
+      [self writeDescriptionOfSingleValue:singleValue to:output withIndent:indent];
+    }
+  } else {
+    [self writeDescriptionOfSingleValue:value to:output withIndent:indent];
+  }
+}
 
 - (void) mergeMessageSetExtentionFromCodedInputStream:(PBCodedInputStream*) input
                                         unknownFields:(PBUnknownFieldSet_Builder*) unknownFields {

@@ -155,6 +155,56 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 - (TestOptimizedForSize_Builder*) builder {
   return [TestOptimizedForSize builder];
 }
+- (TestOptimizedForSize_Builder*) toBuilder {
+  return [TestOptimizedForSize builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasI) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"i", [NSNumber numberWithInt:self.i]];
+  }
+  if (self.hasMsg) {
+    [output appendFormat:@"%@%@ {\n", indent, @"msg"];
+    [self.msg writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1000
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOptimizedForSize class]]) {
+    return NO;
+  }
+  TestOptimizedForSize *otherMessage = other;
+  return
+      self.hasI == otherMessage.hasI &&
+      (!self.hasI || self.i == otherMessage.i) &&
+      
+      self.hasMsg == otherMessage.hasMsg &&
+      (!self.hasMsg || [self.msg isEqual:otherMessage.msg]) &&
+      
+      [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasI) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
+  }
+  if (self.hasMsg) {
+    hashCode = hashCode * 31 + [self.msg hash];
+  }
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestOptimizedForSize_Builder()
@@ -378,6 +428,37 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
 - (TestRequiredOptimizedForSize_Builder*) builder {
   return [TestRequiredOptimizedForSize builder];
 }
+- (TestRequiredOptimizedForSize_Builder*) toBuilder {
+  return [TestRequiredOptimizedForSize builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasX) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"x", [NSNumber numberWithInt:self.x]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRequiredOptimizedForSize class]]) {
+    return NO;
+  }
+  TestRequiredOptimizedForSize *otherMessage = other;
+  return
+      self.hasX == otherMessage.hasX &&
+      (!self.hasX || self.x == otherMessage.x) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasX) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.x] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestRequiredOptimizedForSize_Builder()
@@ -560,6 +641,40 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
 }
 - (TestOptionalOptimizedForSize_Builder*) builder {
   return [TestOptionalOptimizedForSize builder];
+}
+- (TestOptionalOptimizedForSize_Builder*) toBuilder {
+  return [TestOptionalOptimizedForSize builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasO) {
+    [output appendFormat:@"%@%@ {\n", indent, @"o"];
+    [self.o writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOptionalOptimizedForSize class]]) {
+    return NO;
+  }
+  TestOptionalOptimizedForSize *otherMessage = other;
+  return
+      self.hasO == otherMessage.hasO &&
+      (!self.hasO || [self.o isEqual:otherMessage.o]) &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasO) {
+    hashCode = hashCode * 31 + [self.o hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
 }
 @end
 

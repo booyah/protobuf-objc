@@ -31,4 +31,7 @@
                                tag:(int32_t) tag;
 - (void) writeValue:(id) value includingTagToCodedOutputStream:(PBCodedOutputStream*) output;
 - (int32_t) computeSerializedSizeIncludingTag:(id) value;
+- (void) writeDescriptionOf:(id) value
+                         to:(NSMutableString*) output
+                 withIndent:(NSString*) indent;
 @end
