@@ -131,6 +131,51 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
 - (TestEmbedOptimizedForSize_Builder*) builder {
   return [TestEmbedOptimizedForSize builder];
 }
+- (TestEmbedOptimizedForSize_Builder*) toBuilder {
+  return [TestEmbedOptimizedForSize builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasOptionalMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"optionalMessage"];
+    [self.optionalMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  for (TestOptimizedForSize* element in self.repeatedMessageArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"repeatedMessage"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestEmbedOptimizedForSize class]]) {
+    return NO;
+  }
+  TestEmbedOptimizedForSize *otherMessage = other;
+  return
+      self.hasOptionalMessage == otherMessage.hasOptionalMessage &&
+      (!self.hasOptionalMessage || [self.optionalMessage isEqual:otherMessage.optionalMessage]) &&
+      
+      [self.repeatedMessageArray isEqualToArray:otherMessage.repeatedMessageArray] &&
+      
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  NSUInteger hashCode = 7;
+  if (self.hasOptionalMessage) {
+    hashCode = hashCode * 31 + [self.optionalMessage hash];
+  }
+  for (TestOptimizedForSize* element in self.repeatedMessageArray) {
+    hashCode = hashCode * 31 + [element hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
 @end
 
 @interface TestEmbedOptimizedForSize_Builder()
@@ -180,7 +225,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   }
   if (other.repeatedMessageArray.count > 0) {
     if (result.repeatedMessageArray == nil) {
-      result.repeatedMessageArray = [other.repeatedMessageArray copyWithZone:[other.repeatedMessageArray zone]];
+      result.repeatedMessageArray = [[other.repeatedMessageArray copyWithZone:[other.repeatedMessageArray zone]] autorelease];
     } else {
       [result.repeatedMessageArray appendArray:other.repeatedMessageArray];
     }

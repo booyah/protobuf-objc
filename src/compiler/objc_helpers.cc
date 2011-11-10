@@ -231,7 +231,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   string FileClassName(const FileDescriptor* file) {
-    return FileClassPrefix(file) + FileName(file) + "Root";
+    // Ensure the FileClassName is camelcased irrespective of whether the
+    // camelcase_output_filename option is set.
+    return FileClassPrefix(file) +
+        UnderscoresToCapitalizedCamelCase(FileName(file)) + "Root";
   }
 
 
@@ -490,11 +493,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
             }
           } else {
             if (AllAscii(field->default_value_string())) {
-              return "@\"" + CEscape(field->default_value_string()) + "\"";
+              return "@\"" +
+                EscapeTrigraphs(CEscape(field->default_value_string())) +
+                "\"";
             } else {
               return
                 "[NSString stringWithUTF8String:\"" +
-                CEscape(field->default_value_string()) +
+                EscapeTrigraphs(CEscape(field->default_value_string())) +
                 "\"]";
             }
           }
@@ -533,6 +538,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     GOOGLE_LOG(FATAL) << "Can't get here.";
     return NULL;
   }
+
+  // Escape C++ trigraphs by escaping question marks to \?
+  string EscapeTrigraphs(const string& to_escape) {
+    return StringReplace(to_escape, "?", "\\?", true);
+  }
+
 }  // namespace objectivec
 }  // namespace compiler
 }  // namespace protobuf

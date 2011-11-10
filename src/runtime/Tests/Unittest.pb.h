@@ -24,6 +24,8 @@
 @class OptionalGroup_extension_Builder;
 @class RepeatedGroup_extension;
 @class RepeatedGroup_extension_Builder;
+@class SparseEnumMessage;
+@class SparseEnumMessage_Builder;
 @class TestAllExtensions;
 @class TestAllExtensions_Builder;
 @class TestAllTypes;
@@ -86,6 +88,18 @@
 @class TestRequired_Builder;
 @class TestUnpackedTypes;
 @class TestUnpackedTypes_Builder;
+#ifndef __has_feature
+  #define __has_feature(x) 0 // Compatibility with non-clang compilers.
+#endif // __has_feature
+
+#ifndef NS_RETURNS_NOT_RETAINED
+  #if __has_feature(attribute_ns_returns_not_retained)
+    #define NS_RETURNS_NOT_RETAINED __attribute__((ns_returns_not_retained))
+  #else
+    #define NS_RETURNS_NOT_RETAINED
+  #endif
+#endif
+
 typedef enum {
   ForeignEnumForeignFoo = 4,
   ForeignEnumForeignBar = 5,
@@ -481,6 +495,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestAllTypes_Builder*) builder;
 + (TestAllTypes_Builder*) builder;
 + (TestAllTypes_Builder*) builderWithPrototype:(TestAllTypes*) prototype;
+- (TestAllTypes_Builder*) toBuilder;
 
 + (TestAllTypes*) parseFromData:(NSData*) data;
 + (TestAllTypes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -506,6 +521,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestAllTypes_NestedMessage_Builder*) builder;
 + (TestAllTypes_NestedMessage_Builder*) builder;
 + (TestAllTypes_NestedMessage_Builder*) builderWithPrototype:(TestAllTypes_NestedMessage*) prototype;
+- (TestAllTypes_NestedMessage_Builder*) toBuilder;
 
 + (TestAllTypes_NestedMessage*) parseFromData:(NSData*) data;
 + (TestAllTypes_NestedMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -554,6 +570,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestAllTypes_OptionalGroup_Builder*) builder;
 + (TestAllTypes_OptionalGroup_Builder*) builder;
 + (TestAllTypes_OptionalGroup_Builder*) builderWithPrototype:(TestAllTypes_OptionalGroup*) prototype;
+- (TestAllTypes_OptionalGroup_Builder*) toBuilder;
 
 + (TestAllTypes_OptionalGroup*) parseFromData:(NSData*) data;
 + (TestAllTypes_OptionalGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -602,6 +619,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestAllTypes_RepeatedGroup_Builder*) builder;
 + (TestAllTypes_RepeatedGroup_Builder*) builder;
 + (TestAllTypes_RepeatedGroup_Builder*) builderWithPrototype:(TestAllTypes_RepeatedGroup*) prototype;
+- (TestAllTypes_RepeatedGroup_Builder*) toBuilder;
 
 + (TestAllTypes_RepeatedGroup*) parseFromData:(NSData*) data;
 + (TestAllTypes_RepeatedGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1064,6 +1082,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestDeprecatedFields_Builder*) builder;
 + (TestDeprecatedFields_Builder*) builder;
 + (TestDeprecatedFields_Builder*) builderWithPrototype:(TestDeprecatedFields*) prototype;
+- (TestDeprecatedFields_Builder*) toBuilder;
 
 + (TestDeprecatedFields*) parseFromData:(NSData*) data;
 + (TestDeprecatedFields*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1112,6 +1131,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (ForeignMessage_Builder*) builder;
 + (ForeignMessage_Builder*) builder;
 + (ForeignMessage_Builder*) builderWithPrototype:(ForeignMessage*) prototype;
+- (ForeignMessage_Builder*) toBuilder;
 
 + (ForeignMessage*) parseFromData:(NSData*) data;
 + (ForeignMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1156,6 +1176,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestAllExtensions_Builder*) builder;
 + (TestAllExtensions_Builder*) builder;
 + (TestAllExtensions_Builder*) builderWithPrototype:(TestAllExtensions*) prototype;
+- (TestAllExtensions_Builder*) toBuilder;
 
 + (TestAllExtensions*) parseFromData:(NSData*) data;
 + (TestAllExtensions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1199,6 +1220,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (OptionalGroup_extension_Builder*) builder;
 + (OptionalGroup_extension_Builder*) builder;
 + (OptionalGroup_extension_Builder*) builderWithPrototype:(OptionalGroup_extension*) prototype;
+- (OptionalGroup_extension_Builder*) toBuilder;
 
 + (OptionalGroup_extension*) parseFromData:(NSData*) data;
 + (OptionalGroup_extension*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1247,6 +1269,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (RepeatedGroup_extension_Builder*) builder;
 + (RepeatedGroup_extension_Builder*) builder;
 + (RepeatedGroup_extension_Builder*) builderWithPrototype:(RepeatedGroup_extension*) prototype;
+- (RepeatedGroup_extension_Builder*) toBuilder;
 
 + (RepeatedGroup_extension*) parseFromData:(NSData*) data;
 + (RepeatedGroup_extension*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1292,6 +1315,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestNestedExtension_Builder*) builder;
 + (TestNestedExtension_Builder*) builder;
 + (TestNestedExtension_Builder*) builderWithPrototype:(TestNestedExtension*) prototype;
+- (TestNestedExtension_Builder*) toBuilder;
 
 + (TestNestedExtension*) parseFromData:(NSData*) data;
 + (TestNestedExtension*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1465,6 +1489,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestRequired_Builder*) builder;
 + (TestRequired_Builder*) builder;
 + (TestRequired_Builder*) builderWithPrototype:(TestRequired*) prototype;
+- (TestRequired_Builder*) toBuilder;
 
 + (TestRequired*) parseFromData:(NSData*) data;
 + (TestRequired*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1680,6 +1705,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestRequiredForeign_Builder*) builder;
 + (TestRequiredForeign_Builder*) builder;
 + (TestRequiredForeign_Builder*) builderWithPrototype:(TestRequiredForeign*) prototype;
+- (TestRequiredForeign_Builder*) toBuilder;
 
 + (TestRequiredForeign*) parseFromData:(NSData*) data;
 + (TestRequiredForeign*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1742,6 +1768,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestForeignNested_Builder*) builder;
 + (TestForeignNested_Builder*) builder;
 + (TestForeignNested_Builder*) builderWithPrototype:(TestForeignNested*) prototype;
+- (TestForeignNested_Builder*) toBuilder;
 
 + (TestForeignNested*) parseFromData:(NSData*) data;
 + (TestForeignNested*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1788,6 +1815,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestEmptyMessage_Builder*) builder;
 + (TestEmptyMessage_Builder*) builder;
 + (TestEmptyMessage_Builder*) builderWithPrototype:(TestEmptyMessage*) prototype;
+- (TestEmptyMessage_Builder*) toBuilder;
 
 + (TestEmptyMessage*) parseFromData:(NSData*) data;
 + (TestEmptyMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1827,6 +1855,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestEmptyMessageWithExtensions_Builder*) builder;
 + (TestEmptyMessageWithExtensions_Builder*) builder;
 + (TestEmptyMessageWithExtensions_Builder*) builderWithPrototype:(TestEmptyMessageWithExtensions*) prototype;
+- (TestEmptyMessageWithExtensions_Builder*) toBuilder;
 
 + (TestEmptyMessageWithExtensions*) parseFromData:(NSData*) data;
 + (TestEmptyMessageWithExtensions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1866,6 +1895,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestMultipleExtensionRanges_Builder*) builder;
 + (TestMultipleExtensionRanges_Builder*) builder;
 + (TestMultipleExtensionRanges_Builder*) builderWithPrototype:(TestMultipleExtensionRanges*) prototype;
+- (TestMultipleExtensionRanges_Builder*) toBuilder;
 
 + (TestMultipleExtensionRanges*) parseFromData:(NSData*) data;
 + (TestMultipleExtensionRanges*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1913,6 +1943,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestReallyLargeTagNumber_Builder*) builder;
 + (TestReallyLargeTagNumber_Builder*) builder;
 + (TestReallyLargeTagNumber_Builder*) builderWithPrototype:(TestReallyLargeTagNumber*) prototype;
+- (TestReallyLargeTagNumber_Builder*) toBuilder;
 
 + (TestReallyLargeTagNumber*) parseFromData:(NSData*) data;
 + (TestReallyLargeTagNumber*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -1970,6 +2001,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestRecursiveMessage_Builder*) builder;
 + (TestRecursiveMessage_Builder*) builder;
 + (TestRecursiveMessage_Builder*) builderWithPrototype:(TestRecursiveMessage*) prototype;
+- (TestRecursiveMessage_Builder*) toBuilder;
 
 + (TestRecursiveMessage*) parseFromData:(NSData*) data;
 + (TestRecursiveMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2025,6 +2057,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestMutualRecursionA_Builder*) builder;
 + (TestMutualRecursionA_Builder*) builder;
 + (TestMutualRecursionA_Builder*) builderWithPrototype:(TestMutualRecursionA*) prototype;
+- (TestMutualRecursionA_Builder*) toBuilder;
 
 + (TestMutualRecursionA*) parseFromData:(NSData*) data;
 + (TestMutualRecursionA*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2079,6 +2112,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestMutualRecursionB_Builder*) builder;
 + (TestMutualRecursionB_Builder*) builder;
 + (TestMutualRecursionB_Builder*) builderWithPrototype:(TestMutualRecursionB*) prototype;
+- (TestMutualRecursionB_Builder*) toBuilder;
 
 + (TestMutualRecursionB*) parseFromData:(NSData*) data;
 + (TestMutualRecursionB*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2142,6 +2176,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestDupFieldNumber_Builder*) builder;
 + (TestDupFieldNumber_Builder*) builder;
 + (TestDupFieldNumber_Builder*) builderWithPrototype:(TestDupFieldNumber*) prototype;
+- (TestDupFieldNumber_Builder*) toBuilder;
 
 + (TestDupFieldNumber*) parseFromData:(NSData*) data;
 + (TestDupFieldNumber*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2167,6 +2202,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestDupFieldNumber_Foo_Builder*) builder;
 + (TestDupFieldNumber_Foo_Builder*) builder;
 + (TestDupFieldNumber_Foo_Builder*) builderWithPrototype:(TestDupFieldNumber_Foo*) prototype;
+- (TestDupFieldNumber_Foo_Builder*) toBuilder;
 
 + (TestDupFieldNumber_Foo*) parseFromData:(NSData*) data;
 + (TestDupFieldNumber_Foo*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2215,6 +2251,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestDupFieldNumber_Bar_Builder*) builder;
 + (TestDupFieldNumber_Bar_Builder*) builder;
 + (TestDupFieldNumber_Bar_Builder*) builderWithPrototype:(TestDupFieldNumber_Bar*) prototype;
+- (TestDupFieldNumber_Bar_Builder*) toBuilder;
 
 + (TestDupFieldNumber_Bar*) parseFromData:(NSData*) data;
 + (TestDupFieldNumber_Bar*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2300,6 +2337,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestNestedMessageHasBits_Builder*) builder;
 + (TestNestedMessageHasBits_Builder*) builder;
 + (TestNestedMessageHasBits_Builder*) builderWithPrototype:(TestNestedMessageHasBits*) prototype;
+- (TestNestedMessageHasBits_Builder*) toBuilder;
 
 + (TestNestedMessageHasBits*) parseFromData:(NSData*) data;
 + (TestNestedMessageHasBits*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2327,6 +2365,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestNestedMessageHasBits_NestedMessage_Builder*) builder;
 + (TestNestedMessageHasBits_NestedMessage_Builder*) builder;
 + (TestNestedMessageHasBits_NestedMessage_Builder*) builderWithPrototype:(TestNestedMessageHasBits_NestedMessage*) prototype;
+- (TestNestedMessageHasBits_NestedMessage_Builder*) toBuilder;
 
 + (TestNestedMessageHasBits_NestedMessage*) parseFromData:(NSData*) data;
 + (TestNestedMessageHasBits_NestedMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2447,6 +2486,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestCamelCaseFieldNames_Builder*) builder;
 + (TestCamelCaseFieldNames_Builder*) builder;
 + (TestCamelCaseFieldNames_Builder*) builderWithPrototype:(TestCamelCaseFieldNames*) prototype;
+- (TestCamelCaseFieldNames_Builder*) toBuilder;
 
 + (TestCamelCaseFieldNames*) parseFromData:(NSData*) data;
 + (TestCamelCaseFieldNames*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2572,6 +2612,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestFieldOrderings_Builder*) builder;
 + (TestFieldOrderings_Builder*) builder;
 + (TestFieldOrderings_Builder*) builderWithPrototype:(TestFieldOrderings*) prototype;
+- (TestFieldOrderings_Builder*) toBuilder;
 
 + (TestFieldOrderings*) parseFromData:(NSData*) data;
 + (TestFieldOrderings*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2619,8 +2660,6 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   BOOL hasNanDouble_:1;
   BOOL hasNegInfDouble_:1;
   BOOL hasInfDouble_:1;
-  BOOL hasNanFloat_:1;
-  BOOL hasNegInfFloat_:1;
   BOOL hasInfFloat_:1;
   BOOL hasSmallNegativeFloat_:1;
   BOOL hasLargeFloat_:1;
@@ -2629,17 +2668,18 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   BOOL hasSmallFloat_:1;
   BOOL hasOneFloat_:1;
   BOOL hasZeroFloat_:1;
+  BOOL hasNegInfFloat_:1;
+  BOOL hasNanFloat_:1;
   BOOL hasSmallInt64_:1;
   BOOL hasLargeUint64_:1;
   BOOL hasSmallInt32_:1;
+  BOOL hasCppTrigraph_:1;
   BOOL hasUtf8String_:1;
   BOOL hasEscapedBytes_:1;
   BOOL hasLargeUint32_:1;
   Float64 nanDouble;
   Float64 negInfDouble;
   Float64 infDouble;
-  Float32 nanFloat;
-  Float32 negInfFloat;
   Float32 infFloat;
   Float32 smallNegativeFloat;
   Float32 largeFloat;
@@ -2648,9 +2688,12 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
   Float32 smallFloat;
   Float32 oneFloat;
   Float32 zeroFloat;
+  Float32 negInfFloat;
+  Float32 nanFloat;
   int64_t smallInt64;
   uint64_t largeUint64;
   int32_t smallInt32;
+  NSString* cppTrigraph;
   NSString* utf8String;
   NSData* escapedBytes;
   uint32_t largeUint32;
@@ -2674,6 +2717,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (BOOL) hasInfFloat;
 - (BOOL) hasNegInfFloat;
 - (BOOL) hasNanFloat;
+- (BOOL) hasCppTrigraph;
 @property (readonly, retain) NSData* escapedBytes;
 @property (readonly) uint32_t largeUint32;
 @property (readonly) uint64_t largeUint64;
@@ -2693,6 +2737,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 @property (readonly) Float32 infFloat;
 @property (readonly) Float32 negInfFloat;
 @property (readonly) Float32 nanFloat;
+@property (readonly, retain) NSString* cppTrigraph;
 
 + (TestExtremeDefaultValues*) defaultInstance;
 - (TestExtremeDefaultValues*) defaultInstance;
@@ -2702,6 +2747,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestExtremeDefaultValues_Builder*) builder;
 + (TestExtremeDefaultValues_Builder*) builder;
 + (TestExtremeDefaultValues_Builder*) builderWithPrototype:(TestExtremeDefaultValues*) prototype;
+- (TestExtremeDefaultValues_Builder*) toBuilder;
 
 + (TestExtremeDefaultValues*) parseFromData:(NSData*) data;
 + (TestExtremeDefaultValues*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2822,6 +2868,60 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (Float32) nanFloat;
 - (TestExtremeDefaultValues_Builder*) setNanFloat:(Float32) value;
 - (TestExtremeDefaultValues_Builder*) clearNanFloat;
+
+- (BOOL) hasCppTrigraph;
+- (NSString*) cppTrigraph;
+- (TestExtremeDefaultValues_Builder*) setCppTrigraph:(NSString*) value;
+- (TestExtremeDefaultValues_Builder*) clearCppTrigraph;
+@end
+
+@interface SparseEnumMessage : PBGeneratedMessage {
+@private
+  BOOL hasSparseEnum_:1;
+  TestSparseEnum sparseEnum;
+}
+- (BOOL) hasSparseEnum;
+@property (readonly) TestSparseEnum sparseEnum;
+
++ (SparseEnumMessage*) defaultInstance;
+- (SparseEnumMessage*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (SparseEnumMessage_Builder*) builder;
++ (SparseEnumMessage_Builder*) builder;
++ (SparseEnumMessage_Builder*) builderWithPrototype:(SparseEnumMessage*) prototype;
+- (SparseEnumMessage_Builder*) toBuilder;
+
++ (SparseEnumMessage*) parseFromData:(NSData*) data;
++ (SparseEnumMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (SparseEnumMessage*) parseFromInputStream:(NSInputStream*) input;
++ (SparseEnumMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (SparseEnumMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (SparseEnumMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface SparseEnumMessage_Builder : PBGeneratedMessage_Builder {
+@private
+  SparseEnumMessage* result;
+}
+
+- (SparseEnumMessage*) defaultInstance;
+
+- (SparseEnumMessage_Builder*) clear;
+- (SparseEnumMessage_Builder*) clone;
+
+- (SparseEnumMessage*) build;
+- (SparseEnumMessage*) buildPartial;
+
+- (SparseEnumMessage_Builder*) mergeFrom:(SparseEnumMessage*) other;
+- (SparseEnumMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (SparseEnumMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasSparseEnum;
+- (TestSparseEnum) sparseEnum;
+- (SparseEnumMessage_Builder*) setSparseEnum:(TestSparseEnum) value;
+- (SparseEnumMessage_Builder*) clearSparseEnum;
 @end
 
 @interface OneString : PBGeneratedMessage {
@@ -2840,6 +2940,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (OneString_Builder*) builder;
 + (OneString_Builder*) builder;
 + (OneString_Builder*) builderWithPrototype:(OneString*) prototype;
+- (OneString_Builder*) toBuilder;
 
 + (OneString*) parseFromData:(NSData*) data;
 + (OneString*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2888,6 +2989,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (OneBytes_Builder*) builder;
 + (OneBytes_Builder*) builder;
 + (OneBytes_Builder*) builderWithPrototype:(OneBytes*) prototype;
+- (OneBytes_Builder*) toBuilder;
 
 + (OneBytes*) parseFromData:(NSData*) data;
 + (OneBytes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -2988,6 +3090,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestPackedTypes_Builder*) builder;
 + (TestPackedTypes_Builder*) builder;
 + (TestPackedTypes_Builder*) builderWithPrototype:(TestPackedTypes*) prototype;
+- (TestPackedTypes_Builder*) toBuilder;
 
 + (TestPackedTypes*) parseFromData:(NSData*) data;
 + (TestPackedTypes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3167,6 +3270,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestUnpackedTypes_Builder*) builder;
 + (TestUnpackedTypes_Builder*) builder;
 + (TestUnpackedTypes_Builder*) builderWithPrototype:(TestUnpackedTypes*) prototype;
+- (TestUnpackedTypes_Builder*) toBuilder;
 
 + (TestUnpackedTypes*) parseFromData:(NSData*) data;
 + (TestUnpackedTypes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3304,6 +3408,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestPackedExtensions_Builder*) builder;
 + (TestPackedExtensions_Builder*) builder;
 + (TestPackedExtensions_Builder*) builderWithPrototype:(TestPackedExtensions*) prototype;
+- (TestPackedExtensions_Builder*) toBuilder;
 
 + (TestPackedExtensions*) parseFromData:(NSData*) data;
 + (TestPackedExtensions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3370,6 +3475,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestDynamicExtensions_Builder*) builder;
 + (TestDynamicExtensions_Builder*) builder;
 + (TestDynamicExtensions_Builder*) builderWithPrototype:(TestDynamicExtensions*) prototype;
+- (TestDynamicExtensions_Builder*) toBuilder;
 
 + (TestDynamicExtensions*) parseFromData:(NSData*) data;
 + (TestDynamicExtensions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3395,6 +3501,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestDynamicExtensions_DynamicMessageType_Builder*) builder;
 + (TestDynamicExtensions_DynamicMessageType_Builder*) builder;
 + (TestDynamicExtensions_DynamicMessageType_Builder*) builderWithPrototype:(TestDynamicExtensions_DynamicMessageType*) prototype;
+- (TestDynamicExtensions_DynamicMessageType_Builder*) toBuilder;
 
 + (TestDynamicExtensions_DynamicMessageType*) parseFromData:(NSData*) data;
 + (TestDynamicExtensions_DynamicMessageType*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3518,6 +3625,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (TestRepeatedScalarDifferentTagSizes_Builder*) builder;
 + (TestRepeatedScalarDifferentTagSizes_Builder*) builder;
 + (TestRepeatedScalarDifferentTagSizes_Builder*) builderWithPrototype:(TestRepeatedScalarDifferentTagSizes*) prototype;
+- (TestRepeatedScalarDifferentTagSizes_Builder*) toBuilder;
 
 + (TestRepeatedScalarDifferentTagSizes*) parseFromData:(NSData*) data;
 + (TestRepeatedScalarDifferentTagSizes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3599,6 +3707,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (FooRequest_Builder*) builder;
 + (FooRequest_Builder*) builder;
 + (FooRequest_Builder*) builderWithPrototype:(FooRequest*) prototype;
+- (FooRequest_Builder*) toBuilder;
 
 + (FooRequest*) parseFromData:(NSData*) data;
 + (FooRequest*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3638,6 +3747,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (FooResponse_Builder*) builder;
 + (FooResponse_Builder*) builder;
 + (FooResponse_Builder*) builderWithPrototype:(FooResponse*) prototype;
+- (FooResponse_Builder*) toBuilder;
 
 + (FooResponse*) parseFromData:(NSData*) data;
 + (FooResponse*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3677,6 +3787,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (BarRequest_Builder*) builder;
 + (BarRequest_Builder*) builder;
 + (BarRequest_Builder*) builderWithPrototype:(BarRequest*) prototype;
+- (BarRequest_Builder*) toBuilder;
 
 + (BarRequest*) parseFromData:(NSData*) data;
 + (BarRequest*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -3716,6 +3827,7 @@ BOOL TestDynamicExtensions_DynamicEnumTypeIsValidValue(TestDynamicExtensions_Dyn
 - (BarResponse_Builder*) builder;
 + (BarResponse_Builder*) builder;
 + (BarResponse_Builder*) builderWithPrototype:(BarResponse*) prototype;
+- (BarResponse_Builder*) toBuilder;
 
 + (BarResponse*) parseFromData:(NSData*) data;
 + (BarResponse*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;

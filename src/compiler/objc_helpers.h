@@ -109,6 +109,9 @@ string BoxValue(const FieldDescriptor* field, const string& value);
 
 const char* GetArrayValueType(const FieldDescriptor* field);
 
+// Escape C++ trigraphs by escaping question marks to \?
+string EscapeTrigraphs(const string& to_escape);
+
 // Do message classes in this file keep track of unknown fields?
 inline bool HasUnknownFields(const FileDescriptor *file) {
   return file->options().optimize_for() != FileOptions::LITE_RUNTIME;

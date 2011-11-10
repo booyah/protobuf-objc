@@ -96,6 +96,55 @@
 }
 
 
+- (void) writeExtensionDescriptionToMutableString:(NSMutableString*) output
+                                             from:(int32_t) startInclusive
+                                               to:(int32_t) endExclusive
+                                       withIndent:(NSString*) indent {
+  NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
+  for (NSNumber* number in sortedKeys) {
+    int32_t fieldNumber = [number intValue];
+    if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
+      id<PBExtensionField> extension = [extensionRegistry objectForKey:number];
+      id value = [extensionMap objectForKey:number];
+      [extension writeDescriptionOf:value to:output withIndent:indent];
+    }
+  }  
+}
+
+
+- (BOOL) isEqualExtensionsInOther:(PBExtendableMessage*)otherMessage
+                             from:(int32_t) startInclusive
+                               to:(int32_t) endExclusive {
+  NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
+  for (NSNumber* number in sortedKeys) {
+    int32_t fieldNumber = [number intValue];
+    if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
+      id value = [extensionMap objectForKey:number];
+      id otherValue = [otherMessage.extensionMap objectForKey:number];
+      if (![value isEqual:otherValue]) {
+        return NO;
+      }
+    }
+  }
+  return YES;
+}
+
+
+- (NSUInteger) hashExtensionsFrom:(int32_t) startInclusive
+                               to:(int32_t) endExclusive {
+  NSUInteger hashCode = 0;
+  NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
+  for (NSNumber* number in sortedKeys) {
+    int32_t fieldNumber = [number intValue];
+    if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
+      id value = [extensionMap objectForKey:number];
+      hashCode = hashCode * 31 + [value hash];
+    }
+  }
+  return hashCode;
+}
+
+
 - (int32_t) extensionsSerializedSize {
   int32_t size = 0;
   for (NSNumber* number in extensionMap) {

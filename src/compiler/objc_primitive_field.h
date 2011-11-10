@@ -44,7 +44,7 @@ class PrimitiveFieldGenerator : public FieldGenerator {
   void GenerateParsingCodeHeader(io::Printer* printer) const;
   void GenerateSerializationCodeHeader(io::Printer* printer) const;
   void GenerateSerializedSizeCodeHeader(io::Printer* printer) const;
-  
+
   void GenerateExtensionSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
   void GenerateDeallocSource(io::Printer* printer) const;
@@ -56,6 +56,9 @@ class PrimitiveFieldGenerator : public FieldGenerator {
   void GenerateParsingCodeSource(io::Printer* printer) const;
   void GenerateSerializationCodeSource(io::Printer* printer) const;
   void GenerateSerializedSizeCodeSource(io::Printer* printer) const;
+  void GenerateDescriptionCodeSource(io::Printer* printer) const;
+  void GenerateIsEqualCodeSource(io::Printer* printer) const;
+  void GenerateHashCodeSource(io::Printer* printer) const;
 
  private:
   const FieldDescriptor* descriptor_;
@@ -92,6 +95,9 @@ class RepeatedPrimitiveFieldGenerator : public FieldGenerator {
   void GenerateParsingCodeSource(io::Printer* printer) const;
   void GenerateSerializationCodeSource(io::Printer* printer) const;
   void GenerateSerializedSizeCodeSource(io::Printer* printer) const;
+  void GenerateDescriptionCodeSource(io::Printer* printer) const;
+  void GenerateIsEqualCodeSource(io::Printer* printer) const;
+  void GenerateHashCodeSource(io::Printer* printer) const;
 
  private:
   const FieldDescriptor* descriptor_;

@@ -24,6 +24,8 @@
 @class OptionalGroup_extension_Builder;
 @class RepeatedGroup_extension;
 @class RepeatedGroup_extension_Builder;
+@class SparseEnumMessage;
+@class SparseEnumMessage_Builder;
 @class TestAllExtensions;
 @class TestAllExtensions_Builder;
 @class TestAllTypes;
@@ -92,6 +94,18 @@
 @class TestRequired_Builder;
 @class TestUnpackedTypes;
 @class TestUnpackedTypes_Builder;
+#ifndef __has_feature
+  #define __has_feature(x) 0 // Compatibility with non-clang compilers.
+#endif // __has_feature
+
+#ifndef NS_RETURNS_NOT_RETAINED
+  #if __has_feature(attribute_ns_returns_not_retained)
+    #define NS_RETURNS_NOT_RETAINED __attribute__((ns_returns_not_retained))
+  #else
+    #define NS_RETURNS_NOT_RETAINED
+  #endif
+#endif
+
 
 @interface UnittestOptimizeForRoot : NSObject {
 }
@@ -121,6 +135,7 @@
 - (TestOptimizedForSize_Builder*) builder;
 + (TestOptimizedForSize_Builder*) builder;
 + (TestOptimizedForSize_Builder*) builderWithPrototype:(TestOptimizedForSize*) prototype;
+- (TestOptimizedForSize_Builder*) toBuilder;
 
 + (TestOptimizedForSize*) parseFromData:(NSData*) data;
 + (TestOptimizedForSize*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -176,6 +191,7 @@
 - (TestRequiredOptimizedForSize_Builder*) builder;
 + (TestRequiredOptimizedForSize_Builder*) builder;
 + (TestRequiredOptimizedForSize_Builder*) builderWithPrototype:(TestRequiredOptimizedForSize*) prototype;
+- (TestRequiredOptimizedForSize_Builder*) toBuilder;
 
 + (TestRequiredOptimizedForSize*) parseFromData:(NSData*) data;
 + (TestRequiredOptimizedForSize*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
@@ -224,6 +240,7 @@
 - (TestOptionalOptimizedForSize_Builder*) builder;
 + (TestOptionalOptimizedForSize_Builder*) builder;
 + (TestOptionalOptimizedForSize_Builder*) builderWithPrototype:(TestOptionalOptimizedForSize*) prototype;
+- (TestOptionalOptimizedForSize_Builder*) toBuilder;
 
 + (TestOptionalOptimizedForSize*) parseFromData:(NSData*) data;
 + (TestOptionalOptimizedForSize*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;

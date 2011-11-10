@@ -204,6 +204,29 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
 
+  void EnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "if (self.has$capitalized_name$) {\n"
+      "  [output appendFormat:@\"%@%@: %d\\n\", indent, @\"$name$\", self.$name$];\n"
+      "}\n");
+  }
+
+
+  void EnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
+      "(!self.has$capitalized_name$ || self.$name$ != otherMessage.$name$) &&\n");
+  }
+
+
+  void EnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "if (self.has$capitalized_name$) {\n"
+      "  hashCode = hashCode * 31 + self.$name$;\n"
+      "}\n");
+  }
+
+
   string EnumFieldGenerator::GetBoxedType() const {
     return ClassName(descriptor_->enum_type());
   }
@@ -433,6 +456,27 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Outdent();
     printer->Print("}\n");
+  }
+
+
+  void RepeatedEnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "for (NSNumber* element in self.$list_name$) {\n"
+      "  [output appendFormat:@\"%@%@: %d\\n\", indent, @\"$name$\", element.intValue];\n"
+      "}\n");
+  }
+
+
+  void RepeatedEnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
+    printer->Print(variables_, "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&\n");
+  }
+
+
+  void RepeatedEnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
+    printer->Print(variables_,
+      "for (NSNumber* element in self.$list_name$) {\n"
+      "  hashCode = hashCode * 31 + element.intValue;\n"
+      "}\n");
   }
 }  // namespace objectivec
 }  // namespace compiler

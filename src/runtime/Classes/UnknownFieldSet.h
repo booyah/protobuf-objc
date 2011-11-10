@@ -40,4 +40,7 @@
 - (BOOL) hasField:(int32_t) number;
 - (PBField*) getField:(int32_t) number;
 
+- (void) writeDescriptionTo:(NSMutableString*) output
+                 withIndent:(NSString*) indent;
+
 @end
