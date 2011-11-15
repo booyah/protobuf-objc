@@ -245,7 +245,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
-      "(!self.has$capitalized_name$ || [self.$name$ isEqual:otherMessage.$name$]) &&\n");
+      "(!self.has$capitalized_name$ || [self.$name$ isEqual:otherMessage.$name$]) &&");
   }
 
 
@@ -448,7 +448,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
   void RepeatedMessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
-    printer->Print(variables_, "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&\n");
+    printer->Print(variables_, "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&");
   }
 
   void RepeatedMessageFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {

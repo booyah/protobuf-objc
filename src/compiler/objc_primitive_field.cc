@@ -404,9 +404,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
       "(!self.has$capitalized_name$ || ");
     if (ReturnsPrimitiveType(descriptor_)) {
-      printer->Print(variables_, "self.$name$ == otherMessage.$name$) &&\n");
+      printer->Print(variables_, "self.$name$ == otherMessage.$name$) &&");
     } else {
-      printer->Print(variables_, "[self.$name$ isEqual:otherMessage.$name$]) &&\n");
+      printer->Print(variables_, "[self.$name$ isEqual:otherMessage.$name$]) &&");
     }
   }
 
@@ -663,7 +663,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedPrimitiveFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&\n");
+      "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&");
   }
 
 
