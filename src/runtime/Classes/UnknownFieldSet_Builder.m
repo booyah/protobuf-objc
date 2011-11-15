@@ -117,6 +117,29 @@
   return result;
 }
 
+- (PBUnknownFieldSet*) buildPartial {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
+
+- (PBUnknownFieldSet*) clone {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
+
+- (BOOL) isInitialized {
+  return YES;
+}
+
+- (PBUnknownFieldSet*) defaultInstance {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
+
+- (PBUnknownFieldSet*) unknownFields {
+  return [self build];
+}
+
+- (id<PBMessage_Builder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
 
 /** Check if the given field number is present in the set. */
 - (BOOL) hasField:(int32_t) number {
@@ -168,10 +191,21 @@
 }
 
 
-- (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input {
-  @throw [NSException exceptionWithName:@"" reason:@"" userInfo:nil];
+- (PBUnknownFieldSet_Builder*) mergeFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
+  [self mergeFromCodedInputStream:input extensionRegistry:extensionRegistry];
+  [input checkLastTagWas:0];
+  return self;
 }
 
+
+- (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
+
+- (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
 
 - (PBUnknownFieldSet_Builder*) mergeVarintField:(int32_t) number value:(int32_t) value {
   if (number == 0) {
@@ -231,6 +265,9 @@
   return self;
 }
 
+- (PBUnknownFieldSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
+}
 
 - (PBUnknownFieldSet_Builder*) clear {
   self.fields = [NSMutableDictionary dictionary];

@@ -15,7 +15,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@interface PBUnknownFieldSet_Builder : NSObject {
+#import "Message_Builder.h"
+
+@interface PBUnknownFieldSet_Builder : NSObject <PBMessage_Builder> {
 @private
   NSMutableDictionary* fields;
 
