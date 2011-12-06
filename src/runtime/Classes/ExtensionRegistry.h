@@ -68,6 +68,9 @@
  *
  * @author Cyrus Najmabadi
  */
+
+#import "ExtensionField.h"
+
 @interface PBExtensionRegistry : NSObject {
 @protected
   NSDictionary* classMap;

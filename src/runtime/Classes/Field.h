@@ -19,6 +19,7 @@
 
 @class PBArray;
 @class PBAppendableArray;
+@class PBCodedOutputStream;
 
 @interface PBField : NSObject
 {

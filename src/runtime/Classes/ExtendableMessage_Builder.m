@@ -18,7 +18,7 @@
 #import "ExtendableMessage_Builder.h"
 
 #import "ExtendableMessage.h"
-#import "ExtensionField.h"
+#import "ExtensionRegistry.h"
 #import "WireFormat.h"
 
 @implementation PBExtendableMessage_Builder

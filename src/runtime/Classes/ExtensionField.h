@@ -17,6 +17,12 @@
 
 #import "WireFormat.h"
 
+@class PBCodedInputStream;
+@class PBCodedOutputStream;
+@class PBExtendableMessage_Builder;
+@class PBExtensionRegistry;
+@class PBUnknownFieldSet_Builder;
+
 @protocol PBExtensionField
 - (int32_t) fieldNumber;
 - (PBWireFormat) wireType;

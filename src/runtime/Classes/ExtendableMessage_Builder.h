@@ -17,6 +17,10 @@
 
 #import "GeneratedMessage_Builder.h"
 
+#import "ExtensionField.h"
+
+@class PBExtendableMessage;
+
 /**
  * Generated message builders for message types that contain extension ranges
  * subclass this.
