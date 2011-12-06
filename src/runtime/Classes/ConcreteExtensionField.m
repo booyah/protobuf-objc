@@ -17,6 +17,14 @@
 
 #import "ConcreteExtensionField.h"
 
+#import "AbstractMessage.h"
+#import "CodedInputStream.h"
+#import "CodedOutputStream.h"
+#import "ExtendableMessage_Builder.h"
+#import "Message_Builder.h"
+#import "Utilities.h"
+#import "WireFormat.h"
+
 @interface PBConcreteExtensionField()
 @property PBExtensionType type;
 @property (assign) Class extendedClass;

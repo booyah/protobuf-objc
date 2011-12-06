@@ -17,6 +17,8 @@
 
 #import "AbstractMessage_Builder.h"
 
+@class PBUnknownFieldSet_Builder;
+
 @interface PBGeneratedMessage_Builder : PBAbstractMessage_Builder {
 }
 

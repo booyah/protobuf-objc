@@ -19,6 +19,8 @@
 
 #import "CodedOutputStream.h"
 #import "PBArray.h"
+#import "UnknownFieldSet.h"
+#import "Utilities.h"
 
 @implementation PBField
 

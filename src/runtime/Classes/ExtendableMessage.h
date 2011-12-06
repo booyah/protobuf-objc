@@ -17,6 +17,8 @@
 
 #import "GeneratedMessage.h"
 
+#import "ExtensionField.h"
+
 /**
  * Generated message classes for message types that contain extension ranges
  * subclass this.

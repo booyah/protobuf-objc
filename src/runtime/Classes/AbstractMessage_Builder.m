@@ -19,6 +19,7 @@
 
 #import "CodedInputStream.h"
 #import "ExtensionRegistry.h"
+#import "Message_Builder.h"
 #import "UnknownFieldSet.h"
 #import "UnknownFieldSet_Builder.h"
 

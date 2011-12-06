@@ -17,6 +17,9 @@
 
 #import "Message_Builder.h"
 
+@class PBField;
+@class PBMutableField;
+
 @interface PBUnknownFieldSet_Builder : NSObject <PBMessage_Builder> {
 @private
   NSMutableDictionary* fields;

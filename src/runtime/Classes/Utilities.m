@@ -16,6 +16,8 @@
 // limitations under the License.
 
 #import "Utilities.h"
+
+#import "UnknownFieldSet.h"
 #import "WireFormat.h"
 
 const int32_t LITTLE_ENDIAN_32_SIZE = 4;
