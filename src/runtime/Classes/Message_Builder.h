@@ -15,10 +15,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <Foundation/NSObject.h>
-
-#import "Message.h"
-
 #import "Message.h"
 
 @class PBCodedInputStream;
