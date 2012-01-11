@@ -215,7 +215,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void EnumFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "self.has$capitalized_name$ == otherMessage.has$capitalized_name$ &&\n"
-      "(!self.has$capitalized_name$ || self.$name$ != otherMessage.$name$) &&");
+      "(!self.has$capitalized_name$ || self.$name$ == otherMessage.$name$) &&");
   }
 
 
