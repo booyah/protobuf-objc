@@ -269,8 +269,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- (BOOL) has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value {\n"
-      "  has$capitalized_name$_ = !!value;\n"
+      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "  has$capitalized_name$_ = !!value_;\n"
       "}\n");
 
     if (GetObjectiveCType(descriptor_) == OBJECTIVECTYPE_BOOLEAN) {
@@ -278,8 +278,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "- (BOOL) $name$ {\n"
         "  return !!$name$_;\n"
         "}\n"
-        "- (void) set$capitalized_name$:(BOOL) value {\n"
-        "  $name$_ = !!value;\n"
+        "- (void) set$capitalized_name$:(BOOL) value_ {\n"
+        "  $name$_ = !!value_;\n"
         "}\n");
     } else {
       printer->Print(variables_, "@synthesize $name$;\n");
@@ -384,7 +384,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void PrimitiveFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (self.has$capitalized_name$) {\n"
-      "  size += compute$capitalized_type$Size($number$, self.$name$);\n"
+      "  size_ += compute$capitalized_type$Size($number$, self.$name$);\n"
       "}\n");
   }
 
@@ -627,18 +627,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "dataSize = $fixed_size$ * count;\n");
     }
 
-    printer->Print("size += dataSize;\n");
+    printer->Print("size_ += dataSize;\n");
 
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
         "if (count > 0) {\n"
-        "  size += $tag_size$;\n"
-        "  size += computeInt32SizeNoTag(dataSize);\n"
+        "  size_ += $tag_size$;\n"
+        "  size_ += computeInt32SizeNoTag(dataSize);\n"
         "}\n"
         "$name$MemoizedSerializedSize = dataSize;\n");
     } else {
       printer->Print(variables_,
-        "size += $tag_size$ * count;\n");
+        "size_ += $tag_size$ * count;\n");
     }
 
     printer->Outdent();
