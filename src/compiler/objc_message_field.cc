@@ -101,8 +101,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- (BOOL) has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value {\n"
-      "  has$capitalized_name$_ = !!value;\n"
+      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "  has$capitalized_name$_ = !!value_;\n"
       "}\n"
       "@synthesize $name$;\n");
   }
@@ -226,7 +226,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (self.has$capitalized_name$) {\n"
-      "  size += compute$group_or_message$Size($number$, self.$name$);\n"
+      "  size_ += compute$group_or_message$Size($number$, self.$name$);\n"
       "}\n");
   }
 
@@ -433,7 +433,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedMessageFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "for ($type$ *element in self.$list_name$) {\n"
-      "  size += compute$group_or_message$Size($number$, element);\n"
+      "  size_ += compute$group_or_message$Size($number$, element);\n"
       "}\n");
   }
 

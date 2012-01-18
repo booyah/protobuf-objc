@@ -100,8 +100,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- (BOOL) has$capitalized_name$ {\n"
       "  return !!has$capitalized_name$_;\n"
       "}\n"
-      "- (void) setHas$capitalized_name$:(BOOL) value {\n"
-      "  has$capitalized_name$_ = !!value;\n"
+      "- (void) setHas$capitalized_name$:(BOOL) value_ {\n"
+      "  has$capitalized_name$_ = !!value_;\n"
       "}\n"
       "@synthesize $name$;\n");
   }
@@ -199,7 +199,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void EnumFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "if (self.has$capitalized_name$) {\n"
-      "  size += computeEnumSize($number$, self.$name$);\n"
+      "  size_ += computeEnumSize($number$, self.$name$);\n"
       "}\n");
   }
 
@@ -436,17 +436,17 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "}\n");
 
     printer->Print(
-      "size += dataSize;\n");
+      "size_ += dataSize;\n");
 
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
         "if (count > 0) {\n"
-        "  size += $tag_size$;\n"
-        "  size += computeRawVarint32Size(dataSize);\n"
+        "  size_ += $tag_size$;\n"
+        "  size_ += computeRawVarint32Size(dataSize);\n"
         "}\n");
     } else {
       printer->Print(variables_,
-        "size += $tag_size$ * count;\n");
+        "size_ += $tag_size$ * count;\n");
     }
 
     if (descriptor_->options().packed()) {
