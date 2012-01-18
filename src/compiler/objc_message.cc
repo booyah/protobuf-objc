@@ -584,12 +584,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "}\n"
       "- (int32_t) serializedSize {\n"
-      "  int32_t size = memoizedSerializedSize;\n"
-      "  if (size != -1) {\n"
-      "    return size;\n"
+      "  int32_t size_ = memoizedSerializedSize;\n"
+      "  if (size_ != -1) {\n"
+      "    return size_;\n"
       "  }\n"
       "\n"
-      "  size = 0;\n");
+      "  size_ = 0;\n");
     printer->Indent();
 
     for (int i = 0; i < descriptor_->field_count(); i++) {
@@ -598,21 +598,21 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     if (descriptor_->extension_range_count() > 0) {
       printer->Print(
-        "size += [self extensionsSerializedSize];\n");
+        "size_ += [self extensionsSerializedSize];\n");
     }
 
     if (descriptor_->options().message_set_wire_format()) {
       printer->Print(
-        "size += self.unknownFields.serializedSizeAsMessageSet;\n");
+        "size_ += self.unknownFields.serializedSizeAsMessageSet;\n");
     } else {
       printer->Print(
-        "size += self.unknownFields.serializedSize;\n");
+        "size_ += self.unknownFields.serializedSize;\n");
     }
 
     printer->Outdent();
     printer->Print(
-      "  memoizedSerializedSize = size;\n"
-      "  return size;\n"
+      "  memoizedSerializedSize = size_;\n"
+      "  return size_;\n"
       "}\n");
   }
 
