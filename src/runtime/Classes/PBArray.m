@@ -180,21 +180,64 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
 {
-	// TODO: We only support enumeration of object values.  In the future, we
-	// can extend this code to return a new list of NSNumber* objects wrapping
-	// our primitive values.
-	PBArrayValueTypeAssert(PBArrayValueTypeObject);
-
-	if (state->state >= _count)
-	{
-		return 0; // terminate iteration
-	}
-
-	state->itemsPtr = (id *)_data;
-	state->state = _count;
-	state->mutationsPtr = (unsigned long *)self;
-
-	return _count;
+    NSUInteger count = 0;
+    // This is the initialization condition, so we'll do one-time setup here.
+    // Ensure that you never set state->state back to 0, or use another method to detect initialization
+    // (such as using one of the values of state->extra).
+    if(state->state == 0) {
+        // We are not tracking mutations, so we'll set state->mutationsPtr to point into one of our extra values,
+        // since these values are not otherwise used by the protocol.
+        // If your class was mutable, you may choose to use an internal variable that is updated when the class is mutated.
+        // state->mutationsPtr MUST NOT be NULL.
+        state->mutationsPtr = &state->extra[0];
+    }
+    // Now we provide items, which we track with state->state, and determine if we have finished iterating.
+    if(state->state < _count) {
+        // Set state->itemsPtr to the provided buffer.
+        // Alternate implementations may set state->itemsPtr to an internal C array of objects.
+        // state->itemsPtr MUST NOT be NULL.
+        state->itemsPtr = stackbuf;
+        // Fill in the stack array, either until we've provided all items from the list
+        // or until we've provided as many items as the stack based buffer will hold.
+        while((state->state < _count) && (count < len)) {
+            switch (_valueType) {
+                case PBArrayValueTypeObject:
+                    stackbuf[count] = ((id *)_data)[state->state];
+                    break;
+                case PBArrayValueTypeBool:
+                    stackbuf[count] = [NSNumber numberWithBool:((BOOL *)_data)[state->state]];
+                    break;
+                case PBArrayValueTypeInt32:
+                    stackbuf[count] = [NSNumber numberWithInt:((int32_t *)_data)[state->state]];
+                    break;
+                case PBArrayValueTypeUInt32:
+                    stackbuf[count] = [NSNumber numberWithUnsignedInt:((uint32_t *)_data)[state->state]];
+                    break;
+                case PBArrayValueTypeInt64:
+                    stackbuf[count] = [NSNumber numberWithLongLong:((int64_t *)_data)[state->state]];
+                    break;
+                case PBArrayValueTypeUInt64:
+                    stackbuf[count] = [NSNumber numberWithUnsignedLongLong:((uint64_t *)_data)[state->state]];
+                    break;
+                case PBArrayValueTypeFloat:
+                    stackbuf[count] = [NSNumber numberWithFloat:((Float32 *)_data)[state->state]];
+                    break;
+                case PBArrayValueTypeDouble:
+                    stackbuf[count] = [NSNumber numberWithDouble:((Float64 *)_data)[state->state]];
+                    break;
+                default:
+                    break;
+            }
+            
+            state->state++;
+            count++;
+        }
+    }
+    else {
+        // We've already provided all our items, so we signal we are done by returning 0.
+        count = 0;
+    }
+    return count;
 }
 
 - (id)objectAtIndex:(NSUInteger)index
