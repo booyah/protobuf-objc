@@ -20,6 +20,8 @@ missing
 m4
 stamp-h1
 
+src/runtime/command_line*
+
 # Targets
 src/compiler/protoc-gen-objc
 
