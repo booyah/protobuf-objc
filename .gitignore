@@ -26,8 +26,12 @@ src/compiler/protoc-gen-objc
 # Mac stuff
 .DS_Store
 
+# vi stuff
+*.swp
+
 # Xcode stuff
 Build/
+xcuserdata
 *.pbxuser
 *.perspective
 *.perspectivev3
