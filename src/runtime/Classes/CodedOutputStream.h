@@ -68,9 +68,6 @@
 /** Encode and write a varint. */
 - (void) writeRawVarint64:(int64_t) value;
 
-- (void) writeRawLittleEndian32:(int32_t) value;
-- (void) writeRawLittleEndian64:(int64_t) value;
-
 /** Write an array of bytes. */
 - (void) writeRawData:(const NSData*) data;
 - (void) writeRawData:(const NSData*) data offset:(int32_t) offset length:(int32_t) length;
