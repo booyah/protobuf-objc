@@ -8,6 +8,17 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 
 [g-protobuf]: http://code.google.com/p/protobuf/
 
+## Installation
+
+1. Download source or clone repository to local machine
+2. `cd` into root directory of project
+3. Run `$ ./autogen.sh`
+4. Run `$ ./configure`
+5. Run `$ make` and `$ make install`
+6. Verify that you have correctly installed protoc-gen-objc `$ protoc --objc_out=./ foo.proto`
+
+If this fails make sure you have autoconf/automake installed and that protoc-gen-objc is in your $PATH.
+
 
 # Credits
 
