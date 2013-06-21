@@ -91,5 +91,11 @@
   return output;
 }
 
+- (NSString*) debugDescription {
+    NSMutableString* output = [NSMutableString string];
+    [self writeDescriptionTo:output withIndent:@""];
+    return output;
+}
+
 
 @end
