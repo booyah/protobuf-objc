@@ -335,6 +335,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
 #ifndef OBJC_ARC
+      printer->Print("- (void) dealloc {\n");
+      printer->Indent();
+      for (int i = 0; i < descriptor_->field_count(); i++) {
+          field_generators_.get(descriptor_->field(i)).GenerateDeallocSource(printer);
+      }
+      printer->Outdent();
+      printer->Print("}\n");
+      
+#else
     printer->Print("- (void) dealloc {\n");
     printer->Indent();
     for (int i = 0; i < descriptor_->field_count(); i++) {
@@ -394,7 +403,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "+ ($classname$_Builder*) builder {\n"
-#ifdef OBJC_ARC
+#ifndef OBJC_ARC
       "  return [[$classname$_Builder alloc] init];\n"
 #else
       "  return [[[$classname$_Builder alloc] init] autorelease];\n"
@@ -851,6 +860,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 #ifndef OBJC_ARC
       "- (void) dealloc {\n"
       "  self.result = nil;\n"
+      "}\n"
+#else
+      "- (void) dealloc {\n"
+      "  self.result = nil;\n"
       "  [super dealloc];\n"
       "}\n"
 #endif
@@ -860,7 +873,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "- (id) init {\n"
       "  if ((self = [super init])) {\n"
-#ifdef OBJC_ARC
+#ifndef OBJC_ARC
       "    self.result = [[$classname$ alloc] init];\n"
 #else
       "    self.result = [[[$classname$ alloc] init] autorelease];\n"
@@ -896,7 +909,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "- ($classname$_Builder*) clear {\n"
-#ifdef OBJC_ARC
+#ifndef OBJC_ARC
       "  self.result = [[$classname$ alloc] init];\n"
 #else
       "  self.result = [[[$classname$ alloc] init] autorelease];\n"
@@ -926,7 +939,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Outdent();
     printer->Print(
-#ifdef OBJC_ARC
+#ifndef OBJC_ARC
       "  $classname$* returnMe = result;\n"
 #else
       "  $classname$* returnMe = [[result retain] autorelease];\n"

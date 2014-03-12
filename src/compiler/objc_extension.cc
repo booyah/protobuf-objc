@@ -155,7 +155,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       vars,
-#ifdef OBJC_ARC
+#ifndef OBJC_ARC
       "  [PBConcreteExtensionField extensionWithType:$extension_type$\n"
 #else
       "  [[PBConcreteExtensionField extensionWithType:$extension_type$\n"
@@ -166,7 +166,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "                           messageOrGroupClass:[$type$ class]\n"
       "                                    isRepeated:$is_repeated$\n"
       "                                      isPacked:$is_packed$\n"
-#ifdef OBJC_ARC
+#ifndef OBJC_ARC
       "                        isMessageSetWireFormat:$is_wire_format$];\n");
 #else
       "                        isMessageSetWireFormat:$is_wire_format$] retain];\n");
