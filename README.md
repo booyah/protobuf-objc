@@ -25,8 +25,8 @@
 ###Compile without ARC.
    `protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
 
-
-
+#Framework Directory
+ This is compiled framework fro Xcode Projects
 
 # Protocol Buffers, Objective C
 
