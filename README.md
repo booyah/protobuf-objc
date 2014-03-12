@@ -8,7 +8,7 @@
    
    4.`brew instal protobuf`
 
-   5.`clone protobuf-objc`
+   5.`git clone git@github.com:alexeyxo/protobuf-objc.git`
    
    6.`./autogen.sh`
 
