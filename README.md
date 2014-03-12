@@ -1,22 +1,29 @@
 # Install Protocol Buffers, Objective C
 
-*`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
-*`brew install automake`
-*`brew install libtool`
-*`brew instal protobuf`
+   1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+   
+   2.`brew install automake`
+   
+   3.`brew install libtool`
+   
+   4.`brew instal protobuf`
 
-`clone protobuf-objc`
-`./autogen.sh`
-`./configure`
-`sudo make && make install`
+   5.`clone protobuf-objc`
+   
+   6.`./autogen.sh`
+
+  7.`./configure`
+  
+   8.`sudo make && make install`
 
 #Compile ".proto" files. 
 
-##Compile ARC support.
+ 
+###Compile ARC support.
    `protoc --plugin=/usr/local/bin/protoc-gen-objc-arc person.proto --objc_out="./"`
 
-##Compile without ARC.
-   ~protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
+###Compile without ARC.
+   `protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
 
 
 
