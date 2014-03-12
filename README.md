@@ -1,4 +1,4 @@
-# Install Protocol Buffers, Objective C
+# Install Protocol Buffers for Objective C
 
    1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
    
@@ -12,7 +12,7 @@
    
    6.`./autogen.sh`
 
-  7.`./configure`
+   7.`./configure`
   
    8.`sudo make && make install`
 
