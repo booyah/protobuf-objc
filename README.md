@@ -10,12 +10,12 @@ clone protobuf-objc
 ./configure
 sudo make && make install
 
-#Compile .proto files 
+#Compile ".proto" files. 
 
-Compile ARC support
-   protoc --plugin=/usr/local/bin/protoc-gen-objc-arc person.proto --objc_out="./" 
+Compile ARC support.
+   protoc --plugin=/usr/local/bin/protoc-gen-objc-arc person.proto --objc_out="./"
 
-Compile without ARC
+Compile without ARC.
    protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"
 
 
