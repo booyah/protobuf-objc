@@ -279,6 +279,34 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return equal;
 }
 
+-(id)firstObject
+{
+    if (self.count>0) {
+        return [self objectAtIndex:0];
+    }
+    return nil;
+}
+
+-(id)lastObject
+{
+    if (self.count>0) {
+        return [self objectAtIndex:self.count-1];
+    }
+    return nil;
+}
+
+- (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
+{
+    if (!block) return;
+    BOOL stop = NO;
+    for (NSInteger i = 0; i < self.count; i++) {
+        block([self objectAtIndex:i],i,&stop);
+        if(stop){
+            break;
+        }
+    }
+}
+
 @end
 
 @implementation PBArray (PBArrayExtended)
