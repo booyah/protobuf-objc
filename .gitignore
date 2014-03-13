@@ -22,7 +22,6 @@ stamp-h1
 
 # Targets
 src/compiler/protoc-gen-objc
-src/compiler/protoc-gen-objc-arc
 
 # Mac stuff
 .DS_Store
@@ -34,3 +33,6 @@ Build/
 *.perspectivev3
 *.mode1v3
 *.mode2v3
+*.xcuserdata
+*.xcuserdatad
+*.xccheckout
