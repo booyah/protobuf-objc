@@ -852,7 +852,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageGenerator::GenerateBuilderSource(io::Printer* printer) {
     printer->Print(
       "@interface $classname$_Builder()\n"
-      "@property (retain) $classname$* result;\n"
+#ifndef OBJC_ARC
+    "@property (strong) $classname$* result;\n"
+#else
+    "@property (retain) $classname$* result;\n"
+#endif
+      
       "@end\n"
       "\n"
       "@implementation $classname$_Builder\n"

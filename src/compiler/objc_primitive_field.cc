@@ -241,8 +241,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
-      printer->Print(variables_,
-        "@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
+#ifndef OBJC_ARC
+      printer->Print(variables_,"@property (readonly, strong)$storage_attribute$ $storage_type$ $name$;\n");
+#else
+      printer->Print(variables_,"@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
+#endif
     } else if (GetObjectiveCType(descriptor_) == OBJECTIVECTYPE_BOOLEAN) {
       printer->Print(variables_,
         "- (BOOL) $name$;\n");
@@ -255,8 +258,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
-      printer->Print(variables_,
-        "@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
+#ifndef OBJC_ARC
+        printer->Print(variables_,"@property (strong)$storage_attribute$ $storage_type$ $name$;\n");
+#else
+        printer->Print(variables_,"@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
+#endif
+      
     } else {
       printer->Print(variables_,
         "@property $storage_type$ $name$;\n");
@@ -437,8 +444,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
     printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
     if (descriptor_->options().packed()) {
-      printer->Print(variables_,
-        "int32_t $name$MemoizedSerializedSize;\n");
+      printer->Print(variables_,"int32_t $name$MemoizedSerializedSize;\n");
     }
   }
 
@@ -448,12 +454,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedPrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
+#ifndef OBJC_ARC
+    printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
+#else
     printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
+#endif
+    
   }
 
 
   void RepeatedPrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-    printer->Print(variables_, "@property (retain) PBAppendableArray * $list_name$;\n");
+#ifndef OBJC_ARC
+      printer->Print(variables_, "@property (strong) PBAppendableArray * $list_name$;\n");
+#else
+      printer->Print(variables_, "@property (retain) PBAppendableArray * $list_name$;\n");
+#endif
+    
   }
 
 

@@ -82,13 +82,21 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
+#ifndef OBJC_ARC
+    printer->Print(variables_, "@property (readonly, strong)$storage_attribute$ $storage_type$ $name$;\n");
+#else
     printer->Print(variables_, "@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
+#endif
   }
 
 
   void MessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
+#ifndef OBJC_ARC
+      printer->Print(variables_,"@property (strong)$storage_attribute$ $storage_type$ $name$;\n");
+#else
+      printer->Print(variables_,"@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
+#endif
+    
   }
 
 
@@ -290,13 +298,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-    printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
+#ifndef OBJC_ARC
+      printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
+#else
+      printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
+#endif
+    
   }
 
 
   void RepeatedMessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "@property (retain) PBAppendableArray * $list_name$;\n");
+#ifndef OBJC_ARC
+       printer->Print(variables_,"@property (strong) PBAppendableArray * $list_name$;\n");
+#else
+       printer->Print(variables_,"@property (retain) PBAppendableArray * $list_name$;\n");
+#endif
+   
   }
 
 

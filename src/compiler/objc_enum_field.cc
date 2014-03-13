@@ -260,13 +260,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedEnumFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
+#ifndef OBJC_ARC
+    printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
+#else
     printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
+#endif
   }
 
 
   void RepeatedEnumFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-    printer->Print(variables_,
-      "@property (retain) PBAppendableArray * $list_name$;\n");
+#ifndef OBJC_ARC
+      printer->Print(variables_,
+                     "@property (strong) PBAppendableArray * $list_name$;\n");
+#else
+      printer->Print(variables_,
+                     "@property (retain) PBAppendableArray * $list_name$;\n");
+#endif
   }
 
   void RepeatedEnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
