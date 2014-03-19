@@ -122,10 +122,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (BOOL) has$capitalized_name$;\n"
       "- ($storage_type$) $name$;\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value;\n"
-      "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*) builderForValue;\n"
-      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$) value;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$;\n");
+      "- ($classname$Builder*) set$capitalized_name$:($storage_type$) value;\n"
+      "- ($classname$Builder*) set$capitalized_name$Builder:($type$Builder*) builderForValue;\n"
+      "- ($classname$Builder*) merge$capitalized_name$:($storage_type$) value;\n"
+      "- ($classname$Builder*) clear$capitalized_name$;\n");
   }
 
   void MessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
@@ -136,15 +136,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($storage_type$) $name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value {\n"
+      "- ($classname$Builder*) set$capitalized_name$:($storage_type$) value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$Builder:($type$_Builder*) builderForValue {\n"
+      "- ($classname$Builder*) set$capitalized_name$Builder:($type$Builder*) builderForValue {\n"
       "  return [self set$capitalized_name$:[builderForValue build]];\n"
       "}\n"
-      "- ($classname$_Builder*) merge$capitalized_name$:($storage_type$) value {\n"
+      "- ($classname$Builder*) merge$capitalized_name$:($storage_type$) value {\n"
       "  if (result.has$capitalized_name$ &&\n"
       "      result.$name$ != [$type$ defaultInstance]) {\n"
       "    result.$name$ =\n"
@@ -155,7 +155,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  result.has$capitalized_name$ = YES;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- ($classname$Builder*) clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = [$type$ defaultInstance];\n"
       "  return self;\n"
@@ -189,7 +189,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "$type$_Builder* subBuilder = [$type$ builder];\n"
+      "$type$Builder* subBuilder = [$type$ builder];\n"
       "if (self.has$capitalized_name$) {\n"
       "  [subBuilder mergeFrom:self.$name$];\n"
       "}\n");
@@ -336,10 +336,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (PBAppendableArray *)$name$;\n"
       "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ __strong *)values count:(NSUInteger)count;\n"
-      "- ($classname$_Builder *)clear$capitalized_name$;\n");
+      "- ($classname$Builder *)add$capitalized_name$:($storage_type$)value;\n"
+      "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+      "- ($classname$Builder *)set$capitalized_name$Values:(const $storage_type$ __strong *)values count:(NSUInteger)count;\n"
+      "- ($classname$Builder *)clear$capitalized_name$;\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateBuilderMembersSource(io::Printer* printer) const {
@@ -350,22 +350,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
       "  return [result $name$AtIndex:index];\n"
       "}\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value {\n"
+      "- ($classname$Builder *)add$capitalized_name$:($storage_type$)value {\n"
       "  if (result.$list_name$ == nil) {\n"
       "    result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];\n"
       "  }\n"
       "  [result.$list_name$ addObject:value];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+      "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
       "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ __strong *)values count:(NSUInteger)count {\n"
+      "- ($classname$Builder *)set$capitalized_name$Values:(const $storage_type$ __strong *)values count:(NSUInteger)count {\n"
       "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)clear$capitalized_name$ {\n"
+      "- ($classname$Builder *)clear$capitalized_name$ {\n"
       "  result.$list_name$ = nil;\n"
       "  return self;\n"
       "}\n");
@@ -409,7 +409,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedMessageFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "$type$_Builder* subBuilder = [$type$ builder];\n");
+      "$type$Builder* subBuilder = [$type$ builder];\n");
 
     if (descriptor_->type() == FieldDescriptor::TYPE_GROUP) {
       printer->Print(variables_,

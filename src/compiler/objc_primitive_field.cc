@@ -38,16 +38,16 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     const char* PrimitiveTypeName(const FieldDescriptor* field) {
       switch (field->type()) {
-        case FieldDescriptor::TYPE_INT32   : return "int32_t" ;
-        case FieldDescriptor::TYPE_UINT32  : return "uint32_t";
-        case FieldDescriptor::TYPE_SINT32  : return "int32_t" ;
-        case FieldDescriptor::TYPE_FIXED32 : return "uint32_t";
-        case FieldDescriptor::TYPE_SFIXED32: return "int32_t" ;
-        case FieldDescriptor::TYPE_INT64   : return "int64_t" ;
-        case FieldDescriptor::TYPE_UINT64  : return "uint64_t";
-        case FieldDescriptor::TYPE_SINT64  : return "int64_t" ;
-        case FieldDescriptor::TYPE_FIXED64 : return "uint64_t";
-        case FieldDescriptor::TYPE_SFIXED64: return "int64_t" ;
+        case FieldDescriptor::TYPE_INT32   : return "NSInteger" ;
+        case FieldDescriptor::TYPE_UINT32  : return "NSUInteger";
+        case FieldDescriptor::TYPE_SINT32  : return "NSInteger" ;
+        case FieldDescriptor::TYPE_FIXED32 : return "NSUInteger";
+        case FieldDescriptor::TYPE_SFIXED32: return "NSInteger" ;
+        case FieldDescriptor::TYPE_INT64   : return "NSInteger" ;
+        case FieldDescriptor::TYPE_UINT64  : return "NSUInteger";
+        case FieldDescriptor::TYPE_SINT64  : return "NSInteger" ;
+        case FieldDescriptor::TYPE_FIXED64 : return "NSUInteger";
+        case FieldDescriptor::TYPE_SFIXED64: return "NSInteger" ;
         case FieldDescriptor::TYPE_FLOAT   : return "Float32" ;
         case FieldDescriptor::TYPE_DOUBLE  : return "Float64" ;
         case FieldDescriptor::TYPE_BOOL    : return "BOOL"    ;
@@ -312,8 +312,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (BOOL) has$capitalized_name$;\n"
       "- ($storage_type$) $name$$storage_attribute$;\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$;\n");
+      "- ($classname$Builder*) set$capitalized_name$:($storage_type$) value;\n"
+      "- ($classname$Builder*) clear$capitalized_name$;\n");
   }
 
 
@@ -345,12 +345,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($storage_type$) $name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($storage_type$) value {\n"
+      "- ($classname$Builder*) set$capitalized_name$:($storage_type$) value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- ($classname$Builder*) clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = $default$;\n"
       "  return self;\n"
@@ -481,10 +481,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (PBAppendableArray *)$name$;\n"
       "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count;\n"
-      "- ($classname$_Builder *)clear$capitalized_name$;\n");
+      "- ($classname$Builder *)add$capitalized_name$:($storage_type$)value;\n"
+      "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+      "- ($classname$Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count;\n"
+      "- ($classname$Builder *)clear$capitalized_name$;\n");
   }
 
 
@@ -526,22 +526,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($storage_type$)$name$AtIndex:(NSUInteger)index {\n"
       "  return [result $name$AtIndex:index];\n"
       "}\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value {\n"
+      "- ($classname$Builder *)add$capitalized_name$:($storage_type$)value {\n"
       "  if (result.$list_name$ == nil) {\n"
       "    result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
       "  }\n"
       "  [result.$list_name$ add$array_value_type_name_cap$:value];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+      "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
       "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:$array_value_type$];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count {\n"
+      "- ($classname$Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count {\n"
       "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:$array_value_type$];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)clear$capitalized_name$ {\n"
+      "- ($classname$Builder *)clear$capitalized_name$ {\n"
       "  result.$list_name$ = nil;\n"
       "  return self;\n"
       "}\n");
