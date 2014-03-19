@@ -196,7 +196,7 @@ namespace google { namespace protobuf { namespace compiler {namespace objectivec
     }
 
     printer->Print(
-#ifndef OBJC_ARC
+#if OBJC_ARC
       "extensionRegistry = registry;\n");
 #else
       "extensionRegistry = [registry retain];\n");
