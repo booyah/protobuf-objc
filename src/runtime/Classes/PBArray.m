@@ -99,7 +99,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 #define PBArrayValueRangeAssert(index) \
 	if (__builtin_expect(index >= _count, 0)) \
-		[NSException raise:NSRangeException format: @"index (%u) beyond bounds (%u)", index, _count];
+		[NSException raise:NSRangeException format: @"index (%ld) beyond bounds (%ld)", (long)index, (long)_count];
 
 #define PBArrayNumberAssert(value) \
 	if (__builtin_expect(![value isKindOfClass:[NSNumber class]], 0)) \
@@ -164,8 +164,8 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (NSString *)description
 {
-	return [NSString stringWithFormat:@"<%@ %p>{valueType = %d, count = %d, capacity = %d, data = %p}",
-			[self class], self, _valueType, _count, _capacity, _data];
+	return [NSString stringWithFormat:@"<%@ %p>{valueType = %d, count = %ld, capacity = %ld, data = %p}",
+			[self class], self, _valueType, (long)_count, (long)_capacity, _data];
 }
 
 - (NSUInteger)count
