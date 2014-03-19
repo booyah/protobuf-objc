@@ -241,7 +241,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
-#if OBJC_ARC
+#ifdef OBJC_ARC
       printer->Print(variables_,"@property (readonly, strong)$storage_attribute$ $storage_type$ $name$;\n");
 #else
       printer->Print(variables_,"@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
@@ -258,7 +258,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void PrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
-#if OBJC_ARC
+#ifdef OBJC_ARC
         printer->Print(variables_,"@property (strong)$storage_attribute$ $storage_type$ $name$;\n");
 #else
         printer->Print(variables_,"@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
@@ -454,7 +454,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedPrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-#if OBJC_ARC
+#ifdef OBJC_ARC
     printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
 #else
     printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
@@ -464,7 +464,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedPrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-#if OBJC_ARC
+#ifdef OBJC_ARC
       printer->Print(variables_, "@property (strong) PBAppendableArray * $list_name$;\n");
 #else
       printer->Print(variables_, "@property (retain) PBAppendableArray * $list_name$;\n");
@@ -567,7 +567,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
       "  if (result.$list_name$ == nil) {\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "    result.$list_name$ = [other.$list_name$ copy];\n"
 #else
       "    result.$list_name$ = [[other.$list_name$ copyWithZone:[other.$list_name$ zone]] autorelease];\n"
@@ -606,12 +606,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "const NSUInteger $list_name$Count = self.$list_name$.count;\n"
       "if ($list_name$Count > 0) {\n");
-#if OBJC_ARC
+#ifdef OBJC_ARC
     if (IsPrimitiveType(GetObjectiveCType(descriptor_))) {
 #endif
         printer->Print(variables_,
         "  const $storage_type$ *values = (const $storage_type$ *)self.$list_name$.data;\n");
-#if OBJC_ARC
+#ifdef OBJC_ARC
     } else {
         printer->Print(variables_,
         "  const __strong $storage_type$ *values = (const __strong $storage_type$ *)self.$list_name$.data;\n");
@@ -649,12 +649,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "const NSUInteger count = self.$list_name$.count;\n");
 
     if (FixedSize(descriptor_->type()) == -1) {
-#if OBJC_ARC
+#ifdef OBJC_ARC
         if (IsPrimitiveType(GetObjectiveCType(descriptor_))) {
 #endif
             printer->Print(variables_,
                 "const $storage_type$ *values = (const $storage_type$ *)self.$list_name$.data;\n");
-#if OBJC_ARC
+#ifdef OBJC_ARC
         } else {
             printer->Print(variables_,
                 "const __strong $storage_type$ *values = (const __strong $storage_type$ *)self.$list_name$.data;\n");

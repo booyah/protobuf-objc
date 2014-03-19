@@ -334,7 +334,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       field_generators_.get(descriptor_->field(i)).GenerateSynthesizeSource(printer);
     }
 
-#if OBJC_ARC
+#ifdef OBJC_ARC
       printer->Print("- (void) dealloc {\n");
       printer->Indent();
       for (int i = 0; i < descriptor_->field_count(); i++) {
@@ -403,7 +403,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "+ ($classname$_Builder*) builder {\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "  return [[$classname$_Builder alloc] init];\n"
 #else
       "  return [[[$classname$_Builder alloc] init] autorelease];\n"
@@ -852,7 +852,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageGenerator::GenerateBuilderSource(io::Printer* printer) {
     printer->Print(
       "@interface $classname$_Builder()\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
     "@property (strong) $classname$* result;\n"
 #else
     "@property (retain) $classname$* result;\n"
@@ -862,7 +862,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "\n"
       "@implementation $classname$_Builder\n"
       "@synthesize result;\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "- (void) dealloc {\n"
       "  self.result = nil;\n"
       "}\n"
@@ -878,7 +878,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "- (id) init {\n"
       "  if ((self = [super init])) {\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "    self.result = [[$classname$ alloc] init];\n"
 #else
       "    self.result = [[[$classname$ alloc] init] autorelease];\n"
@@ -914,7 +914,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "- ($classname$_Builder*) clear {\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "  self.result = [[$classname$ alloc] init];\n"
 #else
       "  self.result = [[[$classname$ alloc] init] autorelease];\n"
@@ -944,7 +944,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Outdent();
     printer->Print(
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "  $classname$* returnMe = result;\n"
 #else
       "  $classname$* returnMe = [[result retain] autorelease];\n"

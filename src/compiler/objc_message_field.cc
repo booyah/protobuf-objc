@@ -82,7 +82,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-#if OBJC_ARC
+#ifdef OBJC_ARC
     printer->Print(variables_, "@property (readonly, strong)$storage_attribute$ $storage_type$ $name$;\n");
 #else
     printer->Print(variables_, "@property (readonly, retain)$storage_attribute$ $storage_type$ $name$;\n");
@@ -91,7 +91,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void MessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-#if OBJC_ARC
+#ifdef OBJC_ARC
       printer->Print(variables_,"@property (strong)$storage_attribute$ $storage_type$ $name$;\n");
 #else
       printer->Print(variables_,"@property (retain)$storage_attribute$ $storage_type$ $name$;\n");
@@ -298,7 +298,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-#if OBJC_ARC
+#ifdef OBJC_ARC
       printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
 #else
       printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
@@ -308,7 +308,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedMessageFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-#if OBJC_ARC
+#ifdef OBJC_ARC
        printer->Print(variables_,"@property (strong) PBAppendableArray * $list_name$;\n");
 #else
        printer->Print(variables_,"@property (retain) PBAppendableArray * $list_name$;\n");
@@ -421,7 +421,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
       "  if (result.$list_name$ == nil) {\n"
-#if OBJC_ARC
+#ifdef OBJC_ARC
       "    result.$list_name$ = [other.$list_name$ copy];\n"
 #else
       "    result.$list_name$ = [[other.$list_name$ copyWithZone:[other.$list_name$ zone]] autorelease];\n"

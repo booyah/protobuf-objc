@@ -1,6 +1,6 @@
 MAINTAINERCLEANFILES = \
 	Makefile.in
-
+DEFINES = OBJC_ARC
 bin_PROGRAMS = protoc-gen-objc protoc-gen-objc-arc
 protoc_gen_objc_LDFLAGS = -lprotobuf -lprotoc
 protoc_gen_objc_SOURCES = 	\
@@ -18,5 +18,4 @@ protoc_gen_objc_SOURCES = 	\
 	google/protobuf/objectivec-descriptor.pb.cc
 protoc_gen_objc_arc_LDFLAGS = ${protoc_gen_objc_LDFLAGS}
 protoc_gen_objc_arc_SOURCES = ${protoc_gen_objc_SOURCES}
-protoc_gen_objc_CXXFLAGS = -DOBJC_ARC=0
-protoc_gen_objc_arc_CXXFLAGS = -DOBJC_ARC=1
+protoc_gen_objc_arc_CPPFLAGS = -D${DEFINES}
