@@ -22,6 +22,7 @@ stamp-h1
 
 # Targets
 src/compiler/protoc-gen-objc
+src/compiler/protoc-gen-objc-arc
 
 # Mac stuff
 .DS_Store
