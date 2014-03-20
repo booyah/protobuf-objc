@@ -654,7 +654,7 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
   result.phonesArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
   return self;
 }
-- (PersonBuilder *)setPhonesValues:(const PersonPhoneNumber* *)values count:(NSUInteger)count {
+- (PersonBuilder *)setPhonesValues:(const PersonPhoneNumber* __strong *)values count:(NSUInteger)count {
   result.phonesArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
   return self;
 }

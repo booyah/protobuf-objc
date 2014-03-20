@@ -7,9 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "Person.pb.h"
+
 #import "NSObject+MKBlockTimer.h"
-#import <ProtocolBuffers/ProtocolBuffers.h>
+#import "ProtocolBuffers.h"
+#import "Person.pb.h"
 
 @interface ViewController ()
 
@@ -46,15 +47,16 @@
 -(void) json
 {
     // JSON Part
-    NSLog(@" ");
     NSData *raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroupsJson"]];
-    NSLog(@"json content size %@",[NSByteCountFormatter stringFromByteCount:raw_data.length countStyle:NSByteCountFormatterCountStyleMemory]);
+
     if (!raw_data)
     {
         NSLog(@"Please turn on the server");
         return;
     }
-    
+
+    NSLog(@" ");
+    NSLog(@"json content size %@",[NSByteCountFormatter stringFromByteCount:raw_data.length countStyle:NSByteCountFormatterCountStyleMemory]);
     __block NSObject *serial;
     [NSObject logTime:^{
         serial = [NSJSONSerialization JSONObjectWithData:raw_data options:NSJSONReadingMutableContainers error:nil];
