@@ -17,30 +17,23 @@
 		BE3A707A18CF88C9008F79A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3A707918CF88C9008F79A2 /* ViewController.m */; };
 		BE3A707C18CF88C9008F79A2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3A707B18CF88C9008F79A2 /* Images.xcassets */; };
 		BE3A711818D08089008F79A2 /* NSObject+MKBlockTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3A711718D08089008F79A2 /* NSObject+MKBlockTimer.m */; };
+		BE6430AC18DAE9210076F4DC /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE6430A918DAE90F0076F4DC /* ProtocolBuffers.framework */; };
 		BE7D3FE418DA211C00451E2C /* Person.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7D3FE318DA211C00451E2C /* Person.pb.m */; };
-		BE7D3FF318DA224E00451E2C /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7D3FED18DA215700451E2C /* libProtocolBuffers.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		BE7D3FEC18DA215700451E2C /* PBXContainerItemProxy */ = {
+		BE6430A818DAE90F0076F4DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BE7D3FE718DA215700451E2C /* ProtocolBuffers.xcodeproj */;
+			containerPortal = BE6430A418DAE90F0076F4DC /* ProtocolBuffers.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteGlobalIDString = 3FF0F69118D0B88900CCE3C7;
 			remoteInfo = ProtocolBuffers;
 		};
-		BE7D3FEE18DA215700451E2C /* PBXContainerItemProxy */ = {
+		BE6430AA18DAE91C0076F4DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = BE7D3FE718DA215700451E2C /* ProtocolBuffers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C5B03F76125179F30087887C;
-			remoteInfo = UnitTests;
-		};
-		BE7D3FF418DA225200451E2C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BE7D3FE718DA215700451E2C /* ProtocolBuffers.xcodeproj */;
+			containerPortal = BE6430A418DAE90F0076F4DC /* ProtocolBuffers.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteGlobalIDString = 3FF0F69018D0B88900CCE3C7;
 			remoteInfo = ProtocolBuffers;
 		};
 /* End PBXContainerItemProxy section */
@@ -63,9 +56,9 @@
 		BE3A708218CF88C9008F79A2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE3A711618D08089008F79A2 /* NSObject+MKBlockTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MKBlockTimer.h"; sourceTree = "<group>"; };
 		BE3A711718D08089008F79A2 /* NSObject+MKBlockTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MKBlockTimer.m"; sourceTree = "<group>"; };
+		BE6430A418DAE90F0076F4DC /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "../../../framework-src/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
 		BE7D3FE218DA211C00451E2C /* Person.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Person.pb.h; path = ../../Person.pb.h; sourceTree = "<group>"; };
 		BE7D3FE318DA211C00451E2C /* Person.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Person.pb.m; path = ../../Person.pb.m; sourceTree = "<group>"; };
-		BE7D3FE718DA215700451E2C /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = ../../../src/runtime/ProtocolBuffers.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE7D3FF318DA224E00451E2C /* libProtocolBuffers.a in Frameworks */,
+				BE6430AC18DAE9210076F4DC /* ProtocolBuffers.framework in Frameworks */,
 				BE3A706618CF88C9008F79A2 /* CoreGraphics.framework in Frameworks */,
 				BE3A706818CF88C9008F79A2 /* UIKit.framework in Frameworks */,
 				BE3A706418CF88C9008F79A2 /* Foundation.framework in Frameworks */,
@@ -138,10 +131,18 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BE6430A518DAE90F0076F4DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE6430A918DAE90F0076F4DC /* ProtocolBuffers.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		BE7D3FE518DA211E00451E2C /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				BE7D3FE718DA215700451E2C /* ProtocolBuffers.xcodeproj */,
+				BE6430A418DAE90F0076F4DC /* ProtocolBuffers.xcodeproj */,
 				BE3A711618D08089008F79A2 /* NSObject+MKBlockTimer.h */,
 				BE3A711718D08089008F79A2 /* NSObject+MKBlockTimer.m */,
 			);
@@ -155,15 +156,6 @@
 				BE7D3FE318DA211C00451E2C /* Person.pb.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		BE7D3FE818DA215700451E2C /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				BE7D3FED18DA215700451E2C /* libProtocolBuffers.a */,
-				BE7D3FEF18DA215700451E2C /* UnitTests.octest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +172,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				BE7D3FF518DA225200451E2C /* PBXTargetDependency */,
+				BE6430AB18DAE91C0076F4DC /* PBXTargetDependency */,
 			);
 			name = Proto;
 			productName = Proto;
@@ -209,8 +201,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = BE7D3FE818DA215700451E2C /* Products */;
-					ProjectRef = BE7D3FE718DA215700451E2C /* ProtocolBuffers.xcodeproj */;
+					ProductGroup = BE6430A518DAE90F0076F4DC /* Products */;
+					ProjectRef = BE6430A418DAE90F0076F4DC /* ProtocolBuffers.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -221,18 +213,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		BE7D3FED18DA215700451E2C /* libProtocolBuffers.a */ = {
+		BE6430A918DAE90F0076F4DC /* ProtocolBuffers.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libProtocolBuffers.a;
-			remoteRef = BE7D3FEC18DA215700451E2C /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		BE7D3FEF18DA215700451E2C /* UnitTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = UnitTests.octest;
-			remoteRef = BE7D3FEE18DA215700451E2C /* PBXContainerItemProxy */;
+			fileType = wrapper.framework.static;
+			path = ProtocolBuffers.framework;
+			remoteRef = BE6430A818DAE90F0076F4DC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -266,10 +251,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		BE7D3FF518DA225200451E2C /* PBXTargetDependency */ = {
+		BE6430AB18DAE91C0076F4DC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ProtocolBuffers;
-			targetProxy = BE7D3FF418DA225200451E2C /* PBXContainerItemProxy */;
+			targetProxy = BE6430AA18DAE91C0076F4DC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -368,12 +353,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/Will/xcode/protobuf-objc/framework",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ProtocolBuffers-bvpiwmvgtzdknicajzddnukgnblh/Build/Products/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ProtocolBuffers-bvpiwmvgtzdknicajzddnukgnblh/Build/Intermediates/ArchiveIntermediates/ProtocolBuffers/IntermediateBuildFilesPath/UninstalledProducts",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Proto/Proto-Prefix.pch";
 				INFOPLIST_FILE = "Proto/Proto-Info.plist";
@@ -391,12 +371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"/Users/Will/xcode/protobuf-objc/framework",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ProtocolBuffers-bvpiwmvgtzdknicajzddnukgnblh/Build/Products/Debug-iphoneos",
-					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/ProtocolBuffers-bvpiwmvgtzdknicajzddnukgnblh/Build/Intermediates/ArchiveIntermediates/ProtocolBuffers/IntermediateBuildFilesPath/UninstalledProducts",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Proto/Proto-Prefix.pch";
 				INFOPLIST_FILE = "Proto/Proto-Info.plist";

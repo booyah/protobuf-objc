@@ -24,7 +24,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @property (strong) NSString* name;
 @property NSInteger personId;
 @property (strong) NSString* email;
-@property (strong) PBAppendableArray * phoneArray;
+@property (strong) PBAppendableArray * phonesArray;
 @end
 
 @implementation Person
@@ -50,12 +50,12 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasEmail_ = !!value_;
 }
 @synthesize email;
-@synthesize phoneArray;
-@dynamic phone;
+@synthesize phonesArray;
+@dynamic phones;
 - (void) dealloc {
   self.name = nil;
   self.email = nil;
-  self.phoneArray = nil;
+  self.phonesArray = nil;
 }
 - (id) init {
   if ((self = [super init])) {
@@ -77,11 +77,11 @@ static Person* defaultPersonInstance = nil;
 - (Person*) defaultInstance {
   return defaultPersonInstance;
 }
-- (PBArray *)phone {
-  return phoneArray;
+- (PBArray *)phones {
+  return phonesArray;
 }
-- (PersonPhoneNumber*)phoneAtIndex:(NSUInteger)index {
-  return [phoneArray objectAtIndex:index];
+- (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index {
+  return [phonesArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
   if (!self.hasName) {
@@ -90,7 +90,7 @@ static Person* defaultPersonInstance = nil;
   if (!self.hasPersonId) {
     return NO;
   }
-  for (PersonPhoneNumber* element in self.phone) {
+  for (PersonPhoneNumber* element in self.phones) {
     if (!element.isInitialized) {
       return NO;
     }
@@ -107,7 +107,7 @@ static Person* defaultPersonInstance = nil;
   if (self.hasEmail) {
     [output writeString:3 value:self.email];
   }
-  for (PersonPhoneNumber *element in self.phoneArray) {
+  for (PersonPhoneNumber *element in self.phonesArray) {
     [output writeMessage:4 value:element];
   }
   [self.unknownFields writeToCodedOutputStream:output];
@@ -128,7 +128,7 @@ static Person* defaultPersonInstance = nil;
   if (self.hasEmail) {
     size_ += computeStringSize(3, self.email);
   }
-  for (PersonPhoneNumber *element in self.phoneArray) {
+  for (PersonPhoneNumber *element in self.phonesArray) {
     size_ += computeMessageSize(4, element);
   }
   size_ += self.unknownFields.serializedSize;
@@ -175,8 +175,8 @@ static Person* defaultPersonInstance = nil;
   if (self.hasEmail) {
     [output appendFormat:@"%@%@: %@\n", indent, @"email", self.email];
   }
-  for (PersonPhoneNumber* element in self.phoneArray) {
-    [output appendFormat:@"%@%@ {\n", indent, @"phone"];
+  for (PersonPhoneNumber* element in self.phonesArray) {
+    [output appendFormat:@"%@%@ {\n", indent, @"phones"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
@@ -198,7 +198,7 @@ static Person* defaultPersonInstance = nil;
       (!self.hasPersonId || self.personId == otherMessage.personId) &&
       self.hasEmail == otherMessage.hasEmail &&
       (!self.hasEmail || [self.email isEqual:otherMessage.email]) &&
-      [self.phoneArray isEqualToArray:otherMessage.phoneArray] &&
+      [self.phonesArray isEqualToArray:otherMessage.phonesArray] &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -212,7 +212,7 @@ static Person* defaultPersonInstance = nil;
   if (self.hasEmail) {
     hashCode = hashCode * 31 + [self.email hash];
   }
-  for (PersonPhoneNumber* element in self.phoneArray) {
+  for (PersonPhoneNumber* element in self.phonesArray) {
     hashCode = hashCode * 31 + [element hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -540,11 +540,11 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
   if (other.hasEmail) {
     [self setEmail:other.email];
   }
-  if (other.phoneArray.count > 0) {
-    if (result.phoneArray == nil) {
-      result.phoneArray = [other.phoneArray copy];
+  if (other.phonesArray.count > 0) {
+    if (result.phonesArray == nil) {
+      result.phonesArray = [other.phonesArray copy];
     } else {
-      [result.phoneArray appendArray:other.phoneArray];
+      [result.phonesArray appendArray:other.phonesArray];
     }
   }
   [self mergeUnknownFields:other.unknownFields];
@@ -583,7 +583,7 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
       case 34: {
         PersonPhoneNumberBuilder* subBuilder = [PersonPhoneNumber builder];
         [input readMessage:subBuilder extensionRegistry:extensionRegistry];
-        [self addPhone:[subBuilder buildPartial]];
+        [self addPhones:[subBuilder buildPartial]];
         break;
       }
     }
@@ -637,29 +637,29 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
   result.email = @"";
   return self;
 }
-- (PBAppendableArray *)phone {
-  return result.phoneArray;
+- (PBAppendableArray *)phones {
+  return result.phonesArray;
 }
-- (PersonPhoneNumber*)phoneAtIndex:(NSUInteger)index {
-  return [result phoneAtIndex:index];
+- (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index {
+  return [result phonesAtIndex:index];
 }
-- (PersonBuilder *)addPhone:(PersonPhoneNumber*)value {
-  if (result.phoneArray == nil) {
-    result.phoneArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+- (PersonBuilder *)addPhones:(PersonPhoneNumber*)value {
+  if (result.phonesArray == nil) {
+    result.phonesArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
   }
-  [result.phoneArray addObject:value];
+  [result.phonesArray addObject:value];
   return self;
 }
-- (PersonBuilder *)setPhoneArray:(NSArray *)array {
-  result.phoneArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
+- (PersonBuilder *)setPhonesArray:(NSArray *)array {
+  result.phonesArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
   return self;
 }
-- (PersonBuilder *)setPhoneValues:(const PersonPhoneNumber* *)values count:(NSUInteger)count {
-  result.phoneArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+- (PersonBuilder *)setPhonesValues:(const PersonPhoneNumber* *)values count:(NSUInteger)count {
+  result.phonesArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
   return self;
 }
-- (PersonBuilder *)clearPhone {
-  result.phoneArray = nil;
+- (PersonBuilder *)clearPhones {
+  result.phonesArray = nil;
   return self;
 }
 @end

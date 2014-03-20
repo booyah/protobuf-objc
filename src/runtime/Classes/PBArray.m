@@ -295,6 +295,14 @@ static PBArrayValueTypeInfo PBValueTypes[] =
     return nil;
 }
 
+- (id)objectAtIndexedSubscript:(NSUInteger)idx
+{
+    if (idx > 0 && idx < self.count) {
+        return [self objectAtIndex:idx];
+    }
+    return nil;
+}
+
 - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
 {
     if (!block) return;

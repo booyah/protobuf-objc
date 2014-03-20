@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "Person.pb.h"
 #import "NSObject+MKBlockTimer.h"
+#import <ProtocolBuffers/ProtocolBuffers.h>
 
 @interface ViewController ()
 
@@ -20,8 +21,14 @@
 {
     [super viewDidLoad];
     
+    [self proto];
+    [self json];
+}
+
+
+-(void) proto
+{
     // Proto Part
-    
     NSData* raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroups"]];
     if (!raw_data)
     {
@@ -34,11 +41,13 @@
     [NSObject logTime:^{
         person = [Person parseFromData:raw_data];
     } withPrefix:@"builing proto objects"];
+}
 
-    
+-(void) json
+{
     // JSON Part
-    
-    raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroupsJson"]];
+    NSLog(@" ");
+    NSData *raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroupsJson"]];
     NSLog(@"json content size %@",[NSByteCountFormatter stringFromByteCount:raw_data.length countStyle:NSByteCountFormatterCountStyleMemory]);
     if (!raw_data)
     {
@@ -51,7 +60,6 @@
         serial = [NSJSONSerialization JSONObjectWithData:raw_data options:NSJSONReadingMutableContainers error:nil];
     } withPrefix:@"parse json"];
 }
-
 
 
 @end

@@ -3,7 +3,7 @@
 # 
 # message Person {
 #   required string name = 1;
-#   required int32 personId = 2;
+#   required int32  personId = 2;
 #   optional string email = 3;
 # 
 #   enum PhoneType {
@@ -17,7 +17,7 @@
 #     optional PhoneType type = 2 [default = HOME];
 #   }
 # 
-#   repeated PhoneNumber phone = 4;
+#   repeated PhoneNumber phones = 4;
 # }
 
 require 'protobuf/message/message'
@@ -41,5 +41,5 @@ class Person < ::Protobuf::Message
     required :string, :number, 1
     optional :PhoneType, :type, 2, :default => :HOME
   end
-  repeated :PhoneNumber, :phone, 4
+  repeated :PhoneNumber, :phones, 4
 end

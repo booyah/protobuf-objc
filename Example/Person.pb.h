@@ -43,7 +43,7 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
   NSInteger personId;
   NSString* name;
   NSString* email;
-  PBAppendableArray * phoneArray;
+  PBAppendableArray * phonesArray;
 }
 - (BOOL) hasName;
 - (BOOL) hasPersonId;
@@ -51,8 +51,8 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 @property (readonly, strong) NSString* name;
 @property (readonly) NSInteger personId;
 @property (readonly, strong) NSString* email;
-@property (readonly, strong) PBArray * phone;
-- (PersonPhoneNumber*)phoneAtIndex:(NSUInteger)index;
+@property (readonly, strong) PBArray * phones;
+- (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index;
 
 + (Person*) defaultInstance;
 - (Person*) defaultInstance;
@@ -162,12 +162,12 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 - (PersonBuilder*) setEmail:(NSString*) value;
 - (PersonBuilder*) clearEmail;
 
-- (PBAppendableArray *)phone;
-- (PersonPhoneNumber*)phoneAtIndex:(NSUInteger)index;
-- (PersonBuilder *)addPhone:(PersonPhoneNumber*)value;
-- (PersonBuilder *)setPhoneArray:(NSArray *)array;
-- (PersonBuilder *)setPhoneValues:(const PersonPhoneNumber* *)values count:(NSUInteger)count;
-- (PersonBuilder *)clearPhone;
+- (PBAppendableArray *)phones;
+- (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index;
+- (PersonBuilder *)addPhones:(PersonPhoneNumber*)value;
+- (PersonBuilder *)setPhonesArray:(NSArray *)array;
+- (PersonBuilder *)setPhonesValues:(const PersonPhoneNumber* *)values count:(NSUInteger)count;
+- (PersonBuilder *)clearPhones;
 @end
 
 
