@@ -334,7 +334,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       field_generators_.get(descriptor_->field(i)).GenerateSynthesizeSource(printer);
     }
 
-#ifdef OBJC_ARC
       printer->Print("- (void) dealloc {\n");
       printer->Indent();
       for (int i = 0; i < descriptor_->field_count(); i++) {
@@ -342,18 +341,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       }
       printer->Outdent();
       printer->Print("}\n");
-      
-#else
-    printer->Print("- (void) dealloc {\n");
-    printer->Indent();
-    for (int i = 0; i < descriptor_->field_count(); i++) {
-      field_generators_.get(descriptor_->field(i)).GenerateDeallocSource(printer);
-    }
-    printer->Outdent();
-    printer->Print(
-      "  [super dealloc];\n"
-      "}\n");
-#endif
 
     printer->Print(
       "- (id) init {\n"
@@ -403,11 +390,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "+ ($classname$_Builder*) builder {\n"
-#ifdef OBJC_ARC
       "  return [[$classname$_Builder alloc] init];\n"
-#else
-      "  return [[[$classname$_Builder alloc] init] autorelease];\n"
-#endif
       "}\n"
       "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype {\n"
       "  return [[$classname$ builder] mergeFrom:prototype];\n"
@@ -852,37 +835,21 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageGenerator::GenerateBuilderSource(io::Printer* printer) {
     printer->Print(
       "@interface $classname$_Builder()\n"
-#ifdef OBJC_ARC
     "@property (strong) $classname$* result;\n"
-#else
-    "@property (retain) $classname$* result;\n"
-#endif
-      
       "@end\n"
       "\n"
       "@implementation $classname$_Builder\n"
       "@synthesize result;\n"
-#ifdef OBJC_ARC
       "- (void) dealloc {\n"
       "  self.result = nil;\n"
       "}\n"
-#else
-      "- (void) dealloc {\n"
-      "  self.result = nil;\n"
-      "  [super dealloc];\n"
-      "}\n"
-#endif
       ,
       "classname", ClassName(descriptor_));
 
     printer->Print(
       "- (id) init {\n"
       "  if ((self = [super init])) {\n"
-#ifdef OBJC_ARC
       "    self.result = [[$classname$ alloc] init];\n"
-#else
-      "    self.result = [[[$classname$ alloc] init] autorelease];\n"
-#endif
       "  }\n"
       "  return self;\n"
       "}\n",
@@ -914,11 +881,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "- ($classname$_Builder*) clear {\n"
-#ifdef OBJC_ARC
       "  self.result = [[$classname$ alloc] init];\n"
-#else
-      "  self.result = [[[$classname$ alloc] init] autorelease];\n"
-#endif
       "  return self;\n"
       "}\n"
       "- ($classname$_Builder*) clone {\n"
@@ -944,11 +907,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Outdent();
     printer->Print(
-#ifdef OBJC_ARC
       "  $classname$* returnMe = result;\n"
-#else
-      "  $classname$* returnMe = [[result retain] autorelease];\n"
-#endif
       "  self.result = nil;\n"
       "  return returnMe;\n"
       "}\n",

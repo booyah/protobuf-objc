@@ -1,4 +1,4 @@
-# Install Protocol Buffers for Objective C
+# Install Protocol Buffers for Objective-C, only for ARC projects
 
    1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
    
@@ -10,19 +10,9 @@
 
    5.`git clone git@github.com:alexeyxo/protobuf-objc.git`
    
-   6.`./autogen.sh`
-
-   7.`./configure`
-  
-   8.`sudo make && make install`
+   6.`./build.sh`
 
 #Compile ".proto" files. 
-
- 
-###Compile ARC support.
-   `protoc --plugin=/usr/local/bin/protoc-gen-objc-arc person.proto --objc_out="./"`
-
-###Compile without ARC.
    `protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
 
 #Framework Directory

@@ -260,22 +260,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedEnumFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
-#ifdef OBJC_ARC
+      
     printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
-#else
-    printer->Print(variables_, "@property (readonly, retain) PBArray * $name$;\n");
-#endif
+
   }
 
 
   void RepeatedEnumFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
-#ifdef OBJC_ARC
-      printer->Print(variables_,
-                     "@property (strong) PBAppendableArray * $list_name$;\n");
-#else
-      printer->Print(variables_,
-                     "@property (retain) PBAppendableArray * $list_name$;\n");
-#endif
+      printer->Print(variables_,"@property (strong) PBAppendableArray * $list_name$;\n");
   }
 
   void RepeatedEnumFieldGenerator::GenerateSynthesizeSource(io::Printer* printer) const {
@@ -372,11 +364,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
       "  if (result.$list_name$ == nil) {\n"
-#ifdef OBJC_ARC
       "    result.$list_name$ = [other.$list_name$ copy];\n"
-#else
-      "    result.$list_name$ = [[other.$list_name$ copyWithZone:[other.$list_name$ zone]] autorelease];\n"
-#endif
       "  } else {\n"
       "    [result.$list_name$ appendArray:other.$list_name$];\n"
       "  }\n"

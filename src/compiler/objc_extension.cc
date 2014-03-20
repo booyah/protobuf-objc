@@ -155,22 +155,16 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       vars,
-#ifdef OBJC_ARC
+
       "  [PBConcreteExtensionField extensionWithType:$extension_type$\n"
-#else
-      "  [[PBConcreteExtensionField extensionWithType:$extension_type$\n"
-#endif
       "                                 extendedClass:[$extended_type$ class]\n"
       "                                   fieldNumber:$number$\n"
       "                                  defaultValue:$default$\n"
       "                           messageOrGroupClass:[$type$ class]\n"
       "                                    isRepeated:$is_repeated$\n"
       "                                      isPacked:$is_packed$\n"
-#ifdef OBJC_ARC
       "                        isMessageSetWireFormat:$is_wire_format$];\n");
-#else
-      "                        isMessageSetWireFormat:$is_wire_format$] retain];\n");
-#endif
+
   }
 
   void ExtensionGenerator::GenerateRegistrationSource(io::Printer* printer) {
