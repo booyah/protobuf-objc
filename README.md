@@ -1,4 +1,4 @@
-Protocol Buffers for Objective-C, ARC only
+Protocol Buffers for Objective-C
 =================
 
 An implementation of Protocol Buffers in Objective C.
@@ -8,6 +8,8 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 [Google protobuf project][g-protobuf] for more information.
 
 [g-protobuf]: http://code.google.com/p/protobuf/
+
+This fork contains only ARC version of library.
 
 ## How To Install Protobuf
 1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
