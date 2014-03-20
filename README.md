@@ -1,24 +1,5 @@
-# Install Protocol Buffers for Objective-C, only for ARC projects
-
-   1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
-   
-   2.`brew install automake`
-   
-   3.`brew install libtool`
-   
-   4.`brew instal protobuf`
-
-   5.`git clone git@github.com:alexeyxo/protobuf-objc.git`
-   
-   6.`./build.sh`
-
-#Compile ".proto" files. 
-   `protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
-
-#Framework Directory
- This is compiled framework for Xcode Projects
-
-# Protocol Buffers, Objective C
+Protocol Buffers for Objective-C, ARC only
+=================
 
 An implementation of Protocol Buffers in Objective C.
 
@@ -28,20 +9,45 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 
 [g-protobuf]: http://code.google.com/p/protobuf/
 
+## How To Install Protobuf
+1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
 
-# Credits
+2.`brew install automake`
+
+3.`brew install libtool`
+
+4.`brew instal protobuf`
+
+5.`git clone git@github.com:Serheo/protobuf-objc.git`
+
+6.`./build.sh`
+
+## Compile ".proto" files. 
+`protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
+
+## Example
+
+### Web
+
+Server-side requires Ruby(2.0+) and Sinatra gem.
+
+To start `ruby sinatra.rb` in /Example/Web
+
+if you need to recompile ruby proto models please install ruby_protobuf gem and make 'rprotoc person.proto'
+
+### iOS Example
+/Example/iOS/Proto.xcodeproj
+
+Project contains protobuf example and small json comparison.
+
+### Credits
 
 Booyah Inc.
--------------------------------------------------------------------------------
-- Jon Parise <jon@booyah.com>
-
+- Jon Parise
 
 Google Protocol Buffers, Objective C
--------------------------------------------------------------------------------
-- Cyrus Najmabadi  (http://code.google.com/p/metasyntactic/wiki/ProtocolBuffers)
-- Sergey Martynov  (http://github.com/martynovs/protobuf-objc)
-
+- Cyrus Najmabadi
+- Sergey Martynov
 
 Google Protocol Buffers
--------------------------------------------------------------------------------
 - Kenton Varda, Sanjay Ghemawat, Jeff Dean, and others
