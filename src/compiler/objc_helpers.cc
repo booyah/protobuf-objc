@@ -250,7 +250,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     string name;
     if (descriptor->containing_type() != NULL) {
       name = ClassNameWorker(descriptor->containing_type());
-      name += "_";
+      name += "";
     }
     return name + descriptor->name();
   }
@@ -260,7 +260,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     string name;
     if (descriptor->containing_type() != NULL) {
       name = ClassNameWorker(descriptor->containing_type());
-      name += "_";
+      name += "";
     }
     return name + descriptor->name();
   }

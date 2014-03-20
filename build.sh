@@ -1,5 +1,5 @@
 #!/bin/sh
 make clean;
-./autogen;
+./autogen.sh;
 ./configure;
 make && make install;

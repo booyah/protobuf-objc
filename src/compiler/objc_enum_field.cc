@@ -120,8 +120,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (BOOL) has$capitalized_name$;\n"
       "- ($type$) $name$;\n"\
-      "- ($classname$_Builder*) set$capitalized_name$:($type$) value;\n"
-      "- ($classname$_Builder*) clear$capitalized_name$;\n");
+      "- ($classname$Builder*) set$capitalized_name$:($type$) value;\n"
+      "- ($classname$Builder*) clear$capitalized_name$;\n");
   }
 
 
@@ -133,12 +133,12 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($type$) $name$ {\n"
       "  return result.$name$;\n"
       "}\n"
-      "- ($classname$_Builder*) set$capitalized_name$:($type$) value {\n"
+      "- ($classname$Builder*) set$capitalized_name$:($type$) value {\n"
       "  result.has$capitalized_name$ = YES;\n"
       "  result.$name$ = value;\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clear$capitalized_name$ {\n"
+      "- ($classname$Builder*) clear$capitalized_name$ {\n"
       "  result.has$capitalized_name$ = NO;\n"
       "  result.$name$ = $default$;\n"
       "  return self;\n"
@@ -294,10 +294,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "- (PBAppendableArray *)$name$;\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index;\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($type$)value;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count;\n"
-      "- ($classname$_Builder *)clear$capitalized_name$;\n");
+      "- ($classname$Builder *)add$capitalized_name$:($type$)value;\n"
+      "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+      "- ($classname$Builder *)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count;\n"
+      "- ($classname$Builder *)clear$capitalized_name$;\n");
   }
 
 
@@ -339,22 +339,22 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
       "  return [result $name$AtIndex:index];\n"
       "}\n"
-      "- ($classname$_Builder *)add$capitalized_name$:($type$)value {\n"
+      "- ($classname$Builder *)add$capitalized_name$:($type$)value {\n"
       "  if (result.$list_name$ == nil) {\n"
       "    result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];\n"
       "  }\n"
       "  [result.$list_name$ addInt32:value];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
+      "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
       "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count {\n"
+      "- ($classname$Builder *)set$capitalized_name$Values:(const $type$ *)values count:(NSUInteger)count {\n"
       "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder *)clear$capitalized_name$ {\n"
+      "- ($classname$Builder *)clear$capitalized_name$ {\n"
       "  result.$list_name$ = nil;\n"
       "  return self;\n"
       "}\n");
