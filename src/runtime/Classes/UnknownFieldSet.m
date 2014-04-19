@@ -66,12 +66,12 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
-- (BOOL) hasField:(NSInteger) number {
+- (BOOL) hasField:(long) number {
   return [fields objectForKey:@(number)] != nil;
 }
 
 
-- (PBField*) getField:(NSInteger) number {
+- (PBField*) getField:(long) number {
   PBField* result = [fields objectForKey:@(number)];
   return (result == nil) ? [PBField defaultInstance] : result;
 }
@@ -129,8 +129,8 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 
 /** Get the number of bytes required to encode this set. */
-- (NSInteger) serializedSize {
-  NSInteger result = 0;
+- (long) serializedSize {
+  long result = 0;
   for (NSNumber* number in fields) {
     result += [[fields objectForKey:number] getSerializedSize:number.intValue];
   }
@@ -152,8 +152,8 @@ static PBUnknownFieldSet* defaultInstance = nil;
  * Get the number of bytes required to encode this set using
  * {@code MessageSet} wire format.
  */
-- (NSInteger) serializedSizeAsMessageSet {
-  NSInteger result = 0;
+- (long) serializedSizeAsMessageSet {
+  long result = 0;
   for (NSNumber* number in fields) {
     result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:number.intValue];
   }

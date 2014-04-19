@@ -30,7 +30,7 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
   }
 }
 @interface ImportMessage ()
-@property NSInteger d;
+@property long d;
 @end
 
 @implementation ImportMessage
@@ -72,8 +72,8 @@ static ImportMessage* defaultImportMessageInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -136,8 +136,8 @@ static ImportMessage* defaultImportMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasD) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.d] hash];
   }
@@ -200,7 +200,7 @@ static ImportMessage* defaultImportMessageInstance = nil;
 - (ImportMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -222,10 +222,10 @@ static ImportMessage* defaultImportMessageInstance = nil;
 - (BOOL) hasD {
   return result.hasD;
 }
-- (NSInteger) d {
+- (long) d {
   return result.d;
 }
-- (ImportMessage_Builder*) setD:(NSInteger) value {
+- (ImportMessage_Builder*) setD:(long) value {
   result.hasD = YES;
   result.d = value;
   return self;

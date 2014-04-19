@@ -10,7 +10,7 @@
 }
 
 
-- (NSUInteger)freeSpace {
+- (unsigned long)freeSpace {
 	return (position < tail ? tail - position : (buffer.length - position) + tail) - (tail ? 1 : 0);
 }
 
@@ -22,8 +22,8 @@
 }
 
 
-- (NSInteger)appendData:(const NSData*)value offset:(NSInteger)offset length:(NSInteger)length {
-	NSInteger totalWritten = 0;
+- (long)appendData:(const NSData*)value offset:(long)offset length:(long)length {
+	long totalWritten = 0;
 	const uint8_t *input = value.bytes;
 	uint8_t *data = buffer.mutableBytes;
 	
@@ -36,7 +36,7 @@
 		offset += totalWritten;
 	}
 	
-	NSUInteger freeSpace = self.freeSpace;
+	unsigned long freeSpace = self.freeSpace;
 	if (!freeSpace) return totalWritten;
 	
 	if (position == buffer.length) {
@@ -44,7 +44,7 @@
 	}
 	
 	// position < tail
-	NSInteger written = MIN(freeSpace, length);
+	long written = MIN(freeSpace, length);
 	memcpy(data + position, input + offset, written);
 	position += written;
 	totalWritten += written;
@@ -53,12 +53,12 @@
 }
 
 
-- (NSInteger)flushToOutputStream:(NSOutputStream*)stream {
-	NSInteger totalWritten = 0;
+- (long)flushToOutputStream:(NSOutputStream*)stream {
+	long totalWritten = 0;
 	const uint8_t *data = buffer.bytes;
 	
 	if (tail > position) {
-		NSInteger written = [stream write:data + tail maxLength:buffer.length - tail];
+		long written = [stream write:data + tail maxLength:buffer.length - tail];
         if (written <= 0) return totalWritten;
         totalWritten += written;
 		tail += written;
@@ -68,7 +68,7 @@
 	}
 
 	if (tail < position) {
-		NSInteger written = [stream write:data + tail maxLength:position - tail];
+		long written = [stream write:data + tail maxLength:position - tail];
 		if (written <= 0) return totalWritten;
 		totalWritten += written;
 		tail += written;

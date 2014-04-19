@@ -51,29 +51,29 @@ static PBField *sDefaultInstance = nil;
 	return sDefaultInstance;
 }
 
-- (NSInteger)getSerializedSize:(NSInteger)fieldNumber {
-	NSInteger result = 0;
+- (long)getSerializedSize:(long)fieldNumber {
+	long result = 0;
 
-	const int64_t *varintValues = (const int64_t *)_varintArray.data;
+	const long long *varintValues = (const long long *)_varintArray.data;
 	if (varintValues) {
-		const NSUInteger count = _varintArray.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		const unsigned long count = _varintArray.count;
+		for (unsigned long i = 0; i < count; ++i) {
 			result += computeInt64Size(fieldNumber, varintValues[i]);
 		}
 	}
 
-	const NSInteger *fixed32Values = (const NSInteger *)_fixed32Array.data;
+	const long *fixed32Values = (const long *)_fixed32Array.data;
 	if (fixed32Values) {
-		const NSUInteger count = _fixed32Array.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		const unsigned long count = _fixed32Array.count;
+		for (unsigned long i = 0; i < count; ++i) {
 			result += computeFixed32Size(fieldNumber, fixed32Values[i]);
 		}
 	}
 
-	const int64_t *fixed64Values = (const int64_t *)_fixed64Array.data;
+	const long long *fixed64Values = (const long long *)_fixed64Array.data;
 	if (fixed64Values) {
-		const NSUInteger count = _fixed64Array.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		const unsigned long count = _fixed64Array.count;
+		for (unsigned long i = 0; i < count; ++i) {
 			result += computeFixed64Size(fieldNumber, fixed64Values[i]);
 		}
 	}
@@ -89,8 +89,8 @@ static PBField *sDefaultInstance = nil;
 	return result;
 }
 
-- (NSInteger)getSerializedSizeAsMessageSetExtension:(NSInteger)fieldNumber {
-	NSInteger result = 0;
+- (long)getSerializedSizeAsMessageSetExtension:(long)fieldNumber {
+	long result = 0;
 
 	for (NSData *value in _lengthDelimitedArray) {
 		result += computeRawMessageSetExtensionSize(fieldNumber, value);
@@ -99,27 +99,27 @@ static PBField *sDefaultInstance = nil;
 	return result;
 }
 
-- (void)writeTo:(NSInteger)fieldNumber output:(PBCodedOutputStream *) output {
-	const int64_t *varintValues = (const int64_t *)_varintArray.data;
+- (void)writeTo:(long)fieldNumber output:(PBCodedOutputStream *) output {
+	const long long *varintValues = (const long long *)_varintArray.data;
 	if (varintValues) {
-		const NSUInteger count = _varintArray.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		const unsigned long count = _varintArray.count;
+		for (unsigned long i = 0; i < count; ++i) {
 			[output writeInt64:fieldNumber value:varintValues[i]];
 		}
 	}
 
-	const NSInteger *fixed32Values = (const NSInteger *)_fixed32Array.data;
+	const long *fixed32Values = (const long *)_fixed32Array.data;
 	if (fixed32Values) {
-		const NSUInteger count = _fixed32Array.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		const unsigned long count = _fixed32Array.count;
+		for (unsigned long i = 0; i < count; ++i) {
 			[output writeFixed32:fieldNumber value:fixed32Values[i]];
 		}
 	}
 
-	const int64_t *fixed64Values = (const int64_t *)_fixed64Array.data;
+	const long long *fixed64Values = (const long long *)_fixed64Array.data;
 	if (fixed64Values) {
-		const NSUInteger count = _fixed64Array.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		const unsigned long count = _fixed64Array.count;
+		for (unsigned long i = 0; i < count; ++i) {
 			[output writeFixed64:fieldNumber value:fixed64Values[i]];
 		}
 	}
@@ -133,7 +133,7 @@ static PBField *sDefaultInstance = nil;
 	}
 }
 
-- (void)writeDescriptionFor:(NSInteger) fieldNumber
+- (void)writeDescriptionFor:(long) fieldNumber
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent {
   for (NSNumber* value in self.varintArray) {
@@ -155,7 +155,7 @@ static PBField *sDefaultInstance = nil;
   }
 }
 
-- (void)writeAsMessageSetExtensionTo:(NSInteger)fieldNumber output:(PBCodedOutputStream *) output {
+- (void)writeAsMessageSetExtensionTo:(long)fieldNumber output:(PBCodedOutputStream *) output {
 	for (NSData *value in _lengthDelimitedArray) {
 		[output writeRawMessageSetExtension:fieldNumber value:value];
 	}

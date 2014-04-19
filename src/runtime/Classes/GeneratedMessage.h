@@ -30,7 +30,7 @@
   PBUnknownFieldSet* unknownFields;
 
 @protected
-  NSInteger memoizedSerializedSize;
+  long memoizedSerializedSize;
 }
 
 @end

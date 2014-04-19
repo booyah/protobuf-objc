@@ -26,7 +26,7 @@
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input
              unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
          extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                       tag:(NSInteger) tag;
+                       tag:(long) tag;
 
 - (void) checkInitialized;
 

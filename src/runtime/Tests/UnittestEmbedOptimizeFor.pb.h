@@ -124,7 +124,7 @@
 - (BOOL) hasOptionalMessage;
 @property (readonly, retain) TestOptimizedForSize* optionalMessage;
 @property (readonly, retain) PBArray * repeatedMessage;
-- (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index;
+- (TestOptimizedForSize*)repeatedMessageAtIndex:(unsigned long)index;
 
 + (TestEmbedOptimizedForSize*) defaultInstance;
 - (TestEmbedOptimizedForSize*) defaultInstance;
@@ -169,10 +169,10 @@
 - (TestEmbedOptimizedForSize_Builder*) clearOptionalMessage;
 
 - (PBAppendableArray *)repeatedMessage;
-- (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index;
+- (TestOptimizedForSize*)repeatedMessageAtIndex:(unsigned long)index;
 - (TestEmbedOptimizedForSize_Builder *)addRepeatedMessage:(TestOptimizedForSize*)value;
 - (TestEmbedOptimizedForSize_Builder *)setRepeatedMessageArray:(NSArray *)array;
-- (TestEmbedOptimizedForSize_Builder *)setRepeatedMessageValues:(const TestOptimizedForSize* *)values count:(NSUInteger)count;
+- (TestEmbedOptimizedForSize_Builder *)setRepeatedMessageValues:(const TestOptimizedForSize* *)values count:(unsigned long)count;
 - (TestEmbedOptimizedForSize_Builder *)clearRepeatedMessage;
 @end
 

@@ -43,7 +43,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface TestOptimizedForSize ()
-@property NSInteger i;
+@property long i;
 @property (retain) ForeignMessage* msg;
 @end
 
@@ -110,8 +110,8 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -193,8 +193,8 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
   }
@@ -265,7 +265,7 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 - (TestOptimizedForSize_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -296,10 +296,10 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 - (BOOL) hasI {
   return result.hasI;
 }
-- (NSInteger) i {
+- (long) i {
   return result.i;
 }
-- (TestOptimizedForSize_Builder*) setI:(NSInteger) value {
+- (TestOptimizedForSize_Builder*) setI:(long) value {
   result.hasI = YES;
   result.i = value;
   return self;
@@ -342,7 +342,7 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 @end
 
 @interface TestRequiredOptimizedForSize ()
-@property NSInteger x;
+@property long x;
 @end
 
 @implementation TestRequiredOptimizedForSize
@@ -387,8 +387,8 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -451,8 +451,8 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasX) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.x] hash];
   }
@@ -515,7 +515,7 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
 - (TestRequiredOptimizedForSize_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -537,10 +537,10 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
 - (BOOL) hasX {
   return result.hasX;
 }
-- (NSInteger) x {
+- (long) x {
   return result.x;
 }
-- (TestRequiredOptimizedForSize_Builder*) setX:(NSInteger) value {
+- (TestRequiredOptimizedForSize_Builder*) setX:(long) value {
   result.hasX = YES;
   result.x = value;
   return self;
@@ -601,8 +601,8 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -668,8 +668,8 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasO) {
     hashCode = hashCode * 31 + [self.o hash];
   }
@@ -732,7 +732,7 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
 - (TestOptionalOptimizedForSize_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];

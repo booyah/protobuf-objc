@@ -68,19 +68,19 @@
 
 //@protected
 - (BOOL) extensionsAreInitialized;
-- (NSInteger) extensionsSerializedSize;
+- (long) extensionsSerializedSize;
 - (void) writeExtensionsToCodedOutputStream:(PBCodedOutputStream*) output
-                                       from:(NSInteger) startInclusive
-                                         to:(NSInteger) endExclusive;
+                                       from:(long) startInclusive
+                                         to:(long) endExclusive;
 - (void) writeExtensionDescriptionToMutableString:(NSMutableString*) output
-                                             from:(NSInteger) startInclusive
-                                               to:(NSInteger) endExclusive
+                                             from:(long) startInclusive
+                                               to:(long) endExclusive
                                        withIndent:(NSString*) indent;
 - (BOOL) isEqualExtensionsInOther:(PBExtendableMessage*)otherMessage
-                             from:(NSInteger) startInclusive
-                               to:(NSInteger) endExclusive;
-- (NSUInteger) hashExtensionsFrom:(NSInteger) startInclusive
-                               to:(NSInteger) endExclusive;
+                             from:(long) startInclusive
+                               to:(long) endExclusive;
+- (unsigned long) hashExtensionsFrom:(long) startInclusive
+                               to:(long) endExclusive;
 
 
 

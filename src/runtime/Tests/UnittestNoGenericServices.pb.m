@@ -42,7 +42,7 @@ BOOL TestEnumIsValidValue(TestEnum value) {
   }
 }
 @interface TestMessage ()
-@property NSInteger a;
+@property long a;
 @end
 
 @implementation TestMessage
@@ -90,8 +90,8 @@ static TestMessage* defaultTestMessageInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -161,8 +161,8 @@ static TestMessage* defaultTestMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
   }
@@ -227,7 +227,7 @@ static TestMessage* defaultTestMessageInstance = nil;
 - (TestMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -249,10 +249,10 @@ static TestMessage* defaultTestMessageInstance = nil;
 - (BOOL) hasA {
   return result.hasA;
 }
-- (NSInteger) a {
+- (long) a {
   return result.a;
 }
-- (TestMessage_Builder*) setA:(NSInteger) value {
+- (TestMessage_Builder*) setA:(long) value {
   result.hasA = YES;
   result.a = value;
   return self;

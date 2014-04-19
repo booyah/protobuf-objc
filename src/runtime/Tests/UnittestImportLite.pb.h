@@ -34,10 +34,10 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value);
 @interface ImportMessageLite : PBGeneratedMessage {
 @private
   BOOL hasD_:1;
-  NSInteger d;
+  long d;
 }
 - (BOOL) hasD;
-@property (readonly) NSInteger d;
+@property (readonly) long d;
 
 + (ImportMessageLite*) defaultInstance;
 - (ImportMessageLite*) defaultInstance;
@@ -75,8 +75,8 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value);
 - (ImportMessageLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasD;
-- (NSInteger) d;
-- (ImportMessageLite_Builder*) setD:(NSInteger) value;
+- (long) d;
+- (ImportMessageLite_Builder*) setD:(long) value;
 - (ImportMessageLite_Builder*) clearD;
 @end
 

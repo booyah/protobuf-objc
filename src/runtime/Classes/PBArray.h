@@ -41,29 +41,30 @@ typedef enum _PBArrayValueType
 {
 @protected
 	PBArrayValueType	_valueType;
-	NSUInteger			_capacity;
-	NSUInteger			_count;
+	unsigned long			_capacity;
+	unsigned long			_count;
 	void *				_data;
+
 }
 
-- (NSUInteger)count;
-- (id)objectAtIndex:(NSUInteger)index;
-- (BOOL)boolAtIndex:(NSUInteger)index;
-- (NSInteger)int32AtIndex:(NSUInteger)index;
-- (NSUInteger)uint32AtIndex:(NSUInteger)index;
-- (int64_t)int64AtIndex:(NSUInteger)index;
-- (uint64_t)uint64AtIndex:(NSUInteger)index;
-- (Float32)floatAtIndex:(NSUInteger)index;
-- (Float64)doubleAtIndex:(NSUInteger)index;
+- (unsigned long)count;
+- (id)objectAtIndex:(unsigned long)index;
+- (BOOL)boolAtIndex:(unsigned long)index;
+- (long)int32AtIndex:(unsigned long)index;
+- (unsigned long)uint32AtIndex:(unsigned long)index;
+- (long long)int64AtIndex:(unsigned long)index;
+- (unsigned long long)uint64AtIndex:(unsigned long)index;
+- (Float32)floatAtIndex:(unsigned long)index;
+- (Float64)doubleAtIndex:(unsigned long)index;
 - (BOOL)isEqualToArray:(PBArray *)array;
-- (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (void)enumerateObjectsUsingBlock:(void (^)(id obj, unsigned long idx, BOOL *stop))block;
 - (id)firstObject;
 - (id)lastObject;
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
+- (id)objectAtIndexedSubscript:(unsigned long)idx;
 
 @property (nonatomic,assign,readonly) PBArrayValueType valueType;
 @property (nonatomic,assign,readonly) const void * data;
-@property (nonatomic,assign,readonly,getter=count) NSUInteger count;
+@property (nonatomic,assign,readonly,getter=count) unsigned long count;
 
 @end
 
@@ -76,10 +77,10 @@ typedef enum _PBArrayValueType
 @interface PBArray (PBArrayCreation)
 
 + (id)arrayWithValueType:(PBArrayValueType)valueType;
-+ (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType;
++ (id)arrayWithValues:(const void *)values count:(unsigned long)count valueType:(PBArrayValueType)valueType;
 + (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType;
 - (id)initWithValueType:(PBArrayValueType)valueType;
-- (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType;
+- (id)initWithValues:(const void *)values count:(unsigned long)count valueType:(PBArrayValueType)valueType;
 - (id)initWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType;
 
 @end
@@ -90,14 +91,14 @@ typedef enum _PBArrayValueType
 
 - (void)addObject:(id)value;
 - (void)addBool:(BOOL)value;
-- (void)addInt32:(NSInteger)value;
-- (void)addUint32:(NSUInteger)value;
-- (void)addInt64:(int64_t)value;
-- (void)addUint64:(uint64_t)value;
+- (void)addInt32:(long)value;
+- (void)addUint32:(unsigned long)value;
+- (void)addInt64:(long long)value;
+- (void)addUint64:(unsigned long long)value;
 - (void)addFloat:(Float32)value;
 - (void)addDouble:(Float64)value;
 
 - (void)appendArray:(PBArray *)array;
-- (void)appendValues:(const void *)values count:(NSUInteger)count;
+- (void)appendValues:(const void *)values count:(unsigned long)count;
 
 @end

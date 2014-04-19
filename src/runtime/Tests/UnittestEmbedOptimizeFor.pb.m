@@ -62,7 +62,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
 - (PBArray *)repeatedMessage {
   return repeatedMessageArray;
 }
-- (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index {
+- (TestOptimizedForSize*)repeatedMessageAtIndex:(unsigned long)index {
   return [repeatedMessageArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
@@ -87,8 +87,8 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -165,8 +165,8 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasOptionalMessage) {
     hashCode = hashCode * 31 + [self.optionalMessage hash];
   }
@@ -239,7 +239,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
 - (TestEmbedOptimizedForSize_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -302,7 +302,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
 - (PBAppendableArray *)repeatedMessage {
   return result.repeatedMessageArray;
 }
-- (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index {
+- (TestOptimizedForSize*)repeatedMessageAtIndex:(unsigned long)index {
   return [result repeatedMessageAtIndex:index];
 }
 - (TestEmbedOptimizedForSize_Builder *)addRepeatedMessage:(TestOptimizedForSize*)value {
@@ -316,7 +316,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   result.repeatedMessageArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
   return self;
 }
-- (TestEmbedOptimizedForSize_Builder *)setRepeatedMessageValues:(const TestOptimizedForSize* *)values count:(NSUInteger)count {
+- (TestEmbedOptimizedForSize_Builder *)setRepeatedMessageValues:(const TestOptimizedForSize* *)values count:(unsigned long)count {
   result.repeatedMessageArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
   return self;
 }

@@ -38,11 +38,11 @@
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
 - (NSData*) data;
 
-- (NSInteger) serializedSize;
-- (NSInteger) serializedSizeAsMessageSet;
+- (long) serializedSize;
+- (long) serializedSizeAsMessageSet;
 
-- (BOOL) hasField:(NSInteger) number;
-- (PBField*) getField:(NSInteger) number;
+- (BOOL) hasField:(long) number;
+- (PBField*) getField:(long) number;
 
 - (void) writeDescriptionTo:(NSMutableString*) output
                  withIndent:(NSString*) indent;

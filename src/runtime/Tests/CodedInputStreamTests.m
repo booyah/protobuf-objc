@@ -23,14 +23,14 @@
 
 @implementation CodedInputStreamTests
 
-- (NSData*) bytes_with_sentinel:(NSInteger) unused, ... {
+- (NSData*) bytes_with_sentinel:(long) unused, ... {
   va_list list;
   va_start(list, unused);
 
   NSMutableData* values = [NSMutableData dataWithCapacity:0];
-  NSInteger i;
+  long i;
 
-  while ((i = va_arg(list, NSInteger)) != 256) {
+  while ((i = va_arg(list, long)) != 256) {
     NSAssert(i >= 0 && i < 256, @"");
     uint8_t u = (uint8_t)i;
     [values appendBytes:&u length:1];
@@ -48,21 +48,21 @@
   STAssertEquals(-1, decodeZigZag32(1), nil);
   STAssertEquals( 1, decodeZigZag32(2), nil);
   STAssertEquals(-2, decodeZigZag32(3), nil);
-  STAssertEquals((NSInteger)0x3FFFFFFF, decodeZigZag32(0x7FFFFFFE), nil);
-  STAssertEquals((NSInteger)0xC0000000, decodeZigZag32(0x7FFFFFFF), nil);
-  STAssertEquals((NSInteger)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE), nil);
-  STAssertEquals((NSInteger)0x80000000, decodeZigZag32(0xFFFFFFFF), nil);
+  STAssertEquals((long)0x3FFFFFFF, decodeZigZag32(0x7FFFFFFE), nil);
+  STAssertEquals((long)0xC0000000, decodeZigZag32(0x7FFFFFFF), nil);
+  STAssertEquals((long)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE), nil);
+  STAssertEquals((long)0x80000000, decodeZigZag32(0xFFFFFFFF), nil);
 
-  STAssertEquals((int64_t) 0, decodeZigZag64(0), nil);
-  STAssertEquals((int64_t)-1, decodeZigZag64(1), nil);
-  STAssertEquals((int64_t) 1, decodeZigZag64(2), nil);
-  STAssertEquals((int64_t)-2, decodeZigZag64(3), nil);
-  STAssertEquals((int64_t)0x000000003FFFFFFFL, decodeZigZag64(0x000000007FFFFFFEL), nil);
-  STAssertEquals((int64_t)0xFFFFFFFFC0000000L, decodeZigZag64(0x000000007FFFFFFFL), nil);
-  STAssertEquals((int64_t)0x000000007FFFFFFFL, decodeZigZag64(0x00000000FFFFFFFEL), nil);
-  STAssertEquals((int64_t)0xFFFFFFFF80000000L, decodeZigZag64(0x00000000FFFFFFFFL), nil);
-  STAssertEquals((int64_t)0x7FFFFFFFFFFFFFFFL, decodeZigZag64(0xFFFFFFFFFFFFFFFEL), nil);
-  STAssertEquals((int64_t)0x8000000000000000L, decodeZigZag64(0xFFFFFFFFFFFFFFFFL), nil);
+  STAssertEquals((long long) 0, decodeZigZag64(0), nil);
+  STAssertEquals((long long)-1, decodeZigZag64(1), nil);
+  STAssertEquals((long long) 1, decodeZigZag64(2), nil);
+  STAssertEquals((long long)-2, decodeZigZag64(3), nil);
+  STAssertEquals((long long)0x000000003FFFFFFFL, decodeZigZag64(0x000000007FFFFFFEL), nil);
+  STAssertEquals((long long)0xFFFFFFFFC0000000L, decodeZigZag64(0x000000007FFFFFFFL), nil);
+  STAssertEquals((long long)0x000000007FFFFFFFL, decodeZigZag64(0x00000000FFFFFFFEL), nil);
+  STAssertEquals((long long)0xFFFFFFFF80000000L, decodeZigZag64(0x00000000FFFFFFFFL), nil);
+  STAssertEquals((long long)0x7FFFFFFFFFFFFFFFL, decodeZigZag64(0xFFFFFFFFFFFFFFFEL), nil);
+  STAssertEquals((long long)0x8000000000000000L, decodeZigZag64(0xFFFFFFFFFFFFFFFFL), nil);
 }
 
 
@@ -70,10 +70,10 @@
  * Parses the given bytes using readRawVarint32() and readRawVarint64() and
  * checks that the result matches the given value.
  */
-- (void) assertReadVarint:(NSData*) data value:(int64_t) value {
+- (void) assertReadVarint:(NSData*) data value:(long long) value {
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-    STAssertTrue((NSInteger)value == [input readRawVarint32], @"");
+    STAssertTrue((long)value == [input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
@@ -82,7 +82,7 @@
 
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[NSInputStream inputStreamWithData:data]];
-    STAssertTrue((NSInteger)value == [input readRawVarint32], @"");
+    STAssertTrue((long)value == [input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[NSInputStream inputStreamWithData:data]];
@@ -90,10 +90,10 @@
   }
 
   // Try different block sizes.
-  for (NSInteger blockSize = 1; blockSize <= 16; blockSize *= 2) {
+  for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
     {
       PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[SmallBlockInputStream streamWithData:data blockSize:blockSize]];
-      STAssertTrue((NSInteger)value == [input readRawVarint32], @"");
+      STAssertTrue((long)value == [input readRawVarint32], @"");
     }
     {
       PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[SmallBlockInputStream streamWithData:data blockSize:blockSize]];
@@ -107,12 +107,12 @@
  * Parses the given bytes using readRawLittleEndian32() and checks
  * that the result matches the given value.
  */
-- (void) assertReadLittleEndian32:(NSData*) data value:(NSInteger) value {
+- (void) assertReadLittleEndian32:(NSData*) data value:(long) value {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
   STAssertTrue(value == [input readRawLittleEndian32], @"");
 
   // Try different block sizes.
-  for (NSInteger blockSize = 1; blockSize <= 16; blockSize *= 2) {
+  for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
     PBCodedInputStream* input =
     [PBCodedInputStream streamWithInputStream:
      [SmallBlockInputStream streamWithData:data blockSize:blockSize]];
@@ -125,12 +125,12 @@
  * Parses the given bytes using readRawLittleEndian64() and checks
  * that the result matches the given value.
  */
-- (void) assertReadLittleEndian64:(NSData*) data value:(int64_t) value {
+- (void) assertReadLittleEndian64:(NSData*) data value:(long long) value {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
   STAssertTrue(value == [input readRawLittleEndian64], @"");
 
   // Try different block sizes.
-  for (NSInteger blockSize = 1; blockSize <= 16; blockSize *= 2) {
+  for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
     PBCodedInputStream* input =
     [PBCodedInputStream streamWithInputStream:
      [SmallBlockInputStream streamWithData:data blockSize:blockSize]];
@@ -223,7 +223,7 @@
   [TestUtilities assertAllFieldsSet:message2];
 
   // Try different block sizes.
-  for (NSInteger blockSize = 1; blockSize < 256; blockSize *= 2) {
+  for (long blockSize = 1; blockSize < 256; blockSize *= 2) {
     message2 = [TestAllTypes parseFromInputStream:
                 [SmallBlockInputStream streamWithData:rawBytes blockSize:blockSize]];
     [TestUtilities assertAllFieldsSet:message2];
@@ -243,7 +243,7 @@
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builder];
 
   while (YES) {
-    NSInteger tag = [input1 readTag];
+    long tag = [input1 readTag];
     STAssertTrue(tag == [input2 readTag], @"");
     if (tag == 0) {
       break;
@@ -257,7 +257,7 @@
 - (void) testReadHugeBlob {
   // Allocate and initialize a 1MB blob.
   NSMutableData* blob = [NSMutableData dataWithLength:1 << 20];
-  for (NSInteger i = 0; i < blob.length; i++) {
+  for (long i = 0; i < blob.length; i++) {
     ((uint8_t*)blob.mutableBytes)[i] = (uint8_t)i;
   }
 
@@ -288,7 +288,7 @@
   [rawOutput open];
   PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
 
-  NSInteger tag = PBWireFormatMakeTag(1, PBWireFormatLengthDelimited);
+  long tag = PBWireFormatMakeTag(1, PBWireFormatLengthDelimited);
   [output writeRawVarint32:tag];
   [output writeRawVarint32:0x7FFFFFFF];
   uint8_t bytes[32] = { 0 };

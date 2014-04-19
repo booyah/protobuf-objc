@@ -68,7 +68,7 @@
 - (PBExtendableMessage_Builder*) addExtension:(id<PBExtensionField>) extension
                                         value:(id) value;
 - (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
-                                        index:(NSInteger) index
+                                        index:(long) index
                                         value:(id) value;
 - (PBExtendableMessage_Builder*) clearExtension:(id<PBExtensionField>) extension;
 

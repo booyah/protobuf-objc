@@ -26,8 +26,8 @@
     STAssertEquals(4, (int)sizeof(long), nil);
   #endif
   STAssertEquals(8, (int)sizeof(long long), nil);
-  STAssertEquals(4, (int)sizeof(NSInteger), nil);
-  STAssertEquals(8, (int)sizeof(int64_t), nil);
+  STAssertEquals(4, (int)sizeof(long), nil);
+  STAssertEquals(8, (int)sizeof(long long), nil);
   STAssertEquals(4, (int)sizeof(Float32), nil);
   STAssertEquals(8, (int)sizeof(Float64), nil);
   STAssertEquals(0, !!0, nil);

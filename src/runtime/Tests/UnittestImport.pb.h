@@ -34,10 +34,10 @@ BOOL ImportEnumIsValidValue(ImportEnum value);
 @interface ImportMessage : PBGeneratedMessage {
 @private
   BOOL hasD_:1;
-  NSInteger d;
+  long d;
 }
 - (BOOL) hasD;
-@property (readonly) NSInteger d;
+@property (readonly) long d;
 
 + (ImportMessage*) defaultInstance;
 - (ImportMessage*) defaultInstance;
@@ -75,8 +75,8 @@ BOOL ImportEnumIsValidValue(ImportEnum value);
 - (ImportMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasD;
-- (NSInteger) d;
-- (ImportMessage_Builder*) setD:(NSInteger) value;
+- (long) d;
+- (ImportMessage_Builder*) setD:(long) value;
 - (ImportMessage_Builder*) clearD;
 @end
 

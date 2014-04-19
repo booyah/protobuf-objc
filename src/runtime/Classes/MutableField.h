@@ -26,9 +26,9 @@
 - (PBMutableField *)mergeFromField:(PBField *)other;
 
 - (PBMutableField *)clear;
-- (PBMutableField *)addVarint:(int64_t)value;
-- (PBMutableField *)addFixed32:(NSInteger)value;
-- (PBMutableField *)addFixed64:(int64_t)value;
+- (PBMutableField *)addVarint:(long long)value;
+- (PBMutableField *)addFixed32:(long)value;
+- (PBMutableField *)addFixed64:(long long)value;
 - (PBMutableField *)addLengthDelimited:(NSData *)value;
 - (PBMutableField *)addGroup:(PBUnknownFieldSet *)value;
 

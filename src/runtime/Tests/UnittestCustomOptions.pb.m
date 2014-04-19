@@ -674,8 +674,8 @@ static TestMessageWithCustomOptions* defaultTestMessageWithCustomOptionsInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -738,8 +738,8 @@ static TestMessageWithCustomOptions* defaultTestMessageWithCustomOptionsInstance
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasField1) {
     hashCode = hashCode * 31 + [self.field1 hash];
   }
@@ -811,7 +811,7 @@ BOOL TestMessageWithCustomOptions_AnEnumIsValidValue(TestMessageWithCustomOption
 - (TestMessageWithCustomOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -879,8 +879,8 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -934,8 +934,8 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -992,7 +992,7 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 - (CustomOptionFooRequest_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1040,8 +1040,8 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1095,8 +1095,8 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1153,7 +1153,7 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 - (CustomOptionFooResponse_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1201,8 +1201,8 @@ static DummyMessageContainingEnum* defaultDummyMessageContainingEnumInstance = n
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1256,8 +1256,8 @@ static DummyMessageContainingEnum* defaultDummyMessageContainingEnumInstance = n
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1323,7 +1323,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (DummyMessageContainingEnum_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1371,8 +1371,8 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1426,8 +1426,8 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1484,7 +1484,7 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 - (DummyMessageInvalidAsOptionType_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1532,8 +1532,8 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1587,8 +1587,8 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1645,7 +1645,7 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 - (CustomOptionMinIntegerValues_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1693,8 +1693,8 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1748,8 +1748,8 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1806,7 +1806,7 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 - (CustomOptionMaxIntegerValues_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1854,8 +1854,8 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1909,8 +1909,8 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1967,7 +1967,7 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 - (CustomOptionOtherValues_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2015,8 +2015,8 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2070,8 +2070,8 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -2128,7 +2128,7 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 - (SettingRealsFromPositiveInts_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2176,8 +2176,8 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2231,8 +2231,8 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -2289,7 +2289,7 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 - (SettingRealsFromNegativeInts_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2307,9 +2307,9 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 @end
 
 @interface ComplexOptionType1 ()
-@property NSInteger foo;
-@property NSInteger foo2;
-@property NSInteger foo3;
+@property long foo;
+@property long foo2;
+@property long foo3;
 @end
 
 @implementation ComplexOptionType1
@@ -2379,8 +2379,8 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2468,8 +2468,8 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasFoo) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.foo] hash];
   }
@@ -2546,7 +2546,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (ComplexOptionType1_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2576,10 +2576,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (BOOL) hasFoo {
   return result.hasFoo;
 }
-- (NSInteger) foo {
+- (long) foo {
   return result.foo;
 }
-- (ComplexOptionType1_Builder*) setFoo:(NSInteger) value {
+- (ComplexOptionType1_Builder*) setFoo:(long) value {
   result.hasFoo = YES;
   result.foo = value;
   return self;
@@ -2592,10 +2592,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (BOOL) hasFoo2 {
   return result.hasFoo2;
 }
-- (NSInteger) foo2 {
+- (long) foo2 {
   return result.foo2;
 }
-- (ComplexOptionType1_Builder*) setFoo2:(NSInteger) value {
+- (ComplexOptionType1_Builder*) setFoo2:(long) value {
   result.hasFoo2 = YES;
   result.foo2 = value;
   return self;
@@ -2608,10 +2608,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (BOOL) hasFoo3 {
   return result.hasFoo3;
 }
-- (NSInteger) foo3 {
+- (long) foo3 {
   return result.foo3;
 }
-- (ComplexOptionType1_Builder*) setFoo3:(NSInteger) value {
+- (ComplexOptionType1_Builder*) setFoo3:(long) value {
   result.hasFoo3 = YES;
   result.foo3 = value;
   return self;
@@ -2625,7 +2625,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 
 @interface ComplexOptionType2 ()
 @property (retain) ComplexOptionType1* bar;
-@property NSInteger baz;
+@property long baz;
 @property (retain) ComplexOptionType2_ComplexOptionType4* fred;
 @end
 
@@ -2703,8 +2703,8 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2798,8 +2798,8 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasBar) {
     hashCode = hashCode * 31 + [self.bar hash];
   }
@@ -2816,7 +2816,7 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
 @end
 
 @interface ComplexOptionType2_ComplexOptionType4 ()
-@property NSInteger waldo;
+@property long waldo;
 @end
 
 @implementation ComplexOptionType2_ComplexOptionType4
@@ -2861,8 +2861,8 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2925,8 +2925,8 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasWaldo) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.waldo] hash];
   }
@@ -2989,7 +2989,7 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
 - (ComplexOptionType2_ComplexOptionType4_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3011,10 +3011,10 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
 - (BOOL) hasWaldo {
   return result.hasWaldo;
 }
-- (NSInteger) waldo {
+- (long) waldo {
   return result.waldo;
 }
-- (ComplexOptionType2_ComplexOptionType4_Builder*) setWaldo:(NSInteger) value {
+- (ComplexOptionType2_ComplexOptionType4_Builder*) setWaldo:(long) value {
   result.hasWaldo = YES;
   result.waldo = value;
   return self;
@@ -3087,7 +3087,7 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
 - (ComplexOptionType2_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3157,10 +3157,10 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
 - (BOOL) hasBaz {
   return result.hasBaz;
 }
-- (NSInteger) baz {
+- (long) baz {
   return result.baz;
 }
-- (ComplexOptionType2_Builder*) setBaz:(NSInteger) value {
+- (ComplexOptionType2_Builder*) setBaz:(long) value {
   result.hasBaz = YES;
   result.baz = value;
   return self;
@@ -3203,7 +3203,7 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
 @end
 
 @interface ComplexOptionType3 ()
-@property NSInteger qux;
+@property long qux;
 @property (retain) ComplexOptionType3_ComplexOptionType5* complexOptionType5;
 @end
 
@@ -3258,8 +3258,8 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3334,8 +3334,8 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasQux) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.qux] hash];
   }
@@ -3348,7 +3348,7 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
 @end
 
 @interface ComplexOptionType3_ComplexOptionType5 ()
-@property NSInteger plugh;
+@property long plugh;
 @end
 
 @implementation ComplexOptionType3_ComplexOptionType5
@@ -3390,8 +3390,8 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3454,8 +3454,8 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasPlugh) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.plugh] hash];
   }
@@ -3518,7 +3518,7 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
 - (ComplexOptionType3_ComplexOptionType5_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3540,10 +3540,10 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
 - (BOOL) hasPlugh {
   return result.hasPlugh;
 }
-- (NSInteger) plugh {
+- (long) plugh {
   return result.plugh;
 }
-- (ComplexOptionType3_ComplexOptionType5_Builder*) setPlugh:(NSInteger) value {
+- (ComplexOptionType3_ComplexOptionType5_Builder*) setPlugh:(long) value {
   result.hasPlugh = YES;
   result.plugh = value;
   return self;
@@ -3612,7 +3612,7 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
 - (ComplexOptionType3_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3643,10 +3643,10 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
 - (BOOL) hasQux {
   return result.hasQux;
 }
-- (NSInteger) qux {
+- (long) qux {
   return result.qux;
 }
-- (ComplexOptionType3_Builder*) setQux:(NSInteger) value {
+- (ComplexOptionType3_Builder*) setQux:(long) value {
   result.hasQux = YES;
   result.qux = value;
   return self;
@@ -3689,7 +3689,7 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
 @end
 
 @interface ComplexOpt6 ()
-@property NSInteger xyzzy;
+@property long xyzzy;
 @end
 
 @implementation ComplexOpt6
@@ -3731,8 +3731,8 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3795,8 +3795,8 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasXyzzy) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.xyzzy] hash];
   }
@@ -3859,7 +3859,7 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 - (ComplexOpt6_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3881,10 +3881,10 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 - (BOOL) hasXyzzy {
   return result.hasXyzzy;
 }
-- (NSInteger) xyzzy {
+- (long) xyzzy {
   return result.xyzzy;
 }
-- (ComplexOpt6_Builder*) setXyzzy:(NSInteger) value {
+- (ComplexOpt6_Builder*) setXyzzy:(long) value {
   result.hasXyzzy = YES;
   result.xyzzy = value;
   return self;
@@ -3927,8 +3927,8 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3982,8 +3982,8 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -4040,7 +4040,7 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 - (VariousComplexOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4094,8 +4094,8 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
                                         to:536870912];
   [self.unknownFields writeAsMessageSetTo:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4156,8 +4156,8 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:4 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -4216,7 +4216,7 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
 - (AggregateMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4280,8 +4280,8 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4344,8 +4344,8 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasS) {
     hashCode = hashCode * 31 + [self.s hash];
   }
@@ -4408,7 +4408,7 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
 - (AggregateMessageSetElement_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4446,7 +4446,7 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
 @end
 
 @interface Aggregate ()
-@property NSInteger i;
+@property long i;
 @property (retain) NSString* s;
 @property (retain) Aggregate* sub;
 @property (retain) PBFileOptions* file;
@@ -4558,8 +4558,8 @@ static Aggregate* defaultAggregateInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4667,8 +4667,8 @@ static Aggregate* defaultAggregateInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
   }
@@ -4755,7 +4755,7 @@ static Aggregate* defaultAggregateInstance = nil;
 - (Aggregate_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4808,10 +4808,10 @@ static Aggregate* defaultAggregateInstance = nil;
 - (BOOL) hasI {
   return result.hasI;
 }
-- (NSInteger) i {
+- (long) i {
   return result.i;
 }
-- (Aggregate_Builder*) setI:(NSInteger) value {
+- (Aggregate_Builder*) setI:(long) value {
   result.hasI = YES;
   result.i = value;
   return self;
@@ -4930,7 +4930,7 @@ static Aggregate* defaultAggregateInstance = nil;
 @end
 
 @interface AggregateMessage ()
-@property NSInteger fieldname;
+@property long fieldname;
 @end
 
 @implementation AggregateMessage
@@ -4972,8 +4972,8 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -5036,8 +5036,8 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasFieldname) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.fieldname] hash];
   }
@@ -5100,7 +5100,7 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
 - (AggregateMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5122,10 +5122,10 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
 - (BOOL) hasFieldname {
   return result.hasFieldname;
 }
-- (NSInteger) fieldname {
+- (long) fieldname {
   return result.fieldname;
 }
-- (AggregateMessage_Builder*) setFieldname:(NSInteger) value {
+- (AggregateMessage_Builder*) setFieldname:(long) value {
   result.hasFieldname = YES;
   result.fieldname = value;
   return self;

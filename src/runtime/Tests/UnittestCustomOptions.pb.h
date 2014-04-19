@@ -586,16 +586,16 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   BOOL hasFoo_:1;
   BOOL hasFoo2_:1;
   BOOL hasFoo3_:1;
-  NSInteger foo;
-  NSInteger foo2;
-  NSInteger foo3;
+  long foo;
+  long foo2;
+  long foo3;
 }
 - (BOOL) hasFoo;
 - (BOOL) hasFoo2;
 - (BOOL) hasFoo3;
-@property (readonly) NSInteger foo;
-@property (readonly) NSInteger foo2;
-@property (readonly) NSInteger foo3;
+@property (readonly) long foo;
+@property (readonly) long foo2;
+@property (readonly) long foo3;
 
 + (ComplexOptionType1*) defaultInstance;
 - (ComplexOptionType1*) defaultInstance;
@@ -633,18 +633,18 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType1_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasFoo;
-- (NSInteger) foo;
-- (ComplexOptionType1_Builder*) setFoo:(NSInteger) value;
+- (long) foo;
+- (ComplexOptionType1_Builder*) setFoo:(long) value;
 - (ComplexOptionType1_Builder*) clearFoo;
 
 - (BOOL) hasFoo2;
-- (NSInteger) foo2;
-- (ComplexOptionType1_Builder*) setFoo2:(NSInteger) value;
+- (long) foo2;
+- (ComplexOptionType1_Builder*) setFoo2:(long) value;
 - (ComplexOptionType1_Builder*) clearFoo2;
 
 - (BOOL) hasFoo3;
-- (NSInteger) foo3;
-- (ComplexOptionType1_Builder*) setFoo3:(NSInteger) value;
+- (long) foo3;
+- (ComplexOptionType1_Builder*) setFoo3:(long) value;
 - (ComplexOptionType1_Builder*) clearFoo3;
 @end
 
@@ -653,7 +653,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   BOOL hasBaz_:1;
   BOOL hasBar_:1;
   BOOL hasFred_:1;
-  NSInteger baz;
+  long baz;
   ComplexOptionType1* bar;
   ComplexOptionType2_ComplexOptionType4* fred;
 }
@@ -661,7 +661,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (BOOL) hasBaz;
 - (BOOL) hasFred;
 @property (readonly, retain) ComplexOptionType1* bar;
-@property (readonly) NSInteger baz;
+@property (readonly) long baz;
 @property (readonly, retain) ComplexOptionType2_ComplexOptionType4* fred;
 
 + (ComplexOptionType2*) defaultInstance;
@@ -685,10 +685,10 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 @interface ComplexOptionType2_ComplexOptionType4 : PBGeneratedMessage {
 @private
   BOOL hasWaldo_:1;
-  NSInteger waldo;
+  long waldo;
 }
 - (BOOL) hasWaldo;
-@property (readonly) NSInteger waldo;
+@property (readonly) long waldo;
 
 + (ComplexOptionType2_ComplexOptionType4*) defaultInstance;
 - (ComplexOptionType2_ComplexOptionType4*) defaultInstance;
@@ -727,8 +727,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType2_ComplexOptionType4_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasWaldo;
-- (NSInteger) waldo;
-- (ComplexOptionType2_ComplexOptionType4_Builder*) setWaldo:(NSInteger) value;
+- (long) waldo;
+- (ComplexOptionType2_ComplexOptionType4_Builder*) setWaldo:(long) value;
 - (ComplexOptionType2_ComplexOptionType4_Builder*) clearWaldo;
 @end
 
@@ -757,8 +757,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType2_Builder*) clearBar;
 
 - (BOOL) hasBaz;
-- (NSInteger) baz;
-- (ComplexOptionType2_Builder*) setBaz:(NSInteger) value;
+- (long) baz;
+- (ComplexOptionType2_Builder*) setBaz:(long) value;
 - (ComplexOptionType2_Builder*) clearBaz;
 
 - (BOOL) hasFred;
@@ -773,12 +773,12 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 @private
   BOOL hasQux_:1;
   BOOL hasComplexOptionType5_:1;
-  NSInteger qux;
+  long qux;
   ComplexOptionType3_ComplexOptionType5* complexOptionType5;
 }
 - (BOOL) hasQux;
 - (BOOL) hasComplexOptionType5;
-@property (readonly) NSInteger qux;
+@property (readonly) long qux;
 @property (readonly, retain) ComplexOptionType3_ComplexOptionType5* complexOptionType5;
 
 + (ComplexOptionType3*) defaultInstance;
@@ -802,10 +802,10 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 @interface ComplexOptionType3_ComplexOptionType5 : PBGeneratedMessage {
 @private
   BOOL hasPlugh_:1;
-  NSInteger plugh;
+  long plugh;
 }
 - (BOOL) hasPlugh;
-@property (readonly) NSInteger plugh;
+@property (readonly) long plugh;
 
 + (ComplexOptionType3_ComplexOptionType5*) defaultInstance;
 - (ComplexOptionType3_ComplexOptionType5*) defaultInstance;
@@ -843,8 +843,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType3_ComplexOptionType5_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasPlugh;
-- (NSInteger) plugh;
-- (ComplexOptionType3_ComplexOptionType5_Builder*) setPlugh:(NSInteger) value;
+- (long) plugh;
+- (ComplexOptionType3_ComplexOptionType5_Builder*) setPlugh:(long) value;
 - (ComplexOptionType3_ComplexOptionType5_Builder*) clearPlugh;
 @end
 
@@ -866,8 +866,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOptionType3_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasQux;
-- (NSInteger) qux;
-- (ComplexOptionType3_Builder*) setQux:(NSInteger) value;
+- (long) qux;
+- (ComplexOptionType3_Builder*) setQux:(long) value;
 - (ComplexOptionType3_Builder*) clearQux;
 
 - (BOOL) hasComplexOptionType5;
@@ -881,10 +881,10 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 @interface ComplexOpt6 : PBGeneratedMessage {
 @private
   BOOL hasXyzzy_:1;
-  NSInteger xyzzy;
+  long xyzzy;
 }
 - (BOOL) hasXyzzy;
-@property (readonly) NSInteger xyzzy;
+@property (readonly) long xyzzy;
 
 + (ComplexOpt6*) defaultInstance;
 - (ComplexOpt6*) defaultInstance;
@@ -922,8 +922,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (ComplexOpt6_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasXyzzy;
-- (NSInteger) xyzzy;
-- (ComplexOpt6_Builder*) setXyzzy:(NSInteger) value;
+- (long) xyzzy;
+- (ComplexOpt6_Builder*) setXyzzy:(long) value;
 - (ComplexOpt6_Builder*) clearXyzzy;
 @end
 
@@ -1064,7 +1064,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
   BOOL hasSub_:1;
   BOOL hasFile_:1;
   BOOL hasMset_:1;
-  NSInteger i;
+  long i;
   NSString* s;
   Aggregate* sub;
   PBFileOptions* file;
@@ -1075,7 +1075,7 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (BOOL) hasSub;
 - (BOOL) hasFile;
 - (BOOL) hasMset;
-@property (readonly) NSInteger i;
+@property (readonly) long i;
 @property (readonly, retain) NSString* s;
 @property (readonly, retain) Aggregate* sub;
 @property (readonly, retain) PBFileOptions* file;
@@ -1118,8 +1118,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (Aggregate_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasI;
-- (NSInteger) i;
-- (Aggregate_Builder*) setI:(NSInteger) value;
+- (long) i;
+- (Aggregate_Builder*) setI:(long) value;
 - (Aggregate_Builder*) clearI;
 
 - (BOOL) hasS;
@@ -1152,10 +1152,10 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 @interface AggregateMessage : PBGeneratedMessage {
 @private
   BOOL hasFieldname_:1;
-  NSInteger fieldname;
+  long fieldname;
 }
 - (BOOL) hasFieldname;
-@property (readonly) NSInteger fieldname;
+@property (readonly) long fieldname;
 
 + (AggregateMessage*) defaultInstance;
 - (AggregateMessage*) defaultInstance;
@@ -1193,8 +1193,8 @@ BOOL DummyMessageContainingEnum_TestEnumTypeIsValidValue(DummyMessageContainingE
 - (AggregateMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasFieldname;
-- (NSInteger) fieldname;
-- (AggregateMessage_Builder*) setFieldname:(NSInteger) value;
+- (long) fieldname;
+- (AggregateMessage_Builder*) setFieldname:(long) value;
 - (AggregateMessage_Builder*) clearFieldname;
 @end
 

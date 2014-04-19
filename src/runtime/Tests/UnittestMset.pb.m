@@ -78,8 +78,8 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
                                         to:536870912];
   [self.unknownFields writeAsMessageSetTo:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -140,8 +140,8 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:4 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -200,7 +200,7 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
 - (TestMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -266,8 +266,8 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -333,8 +333,8 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasMessageSet) {
     hashCode = hashCode * 31 + [self.messageSet hash];
   }
@@ -397,7 +397,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
 - (TestMessageSetContainer_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -454,7 +454,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
 @end
 
 @interface TestMessageSetExtension1 ()
-@property NSInteger i;
+@property long i;
 @end
 
 @implementation TestMessageSetExtension1
@@ -499,8 +499,8 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -563,8 +563,8 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
   }
@@ -627,7 +627,7 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
 - (TestMessageSetExtension1_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -649,10 +649,10 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
 - (BOOL) hasI {
   return result.hasI;
 }
-- (NSInteger) i {
+- (long) i {
   return result.i;
 }
-- (TestMessageSetExtension1_Builder*) setI:(NSInteger) value {
+- (TestMessageSetExtension1_Builder*) setI:(long) value {
   result.hasI = YES;
   result.i = value;
   return self;
@@ -711,8 +711,8 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -775,8 +775,8 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasStr) {
     hashCode = hashCode * 31 + [self.str hash];
   }
@@ -839,7 +839,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 - (TestMessageSetExtension2_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -908,7 +908,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 - (PBArray *)item {
   return itemArray;
 }
-- (RawMessageSet_Item*)itemAtIndex:(NSUInteger)index {
+- (RawMessageSet_Item*)itemAtIndex:(unsigned long)index {
   return [itemArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
@@ -925,8 +925,8 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -991,8 +991,8 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   for (RawMessageSet_Item* element in self.itemArray) {
     hashCode = hashCode * 31 + [element hash];
   }
@@ -1002,7 +1002,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 @end
 
 @interface RawMessageSet_Item ()
-@property NSInteger typeId;
+@property long typeId;
 @property (retain) NSData* message;
 @end
 
@@ -1063,8 +1063,8 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1136,8 +1136,8 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasTypeId) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.typeId] hash];
   }
@@ -1206,7 +1206,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (RawMessageSet_Item_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1232,10 +1232,10 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (BOOL) hasTypeId {
   return result.hasTypeId;
 }
-- (NSInteger) typeId {
+- (long) typeId {
   return result.typeId;
 }
-- (RawMessageSet_Item_Builder*) setTypeId:(NSInteger) value {
+- (RawMessageSet_Item_Builder*) setTypeId:(long) value {
   result.hasTypeId = YES;
   result.typeId = value;
   return self;
@@ -1321,7 +1321,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (RawMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1345,7 +1345,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (PBAppendableArray *)item {
   return result.itemArray;
 }
-- (RawMessageSet_Item*)itemAtIndex:(NSUInteger)index {
+- (RawMessageSet_Item*)itemAtIndex:(unsigned long)index {
   return [result itemAtIndex:index];
 }
 - (RawMessageSet_Builder *)addItem:(RawMessageSet_Item*)value {
@@ -1359,7 +1359,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
   result.itemArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
   return self;
 }
-- (RawMessageSet_Builder *)setItemValues:(const RawMessageSet_Item* *)values count:(NSUInteger)count {
+- (RawMessageSet_Builder *)setItemValues:(const RawMessageSet_Item* *)values count:(unsigned long)count {
   result.itemArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
   return self;
 }

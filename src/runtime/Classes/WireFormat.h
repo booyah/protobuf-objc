@@ -31,9 +31,9 @@ typedef enum {
   PBWireFormatMessageSetMessage = 3
 } PBWireFormat;
 
-NSInteger PBWireFormatMakeTag(NSInteger fieldNumber, NSInteger wireType);
-NSInteger PBWireFormatGetTagWireType(NSInteger tag);
-NSInteger PBWireFormatGetTagFieldNumber(NSInteger tag);
+long PBWireFormatMakeTag(long fieldNumber, long wireType);
+long PBWireFormatGetTagWireType(long tag);
+long PBWireFormatGetTagFieldNumber(long tag);
 
 #define PBWireFormatMessageSetItemTag (PBWireFormatMakeTag(PBWireFormatMessageSetItem, PBWireFormatStartGroup))
 #define PBWireFormatMessageSetItemEndTag (PBWireFormatMakeTag(PBWireFormatMessageSetItem, PBWireFormatEndGroup))

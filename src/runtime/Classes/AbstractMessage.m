@@ -42,7 +42,7 @@
 }
 
 
-- (NSInteger) serializedSize {
+- (long) serializedSize {
   @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
 }
 
