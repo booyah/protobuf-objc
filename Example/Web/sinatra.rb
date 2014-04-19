@@ -1,6 +1,6 @@
 require 'sinatra'
 require 'json'
-require 'protocol_buffers'
+#require 'protocol_buffers'
 
 require_relative './person.pb.rb'
 PHONE_COUNT = 1000
