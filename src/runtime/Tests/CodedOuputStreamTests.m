@@ -22,14 +22,14 @@
 
 @implementation CodedOutputStreamTests
 
-- (NSData*) bytes_with_sentinel:(int32_t) unused, ... {
+- (NSData*) bytes_with_sentinel:(NSInteger) unused, ... {
   va_list list;
   va_start(list, unused);
 
   NSMutableData* values = [NSMutableData dataWithCapacity:0];
-  int32_t i;
+  NSInteger i;
 
-  while ((i = va_arg(list, int32_t)) != 256) {
+  while ((i = va_arg(list, NSInteger)) != 256) {
     NSAssert(i >= 0 && i < 256, @"");
     uint8_t u = (uint8_t)i;
     [values appendBytes:&u length:1];
@@ -58,10 +58,10 @@
  * Parses the given bytes using writeRawLittleEndian32() and checks
  * that the result matches the given value.
  */
-- (void) assertWriteLittleEndian32:(NSData*) data value:(int32_t) value {
+- (void) assertWriteLittleEndian32:(NSData*) data value:(NSInteger) value {
   NSOutputStream* rawOutput = [self openMemoryStream];
   PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
-  [output writeRawLittleEndian32:(int32_t)value];
+  [output writeRawLittleEndian32:(NSInteger)value];
   [output flush];
 
   NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
@@ -71,7 +71,7 @@
   for (int blockSize = 1; blockSize <= 16; blockSize *= 2) {
     NSOutputStream* rawOutput = [self openMemoryStream];
     PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput bufferSize:blockSize];
-    [output writeRawLittleEndian32:(int32_t)value];
+    [output writeRawLittleEndian32:(NSInteger)value];
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
@@ -116,14 +116,14 @@
   if (logicalRightShift64(value, 32) == 0) {
     NSOutputStream* rawOutput = [self openMemoryStream];
     PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
-    [output writeRawVarint32:(int32_t)value];
+    [output writeRawVarint32:(NSInteger)value];
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
     STAssertEqualObjects(data, actual, @"");
 
     // Also try computing size.
-    STAssertTrue(data.length == computeRawVarint32Size((int32_t)value), @"");
+    STAssertTrue(data.length == computeRawVarint32Size((NSInteger)value), @"");
   }
 
   {
@@ -147,7 +147,7 @@
       NSOutputStream* rawOutput = [self openMemoryStream];
       PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput bufferSize:blockSize];
 
-      [output writeRawVarint32:(int32_t)value];
+      [output writeRawVarint32:(NSInteger)value];
       [output flush];
 
       NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];

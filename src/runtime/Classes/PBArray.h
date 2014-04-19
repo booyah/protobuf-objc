@@ -49,8 +49,8 @@ typedef enum _PBArrayValueType
 - (NSUInteger)count;
 - (id)objectAtIndex:(NSUInteger)index;
 - (BOOL)boolAtIndex:(NSUInteger)index;
-- (int32_t)int32AtIndex:(NSUInteger)index;
-- (uint32_t)uint32AtIndex:(NSUInteger)index;
+- (NSInteger)int32AtIndex:(NSUInteger)index;
+- (NSUInteger)uint32AtIndex:(NSUInteger)index;
 - (int64_t)int64AtIndex:(NSUInteger)index;
 - (uint64_t)uint64AtIndex:(NSUInteger)index;
 - (Float32)floatAtIndex:(NSUInteger)index;
@@ -90,8 +90,8 @@ typedef enum _PBArrayValueType
 
 - (void)addObject:(id)value;
 - (void)addBool:(BOOL)value;
-- (void)addInt32:(int32_t)value;
-- (void)addUint32:(uint32_t)value;
+- (void)addInt32:(NSInteger)value;
+- (void)addUint32:(NSUInteger)value;
 - (void)addInt64:(int64_t)value;
 - (void)addUint64:(uint64_t)value;
 - (void)addFloat:(Float32)value;

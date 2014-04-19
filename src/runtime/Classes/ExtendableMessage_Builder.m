@@ -35,10 +35,10 @@
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input
              unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
          extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                       tag:(int32_t) tag {
+                       tag:(NSInteger) tag {
   PBExtendableMessage* message = [self internalGetResult];
-  int32_t wireType = PBWireFormatGetTagWireType(tag);
-  int32_t fieldNumber = PBWireFormatGetTagFieldNumber(tag);
+  NSInteger wireType = PBWireFormatGetTagWireType(tag);
+  NSInteger fieldNumber = PBWireFormatGetTagFieldNumber(tag);
 
   id<PBExtensionField> extension = [extensionRegistry getExtension:[message class]
                                                        fieldNumber:fieldNumber];
@@ -80,7 +80,7 @@
   if (message.extensionMap == nil) {
     message.extensionMap = [NSMutableDictionary dictionary];
   }
-  [message.extensionMap setObject:value forKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+  [message.extensionMap setObject:value forKey:@([extension fieldNumber])];
   return self;
 }
 
@@ -97,7 +97,7 @@
   if (message.extensionMap == nil) {
     message.extensionMap = [NSMutableDictionary dictionary];
   }
-  NSNumber* fieldNumber = [NSNumber numberWithInt:[extension fieldNumber]];
+  NSNumber* fieldNumber = ([extension fieldNumber]);
   NSMutableArray* list = [message.extensionMap objectForKey:fieldNumber];
   if (list == nil) {
     list = [NSMutableArray array];
@@ -110,7 +110,7 @@
 
 
 - (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
-                                        index:(int32_t) index
+                                        index:(NSInteger) index
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
@@ -123,7 +123,7 @@
     message.extensionMap = [NSMutableDictionary dictionary];
   }
 
-  NSNumber* fieldNumber = [NSNumber numberWithInt:[extension fieldNumber]];
+  NSNumber* fieldNumber = @([extension fieldNumber]);
   NSMutableArray* list = [message.extensionMap objectForKey:fieldNumber];
 
   [list replaceObjectAtIndex:index withObject:value];
@@ -135,7 +135,7 @@
 - (PBExtendableMessage_Builder*) clearExtension:(id<PBExtensionField>) extension {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
-  [message.extensionMap removeObjectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+  [message.extensionMap removeObjectForKey:@([extension fieldNumber])];
 
   return self;
 }

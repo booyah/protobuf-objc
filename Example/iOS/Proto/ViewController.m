@@ -23,14 +23,14 @@
     [super viewDidLoad];
     
     [self proto];
-    [self json];
+//    [self json];
 }
 
 
 -(void) proto
 {
     // Proto Part
-    NSData* raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroups"]];
+    NSData* raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://192.168.2.1:4567/1/getGroups"]];
     if (!raw_data)
     {
         NSLog(@"Please turn on the server");
@@ -39,15 +39,17 @@
     
     __block Person* person;
     NSLog(@"proto content size %@",[NSByteCountFormatter stringFromByteCount:raw_data.length countStyle:NSByteCountFormatterCountStyleMemory]);
+   
     [NSObject logTime:^{
         person = [Person parseFromData:raw_data];
+         NSLog(@"%ld",(long)person.personId);
     } withPrefix:@"builing proto objects"];
 }
 
 -(void) json
 {
     // JSON Part
-    NSData *raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroupsJson"]];
+    NSData *raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://192.168.2.1:4567/1/getGroupsJson"]];
 
     if (!raw_data)
     {

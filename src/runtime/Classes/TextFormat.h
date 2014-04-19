@@ -19,8 +19,8 @@
 
 }
 
-+ (int32_t) parseInt32:(NSString*) text;
-+ (int32_t) parseUInt32:(NSString*) text;
++ (NSInteger) parseInt32:(NSString*) text;
++ (NSInteger) parseUInt32:(NSString*) text;
 + (int64_t) parseInt64:(NSString*) text;
 + (int64_t) parseUInt64:(NSString*) text;
 

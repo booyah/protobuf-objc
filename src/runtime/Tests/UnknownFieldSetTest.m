@@ -52,7 +52,7 @@
 }
 
 
-- (PBField*) getField:(int32_t) number {
+- (PBField*) getField:(NSInteger) number {
   return [unknownFields getField:number];
 }
 

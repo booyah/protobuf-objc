@@ -33,10 +33,10 @@ BOOL TestEnumIsValidValue(TestEnum value);
 @interface TestMessage : PBExtendableMessage {
 @private
   BOOL hasA_:1;
-  int32_t a;
+  NSInteger a;
 }
 - (BOOL) hasA;
-@property (readonly) int32_t a;
+@property (readonly) NSInteger a;
 
 + (TestMessage*) defaultInstance;
 - (TestMessage*) defaultInstance;
@@ -74,8 +74,8 @@ BOOL TestEnumIsValidValue(TestEnum value);
 - (TestMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasA;
-- (int32_t) a;
-- (TestMessage_Builder*) setA:(int32_t) value;
+- (NSInteger) a;
+- (TestMessage_Builder*) setA:(NSInteger) value;
 - (TestMessage_Builder*) clearA;
 @end
 

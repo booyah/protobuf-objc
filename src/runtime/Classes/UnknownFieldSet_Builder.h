@@ -27,7 +27,7 @@
   // Optimization:  We keep around a builder for the last field that was
   //   modified so that we can efficiently add to it multiple times in a
   //   row (important when parsing an unknown repeated field).
-  int32_t lastFieldNumber;
+  NSInteger lastFieldNumber;
 
   PBMutableField* lastField;
 }
@@ -41,13 +41,13 @@
 - (PBUnknownFieldSet_Builder*) mergeFromData:(NSData*) data;
 - (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input;
 
-- (PBUnknownFieldSet_Builder*) mergeVarintField:(int32_t) number value:(int32_t) value;
+- (PBUnknownFieldSet_Builder*) mergeVarintField:(NSInteger) number value:(NSInteger) value;
 
-- (BOOL) mergeFieldFrom:(int32_t) tag input:(PBCodedInputStream*) input;
+- (BOOL) mergeFieldFrom:(NSInteger) tag input:(PBCodedInputStream*) input;
 
-- (PBUnknownFieldSet_Builder*) addField:(PBField*) field forNumber:(int32_t) number;
+- (PBUnknownFieldSet_Builder*) addField:(PBField*) field forNumber:(NSInteger) number;
 
 - (PBUnknownFieldSet_Builder*) clear;
-- (PBUnknownFieldSet_Builder*) mergeField:(PBField*) field forNumber:(int32_t) number;
+- (PBUnknownFieldSet_Builder*) mergeField:(PBField*) field forNumber:(NSInteger) number;
 
 @end

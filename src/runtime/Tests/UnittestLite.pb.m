@@ -1190,15 +1190,15 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
   }
 }
 @interface TestAllTypesLite ()
-@property int32_t optionalInt32;
+@property NSInteger optionalInt32;
 @property int64_t optionalInt64;
-@property uint32_t optionalUint32;
+@property uNSInteger optionalUint32;
 @property uint64_t optionalUint64;
-@property int32_t optionalSint32;
+@property NSInteger optionalSint32;
 @property int64_t optionalSint64;
-@property uint32_t optionalFixed32;
+@property uNSInteger optionalFixed32;
 @property uint64_t optionalFixed64;
-@property int32_t optionalSfixed32;
+@property NSInteger optionalSfixed32;
 @property int64_t optionalSfixed64;
 @property Float32 optionalFloat;
 @property Float64 optionalDouble;
@@ -1238,15 +1238,15 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
 @property (retain) PBAppendableArray * repeatedImportEnumArray;
 @property (retain) PBAppendableArray * repeatedStringPieceArray;
 @property (retain) PBAppendableArray * repeatedCordArray;
-@property int32_t defaultInt32;
+@property NSInteger defaultInt32;
 @property int64_t defaultInt64;
-@property uint32_t defaultUint32;
+@property uNSInteger defaultUint32;
 @property uint64_t defaultUint64;
-@property int32_t defaultSint32;
+@property NSInteger defaultSint32;
 @property int64_t defaultSint64;
-@property uint32_t defaultFixed32;
+@property uNSInteger defaultFixed32;
 @property uint64_t defaultFixed64;
-@property int32_t defaultSfixed32;
+@property NSInteger defaultSfixed32;
 @property int64_t defaultSfixed64;
 @property Float32 defaultFloat;
 @property Float64 defaultDouble;
@@ -1731,7 +1731,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedInt32 {
   return repeatedInt32Array;
 }
-- (int32_t)repeatedInt32AtIndex:(NSUInteger)index {
+- (NSInteger)repeatedInt32AtIndex:(NSUInteger)index {
   return [repeatedInt32Array int32AtIndex:index];
 }
 - (PBArray *)repeatedInt64 {
@@ -1743,7 +1743,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedUint32 {
   return repeatedUint32Array;
 }
-- (uint32_t)repeatedUint32AtIndex:(NSUInteger)index {
+- (uNSInteger)repeatedUint32AtIndex:(NSUInteger)index {
   return [repeatedUint32Array uint32AtIndex:index];
 }
 - (PBArray *)repeatedUint64 {
@@ -1755,7 +1755,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedSint32 {
   return repeatedSint32Array;
 }
-- (int32_t)repeatedSint32AtIndex:(NSUInteger)index {
+- (NSInteger)repeatedSint32AtIndex:(NSUInteger)index {
   return [repeatedSint32Array int32AtIndex:index];
 }
 - (PBArray *)repeatedSint64 {
@@ -1767,7 +1767,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedFixed32 {
   return repeatedFixed32Array;
 }
-- (uint32_t)repeatedFixed32AtIndex:(NSUInteger)index {
+- (uNSInteger)repeatedFixed32AtIndex:(NSUInteger)index {
   return [repeatedFixed32Array uint32AtIndex:index];
 }
 - (PBArray *)repeatedFixed64 {
@@ -1779,7 +1779,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedSfixed32 {
   return repeatedSfixed32Array;
 }
-- (int32_t)repeatedSfixed32AtIndex:(NSUInteger)index {
+- (NSInteger)repeatedSfixed32AtIndex:(NSUInteger)index {
   return [repeatedSfixed32Array int32AtIndex:index];
 }
 - (PBArray *)repeatedSfixed64 {
@@ -1950,7 +1950,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const NSUInteger repeatedInt32ArrayCount = self.repeatedInt32Array.count;
   if (repeatedInt32ArrayCount > 0) {
-    const int32_t *values = (const int32_t *)self.repeatedInt32Array.data;
+    const NSInteger *values = (const NSInteger *)self.repeatedInt32Array.data;
     for (NSUInteger i = 0; i < repeatedInt32ArrayCount; ++i) {
       [output writeInt32:31 value:values[i]];
     }
@@ -1964,7 +1964,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const NSUInteger repeatedUint32ArrayCount = self.repeatedUint32Array.count;
   if (repeatedUint32ArrayCount > 0) {
-    const uint32_t *values = (const uint32_t *)self.repeatedUint32Array.data;
+    const uNSInteger *values = (const uNSInteger *)self.repeatedUint32Array.data;
     for (NSUInteger i = 0; i < repeatedUint32ArrayCount; ++i) {
       [output writeUInt32:33 value:values[i]];
     }
@@ -1978,7 +1978,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const NSUInteger repeatedSint32ArrayCount = self.repeatedSint32Array.count;
   if (repeatedSint32ArrayCount > 0) {
-    const int32_t *values = (const int32_t *)self.repeatedSint32Array.data;
+    const NSInteger *values = (const NSInteger *)self.repeatedSint32Array.data;
     for (NSUInteger i = 0; i < repeatedSint32ArrayCount; ++i) {
       [output writeSInt32:35 value:values[i]];
     }
@@ -1992,7 +1992,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const NSUInteger repeatedFixed32ArrayCount = self.repeatedFixed32Array.count;
   if (repeatedFixed32ArrayCount > 0) {
-    const uint32_t *values = (const uint32_t *)self.repeatedFixed32Array.data;
+    const uNSInteger *values = (const uNSInteger *)self.repeatedFixed32Array.data;
     for (NSUInteger i = 0; i < repeatedFixed32ArrayCount; ++i) {
       [output writeFixed32:37 value:values[i]];
     }
@@ -2006,7 +2006,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const NSUInteger repeatedSfixed32ArrayCount = self.repeatedSfixed32Array.count;
   if (repeatedSfixed32ArrayCount > 0) {
-    const int32_t *values = (const int32_t *)self.repeatedSfixed32Array.data;
+    const NSInteger *values = (const NSInteger *)self.repeatedSfixed32Array.data;
     for (NSUInteger i = 0; i < repeatedSfixed32ArrayCount; ++i) {
       [output writeSFixed32:39 value:values[i]];
     }
@@ -2156,8 +2156,8 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2236,9 +2236,9 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += computeStringSize(25, self.optionalCord);
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedInt32Array.count;
-    const int32_t *values = (const int32_t *)self.repeatedInt32Array.data;
+    const NSInteger *values = (const NSInteger *)self.repeatedInt32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeInt32SizeNoTag(values[i]);
     }
@@ -2246,7 +2246,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedInt64Array.count;
     const int64_t *values = (const int64_t *)self.repeatedInt64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2256,9 +2256,9 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedUint32Array.count;
-    const uint32_t *values = (const uint32_t *)self.repeatedUint32Array.data;
+    const uNSInteger *values = (const uNSInteger *)self.repeatedUint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeUInt32SizeNoTag(values[i]);
     }
@@ -2266,7 +2266,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedUint64Array.count;
     const uint64_t *values = (const uint64_t *)self.repeatedUint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2276,9 +2276,9 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedSint32Array.count;
-    const int32_t *values = (const int32_t *)self.repeatedSint32Array.data;
+    const NSInteger *values = (const NSInteger *)self.repeatedSint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeSInt32SizeNoTag(values[i]);
     }
@@ -2286,7 +2286,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedSint64Array.count;
     const int64_t *values = (const int64_t *)self.repeatedSint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2296,56 +2296,56 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedFixed32Array.count;
     dataSize = 4 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedFixed64Array.count;
     dataSize = 8 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedSfixed32Array.count;
     dataSize = 4 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedSfixed64Array.count;
     dataSize = 8 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedFloatArray.count;
     dataSize = 4 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedDoubleArray.count;
     dataSize = 8 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedBoolArray.count;
     dataSize = 1 * count;
     size += dataSize;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedStringArray.count;
     const NSString* *values = (const NSString* *)self.repeatedStringArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2355,7 +2355,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedBytesArray.count;
     const NSData* *values = (const NSData* *)self.repeatedBytesArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2377,7 +2377,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += computeMessageSize(50, element);
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedNestedEnumArray.count;
     const TestAllTypesLite_NestedEnum *values = (const TestAllTypesLite_NestedEnum *)self.repeatedNestedEnumArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2387,7 +2387,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedForeignEnumArray.count;
     const ForeignEnumLite *values = (const ForeignEnumLite *)self.repeatedForeignEnumArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2397,7 +2397,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedImportEnumArray.count;
     const ImportEnumLite *values = (const ImportEnumLite *)self.repeatedImportEnumArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2407,7 +2407,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedStringPieceArray.count;
     const NSString* *values = (const NSString* *)self.repeatedStringPieceArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2417,7 +2417,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size += 2 * count;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedCordArray.count;
     const NSString* *values = (const NSString* *)self.repeatedCordArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -3164,7 +3164,7 @@ BOOL TestAllTypesLite_NestedEnumIsValidValue(TestAllTypesLite_NestedEnum value) 
   }
 }
 @interface TestAllTypesLite_NestedMessage ()
-@property int32_t bb;
+@property NSInteger bb;
 @end
 
 @implementation TestAllTypesLite_NestedMessage
@@ -3206,8 +3206,8 @@ static TestAllTypesLite_NestedMessage* defaultTestAllTypesLite_NestedMessageInst
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3334,7 +3334,7 @@ static TestAllTypesLite_NestedMessage* defaultTestAllTypesLite_NestedMessageInst
 - (TestAllTypesLite_NestedMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3356,10 +3356,10 @@ static TestAllTypesLite_NestedMessage* defaultTestAllTypesLite_NestedMessageInst
 - (BOOL) hasBb {
   return result.hasBb;
 }
-- (int32_t) bb {
+- (NSInteger) bb {
   return result.bb;
 }
-- (TestAllTypesLite_NestedMessage_Builder*) setBb:(int32_t) value {
+- (TestAllTypesLite_NestedMessage_Builder*) setBb:(NSInteger) value {
   result.hasBb = YES;
   result.bb = value;
   return self;
@@ -3372,7 +3372,7 @@ static TestAllTypesLite_NestedMessage* defaultTestAllTypesLite_NestedMessageInst
 @end
 
 @interface TestAllTypesLite_OptionalGroup ()
-@property int32_t a;
+@property NSInteger a;
 @end
 
 @implementation TestAllTypesLite_OptionalGroup
@@ -3414,8 +3414,8 @@ static TestAllTypesLite_OptionalGroup* defaultTestAllTypesLite_OptionalGroupInst
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3542,7 +3542,7 @@ static TestAllTypesLite_OptionalGroup* defaultTestAllTypesLite_OptionalGroupInst
 - (TestAllTypesLite_OptionalGroup_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3564,10 +3564,10 @@ static TestAllTypesLite_OptionalGroup* defaultTestAllTypesLite_OptionalGroupInst
 - (BOOL) hasA {
   return result.hasA;
 }
-- (int32_t) a {
+- (NSInteger) a {
   return result.a;
 }
-- (TestAllTypesLite_OptionalGroup_Builder*) setA:(int32_t) value {
+- (TestAllTypesLite_OptionalGroup_Builder*) setA:(NSInteger) value {
   result.hasA = YES;
   result.a = value;
   return self;
@@ -3580,7 +3580,7 @@ static TestAllTypesLite_OptionalGroup* defaultTestAllTypesLite_OptionalGroupInst
 @end
 
 @interface TestAllTypesLite_RepeatedGroup ()
-@property int32_t a;
+@property NSInteger a;
 @end
 
 @implementation TestAllTypesLite_RepeatedGroup
@@ -3622,8 +3622,8 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3750,7 +3750,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (TestAllTypesLite_RepeatedGroup_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3772,10 +3772,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasA {
   return result.hasA;
 }
-- (int32_t) a {
+- (NSInteger) a {
   return result.a;
 }
-- (TestAllTypesLite_RepeatedGroup_Builder*) setA:(int32_t) value {
+- (TestAllTypesLite_RepeatedGroup_Builder*) setA:(NSInteger) value {
   result.hasA = YES;
   result.a = value;
   return self;
@@ -4138,7 +4138,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (TestAllTypesLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4247,7 +4247,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 168: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (TestAllTypesLite_NestedEnumIsValidValue(value)) {
           [self setOptionalNestedEnum:value];
         } else {
@@ -4256,7 +4256,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 176: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (ForeignEnumLiteIsValidValue(value)) {
           [self setOptionalForeignEnum:value];
         } else {
@@ -4265,7 +4265,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 184: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (ImportEnumLiteIsValidValue(value)) {
           [self setOptionalImportEnum:value];
         } else {
@@ -4366,7 +4366,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 408: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (TestAllTypesLite_NestedEnumIsValidValue(value)) {
           [self addRepeatedNestedEnum:value];
         } else {
@@ -4375,7 +4375,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 416: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (ForeignEnumLiteIsValidValue(value)) {
           [self addRepeatedForeignEnum:value];
         } else {
@@ -4384,7 +4384,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 424: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (ImportEnumLiteIsValidValue(value)) {
           [self addRepeatedImportEnum:value];
         } else {
@@ -4461,7 +4461,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 648: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (TestAllTypesLite_NestedEnumIsValidValue(value)) {
           [self setDefaultNestedEnum:value];
         } else {
@@ -4470,7 +4470,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 656: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (ForeignEnumLiteIsValidValue(value)) {
           [self setDefaultForeignEnum:value];
         } else {
@@ -4479,7 +4479,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
         break;
       }
       case 664: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (ImportEnumLiteIsValidValue(value)) {
           [self setDefaultImportEnum:value];
         } else {
@@ -4501,10 +4501,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalInt32 {
   return result.hasOptionalInt32;
 }
-- (int32_t) optionalInt32 {
+- (NSInteger) optionalInt32 {
   return result.optionalInt32;
 }
-- (TestAllTypesLite_Builder*) setOptionalInt32:(int32_t) value {
+- (TestAllTypesLite_Builder*) setOptionalInt32:(NSInteger) value {
   result.hasOptionalInt32 = YES;
   result.optionalInt32 = value;
   return self;
@@ -4533,10 +4533,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalUint32 {
   return result.hasOptionalUint32;
 }
-- (uint32_t) optionalUint32 {
+- (uNSInteger) optionalUint32 {
   return result.optionalUint32;
 }
-- (TestAllTypesLite_Builder*) setOptionalUint32:(uint32_t) value {
+- (TestAllTypesLite_Builder*) setOptionalUint32:(uNSInteger) value {
   result.hasOptionalUint32 = YES;
   result.optionalUint32 = value;
   return self;
@@ -4565,10 +4565,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalSint32 {
   return result.hasOptionalSint32;
 }
-- (int32_t) optionalSint32 {
+- (NSInteger) optionalSint32 {
   return result.optionalSint32;
 }
-- (TestAllTypesLite_Builder*) setOptionalSint32:(int32_t) value {
+- (TestAllTypesLite_Builder*) setOptionalSint32:(NSInteger) value {
   result.hasOptionalSint32 = YES;
   result.optionalSint32 = value;
   return self;
@@ -4597,10 +4597,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalFixed32 {
   return result.hasOptionalFixed32;
 }
-- (uint32_t) optionalFixed32 {
+- (uNSInteger) optionalFixed32 {
   return result.optionalFixed32;
 }
-- (TestAllTypesLite_Builder*) setOptionalFixed32:(uint32_t) value {
+- (TestAllTypesLite_Builder*) setOptionalFixed32:(uNSInteger) value {
   result.hasOptionalFixed32 = YES;
   result.optionalFixed32 = value;
   return self;
@@ -4629,10 +4629,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalSfixed32 {
   return result.hasOptionalSfixed32;
 }
-- (int32_t) optionalSfixed32 {
+- (NSInteger) optionalSfixed32 {
   return result.optionalSfixed32;
 }
-- (TestAllTypesLite_Builder*) setOptionalSfixed32:(int32_t) value {
+- (TestAllTypesLite_Builder*) setOptionalSfixed32:(NSInteger) value {
   result.hasOptionalSfixed32 = YES;
   result.optionalSfixed32 = value;
   return self;
@@ -4941,10 +4941,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedInt32 {
   return result.repeatedInt32Array;
 }
-- (int32_t)repeatedInt32AtIndex:(NSUInteger)index {
+- (NSInteger)repeatedInt32AtIndex:(NSUInteger)index {
   return [result repeatedInt32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedInt32:(int32_t)value {
+- (TestAllTypesLite_Builder *)addRepeatedInt32:(NSInteger)value {
   if (result.repeatedInt32Array == nil) {
     result.repeatedInt32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -4955,7 +4955,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedInt32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedInt32Values:(const int32_t *)values count:(NSUInteger)count {
+- (TestAllTypesLite_Builder *)setRepeatedInt32Values:(const NSInteger *)values count:(NSUInteger)count {
   result.repeatedInt32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -4991,10 +4991,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedUint32 {
   return result.repeatedUint32Array;
 }
-- (uint32_t)repeatedUint32AtIndex:(NSUInteger)index {
+- (uNSInteger)repeatedUint32AtIndex:(NSUInteger)index {
   return [result repeatedUint32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedUint32:(uint32_t)value {
+- (TestAllTypesLite_Builder *)addRepeatedUint32:(uNSInteger)value {
   if (result.repeatedUint32Array == nil) {
     result.repeatedUint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -5005,7 +5005,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedUint32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedUint32Values:(const uint32_t *)values count:(NSUInteger)count {
+- (TestAllTypesLite_Builder *)setRepeatedUint32Values:(const uNSInteger *)values count:(NSUInteger)count {
   result.repeatedUint32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -5041,10 +5041,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedSint32 {
   return result.repeatedSint32Array;
 }
-- (int32_t)repeatedSint32AtIndex:(NSUInteger)index {
+- (NSInteger)repeatedSint32AtIndex:(NSUInteger)index {
   return [result repeatedSint32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedSint32:(int32_t)value {
+- (TestAllTypesLite_Builder *)addRepeatedSint32:(NSInteger)value {
   if (result.repeatedSint32Array == nil) {
     result.repeatedSint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -5055,7 +5055,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedSint32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedSint32Values:(const int32_t *)values count:(NSUInteger)count {
+- (TestAllTypesLite_Builder *)setRepeatedSint32Values:(const NSInteger *)values count:(NSUInteger)count {
   result.repeatedSint32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -5091,10 +5091,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedFixed32 {
   return result.repeatedFixed32Array;
 }
-- (uint32_t)repeatedFixed32AtIndex:(NSUInteger)index {
+- (uNSInteger)repeatedFixed32AtIndex:(NSUInteger)index {
   return [result repeatedFixed32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedFixed32:(uint32_t)value {
+- (TestAllTypesLite_Builder *)addRepeatedFixed32:(uNSInteger)value {
   if (result.repeatedFixed32Array == nil) {
     result.repeatedFixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -5105,7 +5105,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedFixed32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedFixed32Values:(const uint32_t *)values count:(NSUInteger)count {
+- (TestAllTypesLite_Builder *)setRepeatedFixed32Values:(const uNSInteger *)values count:(NSUInteger)count {
   result.repeatedFixed32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -5141,10 +5141,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedSfixed32 {
   return result.repeatedSfixed32Array;
 }
-- (int32_t)repeatedSfixed32AtIndex:(NSUInteger)index {
+- (NSInteger)repeatedSfixed32AtIndex:(NSUInteger)index {
   return [result repeatedSfixed32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedSfixed32:(int32_t)value {
+- (TestAllTypesLite_Builder *)addRepeatedSfixed32:(NSInteger)value {
   if (result.repeatedSfixed32Array == nil) {
     result.repeatedSfixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -5155,7 +5155,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedSfixed32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedSfixed32Values:(const int32_t *)values count:(NSUInteger)count {
+- (TestAllTypesLite_Builder *)setRepeatedSfixed32Values:(const NSInteger *)values count:(NSUInteger)count {
   result.repeatedSfixed32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -5541,10 +5541,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultInt32 {
   return result.hasDefaultInt32;
 }
-- (int32_t) defaultInt32 {
+- (NSInteger) defaultInt32 {
   return result.defaultInt32;
 }
-- (TestAllTypesLite_Builder*) setDefaultInt32:(int32_t) value {
+- (TestAllTypesLite_Builder*) setDefaultInt32:(NSInteger) value {
   result.hasDefaultInt32 = YES;
   result.defaultInt32 = value;
   return self;
@@ -5573,10 +5573,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultUint32 {
   return result.hasDefaultUint32;
 }
-- (uint32_t) defaultUint32 {
+- (uNSInteger) defaultUint32 {
   return result.defaultUint32;
 }
-- (TestAllTypesLite_Builder*) setDefaultUint32:(uint32_t) value {
+- (TestAllTypesLite_Builder*) setDefaultUint32:(uNSInteger) value {
   result.hasDefaultUint32 = YES;
   result.defaultUint32 = value;
   return self;
@@ -5605,10 +5605,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultSint32 {
   return result.hasDefaultSint32;
 }
-- (int32_t) defaultSint32 {
+- (NSInteger) defaultSint32 {
   return result.defaultSint32;
 }
-- (TestAllTypesLite_Builder*) setDefaultSint32:(int32_t) value {
+- (TestAllTypesLite_Builder*) setDefaultSint32:(NSInteger) value {
   result.hasDefaultSint32 = YES;
   result.defaultSint32 = value;
   return self;
@@ -5637,10 +5637,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultFixed32 {
   return result.hasDefaultFixed32;
 }
-- (uint32_t) defaultFixed32 {
+- (uNSInteger) defaultFixed32 {
   return result.defaultFixed32;
 }
-- (TestAllTypesLite_Builder*) setDefaultFixed32:(uint32_t) value {
+- (TestAllTypesLite_Builder*) setDefaultFixed32:(uNSInteger) value {
   result.hasDefaultFixed32 = YES;
   result.defaultFixed32 = value;
   return self;
@@ -5669,10 +5669,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultSfixed32 {
   return result.hasDefaultSfixed32;
 }
-- (int32_t) defaultSfixed32 {
+- (NSInteger) defaultSfixed32 {
   return result.defaultSfixed32;
 }
-- (TestAllTypesLite_Builder*) setDefaultSfixed32:(int32_t) value {
+- (TestAllTypesLite_Builder*) setDefaultSfixed32:(NSInteger) value {
   result.hasDefaultSfixed32 = YES;
   result.defaultSfixed32 = value;
   return self;
@@ -5861,7 +5861,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 @end
 
 @interface ForeignMessageLite ()
-@property int32_t c;
+@property NSInteger c;
 @end
 
 @implementation ForeignMessageLite
@@ -5903,8 +5903,8 @@ static ForeignMessageLite* defaultForeignMessageLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -6031,7 +6031,7 @@ static ForeignMessageLite* defaultForeignMessageLiteInstance = nil;
 - (ForeignMessageLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -6053,10 +6053,10 @@ static ForeignMessageLite* defaultForeignMessageLiteInstance = nil;
 - (BOOL) hasC {
   return result.hasC;
 }
-- (int32_t) c {
+- (NSInteger) c {
   return result.c;
 }
-- (ForeignMessageLite_Builder*) setC:(int32_t) value {
+- (ForeignMessageLite_Builder*) setC:(NSInteger) value {
   result.hasC = YES;
   result.c = value;
   return self;
@@ -6152,7 +6152,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedInt32 {
   return packedInt32Array;
 }
-- (int32_t)packedInt32AtIndex:(NSUInteger)index {
+- (NSInteger)packedInt32AtIndex:(NSUInteger)index {
   return [packedInt32Array int32AtIndex:index];
 }
 - (PBArray *)packedInt64 {
@@ -6164,7 +6164,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedUint32 {
   return packedUint32Array;
 }
-- (uint32_t)packedUint32AtIndex:(NSUInteger)index {
+- (uNSInteger)packedUint32AtIndex:(NSUInteger)index {
   return [packedUint32Array uint32AtIndex:index];
 }
 - (PBArray *)packedUint64 {
@@ -6176,7 +6176,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedSint32 {
   return packedSint32Array;
 }
-- (int32_t)packedSint32AtIndex:(NSUInteger)index {
+- (NSInteger)packedSint32AtIndex:(NSUInteger)index {
   return [packedSint32Array int32AtIndex:index];
 }
 - (PBArray *)packedSint64 {
@@ -6188,7 +6188,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedFixed32 {
   return packedFixed32Array;
 }
-- (uint32_t)packedFixed32AtIndex:(NSUInteger)index {
+- (uNSInteger)packedFixed32AtIndex:(NSUInteger)index {
   return [packedFixed32Array uint32AtIndex:index];
 }
 - (PBArray *)packedFixed64 {
@@ -6200,7 +6200,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedSfixed32 {
   return packedSfixed32Array;
 }
-- (int32_t)packedSfixed32AtIndex:(NSUInteger)index {
+- (NSInteger)packedSfixed32AtIndex:(NSUInteger)index {
   return [packedSfixed32Array int32AtIndex:index];
 }
 - (PBArray *)packedSfixed64 {
@@ -6239,7 +6239,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   const NSUInteger packedInt32ArrayCount = self.packedInt32Array.count;
   if (packedInt32ArrayCount > 0) {
-    const int32_t *values = (const int32_t *)self.packedInt32Array.data;
+    const NSInteger *values = (const NSInteger *)self.packedInt32Array.data;
     [output writeRawVarint32:722];
     [output writeRawVarint32:packedInt32MemoizedSerializedSize];
     for (NSUInteger i = 0; i < packedInt32ArrayCount; ++i) {
@@ -6257,7 +6257,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const NSUInteger packedUint32ArrayCount = self.packedUint32Array.count;
   if (packedUint32ArrayCount > 0) {
-    const uint32_t *values = (const uint32_t *)self.packedUint32Array.data;
+    const uNSInteger *values = (const uNSInteger *)self.packedUint32Array.data;
     [output writeRawVarint32:738];
     [output writeRawVarint32:packedUint32MemoizedSerializedSize];
     for (NSUInteger i = 0; i < packedUint32ArrayCount; ++i) {
@@ -6275,7 +6275,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const NSUInteger packedSint32ArrayCount = self.packedSint32Array.count;
   if (packedSint32ArrayCount > 0) {
-    const int32_t *values = (const int32_t *)self.packedSint32Array.data;
+    const NSInteger *values = (const NSInteger *)self.packedSint32Array.data;
     [output writeRawVarint32:754];
     [output writeRawVarint32:packedSint32MemoizedSerializedSize];
     for (NSUInteger i = 0; i < packedSint32ArrayCount; ++i) {
@@ -6293,7 +6293,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const NSUInteger packedFixed32ArrayCount = self.packedFixed32Array.count;
   if (packedFixed32ArrayCount > 0) {
-    const uint32_t *values = (const uint32_t *)self.packedFixed32Array.data;
+    const uNSInteger *values = (const uNSInteger *)self.packedFixed32Array.data;
     [output writeRawVarint32:770];
     [output writeRawVarint32:packedFixed32MemoizedSerializedSize];
     for (NSUInteger i = 0; i < packedFixed32ArrayCount; ++i) {
@@ -6311,7 +6311,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const NSUInteger packedSfixed32ArrayCount = self.packedSfixed32Array.count;
   if (packedSfixed32ArrayCount > 0) {
-    const int32_t *values = (const int32_t *)self.packedSfixed32Array.data;
+    const NSInteger *values = (const NSInteger *)self.packedSfixed32Array.data;
     [output writeRawVarint32:786];
     [output writeRawVarint32:packedSfixed32MemoizedSerializedSize];
     for (NSUInteger i = 0; i < packedSfixed32ArrayCount; ++i) {
@@ -6365,17 +6365,17 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
 
   size = 0;
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedInt32Array.count;
-    const int32_t *values = (const int32_t *)self.packedInt32Array.data;
+    const NSInteger *values = (const NSInteger *)self.packedInt32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeInt32SizeNoTag(values[i]);
     }
@@ -6387,7 +6387,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedInt32MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedInt64Array.count;
     const int64_t *values = (const int64_t *)self.packedInt64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6401,9 +6401,9 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedInt64MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedUint32Array.count;
-    const uint32_t *values = (const uint32_t *)self.packedUint32Array.data;
+    const uNSInteger *values = (const uNSInteger *)self.packedUint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeUInt32SizeNoTag(values[i]);
     }
@@ -6415,7 +6415,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedUint32MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedUint64Array.count;
     const uint64_t *values = (const uint64_t *)self.packedUint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6429,9 +6429,9 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedUint64MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedSint32Array.count;
-    const int32_t *values = (const int32_t *)self.packedSint32Array.data;
+    const NSInteger *values = (const NSInteger *)self.packedSint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeSInt32SizeNoTag(values[i]);
     }
@@ -6443,7 +6443,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSint32MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedSint64Array.count;
     const int64_t *values = (const int64_t *)self.packedSint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6457,7 +6457,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSint64MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedFixed32Array.count;
     dataSize = 4 * count;
     size += dataSize;
@@ -6468,7 +6468,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFixed32MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedFixed64Array.count;
     dataSize = 8 * count;
     size += dataSize;
@@ -6479,7 +6479,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFixed64MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedSfixed32Array.count;
     dataSize = 4 * count;
     size += dataSize;
@@ -6490,7 +6490,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSfixed32MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedSfixed64Array.count;
     dataSize = 8 * count;
     size += dataSize;
@@ -6501,7 +6501,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSfixed64MemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedFloatArray.count;
     dataSize = 4 * count;
     size += dataSize;
@@ -6512,7 +6512,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFloatMemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedDoubleArray.count;
     dataSize = 8 * count;
     size += dataSize;
@@ -6523,7 +6523,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedDoubleMemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedBoolArray.count;
     dataSize = 1 * count;
     size += dataSize;
@@ -6534,7 +6534,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedBoolMemoizedSerializedSize = dataSize;
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     const NSUInteger count = self.packedEnumArray.count;
     const ForeignEnumLite *values = (const ForeignEnumLite *)self.packedEnumArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6863,7 +6863,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (TestPackedTypesLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -6876,8 +6876,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 722: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedInt32Array == nil) {
           result.packedInt32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -6888,8 +6888,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 730: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedInt64Array == nil) {
           result.packedInt64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt64];
         }
@@ -6900,8 +6900,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 738: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedUint32Array == nil) {
           result.packedUint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
         }
@@ -6912,8 +6912,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 746: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedUint64Array == nil) {
           result.packedUint64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
         }
@@ -6924,8 +6924,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 754: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedSint32Array == nil) {
           result.packedSint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -6936,8 +6936,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 762: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedSint64Array == nil) {
           result.packedSint64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt64];
         }
@@ -6948,8 +6948,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 770: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedFixed32Array == nil) {
           result.packedFixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
         }
@@ -6960,8 +6960,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 778: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedFixed64Array == nil) {
           result.packedFixed64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
         }
@@ -6972,8 +6972,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 786: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedSfixed32Array == nil) {
           result.packedSfixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -6984,8 +6984,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 794: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedSfixed64Array == nil) {
           result.packedSfixed64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt64];
         }
@@ -6996,8 +6996,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 802: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedFloatArray == nil) {
           result.packedFloatArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeFloat];
         }
@@ -7008,8 +7008,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 810: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedDoubleArray == nil) {
           result.packedDoubleArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeDouble];
         }
@@ -7020,8 +7020,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 818: {
-        int32_t length = [input readRawVarint32];
-        int32_t limit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger limit = [input pushLimit:length];
         if (result.packedBoolArray == nil) {
           result.packedBoolArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeBool];
         }
@@ -7032,10 +7032,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 826: {
-        int32_t length = [input readRawVarint32];
-        int32_t oldLimit = [input pushLimit:length];
+        NSInteger length = [input readRawVarint32];
+        NSInteger oldLimit = [input pushLimit:length];
         while (input.bytesUntilLimit > 0) {
-          int32_t value = [input readEnum];
+          NSInteger value = [input readEnum];
           if (ForeignEnumLiteIsValidValue(value)) {
             [self addPackedEnum:value];
           } else {
@@ -7051,10 +7051,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedInt32 {
   return result.packedInt32Array;
 }
-- (int32_t)packedInt32AtIndex:(NSUInteger)index {
+- (NSInteger)packedInt32AtIndex:(NSUInteger)index {
   return [result packedInt32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedInt32:(int32_t)value {
+- (TestPackedTypesLite_Builder *)addPackedInt32:(NSInteger)value {
   if (result.packedInt32Array == nil) {
     result.packedInt32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -7065,7 +7065,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedInt32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedInt32Values:(const int32_t *)values count:(NSUInteger)count {
+- (TestPackedTypesLite_Builder *)setPackedInt32Values:(const NSInteger *)values count:(NSUInteger)count {
   result.packedInt32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -7101,10 +7101,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedUint32 {
   return result.packedUint32Array;
 }
-- (uint32_t)packedUint32AtIndex:(NSUInteger)index {
+- (uNSInteger)packedUint32AtIndex:(NSUInteger)index {
   return [result packedUint32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedUint32:(uint32_t)value {
+- (TestPackedTypesLite_Builder *)addPackedUint32:(uNSInteger)value {
   if (result.packedUint32Array == nil) {
     result.packedUint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -7115,7 +7115,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedUint32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedUint32Values:(const uint32_t *)values count:(NSUInteger)count {
+- (TestPackedTypesLite_Builder *)setPackedUint32Values:(const uNSInteger *)values count:(NSUInteger)count {
   result.packedUint32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -7151,10 +7151,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedSint32 {
   return result.packedSint32Array;
 }
-- (int32_t)packedSint32AtIndex:(NSUInteger)index {
+- (NSInteger)packedSint32AtIndex:(NSUInteger)index {
   return [result packedSint32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedSint32:(int32_t)value {
+- (TestPackedTypesLite_Builder *)addPackedSint32:(NSInteger)value {
   if (result.packedSint32Array == nil) {
     result.packedSint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -7165,7 +7165,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedSint32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedSint32Values:(const int32_t *)values count:(NSUInteger)count {
+- (TestPackedTypesLite_Builder *)setPackedSint32Values:(const NSInteger *)values count:(NSUInteger)count {
   result.packedSint32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -7201,10 +7201,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedFixed32 {
   return result.packedFixed32Array;
 }
-- (uint32_t)packedFixed32AtIndex:(NSUInteger)index {
+- (uNSInteger)packedFixed32AtIndex:(NSUInteger)index {
   return [result packedFixed32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedFixed32:(uint32_t)value {
+- (TestPackedTypesLite_Builder *)addPackedFixed32:(uNSInteger)value {
   if (result.packedFixed32Array == nil) {
     result.packedFixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -7215,7 +7215,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedFixed32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedFixed32Values:(const uint32_t *)values count:(NSUInteger)count {
+- (TestPackedTypesLite_Builder *)setPackedFixed32Values:(const uNSInteger *)values count:(NSUInteger)count {
   result.packedFixed32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -7251,10 +7251,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedSfixed32 {
   return result.packedSfixed32Array;
 }
-- (int32_t)packedSfixed32AtIndex:(NSUInteger)index {
+- (NSInteger)packedSfixed32AtIndex:(NSUInteger)index {
   return [result packedSfixed32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedSfixed32:(int32_t)value {
+- (TestPackedTypesLite_Builder *)addPackedSfixed32:(NSInteger)value {
   if (result.packedSfixed32Array == nil) {
     result.packedSfixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -7265,7 +7265,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedSfixed32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedSfixed32Values:(const int32_t *)values count:(NSUInteger)count {
+- (TestPackedTypesLite_Builder *)setPackedSfixed32Values:(const NSInteger *)values count:(NSUInteger)count {
   result.packedSfixed32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -7437,8 +7437,8 @@ static TestAllExtensionsLite* defaultTestAllExtensionsLiteInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -7559,7 +7559,7 @@ static TestAllExtensionsLite* defaultTestAllExtensionsLiteInstance = nil;
 - (TestAllExtensionsLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -7577,7 +7577,7 @@ static TestAllExtensionsLite* defaultTestAllExtensionsLiteInstance = nil;
 @end
 
 @interface OptionalGroup_extension_lite ()
-@property int32_t a;
+@property NSInteger a;
 @end
 
 @implementation OptionalGroup_extension_lite
@@ -7619,8 +7619,8 @@ static OptionalGroup_extension_lite* defaultOptionalGroup_extension_liteInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -7747,7 +7747,7 @@ static OptionalGroup_extension_lite* defaultOptionalGroup_extension_liteInstance
 - (OptionalGroup_extension_lite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -7769,10 +7769,10 @@ static OptionalGroup_extension_lite* defaultOptionalGroup_extension_liteInstance
 - (BOOL) hasA {
   return result.hasA;
 }
-- (int32_t) a {
+- (NSInteger) a {
   return result.a;
 }
-- (OptionalGroup_extension_lite_Builder*) setA:(int32_t) value {
+- (OptionalGroup_extension_lite_Builder*) setA:(NSInteger) value {
   result.hasA = YES;
   result.a = value;
   return self;
@@ -7785,7 +7785,7 @@ static OptionalGroup_extension_lite* defaultOptionalGroup_extension_liteInstance
 @end
 
 @interface RepeatedGroup_extension_lite ()
-@property int32_t a;
+@property NSInteger a;
 @end
 
 @implementation RepeatedGroup_extension_lite
@@ -7827,8 +7827,8 @@ static RepeatedGroup_extension_lite* defaultRepeatedGroup_extension_liteInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -7955,7 +7955,7 @@ static RepeatedGroup_extension_lite* defaultRepeatedGroup_extension_liteInstance
 - (RepeatedGroup_extension_lite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -7977,10 +7977,10 @@ static RepeatedGroup_extension_lite* defaultRepeatedGroup_extension_liteInstance
 - (BOOL) hasA {
   return result.hasA;
 }
-- (int32_t) a {
+- (NSInteger) a {
   return result.a;
 }
-- (RepeatedGroup_extension_lite_Builder*) setA:(int32_t) value {
+- (RepeatedGroup_extension_lite_Builder*) setA:(NSInteger) value {
   result.hasA = YES;
   result.a = value;
   return self;
@@ -8029,8 +8029,8 @@ static TestPackedExtensionsLite* defaultTestPackedExtensionsLiteInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -8151,7 +8151,7 @@ static TestPackedExtensionsLite* defaultTestPackedExtensionsLiteInstance = nil;
 - (TestPackedExtensionsLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -8202,8 +8202,8 @@ static TestNestedExtensionLite* defaultTestNestedExtensionLiteInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -8315,7 +8315,7 @@ static TestNestedExtensionLite* defaultTestNestedExtensionLiteInstance = nil;
 - (TestNestedExtensionLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -8333,7 +8333,7 @@ static TestNestedExtensionLite* defaultTestNestedExtensionLiteInstance = nil;
 @end
 
 @interface TestDeprecatedLite ()
-@property int32_t deprecatedField;
+@property NSInteger deprecatedField;
 @end
 
 @implementation TestDeprecatedLite
@@ -8375,8 +8375,8 @@ static TestDeprecatedLite* defaultTestDeprecatedLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -8503,7 +8503,7 @@ static TestDeprecatedLite* defaultTestDeprecatedLiteInstance = nil;
 - (TestDeprecatedLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -8525,10 +8525,10 @@ static TestDeprecatedLite* defaultTestDeprecatedLiteInstance = nil;
 - (BOOL) hasDeprecatedField {
   return result.hasDeprecatedField;
 }
-- (int32_t) deprecatedField {
+- (NSInteger) deprecatedField {
   return result.deprecatedField;
 }
-- (TestDeprecatedLite_Builder*) setDeprecatedField:(int32_t) value {
+- (TestDeprecatedLite_Builder*) setDeprecatedField:(NSInteger) value {
   result.hasDeprecatedField = YES;
   result.deprecatedField = value;
   return self;

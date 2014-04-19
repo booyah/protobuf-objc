@@ -112,8 +112,8 @@ static Person* defaultPersonInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -170,7 +170,7 @@ static Person* defaultPersonInstance = nil;
     [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
   if (self.hasPersonId) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"personId", [NSNumber numberWithInt:self.personId]];
+    [output appendFormat:@"%@%@: %@\n", indent, @"personId", [NSNumber numberWithInteger:self.personId]];
   }
   if (self.hasEmail) {
     [output appendFormat:@"%@%@: %@\n", indent, @"email", self.email];
@@ -207,7 +207,7 @@ static Person* defaultPersonInstance = nil;
     hashCode = hashCode * 31 + [self.name hash];
   }
   if (self.hasPersonId) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.personId] hash];
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.personId] hash];
   }
   if (self.hasEmail) {
     hashCode = hashCode * 31 + [self.email hash];
@@ -288,8 +288,8 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size_ = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -428,7 +428,7 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
 - (PersonPhoneNumberBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -445,7 +445,7 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
         break;
       }
       case 16: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (PersonPhoneTypeIsValidValue(value)) {
           [self setType:value];
         } else {
@@ -556,7 +556,7 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
 - (PersonBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];

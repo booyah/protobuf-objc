@@ -33,12 +33,12 @@ static void PBArraySetBoolValue(NSNumber *number, void *value)
 
 static void PBArraySetInt32Value(NSNumber *number, void *value)
 {
-	*((int32_t *)value) = [number intValue];
+	*((NSInteger *)value) = [number intValue];
 }
 
 static void PBArraySetUInt32Value(NSNumber *number, void *value)
 {
-	*((uint32_t *)value) = [number unsignedIntValue];
+	*((NSUInteger *)value) = [number unsignedIntValue];
 }
 
 static void PBArraySetInt64Value(NSNumber *number, void *value)
@@ -73,8 +73,8 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	{ sizeof(id),		NULL					},
 	{ sizeof(BOOL),		PBArraySetBoolValue		},
-	{ sizeof(int32_t),	PBArraySetInt32Value	},
-	{ sizeof(uint32_t),	PBArraySetUInt32Value	},
+	{ sizeof(NSInteger),	PBArraySetInt32Value	},
+	{ sizeof(NSUInteger),	PBArraySetUInt32Value	},
 	{ sizeof(int64_t),	PBArraySetInt64Value	},
 	{ sizeof(uint64_t),	PBArraySetUInt64Value	},
 	{ sizeof(Float32),	PBArraySetFloatValue	},
@@ -211,18 +211,18 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return ((BOOL *)_data)[index];
 }
 
-- (int32_t)int32AtIndex:(NSUInteger)index
+- (NSInteger)int32AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
-	return ((int32_t *)_data)[index];
+	return ((NSInteger *)_data)[index];
 }
 
-- (uint32_t)uint32AtIndex:(NSUInteger)index
+- (NSUInteger)uint32AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
-	return ((uint32_t *)_data)[index];
+	return ((NSUInteger *)_data)[index];
 }
 
 - (int64_t)int64AtIndex:(NSUInteger)index
@@ -454,19 +454,19 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	_count++;
 }
 
-- (void)addInt32:(int32_t)value
+- (void)addInt32:(NSInteger)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
 	[self ensureAdditionalCapacity:1];
-	*(int32_t *)PBArraySlot(_count) = value;
+	*(NSInteger *)PBArraySlot(_count) = value;
 	_count++;
 }
 
-- (void)addUint32:(uint32_t)value
+- (void)addUint32:(NSUInteger)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
 	[self ensureAdditionalCapacity:1];
-	*(uint32_t *)PBArraySlot(_count) = value;
+	*(NSUInteger *)PBArraySlot(_count) = value;
 	_count++;
 }
 

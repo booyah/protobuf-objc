@@ -29,7 +29,7 @@
 
 
 - (id) initWithData:(NSData*) data_
-          blockSize:(int32_t) blockSize_ {
+          blockSize:(NSInteger) blockSize_ {
   if ((self = [super init])) {
     self.underlyingStream = [NSInputStream inputStreamWithData:data_];
     blockSize = blockSize_;
@@ -40,7 +40,7 @@
 
 
 + (SmallBlockInputStream*) streamWithData:(NSData*) data
-                                blockSize:(int32_t) blockSize {
+                                blockSize:(NSInteger) blockSize {
   return [[[SmallBlockInputStream alloc] initWithData:data
                                             blockSize:blockSize] autorelease];
 }

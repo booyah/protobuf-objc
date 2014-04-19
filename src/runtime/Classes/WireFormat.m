@@ -19,16 +19,16 @@
 
 #import "Utilities.h"
 
-int32_t PBWireFormatMakeTag(int32_t fieldNumber, int32_t wireType) {
+NSInteger PBWireFormatMakeTag(NSInteger fieldNumber, NSInteger wireType) {
   return (fieldNumber << PBWireFormatTagTypeBits) | wireType;
 }
 
 
-int32_t PBWireFormatGetTagWireType(int32_t tag) {
+NSInteger PBWireFormatGetTagWireType(NSInteger tag) {
   return tag & PBWireFormatTagTypeMask;
 }
 
 
-int32_t PBWireFormatGetTagFieldNumber(int32_t tag) {
+NSInteger PBWireFormatGetTagFieldNumber(NSInteger tag) {
   return logicalRightShift32(tag, PBWireFormatTagTypeBits);
 }

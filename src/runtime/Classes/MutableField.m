@@ -93,7 +93,7 @@
 	return self;
 }
 
-- (PBMutableField *)addFixed32:(int32_t)value {
+- (PBMutableField *)addFixed32:(NSInteger)value {
 	if (_fixed32Array == nil) {
 		_fixed32Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	}

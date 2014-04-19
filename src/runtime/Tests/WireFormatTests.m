@@ -113,10 +113,10 @@
 
 - (void) assertFieldsInOrder:(NSData*) data {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-  int32_t previousTag = 0;
+  NSInteger previousTag = 0;
 
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     if (tag == 0) {
       break;
     }

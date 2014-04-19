@@ -28,7 +28,7 @@
 @interface PBConcreteExtensionField()
 @property PBExtensionType type;
 @property (assign) Class extendedClass;
-@property int32_t fieldNumber;
+@property NSInteger fieldNumber;
 @property (retain) id defaultValue;
 @property (assign) Class messageOrGroupClass;
 @property BOOL isRepeated;
@@ -62,7 +62,7 @@
 
 - (id)     initWithType:(PBExtensionType) type_
           extendedClass:(Class) extendedClass_
-            fieldNumber:(int32_t) fieldNumber_
+            fieldNumber:(NSInteger) fieldNumber_
            defaultValue:(id) defaultValue_
     messageOrGroupClass:(Class) messageOrGroupClass_
              isRepeated:(BOOL) isRepeated_
@@ -85,7 +85,7 @@
 
 + (PBConcreteExtensionField*) extensionWithType:(PBExtensionType) type
                                 extendedClass:(Class) extendedClass
-                                  fieldNumber:(int32_t) fieldNumber
+                                  fieldNumber:(NSInteger) fieldNumber
                                  defaultValue:(id) defaultValue
                     messageOrGroupClass:(Class) messageOrGroupClass
                                    isRepeated:(BOOL) isRepeated
@@ -148,7 +148,7 @@ BOOL typeIsFixedSize(PBExtensionType type) {
 }
 
 
-int32_t typeSize(PBExtensionType type) {
+NSInteger typeSize(PBExtensionType type) {
   switch (type) {
     case PBExtensionTypeBool:
       return 1;
@@ -298,7 +298,7 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
-- (int32_t) computeSingleSerializedSizeNoTag:(id) value {
+- (NSInteger) computeSingleSerializedSizeNoTag:(id) value {
   switch (type) {
     case PBExtensionTypeBool:     return computeBoolSizeNoTag([value boolValue]);
     case PBExtensionTypeFixed32:  return computeFixed32SizeNoTag([value intValue]);
@@ -324,7 +324,7 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
-- (int32_t) computeSingleSerializedSizeIncludingTag:(id) value {
+- (NSInteger) computeSingleSerializedSizeIncludingTag:(id) value {
   switch (type) {
     case PBExtensionTypeBool:     return computeBoolSize(fieldNumber, [value boolValue]);
     case PBExtensionTypeFixed32:  return computeFixed32Size(fieldNumber, [value intValue]);
@@ -390,7 +390,7 @@ int32_t typeSize(PBExtensionType type) {
     includingTagsToCodedOutputStream:(PBCodedOutputStream*) output {
   if (isPacked) {
     [output writeTag:fieldNumber format:PBWireFormatLengthDelimited];
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     if (typeIsFixedSize(type)) {
       dataSize = values.count * typeSize(type);
     } else {
@@ -419,9 +419,9 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
-- (int32_t) computeRepeatedSerializedSizeIncludingTags:(NSArray*) values {
+- (NSInteger) computeRepeatedSerializedSizeIncludingTags:(NSArray*) values {
   if (isPacked) {
-    int32_t size = 0;
+    NSInteger size = 0;
     if (typeIsFixedSize(type)) {
       size = values.count * typeSize(type);
     } else {
@@ -431,7 +431,7 @@ int32_t typeSize(PBExtensionType type) {
     }
     return size + computeTagSize(fieldNumber) + computeRawVarint32Size(size);
   } else {
-    int32_t size = 0;
+    NSInteger size = 0;
     for (id value in values) {
       size += [self computeSingleSerializedSizeIncludingTag:value];
     }
@@ -440,7 +440,7 @@ int32_t typeSize(PBExtensionType type) {
 }
 
 
-- (int32_t) computeSerializedSizeIncludingTag:(id) value {
+- (NSInteger) computeSerializedSizeIncludingTag:(id) value {
   if (isRepeated) {
     return [self computeRepeatedSerializedSizeIncludingTags:value];
   } else {
@@ -530,21 +530,21 @@ int32_t typeSize(PBExtensionType type) {
                          extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   switch (type) {
     case PBExtensionTypeBool:     return [NSNumber numberWithBool:[input readBool]];
-    case PBExtensionTypeFixed32:  return [NSNumber numberWithInt:[input readFixed32]];
-    case PBExtensionTypeSFixed32: return [NSNumber numberWithInt:[input readSFixed32]];
+    case PBExtensionTypeFixed32:  return @([input readFixed32]);
+    case PBExtensionTypeSFixed32: return @([input readSFixed32]);
     case PBExtensionTypeFloat:    return [NSNumber numberWithFloat:[input readFloat]];
     case PBExtensionTypeFixed64:  return [NSNumber numberWithLongLong:[input readFixed64]];
     case PBExtensionTypeSFixed64: return [NSNumber numberWithLongLong:[input readSFixed64]];
     case PBExtensionTypeDouble:   return [NSNumber numberWithDouble:[input readDouble]];
-    case PBExtensionTypeInt32:    return [NSNumber numberWithInt:[input readInt32]];
+    case PBExtensionTypeInt32:    return @([input readInt32]);
     case PBExtensionTypeInt64:    return [NSNumber numberWithLongLong:[input readInt64]];
-    case PBExtensionTypeSInt32:   return [NSNumber numberWithInt:[input readSInt32]];
+    case PBExtensionTypeSInt32:   return @([input readSInt32]);
     case PBExtensionTypeSInt64:   return [NSNumber numberWithLongLong:[input readSInt64]];
-    case PBExtensionTypeUInt32:   return [NSNumber numberWithInt:[input readUInt32]];
+    case PBExtensionTypeUInt32:   return @([input readUInt32]);
     case PBExtensionTypeUInt64:   return [NSNumber numberWithLongLong:[input readUInt64]];
     case PBExtensionTypeBytes:    return [input readData];
     case PBExtensionTypeString:   return [input readString];
-    case PBExtensionTypeEnum:     return [NSNumber numberWithInt:[input readEnum]];
+    case PBExtensionTypeEnum:     return @([input readEnum]);
     case PBExtensionTypeGroup:
     {
       id<PBMessage_Builder> builder = [messageOrGroupClass builder];
@@ -568,10 +568,10 @@ int32_t typeSize(PBExtensionType type) {
                      unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
      extensionRegistry:(PBExtensionRegistry*) extensionRegistry
     builder:(PBExtendableMessage_Builder*) builder
-                               tag:(int32_t) tag {
+                               tag:(NSInteger) tag {
   if (isPacked) {
-    int32_t length = [input readRawVarint32];
-    int32_t limit = [input pushLimit:length];
+    NSInteger length = [input readRawVarint32];
+    NSInteger limit = [input pushLimit:length];
     while ([input bytesUntilLimit] > 0) {
       id value = [self readSingleValueFromCodedInputStream:input extensionRegistry:extensionRegistry];
       [builder addExtension:self value:value];

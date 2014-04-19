@@ -436,7 +436,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
     printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
     if (descriptor_->options().packed()) {
-      printer->Print(variables_,"int32_t $name$MemoizedSerializedSize;\n");
+      printer->Print(variables_,"NSInteger $name$MemoizedSerializedSize;\n");
     }
   }
 
@@ -566,8 +566,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "int32_t length = [input readRawVarint32];\n"
-        "int32_t limit = [input pushLimit:length];\n"
+        "NSInteger length = [input readRawVarint32];\n"
+        "NSInteger limit = [input pushLimit:length];\n"
         "if (result.$list_name$ == nil) {\n"
         "  result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
         "}\n"
@@ -621,7 +621,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Indent();
 
     printer->Print(variables_,
-      "int32_t dataSize = 0;\n"
+      "NSInteger dataSize = 0;\n"
       "const NSUInteger count = self.$list_name$.count;\n");
 
     if (FixedSize(descriptor_->type()) == -1) {

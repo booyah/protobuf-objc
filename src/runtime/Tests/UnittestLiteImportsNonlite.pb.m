@@ -64,8 +64,8 @@ static TestLiteImportsNonlite* defaultTestLiteImportsNonliteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -195,7 +195,7 @@ static TestLiteImportsNonlite* defaultTestLiteImportsNonliteInstance = nil;
 - (TestLiteImportsNonlite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];

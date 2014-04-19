@@ -39,12 +39,12 @@
 
 + (PBField *)defaultInstance;
 
-- (int32_t)getSerializedSize:(int32_t)fieldNumber;
-- (int32_t)getSerializedSizeAsMessageSetExtension:(int32_t)fieldNumber;
+- (NSInteger)getSerializedSize:(NSInteger)fieldNumber;
+- (NSInteger)getSerializedSizeAsMessageSetExtension:(NSInteger)fieldNumber;
 
-- (void)writeTo:(int32_t) fieldNumber output:(PBCodedOutputStream *)output;
-- (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *)output;
-- (void)writeDescriptionFor:(int32_t) fieldNumber
+- (void)writeTo:(NSInteger) fieldNumber output:(PBCodedOutputStream *)output;
+- (void)writeAsMessageSetExtensionTo:(NSInteger)fieldNumber output:(PBCodedOutputStream *)output;
+- (void)writeDescriptionFor:(NSInteger) fieldNumber
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent;
 @end

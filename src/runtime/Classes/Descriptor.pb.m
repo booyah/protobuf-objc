@@ -50,7 +50,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 - (NSArray*) fileList {
   return mutableFileList;
 }
-- (PBFileDescriptorProto*) fileAtIndex:(int32_t) index {
+- (PBFileDescriptorProto*) fileAtIndex:(NSInteger) index {
   id value = [mutableFileList objectAtIndex:index];
   return value;
 }
@@ -68,8 +68,8 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -168,7 +168,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 - (PBFileDescriptorSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -193,10 +193,10 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   if (result.mutableFileList == nil) { return [NSArray array]; }
   return result.mutableFileList;
 }
-- (PBFileDescriptorProto*) fileAtIndex:(int32_t) index {
+- (PBFileDescriptorProto*) fileAtIndex:(NSInteger) index {
   return [result fileAtIndex:index];
 }
-- (PBFileDescriptorSet_Builder*) replaceFileAtIndex:(int32_t) index with:(PBFileDescriptorProto*) value {
+- (PBFileDescriptorSet_Builder*) replaceFileAtIndex:(NSInteger) index with:(PBFileDescriptorProto*) value {
   [result.mutableFileList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -293,35 +293,35 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (NSArray*) dependencyList {
   return mutableDependencyList;
 }
-- (NSString*) dependencyAtIndex:(int32_t) index {
+- (NSString*) dependencyAtIndex:(NSInteger) index {
   id value = [mutableDependencyList objectAtIndex:index];
   return value;
 }
 - (NSArray*) messageTypeList {
   return mutableMessageTypeList;
 }
-- (PBDescriptorProto*) messageTypeAtIndex:(int32_t) index {
+- (PBDescriptorProto*) messageTypeAtIndex:(NSInteger) index {
   id value = [mutableMessageTypeList objectAtIndex:index];
   return value;
 }
 - (NSArray*) enumTypeList {
   return mutableEnumTypeList;
 }
-- (PBEnumDescriptorProto*) enumTypeAtIndex:(int32_t) index {
+- (PBEnumDescriptorProto*) enumTypeAtIndex:(NSInteger) index {
   id value = [mutableEnumTypeList objectAtIndex:index];
   return value;
 }
 - (NSArray*) serviceList {
   return mutableServiceList;
 }
-- (PBServiceDescriptorProto*) serviceAtIndex:(int32_t) index {
+- (PBServiceDescriptorProto*) serviceAtIndex:(NSInteger) index {
   id value = [mutableServiceList objectAtIndex:index];
   return value;
 }
 - (NSArray*) extensionList {
   return mutableExtensionList;
 }
-- (PBFieldDescriptorProto*) extensionAtIndex:(int32_t) index {
+- (PBFieldDescriptorProto*) extensionAtIndex:(NSInteger) index {
   id value = [mutableExtensionList objectAtIndex:index];
   return value;
 }
@@ -380,8 +380,8 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -394,7 +394,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
     size += computeStringSize(2, self.package);
   }
   {
-    int32_t dataSize = 0;
+    NSInteger dataSize = 0;
     for (NSString* element in self.mutableDependencyList) {
       dataSize += computeStringSizeNoTag(element);
     }
@@ -539,7 +539,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (PBFileDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -637,10 +637,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   }
   return result.mutableDependencyList;
 }
-- (NSString*) dependencyAtIndex:(int32_t) index {
+- (NSString*) dependencyAtIndex:(NSInteger) index {
   return [result dependencyAtIndex:index];
 }
-- (PBFileDescriptorProto_Builder*) replaceDependencyAtIndex:(int32_t) index with:(NSString*) value {
+- (PBFileDescriptorProto_Builder*) replaceDependencyAtIndex:(NSInteger) index with:(NSString*) value {
   [result.mutableDependencyList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -666,10 +666,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   if (result.mutableMessageTypeList == nil) { return [NSArray array]; }
   return result.mutableMessageTypeList;
 }
-- (PBDescriptorProto*) messageTypeAtIndex:(int32_t) index {
+- (PBDescriptorProto*) messageTypeAtIndex:(NSInteger) index {
   return [result messageTypeAtIndex:index];
 }
-- (PBFileDescriptorProto_Builder*) replaceMessageTypeAtIndex:(int32_t) index with:(PBDescriptorProto*) value {
+- (PBFileDescriptorProto_Builder*) replaceMessageTypeAtIndex:(NSInteger) index with:(PBDescriptorProto*) value {
   [result.mutableMessageTypeList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -695,10 +695,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   if (result.mutableEnumTypeList == nil) { return [NSArray array]; }
   return result.mutableEnumTypeList;
 }
-- (PBEnumDescriptorProto*) enumTypeAtIndex:(int32_t) index {
+- (PBEnumDescriptorProto*) enumTypeAtIndex:(NSInteger) index {
   return [result enumTypeAtIndex:index];
 }
-- (PBFileDescriptorProto_Builder*) replaceEnumTypeAtIndex:(int32_t) index with:(PBEnumDescriptorProto*) value {
+- (PBFileDescriptorProto_Builder*) replaceEnumTypeAtIndex:(NSInteger) index with:(PBEnumDescriptorProto*) value {
   [result.mutableEnumTypeList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -724,10 +724,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   if (result.mutableServiceList == nil) { return [NSArray array]; }
   return result.mutableServiceList;
 }
-- (PBServiceDescriptorProto*) serviceAtIndex:(int32_t) index {
+- (PBServiceDescriptorProto*) serviceAtIndex:(NSInteger) index {
   return [result serviceAtIndex:index];
 }
-- (PBFileDescriptorProto_Builder*) replaceServiceAtIndex:(int32_t) index with:(PBServiceDescriptorProto*) value {
+- (PBFileDescriptorProto_Builder*) replaceServiceAtIndex:(NSInteger) index with:(PBServiceDescriptorProto*) value {
   [result.mutableServiceList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -753,10 +753,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   if (result.mutableExtensionList == nil) { return [NSArray array]; }
   return result.mutableExtensionList;
 }
-- (PBFieldDescriptorProto*) extensionAtIndex:(int32_t) index {
+- (PBFieldDescriptorProto*) extensionAtIndex:(NSInteger) index {
   return [result extensionAtIndex:index];
 }
-- (PBFileDescriptorProto_Builder*) replaceExtensionAtIndex:(int32_t) index with:(PBFieldDescriptorProto*) value {
+- (PBFileDescriptorProto_Builder*) replaceExtensionAtIndex:(NSInteger) index with:(PBFieldDescriptorProto*) value {
   [result.mutableExtensionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -873,35 +873,35 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
 - (NSArray*) fieldList {
   return mutableFieldList;
 }
-- (PBFieldDescriptorProto*) fieldAtIndex:(int32_t) index {
+- (PBFieldDescriptorProto*) fieldAtIndex:(NSInteger) index {
   id value = [mutableFieldList objectAtIndex:index];
   return value;
 }
 - (NSArray*) extensionList {
   return mutableExtensionList;
 }
-- (PBFieldDescriptorProto*) extensionAtIndex:(int32_t) index {
+- (PBFieldDescriptorProto*) extensionAtIndex:(NSInteger) index {
   id value = [mutableExtensionList objectAtIndex:index];
   return value;
 }
 - (NSArray*) nestedTypeList {
   return mutableNestedTypeList;
 }
-- (PBDescriptorProto*) nestedTypeAtIndex:(int32_t) index {
+- (PBDescriptorProto*) nestedTypeAtIndex:(NSInteger) index {
   id value = [mutableNestedTypeList objectAtIndex:index];
   return value;
 }
 - (NSArray*) enumTypeList {
   return mutableEnumTypeList;
 }
-- (PBEnumDescriptorProto*) enumTypeAtIndex:(int32_t) index {
+- (PBEnumDescriptorProto*) enumTypeAtIndex:(NSInteger) index {
   id value = [mutableEnumTypeList objectAtIndex:index];
   return value;
 }
 - (NSArray*) extensionRangeList {
   return mutableExtensionRangeList;
 }
-- (PBDescriptorProto_ExtensionRange*) extensionRangeAtIndex:(int32_t) index {
+- (PBDescriptorProto_ExtensionRange*) extensionRangeAtIndex:(NSInteger) index {
   id value = [mutableExtensionRangeList objectAtIndex:index];
   return value;
 }
@@ -957,8 +957,8 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1019,8 +1019,8 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
 @end
 
 @interface PBDescriptorProto_ExtensionRange ()
-@property int32_t start;
-@property int32_t end;
+@property NSInteger start;
+@property NSInteger end;
 @end
 
 @implementation PBDescriptorProto_ExtensionRange
@@ -1073,8 +1073,8 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1176,7 +1176,7 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
 - (PBDescriptorProto_ExtensionRange_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1202,10 +1202,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
 - (BOOL) hasStart {
   return result.hasStart;
 }
-- (int32_t) start {
+- (NSInteger) start {
   return result.start;
 }
-- (PBDescriptorProto_ExtensionRange_Builder*) setStart:(int32_t) value {
+- (PBDescriptorProto_ExtensionRange_Builder*) setStart:(NSInteger) value {
   result.hasStart = YES;
   result.start = value;
   return self;
@@ -1218,10 +1218,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
 - (BOOL) hasEnd {
   return result.hasEnd;
 }
-- (int32_t) end {
+- (NSInteger) end {
   return result.end;
 }
-- (PBDescriptorProto_ExtensionRange_Builder*) setEnd:(int32_t) value {
+- (PBDescriptorProto_ExtensionRange_Builder*) setEnd:(NSInteger) value {
   result.hasEnd = YES;
   result.end = value;
   return self;
@@ -1320,7 +1320,7 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
 - (PBDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1398,10 +1398,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
   if (result.mutableFieldList == nil) { return [NSArray array]; }
   return result.mutableFieldList;
 }
-- (PBFieldDescriptorProto*) fieldAtIndex:(int32_t) index {
+- (PBFieldDescriptorProto*) fieldAtIndex:(NSInteger) index {
   return [result fieldAtIndex:index];
 }
-- (PBDescriptorProto_Builder*) replaceFieldAtIndex:(int32_t) index with:(PBFieldDescriptorProto*) value {
+- (PBDescriptorProto_Builder*) replaceFieldAtIndex:(NSInteger) index with:(PBFieldDescriptorProto*) value {
   [result.mutableFieldList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -1427,10 +1427,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
   if (result.mutableExtensionList == nil) { return [NSArray array]; }
   return result.mutableExtensionList;
 }
-- (PBFieldDescriptorProto*) extensionAtIndex:(int32_t) index {
+- (PBFieldDescriptorProto*) extensionAtIndex:(NSInteger) index {
   return [result extensionAtIndex:index];
 }
-- (PBDescriptorProto_Builder*) replaceExtensionAtIndex:(int32_t) index with:(PBFieldDescriptorProto*) value {
+- (PBDescriptorProto_Builder*) replaceExtensionAtIndex:(NSInteger) index with:(PBFieldDescriptorProto*) value {
   [result.mutableExtensionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -1456,10 +1456,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
   if (result.mutableNestedTypeList == nil) { return [NSArray array]; }
   return result.mutableNestedTypeList;
 }
-- (PBDescriptorProto*) nestedTypeAtIndex:(int32_t) index {
+- (PBDescriptorProto*) nestedTypeAtIndex:(NSInteger) index {
   return [result nestedTypeAtIndex:index];
 }
-- (PBDescriptorProto_Builder*) replaceNestedTypeAtIndex:(int32_t) index with:(PBDescriptorProto*) value {
+- (PBDescriptorProto_Builder*) replaceNestedTypeAtIndex:(NSInteger) index with:(PBDescriptorProto*) value {
   [result.mutableNestedTypeList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -1485,10 +1485,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
   if (result.mutableEnumTypeList == nil) { return [NSArray array]; }
   return result.mutableEnumTypeList;
 }
-- (PBEnumDescriptorProto*) enumTypeAtIndex:(int32_t) index {
+- (PBEnumDescriptorProto*) enumTypeAtIndex:(NSInteger) index {
   return [result enumTypeAtIndex:index];
 }
-- (PBDescriptorProto_Builder*) replaceEnumTypeAtIndex:(int32_t) index with:(PBEnumDescriptorProto*) value {
+- (PBDescriptorProto_Builder*) replaceEnumTypeAtIndex:(NSInteger) index with:(PBEnumDescriptorProto*) value {
   [result.mutableEnumTypeList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -1514,10 +1514,10 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
   if (result.mutableExtensionRangeList == nil) { return [NSArray array]; }
   return result.mutableExtensionRangeList;
 }
-- (PBDescriptorProto_ExtensionRange*) extensionRangeAtIndex:(int32_t) index {
+- (PBDescriptorProto_ExtensionRange*) extensionRangeAtIndex:(NSInteger) index {
   return [result extensionRangeAtIndex:index];
 }
-- (PBDescriptorProto_Builder*) replaceExtensionRangeAtIndex:(int32_t) index with:(PBDescriptorProto_ExtensionRange*) value {
+- (PBDescriptorProto_Builder*) replaceExtensionRangeAtIndex:(NSInteger) index with:(PBDescriptorProto_ExtensionRange*) value {
   [result.mutableExtensionRangeList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -1573,7 +1573,7 @@ static PBDescriptorProto_ExtensionRange* defaultPBDescriptorProto_ExtensionRange
 
 @interface PBFieldDescriptorProto ()
 @property (retain) NSString* name;
-@property int32_t number;
+@property NSInteger number;
 @property PBFieldDescriptorProto_Label label;
 @property PBFieldDescriptorProto_Type type;
 @property (retain) NSString* typeName;
@@ -1708,8 +1708,8 @@ static PBFieldDescriptorProto* defaultPBFieldDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1882,7 +1882,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
 - (PBFieldDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1907,7 +1907,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
         break;
       }
       case 32: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (PBFieldDescriptorProto_LabelIsValidValue(value)) {
           [self setLabel:value];
         } else {
@@ -1916,7 +1916,7 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
         break;
       }
       case 40: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (PBFieldDescriptorProto_TypeIsValidValue(value)) {
           [self setType:value];
         } else {
@@ -1963,10 +1963,10 @@ BOOL PBFieldDescriptorProto_LabelIsValidValue(PBFieldDescriptorProto_Label value
 - (BOOL) hasNumber {
   return result.hasNumber;
 }
-- (int32_t) number {
+- (NSInteger) number {
   return result.number;
 }
-- (PBFieldDescriptorProto_Builder*) setNumber:(int32_t) value {
+- (PBFieldDescriptorProto_Builder*) setNumber:(NSInteger) value {
   result.hasNumber = YES;
   result.number = value;
   return self;
@@ -2139,7 +2139,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 - (NSArray*) valueList {
   return mutableValueList;
 }
-- (PBEnumValueDescriptorProto*) valueAtIndex:(int32_t) index {
+- (PBEnumValueDescriptorProto*) valueAtIndex:(NSInteger) index {
   id value = [mutableValueList objectAtIndex:index];
   return value;
 }
@@ -2168,8 +2168,8 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2280,7 +2280,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 - (PBEnumDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2334,10 +2334,10 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   if (result.mutableValueList == nil) { return [NSArray array]; }
   return result.mutableValueList;
 }
-- (PBEnumValueDescriptorProto*) valueAtIndex:(int32_t) index {
+- (PBEnumValueDescriptorProto*) valueAtIndex:(NSInteger) index {
   return [result valueAtIndex:index];
 }
-- (PBEnumDescriptorProto_Builder*) replaceValueAtIndex:(int32_t) index with:(PBEnumValueDescriptorProto*) value {
+- (PBEnumDescriptorProto_Builder*) replaceValueAtIndex:(NSInteger) index with:(PBEnumValueDescriptorProto*) value {
   [result.mutableValueList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -2393,7 +2393,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 
 @interface PBEnumValueDescriptorProto ()
 @property (retain) NSString* name;
-@property int32_t number;
+@property NSInteger number;
 @property (retain) PBEnumValueOptions* options;
 @end
 
@@ -2465,8 +2465,8 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2574,7 +2574,7 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
 - (PBEnumValueDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2625,10 +2625,10 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
 - (BOOL) hasNumber {
   return result.hasNumber;
 }
-- (int32_t) number {
+- (NSInteger) number {
   return result.number;
 }
-- (PBEnumValueDescriptorProto_Builder*) setNumber:(int32_t) value {
+- (PBEnumValueDescriptorProto_Builder*) setNumber:(NSInteger) value {
   result.hasNumber = YES;
   result.number = value;
   return self;
@@ -2721,7 +2721,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
 - (NSArray*) methodList {
   return mutableMethodList;
 }
-- (PBMethodDescriptorProto*) methodAtIndex:(int32_t) index {
+- (PBMethodDescriptorProto*) methodAtIndex:(NSInteger) index {
   id value = [mutableMethodList objectAtIndex:index];
   return value;
 }
@@ -2750,8 +2750,8 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -2862,7 +2862,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
 - (PBServiceDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2916,10 +2916,10 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   if (result.mutableMethodList == nil) { return [NSArray array]; }
   return result.mutableMethodList;
 }
-- (PBMethodDescriptorProto*) methodAtIndex:(int32_t) index {
+- (PBMethodDescriptorProto*) methodAtIndex:(NSInteger) index {
   return [result methodAtIndex:index];
 }
-- (PBServiceDescriptorProto_Builder*) replaceMethodAtIndex:(int32_t) index with:(PBMethodDescriptorProto*) value {
+- (PBServiceDescriptorProto_Builder*) replaceMethodAtIndex:(NSInteger) index with:(PBMethodDescriptorProto*) value {
   [result.mutableMethodList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -3061,8 +3061,8 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3176,7 +3176,7 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
 - (PBMethodDescriptorProto_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3366,7 +3366,7 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -3402,8 +3402,8 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3538,7 +3538,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
 - (PBFileOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3559,7 +3559,7 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
         break;
       }
       case 72: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (PBFileOptions_OptimizeModeIsValidValue(value)) {
           [self setOptimizeFor:value];
         } else {
@@ -3648,10 +3648,10 @@ BOOL PBFileOptions_OptimizeModeIsValidValue(PBFileOptions_OptimizeMode value) {
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBFileOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBFileOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -3734,7 +3734,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -3764,8 +3764,8 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -3878,7 +3878,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 - (PBMessageOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3943,10 +3943,10 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBMessageOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBMessageOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -4048,7 +4048,7 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -4084,8 +4084,8 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4219,7 +4219,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
 - (PBFieldOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4232,7 +4232,7 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
         break;
       }
       case 8: {
-        int32_t value = [input readEnum];
+        NSInteger value = [input readEnum];
         if (PBFieldOptions_CTypeIsValidValue(value)) {
           [self setCtype:value];
         } else {
@@ -4329,10 +4329,10 @@ BOOL PBFieldOptions_CTypeIsValidValue(PBFieldOptions_CType value) {
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBFieldOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBFieldOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -4387,7 +4387,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -4411,8 +4411,8 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4513,7 +4513,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 - (PBEnumOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4538,10 +4538,10 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBEnumOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBEnumOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -4596,7 +4596,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -4620,8 +4620,8 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4722,7 +4722,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 - (PBEnumValueOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4747,10 +4747,10 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBEnumValueOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBEnumValueOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -4805,7 +4805,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -4829,8 +4829,8 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -4931,7 +4931,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 - (PBServiceOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4956,10 +4956,10 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBServiceOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBServiceOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -5014,7 +5014,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 - (NSArray*) uninterpretedOptionList {
   return mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   id value = [mutableUninterpretedOptionList objectAtIndex:index];
   return value;
 }
@@ -5038,8 +5038,8 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -5140,7 +5140,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 - (PBMethodOptions_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5165,10 +5165,10 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
   if (result.mutableUninterpretedOptionList == nil) { return [NSArray array]; }
   return result.mutableUninterpretedOptionList;
 }
-- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(int32_t) index {
+- (PBUninterpretedOption*) uninterpretedOptionAtIndex:(NSInteger) index {
   return [result uninterpretedOptionAtIndex:index];
 }
-- (PBMethodOptions_Builder*) replaceUninterpretedOptionAtIndex:(int32_t) index with:(PBUninterpretedOption*) value {
+- (PBMethodOptions_Builder*) replaceUninterpretedOptionAtIndex:(NSInteger) index with:(PBUninterpretedOption*) value {
   [result.mutableUninterpretedOptionList replaceObjectAtIndex:index withObject:value];
   return self;
 }
@@ -5270,7 +5270,7 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
 - (NSArray*) nameList {
   return mutableNameList;
 }
-- (PBUninterpretedOption_NamePart*) nameAtIndex:(int32_t) index {
+- (PBUninterpretedOption_NamePart*) nameAtIndex:(NSInteger) index {
   id value = [mutableNameList objectAtIndex:index];
   return value;
 }
@@ -5303,8 +5303,8 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -5428,8 +5428,8 @@ static PBUninterpretedOption_NamePart* defaultPBUninterpretedOption_NamePartInst
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -5531,7 +5531,7 @@ static PBUninterpretedOption_NamePart* defaultPBUninterpretedOption_NamePartInst
 - (PBUninterpretedOption_NamePart_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5660,7 +5660,7 @@ static PBUninterpretedOption_NamePart* defaultPBUninterpretedOption_NamePartInst
 - (PBUninterpretedOption_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5705,10 +5705,10 @@ static PBUninterpretedOption_NamePart* defaultPBUninterpretedOption_NamePartInst
   if (result.mutableNameList == nil) { return [NSArray array]; }
   return result.mutableNameList;
 }
-- (PBUninterpretedOption_NamePart*) nameAtIndex:(int32_t) index {
+- (PBUninterpretedOption_NamePart*) nameAtIndex:(NSInteger) index {
   return [result nameAtIndex:index];
 }
-- (PBUninterpretedOption_Builder*) replaceNameAtIndex:(int32_t) index with:(PBUninterpretedOption_NamePart*) value {
+- (PBUninterpretedOption_Builder*) replaceNameAtIndex:(NSInteger) index with:(PBUninterpretedOption_NamePart*) value {
   [result.mutableNameList replaceObjectAtIndex:index withObject:value];
   return self;
 }

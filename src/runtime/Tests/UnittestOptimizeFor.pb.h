@@ -117,12 +117,12 @@
 @private
   BOOL hasI_:1;
   BOOL hasMsg_:1;
-  int32_t i;
+  NSInteger i;
   ForeignMessage* msg;
 }
 - (BOOL) hasI;
 - (BOOL) hasMsg;
-@property (readonly) int32_t i;
+@property (readonly) NSInteger i;
 @property (readonly, retain) ForeignMessage* msg;
 
 + (TestOptimizedForSize*) defaultInstance;
@@ -163,8 +163,8 @@
 - (TestOptimizedForSize_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasI;
-- (int32_t) i;
-- (TestOptimizedForSize_Builder*) setI:(int32_t) value;
+- (NSInteger) i;
+- (TestOptimizedForSize_Builder*) setI:(NSInteger) value;
 - (TestOptimizedForSize_Builder*) clearI;
 
 - (BOOL) hasMsg;
@@ -178,10 +178,10 @@
 @interface TestRequiredOptimizedForSize : PBGeneratedMessage {
 @private
   BOOL hasX_:1;
-  int32_t x;
+  NSInteger x;
 }
 - (BOOL) hasX;
-@property (readonly) int32_t x;
+@property (readonly) NSInteger x;
 
 + (TestRequiredOptimizedForSize*) defaultInstance;
 - (TestRequiredOptimizedForSize*) defaultInstance;
@@ -219,8 +219,8 @@
 - (TestRequiredOptimizedForSize_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasX;
-- (int32_t) x;
-- (TestRequiredOptimizedForSize_Builder*) setX:(int32_t) value;
+- (NSInteger) x;
+- (TestRequiredOptimizedForSize_Builder*) setX:(NSInteger) value;
 - (TestRequiredOptimizedForSize_Builder*) clearX;
 @end
 

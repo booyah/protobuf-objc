@@ -78,8 +78,8 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
                                         to:536870912];
   [self.unknownFields writeAsMessageSetTo:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -200,7 +200,7 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
 - (TestMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -266,8 +266,8 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -397,7 +397,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
 - (TestMessageSetContainer_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -454,7 +454,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
 @end
 
 @interface TestMessageSetExtension1 ()
-@property int32_t i;
+@property NSInteger i;
 @end
 
 @implementation TestMessageSetExtension1
@@ -499,8 +499,8 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -627,7 +627,7 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
 - (TestMessageSetExtension1_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -649,10 +649,10 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
 - (BOOL) hasI {
   return result.hasI;
 }
-- (int32_t) i {
+- (NSInteger) i {
   return result.i;
 }
-- (TestMessageSetExtension1_Builder*) setI:(int32_t) value {
+- (TestMessageSetExtension1_Builder*) setI:(NSInteger) value {
   result.hasI = YES;
   result.i = value;
   return self;
@@ -711,8 +711,8 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -839,7 +839,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 - (TestMessageSetExtension2_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -925,8 +925,8 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1002,7 +1002,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 @end
 
 @interface RawMessageSet_Item ()
-@property int32_t typeId;
+@property NSInteger typeId;
 @property (retain) NSData* message;
 @end
 
@@ -1063,8 +1063,8 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (NSInteger) serializedSize {
+  NSInteger size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -1206,7 +1206,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (RawMessageSet_Item_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1232,10 +1232,10 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (BOOL) hasTypeId {
   return result.hasTypeId;
 }
-- (int32_t) typeId {
+- (NSInteger) typeId {
   return result.typeId;
 }
-- (RawMessageSet_Item_Builder*) setTypeId:(int32_t) value {
+- (RawMessageSet_Item_Builder*) setTypeId:(NSInteger) value {
   result.hasTypeId = YES;
   result.typeId = value;
   return self;
@@ -1321,7 +1321,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
 - (RawMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    NSInteger tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
