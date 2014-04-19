@@ -422,18 +422,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   string BoxValue(const FieldDescriptor* field, const string& value) {
     switch (GetObjectiveCType(field)) {
-      case OBJECTIVECTYPE_INT:
-        return "@(" + value + ")";
-      case OBJECTIVECTYPE_LONG:
-        return "@(" + value + ")";
-      case OBJECTIVECTYPE_FLOAT:
-        return "@(" + value + ")";
-      case OBJECTIVECTYPE_DOUBLE:
-        return "@(" + value + ")";
-      case OBJECTIVECTYPE_BOOLEAN:
-        return "@(" + value + ")";
-      case OBJECTIVECTYPE_ENUM:
-        return "@(" + value + ")";
+        case OBJECTIVECTYPE_INT:
+            return "[NSNumber numberWithInteger:" + value + "]";
+        case OBJECTIVECTYPE_LONG:
+            return "[NSNumber numberWithLongLong:" + value + "]";
+        case OBJECTIVECTYPE_FLOAT:
+            return "[NSNumber numberWithFloat:" + value + "]";
+        case OBJECTIVECTYPE_DOUBLE:
+            return "[NSNumber numberWithDouble:" + value + "]";
+        case OBJECTIVECTYPE_BOOLEAN:
+            return "[NSNumber numberWithBool:" + value + "]";
+        case OBJECTIVECTYPE_ENUM:
+            return "[NSNumber numberWithInteger:" + value + "]";
     default:
         return value;
     }
