@@ -52,15 +52,15 @@ Float32 convertInt32ToFloat32(long v) {
 }
 
 
-ulong long convertInt64ToUInt64(long long v) {
-  union { long long i; ulong long u; } u;
+unsigned long long convertInt64ToUInt64(long long v) {
+  union { long long i; unsigned long long u; } u;
   u.i = v;
   return u.u;
 }
 
 
-long long convertUInt64ToInt64(ulong long v) {
-  union { long long i; ulong long u; } u;
+long long convertUInt64ToInt64(unsigned long long v) {
+  union { long long i; unsigned long long u; } u;
   u.u = v;
   return u.i;
 }

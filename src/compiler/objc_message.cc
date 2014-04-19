@@ -581,8 +581,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Outdent();
     printer->Print(
       "}\n"
-      "- (NSInteger) serializedSize {\n"
-      "  NSInteger size_ = memoizedSerializedSize;\n"
+      "- (long) serializedSize {\n"
+      "  long size_ = memoizedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"
       "  }\n"

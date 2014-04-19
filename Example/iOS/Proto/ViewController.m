@@ -30,7 +30,10 @@
 -(void) proto
 {
     // Proto Part
-    NSData* raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://192.168.2.1:4567/1/getGroups"]];
+    
+    NSLog(@"%@ %lu %lu %lu %lu",(sizeof(long) == 8 ? @"USING 64 bit system" : @"USING 32 bit system"),sizeof(int32_t), sizeof(long), sizeof(long long), sizeof(int64_t));
+    
+    NSData* raw_data = [NSData dataWithContentsOfURL:[NSURL URLWithString:@"http://0.0.0.0:4567/1/getGroups"]];
     if (!raw_data)
     {
         NSLog(@"Please turn on the server");

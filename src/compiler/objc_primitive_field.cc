@@ -38,16 +38,16 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     const char* PrimitiveTypeName(const FieldDescriptor* field) {
       switch (field->type()) {
-        case FieldDescriptor::TYPE_INT32   : return "NSInteger" ;
-        case FieldDescriptor::TYPE_UINT32  : return "NSUInteger";
-        case FieldDescriptor::TYPE_SINT32  : return "NSInteger" ;
-        case FieldDescriptor::TYPE_FIXED32 : return "NSUInteger";
-        case FieldDescriptor::TYPE_SFIXED32: return "NSInteger" ;
-        case FieldDescriptor::TYPE_INT64   : return "NSInteger" ;
-        case FieldDescriptor::TYPE_UINT64  : return "NSUInteger";
-        case FieldDescriptor::TYPE_SINT64  : return "NSInteger" ;
-        case FieldDescriptor::TYPE_FIXED64 : return "NSUInteger";
-        case FieldDescriptor::TYPE_SFIXED64: return "NSInteger" ;
+        case FieldDescriptor::TYPE_INT32   : return "long" ;
+        case FieldDescriptor::TYPE_UINT32  : return "unsigned long";
+        case FieldDescriptor::TYPE_SINT32  : return "long" ;
+        case FieldDescriptor::TYPE_FIXED32 : return "unsigned long";
+        case FieldDescriptor::TYPE_SFIXED32: return "long" ;
+        case FieldDescriptor::TYPE_INT64   : return "long long" ;
+        case FieldDescriptor::TYPE_UINT64  : return "unsigned long long";
+        case FieldDescriptor::TYPE_SINT64  : return "long" ;
+        case FieldDescriptor::TYPE_FIXED64 : return "unsigned long long";
+        case FieldDescriptor::TYPE_SFIXED64: return "long long" ;
         case FieldDescriptor::TYPE_FLOAT   : return "Float32" ;
         case FieldDescriptor::TYPE_DOUBLE  : return "Float64" ;
         case FieldDescriptor::TYPE_BOOL    : return "BOOL"    ;

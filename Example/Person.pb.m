@@ -22,7 +22,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 @interface Person ()
 @property (strong) NSString* name;
-@property NSInteger personId;
+@property long long personId;
 @property (strong) NSString* email;
 @property (strong) PBAppendableArray * phonesArray;
 @end
@@ -60,7 +60,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
-    self.personId = 0;
+    self.personId = 0L;
     self.email = @"";
   }
   return self;
@@ -102,7 +102,7 @@ static Person* defaultPersonInstance = nil;
     [output writeString:1 value:self.name];
   }
   if (self.hasPersonId) {
-    [output writeInt32:2 value:self.personId];
+    [output writeInt64:2 value:self.personId];
   }
   if (self.hasEmail) {
     [output writeString:3 value:self.email];
@@ -112,8 +112,8 @@ static Person* defaultPersonInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size_ = memoizedSerializedSize;
+- (long) serializedSize {
+  long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -123,7 +123,7 @@ static Person* defaultPersonInstance = nil;
     size_ += computeStringSize(1, self.name);
   }
   if (self.hasPersonId) {
-    size_ += computeInt32Size(2, self.personId);
+    size_ += computeInt64Size(2, self.personId);
   }
   if (self.hasEmail) {
     size_ += computeStringSize(3, self.email);
@@ -170,7 +170,7 @@ static Person* defaultPersonInstance = nil;
     [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
   if (self.hasPersonId) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"personId", [NSNumber numberWithInteger:self.personId]];
+    [output appendFormat:@"%@%@: %@\n", indent, @"personId", [NSNumber numberWithLongLong:self.personId]];
   }
   if (self.hasEmail) {
     [output appendFormat:@"%@%@: %@\n", indent, @"email", self.email];
@@ -207,7 +207,7 @@ static Person* defaultPersonInstance = nil;
     hashCode = hashCode * 31 + [self.name hash];
   }
   if (self.hasPersonId) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.personId] hash];
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.personId] hash];
   }
   if (self.hasEmail) {
     hashCode = hashCode * 31 + [self.email hash];
@@ -288,8 +288,8 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (NSInteger) serializedSize {
-  NSInteger size_ = memoizedSerializedSize;
+- (long) serializedSize {
+  long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -573,7 +573,7 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
         break;
       }
       case 16: {
-        [self setPersonId:[input readInt32]];
+        [self setPersonId:[input readInt64]];
         break;
       }
       case 26: {
@@ -608,17 +608,17 @@ static PersonPhoneNumber* defaultPersonPhoneNumberInstance = nil;
 - (BOOL) hasPersonId {
   return result.hasPersonId;
 }
-- (NSInteger) personId {
+- (long long) personId {
   return result.personId;
 }
-- (PersonBuilder*) setPersonId:(NSInteger) value {
+- (PersonBuilder*) setPersonId:(long long) value {
   result.hasPersonId = YES;
   result.personId = value;
   return self;
 }
 - (PersonBuilder*) clearPersonId {
   result.hasPersonId = NO;
-  result.personId = 0;
+  result.personId = 0L;
   return self;
 }
 - (BOOL) hasEmail {

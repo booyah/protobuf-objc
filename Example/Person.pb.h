@@ -40,7 +40,7 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
   BOOL hasPersonId_:1;
   BOOL hasName_:1;
   BOOL hasEmail_:1;
-  NSInteger personId;
+  long long personId;
   NSString* name;
   NSString* email;
   PBAppendableArray * phonesArray;
@@ -49,7 +49,7 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 - (BOOL) hasPersonId;
 - (BOOL) hasEmail;
 @property (readonly, strong) NSString* name;
-@property (readonly) NSInteger personId;
+@property (readonly) long long personId;
 @property (readonly, strong) NSString* email;
 @property (readonly, strong) PBArray * phones;
 - (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index;
@@ -153,8 +153,8 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 - (PersonBuilder*) clearName;
 
 - (BOOL) hasPersonId;
-- (NSInteger) personId;
-- (PersonBuilder*) setPersonId:(NSInteger) value;
+- (long long) personId;
+- (PersonBuilder*) setPersonId:(long long) value;
 - (PersonBuilder*) clearPersonId;
 
 - (BOOL) hasEmail;

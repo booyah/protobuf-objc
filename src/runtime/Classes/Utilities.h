@@ -22,8 +22,8 @@ long convertFloat32ToInt32(Float32 f);
 Float64 convertInt64ToFloat64(long long f);
 Float32 convertInt32ToFloat32(long f);
 
-ulong long convertInt64ToUInt64(long long i);
-long long  convertUInt64ToInt64(ulong long u);
+unsigned long long convertInt64ToUInt64(long long i);
+long long  convertUInt64ToInt64(unsigned long long u);
 unsigned long convertInt32ToUInt32(long i);
 long long  convertUInt32ToInt32(unsigned long u);
 

@@ -33,22 +33,22 @@ static void PBArraySetBoolValue(NSNumber *number, void *value)
 
 static void PBArraySetInt32Value(NSNumber *number, void *value)
 {
-	*((long *)value) = [number intValue];
+	*((NSInteger *)value) = [number intValue];
 }
 
 static void PBArraySetUInt32Value(NSNumber *number, void *value)
 {
-	*((unsigned long *)value) = [number unsignedIntValue];
+	*((NSUInteger *)value) = [number unsignedIntValue];
 }
 
 static void PBArraySetInt64Value(NSNumber *number, void *value)
 {
-	*((long long *)value) = [number longLongValue];
+	*((int64_t *)value) = [number longLongValue];
 }
 
 static void PBArraySetUInt64Value(NSNumber *number, void *value)
 {
-	*((ulong long *)value) = [number unsignedLongLongValue];
+	*((uint64_t *)value) = [number unsignedLongLongValue];
 }
 
 static void PBArraySetFloatValue(NSNumber *number, void *value)
@@ -73,10 +73,10 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	{ sizeof(id),		NULL					},
 	{ sizeof(BOOL),		PBArraySetBoolValue		},
-	{ sizeof(long),	PBArraySetInt32Value	},
-	{ sizeof(unsigned long),	PBArraySetUInt32Value	},
+	{ sizeof(NSInteger),	PBArraySetInt32Value	},
+	{ sizeof(NSUInteger),	PBArraySetUInt32Value	},
 	{ sizeof(long long),	PBArraySetInt64Value	},
-	{ sizeof(ulong long),	PBArraySetUInt64Value	},
+	{ sizeof(unsigned long long),	PBArraySetUInt64Value	},
 	{ sizeof(Float32),	PBArraySetFloatValue	},
 	{ sizeof(Float64),	PBArraySetDoubleValue	},
 };
@@ -90,7 +90,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 #define PBArrayForEachObject(__data, __count, x) \
 	if (_valueType == PBArrayValueTypeObject) \
-		for (unsigned long i = 0; i < __count; ++i) { id object = ((id *)__data)[i]; [object x]; }
+		for (NSUInteger i = 0; i < __count; ++i) { id object = ((id *)__data)[i]; [object x]; }
 
 #define PBArrayValueTypeAssert(type) \
 	if (__builtin_expect(_valueType != type, 0)) \
@@ -117,7 +117,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 @synthesize valueType = _valueType;
 @dynamic data;
 
-- (id)initWithCount:(unsigned long)count valueType:(PBArrayValueType)valueType
+- (id)initWithCount:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
 	if ((self = [super init]))
 	{
@@ -168,7 +168,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 			[self class], self, _valueType, (long)_count, (long)_capacity, _data];
 }
 
-- (unsigned long)count
+- (NSUInteger)count
 {
 	return _count;
 }
@@ -178,7 +178,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return _data;
 }
 
-- (unsigned long)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(unsigned long)len
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
 {
 	// TODO: We only support enumeration of object values.  In the future, we
 	// can extend this code to return a new list of NSNumber* objects wrapping
@@ -197,56 +197,56 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return _count;
 }
 
-- (id)objectAtIndex:(unsigned long)index
+- (id)objectAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeObject);
 	return ((id *)_data)[index];
 }
 
-- (BOOL)boolAtIndex:(unsigned long)index
+- (BOOL)boolAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeBool);
 	return ((BOOL *)_data)[index];
 }
 
-- (long)int32AtIndex:(unsigned long)index
+- (long)int32AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
-	return ((long *)_data)[index];
+	return ((NSInteger *)_data)[index];
 }
 
-- (unsigned long)uint32AtIndex:(unsigned long)index
+- (NSUInteger)uint32AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
-	return ((unsigned long *)_data)[index];
+	return ((NSUInteger *)_data)[index];
 }
 
-- (long long)int64AtIndex:(unsigned long)index
+- (long long)int64AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeInt64);
-	return ((long long *)_data)[index];
+	return ((int64_t *)_data)[index];
 }
 
-- (ulong long)uint64AtIndex:(unsigned long)index
+- (unsigned long long)uint64AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt64);
-	return ((ulong long *)_data)[index];
+	return ((uint64_t *)_data)[index];
 }
 
-- (Float32)floatAtIndex:(unsigned long)index
+- (Float32)floatAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeFloat);
 	return ((Float32 *)_data)[index];
 }
 
-- (Float64)doubleAtIndex:(unsigned long)index
+- (Float64)doubleAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeDouble);
@@ -295,7 +295,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
     return nil;
 }
 
-- (id)objectAtIndexedSubscript:(unsigned long)idx
+- (id)objectAtIndexedSubscript:(NSUInteger)idx
 {
     if (idx > 0 && idx < self.count) {
         return [self objectAtIndex:idx];
@@ -303,11 +303,11 @@ static PBArrayValueTypeInfo PBValueTypes[] =
     return nil;
 }
 
-- (void)enumerateObjectsUsingBlock:(void (^)(id obj, unsigned long idx, BOOL *stop))block
+- (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
 {
     if (!block) return;
     BOOL stop = NO;
-    for (long i = 0; i < self.count; i++) {
+    for (NSInteger i = 0; i < self.count; i++) {
         block([self objectAtIndex:i],i,&stop);
         if(stop){
             break;
@@ -347,7 +347,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return [[[self alloc] initWithValueType:valueType] autorelease];
 }
 
-+ (id)arrayWithValues:(const void *)values count:(unsigned long)count valueType:(PBArrayValueType)valueType
++ (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
 	return [[[self alloc] initWithValues:values count:count valueType:valueType] autorelease];
 }
@@ -362,7 +362,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return [self initWithCount:0 valueType:valueType];
 }
 
-- (id)initWithValues:(const void *)values count:(unsigned long)count valueType:(PBArrayValueType)valueType
+- (id)initWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
 	if ((self = [self initWithCount:count valueType:valueType]))
 	{
@@ -410,9 +410,9 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 @implementation PBAppendableArray
 
-- (void)ensureAdditionalCapacity:(unsigned long)additionalSlots
+- (void)ensureAdditionalCapacity:(NSUInteger)additionalSlots
 {
-	const unsigned long requiredSlots = _count + additionalSlots;
+	const NSUInteger requiredSlots = _count + additionalSlots;
 
 	if (requiredSlots > _capacity)
 	{
@@ -458,7 +458,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
 	[self ensureAdditionalCapacity:1];
-	*(long *)PBArraySlot(_count) = value;
+	*(NSInteger *)PBArraySlot(_count) = value;
 	_count++;
 }
 
@@ -466,23 +466,23 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
 	[self ensureAdditionalCapacity:1];
-	*(unsigned long *)PBArraySlot(_count) = value;
+	*(NSUInteger *)PBArraySlot(_count) = value;
 	_count++;
 }
 
-- (void)addInt64:(long long)value
+- (void)addInt64:(int64_t)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeInt64);
 	[self ensureAdditionalCapacity:1];
-	*(long long *)PBArraySlot(_count) = value;
+	*(int64_t *)PBArraySlot(_count) = value;
 	_count++;
 }
 
-- (void)addUint64:(ulong long)value
+- (void)addUint64:(uint64_t)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt64);
 	[self ensureAdditionalCapacity:1];
-	*(ulong long *)PBArraySlot(_count) = value;
+	*(uint64_t *)PBArraySlot(_count) = value;
 	_count++;
 }
 
