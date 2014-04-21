@@ -327,7 +327,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  return $list_name$;\n"
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  return [$list_name$ int32AtIndex:index];\n"
+      "  return ($type$)[$list_name$ int32AtIndex:index];\n"
       "}\n");
   }
 
