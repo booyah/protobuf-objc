@@ -315,6 +315,26 @@ static PBArrayValueTypeInfo PBValueTypes[] =
     }
 }
 
+-(NSUInteger)indexOfObjectPassingTest:(BOOL (^)(id obj, NSUInteger, BOOL *stop))predicate
+{
+    if (!predicate) return NSNotFound;
+    BOOL stop = NO;
+    __block BOOL bb;
+    __block NSUInteger index;
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+       
+        bb = predicate(obj,idx,*stop);
+        if (bb) {
+            index = idx;
+        }
+    }];
+    
+    if (bb) {
+        return index;
+    }
+    return NSNotFound;
+}
+
 @end
 
 @implementation PBArray (PBArrayExtended)

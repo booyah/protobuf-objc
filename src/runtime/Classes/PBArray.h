@@ -58,6 +58,7 @@ typedef enum _PBArrayValueType
 - (Float64)doubleAtIndex:(NSUInteger)index;
 - (BOOL)isEqualToArray:(PBArray *)array;
 - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
+- (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
 - (id)firstObject;
 - (id)lastObject;
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
