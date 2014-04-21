@@ -171,7 +171,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void EnumFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "NSInteger value = [input readEnum];\n"
+      "$type$ value = ($type$)[input readEnum];\n"
       "if ($type$IsValidValue(value)) {\n"
       "  [self set$capitalized_name$:value];\n"
       "} else {\n"
@@ -385,7 +385,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
     printer->Print(variables_,
-      "NSInteger value = [input readEnum];\n"
+      "$type$ value = ($type$)[input readEnum];\n"
       "if ($type$IsValidValue(value)) {\n"
       "  [self add$capitalized_name$:value];\n"
       "} else {\n"
