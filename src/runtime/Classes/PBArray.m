@@ -322,7 +322,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
     __block NSUInteger index;
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
        
-        bb = predicate(obj,idx,*stop);
+        bb = predicate(obj,idx,stop);
         if (bb) {
             index = idx;
         }
