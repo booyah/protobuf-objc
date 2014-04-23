@@ -297,10 +297,12 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (id)objectAtIndexedSubscript:(NSUInteger)idx
 {
+ 
     if (idx < self.count) {
         return [self objectAtIndex:idx];
     }
     return nil;
+
 }
 
 - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
