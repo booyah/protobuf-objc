@@ -59,6 +59,7 @@ typedef enum _PBArrayValueType
 - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 - (id)firstObject;
 - (id)lastObject;
+- (id)objectAtIndexedSubscript:(NSUInteger)idx;
 
 @property (nonatomic,assign,readonly) PBArrayValueType valueType;
 @property (nonatomic,assign,readonly) const void * data;
