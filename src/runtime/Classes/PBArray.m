@@ -297,7 +297,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 - (id)objectAtIndexedSubscript:(NSUInteger)idx
 {
-    if (idx > 0 && idx < self.count) {
+    if (idx < self.count) {
         return [self objectAtIndex:idx];
     }
     return nil;
