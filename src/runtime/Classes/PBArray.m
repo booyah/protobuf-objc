@@ -26,8 +26,6 @@ NSString * const PBArrayAllocationFailureException = @"PBArrayAllocationFailureE
 
 typedef void (*PBArrayValueSetter)(NSNumber *number, void *value);
 
-typedef void (*PBArrayValueGetter)(NSNumber *number, void *value);
-
 static void PBArraySetBoolValue(NSNumber *number, void *value)
 {
 	*((BOOL *)value) = [number charValue];
@@ -75,7 +73,6 @@ typedef struct _PBArrayValueTypeInfo
 {
 	const size_t size;
 	const PBArrayValueSetter setter;
-    const PBArrayValueGetter getter;
     
 } PBArrayValueTypeInfo;
 
