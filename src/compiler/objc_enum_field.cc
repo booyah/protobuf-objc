@@ -327,7 +327,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  return $list_name$;\n"
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  return ($type$)[$list_name$ int32AtIndex:index];\n"
+      "  return ($type$)[$list_name$ enumAtIndex:index];\n"
       "}\n");
   }
 
@@ -343,7 +343,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  if (result.$list_name$ == nil) {\n"
       "    result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];\n"
       "  }\n"
-      "  [result.$list_name$ addInt32:value];\n"
+      "  [result.$list_name$ addEnum:value];\n"
       "  return self;\n"
       "}\n"
       "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
@@ -462,8 +462,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedEnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for (NSNumber* element in self.$list_name$) {\n"
-      "  [output appendFormat:@\"%@%@: %d\\n\", indent, @\"$name$\", element.intValue];\n"
+      "for (id element in self.$list_name$) {\n"
+      "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(($type$)element)];\n"
       "}\n");
   }
 
@@ -476,7 +476,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedEnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "for (NSNumber* element in self.$list_name$) {\n"
-      "  hashCode = hashCode * 31 + element.intValue;\n"
+      "  hashCode = hashCode * 31 + element.longValue;\n"
       "}\n");
   }
 }  // namespace objectivec

@@ -51,7 +51,8 @@ typedef enum _PBArrayValueType
 - (id)objectAtIndex:(NSUInteger)index;
 - (BOOL)boolAtIndex:(NSUInteger)index;
 - (long)int32AtIndex:(NSUInteger)index;
-- (NSUInteger)uint32AtIndex:(NSUInteger)index;
+- (long)enumAtIndex:(NSUInteger)index;
+- (unsigned long)uint32AtIndex:(NSUInteger)index;
 - (long long)int64AtIndex:(NSUInteger)index;
 - (unsigned long long)uint64AtIndex:(NSUInteger)index;
 - (Float32)floatAtIndex:(NSUInteger)index;
@@ -59,6 +60,8 @@ typedef enum _PBArrayValueType
 - (BOOL)isEqualToArray:(PBArray *)array;
 - (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block;
 - (NSUInteger)indexOfObjectPassingTest:(BOOL (^)(id obj, NSUInteger idx, BOOL *stop))predicate;
+
+//This Methods automaticaly pack/unpack in NSNumber primitive values
 - (id)firstObject;
 - (id)lastObject;
 - (id)objectAtIndexedSubscript:(NSUInteger)idx;
@@ -98,6 +101,7 @@ typedef enum _PBArrayValueType
 - (void)addUint64:(unsigned long long)value;
 - (void)addFloat:(Float32)value;
 - (void)addDouble:(Float64)value;
+- (void)addEnum:(long)value;
 
 - (void)appendArray:(PBArray *)array;
 - (void)appendValues:(const void *)values count:(unsigned long)count;
