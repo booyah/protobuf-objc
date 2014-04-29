@@ -674,16 +674,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     } else {
         
         //TODO NEED TEST PRIMITIVES
-      printer->Print(variables_,
-        "for ($storage_type$ element in self.$list_name$) {\n");
-       
-        if (ReturnsPrimitiveType(descriptor_)) {
+        printer->Print(variables_,"for ($storage_type$ element in self.$list_name$) {\n");
+
             printer->Print(variables_,"  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(($type$)element)];\n");
-        }
-        else
-        {
-            printer->Print(variables_,"  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", element];\n");
-        }
         
         printer->Print(variables_,"}\n");
     }
