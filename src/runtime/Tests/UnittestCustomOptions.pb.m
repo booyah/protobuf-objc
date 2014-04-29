@@ -4785,7 +4785,7 @@ static Aggregate* defaultAggregateInstance = nil;
         break;
       }
       case 34: {
-        PBFileOptions_Builder* subBuilder = [PBFileOptions builder];
+        PBFileOptionsBuilder * subBuilder = [PBFileOptions builder];
         if (self.hasFile) {
           [subBuilder mergeFrom:self.file];
         }

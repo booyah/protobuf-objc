@@ -44,10 +44,10 @@
 #define bytes(...) [self bytes_with_sentinel:0, __VA_ARGS__, 256]
 
 - (void) testDecodeZigZag {
-  STAssertEquals( 0, decodeZigZag32(0), nil);
-  STAssertEquals(-1, decodeZigZag32(1), nil);
-  STAssertEquals( 1, decodeZigZag32(2), nil);
-  STAssertEquals(-2, decodeZigZag32(3), nil);
+  STAssertEquals((long) 0, decodeZigZag32(0), nil);
+  STAssertEquals((long)-1, decodeZigZag32(1), nil);
+  STAssertEquals((long)1, decodeZigZag32(2), nil);
+  STAssertEquals((long)-2, decodeZigZag32(3), nil);
   STAssertEquals((long)0x3FFFFFFF, decodeZigZag32(0x7FFFFFFE), nil);
   STAssertEquals((long)0xC0000000, decodeZigZag32(0x7FFFFFFF), nil);
   STAssertEquals((long)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE), nil);

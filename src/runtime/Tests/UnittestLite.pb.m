@@ -1192,12 +1192,12 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
 @interface TestAllTypesLite ()
 @property long optionalInt32;
 @property long long optionalInt64;
-@property ulong optionalUint32;
-@property ulong long optionalUint64;
+@property unsigned long optionalUint32;
+@property unsigned long long optionalUint64;
 @property long optionalSint32;
 @property long long optionalSint64;
-@property ulong optionalFixed32;
-@property ulong long optionalFixed64;
+@property unsigned long optionalFixed32;
+@property unsigned long long optionalFixed64;
 @property long optionalSfixed32;
 @property long long optionalSfixed64;
 @property Float32 optionalFloat;
@@ -1240,12 +1240,12 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
 @property (retain) PBAppendableArray * repeatedCordArray;
 @property long defaultInt32;
 @property long long defaultInt64;
-@property ulong defaultUint32;
-@property ulong long defaultUint64;
+@property unsigned long defaultUint32;
+@property unsigned long long defaultUint64;
 @property long defaultSint32;
 @property long long defaultSint64;
-@property ulong defaultFixed32;
-@property ulong long defaultFixed64;
+@property unsigned long defaultFixed32;
+@property unsigned long long defaultFixed64;
 @property long defaultSfixed32;
 @property long long defaultSfixed64;
 @property Float32 defaultFloat;
@@ -1743,13 +1743,13 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedUint32 {
   return repeatedUint32Array;
 }
-- (ulong)repeatedUint32AtIndex:(unsigned long)index {
+- (unsigned long)repeatedUint32AtIndex:(unsigned long)index {
   return [repeatedUint32Array uint32AtIndex:index];
 }
 - (PBArray *)repeatedUint64 {
   return repeatedUint64Array;
 }
-- (ulong long)repeatedUint64AtIndex:(unsigned long)index {
+- (unsigned long long)repeatedUint64AtIndex:(unsigned long)index {
   return [repeatedUint64Array uint64AtIndex:index];
 }
 - (PBArray *)repeatedSint32 {
@@ -1767,13 +1767,13 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (PBArray *)repeatedFixed32 {
   return repeatedFixed32Array;
 }
-- (ulong)repeatedFixed32AtIndex:(unsigned long)index {
+- (unsigned long)repeatedFixed32AtIndex:(unsigned long)index {
   return [repeatedFixed32Array uint32AtIndex:index];
 }
 - (PBArray *)repeatedFixed64 {
   return repeatedFixed64Array;
 }
-- (ulong long)repeatedFixed64AtIndex:(unsigned long)index {
+- (unsigned long long)repeatedFixed64AtIndex:(unsigned long)index {
   return [repeatedFixed64Array uint64AtIndex:index];
 }
 - (PBArray *)repeatedSfixed32 {
@@ -1964,14 +1964,14 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const unsigned long repeatedUint32ArrayCount = self.repeatedUint32Array.count;
   if (repeatedUint32ArrayCount > 0) {
-    const ulong *values = (const ulong *)self.repeatedUint32Array.data;
+    const unsigned long *values = (const unsigned long *)self.repeatedUint32Array.data;
     for (unsigned long i = 0; i < repeatedUint32ArrayCount; ++i) {
       [output writeUInt32:33 value:values[i]];
     }
   }
   const unsigned long repeatedUint64ArrayCount = self.repeatedUint64Array.count;
   if (repeatedUint64ArrayCount > 0) {
-    const ulong long *values = (const ulong long *)self.repeatedUint64Array.data;
+    const unsigned long long *values = (const unsigned long long *)self.repeatedUint64Array.data;
     for (unsigned long i = 0; i < repeatedUint64ArrayCount; ++i) {
       [output writeUInt64:34 value:values[i]];
     }
@@ -1992,14 +1992,14 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   const unsigned long repeatedFixed32ArrayCount = self.repeatedFixed32Array.count;
   if (repeatedFixed32ArrayCount > 0) {
-    const ulong *values = (const ulong *)self.repeatedFixed32Array.data;
+    const unsigned long *values = (const unsigned long *)self.repeatedFixed32Array.data;
     for (unsigned long i = 0; i < repeatedFixed32ArrayCount; ++i) {
       [output writeFixed32:37 value:values[i]];
     }
   }
   const unsigned long repeatedFixed64ArrayCount = self.repeatedFixed64Array.count;
   if (repeatedFixed64ArrayCount > 0) {
-    const ulong long *values = (const ulong long *)self.repeatedFixed64Array.data;
+    const unsigned long long *values = (const unsigned long long *)self.repeatedFixed64Array.data;
     for (unsigned long i = 0; i < repeatedFixed64ArrayCount; ++i) {
       [output writeFixed64:38 value:values[i]];
     }
@@ -2258,7 +2258,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   {
     long dataSize = 0;
     const unsigned long count = self.repeatedUint32Array.count;
-    const ulong *values = (const ulong *)self.repeatedUint32Array.data;
+    const unsigned long *values = (const unsigned long *)self.repeatedUint32Array.data;
     for (unsigned long i = 0; i < count; ++i) {
       dataSize += computeUInt32SizeNoTag(values[i]);
     }
@@ -2268,7 +2268,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   {
     long dataSize = 0;
     const unsigned long count = self.repeatedUint64Array.count;
-    const ulong long *values = (const ulong long *)self.repeatedUint64Array.data;
+    const unsigned long long *values = (const unsigned long long *)self.repeatedUint64Array.data;
     for (unsigned long i = 0; i < count; ++i) {
       dataSize += computeUInt64SizeNoTag(values[i]);
     }
@@ -4533,10 +4533,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalUint32 {
   return result.hasOptionalUint32;
 }
-- (ulong) optionalUint32 {
+- (unsigned long) optionalUint32 {
   return result.optionalUint32;
 }
-- (TestAllTypesLite_Builder*) setOptionalUint32:(ulong) value {
+- (TestAllTypesLite_Builder*) setOptionalUint32:(unsigned long) value {
   result.hasOptionalUint32 = YES;
   result.optionalUint32 = value;
   return self;
@@ -4549,10 +4549,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalUint64 {
   return result.hasOptionalUint64;
 }
-- (ulong long) optionalUint64 {
+- (unsigned long long) optionalUint64 {
   return result.optionalUint64;
 }
-- (TestAllTypesLite_Builder*) setOptionalUint64:(ulong long) value {
+- (TestAllTypesLite_Builder*) setOptionalUint64:(unsigned long long) value {
   result.hasOptionalUint64 = YES;
   result.optionalUint64 = value;
   return self;
@@ -4597,10 +4597,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalFixed32 {
   return result.hasOptionalFixed32;
 }
-- (ulong) optionalFixed32 {
+- (unsigned long) optionalFixed32 {
   return result.optionalFixed32;
 }
-- (TestAllTypesLite_Builder*) setOptionalFixed32:(ulong) value {
+- (TestAllTypesLite_Builder*) setOptionalFixed32:(unsigned long) value {
   result.hasOptionalFixed32 = YES;
   result.optionalFixed32 = value;
   return self;
@@ -4613,10 +4613,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasOptionalFixed64 {
   return result.hasOptionalFixed64;
 }
-- (ulong long) optionalFixed64 {
+- (unsigned long long) optionalFixed64 {
   return result.optionalFixed64;
 }
-- (TestAllTypesLite_Builder*) setOptionalFixed64:(ulong long) value {
+- (TestAllTypesLite_Builder*) setOptionalFixed64:(unsigned long long) value {
   result.hasOptionalFixed64 = YES;
   result.optionalFixed64 = value;
   return self;
@@ -4991,10 +4991,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedUint32 {
   return result.repeatedUint32Array;
 }
-- (ulong)repeatedUint32AtIndex:(unsigned long)index {
+- (unsigned long)repeatedUint32AtIndex:(unsigned long)index {
   return [result repeatedUint32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedUint32:(ulong)value {
+- (TestAllTypesLite_Builder *)addRepeatedUint32:(unsigned long)value {
   if (result.repeatedUint32Array == nil) {
     result.repeatedUint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -5005,7 +5005,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedUint32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedUint32Values:(const ulong *)values count:(unsigned long)count {
+- (TestAllTypesLite_Builder *)setRepeatedUint32Values:(const unsigned long *)values count:(unsigned long)count {
   result.repeatedUint32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -5016,10 +5016,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedUint64 {
   return result.repeatedUint64Array;
 }
-- (ulong long)repeatedUint64AtIndex:(unsigned long)index {
+- (unsigned long long)repeatedUint64AtIndex:(unsigned long)index {
   return [result repeatedUint64AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedUint64:(ulong long)value {
+- (TestAllTypesLite_Builder *)addRepeatedUint64:(unsigned long long)value {
   if (result.repeatedUint64Array == nil) {
     result.repeatedUint64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
   }
@@ -5030,7 +5030,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedUint64Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt64];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedUint64Values:(const ulong long *)values count:(unsigned long)count {
+- (TestAllTypesLite_Builder *)setRepeatedUint64Values:(const unsigned long long *)values count:(unsigned long)count {
   result.repeatedUint64Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt64];
   return self;
 }
@@ -5091,10 +5091,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedFixed32 {
   return result.repeatedFixed32Array;
 }
-- (ulong)repeatedFixed32AtIndex:(unsigned long)index {
+- (unsigned long)repeatedFixed32AtIndex:(unsigned long)index {
   return [result repeatedFixed32AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedFixed32:(ulong)value {
+- (TestAllTypesLite_Builder *)addRepeatedFixed32:(unsigned long)value {
   if (result.repeatedFixed32Array == nil) {
     result.repeatedFixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -5105,7 +5105,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedFixed32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedFixed32Values:(const ulong *)values count:(unsigned long)count {
+- (TestAllTypesLite_Builder *)setRepeatedFixed32Values:(const unsigned long *)values count:(unsigned long)count {
   result.repeatedFixed32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -5116,10 +5116,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (PBAppendableArray *)repeatedFixed64 {
   return result.repeatedFixed64Array;
 }
-- (ulong long)repeatedFixed64AtIndex:(unsigned long)index {
+- (unsigned long long)repeatedFixed64AtIndex:(unsigned long)index {
   return [result repeatedFixed64AtIndex:index];
 }
-- (TestAllTypesLite_Builder *)addRepeatedFixed64:(ulong long)value {
+- (TestAllTypesLite_Builder *)addRepeatedFixed64:(unsigned long long)value {
   if (result.repeatedFixed64Array == nil) {
     result.repeatedFixed64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
   }
@@ -5130,7 +5130,7 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
   result.repeatedFixed64Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt64];
   return self;
 }
-- (TestAllTypesLite_Builder *)setRepeatedFixed64Values:(const ulong long *)values count:(unsigned long)count {
+- (TestAllTypesLite_Builder *)setRepeatedFixed64Values:(const unsigned long long *)values count:(unsigned long)count {
   result.repeatedFixed64Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt64];
   return self;
 }
@@ -5573,10 +5573,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultUint32 {
   return result.hasDefaultUint32;
 }
-- (ulong) defaultUint32 {
+- (unsigned long) defaultUint32 {
   return result.defaultUint32;
 }
-- (TestAllTypesLite_Builder*) setDefaultUint32:(ulong) value {
+- (TestAllTypesLite_Builder*) setDefaultUint32:(unsigned long) value {
   result.hasDefaultUint32 = YES;
   result.defaultUint32 = value;
   return self;
@@ -5589,10 +5589,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultUint64 {
   return result.hasDefaultUint64;
 }
-- (ulong long) defaultUint64 {
+- (unsigned long long) defaultUint64 {
   return result.defaultUint64;
 }
-- (TestAllTypesLite_Builder*) setDefaultUint64:(ulong long) value {
+- (TestAllTypesLite_Builder*) setDefaultUint64:(unsigned long long) value {
   result.hasDefaultUint64 = YES;
   result.defaultUint64 = value;
   return self;
@@ -5637,10 +5637,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultFixed32 {
   return result.hasDefaultFixed32;
 }
-- (ulong) defaultFixed32 {
+- (unsigned long) defaultFixed32 {
   return result.defaultFixed32;
 }
-- (TestAllTypesLite_Builder*) setDefaultFixed32:(ulong) value {
+- (TestAllTypesLite_Builder*) setDefaultFixed32:(unsigned long) value {
   result.hasDefaultFixed32 = YES;
   result.defaultFixed32 = value;
   return self;
@@ -5653,10 +5653,10 @@ static TestAllTypesLite_RepeatedGroup* defaultTestAllTypesLite_RepeatedGroupInst
 - (BOOL) hasDefaultFixed64 {
   return result.hasDefaultFixed64;
 }
-- (ulong long) defaultFixed64 {
+- (unsigned long long) defaultFixed64 {
   return result.defaultFixed64;
 }
-- (TestAllTypesLite_Builder*) setDefaultFixed64:(ulong long) value {
+- (TestAllTypesLite_Builder*) setDefaultFixed64:(unsigned long long) value {
   result.hasDefaultFixed64 = YES;
   result.defaultFixed64 = value;
   return self;
@@ -5970,7 +5970,7 @@ static ForeignMessageLite* defaultForeignMessageLiteInstance = nil;
 - (unsigned long) hash {
   unsigned long hashCode = 7;
   if (self.hasC) {
-    hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.c] hash];
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.c] hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -6164,13 +6164,13 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedUint32 {
   return packedUint32Array;
 }
-- (ulong)packedUint32AtIndex:(unsigned long)index {
+- (unsigned long)packedUint32AtIndex:(unsigned long)index {
   return [packedUint32Array uint32AtIndex:index];
 }
 - (PBArray *)packedUint64 {
   return packedUint64Array;
 }
-- (ulong long)packedUint64AtIndex:(unsigned long)index {
+- (unsigned long long)packedUint64AtIndex:(unsigned long)index {
   return [packedUint64Array uint64AtIndex:index];
 }
 - (PBArray *)packedSint32 {
@@ -6188,13 +6188,13 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBArray *)packedFixed32 {
   return packedFixed32Array;
 }
-- (ulong)packedFixed32AtIndex:(unsigned long)index {
+- (unsigned long)packedFixed32AtIndex:(unsigned long)index {
   return [packedFixed32Array uint32AtIndex:index];
 }
 - (PBArray *)packedFixed64 {
   return packedFixed64Array;
 }
-- (ulong long)packedFixed64AtIndex:(unsigned long)index {
+- (unsigned long long)packedFixed64AtIndex:(unsigned long)index {
   return [packedFixed64Array uint64AtIndex:index];
 }
 - (PBArray *)packedSfixed32 {
@@ -6257,7 +6257,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const unsigned long packedUint32ArrayCount = self.packedUint32Array.count;
   if (packedUint32ArrayCount > 0) {
-    const ulong *values = (const ulong *)self.packedUint32Array.data;
+    const unsigned long *values = (const unsigned long *)self.packedUint32Array.data;
     [output writeRawVarint32:738];
     [output writeRawVarint32:packedUint32MemoizedSerializedSize];
     for (unsigned long i = 0; i < packedUint32ArrayCount; ++i) {
@@ -6266,7 +6266,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const unsigned long packedUint64ArrayCount = self.packedUint64Array.count;
   if (packedUint64ArrayCount > 0) {
-    const ulong long *values = (const ulong long *)self.packedUint64Array.data;
+    const unsigned long long *values = (const unsigned long long *)self.packedUint64Array.data;
     [output writeRawVarint32:746];
     [output writeRawVarint32:packedUint64MemoizedSerializedSize];
     for (unsigned long i = 0; i < packedUint64ArrayCount; ++i) {
@@ -6293,7 +6293,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const unsigned long packedFixed32ArrayCount = self.packedFixed32Array.count;
   if (packedFixed32ArrayCount > 0) {
-    const ulong *values = (const ulong *)self.packedFixed32Array.data;
+    const unsigned long *values = (const unsigned long *)self.packedFixed32Array.data;
     [output writeRawVarint32:770];
     [output writeRawVarint32:packedFixed32MemoizedSerializedSize];
     for (unsigned long i = 0; i < packedFixed32ArrayCount; ++i) {
@@ -6302,7 +6302,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   }
   const unsigned long packedFixed64ArrayCount = self.packedFixed64Array.count;
   if (packedFixed64ArrayCount > 0) {
-    const ulong long *values = (const ulong long *)self.packedFixed64Array.data;
+    const unsigned long long *values = (const unsigned long long *)self.packedFixed64Array.data;
     [output writeRawVarint32:778];
     [output writeRawVarint32:packedFixed64MemoizedSerializedSize];
     for (unsigned long i = 0; i < packedFixed64ArrayCount; ++i) {
@@ -6403,7 +6403,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   {
     long dataSize = 0;
     const unsigned long count = self.packedUint32Array.count;
-    const ulong *values = (const ulong *)self.packedUint32Array.data;
+    const unsigned long *values = (const unsigned long *)self.packedUint32Array.data;
     for (unsigned long i = 0; i < count; ++i) {
       dataSize += computeUInt32SizeNoTag(values[i]);
     }
@@ -6417,7 +6417,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   {
     long dataSize = 0;
     const unsigned long count = self.packedUint64Array.count;
-    const ulong long *values = (const ulong long *)self.packedUint64Array.data;
+    const unsigned long long *values = (const unsigned long long *)self.packedUint64Array.data;
     for (unsigned long i = 0; i < count; ++i) {
       dataSize += computeUInt64SizeNoTag(values[i]);
     }
@@ -7101,10 +7101,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedUint32 {
   return result.packedUint32Array;
 }
-- (ulong)packedUint32AtIndex:(unsigned long)index {
+- (unsigned long)packedUint32AtIndex:(unsigned long)index {
   return [result packedUint32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedUint32:(ulong)value {
+- (TestPackedTypesLite_Builder *)addPackedUint32:(unsigned long)value {
   if (result.packedUint32Array == nil) {
     result.packedUint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -7115,7 +7115,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedUint32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedUint32Values:(const ulong *)values count:(unsigned long)count {
+- (TestPackedTypesLite_Builder *)setPackedUint32Values:(const unsigned long *)values count:(unsigned long)count {
   result.packedUint32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -7126,10 +7126,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedUint64 {
   return result.packedUint64Array;
 }
-- (ulong long)packedUint64AtIndex:(unsigned long)index {
+- (unsigned long long)packedUint64AtIndex:(unsigned long)index {
   return [result packedUint64AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedUint64:(ulong long)value {
+- (TestPackedTypesLite_Builder *)addPackedUint64:(unsigned long long)value {
   if (result.packedUint64Array == nil) {
     result.packedUint64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
   }
@@ -7140,7 +7140,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedUint64Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt64];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedUint64Values:(const ulong long *)values count:(unsigned long)count {
+- (TestPackedTypesLite_Builder *)setPackedUint64Values:(const unsigned long long *)values count:(unsigned long)count {
   result.packedUint64Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt64];
   return self;
 }
@@ -7201,10 +7201,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedFixed32 {
   return result.packedFixed32Array;
 }
-- (ulong)packedFixed32AtIndex:(unsigned long)index {
+- (unsigned long)packedFixed32AtIndex:(unsigned long)index {
   return [result packedFixed32AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedFixed32:(ulong)value {
+- (TestPackedTypesLite_Builder *)addPackedFixed32:(unsigned long)value {
   if (result.packedFixed32Array == nil) {
     result.packedFixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
   }
@@ -7215,7 +7215,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedFixed32Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt32];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedFixed32Values:(const ulong *)values count:(unsigned long)count {
+- (TestPackedTypesLite_Builder *)setPackedFixed32Values:(const unsigned long *)values count:(unsigned long)count {
   result.packedFixed32Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt32];
   return self;
 }
@@ -7226,10 +7226,10 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 - (PBAppendableArray *)packedFixed64 {
   return result.packedFixed64Array;
 }
-- (ulong long)packedFixed64AtIndex:(unsigned long)index {
+- (unsigned long long)packedFixed64AtIndex:(unsigned long)index {
   return [result packedFixed64AtIndex:index];
 }
-- (TestPackedTypesLite_Builder *)addPackedFixed64:(ulong long)value {
+- (TestPackedTypesLite_Builder *)addPackedFixed64:(unsigned long long)value {
   if (result.packedFixed64Array == nil) {
     result.packedFixed64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
   }
@@ -7240,7 +7240,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   result.packedFixed64Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeUInt64];
   return self;
 }
-- (TestPackedTypesLite_Builder *)setPackedFixed64Values:(const ulong long *)values count:(unsigned long)count {
+- (TestPackedTypesLite_Builder *)setPackedFixed64Values:(const unsigned long long *)values count:(unsigned long)count {
   result.packedFixed64Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeUInt64];
   return self;
 }

@@ -376,7 +376,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
             index = idx;
         }
     }];
-    
     if (bb) {
         return index;
     }

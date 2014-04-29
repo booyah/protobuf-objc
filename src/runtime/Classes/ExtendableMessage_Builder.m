@@ -97,7 +97,7 @@
   if (message.extensionMap == nil) {
     message.extensionMap = [NSMutableDictionary dictionary];
   }
-  NSNumber* fieldNumber = ([extension fieldNumber]);
+  NSNumber* fieldNumber = @([extension fieldNumber]);
   NSMutableArray* list = [message.extensionMap objectForKey:fieldNumber];
   if (list == nil) {
     list = [NSMutableArray array];

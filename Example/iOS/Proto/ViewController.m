@@ -22,8 +22,15 @@
 {
     [super viewDidLoad];
     
-    [self proto];
+//    [self proto];
 //    [self json];
+    
+    PersonBuilder *builder = [[PersonBuilder alloc] init];
+    [builder setPhoneTypesArray:@[@(PersonPhoneTypeHome),@(PersonPhoneTypeMobile)]];
+    [builder setPersonIdArray:@[[NSNumber numberWithLongLong:12323412],[NSNumber numberWithLongLong:11111111111]]];
+    Person *pp = [builder build];
+    NSLog(@"%lld",[pp.personId int64AtIndex:1]);
+    
 }
 
 

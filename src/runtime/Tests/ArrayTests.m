@@ -43,7 +43,7 @@
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertEquals([array int32AtIndex:1], 2, nil);
+	STAssertEquals([array int32AtIndex:1], (long)2, nil);
 	[array release];
 }
 
@@ -197,8 +197,8 @@
 	PBArray *source = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendArray:source];
-	STAssertEquals(array.count, source.count, nil);
-	STAssertEquals([array int32AtIndex:1], 2, nil);
+  STAssertEquals(array.count, source.count, nil);
+	STAssertEquals([array int32AtIndex:1], (long)2, nil);
 	[array release];
 	[source release];
 }
@@ -209,7 +209,7 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendValues:kValues count:3];
 	STAssertEquals(array.count, (unsigned long)3, nil);
-	STAssertEquals([array int32AtIndex:1], 2, nil);
+	STAssertEquals([array int32AtIndex:1], (long)2, nil);
 	[array release];
 }
 
