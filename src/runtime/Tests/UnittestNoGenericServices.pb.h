@@ -33,10 +33,10 @@ BOOL TestEnumIsValidValue(TestEnum value);
 @interface TestMessage : PBExtendableMessage {
 @private
   BOOL hasA_:1;
-  int32_t a;
+  long a;
 }
 - (BOOL) hasA;
-@property (readonly) int32_t a;
+@property (readonly) long a;
 
 + (TestMessage*) defaultInstance;
 - (TestMessage*) defaultInstance;
@@ -74,8 +74,8 @@ BOOL TestEnumIsValidValue(TestEnum value);
 - (TestMessage_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasA;
-- (int32_t) a;
-- (TestMessage_Builder*) setA:(int32_t) value;
+- (long) a;
+- (TestMessage_Builder*) setA:(long) value;
 - (TestMessage_Builder*) clearA;
 @end
 

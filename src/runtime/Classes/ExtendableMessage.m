@@ -53,7 +53,7 @@
 
 - (id) getExtension:(id<PBExtensionField>) extension {
   [self ensureExtensionIsRegistered:extension];
-  id value = [extensionMap objectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+  id value = [extensionMap objectForKey:@([extension fieldNumber])];
   if (value != nil) {
     return value;
   }
@@ -71,22 +71,22 @@
     self.extensionRegistry = [NSMutableDictionary dictionary];
   }
   [extensionRegistry setObject:extension
-                        forKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+                        forKey:@([extension fieldNumber])];
 }
 
 
 - (BOOL) hasExtension:(id<PBExtensionField>) extension {
-  return nil != [extensionMap objectForKey:[NSNumber numberWithInt:[extension fieldNumber]]];
+  return nil != [extensionMap objectForKey:@([extension fieldNumber])];
 }
 
 
 - (void) writeExtensionsToCodedOutputStream:(PBCodedOutputStream*) output
-                                       from:(int32_t) startInclusive
-                                         to:(int32_t) endExclusive {
+                                       from:(long) startInclusive
+                                         to:(long) endExclusive {
   // man, i really wish Cocoa had a Sorted/TreeMap
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    int32_t fieldNumber = [number intValue];
+    long fieldNumber = [number intValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id<PBExtensionField> extension = [extensionRegistry objectForKey:number];
       id value = [extensionMap objectForKey:number];
@@ -97,12 +97,12 @@
 
 
 - (void) writeExtensionDescriptionToMutableString:(NSMutableString*) output
-                                             from:(int32_t) startInclusive
-                                               to:(int32_t) endExclusive
+                                             from:(long) startInclusive
+                                               to:(long) endExclusive
                                        withIndent:(NSString*) indent {
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    int32_t fieldNumber = [number intValue];
+    long fieldNumber = [number intValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id<PBExtensionField> extension = [extensionRegistry objectForKey:number];
       id value = [extensionMap objectForKey:number];
@@ -113,11 +113,11 @@
 
 
 - (BOOL) isEqualExtensionsInOther:(PBExtendableMessage*)otherMessage
-                             from:(int32_t) startInclusive
-                               to:(int32_t) endExclusive {
+                             from:(long) startInclusive
+                               to:(long) endExclusive {
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    int32_t fieldNumber = [number intValue];
+    long fieldNumber = [number intValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id value = [extensionMap objectForKey:number];
       id otherValue = [otherMessage.extensionMap objectForKey:number];
@@ -130,12 +130,12 @@
 }
 
 
-- (NSUInteger) hashExtensionsFrom:(int32_t) startInclusive
-                               to:(int32_t) endExclusive {
-  NSUInteger hashCode = 0;
+- (unsigned long) hashExtensionsFrom:(long) startInclusive
+                               to:(long) endExclusive {
+  unsigned long hashCode = 0;
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    int32_t fieldNumber = [number intValue];
+    long fieldNumber = [number intValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id value = [extensionMap objectForKey:number];
       hashCode = hashCode * 31 + [value hash];
@@ -145,8 +145,8 @@
 }
 
 
-- (int32_t) extensionsSerializedSize {
-  int32_t size = 0;
+- (long) extensionsSerializedSize {
+  long size = 0;
   for (NSNumber* number in extensionMap) {
     id<PBExtensionField> extension = [extensionRegistry objectForKey:number];
     id value = [extensionMap objectForKey:number];

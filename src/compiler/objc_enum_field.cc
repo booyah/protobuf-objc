@@ -171,7 +171,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void EnumFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "int32_t value = [input readEnum];\n"
+      "$type$ value = ($type$)[input readEnum];\n"
       "if ($type$IsValidValue(value)) {\n"
       "  [self set$capitalized_name$:value];\n"
       "} else {\n"
@@ -250,7 +250,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "int32_t $name$MemoizedSerializedSize;\n");
+        "NSInteger $name$MemoizedSerializedSize;\n");
     }
   }
 
@@ -327,7 +327,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  return $list_name$;\n"
       "}\n"
       "- ($type$)$name$AtIndex:(NSUInteger)index {\n"
-      "  return [$list_name$ int32AtIndex:index];\n"
+      "  return ($type$)[$list_name$ enumAtIndex:index];\n"
       "}\n");
   }
 
@@ -343,7 +343,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  if (result.$list_name$ == nil) {\n"
       "    result.$list_name$ = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];\n"
       "  }\n"
-      "  [result.$list_name$ addInt32:value];\n"
+      "  [result.$list_name$ addEnum:value];\n"
       "  return self;\n"
       "}\n"
       "- ($classname$Builder *)set$capitalized_name$Array:(NSArray *)array {\n"
@@ -378,14 +378,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     // If packed, set up the while loop
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "int32_t length = [input readRawVarint32];\n"
-        "int32_t oldLimit = [input pushLimit:length];\n"
+        "NSInteger length = [input readRawVarint32];\n"
+        "NSInteger oldLimit = [input pushLimit:length];\n"
         "while (input.bytesUntilLimit > 0) {\n");
       printer->Indent();
     }
 
     printer->Print(variables_,
-      "int32_t value = [input readEnum];\n"
+      "$type$ value = ($type$)[input readEnum];\n"
       "if ($type$IsValidValue(value)) {\n"
       "  [self add$capitalized_name$:value];\n"
       "} else {\n"
@@ -426,7 +426,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedEnumFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "{\n"
-      "  int32_t dataSize = 0;\n"
+      "  NSInteger dataSize = 0;\n"
       "  const NSUInteger count = self.$list_name$.count;\n");
     printer->Indent();
 
@@ -462,8 +462,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedEnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for (NSNumber* element in self.$list_name$) {\n"
-      "  [output appendFormat:@\"%@%@: %d\\n\", indent, @\"$name$\", element.intValue];\n"
+      "for (id element in self.$list_name$) {\n"
+      "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(($type$)element)];\n"
       "}\n");
   }
 
@@ -476,7 +476,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedEnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "for (NSNumber* element in self.$list_name$) {\n"
-      "  hashCode = hashCode * 31 + element.intValue;\n"
+      "  hashCode = hashCode * 31 + element.longValue;\n"
       "}\n");
   }
 }  // namespace objectivec

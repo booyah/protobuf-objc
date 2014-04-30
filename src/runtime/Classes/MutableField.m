@@ -84,7 +84,7 @@
 	return self;
 }
 
-- (PBMutableField *)addVarint:(int64_t)value {
+- (PBMutableField *)addVarint:(long long)value {
 	if (_varintArray == nil) {
 		_varintArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt64];
 	}
@@ -93,7 +93,7 @@
 	return self;
 }
 
-- (PBMutableField *)addFixed32:(int32_t)value {
+- (PBMutableField *)addFixed32:(long)value {
 	if (_fixed32Array == nil) {
 		_fixed32Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	}
@@ -102,7 +102,7 @@
 	return self;
 }
 
-- (PBMutableField *)addFixed64:(int64_t)value {
+- (PBMutableField *)addFixed64:(long long)value {
 	if (_fixed64Array == nil) {
 		_fixed64Array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt64];
 	}

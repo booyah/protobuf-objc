@@ -77,7 +77,7 @@
 }
 
 + (PBExtensionRegistry*) emptyRegistry;
-- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(NSInteger) fieldNumber;
+- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(long) fieldNumber;
 
 /* @protected */
 - (id) initWithClassMap:(NSDictionary*) classMap;

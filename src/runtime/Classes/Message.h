@@ -44,7 +44,7 @@
  * Get the number of bytes required to encode this message.  The result
  * is only computed on the first call and memoized after that.
  */
-- (int32_t) serializedSize;
+- (long) serializedSize;
 
 /**
  * Returns true if all required fields in the message and all embedded

@@ -37,22 +37,24 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 
 @interface Person : PBGeneratedMessage {
 @private
-  BOOL hasPersonId_:1;
   BOOL hasName_:1;
   BOOL hasEmail_:1;
-  NSInteger personId;
   NSString* name;
   NSString* email;
+  PBAppendableArray * personIdArray;
   PBAppendableArray * phonesArray;
+  PBAppendableArray * phoneTypesArray;
 }
 - (BOOL) hasName;
-- (BOOL) hasPersonId;
 - (BOOL) hasEmail;
 @property (readonly, strong) NSString* name;
-@property (readonly) NSInteger personId;
+@property (readonly, strong) PBArray * personId;
 @property (readonly, strong) NSString* email;
 @property (readonly, strong) PBArray * phones;
+@property (readonly, strong) PBArray * phoneTypes;
+- (long long)personIdAtIndex:(NSUInteger)index;
 - (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index;
+- (PersonPhoneType)phoneTypesAtIndex:(NSUInteger)index;
 
 + (Person*) defaultInstance;
 - (Person*) defaultInstance;
@@ -152,10 +154,12 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 - (PersonBuilder*) setName:(NSString*) value;
 - (PersonBuilder*) clearName;
 
-- (BOOL) hasPersonId;
-- (NSInteger) personId;
-- (PersonBuilder*) setPersonId:(NSInteger) value;
-- (PersonBuilder*) clearPersonId;
+- (PBAppendableArray *)personId;
+- (long long)personIdAtIndex:(NSUInteger)index;
+- (PersonBuilder *)addPersonId:(long long)value;
+- (PersonBuilder *)setPersonIdArray:(NSArray *)array;
+- (PersonBuilder *)setPersonIdValues:(const long long *)values count:(NSUInteger)count;
+- (PersonBuilder *)clearPersonId;
 
 - (BOOL) hasEmail;
 - (NSString*) email;
@@ -168,6 +172,13 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 - (PersonBuilder *)setPhonesArray:(NSArray *)array;
 - (PersonBuilder *)setPhonesValues:(const PersonPhoneNumber* __strong *)values count:(NSUInteger)count;
 - (PersonBuilder *)clearPhones;
+
+- (PBAppendableArray *)phoneTypes;
+- (PersonPhoneType)phoneTypesAtIndex:(NSUInteger)index;
+- (PersonBuilder *)addPhoneTypes:(PersonPhoneType)value;
+- (PersonBuilder *)setPhoneTypesArray:(NSArray *)array;
+- (PersonBuilder *)setPhoneTypesValues:(const PersonPhoneType *)values count:(NSUInteger)count;
+- (PersonBuilder *)clearPhoneTypes;
 @end
 
 

@@ -30,7 +30,7 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value) {
   }
 }
 @interface ImportMessageLite ()
-@property int32_t d;
+@property long d;
 @end
 
 @implementation ImportMessageLite
@@ -72,8 +72,8 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (int32_t) serializedSize {
-  int32_t size = memoizedSerializedSize;
+- (long) serializedSize {
+  long size = memoizedSerializedSize;
   if (size != -1) {
     return size;
   }
@@ -136,8 +136,8 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (NSUInteger) hash {
-  NSUInteger hashCode = 7;
+- (unsigned long) hash {
+  unsigned long hashCode = 7;
   if (self.hasD) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.d] hash];
   }
@@ -200,7 +200,7 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
 - (ImportMessageLite_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    int32_t tag = [input readTag];
+    long tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -222,10 +222,10 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
 - (BOOL) hasD {
   return result.hasD;
 }
-- (int32_t) d {
+- (long) d {
   return result.d;
 }
-- (ImportMessageLite_Builder*) setD:(int32_t) value {
+- (ImportMessageLite_Builder*) setD:(long) value {
   result.hasD = YES;
   result.d = value;
   return self;

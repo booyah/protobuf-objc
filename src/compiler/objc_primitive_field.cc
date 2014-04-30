@@ -38,16 +38,16 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     const char* PrimitiveTypeName(const FieldDescriptor* field) {
       switch (field->type()) {
-        case FieldDescriptor::TYPE_INT32   : return "NSInteger" ;
-        case FieldDescriptor::TYPE_UINT32  : return "NSUInteger";
-        case FieldDescriptor::TYPE_SINT32  : return "NSInteger" ;
-        case FieldDescriptor::TYPE_FIXED32 : return "NSUInteger";
-        case FieldDescriptor::TYPE_SFIXED32: return "NSInteger" ;
-        case FieldDescriptor::TYPE_INT64   : return "NSInteger" ;
-        case FieldDescriptor::TYPE_UINT64  : return "NSUInteger";
-        case FieldDescriptor::TYPE_SINT64  : return "NSInteger" ;
-        case FieldDescriptor::TYPE_FIXED64 : return "NSUInteger";
-        case FieldDescriptor::TYPE_SFIXED64: return "NSInteger" ;
+        case FieldDescriptor::TYPE_INT32   : return "long" ;
+        case FieldDescriptor::TYPE_UINT32  : return "unsigned long";
+        case FieldDescriptor::TYPE_SINT32  : return "long" ;
+        case FieldDescriptor::TYPE_FIXED32 : return "unsigned long";
+        case FieldDescriptor::TYPE_SFIXED32: return "long" ;
+        case FieldDescriptor::TYPE_INT64   : return "long long" ;
+        case FieldDescriptor::TYPE_UINT64  : return "unsigned long long";
+        case FieldDescriptor::TYPE_SINT64  : return "long" ;
+        case FieldDescriptor::TYPE_FIXED64 : return "unsigned long long";
+        case FieldDescriptor::TYPE_SFIXED64: return "long long" ;
         case FieldDescriptor::TYPE_FLOAT   : return "Float32" ;
         case FieldDescriptor::TYPE_DOUBLE  : return "Float64" ;
         case FieldDescriptor::TYPE_BOOL    : return "BOOL"    ;
@@ -436,7 +436,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateFieldHeader(io::Printer* printer) const {
     printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
     if (descriptor_->options().packed()) {
-      printer->Print(variables_,"int32_t $name$MemoizedSerializedSize;\n");
+      printer->Print(variables_,"NSInteger $name$MemoizedSerializedSize;\n");
     }
   }
 
@@ -566,8 +566,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateParsingCodeSource(io::Printer* printer) const {
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "int32_t length = [input readRawVarint32];\n"
-        "int32_t limit = [input pushLimit:length];\n"
+        "NSInteger length = [input readRawVarint32];\n"
+        "NSInteger limit = [input pushLimit:length];\n"
         "if (result.$list_name$ == nil) {\n"
         "  result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
         "}\n"
@@ -621,7 +621,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Indent();
 
     printer->Print(variables_,
-      "int32_t dataSize = 0;\n"
+      "NSInteger dataSize = 0;\n"
       "const NSUInteger count = self.$list_name$.count;\n");
 
     if (FixedSize(descriptor_->type()) == -1) {
@@ -665,15 +665,18 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedPrimitiveFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     if (ReturnsPrimitiveType(descriptor_)) {
-      printer->Print(variables_,
+    
+        printer->Print(variables_,
         "for (NSNumber* value in self.$list_name$) {\n"
-        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", value];\n"
+        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(($type$)value)];\n"
         "}\n");
+    
     } else {
-      printer->Print(variables_,
-        "for ($storage_type$ element in self.$list_name$) {\n"
-        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", element];\n"
-        "}\n");
+        
+        //TODO NEED TEST PRIMITIVES
+        printer->Print(variables_,"for ($storage_type$ element in self.$list_name$) {\n");
+            printer->Print(variables_,"  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", element];\n");
+        printer->Print(variables_,"}\n");
     }
   }
 
@@ -688,7 +691,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     if (ReturnsPrimitiveType(descriptor_)) {
       printer->Print(variables_,
         "for (NSNumber* value in self.$list_name$) {\n"
-        "  hashCode = hashCode * 31 + [value intValue];\n"
+        "  hashCode = hashCode * 31 + [value longValue];\n"
         "}\n");
     } else {
       printer->Print(variables_,
