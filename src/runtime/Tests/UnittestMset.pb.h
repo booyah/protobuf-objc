@@ -127,10 +127,10 @@
 @interface TestMessageSetExtension1 : PBGeneratedMessage {
 @private
   BOOL hasI_:1;
-  int32_t i;
+  long i;
 }
 - (BOOL) hasI;
-@property (readonly) int32_t i;
+@property (readonly) long i;
 
 + (TestMessageSetExtension1*) defaultInstance;
 - (TestMessageSetExtension1*) defaultInstance;
@@ -169,8 +169,8 @@
 - (TestMessageSetExtension1_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasI;
-- (int32_t) i;
-- (TestMessageSetExtension1_Builder*) setI:(int32_t) value;
+- (long) i;
+- (TestMessageSetExtension1_Builder*) setI:(long) value;
 - (TestMessageSetExtension1_Builder*) clearI;
 @end
 
@@ -229,7 +229,7 @@
   PBAppendableArray * itemArray;
 }
 @property (readonly, retain) PBArray * item;
-- (RawMessageSet_Item*)itemAtIndex:(NSUInteger)index;
+- (RawMessageSet_Item*)itemAtIndex:(unsigned long)index;
 
 + (RawMessageSet*) defaultInstance;
 - (RawMessageSet*) defaultInstance;
@@ -253,12 +253,12 @@
 @private
   BOOL hasTypeId_:1;
   BOOL hasMessage_:1;
-  int32_t typeId;
+  long typeId;
   NSData* message;
 }
 - (BOOL) hasTypeId;
 - (BOOL) hasMessage;
-@property (readonly) int32_t typeId;
+@property (readonly) long typeId;
 @property (readonly, retain) NSData* message;
 
 + (RawMessageSet_Item*) defaultInstance;
@@ -297,8 +297,8 @@
 - (RawMessageSet_Item_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasTypeId;
-- (int32_t) typeId;
-- (RawMessageSet_Item_Builder*) setTypeId:(int32_t) value;
+- (long) typeId;
+- (RawMessageSet_Item_Builder*) setTypeId:(long) value;
 - (RawMessageSet_Item_Builder*) clearTypeId;
 
 - (BOOL) hasMessage;
@@ -325,10 +325,10 @@
 - (RawMessageSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (PBAppendableArray *)item;
-- (RawMessageSet_Item*)itemAtIndex:(NSUInteger)index;
+- (RawMessageSet_Item*)itemAtIndex:(unsigned long)index;
 - (RawMessageSet_Builder *)addItem:(RawMessageSet_Item*)value;
 - (RawMessageSet_Builder *)setItemArray:(NSArray *)array;
-- (RawMessageSet_Builder *)setItemValues:(const RawMessageSet_Item* *)values count:(NSUInteger)count;
+- (RawMessageSet_Builder *)setItemValues:(const RawMessageSet_Item* *)values count:(unsigned long)count;
 - (RawMessageSet_Builder *)clearItem;
 @end
 

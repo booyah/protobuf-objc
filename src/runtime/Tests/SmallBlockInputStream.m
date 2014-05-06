@@ -29,7 +29,7 @@
 
 
 - (id) initWithData:(NSData*) data_
-          blockSize:(int32_t) blockSize_ {
+          blockSize:(long) blockSize_ {
   if ((self = [super init])) {
     self.underlyingStream = [NSInputStream inputStreamWithData:data_];
     blockSize = blockSize_;
@@ -40,7 +40,7 @@
 
 
 + (SmallBlockInputStream*) streamWithData:(NSData*) data
-                                blockSize:(int32_t) blockSize {
+                                blockSize:(long) blockSize {
   return [[[SmallBlockInputStream alloc] initWithData:data
                                             blockSize:blockSize] autorelease];
 }
@@ -55,13 +55,13 @@
 }
 
 
-- (NSInteger) read:(uint8_t*) buffer
-         maxLength:(NSUInteger) len {
+- (long) read:(uint8_t*) buffer
+         maxLength:(unsigned long) len {
   return [underlyingStream read:buffer maxLength:MIN(len, blockSize)];
 }
 
 
-- (BOOL) getBuffer:(uint8_t**) buffer length:(NSUInteger*)len {
+- (BOOL) getBuffer:(uint8_t**) buffer length:(unsigned long*)len {
   return [underlyingStream getBuffer:buffer length:len];
 }
 

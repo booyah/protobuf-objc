@@ -17,11 +17,11 @@
 
 @interface SmallBlockInputStream : NSInputStream {
   NSInputStream* underlyingStream;
-  int32_t blockSize;
+  long blockSize;
 }
 
 @property (retain) NSInputStream* underlyingStream;
 
-+ (SmallBlockInputStream*) streamWithData:(NSData*) data blockSize:(int32_t) blockSize;
++ (SmallBlockInputStream*) streamWithData:(NSData*) data blockSize:(long) blockSize;
 
 @end

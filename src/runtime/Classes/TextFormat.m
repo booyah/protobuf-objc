@@ -53,7 +53,7 @@ BOOL isHex(unichar c) {
 }
 
 
-+ (int64_t) parseInteger:(NSString*) text
++ (long long) parseInteger:(NSString*) text
                 isSigned:(BOOL) isSigned
                   isLong:(BOOL) isLong {
   if (text.length == 0) {
@@ -71,7 +71,7 @@ BOOL isHex(unichar c) {
   }
 
   // now call into the appropriate conversion utilities.
-  int64_t result;
+  long long result;
   const char* in_string = text.UTF8String;
   char* out_string = NULL;
   errno = 0;
@@ -109,8 +109,8 @@ BOOL isHex(unichar c) {
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
  * respectively.
  */
-+ (int32_t) parseInt32:(NSString*) text {
-  return (int32_t)[self parseInteger:text isSigned:YES isLong:NO];
++ (long) parseInt32:(NSString*) text {
+  return (long)[self parseInteger:text isSigned:YES isLong:NO];
 }
 
 
@@ -119,8 +119,8 @@ BOOL isHex(unichar c) {
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
  * respectively.  The result is coerced to a (signed) {@code int} when returned.
  */
-+ (int32_t) parseUInt32:(NSString*) text {
-  return (int32_t)[self parseInteger:text isSigned:NO isLong:NO];
++ (long) parseUInt32:(NSString*) text {
+  return (long)[self parseInteger:text isSigned:NO isLong:NO];
 }
 
 
@@ -129,7 +129,7 @@ BOOL isHex(unichar c) {
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
  * respectively.
  */
-+ (int64_t) parseInt64:(NSString*) text {
++ (long long) parseInt64:(NSString*) text {
   return [self parseInteger:text isSigned:YES isLong:YES];
 }
 
@@ -140,7 +140,7 @@ BOOL isHex(unichar c) {
  * respectively.  The result is coerced to a (signed) {@code long} when
  * returned.
  */
-+ (int64_t) parseUInt64:(NSString*) text {
++ (long long) parseUInt64:(NSString*) text {
   return [self parseInteger:text isSigned:NO isLong:YES];
 }
 
@@ -149,7 +149,7 @@ BOOL isHex(unichar c) {
  * numeric value.  This is like {@code Character.digit()} but we don't accept
  * non-ASCII digits.
  */
-int32_t digitValue(unichar c) {
+long digitValue(unichar c) {
   if ('0' <= c && c <= '9') {
     return c - '0';
   } else if ('a' <= c && c <= 'z') {
@@ -168,8 +168,8 @@ int32_t digitValue(unichar c) {
 + (NSData*) unescapeBytes:(NSString*) input {
   NSMutableData* result = [NSMutableData dataWithLength:input.length];
 
-  int32_t pos = 0;
-  for (int32_t i = 0; i < input.length; i++) {
+  long pos = 0;
+  for (long i = 0; i < input.length; i++) {
     unichar c = [input characterAtIndex:i];
     if (c == '\\') {
       if (i + 1 < input.length) {
@@ -177,7 +177,7 @@ int32_t digitValue(unichar c) {
         c = [input characterAtIndex:i];
         if (isOctal(c)) {
           // Octal escape.
-          int32_t code = digitValue(c);
+          long code = digitValue(c);
           if (i + 1 < input.length && isOctal([input characterAtIndex:(i + 1)])) {
             ++i;
             code = code * 8 + digitValue([input characterAtIndex:i]);
@@ -202,7 +202,7 @@ int32_t digitValue(unichar c) {
 
             case 'x': // hex escape
             {
-              int32_t code = 0;
+              long code = 0;
               if (i + 1 < input.length && isHex([input characterAtIndex:(i + 1)])) {
                 ++i;
                 code = digitValue([input characterAtIndex:i]);

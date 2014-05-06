@@ -52,7 +52,7 @@
 }
 
 
-- (PBField*) getField:(int32_t) number {
+- (PBField*) getField:(long) number {
   return [unknownFields getField:number];
 }
 
@@ -133,7 +133,7 @@
 - (void) testClear {
   PBUnknownFieldSet* fields =
   [[[[PBUnknownFieldSet builder] mergeUnknownFields:unknownFields] clear] build];
-  STAssertEquals(fields.fields.count, (NSUInteger) 0, @"");
+  STAssertEquals(fields.fields.count, (unsigned long) 0, @"");
 }
 
 
