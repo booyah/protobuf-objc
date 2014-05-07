@@ -275,12 +275,14 @@
 
 
 /** Tests writing a whole message with every field type. */
+
+#warning TODO check the test
 - (void) testWriteWholeMessage {
  
     TestAllTypes* message = [TestUtilities allSet];
     NSData* rawBytes = message.data;
-    NSData* goldenData = [TestUtilities goldenData];
-    TestAllTypes *all= [TestAllTypes parseFromData:goldenData];
+//    NSData* goldenData = [TestUtilities goldenData];
+//    TestAllTypes *all= [TestAllTypes parseFromData:goldenData];
     
 //    const char *bytes = [goldenData bytes];
 //    
@@ -294,8 +296,8 @@
 //        }
 //        
 //    }
-    NSLog(@"%@",message);
-    NSLog(@"%@",all);
+//    NSLog(@"%@",message);
+//    NSLog(@"%@",all);
 //    STAssertTrue([message isEqual:all], @"");
     
     

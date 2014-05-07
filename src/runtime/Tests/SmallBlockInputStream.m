@@ -55,13 +55,12 @@
 }
 
 
-- (long) read:(uint8_t*) buffer
-         maxLength:(unsigned long) len {
+- (NSInteger) read:(uint8_t*) buffer maxLength:(NSUInteger) len {
   return [underlyingStream read:buffer maxLength:MIN(len, blockSize)];
 }
 
 
-- (BOOL) getBuffer:(uint8_t**) buffer length:(unsigned long*)len {
+- (BOOL) getBuffer:(uint8_t**) buffer length:(NSUInteger*)len {
   return [underlyingStream getBuffer:buffer length:len];
 }
 

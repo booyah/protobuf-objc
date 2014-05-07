@@ -130,7 +130,7 @@
 }
 
 
-- (unsigned long) hashExtensionsFrom:(long) startInclusive
+- (NSUInteger) hashExtensionsFrom:(long) startInclusive
                                to:(long) endExclusive {
   unsigned long hashCode = 0;
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];

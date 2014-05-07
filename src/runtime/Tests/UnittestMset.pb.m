@@ -140,7 +140,7 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:4 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -333,7 +333,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasMessageSet) {
     hashCode = hashCode * 31 + [self.messageSet hash];
@@ -563,7 +563,7 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
@@ -775,7 +775,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasStr) {
     hashCode = hashCode * 31 + [self.str hash];
@@ -991,7 +991,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   for (RawMessageSet_Item* element in self.itemArray) {
     hashCode = hashCode * 31 + [element hash];
@@ -1136,7 +1136,7 @@ static RawMessageSet_Item* defaultRawMessageSet_ItemInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasTypeId) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.typeId] hash];

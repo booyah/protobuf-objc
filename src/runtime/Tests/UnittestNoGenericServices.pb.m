@@ -161,7 +161,7 @@ static TestMessage* defaultTestMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];

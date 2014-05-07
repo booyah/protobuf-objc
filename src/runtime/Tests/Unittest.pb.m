@@ -3016,7 +3016,7 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasOptionalInt32) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.optionalInt32] hash];
@@ -3344,7 +3344,7 @@ static TestAllTypes_NestedMessage* defaultTestAllTypes_NestedMessageInstance = n
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasBb) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.bb] hash];
@@ -3552,7 +3552,7 @@ static TestAllTypes_OptionalGroup* defaultTestAllTypes_OptionalGroupInstance = n
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -3760,7 +3760,7 @@ static TestAllTypes_RepeatedGroup* defaultTestAllTypes_RepeatedGroupInstance = n
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -6041,7 +6041,7 @@ static TestDeprecatedFields* defaultTestDeprecatedFieldsInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasDeprecatedInt32) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.deprecatedInt32] hash];
@@ -6249,7 +6249,7 @@ static ForeignMessage* defaultForeignMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasC) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.c] hash];
@@ -6449,7 +6449,7 @@ static TestAllExtensions* defaultTestAllExtensionsInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -6633,7 +6633,7 @@ static OptionalGroup_extension* defaultOptionalGroup_extensionInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -6841,7 +6841,7 @@ static RepeatedGroup_extension* defaultRepeatedGroup_extensionInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -7031,7 +7031,7 @@ static TestNestedExtension* defaultTestNestedExtensionInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -7900,7 +7900,7 @@ static TestRequired* defaultTestRequiredInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -8999,7 +8999,7 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasOptionalMessage) {
     hashCode = hashCode * 31 + [self.optionalMessage hash];
@@ -9297,7 +9297,7 @@ static TestForeignNested* defaultTestForeignNestedInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasForeignNested) {
     hashCode = hashCode * 31 + [self.foreignNested hash];
@@ -9503,7 +9503,7 @@ static TestEmptyMessage* defaultTestEmptyMessageInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -9677,7 +9677,7 @@ static TestEmptyMessageWithExtensions* defaultTestEmptyMessageWithExtensionsInst
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -9871,7 +9871,7 @@ static TestMultipleExtensionRanges* defaultTestMultipleExtensionRangesInstance =
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:42 to:43];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:4143 to:4244];
@@ -10078,7 +10078,7 @@ static TestReallyLargeTagNumber* defaultTestReallyLargeTagNumberInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -10337,7 +10337,7 @@ static TestRecursiveMessage* defaultTestRecursiveMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [self.a hash];
@@ -10594,7 +10594,7 @@ static TestMutualRecursionA* defaultTestMutualRecursionAInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasBb) {
     hashCode = hashCode * 31 + [self.bb hash];
@@ -10846,7 +10846,7 @@ static TestMutualRecursionB* defaultTestMutualRecursionBInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [self.a hash];
@@ -11149,7 +11149,7 @@ static TestDupFieldNumber* defaultTestDupFieldNumberInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -11272,7 +11272,7 @@ static TestDupFieldNumber_Foo* defaultTestDupFieldNumber_FooInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -11480,7 +11480,7 @@ static TestDupFieldNumber_Bar* defaultTestDupFieldNumber_BarInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasA) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.a] hash];
@@ -11867,7 +11867,7 @@ static TestNestedMessageHasBits* defaultTestNestedMessageHasBitsInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasOptionalNestedMessage) {
     hashCode = hashCode * 31 + [self.optionalNestedMessage hash];
@@ -12019,7 +12019,7 @@ static TestNestedMessageHasBits_NestedMessage* defaultTestNestedMessageHasBits_N
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   for (NSNumber* value in self.nestedmessageRepeatedInt32Array) {
     hashCode = hashCode * 31 + [value intValue];
@@ -12685,7 +12685,7 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasPrimitiveField) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.primitiveField] hash];
@@ -13353,7 +13353,7 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasMyInt) {
     hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.myInt] hash];
@@ -14018,7 +14018,7 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasEscapedBytes) {
     hashCode = hashCode * 31 + [self.escapedBytes hash];
@@ -14720,7 +14720,7 @@ static SparseEnumMessage* defaultSparseEnumMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasSparseEnum) {
     hashCode = hashCode * 31 + self.sparseEnum;
@@ -14934,7 +14934,7 @@ static OneString* defaultOneStringInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasData) {
     hashCode = hashCode * 31 + [self.data hash];
@@ -15143,7 +15143,7 @@ static OneBytes* defaultOneBytesInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasData) {
     hashCode = hashCode * 31 + [self.data hash];
@@ -15841,7 +15841,7 @@ static TestPackedTypes* defaultTestPackedTypesInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   for (NSNumber* value in self.packedInt32Array) {
     hashCode = hashCode * 31 + [value intValue];
@@ -17087,7 +17087,7 @@ static TestUnpackedTypes* defaultTestUnpackedTypesInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   for (NSNumber* value in self.unpackedInt32Array) {
     hashCode = hashCode * 31 + [value intValue];
@@ -17812,7 +17812,7 @@ static TestPackedExtensions* defaultTestPackedExtensionsInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -18158,7 +18158,7 @@ static TestDynamicExtensions* defaultTestDynamicExtensionsInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasScalarExtension) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.scalarExtension] hash];
@@ -18303,7 +18303,7 @@ static TestDynamicExtensions_DynamicMessageType* defaultTestDynamicExtensions_Dy
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasDynamicField) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.dynamicField] hash];
@@ -18984,7 +18984,7 @@ static TestRepeatedScalarDifferentTagSizes* defaultTestRepeatedScalarDifferentTa
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   for (NSNumber* value in self.repeatedFixed32Array) {
     hashCode = hashCode * 31 + [value intValue];
@@ -19379,7 +19379,7 @@ static FooRequest* defaultFooRequestInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -19540,7 +19540,7 @@ static FooResponse* defaultFooResponseInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -19701,7 +19701,7 @@ static BarRequest* defaultBarRequestInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -19862,7 +19862,7 @@ static BarResponse* defaultBarResponseInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;

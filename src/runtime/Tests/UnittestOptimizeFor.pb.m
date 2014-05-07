@@ -193,7 +193,7 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
@@ -451,7 +451,7 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasX) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.x] hash];
@@ -668,7 +668,7 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasO) {
     hashCode = hashCode * 31 + [self.o hash];

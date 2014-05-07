@@ -165,7 +165,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasOptionalMessage) {
     hashCode = hashCode * 31 + [self.optionalMessage hash];

@@ -738,7 +738,7 @@ static TestMessageWithCustomOptions* defaultTestMessageWithCustomOptionsInstance
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasField1) {
     hashCode = hashCode * 31 + [self.field1 hash];
@@ -934,7 +934,7 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -1095,7 +1095,7 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -1256,7 +1256,7 @@ static DummyMessageContainingEnum* defaultDummyMessageContainingEnumInstance = n
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -1426,7 +1426,7 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -1587,7 +1587,7 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -1748,7 +1748,7 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -1909,7 +1909,7 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -2070,7 +2070,7 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -2231,7 +2231,7 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -2468,7 +2468,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasFoo) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.foo] hash];
@@ -2798,7 +2798,7 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasBar) {
     hashCode = hashCode * 31 + [self.bar hash];
@@ -2925,7 +2925,7 @@ static ComplexOptionType2_ComplexOptionType4* defaultComplexOptionType2_ComplexO
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasWaldo) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.waldo] hash];
@@ -3334,7 +3334,7 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasQux) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.qux] hash];
@@ -3454,7 +3454,7 @@ static ComplexOptionType3_ComplexOptionType5* defaultComplexOptionType3_ComplexO
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasPlugh) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.plugh] hash];
@@ -3795,7 +3795,7 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasXyzzy) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.xyzzy] hash];
@@ -3982,7 +3982,7 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
   return
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -4156,7 +4156,7 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   hashCode = hashCode * 31 + [self hashExtensionsFrom:4 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
@@ -4344,7 +4344,7 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasS) {
     hashCode = hashCode * 31 + [self.s hash];
@@ -4667,7 +4667,7 @@ static Aggregate* defaultAggregateInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.i] hash];
@@ -5036,7 +5036,7 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasFieldname) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInt:self.fieldname] hash];

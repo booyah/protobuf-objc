@@ -79,7 +79,7 @@
 - (BOOL) isEqualExtensionsInOther:(PBExtendableMessage*)otherMessage
                              from:(long) startInclusive
                                to:(long) endExclusive;
-- (unsigned long) hashExtensionsFrom:(long) startInclusive
+- (NSUInteger) hashExtensionsFrom:(long) startInclusive
                                to:(long) endExclusive;
 
 
