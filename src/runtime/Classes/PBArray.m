@@ -386,12 +386,12 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 @implementation PBArray (PBArrayExtended)
 
--(NSArray *) filteredArrayUsingPredicate:(NSPredicate *)predicate
+-(PBArray *) filteredArrayUsingPredicate:(NSPredicate *)predicate
 {
-    NSMutableArray *newArray = [[NSMutableArray alloc] initWithCapacity:self.count];
+    PBAppendableArray *newArray = [[PBAppendableArray alloc] init];
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         BOOL result = [predicate evaluateWithObject:obj];
-        if (result) [newArray addObject:result];
+        if (result) [newArray addObject:obj];
     }];
     return newArray;
 }

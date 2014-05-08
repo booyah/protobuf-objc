@@ -22,6 +22,20 @@
 
 #pragma mark PBArray
 
+- (void)testfilterArray
+{
+	PBAppendableArray *array = [[PBAppendableArray alloc] initWithArray:@[@2, @3, @4, @5, @7, @77] valueType:PBArrayValueTypeObject];
+	PBArray *filter = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.integerValue >= 5"]];
+	
+	STAssertEquals([filter count], (NSUInteger)3, nil);
+	
+	STAssertEquals((((NSNumber *)filter[0]).integerValue), 5, nil);
+	STAssertEquals((((NSNumber *)filter[1]).integerValue), 7, nil);
+	STAssertEquals((((NSNumber *)filter[2]).integerValue), 77, nil);
+	
+	[array release];
+}
+
 - (void)testCount
 {
 	const long kValues[3] = { 1, 2, 3 };

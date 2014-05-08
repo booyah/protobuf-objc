@@ -75,7 +75,7 @@ typedef enum _PBArrayValueType
 @interface PBArray (PBArrayExtended)
 
 - (id)arrayByAppendingArray:(PBArray *)array;
-
+- (PBArray *)filteredArrayUsingPredicate:(NSPredicate *)predicate;
 @end
 
 @interface PBArray (PBArrayCreation)
