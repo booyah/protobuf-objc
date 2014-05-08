@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>386DBA84-094C-473C-BC94-F2E7E4330C52</string>
+	<string>3B28EC64-B7F7-47C0-B95A-524C8C42E8D5</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ProtocolBuffers</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>32ECE5D6-F2C4-4A07-A196-D17BD058FEFE</key>
-		<string>https://github.com/alexeyxo/protobuf-objc.git</string>
+		<key>65C9AD93-1EE7-4EAF-B8DC-BAD7E92FEB13</key>
+		<string>https://github.com/Serheo/protobuf-objc.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>src/runtime/ProtocolBuffers.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>32ECE5D6-F2C4-4A07-A196-D17BD058FEFE</key>
+		<key>65C9AD93-1EE7-4EAF-B8DC-BAD7E92FEB13</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/alexeyxo/protobuf-objc.git</string>
+	<string>https://github.com/Serheo/protobuf-objc.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>32ECE5D6-F2C4-4A07-A196-D17BD058FEFE</string>
+	<string>65C9AD93-1EE7-4EAF-B8DC-BAD7E92FEB13</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>32ECE5D6-F2C4-4A07-A196-D17BD058FEFE</string>
+			<string>65C9AD93-1EE7-4EAF-B8DC-BAD7E92FEB13</string>
 			<key>IDESourceControlWCCName</key>
 			<string>protobuf-objc</string>
 		</dict>

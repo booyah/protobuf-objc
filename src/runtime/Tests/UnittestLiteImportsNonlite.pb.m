@@ -131,7 +131,7 @@ static TestLiteImportsNonlite* defaultTestLiteImportsNonliteInstance = nil;
       
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
-- (unsigned long) hash {
+- (NSUInteger) hash {
   unsigned long hashCode = 7;
   if (self.hasMessage) {
     hashCode = hashCode * 31 + [self.message hash];

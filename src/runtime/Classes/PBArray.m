@@ -386,6 +386,16 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 @implementation PBArray (PBArrayExtended)
 
+-(PBArray *) filteredArrayUsingPredicate:(NSPredicate *)predicate
+{
+    PBAppendableArray *newArray = [[PBAppendableArray alloc] init];
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        BOOL result = [predicate evaluateWithObject:obj];
+        if (result) [newArray addObject:obj];
+    }];
+    return newArray;
+}
+
 - (id)arrayByAppendingArray:(PBArray *)array
 {
 	PBArrayValueTypeAssert(array.valueType);

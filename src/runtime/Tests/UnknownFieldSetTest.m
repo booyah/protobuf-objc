@@ -133,7 +133,7 @@
 - (void) testClear {
   PBUnknownFieldSet* fields =
   [[[[PBUnknownFieldSet builder] mergeUnknownFields:unknownFields] clear] build];
-  STAssertEquals(fields.fields.count, (unsigned long) 0, @"");
+  STAssertEquals(fields.fields.count, (NSUInteger) 0, @"");
 }
 
 

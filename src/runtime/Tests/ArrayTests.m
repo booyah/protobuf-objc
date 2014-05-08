@@ -22,12 +22,26 @@
 
 #pragma mark PBArray
 
+- (void)testfilterArray
+{
+	PBAppendableArray *array = [[PBAppendableArray alloc] initWithArray:@[@2, @3, @4, @5, @7, @77] valueType:PBArrayValueTypeObject];
+	PBArray *filter = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.integerValue >= 5"]];
+	
+	STAssertEquals([filter count], (NSUInteger)3, nil);
+	
+	STAssertEquals((((NSNumber *)filter[0]).integerValue), 5, nil);
+	STAssertEquals((((NSNumber *)filter[1]).integerValue), 7, nil);
+	STAssertEquals((((NSNumber *)filter[2]).integerValue), 77, nil);
+	
+	[array release];
+}
+
 - (void)testCount
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertEquals([array count], (unsigned long)3, nil);
-	STAssertEquals(array.count, (unsigned long)3, nil);
+	STAssertEquals([array count], (NSUInteger)3, nil);
+	STAssertEquals(array.count, (NSUInteger)3, nil);
 	[array release];
 }
 
@@ -58,7 +72,7 @@
 - (void)testEmpty
 {
 	PBArray *array = [[PBArray alloc] init];
-	STAssertEquals(array.count, (unsigned long)0, nil);
+	STAssertEquals(array.count, (NSUInteger)0, nil);
 	STAssertEquals(array.valueType, PBArrayValueTypeObject, nil);
 	STAssertEquals(array.data, (const void *)nil, nil);
 	STAssertThrowsSpecificNamed([array objectAtIndex:0], NSException, NSRangeException, nil);
@@ -176,7 +190,7 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array addInt32:1];
 	[array addInt32:4];
-	STAssertEquals(array.count, (unsigned long)2, nil);
+	STAssertEquals(array.count, (NSUInteger)2, nil);
 	STAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, nil);
 	[array release];
 }
@@ -186,7 +200,7 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeObject];
 	[array addObject:[NSString stringWithFormat:@"One"]];
 	[array addObject:[NSString stringWithFormat:@"Two"]];
-	STAssertEquals(array.count, (unsigned long)2, nil);
+	STAssertEquals(array.count, (NSUInteger)2, nil);
 	STAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, nil);
 	[array release];
 }
@@ -208,7 +222,7 @@
 	const long kValues[3] = { 1, 2, 3 };
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendValues:kValues count:3];
-	STAssertEquals(array.count, (unsigned long)3, nil);
+	STAssertEquals(array.count, (NSUInteger)3, nil);
 	STAssertEquals([array int32AtIndex:1], (long)2, nil);
 	[array release];
 }
