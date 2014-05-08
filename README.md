@@ -7,7 +7,7 @@ Protocol Buffers are a way of encoding structured data in an efficient yet exten
 This project is based on an implementation of Protocol Buffers from Google.  See the
 [Google protobuf project][g-protobuf] for more information.
 
-[g-protobuf]: http://code.google.com/p/protobuf/
+[g-protobuf]: https://developers.google.com/protocol-buffers/docs/overview
 
 This fork contains only ARC version of library.
 
@@ -20,7 +20,7 @@ This fork contains only ARC version of library.
 
 4.`brew instal protobuf`
 
-5.`git clone git@github.com:Serheo/protobuf-objc.git`
+5.`git clone git@github.com:alexeyxo/protobuf-objc.git`
 
 6.`./build.sh`
 
