@@ -25,11 +25,23 @@
 //    [self proto];
 //    [self json];
     
-    PersonBuilder *builder = [[PersonBuilder alloc] init];
-    [builder setPhoneTypesArray:@[@(PersonPhoneTypeHome),@(PersonPhoneTypeMobile)]];
-    [builder setPersonIdArray:@[[NSNumber numberWithLongLong:12323412],[NSNumber numberWithLongLong:11111111111]]];
-    Person *pp = [builder build];
-    NSLog(@"%lld",[pp.personId int64AtIndex:1]);
+//    PersonBuilder *builder = [[PersonBuilder alloc] init];
+//    [builder setPhoneTypesArray:@[@(PersonPhoneTypeHome),@(PersonPhoneTypeMobile)]];
+//    [builder setPersonIdArray:@[[NSNumber numberWithLongLong:12323412],[NSNumber numberWithLongLong:11111111111]]];
+//    Person *pp = [builder build];
+//    NSLog(@"%lld",[pp.personId int64AtIndex:1]);
+
+    PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeFloat];
+    [array addFloat:32.0];
+    [array addFloat:3.3];
+    [array addFloat:3.3];
+    
+    
+    PBArray *r = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self > 3.5"]];
+        [array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            NSLog(@"%@", obj);
+        }];
+    NSLog(@"%@",r.firstObject);
     
 }
 

@@ -24,7 +24,7 @@ This fork contains only ARC version of library.
 
 6.`./build.sh`
 
-## Compile ".proto" files. 
+## Compile ".proto" files.
 `protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
 
 ## Example
