@@ -72,7 +72,7 @@ unsigned long convertInt32ToUInt32(long v) {
 }
 
 
-long long convertUInt32ToInt32(unsigned long v) {
+long convertUInt32ToInt32(unsigned long v) {
   union { long i; unsigned long u; } u;
   u.u = v;
   return u.i;

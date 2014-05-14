@@ -61,12 +61,6 @@ static void PBArraySetDoubleValue(NSNumber *number, void *value)
 	*((Float64 *)value) = [number doubleValue];
 }
 
-static void PBArraySetEnumValue(NSNumber *number, void *value)
-{
-	*((long *)value) = [number integerValue];
-}
-
-
 #pragma mark Array Value Types
 
 typedef struct _PBArrayValueTypeInfo
@@ -357,7 +351,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
     if (!block) return;
     BOOL stop = NO;
     for (NSInteger i = 0; i < self.count; i++) {
-            block([self objectAtIndexedSubscript:i],i,&stop);
+        block([self objectAtIndexedSubscript:i],i,&stop);
         if(stop){
             break;
         }
@@ -388,12 +382,12 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 -(PBArray *) filteredArrayUsingPredicate:(NSPredicate *)predicate
 {
-    PBAppendableArray *newArray = [[PBAppendableArray alloc] init];
+    __block PBAppendableArray *newArray = [[PBAppendableArray alloc] init];
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         BOOL result = [predicate evaluateWithObject:obj];
         if (result) [newArray addObject:obj];
     }];
-    return newArray;
+    return [newArray autorelease];
 }
 
 - (id)arrayByAppendingArray:(PBArray *)array

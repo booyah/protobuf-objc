@@ -25,7 +25,7 @@ Float32 convertInt32ToFloat32(long f);
 unsigned long long convertInt64ToUInt64(long long i);
 long long  convertUInt64ToInt64(unsigned long long u);
 unsigned long convertInt32ToUInt32(long i);
-long long  convertUInt32ToInt32(unsigned long u);
+long  convertUInt32ToInt32(unsigned long u);
 
 long logicalRightShift32(long value, long spaces);
 long long logicalRightShift64(long long value, long spaces);
