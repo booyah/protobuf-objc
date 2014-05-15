@@ -1,21 +1,27 @@
 Pod::Spec.new do |s|
   s.name         = "Protobuf-objc"
-  s.version      = "0.0.1"
-  s.summary      = "An implementation of Protocol Buffers in Objective C."
+  s.version      = "1.2"
+  s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
-                        This is a modified ARC enabled version of the Protocol Buffers in Objective C project.
-                        It is optimized for iOS5 and up. This version is updated for Protobuf 2.5.
-
-                        Protocol Buffers are a way of encoding structured data in an efficient yet extensible format.
-                        This project is based on an implementation of Protocol Buffers from Google.
-                        See the Google protobuf project for more information.
+                      An implementation of Protocol Buffers 2.5 in Objective C.
+                      Protocol Buffers are a way of encoding structured data
+                      in an efficient yet extensible format.
+                      This project is based on an implementation of Protocol Buffers from Google.
+                      Supported arm64 and early architectures. This realisation contains only ARC version of library.
                       DESC
-  s.homepage     = "https://code.google.com/p/metasyntactic/wiki/ProtocolBuffers"
+  s.homepage     = "http://protobuf.axo.io"
   s.license      = "Apache 2.0"
-  s.author       = "David Bonnefoy"
-  s.author       = { "Ragy Eleish" => "ragy@regwez.com" }
-  s.author       = { "Jon Parise" => "jon@booyah.com" }
-  s.authors      = "Kenton Varda", "Sanjay Ghemawat", "Jeff Dean"
+  s.author       = { "Alexey Khokhlov" => "alexeyxo@gmail.com" }
+
+  s.authors      = {  "Alexey Khokhlov" => "alexeyxo@gmail.com",
+                      "Sergey Shatunov" => nil,
+                      "David Bonnefoy" => nil,
+                      "Ragy Eleish" => nil,
+                      "Jon Parise" => nil,
+                      "Kenton Varda" => nil,
+                      "Sanjay Ghemawat" => nil,
+                      "Jeff Dean" => nil
+                    }
 
   s.source       = {
     :git => "https://github.com/alexeyxo/protobuf-objc.git",

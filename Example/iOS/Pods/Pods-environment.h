@@ -8,13 +8,13 @@
 
 // Protobuf-objc
 #define COCOAPODS_POD_AVAILABLE_Protobuf_objc
-#define COCOAPODS_VERSION_MAJOR_Protobuf_objc 0
-#define COCOAPODS_VERSION_MINOR_Protobuf_objc 0
-#define COCOAPODS_VERSION_PATCH_Protobuf_objc 1
+#define COCOAPODS_VERSION_MAJOR_Protobuf_objc 1
+#define COCOAPODS_VERSION_MINOR_Protobuf_objc 2
+#define COCOAPODS_VERSION_PATCH_Protobuf_objc 0
 
 // Protobuf-objc/arc
 #define COCOAPODS_POD_AVAILABLE_Protobuf_objc_arc
-#define COCOAPODS_VERSION_MAJOR_Protobuf_objc_arc 0
-#define COCOAPODS_VERSION_MINOR_Protobuf_objc_arc 0
-#define COCOAPODS_VERSION_PATCH_Protobuf_objc_arc 1
+#define COCOAPODS_VERSION_MAJOR_Protobuf_objc_arc 1
+#define COCOAPODS_VERSION_MINOR_Protobuf_objc_arc 2
+#define COCOAPODS_VERSION_PATCH_Protobuf_objc_arc 0
 

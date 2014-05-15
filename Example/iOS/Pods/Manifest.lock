@@ -1,7 +1,7 @@
 PODS:
-  - Protobuf-objc (0.0.1):
+  - Protobuf-objc (1.2):
     - Protobuf-objc/arc
-  - Protobuf-objc/arc (0.0.1)
+  - Protobuf-objc/arc (1.2)
 
 DEPENDENCIES:
   - Protobuf-objc (from `../../`)
@@ -11,6 +11,6 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  Protobuf-objc: 440faca3ed1ee3fd485952f3b62f1f2046532c3e
+  Protobuf-objc: 8e66b9f94a7bbe7fa2259a1a463693b82fffa474
 
 COCOAPODS: 0.32.1

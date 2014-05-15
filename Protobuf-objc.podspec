@@ -7,14 +7,22 @@ Pod::Spec.new do |s|
                       Protocol Buffers are a way of encoding structured data
                       in an efficient yet extensible format.
                       This project is based on an implementation of Protocol Buffers from Google.
-                      Supported arm64 and early architectures.
+                      Supported arm64 and early architectures. This realisation contains only ARC version of library.
                       DESC
   s.homepage     = "http://protobuf.axo.io"
   s.license      = "Apache 2.0"
-  s.author       = { "Alexey KHokhlov" => "alexeyxo@gmail.com" }
-  s.author       = "Sergey Shatunov"
 
-  s.authors      = "Jon Parise","Kenton Varda", "Sanjay Ghemawat", "Jeff Dean"
+  s.author       = { "Alexey Khokhlov" => "alexeyxo@gmail.com" }
+
+  s.authors      = {  "Alexey Khokhlov" => "alexeyxo@gmail.com",
+                      "Sergey Shatunov" => nil,
+                      "David Bonnefoy" => nil,
+                      "Ragy Eleish" => nil,
+                      "Jon Parise" => nil,
+                      "Kenton Varda" => nil,
+                      "Sanjay Ghemawat" => nil,
+                      "Jeff Dean" => nil
+                    }
 
   s.source       = {
     :git => "https://github.com/alexeyxo/protobuf-objc.git",
