@@ -52,16 +52,16 @@ Pod::Spec.new do |s|
   }
   s.header_dir = "ProtocolBuffers"
   s.source_files = 'src/runtime/Classes/*.{h,m}'
+  s.xcconfig = { 'WARNING_CFLAGS' => '$(inherited) -Wno-missing-prototypes -Wno-format' }
   s.preserve_paths = 'README.md'
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
+  s.requires_arc = false
 
-  s.requires_arc = true
-  s.subspec 'non-arc' do |sp|
-    sp.source_files = 'src/runtime/Classes/*.{h,m}'
-    s.xcconfig = { 'WARNING_CFLAGS' => '$(inherited) -Wno-missing-prototypes -Wno-format' }
-    s.requires_arc = false
+  s.subspec 'arc' do |sp|
+    sp.source_files = 'src/runtime/Classes/Descriptor/*.{h,m}'
+    sp.requires_arc = true
   end
 
 end

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F8099EB1923DAF1006DA9D8 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F8099E91923DAF1006DA9D8 /* Descriptor.pb.h */; };
-		3F8099EC1923DAF1006DA9D8 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */; };
+		3F8099EC1923DAF1006DA9D8 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3F887B4919102C6000AFDD46 /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
 		8B0444601469EFD500BB156C /* UnittestEmpty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444571469EFD500BB156C /* UnittestEmpty.pb.m */; };
 		8B0444611469EFD500BB156C /* UnittestEnormousDescriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444591469EFD500BB156C /* UnittestEnormousDescriptor.pb.m */; };
