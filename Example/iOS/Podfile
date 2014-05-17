@@ -1,1 +1,1 @@
-pod 'Protobuf-objc', :path => "../../"
+pod 'Protobuf-ObjC', :path => "../../"
