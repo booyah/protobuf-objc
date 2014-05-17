@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "Protobuf-ObjC"
+  s.name         = "ProtocolBuffers"
   s.version      = "1.2"
   s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
