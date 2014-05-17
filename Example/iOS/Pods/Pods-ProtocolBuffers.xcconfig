@@ -1,0 +1,1 @@
+PODS_PROTOCOLBUFFERS_WARNING_CFLAGS = $(inherited) -Wno-missing-prototypes -Wno-format $(inherited) -Wno-missing-prototypes -Wno-format

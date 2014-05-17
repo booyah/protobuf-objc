@@ -6,15 +6,15 @@
 // project.
 
 
-// Protobuf-objc
-#define COCOAPODS_POD_AVAILABLE_Protobuf_objc
-#define COCOAPODS_VERSION_MAJOR_Protobuf_objc 1
-#define COCOAPODS_VERSION_MINOR_Protobuf_objc 2
-#define COCOAPODS_VERSION_PATCH_Protobuf_objc 0
+// ProtocolBuffers
+#define COCOAPODS_POD_AVAILABLE_ProtocolBuffers
+#define COCOAPODS_VERSION_MAJOR_ProtocolBuffers 1
+#define COCOAPODS_VERSION_MINOR_ProtocolBuffers 2
+#define COCOAPODS_VERSION_PATCH_ProtocolBuffers 0
 
-// Protobuf-objc/arc
-#define COCOAPODS_POD_AVAILABLE_Protobuf_objc_arc
-#define COCOAPODS_VERSION_MAJOR_Protobuf_objc_arc 1
-#define COCOAPODS_VERSION_MINOR_Protobuf_objc_arc 2
-#define COCOAPODS_VERSION_PATCH_Protobuf_objc_arc 0
+// ProtocolBuffers/arc
+#define COCOAPODS_POD_AVAILABLE_ProtocolBuffers_arc
+#define COCOAPODS_VERSION_MAJOR_ProtocolBuffers_arc 1
+#define COCOAPODS_VERSION_MINOR_ProtocolBuffers_arc 2
+#define COCOAPODS_VERSION_PATCH_ProtocolBuffers_arc 0
 

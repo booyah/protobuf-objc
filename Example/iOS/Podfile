@@ -1,1 +1,2 @@
-pod 'Protobuf-ObjC', :path => "../../"
+platform :ios
+pod 'ProtocolBuffers', :path => "../../"
