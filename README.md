@@ -28,7 +28,7 @@ Installing from CocoaPods
 
 7.`cd <your project directory>`
 
-8.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile"`
+8.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile`
 
 9.`pod install`
 
