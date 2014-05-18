@@ -1,2 +1,2 @@
-platform :ios
-pod 'ProtocolBuffers', :path => "../../"
+platform :ios , 6.0 
+pod 'ProtocolBuffers', '1.2' 

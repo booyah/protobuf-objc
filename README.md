@@ -24,6 +24,16 @@ This fork contains only ARC version of library.
 
 6.`./build.sh`
 
+Installing from CocoaPods
+
+7.`cd <your project directory>`
+
+8.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile"`
+
+9.`pod install`
+
+
+
 ## Compile ".proto" files.
 `protoc --plugin=/usr/local/bin/protoc-gen-objc person.proto --objc_out="./"`
 
@@ -43,6 +53,9 @@ if you need to recompile ruby proto models please install ruby_protobuf gem and 
 Project contains protobuf example and small json comparison.
 
 ### Credits
+
+Maintainer
+- Alexey Khokhlov
 
 Booyah Inc.
 - Jon Parise
