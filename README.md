@@ -28,7 +28,7 @@ This fork contains only ARC version of library.
 
 8.Add `/src/runtime/ProtocolBuffers.xcodeproj` in your project.
 
-Installing from CocoaPods
+##Installing from CocoaPods
 
 ...
 
