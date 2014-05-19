@@ -66,4 +66,7 @@ Pod::Spec.new do |s|
     s.requires_arc = false
   end
 
+  s.prepare_command = <<-CMD
+   /bin/sh build.sh
+   CMD
 end

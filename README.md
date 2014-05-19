@@ -20,17 +20,23 @@ This fork contains only ARC version of library.
 
 4.`brew instal protobuf`
 
-5.`git clone git@github.com:alexeyxo/protobuf-objc.git`
+5. `ln -s /usr/local/Cellar/protobuf/2.5.0/bin/protoc /usr/local/bin` (optional)
 
-6.`./build.sh`
+6.`git clone git@github.com:alexeyxo/protobuf-objc.git`
+
+7.`./build.sh`
+
+8.Add `/src/runtime/ProtocolBuffers.xcodeproj` in your project.
 
 Installing from CocoaPods
 
-7.`cd <your project directory>`
+...
 
-8.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile`
+6.`cd <your .xcodeproj directory>`
 
-9.`pod install`
+7.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile`
+
+8.`pod install`
 
 
 
