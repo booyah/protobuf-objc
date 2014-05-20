@@ -32,11 +32,11 @@ This fork contains only ARC version of library.
 
 ...
 
-6.`cd <your .xcodeproj directory>`
+8.`cd <your .xcodeproj directory>`
 
-7.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile`
+9.`echo -e "platform :ios , 6.0 \npod 'ProtocolBuffers', '1.2' " > Podfile`
 
-8.`pod install`
+10.`pod install`
 
 
 
