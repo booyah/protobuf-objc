@@ -720,7 +720,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- (NSUInteger) hash {\n");
     printer->Indent();
 
-    printer->Print("NSUInteger hashCode = 7;\n");
+    printer->Print("__block NSUInteger hashCode = 7;\n");
 
     // Merge the fields and the extension ranges, both sorted by field number.
     for (int i = 0, j = 0;

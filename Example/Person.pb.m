@@ -119,9 +119,9 @@ static Person* defaultPersonInstance = nil;
   return [Person builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (NSNumber* value in self.myfieldArray) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"myfield", @((unsigned long)value)];
-  }
+  [self.myfieldArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"myfield", obj];
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -137,10 +137,10 @@ static Person* defaultPersonInstance = nil;
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
-  NSUInteger hashCode = 7;
-  for (NSNumber* value in self.myfieldArray) {
-    hashCode = hashCode * 31 + [value longValue];
-  }
+  __block NSUInteger hashCode = 7;
+  [self.myfieldArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [obj longValue];
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -245,6 +245,232 @@ static Person* defaultPersonInstance = nil;
 }
 - (PersonBuilder *)clearMyfield {
   result.myfieldArray = nil;
+  return self;
+}
+@end
+
+@interface ExampleObject ()
+@property (strong) PBAppendableArray * exampleFieldArray;
+@end
+
+@implementation ExampleObject
+
+@synthesize exampleFieldArray;
+@dynamic exampleField;
+- (void) dealloc {
+  self.exampleFieldArray = nil;
+}
+- (id) init {
+  if ((self = [super init])) {
+  }
+  return self;
+}
+static ExampleObject* defaultExampleObjectInstance = nil;
++ (void) initialize {
+  if (self == [ExampleObject class]) {
+    defaultExampleObjectInstance = [[ExampleObject alloc] init];
+  }
+}
++ (ExampleObject*) defaultInstance {
+  return defaultExampleObjectInstance;
+}
+- (ExampleObject*) defaultInstance {
+  return defaultExampleObjectInstance;
+}
+- (PBArray *)exampleField {
+  return exampleFieldArray;
+}
+- (Float64)exampleFieldAtIndex:(NSUInteger)index {
+  return [exampleFieldArray doubleAtIndex:index];
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  const NSUInteger exampleFieldArrayCount = self.exampleFieldArray.count;
+  if (exampleFieldArrayCount > 0) {
+    const Float64 *values = (const Float64 *)self.exampleFieldArray.data;
+    for (NSUInteger i = 0; i < exampleFieldArrayCount; ++i) {
+      [output writeDouble:7 value:values[i]];
+    }
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (long) serializedSize {
+  long size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  {
+    NSInteger dataSize = 0;
+    const NSUInteger count = self.exampleFieldArray.count;
+    dataSize = 8 * count;
+    size_ += dataSize;
+    size_ += 1 * count;
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (ExampleObject*) parseFromData:(NSData*) data {
+  return (ExampleObject*)[[[ExampleObject builder] mergeFromData:data] build];
+}
++ (ExampleObject*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (ExampleObject*)[[[ExampleObject builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (ExampleObject*) parseFromInputStream:(NSInputStream*) input {
+  return (ExampleObject*)[[[ExampleObject builder] mergeFromInputStream:input] build];
+}
++ (ExampleObject*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (ExampleObject*)[[[ExampleObject builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (ExampleObject*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (ExampleObject*)[[[ExampleObject builder] mergeFromCodedInputStream:input] build];
+}
++ (ExampleObject*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (ExampleObject*)[[[ExampleObject builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (ExampleObjectBuilder*) builder {
+  return [[ExampleObjectBuilder alloc] init];
+}
++ (ExampleObjectBuilder*) builderWithPrototype:(ExampleObject*) prototype {
+  return [[ExampleObject builder] mergeFrom:prototype];
+}
+- (ExampleObjectBuilder*) builder {
+  return [ExampleObject builder];
+}
+- (ExampleObjectBuilder*) toBuilder {
+  return [ExampleObject builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.exampleFieldArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"exampleField", obj];
+  }];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[ExampleObject class]]) {
+    return NO;
+  }
+  ExampleObject *otherMessage = other;
+  return
+      [self.exampleFieldArray isEqualToArray:otherMessage.exampleFieldArray] &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  [self.exampleFieldArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [obj longValue];
+  }];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface ExampleObjectBuilder()
+@property (strong) ExampleObject* result;
+@end
+
+@implementation ExampleObjectBuilder
+@synthesize result;
+- (void) dealloc {
+  self.result = nil;
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[ExampleObject alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (ExampleObjectBuilder*) clear {
+  self.result = [[ExampleObject alloc] init];
+  return self;
+}
+- (ExampleObjectBuilder*) clone {
+  return [ExampleObject builderWithPrototype:result];
+}
+- (ExampleObject*) defaultInstance {
+  return [ExampleObject defaultInstance];
+}
+- (ExampleObject*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (ExampleObject*) buildPartial {
+  ExampleObject* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (ExampleObjectBuilder*) mergeFrom:(ExampleObject*) other {
+  if (other == [ExampleObject defaultInstance]) {
+    return self;
+  }
+  if (other.exampleFieldArray.count > 0) {
+    if (result.exampleFieldArray == nil) {
+      result.exampleFieldArray = [other.exampleFieldArray copy];
+    } else {
+      [result.exampleFieldArray appendArray:other.exampleFieldArray];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (ExampleObjectBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (ExampleObjectBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    NSInteger tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 57: {
+        [self addExampleField:[input readDouble]];
+        break;
+      }
+    }
+  }
+}
+- (PBAppendableArray *)exampleField {
+  return result.exampleFieldArray;
+}
+- (Float64)exampleFieldAtIndex:(NSUInteger)index {
+  return [result exampleFieldAtIndex:index];
+}
+- (ExampleObjectBuilder *)addExampleField:(Float64)value {
+  if (result.exampleFieldArray == nil) {
+    result.exampleFieldArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeDouble];
+  }
+  [result.exampleFieldArray addDouble:value];
+  return self;
+}
+- (ExampleObjectBuilder *)setExampleFieldArray:(NSArray *)array {
+  result.exampleFieldArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeDouble];
+  return self;
+}
+- (ExampleObjectBuilder *)setExampleFieldValues:(const Float64 *)values count:(NSUInteger)count {
+  result.exampleFieldArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeDouble];
+  return self;
+}
+- (ExampleObjectBuilder *)clearExampleField {
+  result.exampleFieldArray = nil;
   return self;
 }
 @end

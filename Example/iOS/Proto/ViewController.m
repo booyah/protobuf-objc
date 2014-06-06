@@ -64,6 +64,11 @@
         NSLog(@"OK");
         
     }
+    
+    ExampleObjectBuilder *object1 = [ExampleObject builder];
+    [object1 setExampleFieldArray:@[@2.2,@2.3]];
+    ExampleObject *object =[object1 build];
+    NSLog(@"%@",object);
 //    
 }
 

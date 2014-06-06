@@ -255,7 +255,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void PrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
     if (IsReferenceType(GetObjectiveCType(descriptor_))) {
         printer->Print(variables_,"@property (strong)$storage_attribute$ $storage_type$ $name$;\n");
-      
+
     } else {
       printer->Print(variables_,
         "@property $storage_type$ $name$;\n");
@@ -447,13 +447,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedPrimitiveFieldGenerator::GeneratePropertyHeader(io::Printer* printer) const {
     printer->Print(variables_, "@property (readonly, strong) PBArray * $name$;\n");
-    
+
   }
 
 
   void RepeatedPrimitiveFieldGenerator::GenerateExtensionSource(io::Printer* printer) const {
       printer->Print(variables_, "@property (strong) PBAppendableArray * $list_name$;\n");
-    
+
   }
 
 
@@ -664,20 +664,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
 
   void RepeatedPrimitiveFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
-    if (ReturnsPrimitiveType(descriptor_)) {
-    
+
         printer->Print(variables_,
-        "for (NSNumber* value in self.$list_name$) {\n"
-        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(($type$)value)];\n"
-        "}\n");
-    
-    } else {
-        
-        //TODO NEED TEST PRIMITIVES
-        printer->Print(variables_,"for ($storage_type$ element in self.$list_name$) {\n");
-            printer->Print(variables_,"  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", element];\n");
-        printer->Print(variables_,"}\n");
-    }
+        "[self.$list_name$ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {\n"
+        "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", obj];\n"
+        "}];\n");
   }
 
 
@@ -690,14 +681,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     if (ReturnsPrimitiveType(descriptor_)) {
       printer->Print(variables_,
-        "for (NSNumber* value in self.$list_name$) {\n"
-        "  hashCode = hashCode * 31 + [value longValue];\n"
-        "}\n");
+      "[self.$list_name$ enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {\n"
+      "  hashCode = hashCode * 31 + [obj longValue];\n"
+      "}];\n");
+
     } else {
       printer->Print(variables_,
-        "for ($storage_type$ element in self.$list_name$) {\n"
-        "  hashCode = hashCode * 31 + [element hash];\n"
-        "}\n");
+      "[self.$list_name$ enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {\n"
+      "  hashCode = hashCode * 31 + [element hash];\n"
+      "}];\n");
     }
   }
 }  // namespace objectivec

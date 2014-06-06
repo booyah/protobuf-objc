@@ -4,6 +4,8 @@
 
 // @@protoc_insertion_point(imports)
 
+@class ExampleObject;
+@class ExampleObjectBuilder;
 @class Person;
 @class PersonBuilder;
 #ifndef __has_feature
@@ -73,6 +75,56 @@
 - (PersonBuilder *)setMyfieldArray:(NSArray *)array;
 - (PersonBuilder *)setMyfieldValues:(const unsigned long *)values count:(NSUInteger)count;
 - (PersonBuilder *)clearMyfield;
+@end
+
+@interface ExampleObject : PBGeneratedMessage {
+@private
+  PBAppendableArray * exampleFieldArray;
+}
+@property (readonly, strong) PBArray * exampleField;
+- (Float64)exampleFieldAtIndex:(NSUInteger)index;
+
++ (ExampleObject*) defaultInstance;
+- (ExampleObject*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (ExampleObjectBuilder*) builder;
++ (ExampleObjectBuilder*) builder;
++ (ExampleObjectBuilder*) builderWithPrototype:(ExampleObject*) prototype;
+- (ExampleObjectBuilder*) toBuilder;
+
++ (ExampleObject*) parseFromData:(NSData*) data;
++ (ExampleObject*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (ExampleObject*) parseFromInputStream:(NSInputStream*) input;
++ (ExampleObject*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (ExampleObject*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (ExampleObject*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface ExampleObjectBuilder : PBGeneratedMessage_Builder {
+@private
+  ExampleObject* result;
+}
+
+- (ExampleObject*) defaultInstance;
+
+- (ExampleObjectBuilder*) clear;
+- (ExampleObjectBuilder*) clone;
+
+- (ExampleObject*) build;
+- (ExampleObject*) buildPartial;
+
+- (ExampleObjectBuilder*) mergeFrom:(ExampleObject*) other;
+- (ExampleObjectBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (ExampleObjectBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (PBAppendableArray *)exampleField;
+- (Float64)exampleFieldAtIndex:(NSUInteger)index;
+- (ExampleObjectBuilder *)addExampleField:(Float64)value;
+- (ExampleObjectBuilder *)setExampleFieldArray:(NSArray *)array;
+- (ExampleObjectBuilder *)setExampleFieldValues:(const Float64 *)values count:(NSUInteger)count;
+- (ExampleObjectBuilder *)clearExampleField;
 @end
 
 
