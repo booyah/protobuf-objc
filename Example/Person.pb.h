@@ -6,8 +6,6 @@
 
 @class Person;
 @class PersonBuilder;
-@class PersonPhoneNumber;
-@class PersonPhoneNumberBuilder;
 #ifndef __has_feature
   #define __has_feature(x) 0 // Compatibility with non-clang compilers.
 #endif // __has_feature
@@ -20,14 +18,6 @@
   #endif
 #endif
 
-typedef enum {
-  PersonPhoneTypeMobile = 0,
-  PersonPhoneTypeHome = 1,
-  PersonPhoneTypeWork = 2,
-} PersonPhoneType;
-
-BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
-
 
 @interface PersonRoot : NSObject {
 }
@@ -37,24 +27,10 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 
 @interface Person : PBGeneratedMessage {
 @private
-  BOOL hasName_:1;
-  BOOL hasEmail_:1;
-  NSString* name;
-  NSString* email;
-  PBAppendableArray * personIdArray;
-  PBAppendableArray * phonesArray;
-  PBAppendableArray * phoneTypesArray;
+  PBAppendableArray * myfieldArray;
 }
-- (BOOL) hasName;
-- (BOOL) hasEmail;
-@property (readonly, strong) NSString* name;
-@property (readonly, strong) PBArray * personId;
-@property (readonly, strong) NSString* email;
-@property (readonly, strong) PBArray * phones;
-@property (readonly, strong) PBArray * phoneTypes;
-- (long long)personIdAtIndex:(NSUInteger)index;
-- (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index;
-- (PersonPhoneType)phoneTypesAtIndex:(NSUInteger)index;
+@property (readonly, strong) PBArray * myfield;
+- (unsigned long)myfieldAtIndex:(NSUInteger)index;
 
 + (Person*) defaultInstance;
 - (Person*) defaultInstance;
@@ -74,64 +50,6 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 + (Person*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface PersonPhoneNumber : PBGeneratedMessage {
-@private
-  BOOL hasNumber_:1;
-  BOOL hasType_:1;
-  NSString* number;
-  PersonPhoneType type;
-}
-- (BOOL) hasNumber;
-- (BOOL) hasType;
-@property (readonly, strong) NSString* number;
-@property (readonly) PersonPhoneType type;
-
-+ (PersonPhoneNumber*) defaultInstance;
-- (PersonPhoneNumber*) defaultInstance;
-
-- (BOOL) isInitialized;
-- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
-- (PersonPhoneNumberBuilder*) builder;
-+ (PersonPhoneNumberBuilder*) builder;
-+ (PersonPhoneNumberBuilder*) builderWithPrototype:(PersonPhoneNumber*) prototype;
-- (PersonPhoneNumberBuilder*) toBuilder;
-
-+ (PersonPhoneNumber*) parseFromData:(NSData*) data;
-+ (PersonPhoneNumber*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-+ (PersonPhoneNumber*) parseFromInputStream:(NSInputStream*) input;
-+ (PersonPhoneNumber*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-+ (PersonPhoneNumber*) parseFromCodedInputStream:(PBCodedInputStream*) input;
-+ (PersonPhoneNumber*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-@end
-
-@interface PersonPhoneNumberBuilder : PBGeneratedMessage_Builder {
-@private
-  PersonPhoneNumber* result;
-}
-
-- (PersonPhoneNumber*) defaultInstance;
-
-- (PersonPhoneNumberBuilder*) clear;
-- (PersonPhoneNumberBuilder*) clone;
-
-- (PersonPhoneNumber*) build;
-- (PersonPhoneNumber*) buildPartial;
-
-- (PersonPhoneNumberBuilder*) mergeFrom:(PersonPhoneNumber*) other;
-- (PersonPhoneNumberBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
-- (PersonPhoneNumberBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
-
-- (BOOL) hasNumber;
-- (NSString*) number;
-- (PersonPhoneNumberBuilder*) setNumber:(NSString*) value;
-- (PersonPhoneNumberBuilder*) clearNumber;
-
-- (BOOL) hasType;
-- (PersonPhoneType) type;
-- (PersonPhoneNumberBuilder*) setType:(PersonPhoneType) value;
-- (PersonPhoneNumberBuilder*) clearType;
-@end
-
 @interface PersonBuilder : PBGeneratedMessage_Builder {
 @private
   Person* result;
@@ -149,36 +67,12 @@ BOOL PersonPhoneTypeIsValidValue(PersonPhoneType value);
 - (PersonBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (PersonBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (BOOL) hasName;
-- (NSString*) name;
-- (PersonBuilder*) setName:(NSString*) value;
-- (PersonBuilder*) clearName;
-
-- (PBAppendableArray *)personId;
-- (long long)personIdAtIndex:(NSUInteger)index;
-- (PersonBuilder *)addPersonId:(long long)value;
-- (PersonBuilder *)setPersonIdArray:(NSArray *)array;
-- (PersonBuilder *)setPersonIdValues:(const long long *)values count:(NSUInteger)count;
-- (PersonBuilder *)clearPersonId;
-
-- (BOOL) hasEmail;
-- (NSString*) email;
-- (PersonBuilder*) setEmail:(NSString*) value;
-- (PersonBuilder*) clearEmail;
-
-- (PBAppendableArray *)phones;
-- (PersonPhoneNumber*)phonesAtIndex:(NSUInteger)index;
-- (PersonBuilder *)addPhones:(PersonPhoneNumber*)value;
-- (PersonBuilder *)setPhonesArray:(NSArray *)array;
-- (PersonBuilder *)setPhonesValues:(const PersonPhoneNumber* __strong *)values count:(NSUInteger)count;
-- (PersonBuilder *)clearPhones;
-
-- (PBAppendableArray *)phoneTypes;
-- (PersonPhoneType)phoneTypesAtIndex:(NSUInteger)index;
-- (PersonBuilder *)addPhoneTypes:(PersonPhoneType)value;
-- (PersonBuilder *)setPhoneTypesArray:(NSArray *)array;
-- (PersonBuilder *)setPhoneTypesValues:(const PersonPhoneType *)values count:(NSUInteger)count;
-- (PersonBuilder *)clearPhoneTypes;
+- (PBAppendableArray *)myfield;
+- (unsigned long)myfieldAtIndex:(NSUInteger)index;
+- (PersonBuilder *)addMyfield:(unsigned long)value;
+- (PersonBuilder *)setMyfieldArray:(NSArray *)array;
+- (PersonBuilder *)setMyfieldValues:(const unsigned long *)values count:(NSUInteger)count;
+- (PersonBuilder *)clearMyfield;
 @end
 
 
