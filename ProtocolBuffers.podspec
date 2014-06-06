@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ProtocolBuffers"
-  s.version      = "1.2"
+  s.version      = "1.2.1"
   s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
                       An implementation of Protocol Buffers 2.5 in Objective C.
@@ -40,7 +40,6 @@ Pod::Spec.new do |s|
   s.author       = { "Alexey Khokhlov" => "alexeyxo@gmail.com" }
 
   s.authors      = {  "Alexey Khokhlov" => "alexeyxo@gmail.com",
-                      "Sergey Shatunov" => "sshatunov@yandex.ru",
                       "David Bonnefoy" => nil,
                       "Ragy Eleish" => nil,
                       "Jon Parise" => nil,
@@ -50,7 +49,7 @@ Pod::Spec.new do |s|
                     }
 
   s.source       = {
-    :git => "https://github.com/alexeyxo/protobuf-objc.git", :tag => "1.2"
+    :git => "https://github.com/alexeyxo/protobuf-objc.git", :tag => "1.2.1"
   }
   s.header_dir = "ProtocolBuffers"
   s.source_files = 'src/runtime/Classes/*.{h,m}'
@@ -65,8 +64,4 @@ Pod::Spec.new do |s|
     s.xcconfig = { 'WARNING_CFLAGS' => '$(inherited) -Wno-missing-prototypes -Wno-format' }
     s.requires_arc = false
   end
-
-  s.prepare_command = <<-CMD
-   /bin/sh build.sh
-   CMD
 end
