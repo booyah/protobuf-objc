@@ -717,6 +717,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SYMROOT = Build/Products;
 				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
@@ -734,6 +735,7 @@
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SYMROOT = Build/Products;
 				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
