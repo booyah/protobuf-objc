@@ -69,10 +69,10 @@
     PBField* field = [unknownFields.fields objectForKey:key];
     if (field.varintArray.count == 0) {
       // Original field is not a varint, so use a varint.
-      [bizarroFields addField:varintField forNumber:key.intValue];
+      [bizarroFields addField:varintField forNumber:key.integerValue];
     } else {
       // Original field *is* a varint, so use something else.
-      [bizarroFields addField:fixed32Field forNumber:key.intValue];
+      [bizarroFields addField:fixed32Field forNumber:key.integerValue];
     }
   }
 
@@ -154,6 +154,7 @@
   TestAllTypes* destination = [TestAllTypes parseFromData:data];
 
   [TestUtilities assertAllFieldsSet:destination];
+  
   XCTAssertTrue(1 == destination.unknownFields.fields.count, @"");
 
   PBField* field = [destination.unknownFields getField:123456];

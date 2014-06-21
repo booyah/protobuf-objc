@@ -58,16 +58,16 @@
  * expected by {@code assertRepeatedExtensionsModified()}.
  */
 + (void) modifyRepeatedExtensions:(TestAllExtensionsBuilder*) message {
-  [message setExtension:[UnittestRoot repeatedInt32Extension] index:1 value:[NSNumber numberWithInt:501]];
-  [message setExtension:[UnittestRoot repeatedInt64Extension] index:1 value:[NSNumber numberWithInt:502]];
-  [message setExtension:[UnittestRoot repeatedUint32Extension] index:1 value:[NSNumber numberWithInt:503]];
-  [message setExtension:[UnittestRoot repeatedUint64Extension] index:1 value:[NSNumber numberWithInt:504]];
-  [message setExtension:[UnittestRoot repeatedSint32Extension] index:1 value:[NSNumber numberWithInt:505]];
-  [message setExtension:[UnittestRoot repeatedSint64Extension] index:1 value:[NSNumber numberWithInt:506]];
-  [message setExtension:[UnittestRoot repeatedFixed32Extension] index:1 value:[NSNumber numberWithInt:507]];
-  [message setExtension:[UnittestRoot repeatedFixed64Extension] index:1 value:[NSNumber numberWithInt:508]];
-  [message setExtension:[UnittestRoot repeatedSfixed32Extension] index:1 value:[NSNumber numberWithInt:509]];
-  [message setExtension:[UnittestRoot repeatedSfixed64Extension] index:1 value:[NSNumber numberWithInt:510]];
+  [message setExtension:[UnittestRoot repeatedInt32Extension] index:1 value:[NSNumber numberWithInteger:501]];
+  [message setExtension:[UnittestRoot repeatedInt64Extension] index:1 value:[NSNumber numberWithInteger:502]];
+  [message setExtension:[UnittestRoot repeatedUint32Extension] index:1 value:[NSNumber numberWithInteger:503]];
+  [message setExtension:[UnittestRoot repeatedUint64Extension] index:1 value:[NSNumber numberWithInteger:504]];
+  [message setExtension:[UnittestRoot repeatedSint32Extension] index:1 value:[NSNumber numberWithInteger:505]];
+  [message setExtension:[UnittestRoot repeatedSint64Extension] index:1 value:[NSNumber numberWithInteger:506]];
+  [message setExtension:[UnittestRoot repeatedFixed32Extension] index:1 value:[NSNumber numberWithInteger:507]];
+  [message setExtension:[UnittestRoot repeatedFixed64Extension] index:1 value:[NSNumber numberWithInteger:508]];
+  [message setExtension:[UnittestRoot repeatedSfixed32Extension] index:1 value:[NSNumber numberWithInteger:509]];
+  [message setExtension:[UnittestRoot repeatedSfixed64Extension] index:1 value:[NSNumber numberWithInteger:510]];
   [message setExtension:[UnittestRoot repeatedFloatExtension] index:1 value:[NSNumber numberWithFloat:511.0]];
   [message setExtension:[UnittestRoot repeatedDoubleExtension] index:1 value:[NSNumber numberWithDouble:512.0]];
   [message setExtension:[UnittestRoot repeatedBoolExtension] index:1 value:[NSNumber numberWithBool:YES]];
@@ -84,11 +84,11 @@
    [[[ImportMessage builder] setD:520] build]];
 
   [message setExtension:[UnittestRoot repeatedNestedEnumExtension] index:1 value:
-   [NSNumber numberWithInt:TestAllTypesNestedEnumFoo]];
+   [NSNumber numberWithInteger:TestAllTypesNestedEnumFoo]];
   [message setExtension:[UnittestRoot repeatedForeignEnumExtension] index:1 value:
-   [NSNumber numberWithInt:ForeignEnumForeignFoo]];
+   [NSNumber numberWithInteger:ForeignEnumForeignFoo]];
   [message setExtension:[UnittestRoot repeatedImportEnumExtension] index:1 value:
-   [NSNumber numberWithInt:ImportEnumImportFoo]];
+   [NSNumber numberWithInteger:ImportEnumImportFoo]];
 
   [message setExtension:[UnittestRoot repeatedStringPieceExtension] index:1 value:@"524"];
   [message setExtension:[UnittestRoot repeatedCordExtension] index:1 value:@"525"];
@@ -134,16 +134,16 @@
   XCTAssertTrue([message hasExtension:[UnittestRoot optionalStringPieceExtension]], @"");
   XCTAssertTrue([message hasExtension:[UnittestRoot optionalCordExtension]], @"");
 
-  XCTAssertTrue(101 == [[message getExtension:[UnittestRoot optionalInt32Extension]] intValue], @"");
-  XCTAssertTrue(102L == [[message getExtension:[UnittestRoot optionalInt64Extension]] intValue], @"");
-  XCTAssertTrue(103 == [[message getExtension:[UnittestRoot optionalUint32Extension]] intValue], @"");
-  XCTAssertTrue(104L == [[message getExtension:[UnittestRoot optionalUint64Extension]] intValue], @"");
-  XCTAssertTrue(105 == [[message getExtension:[UnittestRoot optionalSint32Extension]] intValue], @"");
-  XCTAssertTrue(106L == [[message getExtension:[UnittestRoot optionalSint64Extension]] intValue], @"");
-  XCTAssertTrue(107 == [[message getExtension:[UnittestRoot optionalFixed32Extension]] intValue], @"");
-  XCTAssertTrue(108L == [[message getExtension:[UnittestRoot optionalFixed64Extension]] intValue], @"");
-  XCTAssertTrue(109 == [[message getExtension:[UnittestRoot optionalSfixed32Extension]] intValue], @"");
-  XCTAssertTrue(110L == [[message getExtension:[UnittestRoot optionalSfixed64Extension]] intValue], @"");
+  XCTAssertTrue(101 == [[message getExtension:[UnittestRoot optionalInt32Extension]] integerValue], @"");
+  XCTAssertTrue(102L == [[message getExtension:[UnittestRoot optionalInt64Extension]] integerValue], @"");
+  XCTAssertTrue(103 == [[message getExtension:[UnittestRoot optionalUint32Extension]] integerValue], @"");
+  XCTAssertTrue(104L == [[message getExtension:[UnittestRoot optionalUint64Extension]] integerValue], @"");
+  XCTAssertTrue(105 == [[message getExtension:[UnittestRoot optionalSint32Extension]] integerValue], @"");
+  XCTAssertTrue(106L == [[message getExtension:[UnittestRoot optionalSint64Extension]] integerValue], @"");
+  XCTAssertTrue(107 == [[message getExtension:[UnittestRoot optionalFixed32Extension]] integerValue], @"");
+  XCTAssertTrue(108L == [[message getExtension:[UnittestRoot optionalFixed64Extension]] integerValue], @"");
+  XCTAssertTrue(109 == [[message getExtension:[UnittestRoot optionalSfixed32Extension]] integerValue], @"");
+  XCTAssertTrue(110L == [[message getExtension:[UnittestRoot optionalSfixed64Extension]] integerValue], @"");
   XCTAssertTrue(111.0 == [[message getExtension:[UnittestRoot optionalFloatExtension]] floatValue], @"");
   XCTAssertTrue(112.0 == [[message getExtension:[UnittestRoot optionalDoubleExtension]] doubleValue], @"");
   XCTAssertTrue(YES == [[message getExtension:[UnittestRoot optionalBoolExtension]] boolValue], @"");
@@ -155,9 +155,9 @@
   XCTAssertTrue(119 == [[message getExtension:[UnittestRoot optionalForeignMessageExtension]] c], @"");
   XCTAssertTrue(120 == [[message getExtension:[UnittestRoot optionalImportMessageExtension]] d], @"");
 
-  XCTAssertTrue(TestAllTypesNestedEnumBaz == [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] intValue], @"");
-  XCTAssertTrue(ForeignEnumForeignBaz == [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] intValue], @"");
-  XCTAssertTrue(ImportEnumImportBaz == [[message getExtension:[UnittestRoot optionalImportEnumExtension]] intValue], @"");
+  XCTAssertTrue(TestAllTypesNestedEnumBaz == [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] integerValue], @"");
+  XCTAssertTrue(ForeignEnumForeignBaz == [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] integerValue], @"");
+  XCTAssertTrue(ImportEnumImportBaz == [[message getExtension:[UnittestRoot optionalImportEnumExtension]] integerValue], @"");
 
   XCTAssertEqualObjects(@"124", [message getExtension:[UnittestRoot optionalStringPieceExtension]], @"");
   XCTAssertEqualObjects(@"125", [message getExtension:[UnittestRoot optionalCordExtension]], @"");
@@ -191,16 +191,16 @@
   XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedStringPieceExtension]] count], @"");
   XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedCordExtension]] count], @"");
 
-  XCTAssertTrue(201 == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:0] intValue], @"");;
-  XCTAssertTrue(202L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:0] intValue], @"");;
-  XCTAssertTrue(203 == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:0] intValue], @"");;
-  XCTAssertTrue(204L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(205 == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(206L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(207 == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(208L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(209 == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(210L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:0] intValue], @"");
+  XCTAssertTrue(201 == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:0] integerValue], @"");;
+  XCTAssertTrue(202L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:0] integerValue], @"");;
+  XCTAssertTrue(203 == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:0] integerValue], @"");;
+  XCTAssertTrue(204L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(205 == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(206L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(207 == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(208L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(209 == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(210L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:0] integerValue], @"");
   XCTAssertTrue(211.0 == [[[message getExtension:[UnittestRoot repeatedFloatExtension]] objectAtIndex:0] floatValue], @"");
   XCTAssertTrue(212.0 == [[[message getExtension:[UnittestRoot repeatedDoubleExtension]] objectAtIndex:0] doubleValue], @"");
   XCTAssertTrue(YES == [[[message getExtension:[UnittestRoot repeatedBoolExtension]] objectAtIndex:0] boolValue], @"");
@@ -212,23 +212,23 @@
   XCTAssertTrue(219 == [[[message getExtension:[UnittestRoot repeatedForeignMessageExtension]] objectAtIndex:0] c], @"");
   XCTAssertTrue(220 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:0] d], @"");
 
-  XCTAssertTrue(TestAllTypesNestedEnumBar == [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(ForeignEnumForeignBar == [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(ImportEnumImportBar == [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:0] intValue], @"");
+  XCTAssertTrue(TestAllTypesNestedEnumBar == [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(ForeignEnumForeignBar == [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(ImportEnumImportBar == [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:0] integerValue], @"");
 
   XCTAssertEqualObjects(@"224", [[message getExtension:[UnittestRoot repeatedStringPieceExtension]] objectAtIndex:0], @"");
   XCTAssertEqualObjects(@"225", [[message getExtension:[UnittestRoot repeatedCordExtension]] objectAtIndex:0], @"");
 
-  XCTAssertTrue(301 == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(302L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(303 == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(304L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(305 == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(306L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(307 == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(308L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(309 == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(310L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:1] intValue], @"");
+  XCTAssertTrue(301 == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(302L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(303 == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(304L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(305 == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(306L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(307 == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(308L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(309 == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(310L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:1] integerValue], @"");
   XCTAssertTrue(311.0 == [[[message getExtension:[UnittestRoot repeatedFloatExtension]] objectAtIndex:1] floatValue], @"");
   XCTAssertTrue(312.0 == [[[message getExtension:[UnittestRoot repeatedDoubleExtension]] objectAtIndex:1] doubleValue], @"");
   XCTAssertTrue(NO == [[[message getExtension:[UnittestRoot repeatedBoolExtension]] objectAtIndex:1] boolValue], @"");
@@ -241,8 +241,8 @@
   XCTAssertTrue(320 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:1] d], @"");
 
   XCTAssertTrue(TestAllTypesNestedEnumBaz == [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:1] integerValue], @"");
-  XCTAssertTrue(ForeignEnumForeignBaz == [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(ImportEnumImportBaz == [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:1] intValue], @"");
+  XCTAssertTrue(ForeignEnumForeignBaz == [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(ImportEnumImportBaz == [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:1] integerValue], @"");
 
   XCTAssertEqualObjects(@"324", [[message getExtension:[UnittestRoot repeatedStringPieceExtension]] objectAtIndex:1], @"");
   XCTAssertEqualObjects(@"325", [[message getExtension:[UnittestRoot repeatedCordExtension]] objectAtIndex:1], @"");
@@ -272,25 +272,25 @@
   XCTAssertTrue([message hasExtension:[UnittestRoot defaultStringPieceExtension]], @"");
   XCTAssertTrue([message hasExtension:[UnittestRoot defaultCordExtension]], @"");
 
-  XCTAssertTrue(401 == [[message getExtension:[UnittestRoot defaultInt32Extension]] intValue], @"");
-  XCTAssertTrue(402L == [[message getExtension:[UnittestRoot defaultInt64Extension]] intValue], @"");
-  XCTAssertTrue(403 == [[message getExtension:[UnittestRoot defaultUint32Extension]] intValue], @"");
-  XCTAssertTrue(404L == [[message getExtension:[UnittestRoot defaultUint64Extension]] intValue], @"");
-  XCTAssertTrue(405 == [[message getExtension:[UnittestRoot defaultSint32Extension]] intValue], @"");
-  XCTAssertTrue(406L == [[message getExtension:[UnittestRoot defaultSint64Extension]] intValue], @"");
-  XCTAssertTrue(407 == [[message getExtension:[UnittestRoot defaultFixed32Extension]] intValue], @"");
-  XCTAssertTrue(408L == [[message getExtension:[UnittestRoot defaultFixed64Extension]] intValue], @"");
-  XCTAssertTrue(409 == [[message getExtension:[UnittestRoot defaultSfixed32Extension]] intValue], @"");
-  XCTAssertTrue(410L == [[message getExtension:[UnittestRoot defaultSfixed64Extension]] intValue], @"");
+  XCTAssertTrue(401 == [[message getExtension:[UnittestRoot defaultInt32Extension]] integerValue], @"");
+  XCTAssertTrue(402L == [[message getExtension:[UnittestRoot defaultInt64Extension]] integerValue], @"");
+  XCTAssertTrue(403 == [[message getExtension:[UnittestRoot defaultUint32Extension]] integerValue], @"");
+  XCTAssertTrue(404L == [[message getExtension:[UnittestRoot defaultUint64Extension]] integerValue], @"");
+  XCTAssertTrue(405 == [[message getExtension:[UnittestRoot defaultSint32Extension]] integerValue], @"");
+  XCTAssertTrue(406L == [[message getExtension:[UnittestRoot defaultSint64Extension]] integerValue], @"");
+  XCTAssertTrue(407 == [[message getExtension:[UnittestRoot defaultFixed32Extension]] integerValue], @"");
+  XCTAssertTrue(408L == [[message getExtension:[UnittestRoot defaultFixed64Extension]] integerValue], @"");
+  XCTAssertTrue(409 == [[message getExtension:[UnittestRoot defaultSfixed32Extension]] integerValue], @"");
+  XCTAssertTrue(410L == [[message getExtension:[UnittestRoot defaultSfixed64Extension]] integerValue], @"");
   XCTAssertTrue(411.0 == [[message getExtension:[UnittestRoot defaultFloatExtension]] floatValue], @"");
   XCTAssertTrue(412.0 == [[message getExtension:[UnittestRoot defaultDoubleExtension]] doubleValue], @"");
   XCTAssertTrue(NO == [[message getExtension:[UnittestRoot defaultBoolExtension]] boolValue], @"");
   XCTAssertEqualObjects(@"415", [message getExtension:[UnittestRoot defaultStringExtension]], @"");
   XCTAssertEqualObjects([TestUtilities getData:@"416"], [message getExtension:[UnittestRoot defaultBytesExtension]], @"");
 
-  XCTAssertTrue(TestAllTypesNestedEnumFoo == [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] intValue], @"");
-  XCTAssertTrue(ForeignEnumForeignFoo == [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] intValue], @"");
-  XCTAssertTrue(ImportEnumImportFoo == [[message getExtension:[UnittestRoot defaultImportEnumExtension]] intValue], @"");
+  XCTAssertTrue(TestAllTypesNestedEnumFoo == [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] integerValue], @"");
+  XCTAssertTrue(ForeignEnumForeignFoo == [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] integerValue], @"");
+  XCTAssertTrue(ImportEnumImportFoo == [[message getExtension:[UnittestRoot defaultImportEnumExtension]] integerValue], @"");
 
   XCTAssertEqualObjects(@"424", [message getExtension:[UnittestRoot defaultStringPieceExtension]], @"");
   XCTAssertEqualObjects(@"425", [message getExtension:[UnittestRoot defaultCordExtension]], @"");
@@ -332,16 +332,16 @@
   XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedStringPieceExtension]] count], @"");
   XCTAssertTrue(2 == [[message getExtension:[UnittestRoot repeatedCordExtension]] count], @"");
 
-  XCTAssertTrue(201  == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(202L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(203  == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(204L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(205  == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(206L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(207  == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(208L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(209  == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(210L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:0] intValue], @"");
+  XCTAssertTrue(201  == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(202L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(203  == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(204L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(205  == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(206L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(207  == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(208L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(209  == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(210L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:0] integerValue], @"");
   XCTAssertTrue(211.0 == [[[message getExtension:[UnittestRoot repeatedFloatExtension]] objectAtIndex:0] floatValue], @"");
   XCTAssertTrue(212.0 == [[[message getExtension:[UnittestRoot repeatedDoubleExtension]] objectAtIndex:0] doubleValue], @"");
   XCTAssertTrue(YES == [[[message getExtension:[UnittestRoot repeatedBoolExtension]] objectAtIndex:0] boolValue], @"");
@@ -354,26 +354,26 @@
   XCTAssertTrue(220 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:0] d], @"");
 
   XCTAssertTrue(TestAllTypesNestedEnumBar ==
-               [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:0] intValue], @"");
+               [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:0] integerValue], @"");
   XCTAssertTrue(ForeignEnumForeignBar ==
-               [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:0] intValue], @"");
+               [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:0] integerValue], @"");
   XCTAssertTrue(ImportEnumImportBar ==
-               [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:0] intValue], @"");
+               [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:0] integerValue], @"");
 
   XCTAssertEqualObjects(@"224", [[message getExtension:[UnittestRoot repeatedStringPieceExtension]] objectAtIndex:0], @"");
   XCTAssertEqualObjects(@"225", [[message getExtension:[UnittestRoot repeatedCordExtension]] objectAtIndex:0], @"");
 
   // Actually verify the second (modified) elements now.
-  XCTAssertTrue(501  == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(502L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(503  == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(504L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(505  == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(506L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(507  == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(508L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(509  == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:1] intValue], @"");
-  XCTAssertTrue(510L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:1] intValue], @"");
+  XCTAssertTrue(501  == [[[message getExtension:[UnittestRoot repeatedInt32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(502L == [[[message getExtension:[UnittestRoot repeatedInt64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(503  == [[[message getExtension:[UnittestRoot repeatedUint32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(504L == [[[message getExtension:[UnittestRoot repeatedUint64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(505  == [[[message getExtension:[UnittestRoot repeatedSint32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(506L == [[[message getExtension:[UnittestRoot repeatedSint64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(507  == [[[message getExtension:[UnittestRoot repeatedFixed32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(508L == [[[message getExtension:[UnittestRoot repeatedFixed64Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(509  == [[[message getExtension:[UnittestRoot repeatedSfixed32Extension]] objectAtIndex:1] integerValue], @"");
+  XCTAssertTrue(510L == [[[message getExtension:[UnittestRoot repeatedSfixed64Extension]] objectAtIndex:1] integerValue], @"");
   XCTAssertTrue(511.0 == [[[message getExtension:[UnittestRoot repeatedFloatExtension]] objectAtIndex:1] floatValue], @"");
   XCTAssertTrue(512.0 == [[[message getExtension:[UnittestRoot repeatedDoubleExtension]] objectAtIndex:1] doubleValue], @"");
   XCTAssertTrue(YES == [[[message getExtension:[UnittestRoot repeatedBoolExtension]] objectAtIndex:1] boolValue], @"");
@@ -386,11 +386,11 @@
   XCTAssertTrue(520 == [[[message getExtension:[UnittestRoot repeatedImportMessageExtension]] objectAtIndex:1] d], @"");
 
   XCTAssertTrue(TestAllTypesNestedEnumFoo ==
-               [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:1] intValue], @"");
+               [[[message getExtension:[UnittestRoot repeatedNestedEnumExtension]] objectAtIndex:1] integerValue], @"");
   XCTAssertTrue(ForeignEnumForeignFoo ==
-               [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:1] intValue], @"");
+               [[[message getExtension:[UnittestRoot repeatedForeignEnumExtension]] objectAtIndex:1] integerValue], @"");
   XCTAssertTrue(ImportEnumImportFoo ==
-               [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:1] intValue], @"");
+               [[[message getExtension:[UnittestRoot repeatedImportEnumExtension]] objectAtIndex:1] integerValue], @"");
 
   XCTAssertEqualObjects(@"524", [[message getExtension:[UnittestRoot repeatedStringPieceExtension]] objectAtIndex:1], @"");
   XCTAssertEqualObjects(@"525", [[message getExtension:[UnittestRoot repeatedCordExtension]] objectAtIndex:1], @"");
@@ -729,16 +729,16 @@
  * {@code assertAllExtensionsSet()}.
  */
 + (void) setAllExtensions:(TestAllExtensionsBuilder*) message {
-  [message setExtension:[UnittestRoot optionalInt32Extension]   value:[NSNumber numberWithInt:101]];
-  [message setExtension:[UnittestRoot optionalInt64Extension]   value:[NSNumber numberWithInt:102L]];
-  [message setExtension:[UnittestRoot optionalUint32Extension]  value:[NSNumber numberWithInt:103]];
-  [message setExtension:[UnittestRoot optionalUint64Extension]  value:[NSNumber numberWithInt:104L]];
-  [message setExtension:[UnittestRoot optionalSint32Extension]  value:[NSNumber numberWithInt:105]];
-  [message setExtension:[UnittestRoot optionalSint64Extension]  value:[NSNumber numberWithInt:106L]];
-  [message setExtension:[UnittestRoot optionalFixed32Extension] value:[NSNumber numberWithInt:107]];
-  [message setExtension:[UnittestRoot optionalFixed64Extension] value:[NSNumber numberWithInt:108L]];
-  [message setExtension:[UnittestRoot optionalSfixed32Extension] value:[NSNumber numberWithInt:109]];
-  [message setExtension:[UnittestRoot optionalSfixed64Extension] value:[NSNumber numberWithInt:110L]];
+  [message setExtension:[UnittestRoot optionalInt32Extension]   value:[NSNumber numberWithInteger:101]];
+  [message setExtension:[UnittestRoot optionalInt64Extension]   value:[NSNumber numberWithInteger:102L]];
+  [message setExtension:[UnittestRoot optionalUint32Extension]  value:[NSNumber numberWithInteger:103]];
+  [message setExtension:[UnittestRoot optionalUint64Extension]  value:[NSNumber numberWithInteger:104L]];
+  [message setExtension:[UnittestRoot optionalSint32Extension]  value:[NSNumber numberWithInteger:105]];
+  [message setExtension:[UnittestRoot optionalSint64Extension]  value:[NSNumber numberWithInteger:106L]];
+  [message setExtension:[UnittestRoot optionalFixed32Extension] value:[NSNumber numberWithInteger:107]];
+  [message setExtension:[UnittestRoot optionalFixed64Extension] value:[NSNumber numberWithInteger:108L]];
+  [message setExtension:[UnittestRoot optionalSfixed32Extension] value:[NSNumber numberWithInteger:109]];
+  [message setExtension:[UnittestRoot optionalSfixed64Extension] value:[NSNumber numberWithInteger:110L]];
   [message setExtension:[UnittestRoot optionalFloatExtension]   value:[NSNumber numberWithFloat:111.0]];
   [message setExtension:[UnittestRoot optionalDoubleExtension]  value:[NSNumber numberWithDouble:112.0]];
   [message setExtension:[UnittestRoot optionalBoolExtension]    value:[NSNumber numberWithBool:YES]];
@@ -755,27 +755,27 @@
                   value:[[[ImportMessage builder] setD:120] build]];
 
   [message setExtension:[UnittestRoot optionalNestedEnumExtension]
-                  value:[NSNumber numberWithInt:TestAllTypesNestedEnumBaz]];
+                  value:[NSNumber numberWithInteger:TestAllTypesNestedEnumBaz]];
   [message setExtension:[UnittestRoot optionalForeignEnumExtension]
-                  value:[NSNumber numberWithInt:ForeignEnumForeignBaz]];
+                  value:[NSNumber numberWithInteger:ForeignEnumForeignBaz]];
   [message setExtension:[UnittestRoot optionalImportEnumExtension]
-                  value:[NSNumber numberWithInt:ImportEnumImportBaz]];
+                  value:[NSNumber numberWithInteger:ImportEnumImportBaz]];
 
   [message setExtension:[UnittestRoot optionalStringPieceExtension]  value:@"124"];
   [message setExtension:[UnittestRoot optionalCordExtension] value:@"125"];
 
   // -----------------------------------------------------------------
 
-  [message addExtension:[UnittestRoot repeatedInt32Extension]    value:[NSNumber numberWithInt:201]];
-  [message addExtension:[UnittestRoot repeatedInt64Extension]    value:[NSNumber numberWithInt:202L]];
-  [message addExtension:[UnittestRoot repeatedUint32Extension]   value:[NSNumber numberWithInt:203]];
-  [message addExtension:[UnittestRoot repeatedUint64Extension]   value:[NSNumber numberWithInt:204L]];
-  [message addExtension:[UnittestRoot repeatedSint32Extension]   value:[NSNumber numberWithInt:205]];
-  [message addExtension:[UnittestRoot repeatedSint64Extension]   value:[NSNumber numberWithInt:206L]];
-  [message addExtension:[UnittestRoot repeatedFixed32Extension]  value:[NSNumber numberWithInt:207]];
-  [message addExtension:[UnittestRoot repeatedFixed64Extension]  value:[NSNumber numberWithInt:208L]];
-  [message addExtension:[UnittestRoot repeatedSfixed32Extension] value:[NSNumber numberWithInt:209]];
-  [message addExtension:[UnittestRoot repeatedSfixed64Extension] value:[NSNumber numberWithInt:210L]];
+  [message addExtension:[UnittestRoot repeatedInt32Extension]    value:[NSNumber numberWithInteger:201]];
+  [message addExtension:[UnittestRoot repeatedInt64Extension]    value:[NSNumber numberWithInteger:202L]];
+  [message addExtension:[UnittestRoot repeatedUint32Extension]   value:[NSNumber numberWithInteger:203]];
+  [message addExtension:[UnittestRoot repeatedUint64Extension]   value:[NSNumber numberWithInteger:204L]];
+  [message addExtension:[UnittestRoot repeatedSint32Extension]   value:[NSNumber numberWithInteger:205]];
+  [message addExtension:[UnittestRoot repeatedSint64Extension]   value:[NSNumber numberWithInteger:206L]];
+  [message addExtension:[UnittestRoot repeatedFixed32Extension]  value:[NSNumber numberWithInteger:207]];
+  [message addExtension:[UnittestRoot repeatedFixed64Extension]  value:[NSNumber numberWithInteger:208L]];
+  [message addExtension:[UnittestRoot repeatedSfixed32Extension] value:[NSNumber numberWithInteger:209]];
+  [message addExtension:[UnittestRoot repeatedSfixed64Extension] value:[NSNumber numberWithInteger:210L]];
   [message addExtension:[UnittestRoot repeatedFloatExtension]    value:[NSNumber numberWithFloat:211.0]];
   [message addExtension:[UnittestRoot repeatedDoubleExtension]   value:[NSNumber numberWithDouble:212.0]];
   [message addExtension:[UnittestRoot repeatedBoolExtension]     value:[NSNumber numberWithBool:YES]];
@@ -792,26 +792,26 @@
                   value:[[[ImportMessage builder] setD:220] build]];
 
   [message addExtension:[UnittestRoot repeatedNestedEnumExtension]
-                  value:[NSNumber numberWithInt:TestAllTypesNestedEnumBar]];
+                  value:[NSNumber numberWithInteger:TestAllTypesNestedEnumBar]];
   [message addExtension:[UnittestRoot repeatedForeignEnumExtension]
-                  value:[NSNumber numberWithInt:ForeignEnumForeignBar]];
+                  value:[NSNumber numberWithInteger:ForeignEnumForeignBar]];
   [message addExtension:[UnittestRoot repeatedImportEnumExtension]
-                  value:[NSNumber numberWithInt:ImportEnumImportBar]];
+                  value:[NSNumber numberWithInteger:ImportEnumImportBar]];
 
   [message addExtension:[UnittestRoot repeatedStringPieceExtension] value:@"224"];
   [message addExtension:[UnittestRoot repeatedCordExtension] value:@"225"];
 
   // Add a second one of each field.
-  [message addExtension:[UnittestRoot repeatedInt32Extension] value:[NSNumber numberWithInt:301]];
-  [message addExtension:[UnittestRoot repeatedInt64Extension] value:[NSNumber numberWithInt:302L]];
-  [message addExtension:[UnittestRoot repeatedUint32Extension] value:[NSNumber numberWithInt:303]];
-  [message addExtension:[UnittestRoot repeatedUint64Extension] value:[NSNumber numberWithInt:304L]];
-  [message addExtension:[UnittestRoot repeatedSint32Extension] value:[NSNumber numberWithInt:305]];
-  [message addExtension:[UnittestRoot repeatedSint64Extension] value:[NSNumber numberWithInt:306L]];
-  [message addExtension:[UnittestRoot repeatedFixed32Extension] value:[NSNumber numberWithInt:307]];
-  [message addExtension:[UnittestRoot repeatedFixed64Extension] value:[NSNumber numberWithInt:308L]];
-  [message addExtension:[UnittestRoot repeatedSfixed32Extension] value:[NSNumber numberWithInt:309]];
-  [message addExtension:[UnittestRoot repeatedSfixed64Extension] value:[NSNumber numberWithInt:310L]];
+  [message addExtension:[UnittestRoot repeatedInt32Extension] value:[NSNumber numberWithInteger:301]];
+  [message addExtension:[UnittestRoot repeatedInt64Extension] value:[NSNumber numberWithInteger:302L]];
+  [message addExtension:[UnittestRoot repeatedUint32Extension] value:[NSNumber numberWithInteger:303]];
+  [message addExtension:[UnittestRoot repeatedUint64Extension] value:[NSNumber numberWithInteger:304L]];
+  [message addExtension:[UnittestRoot repeatedSint32Extension] value:[NSNumber numberWithInteger:305]];
+  [message addExtension:[UnittestRoot repeatedSint64Extension] value:[NSNumber numberWithInteger:306L]];
+  [message addExtension:[UnittestRoot repeatedFixed32Extension] value:[NSNumber numberWithInteger:307]];
+  [message addExtension:[UnittestRoot repeatedFixed64Extension] value:[NSNumber numberWithInteger:308L]];
+  [message addExtension:[UnittestRoot repeatedSfixed32Extension] value:[NSNumber numberWithInteger:309]];
+  [message addExtension:[UnittestRoot repeatedSfixed64Extension] value:[NSNumber numberWithInteger:310L]];
   [message addExtension:[UnittestRoot repeatedFloatExtension] value:[NSNumber numberWithFloat:311.0]];
   [message addExtension:[UnittestRoot repeatedDoubleExtension] value:[NSNumber numberWithDouble:312.0]];
   [message addExtension:[UnittestRoot repeatedBoolExtension] value:[NSNumber numberWithBool:NO]];
@@ -828,27 +828,27 @@
                   value:[[[ImportMessage builder] setD:320] build]];
 
   [message addExtension:[UnittestRoot repeatedNestedEnumExtension]
-                  value:[NSNumber numberWithInt:TestAllTypesNestedEnumBaz]];
+                  value:[NSNumber numberWithInteger:TestAllTypesNestedEnumBaz]];
   [message addExtension:[UnittestRoot repeatedForeignEnumExtension]
-                  value:[NSNumber numberWithInt:ForeignEnumForeignBaz]];
+                  value:[NSNumber numberWithInteger:ForeignEnumForeignBaz]];
   [message addExtension:[UnittestRoot repeatedImportEnumExtension]
-                  value:[NSNumber numberWithInt:ImportEnumImportBaz]];
+                  value:[NSNumber numberWithInteger:ImportEnumImportBaz]];
 
   [message addExtension:[UnittestRoot repeatedStringPieceExtension] value:@"324"];
   [message addExtension:[UnittestRoot repeatedCordExtension] value:@"325"];
 
   // -----------------------------------------------------------------
 
-  [message setExtension:[UnittestRoot defaultInt32Extension] value:[NSNumber numberWithInt:401]];
-  [message setExtension:[UnittestRoot defaultInt64Extension] value:[NSNumber numberWithInt:402L]];
-  [message setExtension:[UnittestRoot defaultUint32Extension] value:[NSNumber numberWithInt:403]];
-  [message setExtension:[UnittestRoot defaultUint64Extension] value:[NSNumber numberWithInt:404L]];
-  [message setExtension:[UnittestRoot defaultSint32Extension] value:[NSNumber numberWithInt:405]];
-  [message setExtension:[UnittestRoot defaultSint64Extension] value:[NSNumber numberWithInt:406L]];
-  [message setExtension:[UnittestRoot defaultFixed32Extension] value:[NSNumber numberWithInt:407]];
-  [message setExtension:[UnittestRoot defaultFixed64Extension] value:[NSNumber numberWithInt:408L]];
-  [message setExtension:[UnittestRoot defaultSfixed32Extension] value:[NSNumber numberWithInt:409]];
-  [message setExtension:[UnittestRoot defaultSfixed64Extension] value:[NSNumber numberWithInt:410L]];
+  [message setExtension:[UnittestRoot defaultInt32Extension] value:[NSNumber numberWithInteger:401]];
+  [message setExtension:[UnittestRoot defaultInt64Extension] value:[NSNumber numberWithInteger:402L]];
+  [message setExtension:[UnittestRoot defaultUint32Extension] value:[NSNumber numberWithInteger:403]];
+  [message setExtension:[UnittestRoot defaultUint64Extension] value:[NSNumber numberWithInteger:404L]];
+  [message setExtension:[UnittestRoot defaultSint32Extension] value:[NSNumber numberWithInteger:405]];
+  [message setExtension:[UnittestRoot defaultSint64Extension] value:[NSNumber numberWithInteger:406L]];
+  [message setExtension:[UnittestRoot defaultFixed32Extension] value:[NSNumber numberWithInteger:407]];
+  [message setExtension:[UnittestRoot defaultFixed64Extension] value:[NSNumber numberWithInteger:408L]];
+  [message setExtension:[UnittestRoot defaultSfixed32Extension] value:[NSNumber numberWithInteger:409]];
+  [message setExtension:[UnittestRoot defaultSfixed64Extension] value:[NSNumber numberWithInteger:410L]];
   [message setExtension:[UnittestRoot defaultFloatExtension] value:[NSNumber numberWithFloat:411.0]];
   [message setExtension:[UnittestRoot defaultDoubleExtension] value:[NSNumber numberWithDouble:412.0]];
   [message setExtension:[UnittestRoot defaultBoolExtension] value:[NSNumber numberWithBool:NO]];
@@ -856,11 +856,11 @@
   [message setExtension:[UnittestRoot defaultBytesExtension] value:[self getData:@"416"]];
 
   [message setExtension:[UnittestRoot defaultNestedEnumExtension]
-                  value:[NSNumber numberWithInt:TestAllTypesNestedEnumFoo]];
+                  value:[NSNumber numberWithInteger:TestAllTypesNestedEnumFoo]];
   [message setExtension:[UnittestRoot defaultForeignEnumExtension]
-                  value:[NSNumber numberWithInt:ForeignEnumForeignFoo]];
+                  value:[NSNumber numberWithInteger:ForeignEnumForeignFoo]];
   [message setExtension:[UnittestRoot defaultImportEnumExtension]
-                  value:[NSNumber numberWithInt:ImportEnumImportFoo]];
+                  value:[NSNumber numberWithInteger:ImportEnumImportFoo]];
 
   [message setExtension:[UnittestRoot defaultStringPieceExtension] value:@"424"];
   [message setExtension:[UnittestRoot defaultCordExtension] value:@"425"];
@@ -1173,16 +1173,16 @@
   XCTAssertFalse([message hasExtension:[UnittestRoot optionalCordExtension]], @"");
 
   // Optional fields without defaults are set to zero or something like it.
-  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalInt32Extension]] intValue], @"");
-  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalInt64Extension]] intValue], @"");
-  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalUint32Extension]] intValue], @"");
-  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalUint64Extension]] intValue], @"");
-  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalSint32Extension]] intValue], @"");
-  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalSint64Extension]] intValue], @"");
-  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalFixed32Extension]] intValue], @"");
-  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalFixed64Extension]] intValue], @"");
-  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalSfixed32Extension]] intValue], @"");
-  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalSfixed64Extension]] intValue], @"");
+  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalInt32Extension]] integerValue], @"");
+  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalInt64Extension]] integerValue], @"");
+  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalUint32Extension]] integerValue], @"");
+  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalUint64Extension]] integerValue], @"");
+  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalSint32Extension]] integerValue], @"");
+  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalSint64Extension]] integerValue], @"");
+  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalFixed32Extension]] integerValue], @"");
+  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalFixed64Extension]] integerValue], @"");
+  XCTAssertTrue(0     == [[message getExtension:[UnittestRoot optionalSfixed32Extension]] integerValue], @"");
+  XCTAssertTrue(0L    == [[message getExtension:[UnittestRoot optionalSfixed64Extension]] integerValue], @"");
   XCTAssertTrue(0    == [[message getExtension:[UnittestRoot optionalFloatExtension]] floatValue], @"");
   XCTAssertTrue(0    == [[message getExtension:[UnittestRoot optionalDoubleExtension]] doubleValue], @"");
   XCTAssertTrue(NO == [[message getExtension:[UnittestRoot optionalBoolExtension]] boolValue], @"");
@@ -1203,11 +1203,11 @@
 
   // Enums without defaults are set to the first value in the enum.
   XCTAssertTrue(TestAllTypesNestedEnumFoo ==
-               [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] intValue], @"");
+               [[message getExtension:[UnittestRoot optionalNestedEnumExtension]] integerValue], @"");
   XCTAssertTrue(ForeignEnumForeignFoo ==
-               [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] intValue], @"");
+               [[message getExtension:[UnittestRoot optionalForeignEnumExtension]] integerValue], @"");
   XCTAssertTrue(ImportEnumImportFoo ==
-               [[message getExtension:[UnittestRoot optionalImportEnumExtension]] intValue], @"");
+               [[message getExtension:[UnittestRoot optionalImportEnumExtension]] integerValue], @"");
 
   XCTAssertEqualObjects(@"", [message getExtension:[UnittestRoot optionalStringPieceExtension]], @"");
   XCTAssertEqualObjects(@"", [message getExtension:[UnittestRoot optionalCordExtension]], @"");
@@ -1265,16 +1265,16 @@
   XCTAssertFalse([message hasExtension:[UnittestRoot defaultCordExtension]], @"");
 
   // Fields with defaults have their default values (duh).
-  XCTAssertTrue( 41     == [[message getExtension:[UnittestRoot defaultInt32Extension]] intValue], @"");
-  XCTAssertTrue( 42L    == [[message getExtension:[UnittestRoot defaultInt64Extension]] intValue], @"");
-  XCTAssertTrue( 43     == [[message getExtension:[UnittestRoot defaultUint32Extension]] intValue], @"");
-  XCTAssertTrue( 44L    == [[message getExtension:[UnittestRoot defaultUint64Extension]] intValue], @"");
-  XCTAssertTrue(-45     == [[message getExtension:[UnittestRoot defaultSint32Extension]] intValue], @"");
-  XCTAssertTrue( 46L    == [[message getExtension:[UnittestRoot defaultSint64Extension]] intValue], @"");
-  XCTAssertTrue( 47     == [[message getExtension:[UnittestRoot defaultFixed32Extension]] intValue], @"");
-  XCTAssertTrue( 48L    == [[message getExtension:[UnittestRoot defaultFixed64Extension]] intValue], @"");
-  XCTAssertTrue( 49     == [[message getExtension:[UnittestRoot defaultSfixed32Extension]] intValue], @"");
-  XCTAssertTrue(-50L    == [[message getExtension:[UnittestRoot defaultSfixed64Extension]] intValue], @"");
+  XCTAssertTrue( 41     == [[message getExtension:[UnittestRoot defaultInt32Extension]] integerValue], @"");
+  XCTAssertTrue( 42L    == [[message getExtension:[UnittestRoot defaultInt64Extension]] integerValue], @"");
+  XCTAssertTrue( 43     == [[message getExtension:[UnittestRoot defaultUint32Extension]] integerValue], @"");
+  XCTAssertTrue( 44L    == [[message getExtension:[UnittestRoot defaultUint64Extension]] integerValue], @"");
+  XCTAssertTrue(-45     == [[message getExtension:[UnittestRoot defaultSint32Extension]] integerValue], @"");
+  XCTAssertTrue( 46L    == [[message getExtension:[UnittestRoot defaultSint64Extension]] integerValue], @"");
+  XCTAssertTrue( 47     == [[message getExtension:[UnittestRoot defaultFixed32Extension]] integerValue], @"");
+  XCTAssertTrue( 48L    == [[message getExtension:[UnittestRoot defaultFixed64Extension]] integerValue], @"");
+  XCTAssertTrue( 49     == [[message getExtension:[UnittestRoot defaultSfixed32Extension]] integerValue], @"");
+  XCTAssertTrue(-50L    == [[message getExtension:[UnittestRoot defaultSfixed64Extension]] integerValue], @"");
   XCTAssertTrue( 51.5  == [[message getExtension:[UnittestRoot defaultFloatExtension]] floatValue], @"");
   XCTAssertTrue( 52e3  == [[message getExtension:[UnittestRoot defaultDoubleExtension]] doubleValue], @"");
   XCTAssertTrue(YES    == [[message getExtension:[UnittestRoot defaultBoolExtension]] boolValue], @"");
@@ -1282,11 +1282,11 @@
   XCTAssertEqualObjects([TestUtilities getData:@"world"], [message getExtension:[UnittestRoot defaultBytesExtension]], @"");
 
   XCTAssertTrue(TestAllTypesNestedEnumBar ==
-               [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] intValue], @"");
+               [[message getExtension:[UnittestRoot defaultNestedEnumExtension]] integerValue], @"");
   XCTAssertTrue(ForeignEnumForeignBar ==
-               [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] intValue], @"");
+               [[message getExtension:[UnittestRoot defaultForeignEnumExtension]] integerValue], @"");
   XCTAssertTrue(ImportEnumImportBar ==
-               [[message getExtension:[UnittestRoot defaultImportEnumExtension]] intValue], @"");
+               [[message getExtension:[UnittestRoot defaultImportEnumExtension]] integerValue], @"");
 
   XCTAssertEqualObjects(@"abc", [message getExtension:[UnittestRoot defaultStringPieceExtension]], @"");
   XCTAssertEqualObjects(@"123", [message getExtension:[UnittestRoot defaultCordExtension]], @"");
@@ -1383,35 +1383,35 @@
 
 
 + (void) setPackedExtensions:(TestPackedExtensionsBuilder*) message {
-  [message addExtension:[UnittestRoot packedInt32Extension   ] value:[NSNumber numberWithInt: 601]];
+  [message addExtension:[UnittestRoot packedInt32Extension   ] value:[NSNumber numberWithInteger: 601]];
   [message addExtension:[UnittestRoot packedInt64Extension   ] value:[NSNumber numberWithLongLong: 602L]];
-  [message addExtension:[UnittestRoot packedUint32Extension  ] value:[NSNumber numberWithInt: 603]];
+  [message addExtension:[UnittestRoot packedUint32Extension  ] value:[NSNumber numberWithInteger: 603]];
   [message addExtension:[UnittestRoot packedUint64Extension  ] value:[NSNumber numberWithLongLong: 604L]];
-  [message addExtension:[UnittestRoot packedSint32Extension  ] value:[NSNumber numberWithInt: 605]];
+  [message addExtension:[UnittestRoot packedSint32Extension  ] value:[NSNumber numberWithInteger: 605]];
   [message addExtension:[UnittestRoot packedSint64Extension  ] value:[NSNumber numberWithLongLong: 606L]];
-  [message addExtension:[UnittestRoot packedFixed32Extension ] value:[NSNumber numberWithInt: 607]];
+  [message addExtension:[UnittestRoot packedFixed32Extension ] value:[NSNumber numberWithInteger: 607]];
   [message addExtension:[UnittestRoot packedFixed64Extension ] value:[NSNumber numberWithLongLong: 608L]];
-  [message addExtension:[UnittestRoot packedSfixed32Extension] value:[NSNumber numberWithInt: 609]];
+  [message addExtension:[UnittestRoot packedSfixed32Extension] value:[NSNumber numberWithInteger: 609]];
   [message addExtension:[UnittestRoot packedSfixed64Extension] value:[NSNumber numberWithLongLong: 610L]];
   [message addExtension:[UnittestRoot packedFloatExtension   ] value:[NSNumber numberWithFloat: 611.0F]];
   [message addExtension:[UnittestRoot packedDoubleExtension  ] value:[NSNumber numberWithDouble: 612.0]];
   [message addExtension:[UnittestRoot packedBoolExtension    ] value:[NSNumber numberWithBool: YES]];
-  [message addExtension:[UnittestRoot packedEnumExtension] value:[NSNumber numberWithInt: ForeignEnumForeignBar]];
+  [message addExtension:[UnittestRoot packedEnumExtension] value:[NSNumber numberWithInteger: ForeignEnumForeignBar]];
   // Add a second one of each field.
-  [message addExtension:[UnittestRoot packedInt32Extension   ] value:[NSNumber numberWithInt: 701]];
+  [message addExtension:[UnittestRoot packedInt32Extension   ] value:[NSNumber numberWithInteger: 701]];
   [message addExtension:[UnittestRoot packedInt64Extension   ] value:[NSNumber numberWithLongLong: 702L]];
-  [message addExtension:[UnittestRoot packedUint32Extension  ] value:[NSNumber numberWithInt: 703]];
+  [message addExtension:[UnittestRoot packedUint32Extension  ] value:[NSNumber numberWithInteger: 703]];
   [message addExtension:[UnittestRoot packedUint64Extension  ] value:[NSNumber numberWithLongLong: 704L]];
-  [message addExtension:[UnittestRoot packedSint32Extension  ] value:[NSNumber numberWithInt: 705]];
+  [message addExtension:[UnittestRoot packedSint32Extension  ] value:[NSNumber numberWithInteger: 705]];
   [message addExtension:[UnittestRoot packedSint64Extension  ] value:[NSNumber numberWithLongLong: 706L]];
-  [message addExtension:[UnittestRoot packedFixed32Extension ] value:[NSNumber numberWithInt: 707]];
+  [message addExtension:[UnittestRoot packedFixed32Extension ] value:[NSNumber numberWithInteger: 707]];
   [message addExtension:[UnittestRoot packedFixed64Extension ] value:[NSNumber numberWithLongLong: 708L]];
-  [message addExtension:[UnittestRoot packedSfixed32Extension] value:[NSNumber numberWithInt: 709]];
+  [message addExtension:[UnittestRoot packedSfixed32Extension] value:[NSNumber numberWithInteger: 709]];
   [message addExtension:[UnittestRoot packedSfixed64Extension] value:[NSNumber numberWithLongLong: 710L]];
   [message addExtension:[UnittestRoot packedFloatExtension   ] value:[NSNumber numberWithFloat: 711.0F]];
   [message addExtension:[UnittestRoot packedDoubleExtension  ] value:[NSNumber numberWithDouble: 712.0]];
   [message addExtension:[UnittestRoot packedBoolExtension    ] value:[NSNumber numberWithBool: NO]];
-  [message addExtension:[UnittestRoot packedEnumExtension] value:[NSNumber numberWithInt:ForeignEnumForeignBaz]];
+  [message addExtension:[UnittestRoot packedEnumExtension] value:[NSNumber numberWithInteger:ForeignEnumForeignBaz]];
 }
 
 
@@ -1430,34 +1430,34 @@
   XCTAssertTrue(2 ==  [[message getExtension:[UnittestRoot packedDoubleExtension  ]] count], @"");
   XCTAssertTrue(2 ==  [[message getExtension:[UnittestRoot packedBoolExtension    ]] count], @"");
   XCTAssertTrue(2 ==  [[message getExtension:[UnittestRoot packedEnumExtension]] count], @"");
-  XCTAssertTrue(601   ==  [[[message getExtension:[UnittestRoot packedInt32Extension   ]] objectAtIndex: 0] intValue], @"");
+  XCTAssertTrue(601   ==  [[[message getExtension:[UnittestRoot packedInt32Extension   ]] objectAtIndex: 0] integerValue], @"");
   XCTAssertTrue(602L  ==  [[[message getExtension:[UnittestRoot packedInt64Extension   ]] objectAtIndex: 0] longLongValue], @"");
-  XCTAssertTrue(603   ==  [[[message getExtension:[UnittestRoot packedUint32Extension  ]] objectAtIndex: 0] intValue], @"");
+  XCTAssertTrue(603   ==  [[[message getExtension:[UnittestRoot packedUint32Extension  ]] objectAtIndex: 0] integerValue], @"");
   XCTAssertTrue(604L  ==  [[[message getExtension:[UnittestRoot packedUint64Extension  ]] objectAtIndex: 0] longLongValue], @"");
-  XCTAssertTrue(605   ==  [[[message getExtension:[UnittestRoot packedSint32Extension  ]] objectAtIndex: 0] intValue], @"");
+  XCTAssertTrue(605   ==  [[[message getExtension:[UnittestRoot packedSint32Extension  ]] objectAtIndex: 0] integerValue], @"");
   XCTAssertTrue(606L  ==  [[[message getExtension:[UnittestRoot packedSint64Extension  ]] objectAtIndex: 0] longLongValue], @"");
-  XCTAssertTrue(607   ==  [[[message getExtension:[UnittestRoot packedFixed32Extension ]] objectAtIndex: 0] intValue], @"");
+  XCTAssertTrue(607   ==  [[[message getExtension:[UnittestRoot packedFixed32Extension ]] objectAtIndex: 0] integerValue], @"");
   XCTAssertTrue(608L  ==  [[[message getExtension:[UnittestRoot packedFixed64Extension ]] objectAtIndex: 0] longLongValue], @"");
-  XCTAssertTrue(609   ==  [[[message getExtension:[UnittestRoot packedSfixed32Extension]] objectAtIndex: 0] intValue], @"");
+  XCTAssertTrue(609   ==  [[[message getExtension:[UnittestRoot packedSfixed32Extension]] objectAtIndex: 0] integerValue], @"");
   XCTAssertTrue(610L  ==  [[[message getExtension:[UnittestRoot packedSfixed64Extension]] objectAtIndex: 0] longLongValue], @"");
   XCTAssertTrue(611.0F  ==  [[[message getExtension:[UnittestRoot packedFloatExtension   ]] objectAtIndex: 0] floatValue], @"");
   XCTAssertTrue(612.0  ==  [[[message getExtension:[UnittestRoot packedDoubleExtension  ]] objectAtIndex: 0] doubleValue], @"");
   XCTAssertTrue(YES  ==  [[[message getExtension:[UnittestRoot packedBoolExtension    ]] objectAtIndex: 0] boolValue], @"");
-  XCTAssertTrue(ForeignEnumForeignBar == [[[message getExtension:[UnittestRoot packedEnumExtension]] objectAtIndex:0] intValue], @"");
-  XCTAssertTrue(701   ==  [[[message getExtension:[UnittestRoot packedInt32Extension   ]] objectAtIndex: 1] intValue], @"");
+  XCTAssertTrue(ForeignEnumForeignBar == [[[message getExtension:[UnittestRoot packedEnumExtension]] objectAtIndex:0] integerValue], @"");
+  XCTAssertTrue(701   ==  [[[message getExtension:[UnittestRoot packedInt32Extension   ]] objectAtIndex: 1] integerValue], @"");
   XCTAssertTrue(702L  ==  [[[message getExtension:[UnittestRoot packedInt64Extension   ]] objectAtIndex: 1] longLongValue], @"");
-  XCTAssertTrue(703   ==  [[[message getExtension:[UnittestRoot packedUint32Extension  ]] objectAtIndex: 1] intValue], @"");
+  XCTAssertTrue(703   ==  [[[message getExtension:[UnittestRoot packedUint32Extension  ]] objectAtIndex: 1] integerValue], @"");
   XCTAssertTrue(704L  ==  [[[message getExtension:[UnittestRoot packedUint64Extension  ]] objectAtIndex: 1] longLongValue], @"");
-  XCTAssertTrue(705   ==  [[[message getExtension:[UnittestRoot packedSint32Extension  ]] objectAtIndex: 1] intValue], @"");
+  XCTAssertTrue(705   ==  [[[message getExtension:[UnittestRoot packedSint32Extension  ]] objectAtIndex: 1] integerValue], @"");
   XCTAssertTrue(706L  ==  [[[message getExtension:[UnittestRoot packedSint64Extension  ]] objectAtIndex: 1] longLongValue], @"");
-  XCTAssertTrue(707   ==  [[[message getExtension:[UnittestRoot packedFixed32Extension ]] objectAtIndex: 1] intValue], @"");
+  XCTAssertTrue(707   ==  [[[message getExtension:[UnittestRoot packedFixed32Extension ]] objectAtIndex: 1] integerValue], @"");
   XCTAssertTrue(708L  ==  [[[message getExtension:[UnittestRoot packedFixed64Extension ]] objectAtIndex: 1] longLongValue], @"");
-  XCTAssertTrue(709   ==  [[[message getExtension:[UnittestRoot packedSfixed32Extension]] objectAtIndex: 1] intValue], @"");
+  XCTAssertTrue(709   ==  [[[message getExtension:[UnittestRoot packedSfixed32Extension]] objectAtIndex: 1] integerValue], @"");
   XCTAssertTrue(710L  ==  [[[message getExtension:[UnittestRoot packedSfixed64Extension]] objectAtIndex: 1] longLongValue], @"");
   XCTAssertTrue(711.0F  ==  [[[message getExtension:[UnittestRoot packedFloatExtension   ]] objectAtIndex: 1] floatValue], @"");
   XCTAssertTrue(712.0  ==  [[[message getExtension:[UnittestRoot packedDoubleExtension  ]] objectAtIndex: 1] doubleValue], @"");
   XCTAssertTrue(NO ==  [[[message getExtension:[UnittestRoot packedBoolExtension    ]] objectAtIndex: 1] boolValue], @"");
-  XCTAssertTrue(ForeignEnumForeignBaz == [[[message getExtension:[UnittestRoot packedEnumExtension]] objectAtIndex:1] intValue], @"");
+  XCTAssertTrue(ForeignEnumForeignBaz == [[[message getExtension:[UnittestRoot packedEnumExtension]] objectAtIndex:1] integerValue], @"");
 }
 
 
