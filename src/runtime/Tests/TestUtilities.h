@@ -15,26 +15,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 @class TestAllExtensions;
-@class TestAllExtensions_Builder;
+@class TestAllExtensionsBuilder;
 @class TestAllTypes;
-@class TestAllTypes_Builder;
+@class TestAllTypesBuilder;
 @class TestPackedTypes;
-@class TestPackedTypes_Builder;
+@class TestPackedTypesBuilder;
 @class TestPackedExtensions;
-@class TestPackedExtensions_Builder;
+@class TestPackedExtensionsBuilder;
 @class PBExtensionRegistry;
 @class PBMutableExtensionRegistry;
 
-@interface TestUtilities : SenTestCase {
+@interface TestUtilities : XCTestCase {
 }
 
-+ (void) setAllFields:(TestAllTypes_Builder*) message;
-+ (void) setAllExtensions:(TestAllExtensions_Builder*) message;
-+ (void) setPackedFields:(TestPackedTypes_Builder*) message;
-+ (void) setPackedExtensions:(TestPackedExtensions_Builder*) message;
++ (void) setAllFields:(TestAllTypesBuilder*) message;
++ (void) setAllExtensions:(TestAllExtensionsBuilder*) message;
++ (void) setPackedFields:(TestPackedTypesBuilder*) message;
++ (void) setPackedExtensions:(TestPackedExtensionsBuilder*) message;
 + (void) registerAllExtensions:(PBMutableExtensionRegistry*) registry;
 
 + (TestAllTypes*) allSet;
@@ -49,7 +49,7 @@
 + (void) assertPackedFieldsSet:(TestPackedTypes*) message;
 + (void) assertPackedExtensionsSet:(TestPackedExtensions*) message;
 
-+ (void) modifyRepeatedExtensions:(TestAllExtensions_Builder*) message;
++ (void) modifyRepeatedExtensions:(TestAllExtensionsBuilder*) message;
 
 + (PBExtensionRegistry*) extensionRegistry;
 

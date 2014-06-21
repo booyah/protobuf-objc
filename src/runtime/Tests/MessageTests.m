@@ -58,7 +58,7 @@
   [[[TestAllTypes builderWithPrototype:self.mergeDestination]
     mergeFrom:self.mergeSource] build];
 
-  STAssertEqualObjects(result.data, self.mergeResult.data, @"");
+  XCTAssertEqualObjects(result.data, self.mergeResult.data, @"");
 }
 
 // =================================================================
@@ -75,67 +75,67 @@
 
 
 - (void) testRequired {
-  TestRequired_Builder* builder = [TestRequired builder];
+  TestRequiredBuilder* builder = [TestRequired builder];
 
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
   [builder setA:1];
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
   [builder setB:1];
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
   [builder setC:1];
-  STAssertTrue(builder.isInitialized, @"");
+  XCTAssertTrue(builder.isInitialized, @"");
 }
 
 
 - (void) testRequiredForeign {
-  TestRequiredForeign_Builder* builder = [TestRequiredForeign builder];
+  TestRequiredForeignBuilder* builder = [TestRequiredForeign builder];
 
-  STAssertTrue(builder.isInitialized, @"");
+  XCTAssertTrue(builder.isInitialized, @"");
 
   [builder setOptionalMessage:self.testRequiredUninitialized];
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
 
   [builder setOptionalMessage:self.testRequiredInitialized];
-  STAssertTrue(builder.isInitialized, @"");
+  XCTAssertTrue(builder.isInitialized, @"");
 
   [builder addRepeatedMessage:self.testRequiredUninitialized];
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
 }
 
 
 - (void) testRequiredExtension {
-  TestAllExtensions_Builder* builder = [TestAllExtensions builder];
+  TestAllExtensionsBuilder* builder = [TestAllExtensions builder];
 
-  STAssertTrue(builder.isInitialized, @"");
+  XCTAssertTrue(builder.isInitialized, @"");
 
   [builder setExtension:[TestRequired single] value:self.testRequiredUninitialized];
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
 
   [builder setExtension:[TestRequired single] value:self.testRequiredInitialized];
-  STAssertTrue(builder.isInitialized, @"");
+  XCTAssertTrue(builder.isInitialized, @"");
 
   [builder addExtension:[TestRequired multi] value:self.testRequiredUninitialized];
-  STAssertFalse(builder.isInitialized, @"");
+  XCTAssertFalse(builder.isInitialized, @"");
 
   [builder setExtension:[TestRequired multi] index:0 value:self.testRequiredInitialized];
-  STAssertTrue(builder.isInitialized, @"");
+  XCTAssertTrue(builder.isInitialized, @"");
 }
 
 
 - (void) testUninitializedException {
-  STAssertThrows([[TestRequired builder] build], @"");
+  XCTAssertThrows([[TestRequired builder] build], @"");
 }
 
 
 - (void) testBuildPartial {
   // We're mostly testing that no exception is thrown.
   TestRequired* message = [[TestRequired builder] buildPartial];
-  STAssertFalse(message.isInitialized, @"");
+  XCTAssertFalse(message.isInitialized, @"");
 }
 
 
 - (void) testNestedUninitializedException {
-  STAssertThrows([[[[[TestRequiredForeign builder]
+  XCTAssertThrows([[[[[TestRequiredForeign builder]
                      setOptionalMessage:self.testRequiredUninitialized]
                     addRepeatedMessage:self.testRequiredUninitialized]
                    addRepeatedMessage:self.testRequiredUninitialized]
@@ -153,12 +153,12 @@
     addRepeatedMessage:self.testRequiredUninitialized]
    buildPartial];
 
-  STAssertFalse(message.isInitialized, @"");
+  XCTAssertFalse(message.isInitialized, @"");
 }
 
 
 - (void) testParseUnititialized {
-  STAssertThrows([TestRequired parseFromData:[NSData data]], @"");
+  XCTAssertThrows([TestRequired parseFromData:[NSData data]], @"");
 }
 
 
@@ -172,7 +172,7 @@
 
   NSData* data = message.data;
 
-  STAssertThrows([TestRequiredForeign parseFromData:data], @"");
+  XCTAssertThrows([TestRequiredForeign parseFromData:data], @"");
 }
 
 @end

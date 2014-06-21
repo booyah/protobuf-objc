@@ -65,7 +65,7 @@
   [output flush];
 
   NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-  STAssertEqualObjects(data, actual, @"");
+  XCTAssertEqualObjects(data, actual, @"");
 
   // Try different block sizes.
   for (int blockSize = 1; blockSize <= 16; blockSize *= 2) {
@@ -75,7 +75,7 @@
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-    STAssertEqualObjects(data, actual, @"");
+    XCTAssertEqualObjects(data, actual, @"");
   }
 }
 
@@ -91,7 +91,7 @@
   [output flush];
 
   NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-  STAssertEqualObjects(data, actual, @"");
+  XCTAssertEqualObjects(data, actual, @"");
 
   // Try different block sizes.
   for (int blockSize = 1; blockSize <= 16; blockSize *= 2) {
@@ -101,7 +101,7 @@
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-    STAssertEqualObjects(data, actual, @"");
+    XCTAssertEqualObjects(data, actual, @"");
   }
 }
 
@@ -120,10 +120,10 @@
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-    STAssertEqualObjects(data, actual, @"");
+    XCTAssertEqualObjects(data, actual, @"");
 
     // Also try computing size.
-    STAssertTrue(data.length == computeRawVarint32Size((long)value), @"");
+    XCTAssertTrue(data.length == computeRawVarint32Size((long)value), @"");
   }
 
   {
@@ -133,11 +133,11 @@
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-    STAssertEqualObjects(data, actual, @"");
+    XCTAssertEqualObjects(data, actual, @"");
 
 
     // Also try computing size.
-    STAssertTrue(data.length == computeRawVarint64Size(value), @"");
+    XCTAssertTrue(data.length == computeRawVarint64Size(value), @"");
   }
 
   // Try different block sizes.
@@ -151,7 +151,7 @@
       [output flush];
 
       NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-      STAssertEqualObjects(data, actual, @"");
+      XCTAssertEqualObjects(data, actual, @"");
     }
 
     {
@@ -162,7 +162,7 @@
       [output flush];
 
       NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-      STAssertEqualObjects(data, actual, @"");
+      XCTAssertEqualObjects(data, actual, @"");
     }
   }
 }
@@ -235,42 +235,42 @@
 
 /** Test encodeZigZag32() and encodeZigZag64(). */
 - (void) testEncodeZigZag {
-  STAssertTrue(0 == encodeZigZag32( 0), @"");
-  STAssertTrue(1 == encodeZigZag32(-1), @"");
-  STAssertTrue(2 == encodeZigZag32( 1), @"");
-  STAssertTrue(3 == encodeZigZag32(-2), @"");
-  STAssertTrue(0x7FFFFFFE == encodeZigZag32(0x3FFFFFFF), @"");
-  STAssertTrue(0x7FFFFFFF == encodeZigZag32(0xC0000000), @"");
-  STAssertTrue(0xFFFFFFFE == encodeZigZag32(0x7FFFFFFF), @"");
-  STAssertTrue(0xFFFFFFFF == encodeZigZag32(0x80000000), @"");
+  XCTAssertTrue(0 == encodeZigZag32( 0), @"");
+  XCTAssertTrue(1 == encodeZigZag32(-1), @"");
+  XCTAssertTrue(2 == encodeZigZag32( 1), @"");
+  XCTAssertTrue(3 == encodeZigZag32(-2), @"");
+  XCTAssertTrue(0x7FFFFFFE == encodeZigZag32(0x3FFFFFFF), @"");
+  XCTAssertTrue(0x7FFFFFFF == encodeZigZag32(0xC0000000), @"");
+  XCTAssertTrue(0xFFFFFFFE == encodeZigZag32(0x7FFFFFFF), @"");
+  XCTAssertTrue(0xFFFFFFFF == encodeZigZag32(0x80000000), @"");
 
-  STAssertTrue(0 == encodeZigZag64( 0), @"");
-  STAssertTrue(1 == encodeZigZag64(-1), @"");
-  STAssertTrue(2 == encodeZigZag64( 1), @"");
-  STAssertTrue(3 == encodeZigZag64(-2), @"");
-  STAssertTrue(0x000000007FFFFFFELL == encodeZigZag64(0x000000003FFFFFFFLL), @"");
-  STAssertTrue(0x000000007FFFFFFFLL == encodeZigZag64(0xFFFFFFFFC0000000LL), @"");
-  STAssertTrue(0x00000000FFFFFFFELL == encodeZigZag64(0x000000007FFFFFFFLL), @"");
-  STAssertTrue(0x00000000FFFFFFFFLL == encodeZigZag64(0xFFFFFFFF80000000LL), @"");
-  STAssertTrue(0xFFFFFFFFFFFFFFFELL == encodeZigZag64(0x7FFFFFFFFFFFFFFFLL), @"");
-  STAssertTrue(0xFFFFFFFFFFFFFFFFLL == encodeZigZag64(0x8000000000000000LL), @"");
+  XCTAssertTrue(0 == encodeZigZag64( 0), @"");
+  XCTAssertTrue(1 == encodeZigZag64(-1), @"");
+  XCTAssertTrue(2 == encodeZigZag64( 1), @"");
+  XCTAssertTrue(3 == encodeZigZag64(-2), @"");
+  XCTAssertTrue(0x000000007FFFFFFELL == encodeZigZag64(0x000000003FFFFFFFLL), @"");
+  XCTAssertTrue(0x000000007FFFFFFFLL == encodeZigZag64(0xFFFFFFFFC0000000LL), @"");
+  XCTAssertTrue(0x00000000FFFFFFFELL == encodeZigZag64(0x000000007FFFFFFFLL), @"");
+  XCTAssertTrue(0x00000000FFFFFFFFLL == encodeZigZag64(0xFFFFFFFF80000000LL), @"");
+  XCTAssertTrue(0xFFFFFFFFFFFFFFFELL == encodeZigZag64(0x7FFFFFFFFFFFFFFFLL), @"");
+  XCTAssertTrue(0xFFFFFFFFFFFFFFFFLL == encodeZigZag64(0x8000000000000000LL), @"");
 
   // Some easier-to-verify round-trip tests.  The inputs (other than 0, 1, -1)
   // were chosen semi-randomly via keyboard bashing.
-  STAssertTrue(0 == encodeZigZag32(decodeZigZag32(0)), @"");
-  STAssertTrue(1 == encodeZigZag32(decodeZigZag32(1)), @"");
-  STAssertTrue(-1 == encodeZigZag32(decodeZigZag32(-1)), @"");
-  STAssertTrue(14927 == encodeZigZag32(decodeZigZag32(14927)), @"");
-  STAssertTrue(-3612 == encodeZigZag32(decodeZigZag32(-3612)), @"");
+  XCTAssertTrue(0 == encodeZigZag32(decodeZigZag32(0)), @"");
+  XCTAssertTrue(1 == encodeZigZag32(decodeZigZag32(1)), @"");
+  XCTAssertTrue(-1 == encodeZigZag32(decodeZigZag32(-1)), @"");
+  XCTAssertTrue(14927 == encodeZigZag32(decodeZigZag32(14927)), @"");
+  XCTAssertTrue(-3612 == encodeZigZag32(decodeZigZag32(-3612)), @"");
 
-  STAssertTrue(0 == encodeZigZag64(decodeZigZag64(0)), @"");
-  STAssertTrue(1 == encodeZigZag64(decodeZigZag64(1)), @"");
-  STAssertTrue(-1 == encodeZigZag64(decodeZigZag64(-1)), @"");
-  STAssertTrue(14927 == encodeZigZag64(decodeZigZag64(14927)), @"");
-  STAssertTrue(-3612 == encodeZigZag64(decodeZigZag64(-3612)), @"");
+  XCTAssertTrue(0 == encodeZigZag64(decodeZigZag64(0)), @"");
+  XCTAssertTrue(1 == encodeZigZag64(decodeZigZag64(1)), @"");
+  XCTAssertTrue(-1 == encodeZigZag64(decodeZigZag64(-1)), @"");
+  XCTAssertTrue(14927 == encodeZigZag64(decodeZigZag64(14927)), @"");
+  XCTAssertTrue(-3612 == encodeZigZag64(decodeZigZag64(-3612)), @"");
 
-  STAssertTrue(856912304801416LL == encodeZigZag64(decodeZigZag64(856912304801416LL)), @"");
-  STAssertTrue(-75123905439571256LL == encodeZigZag64(decodeZigZag64(-75123905439571256LL)), @"");
+  XCTAssertTrue(856912304801416LL == encodeZigZag64(decodeZigZag64(856912304801416LL)), @"");
+  XCTAssertTrue(-75123905439571256LL == encodeZigZag64(decodeZigZag64(-75123905439571256LL)), @"");
 }
 
 
@@ -311,7 +311,7 @@
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-    STAssertEqualObjects(rawBytes, actual, @"");
+    XCTAssertEqualObjects(rawBytes, actual, @"");
   }
 }
 

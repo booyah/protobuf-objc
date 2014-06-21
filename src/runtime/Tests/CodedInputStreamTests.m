@@ -44,25 +44,25 @@
 #define bytes(...) [self bytes_with_sentinel:0, __VA_ARGS__, 256]
 
 - (void) testDecodeZigZag {
-  STAssertEquals((long) 0, decodeZigZag32(0), nil);
-  STAssertEquals((long)-1, decodeZigZag32(1), nil);
-  STAssertEquals((long)1, decodeZigZag32(2), nil);
-  STAssertEquals((long)-2, decodeZigZag32(3), nil);
-  STAssertEquals((long)0x3FFFFFFF, decodeZigZag32(0x7FFFFFFE), nil);
-  STAssertEquals((long)0xC0000000, decodeZigZag32(0x7FFFFFFF), nil);
-  STAssertEquals((long)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE), nil);
-  STAssertEquals((long)0x80000000, decodeZigZag32(0xFFFFFFFF), nil);
+  XCTAssertEqual((long) 0, decodeZigZag32(0));
+  XCTAssertEqual((long)-1, decodeZigZag32(1));
+  XCTAssertEqual((long)1, decodeZigZag32(2));
+  XCTAssertEqual((long)-2, decodeZigZag32(3));
+  XCTAssertEqual((long)0x3FFFFFFF, decodeZigZag32(0x7FFFFFFE));
+  XCTAssertEqual((long)0xC0000000, decodeZigZag32(0x7FFFFFFF));
+  XCTAssertEqual((long)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE));
+  XCTAssertEqual((long)0x80000000, decodeZigZag32(0xFFFFFFFF));
 
-  STAssertEquals((long long) 0, decodeZigZag64(0), nil);
-  STAssertEquals((long long)-1, decodeZigZag64(1), nil);
-  STAssertEquals((long long) 1, decodeZigZag64(2), nil);
-  STAssertEquals((long long)-2, decodeZigZag64(3), nil);
-  STAssertEquals((long long)0x000000003FFFFFFFL, decodeZigZag64(0x000000007FFFFFFEL), nil);
-  STAssertEquals((long long)0xFFFFFFFFC0000000L, decodeZigZag64(0x000000007FFFFFFFL), nil);
-  STAssertEquals((long long)0x000000007FFFFFFFL, decodeZigZag64(0x00000000FFFFFFFEL), nil);
-  STAssertEquals((long long)0xFFFFFFFF80000000L, decodeZigZag64(0x00000000FFFFFFFFL), nil);
-  STAssertEquals((long long)0x7FFFFFFFFFFFFFFFL, decodeZigZag64(0xFFFFFFFFFFFFFFFEL), nil);
-  STAssertEquals((long long)0x8000000000000000L, decodeZigZag64(0xFFFFFFFFFFFFFFFFL), nil);
+  XCTAssertEqual((long long) 0, decodeZigZag64(0));
+  XCTAssertEqual((long long)-1, decodeZigZag64(1));
+  XCTAssertEqual((long long) 1, decodeZigZag64(2));
+  XCTAssertEqual((long long)-2, decodeZigZag64(3));
+  XCTAssertEqual((long long)0x000000003FFFFFFFL, decodeZigZag64(0x000000007FFFFFFEL));
+  XCTAssertEqual((long long)0xFFFFFFFFC0000000L, decodeZigZag64(0x000000007FFFFFFFL));
+  XCTAssertEqual((long long)0x000000007FFFFFFFL, decodeZigZag64(0x00000000FFFFFFFEL));
+  XCTAssertEqual((long long)0xFFFFFFFF80000000L, decodeZigZag64(0x00000000FFFFFFFFL));
+  XCTAssertEqual((long long)0x7FFFFFFFFFFFFFFFL, decodeZigZag64(0xFFFFFFFFFFFFFFFEL));
+  XCTAssertEqual((long long)0x8000000000000000L, decodeZigZag64(0xFFFFFFFFFFFFFFFFL));
 }
 
 
@@ -73,31 +73,31 @@
 - (void) assertReadVarint:(NSData*) data value:(long long) value {
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-    STAssertTrue((long)value == [input readRawVarint32], @"");
+    XCTAssertTrue((long)value == [input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-    STAssertTrue(value == [input readRawVarint64], @"");
+    XCTAssertTrue(value == [input readRawVarint64], @"");
   }
 
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[NSInputStream inputStreamWithData:data]];
-    STAssertTrue((long)value == [input readRawVarint32], @"");
+    XCTAssertTrue((long)value == [input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[NSInputStream inputStreamWithData:data]];
-    STAssertTrue(value == [input readRawVarint64], @"");
+    XCTAssertTrue(value == [input readRawVarint64], @"");
   }
 
   // Try different block sizes.
   for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
     {
       PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[SmallBlockInputStream streamWithData:data blockSize:blockSize]];
-      STAssertTrue((long)value == [input readRawVarint32], @"");
+      XCTAssertTrue((long)value == [input readRawVarint32], @"");
     }
     {
       PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[SmallBlockInputStream streamWithData:data blockSize:blockSize]];
-      STAssertTrue(value == [input readRawVarint64], @"");
+      XCTAssertTrue(value == [input readRawVarint64], @"");
     }
   }
 }
@@ -109,14 +109,14 @@
  */
 - (void) assertReadLittleEndian32:(NSData*) data value:(long) value {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-  STAssertTrue(value == [input readRawLittleEndian32], @"");
+  XCTAssertTrue(value == [input readRawLittleEndian32], @"");
 
   // Try different block sizes.
   for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
     PBCodedInputStream* input =
     [PBCodedInputStream streamWithInputStream:
      [SmallBlockInputStream streamWithData:data blockSize:blockSize]];
-    STAssertTrue(value == [input readRawLittleEndian32], @"");
+    XCTAssertTrue(value == [input readRawLittleEndian32], @"");
   }
 }
 
@@ -127,14 +127,14 @@
  */
 - (void) assertReadLittleEndian64:(NSData*) data value:(long long) value {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-  STAssertTrue(value == [input readRawLittleEndian64], @"");
+  XCTAssertTrue(value == [input readRawLittleEndian64], @"");
 
   // Try different block sizes.
   for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
     PBCodedInputStream* input =
     [PBCodedInputStream streamWithInputStream:
      [SmallBlockInputStream streamWithData:data blockSize:blockSize]];
-    STAssertTrue(value == [input readRawLittleEndian64], @"");
+    XCTAssertTrue(value == [input readRawLittleEndian64], @"");
   }
 }
 
@@ -147,20 +147,20 @@
 - (void) assertReadVarintFailure:(NSData*) data {
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-    STAssertThrows([input readRawVarint32], @"");
+    XCTAssertThrows([input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-    STAssertThrows([input readRawVarint64], @"");
+    XCTAssertThrows([input readRawVarint64], @"");
   }
 }
 
 
 - (void) testBytes {
   NSData* data = bytes(0xa2, 0x74);
-  STAssertTrue(data.length == 2, @"");
-  STAssertTrue(((uint8_t*)data.bytes)[0] == 0xa2, @"");
-  STAssertTrue(((uint8_t*)data.bytes)[1] == 0x74, @"");
+  XCTAssertTrue(data.length == 2, @"");
+  XCTAssertTrue(((uint8_t*)data.bytes)[0] == 0xa2, @"");
+  XCTAssertTrue(((uint8_t*)data.bytes)[1] == 0x74, @"");
 }
 
 
@@ -217,7 +217,7 @@
   TestAllTypes* message = [TestUtilities allSet];
 
   NSData* rawBytes = message.data;
-  STAssertTrue(rawBytes.length == message.serializedSize, @"");
+  XCTAssertTrue(rawBytes.length == message.serializedSize, @"");
 
   TestAllTypes* message2 = [TestAllTypes parseFromData:rawBytes];
   [TestUtilities assertAllFieldsSet:message2];
@@ -244,7 +244,7 @@
 
   while (YES) {
     long tag = [input1 readTag];
-    STAssertTrue(tag == [input2 readTag], @"");
+    XCTAssertTrue(tag == [input2 readTag], @"");
     if (tag == 0) {
       break;
     }
@@ -262,7 +262,7 @@
   }
 
   // Make a message containing it.
-  TestAllTypes_Builder* builder = [TestAllTypes builder];
+  TestAllTypesBuilder* builder = [TestAllTypes builder];
   [TestUtilities setAllFields:builder];
   [builder setOptionalBytes:[NSData dataWithData:blob]];
   TestAllTypes* message = [builder build];
@@ -273,7 +273,7 @@
   TestAllTypes* message2 =
   [TestAllTypes parseFromInputStream:[NSInputStream inputStreamWithData:message.data]];
 
-  STAssertEqualObjects(message.optionalBytes, message2.optionalBytes, @"");
+  XCTAssertEqualObjects(message.optionalBytes, message2.optionalBytes, @"");
 
   // Make sure all the other fields were parsed correctly.
   TestAllTypes* message3 = [[[TestAllTypes builderWithPrototype:message2]
@@ -297,9 +297,9 @@
 
   NSData* data = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:[NSMutableData dataWithData:data]];
-  STAssertTrue(tag == [input readTag], @"");
+  XCTAssertTrue(tag == [input readTag], @"");
 
-  STAssertThrows([input readData], @"");
+  XCTAssertThrows([input readData], @"");
 }
 
 @end

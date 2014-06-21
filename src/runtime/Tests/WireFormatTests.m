@@ -19,7 +19,7 @@
 
 #import "TestUtilities.h"
 #import "Unittest.pb.h"
-#import "UnittestMset.pb.h"
+#import "Unittest_mset.pb.h"
 
 @implementation WireFormatTests
 
@@ -27,7 +27,7 @@
   TestAllTypes* message = [TestUtilities allSet];
 
   NSData* rawBytes = message.data;
-  STAssertTrue(rawBytes.length == message.serializedSize, @"");
+  XCTAssertTrue(rawBytes.length == message.serializedSize, @"");
 
   TestAllTypes* message2 = [TestAllTypes parseFromData:rawBytes];
 
@@ -38,7 +38,7 @@
   TestPackedTypes* message = [TestUtilities packedSet];
 
   NSData* rawBytes = message.data;
-  STAssertTrue(rawBytes.length == message.serializedSize, @"");
+  XCTAssertTrue(rawBytes.length == message.serializedSize, @"");
 
   TestPackedTypes* message2 = [TestPackedTypes parseFromData:rawBytes];
 
@@ -53,7 +53,7 @@
 
   TestAllExtensions* message = [TestUtilities allExtensionsSet];
   NSData* rawBytes = message.data;
-  STAssertTrue(rawBytes.length == message.serializedSize, @"");
+  XCTAssertTrue(rawBytes.length == message.serializedSize, @"");
 
   TestAllTypes* message2 = [TestAllTypes parseFromData:rawBytes];
 
@@ -70,7 +70,7 @@
   TestPackedTypes* message2 = [TestUtilities packedSet];
   NSData* rawBytes2 = message2.data;
 
-  STAssertEqualObjects(rawBytes, rawBytes2, @"");
+  XCTAssertEqualObjects(rawBytes, rawBytes2, @"");
 }
 
 
@@ -93,7 +93,7 @@
 
 
 - (void) testExtensionsSerializedSize {
-  STAssertTrue([TestUtilities allSet].serializedSize == [TestUtilities allExtensionsSet].serializedSize, @"");
+  XCTAssertTrue([TestUtilities allSet].serializedSize == [TestUtilities allExtensionsSet].serializedSize, @"");
 }
 
 
@@ -121,7 +121,7 @@
       break;
     }
 
-    STAssertTrue(tag > previousTag, @"");
+    XCTAssertTrue(tag > previousTag, @"");
     [input skipField:tag];
   }
 }

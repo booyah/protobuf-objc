@@ -22,10 +22,6 @@
 
 @synthesize underlyingStream;
 
-- (void) dealloc {
-  self.underlyingStream = nil;
-  [super dealloc];
-}
 
 
 - (id) initWithData:(NSData*) data_
@@ -41,8 +37,8 @@
 
 + (SmallBlockInputStream*) streamWithData:(NSData*) data
                                 blockSize:(long) blockSize {
-  return [[[SmallBlockInputStream alloc] initWithData:data
-                                            blockSize:blockSize] autorelease];
+  return [[SmallBlockInputStream alloc] initWithData:data
+                                           blockSize:blockSize];
 }
 
 - (void)open {

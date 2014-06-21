@@ -32,7 +32,6 @@
   self.allFieldsData = nil;
   self.emptyMessage = nil;
   self.unknownFields = nil;
-  [super dealloc];
 }
 
 
@@ -85,7 +84,7 @@
   // Check that serializing the UnknownFieldSet produces the original data
   // again.
   NSData* data = [emptyMessage data];
-  STAssertEqualObjects(allFieldsData, data, @"");
+  XCTAssertEqualObjects(allFieldsData, data, @"");
 }
 
 
@@ -93,7 +92,7 @@
   TestEmptyMessage* message =
   [[[TestEmptyMessage builder] mergeFrom:emptyMessage] build];
 
-  STAssertEqualObjects(emptyMessage.data, message.data, @"");
+  XCTAssertEqualObjects(emptyMessage.data, message.data, @"");
 }
 
 
@@ -126,21 +125,21 @@
   TestEmptyMessage* destination1 = (id)[[[[TestEmptyMessage builder] mergeFrom:source1] mergeFrom:source2] build];
   TestEmptyMessage* destination2 = (id)[[[[TestEmptyMessage builder] mergeFrom:source3] mergeFrom:source4] build];
 
-  STAssertEqualObjects(destination1.data, destination2.data, @"");
+  XCTAssertEqualObjects(destination1.data, destination2.data, @"");
 }
 
 
 - (void) testClear {
   PBUnknownFieldSet* fields =
   [[[[PBUnknownFieldSet builder] mergeUnknownFields:unknownFields] clear] build];
-  STAssertEquals(fields.fields.count, (NSUInteger) 0, @"");
+  XCTAssertEqual(fields.fields.count, (NSUInteger) 0, @"");
 }
 
 
 - (void) testClearMessage {
   TestEmptyMessage* message =
   [[[[TestEmptyMessage builder] mergeFrom:emptyMessage] clear] build];
-  STAssertTrue(0 == message.serializedSize, @"");
+  XCTAssertTrue(0 == message.serializedSize, @"");
 }
 
 
@@ -155,11 +154,11 @@
   TestAllTypes* destination = [TestAllTypes parseFromData:data];
 
   [TestUtilities assertAllFieldsSet:destination];
-  STAssertTrue(1 == destination.unknownFields.fields.count, @"");
+  XCTAssertTrue(1 == destination.unknownFields.fields.count, @"");
 
   PBField* field = [destination.unknownFields getField:123456];
-  STAssertTrue(1 == field.varintArray.count, @"");
-  STAssertTrue(654321 == [field.varintArray int64AtIndex:0], @"");
+  XCTAssertTrue(1 == field.varintArray.count, @"");
+  XCTAssertTrue(654321 == [field.varintArray int64AtIndex:0], @"");
 }
 
 
@@ -173,7 +172,7 @@
 
   // All fields should have been interpreted as unknown, so the debug strings
   // should be the same.
-  STAssertEqualObjects(emptyMessage_.data, allTypesMessage.data, @"");
+  XCTAssertEqualObjects(emptyMessage_.data, allTypesMessage.data, @"");
 }
 
 
@@ -184,8 +183,8 @@
   TestEmptyMessageWithExtensions* message =
   [TestEmptyMessageWithExtensions parseFromData:allFieldsData];
 
-  STAssertTrue(unknownFields.fields.count ==  message.unknownFields.fields.count, @"");
-  STAssertEqualObjects(allFieldsData, message.data, @"");
+  XCTAssertTrue(unknownFields.fields.count ==  message.unknownFields.fields.count, @"");
+  XCTAssertEqualObjects(allFieldsData, message.data, @"");
 }
 
 
@@ -199,7 +198,7 @@
 
   // All fields should have been interpreted as unknown, so the debug strings
   // should be the same.
-  STAssertEqualObjects(emptyMessage_.data, allExtensionsMessage.data, @"");
+  XCTAssertEqualObjects(emptyMessage_.data, allExtensionsMessage.data, @"");
 }
 
 
@@ -210,8 +209,8 @@
 
   PBUnknownFieldSet* parsed = [PBUnknownFieldSet parseFromData:data];
   PBField* field = [parsed getField:1];
-  STAssertTrue(1 == field.varintArray.count, @"");
-  STAssertTrue(0x7FFFFFFFFFFFFFFFL == [field.varintArray int64AtIndex:0], @"");
+  XCTAssertTrue(1 == field.varintArray.count, @"");
+  XCTAssertTrue(0x7FFFFFFFFFFFFFFFL == [field.varintArray int64AtIndex:0], @"");
 }
 
 @end

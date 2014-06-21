@@ -15,13 +15,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 @class PBUnknownFieldSet;
 @class TestAllTypes;
 @class TestEmptyMessage;
 
-@interface UnknownFieldSetTest : SenTestCase {
+@interface UnknownFieldSetTest : XCTestCase {
   TestAllTypes* allFields;
   NSData* allFieldsData;
 

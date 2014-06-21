@@ -27,56 +27,55 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithArray:@[@2, @3, @4, @5, @7, @77] valueType:PBArrayValueTypeObject];
 	PBArray *filter = [array filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self.integerValue >= 5"]];
 	
-	STAssertEquals([filter count], (NSUInteger)3, nil);
+	XCTAssertEqual([filter count], (NSUInteger)3);
 	
-	STAssertEquals((((NSNumber *)filter[0]).integerValue), 5, nil);
-	STAssertEquals((((NSNumber *)filter[1]).integerValue), 7, nil);
-	STAssertEquals((((NSNumber *)filter[2]).integerValue), 77, nil);
+	XCTAssertEqual((((NSNumber *)filter[0]).integerValue), 5);
+	XCTAssertEqual((((NSNumber *)filter[1]).integerValue), 7);
+	XCTAssertEqual((((NSNumber *)filter[2]).integerValue), 77);
 	
-	[array release];
 }
 
 - (void)testCount
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertEquals([array count], (NSUInteger)3, nil);
-	STAssertEquals(array.count, (NSUInteger)3, nil);
-	[array release];
+	XCTAssertEqual([array count], (NSUInteger)3);
+	XCTAssertEqual(array.count, (NSUInteger)3);
+
 }
 
 - (void)testValueType
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertEquals(array.valueType, PBArrayValueTypeInt32, nil);
-	[array release];
+	XCTAssertEqual(array.valueType, PBArrayValueTypeInt32);
+
 }
 
 - (void)testPrimitiveAccess
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertEquals([array int32AtIndex:1], (long)2, nil);
-	[array release];
+	XCTAssertEqual([array int32AtIndex:1], (long)2);
+
 }
 
 - (void)testObjectAccess
 {
 	const id kValues[1] = { [NSString stringWithFormat:@"Test"] };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
-	STAssertTrue([[array objectAtIndex:0] isEqualToString:@"Test"], nil);
-	[array release];
+	XCTAssertTrue([[array objectAtIndex:0] isEqualToString:@"Test"]);
+
 }
 
 - (void)testEmpty
 {
 	PBArray *array = [[PBArray alloc] init];
-	STAssertEquals(array.count, (NSUInteger)0, nil);
-	STAssertEquals(array.valueType, PBArrayValueTypeObject, nil);
-	STAssertEquals(array.data, (const void *)nil, nil);
-	STAssertThrowsSpecificNamed([array objectAtIndex:0], NSException, NSRangeException, nil);
-	[array release];
+	XCTAssertEqual(array.count, (NSUInteger)0);
+	XCTAssertEqual(array.valueType, PBArrayValueTypeObject);
+	XCTAssertEqual(array.data, (const void *)nil);
+	XCTAssertThrowsSpecificNamed([array objectAtIndex:0], NSException, NSRangeException, @"");
+
 }
 
 - (void)testCopy
@@ -84,11 +83,10 @@
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *original = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *copy = [original copy];
-	STAssertEquals(original.valueType, copy.valueType, nil);
-	STAssertEquals(original.count, copy.count, nil);
-	STAssertEquals([original int32AtIndex:1], [copy int32AtIndex:1], nil);
-	[copy release];
-	[original release];
+	XCTAssertEqual(original.valueType, copy.valueType);
+	XCTAssertEqual(original.count, copy.count);
+	XCTAssertEqual([original int32AtIndex:1], [copy int32AtIndex:1]);
+
 }
 
 - (void)testCopyObjects
@@ -96,11 +94,9 @@
 	const id kValues[1] = { [NSString stringWithFormat:@"Test"] };
 	PBArray *original = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
 	PBArray *copy = [original copy];
-	STAssertEquals(original.valueType, copy.valueType, nil);
-	STAssertEquals(original.count, copy.count, nil);
-	STAssertEquals([original objectAtIndex:0], [copy objectAtIndex:0], nil);
-	[copy release];
-	[original release];
+	XCTAssertEqual(original.valueType, copy.valueType);
+	XCTAssertEqual(original.count, copy.count);
+	XCTAssertEqual([original objectAtIndex:0], [copy objectAtIndex:0]);
 }
 
 - (void)testFastEnumeration
@@ -111,11 +107,11 @@
 	unsigned long count = 0;
 	for (NSString *s in array)
 	{
-		STAssertTrue([s isEqualToString:kValues[count++]], nil);
+		XCTAssertTrue([s isEqualToString:kValues[count++]]);
 	}
-	STAssertEquals(count, (unsigned long)2, nil);
+	XCTAssertEqual(count, (unsigned long)2);
 
-	[array release];
+
 }
 
 - (void)testArrayAppendingArray
@@ -124,13 +120,9 @@
 	PBArray *a = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *b = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 
-	PBArray *copy = [[a arrayByAppendingArray:b] retain];
-	STAssertEquals(copy.valueType, a.valueType, nil);
-	STAssertEquals(copy.count, a.count + b.count, nil);
-
-	[copy release];
-	[a release];
-	[b release];
+  PBArray *copy = [a arrayByAppendingArray:b];
+	XCTAssertEqual(copy.valueType, a.valueType);
+	XCTAssertEqual(copy.count, a.count + b.count);
 }
 
 - (void)testArrayAppendingArrayObjects
@@ -139,13 +131,10 @@
 	PBArray *a = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
 	PBArray *b = [[PBArray alloc] initWithValues:kValues count:1 valueType:PBArrayValueTypeObject];
 
-	PBArray *copy = [[a arrayByAppendingArray:b] retain];
-	STAssertEquals(copy.valueType, a.valueType, nil);
-	STAssertEquals(copy.count, a.count + b.count, nil);
+  PBArray *copy = [a arrayByAppendingArray:b];
+	XCTAssertEqual(copy.valueType, a.valueType);
+	XCTAssertEqual(copy.count, a.count + b.count);
 
-	[copy release];
-	[a release];
-	[b release];
 }
 
 - (void)testAppendArrayTypeException
@@ -154,33 +143,32 @@
 	const long long kValuesB[3] = { 1, 2, 3 };
 	PBArray *a = [[PBArray alloc] initWithValues:kValuesA count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *b = [[PBArray alloc] initWithValues:kValuesB count:3 valueType:PBArrayValueTypeInt64];
-	STAssertThrowsSpecificNamed([a arrayByAppendingArray:b], NSException, PBArrayTypeMismatchException, nil);
-	[a release];
-	[b release];
+	XCTAssertThrowsSpecificNamed([a arrayByAppendingArray:b], NSException, PBArrayTypeMismatchException, @"");
+
 }
 
 - (void)testRangeException
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertThrowsSpecificNamed([array objectAtIndex:10], NSException, NSRangeException, nil);
-	[array release];
+	XCTAssertThrowsSpecificNamed([array objectAtIndex:10], NSException, NSRangeException,@"");
+
 }
 
 - (void)testTypeMismatchException
 {
 	const long kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertThrowsSpecificNamed([array objectAtIndex:0], NSException, PBArrayTypeMismatchException, nil);
-	[array release];
+	XCTAssertThrowsSpecificNamed([array objectAtIndex:0], NSException, PBArrayTypeMismatchException, @"");
+
 }
 
 - (void)testNumberExpectedException
 {
 	NSArray *objects = [[NSArray alloc] initWithObjects:@"Test", nil];
-	STAssertThrowsSpecificNamed([[PBArray alloc] initWithArray:objects valueType:PBArrayValueTypeInt32],
-								NSException, PBArrayNumberExpectedException, nil);
-	[objects release];
+	XCTAssertThrowsSpecificNamed([[PBArray alloc] initWithArray:objects valueType:PBArrayValueTypeInt32],
+								NSException, PBArrayNumberExpectedException, @"");
+
 }
 
 #pragma mark PBAppendableArray
@@ -190,9 +178,9 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array addInt32:1];
 	[array addInt32:4];
-	STAssertEquals(array.count, (NSUInteger)2, nil);
-	STAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, nil);
-	[array release];
+	XCTAssertEqual(array.count, (NSUInteger)2);
+	XCTAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, @"");
+
 }
 
 - (void)testAddObject
@@ -200,9 +188,9 @@
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeObject];
 	[array addObject:[NSString stringWithFormat:@"One"]];
 	[array addObject:[NSString stringWithFormat:@"Two"]];
-	STAssertEquals(array.count, (NSUInteger)2, nil);
-	STAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, nil);
-	[array release];
+	XCTAssertEqual(array.count, (NSUInteger)2);
+	XCTAssertThrowsSpecificNamed([array addBool:NO], NSException, PBArrayTypeMismatchException, @"");
+
 }
 
 - (void)testAppendArray
@@ -211,10 +199,9 @@
 	PBArray *source = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendArray:source];
-  STAssertEquals(array.count, source.count, nil);
-	STAssertEquals([array int32AtIndex:1], (long)2, nil);
-	[array release];
-	[source release];
+  XCTAssertEqual(array.count, source.count);
+	XCTAssertEqual([array int32AtIndex:1], (long)2);
+
 }
 
 - (void)testAppendValues
@@ -222,9 +209,9 @@
 	const long kValues[3] = { 1, 2, 3 };
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendValues:kValues count:3];
-	STAssertEquals(array.count, (NSUInteger)3, nil);
-	STAssertEquals([array int32AtIndex:1], (long)2, nil);
-	[array release];
+	XCTAssertEqual(array.count, (NSUInteger)3);
+	XCTAssertEqual([array int32AtIndex:1], (long)2);
+
 }
 
 - (void)testEqualValues
@@ -233,31 +220,27 @@
 	PBArray *array1 = [[PBArray alloc] initWithValues:kValues count:2 valueType:PBArrayValueTypeInt32];
 
 	// Test self equality.
-	STAssertEqualObjects(array1, array1, nil);
+	XCTAssertEqualObjects(array1, array1);
 
 	PBArray *array2 = [[PBArray alloc] initWithValues:kValues count:2 valueType:PBArrayValueTypeInt32];
 	// Test other equality.
-	STAssertEqualObjects(array1, array2, nil);
+	XCTAssertEqualObjects(array1, array2);
 
 	// Test non equality of nil.
-	STAssertFalse([array1 isEqual:nil], nil);
+	XCTAssertFalse([array1 isEqual:nil]);
 
 	// Test non equality of other object type.
-	STAssertFalse([array1 isEqual:@""], nil);
+	XCTAssertFalse([array1 isEqual:@""]);
 
 	// Test non equality of arrays of different sizes with same prefix.
 	PBArray *array3 = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	STAssertFalse([array1 isEqual:array3], nil);
+	XCTAssertFalse([array1 isEqual:array3]);
 
 	// Test non equality of arrays of same sizes with different contents.
 	const long kValues2[2] = { 2, 1 };
 	PBArray *array4 = [[PBArray alloc] initWithValues:kValues2 count:2 valueType:PBArrayValueTypeInt32];
-	STAssertFalse([array1 isEqual:array4], nil);
+	XCTAssertFalse([array1 isEqual:array4]);
 
-	[array1 release];
-	[array2 release];
-	[array3 release];
-	[array4 release];
 }
 
 @end

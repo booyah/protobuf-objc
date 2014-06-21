@@ -7,20 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F2404EA1955F7FE0022C703 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2404E91955F7FE0022C703 /* XCTest.framework */; };
+		3F7E14941955FB3400B3DD01 /* golden_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14901955FAEE00B3DD01 /* golden_message */; };
+		3F7E14951955FB3400B3DD01 /* golden_packed_fields_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */; };
 		3F8099EB1923DAF1006DA9D8 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F8099E91923DAF1006DA9D8 /* Descriptor.pb.h */; };
 		3F8099EC1923DAF1006DA9D8 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3F887B4919102C6000AFDD46 /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
-		8B0444601469EFD500BB156C /* UnittestEmpty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444571469EFD500BB156C /* UnittestEmpty.pb.m */; };
-		8B0444611469EFD500BB156C /* UnittestEnormousDescriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444591469EFD500BB156C /* UnittestEnormousDescriptor.pb.m */; };
-		8B0444621469EFD500BB156C /* UnittestImportLite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B04445B1469EFD500BB156C /* UnittestImportLite.pb.m */; };
-		8B0444631469EFD500BB156C /* UnittestLite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B04445D1469EFD500BB156C /* UnittestLite.pb.m */; };
-		8B0444641469EFD500BB156C /* UnittestLiteImportsNonlite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B04445F1469EFD500BB156C /* UnittestLiteImportsNonlite.pb.m */; };
-		8B0444671469F01800BB156C /* UnittestNoGenericServices.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B0444661469F01800BB156C /* UnittestNoGenericServices.pb.m */; };
+		3F8EE5BC195607A400C92814 /* Unittest_custom_options.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE58B195607A400C92814 /* Unittest_custom_options.pb.m */; };
+		3F8EE5BD195607A400C92814 /* Unittest_embed_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE58D195607A400C92814 /* Unittest_embed_optimize_for.pb.m */; };
+		3F8EE5BE195607A400C92814 /* Unittest_empty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE58F195607A400C92814 /* Unittest_empty.pb.m */; };
+		3F8EE5BF195607A400C92814 /* Unittest_enormous_descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE591195607A400C92814 /* Unittest_enormous_descriptor.pb.m */; };
+		3F8EE5C0195607A400C92814 /* Unittest_import_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE593195607A400C92814 /* Unittest_import_lite.pb.m */; };
+		3F8EE5C1195607A400C92814 /* Unittest_import_public_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE595195607A400C92814 /* Unittest_import_public_lite.pb.m */; };
+		3F8EE5C2195607A400C92814 /* Unittest_import_public.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE597195607A400C92814 /* Unittest_import_public.pb.m */; };
+		3F8EE5C3195607A400C92814 /* Unittest_import.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE599195607A400C92814 /* Unittest_import.pb.m */; };
+		3F8EE5C4195607A400C92814 /* Unittest_lite_imports_nonlite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE59B195607A400C92814 /* Unittest_lite_imports_nonlite.pb.m */; };
+		3F8EE5C5195607A400C92814 /* Unittest_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE59D195607A400C92814 /* Unittest_lite.pb.m */; };
+		3F8EE5C6195607A400C92814 /* Unittest_mset.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE59F195607A400C92814 /* Unittest_mset.pb.m */; };
+		3F8EE5C7195607A400C92814 /* Unittest_no_generic_services.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE5A1195607A400C92814 /* Unittest_no_generic_services.pb.m */; };
+		3F8EE5C8195607A400C92814 /* Unittest_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE5A3195607A400C92814 /* Unittest_optimize_for.pb.m */; };
+		3F8EE5C9195607A400C92814 /* Unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8EE5A5195607A400C92814 /* Unittest.pb.m */; };
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
-		BE8CC8C11919498900FEBCA3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F887B4E1910325D00AFDD46 /* SenTestingKit.framework */; };
 		C55591B1127A04EF002343CA /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
-		C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */; };
 		C586262012668B9F00204EE1 /* Bootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = C586261F12668B9F00204EE1 /* Bootstrap.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262212668BB100204EE1 /* ForwardDeclarations.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262112668BB100204EE1 /* ForwardDeclarations.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C586262412668BBF00204EE1 /* ProtocolBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = C586262312668BBF00204EE1 /* ProtocolBuffers.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -73,11 +82,6 @@
 		C5B03FCD12517AD90087887C /* MessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8512517A1A0087887C /* MessageTests.m */; };
 		C5B03FCE12517AD90087887C /* MicroTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8712517A1A0087887C /* MicroTest.m */; };
 		C5B03FCF12517AD90087887C /* TestUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8B12517A1A0087887C /* TestUtilities.m */; };
-		C5B03FD012517AD90087887C /* Unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F8D12517A1A0087887C /* Unittest.pb.m */; };
-		C5B03FD212517AD90087887C /* UnittestEmbedOptimizeFor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */; };
-		C5B03FD312517AD90087887C /* UnittestImport.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9312517A1A0087887C /* UnittestImport.pb.m */; };
-		C5B03FD412517AD90087887C /* UnittestMset.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9512517A1A0087887C /* UnittestMset.pb.m */; };
-		C5B03FD512517AD90087887C /* UnittestOptimizeFor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9712517A1A0087887C /* UnittestOptimizeFor.pb.m */; };
 		C5B03FD612517AD90087887C /* UnknownFieldSetTest.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9912517A1A0087887C /* UnknownFieldSetTest.m */; };
 		C5B03FD712517AD90087887C /* UtilitiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9B12517A1A0087887C /* UtilitiesTests.m */; };
 		C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C5B03F9D12517A1A0087887C /* WireFormatTests.m */; };
@@ -87,6 +91,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3F933D7519560DD1002F22FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = ProtocolBuffers;
+		};
+		3F933D7719560DD2002F22FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = ProtocolBuffers;
+		};
 		C5B03FF312517BD10087887C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0867D690FE84028FC02AAC07 /* Project object */;
@@ -97,25 +115,43 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F2404E91955F7FE0022C703 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3F7E14901955FAEE00B3DD01 /* golden_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_message; sourceTree = "<group>"; };
+		3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_packed_fields_message; sourceTree = "<group>"; };
+		3F7E14921955FAEE00B3DD01 /* text_format_unittest_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text_format_unittest_data.txt; sourceTree = "<group>"; };
+		3F7E14931955FAEE00B3DD01 /* text_format_unittest_extensions_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text_format_unittest_extensions_data.txt; sourceTree = "<group>"; };
 		3F8099E91923DAF1006DA9D8 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Descriptor.pb.h; path = Descriptor/Descriptor.pb.h; sourceTree = "<group>"; };
 		3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Descriptor.pb.m; path = Descriptor/Descriptor.pb.m; sourceTree = "<group>"; };
-		3F887B4E1910325D00AFDD46 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		8B0444561469EFD500BB156C /* UnittestEmpty.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestEmpty.pb.h; path = Tests/UnittestEmpty.pb.h; sourceTree = "<group>"; };
-		8B0444571469EFD500BB156C /* UnittestEmpty.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestEmpty.pb.m; path = Tests/UnittestEmpty.pb.m; sourceTree = "<group>"; };
-		8B0444581469EFD500BB156C /* UnittestEnormousDescriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestEnormousDescriptor.pb.h; path = Tests/UnittestEnormousDescriptor.pb.h; sourceTree = "<group>"; };
-		8B0444591469EFD500BB156C /* UnittestEnormousDescriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestEnormousDescriptor.pb.m; path = Tests/UnittestEnormousDescriptor.pb.m; sourceTree = "<group>"; };
-		8B04445A1469EFD500BB156C /* UnittestImportLite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestImportLite.pb.h; path = Tests/UnittestImportLite.pb.h; sourceTree = "<group>"; };
-		8B04445B1469EFD500BB156C /* UnittestImportLite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestImportLite.pb.m; path = Tests/UnittestImportLite.pb.m; sourceTree = "<group>"; };
-		8B04445C1469EFD500BB156C /* UnittestLite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestLite.pb.h; path = Tests/UnittestLite.pb.h; sourceTree = "<group>"; };
-		8B04445D1469EFD500BB156C /* UnittestLite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestLite.pb.m; path = Tests/UnittestLite.pb.m; sourceTree = "<group>"; };
-		8B04445E1469EFD500BB156C /* UnittestLiteImportsNonlite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestLiteImportsNonlite.pb.h; path = Tests/UnittestLiteImportsNonlite.pb.h; sourceTree = "<group>"; };
-		8B04445F1469EFD500BB156C /* UnittestLiteImportsNonlite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestLiteImportsNonlite.pb.m; path = Tests/UnittestLiteImportsNonlite.pb.m; sourceTree = "<group>"; };
-		8B0444651469F01800BB156C /* UnittestNoGenericServices.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestNoGenericServices.pb.h; path = Tests/UnittestNoGenericServices.pb.h; sourceTree = "<group>"; };
-		8B0444661469F01800BB156C /* UnittestNoGenericServices.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestNoGenericServices.pb.m; path = Tests/UnittestNoGenericServices.pb.m; sourceTree = "<group>"; };
+		3F8EE58A195607A400C92814 /* Unittest_custom_options.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_custom_options.pb.h; path = Tests/Unittest_custom_options.pb.h; sourceTree = "<group>"; };
+		3F8EE58B195607A400C92814 /* Unittest_custom_options.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_custom_options.pb.m; path = Tests/Unittest_custom_options.pb.m; sourceTree = "<group>"; };
+		3F8EE58C195607A400C92814 /* Unittest_embed_optimize_for.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_embed_optimize_for.pb.h; path = Tests/Unittest_embed_optimize_for.pb.h; sourceTree = "<group>"; };
+		3F8EE58D195607A400C92814 /* Unittest_embed_optimize_for.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_embed_optimize_for.pb.m; path = Tests/Unittest_embed_optimize_for.pb.m; sourceTree = "<group>"; };
+		3F8EE58E195607A400C92814 /* Unittest_empty.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_empty.pb.h; path = Tests/Unittest_empty.pb.h; sourceTree = "<group>"; };
+		3F8EE58F195607A400C92814 /* Unittest_empty.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_empty.pb.m; path = Tests/Unittest_empty.pb.m; sourceTree = "<group>"; };
+		3F8EE590195607A400C92814 /* Unittest_enormous_descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_enormous_descriptor.pb.h; path = Tests/Unittest_enormous_descriptor.pb.h; sourceTree = "<group>"; };
+		3F8EE591195607A400C92814 /* Unittest_enormous_descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_enormous_descriptor.pb.m; path = Tests/Unittest_enormous_descriptor.pb.m; sourceTree = "<group>"; };
+		3F8EE592195607A400C92814 /* Unittest_import_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_lite.pb.h; path = Tests/Unittest_import_lite.pb.h; sourceTree = "<group>"; };
+		3F8EE593195607A400C92814 /* Unittest_import_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_lite.pb.m; path = Tests/Unittest_import_lite.pb.m; sourceTree = "<group>"; };
+		3F8EE594195607A400C92814 /* Unittest_import_public_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_public_lite.pb.h; path = Tests/Unittest_import_public_lite.pb.h; sourceTree = "<group>"; };
+		3F8EE595195607A400C92814 /* Unittest_import_public_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_public_lite.pb.m; path = Tests/Unittest_import_public_lite.pb.m; sourceTree = "<group>"; };
+		3F8EE596195607A400C92814 /* Unittest_import_public.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_public.pb.h; path = Tests/Unittest_import_public.pb.h; sourceTree = "<group>"; };
+		3F8EE597195607A400C92814 /* Unittest_import_public.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_public.pb.m; path = Tests/Unittest_import_public.pb.m; sourceTree = "<group>"; };
+		3F8EE598195607A400C92814 /* Unittest_import.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import.pb.h; path = Tests/Unittest_import.pb.h; sourceTree = "<group>"; };
+		3F8EE599195607A400C92814 /* Unittest_import.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import.pb.m; path = Tests/Unittest_import.pb.m; sourceTree = "<group>"; };
+		3F8EE59A195607A400C92814 /* Unittest_lite_imports_nonlite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_lite_imports_nonlite.pb.h; path = Tests/Unittest_lite_imports_nonlite.pb.h; sourceTree = "<group>"; };
+		3F8EE59B195607A400C92814 /* Unittest_lite_imports_nonlite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_lite_imports_nonlite.pb.m; path = Tests/Unittest_lite_imports_nonlite.pb.m; sourceTree = "<group>"; };
+		3F8EE59C195607A400C92814 /* Unittest_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_lite.pb.h; path = Tests/Unittest_lite.pb.h; sourceTree = "<group>"; };
+		3F8EE59D195607A400C92814 /* Unittest_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_lite.pb.m; path = Tests/Unittest_lite.pb.m; sourceTree = "<group>"; };
+		3F8EE59E195607A400C92814 /* Unittest_mset.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_mset.pb.h; path = Tests/Unittest_mset.pb.h; sourceTree = "<group>"; };
+		3F8EE59F195607A400C92814 /* Unittest_mset.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_mset.pb.m; path = Tests/Unittest_mset.pb.m; sourceTree = "<group>"; };
+		3F8EE5A0195607A400C92814 /* Unittest_no_generic_services.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_no_generic_services.pb.h; path = Tests/Unittest_no_generic_services.pb.h; sourceTree = "<group>"; };
+		3F8EE5A1195607A400C92814 /* Unittest_no_generic_services.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_no_generic_services.pb.m; path = Tests/Unittest_no_generic_services.pb.m; sourceTree = "<group>"; };
+		3F8EE5A2195607A400C92814 /* Unittest_optimize_for.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_optimize_for.pb.h; path = Tests/Unittest_optimize_for.pb.h; sourceTree = "<group>"; };
+		3F8EE5A3195607A400C92814 /* Unittest_optimize_for.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_optimize_for.pb.m; path = Tests/Unittest_optimize_for.pb.m; sourceTree = "<group>"; };
+		3F8EE5A4195607A400C92814 /* Unittest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest.pb.h; path = Tests/Unittest.pb.h; sourceTree = "<group>"; };
+		3F8EE5A5195607A400C92814 /* Unittest.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest.pb.m; path = Tests/Unittest.pb.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C57A9FE2125276A400726D16 /* UnittestCustomOptions.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestCustomOptions.pb.h; path = Tests/UnittestCustomOptions.pb.h; sourceTree = "<group>"; };
-		C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestCustomOptions.pb.m; path = Tests/UnittestCustomOptions.pb.m; sourceTree = "<group>"; };
 		C586261F12668B9F00204EE1 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
 		C586262112668BB100204EE1 /* ForwardDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwardDeclarations.h; sourceTree = "<group>"; };
 		C586262312668BBF00204EE1 /* ProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers.h; sourceTree = "<group>"; };
@@ -160,7 +196,7 @@
 		C586267012668C6C00204EE1 /* RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingBuffer.m; sourceTree = "<group>"; };
 		C586267312668C7400204EE1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		C586267412668C7400204EE1 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
-		C5B03F76125179F30087887C /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C5B03F76125179F30087887C /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5B03F77125179F30087887C /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
 		C5B03F7B12517A1A0087887C /* CodedInputStreamTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodedInputStreamTests.h; path = Tests/CodedInputStreamTests.h; sourceTree = "<group>"; };
 		C5B03F7C12517A1A0087887C /* CodedInputStreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CodedInputStreamTests.m; path = Tests/CodedInputStreamTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -179,16 +215,6 @@
 		C5B03F8912517A1A0087887C /* SmallBlockInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmallBlockInputStream.m; path = Tests/SmallBlockInputStream.m; sourceTree = "<group>"; };
 		C5B03F8A12517A1A0087887C /* TestUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestUtilities.h; path = Tests/TestUtilities.h; sourceTree = "<group>"; };
 		C5B03F8B12517A1A0087887C /* TestUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestUtilities.m; path = Tests/TestUtilities.m; sourceTree = "<group>"; };
-		C5B03F8C12517A1A0087887C /* Unittest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest.pb.h; path = Tests/Unittest.pb.h; sourceTree = "<group>"; };
-		C5B03F8D12517A1A0087887C /* Unittest.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest.pb.m; path = Tests/Unittest.pb.m; sourceTree = "<group>"; };
-		C5B03F9012517A1A0087887C /* UnittestEmbedOptimizeFor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestEmbedOptimizeFor.pb.h; path = Tests/UnittestEmbedOptimizeFor.pb.h; sourceTree = "<group>"; };
-		C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestEmbedOptimizeFor.pb.m; path = Tests/UnittestEmbedOptimizeFor.pb.m; sourceTree = "<group>"; };
-		C5B03F9212517A1A0087887C /* UnittestImport.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestImport.pb.h; path = Tests/UnittestImport.pb.h; sourceTree = "<group>"; };
-		C5B03F9312517A1A0087887C /* UnittestImport.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestImport.pb.m; path = Tests/UnittestImport.pb.m; sourceTree = "<group>"; };
-		C5B03F9412517A1A0087887C /* UnittestMset.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestMset.pb.h; path = Tests/UnittestMset.pb.h; sourceTree = "<group>"; };
-		C5B03F9512517A1A0087887C /* UnittestMset.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestMset.pb.m; path = Tests/UnittestMset.pb.m; sourceTree = "<group>"; };
-		C5B03F9612517A1A0087887C /* UnittestOptimizeFor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnittestOptimizeFor.pb.h; path = Tests/UnittestOptimizeFor.pb.h; sourceTree = "<group>"; };
-		C5B03F9712517A1A0087887C /* UnittestOptimizeFor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnittestOptimizeFor.pb.m; path = Tests/UnittestOptimizeFor.pb.m; sourceTree = "<group>"; };
 		C5B03F9812517A1A0087887C /* UnknownFieldSetTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnknownFieldSetTest.h; path = Tests/UnknownFieldSetTest.h; sourceTree = "<group>"; };
 		C5B03F9912517A1A0087887C /* UnknownFieldSetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnknownFieldSetTest.m; path = Tests/UnknownFieldSetTest.m; sourceTree = "<group>"; };
 		C5B03F9A12517A1A0087887C /* UtilitiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtilitiesTests.h; path = Tests/UtilitiesTests.h; sourceTree = "<group>"; };
@@ -207,7 +233,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE8CC8C11919498900FEBCA3 /* SenTestingKit.framework in Frameworks */,
+				3F2404EA1955F7FE0022C703 /* XCTest.framework in Frameworks */,
 				3F887B4919102C6000AFDD46 /* libProtocolBuffers.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -227,7 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AAC07E0554694100DB518D /* libProtocolBuffers.a */,
-				C5B03F76125179F30087887C /* UnitTests.octest */,
+				C5B03F76125179F30087887C /* UnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,7 +273,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3F887B4E1910325D00AFDD46 /* SenTestingKit.framework */,
+				3F2404E91955F7FE0022C703 /* XCTest.framework */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -275,6 +301,18 @@
 				AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */,
 			);
 			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		3F7E148F1955FAEE00B3DD01 /* testdata */ = {
+			isa = PBXGroup;
+			children = (
+				3F7E14901955FAEE00B3DD01 /* golden_message */,
+				3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */,
+				3F7E14921955FAEE00B3DD01 /* text_format_unittest_data.txt */,
+				3F7E14931955FAEE00B3DD01 /* text_format_unittest_extensions_data.txt */,
+			);
+			name = testdata;
+			path = Tests/testdata;
 			sourceTree = "<group>";
 		};
 		C5B03E5312516AD70087887C /* Unit Tests */ = {
@@ -370,6 +408,7 @@
 		C5B03FC112517A2B0087887C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				3F7E148F1955FAEE00B3DD01 /* testdata */,
 				C5D8D6E912767BC300F0BAE4 /* ArrayTests.h */,
 				C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */,
 				C5B03F7B12517A1A0087887C /* CodedInputStreamTests.h */,
@@ -408,30 +447,34 @@
 		C5B040B212517E930087887C /* Protocol Buffers */ = {
 			isa = PBXGroup;
 			children = (
-				C5B03F8C12517A1A0087887C /* Unittest.pb.h */,
-				C5B03F8D12517A1A0087887C /* Unittest.pb.m */,
-				8B0444561469EFD500BB156C /* UnittestEmpty.pb.h */,
-				8B0444571469EFD500BB156C /* UnittestEmpty.pb.m */,
-				8B0444581469EFD500BB156C /* UnittestEnormousDescriptor.pb.h */,
-				8B0444591469EFD500BB156C /* UnittestEnormousDescriptor.pb.m */,
-				8B04445A1469EFD500BB156C /* UnittestImportLite.pb.h */,
-				8B04445B1469EFD500BB156C /* UnittestImportLite.pb.m */,
-				8B04445C1469EFD500BB156C /* UnittestLite.pb.h */,
-				8B04445D1469EFD500BB156C /* UnittestLite.pb.m */,
-				8B04445E1469EFD500BB156C /* UnittestLiteImportsNonlite.pb.h */,
-				8B04445F1469EFD500BB156C /* UnittestLiteImportsNonlite.pb.m */,
-				C5B03F9412517A1A0087887C /* UnittestMset.pb.h */,
-				C5B03F9512517A1A0087887C /* UnittestMset.pb.m */,
-				C57A9FE2125276A400726D16 /* UnittestCustomOptions.pb.h */,
-				C57A9FE3125276A400726D16 /* UnittestCustomOptions.pb.m */,
-				C5B03F9012517A1A0087887C /* UnittestEmbedOptimizeFor.pb.h */,
-				C5B03F9112517A1A0087887C /* UnittestEmbedOptimizeFor.pb.m */,
-				C5B03F9212517A1A0087887C /* UnittestImport.pb.h */,
-				C5B03F9312517A1A0087887C /* UnittestImport.pb.m */,
-				C5B03F9612517A1A0087887C /* UnittestOptimizeFor.pb.h */,
-				C5B03F9712517A1A0087887C /* UnittestOptimizeFor.pb.m */,
-				8B0444651469F01800BB156C /* UnittestNoGenericServices.pb.h */,
-				8B0444661469F01800BB156C /* UnittestNoGenericServices.pb.m */,
+				3F8EE58A195607A400C92814 /* Unittest_custom_options.pb.h */,
+				3F8EE58B195607A400C92814 /* Unittest_custom_options.pb.m */,
+				3F8EE58C195607A400C92814 /* Unittest_embed_optimize_for.pb.h */,
+				3F8EE58D195607A400C92814 /* Unittest_embed_optimize_for.pb.m */,
+				3F8EE58E195607A400C92814 /* Unittest_empty.pb.h */,
+				3F8EE58F195607A400C92814 /* Unittest_empty.pb.m */,
+				3F8EE590195607A400C92814 /* Unittest_enormous_descriptor.pb.h */,
+				3F8EE591195607A400C92814 /* Unittest_enormous_descriptor.pb.m */,
+				3F8EE592195607A400C92814 /* Unittest_import_lite.pb.h */,
+				3F8EE593195607A400C92814 /* Unittest_import_lite.pb.m */,
+				3F8EE594195607A400C92814 /* Unittest_import_public_lite.pb.h */,
+				3F8EE595195607A400C92814 /* Unittest_import_public_lite.pb.m */,
+				3F8EE596195607A400C92814 /* Unittest_import_public.pb.h */,
+				3F8EE597195607A400C92814 /* Unittest_import_public.pb.m */,
+				3F8EE598195607A400C92814 /* Unittest_import.pb.h */,
+				3F8EE599195607A400C92814 /* Unittest_import.pb.m */,
+				3F8EE59A195607A400C92814 /* Unittest_lite_imports_nonlite.pb.h */,
+				3F8EE59B195607A400C92814 /* Unittest_lite_imports_nonlite.pb.m */,
+				3F8EE59C195607A400C92814 /* Unittest_lite.pb.h */,
+				3F8EE59D195607A400C92814 /* Unittest_lite.pb.m */,
+				3F8EE59E195607A400C92814 /* Unittest_mset.pb.h */,
+				3F8EE59F195607A400C92814 /* Unittest_mset.pb.m */,
+				3F8EE5A0195607A400C92814 /* Unittest_no_generic_services.pb.h */,
+				3F8EE5A1195607A400C92814 /* Unittest_no_generic_services.pb.m */,
+				3F8EE5A2195607A400C92814 /* Unittest_optimize_for.pb.h */,
+				3F8EE5A3195607A400C92814 /* Unittest_optimize_for.pb.m */,
+				3F8EE5A4195607A400C92814 /* Unittest.pb.h */,
+				3F8EE5A5195607A400C92814 /* Unittest.pb.m */,
 			);
 			name = "Protocol Buffers";
 			sourceTree = "<group>";
@@ -507,10 +550,12 @@
 			);
 			dependencies = (
 				C5B03FF412517BD10087887C /* PBXTargetDependency */,
+				3F933D7619560DD1002F22FC /* PBXTargetDependency */,
+				3F933D7819560DD2002F22FC /* PBXTargetDependency */,
 			);
 			name = UnitTests;
 			productName = UnitTests;
-			productReference = C5B03F76125179F30087887C /* UnitTests.octest */;
+			productReference = C5B03F76125179F30087887C /* UnitTests.xctest */;
 			productType = "com.apple.product-type.bundle";
 		};
 		D2AAC07D0554694100DB518D /* ProtocolBuffers */ = {
@@ -536,7 +581,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				TargetAttributes = {
 					C5B03F75125179F30087887C = {
 						TestTargetID = D2AAC07D0554694100DB518D;
@@ -569,6 +614,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F7E14941955FB3400B3DD01 /* golden_message in Resources */,
+				3F7E14951955FB3400B3DD01 /* golden_packed_fields_message in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -595,31 +642,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F8EE5C5195607A400C92814 /* Unittest_lite.pb.m in Sources */,
 				C5B03FC712517AAE0087887C /* SmallBlockInputStream.m in Sources */,
 				C5B03FC912517AD90087887C /* CodedInputStreamTests.m in Sources */,
+				3F8EE5C9195607A400C92814 /* Unittest.pb.m in Sources */,
+				3F8EE5C2195607A400C92814 /* Unittest_import_public.pb.m in Sources */,
 				C5B03FCA12517AD90087887C /* CodedOuputStreamTests.m in Sources */,
+				3F8EE5C6195607A400C92814 /* Unittest_mset.pb.m in Sources */,
+				3F8EE5C0195607A400C92814 /* Unittest_import_lite.pb.m in Sources */,
 				C5B03FCB12517AD90087887C /* CoreTests.m in Sources */,
+				3F8EE5BD195607A400C92814 /* Unittest_embed_optimize_for.pb.m in Sources */,
+				3F8EE5C1195607A400C92814 /* Unittest_import_public_lite.pb.m in Sources */,
+				3F8EE5BC195607A400C92814 /* Unittest_custom_options.pb.m in Sources */,
+				3F8EE5C4195607A400C92814 /* Unittest_lite_imports_nonlite.pb.m in Sources */,
 				C5B03FCC12517AD90087887C /* GeneratedMessageTests.m in Sources */,
 				C5B03FCD12517AD90087887C /* MessageTests.m in Sources */,
+				3F8EE5BF195607A400C92814 /* Unittest_enormous_descriptor.pb.m in Sources */,
 				C5B03FCE12517AD90087887C /* MicroTest.m in Sources */,
+				3F8EE5C7195607A400C92814 /* Unittest_no_generic_services.pb.m in Sources */,
 				C5B03FCF12517AD90087887C /* TestUtilities.m in Sources */,
-				C5B03FD012517AD90087887C /* Unittest.pb.m in Sources */,
-				C5B03FD212517AD90087887C /* UnittestEmbedOptimizeFor.pb.m in Sources */,
-				C5B03FD312517AD90087887C /* UnittestImport.pb.m in Sources */,
-				C5B03FD412517AD90087887C /* UnittestMset.pb.m in Sources */,
-				C5B03FD512517AD90087887C /* UnittestOptimizeFor.pb.m in Sources */,
 				C5B03FD612517AD90087887C /* UnknownFieldSetTest.m in Sources */,
+				3F8EE5C8195607A400C92814 /* Unittest_optimize_for.pb.m in Sources */,
 				C5B03FD712517AD90087887C /* UtilitiesTests.m in Sources */,
+				3F8EE5BE195607A400C92814 /* Unittest_empty.pb.m in Sources */,
 				C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */,
+				3F8EE5C3195607A400C92814 /* Unittest_import.pb.m in Sources */,
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
-				C57A9FE4125276A400726D16 /* UnittestCustomOptions.pb.m in Sources */,
 				C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */,
-				8B0444601469EFD500BB156C /* UnittestEmpty.pb.m in Sources */,
-				8B0444611469EFD500BB156C /* UnittestEnormousDescriptor.pb.m in Sources */,
-				8B0444621469EFD500BB156C /* UnittestImportLite.pb.m in Sources */,
-				8B0444631469EFD500BB156C /* UnittestLite.pb.m in Sources */,
-				8B0444641469EFD500BB156C /* UnittestLiteImportsNonlite.pb.m in Sources */,
-				8B0444671469F01800BB156C /* UnittestNoGenericServices.pb.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +703,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3F933D7619560DD1002F22FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* ProtocolBuffers */;
+			targetProxy = 3F933D7519560DD1002F22FC /* PBXContainerItemProxy */;
+		};
+		3F933D7819560DD2002F22FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AAC07D0554694100DB518D /* ProtocolBuffers */;
+			targetProxy = 3F933D7719560DD2002F22FC /* PBXContainerItemProxy */;
+		};
 		C5B03FF412517BD10087887C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D2AAC07D0554694100DB518D /* ProtocolBuffers */;
@@ -674,6 +733,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ProtocolBuffers_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ProtocolBuffers;
 				SDKROOT = iphoneos;
@@ -693,6 +753,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ProtocolBuffers_Prefix.pch;
 				INSTALL_PATH = /usr/local/lib;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = ProtocolBuffers;
 				SDKROOT = iphoneos;
@@ -711,8 +772,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../ProtocolBuffers;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OBJROOT = Build;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
 				PUBLIC_HEADERS_FOLDER_PATH = ../ProtocolBuffers;
@@ -730,6 +792,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../ProtocolBuffers;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OBJROOT = Build;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;
@@ -745,6 +808,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -760,7 +824,8 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Headers/Foundation.h";
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
-				ONLY_ACTIVE_ARCH = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -769,10 +834,10 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = UnitTests;
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "i386 x86_64 armv7s armv7 arm64";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
 		};
@@ -780,6 +845,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -794,6 +860,7 @@
 				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Foundation.framework/Headers/Foundation.h";
 				INFOPLIST_FILE = "UnitTests-Info.plist";
 				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
@@ -802,10 +869,10 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = UnitTests;
-				SDKROOT = iphoneos7.1;
+				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALID_ARCHS = "i386 x86_64 armv7s armv7 arm64";
-				WRAPPER_EXTENSION = octest;
+				WRAPPER_EXTENSION = xctest;
 				ZERO_LINK = NO;
 			};
 			name = Release;

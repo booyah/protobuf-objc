@@ -23,15 +23,15 @@
 @implementation GeneratedMessageTests
 
 - (void) testDefaultInstance {
-  STAssertTrue([TestAllTypes defaultInstance] ==
+  XCTAssertTrue([TestAllTypes defaultInstance] ==
                [[TestAllTypes defaultInstance] defaultInstance], @"");
-  STAssertTrue([TestAllTypes defaultInstance] ==
+  XCTAssertTrue([TestAllTypes defaultInstance] ==
                [[TestAllTypes builder] defaultInstance], @"");
 }
 
 
 - (void) testAccessors {
-  TestAllTypes_Builder* builder = [TestAllTypes builder];
+  TestAllTypesBuilder* builder = [TestAllTypes builder];
   [TestUtilities setAllFields:builder];
   TestAllTypes* message = [builder build];
   [TestUtilities assertAllFieldsSet:message];
@@ -39,7 +39,7 @@
 
 
 - (void) testRepeatedAppend {
-  TestAllTypes_Builder* builder = [TestAllTypes builder];
+  TestAllTypesBuilder* builder = [TestAllTypes builder];
 
   NSArray* array =
   [NSArray arrayWithObjects:
@@ -57,8 +57,8 @@
   [builder setRepeatedForeignMessageArray:[NSArray arrayWithObject:foreignMessage]];
 
   TestAllTypes* message = [builder build];
-  STAssertTrue(1 == message.repeatedForeignMessage.count, @"");
-  STAssertTrue(12 == [[message repeatedForeignMessageAtIndex:0] c], @"");
+  XCTAssertTrue(1 == message.repeatedForeignMessage.count, @"");
+  XCTAssertTrue(12 == [[message repeatedForeignMessageAtIndex:0] c], @"");
 }
 
 
@@ -68,22 +68,22 @@
   [[TestAllExtensions builder]
    setExtension:[UnittestRoot optionalInt32Extension] value:[NSNumber numberWithInt:1]];
 
-  STAssertTrue([builder1 hasExtension:[UnittestRoot optionalInt32Extension]], @"");
+  XCTAssertTrue([builder1 hasExtension:[UnittestRoot optionalInt32Extension]], @"");
   [builder1 clearExtension:[UnittestRoot optionalInt32Extension]];
-  STAssertFalse([builder1 hasExtension:[UnittestRoot optionalInt32Extension]], @"");
+  XCTAssertFalse([builder1 hasExtension:[UnittestRoot optionalInt32Extension]], @"");
 
   PBExtendableMessage_Builder* builder2 =
   [[TestAllExtensions builder]
    addExtension:[UnittestRoot repeatedInt32Extension] value:[NSNumber numberWithInt:1]];
 
-  STAssertTrue(1 == [[builder2 getExtension:[UnittestRoot repeatedInt32Extension]] count], @"");
+  XCTAssertTrue(1 == [[builder2 getExtension:[UnittestRoot repeatedInt32Extension]] count], @"");
   [builder2 clearExtension:[UnittestRoot repeatedInt32Extension]];
-  STAssertTrue(0 == [[builder2 getExtension:[UnittestRoot repeatedInt32Extension]] count], @"");
+  XCTAssertTrue(0 == [[builder2 getExtension:[UnittestRoot repeatedInt32Extension]] count], @"");
 }
 
 
 - (void) testExtensionAccessors {
-  TestAllExtensions_Builder* builder = [TestAllExtensions builder];
+  TestAllExtensionsBuilder* builder = [TestAllExtensions builder];
   [TestUtilities setAllExtensions:builder];
   TestAllExtensions* message = [builder build];
   [TestUtilities assertAllExtensionsSet:message];
@@ -91,7 +91,7 @@
 
 
 - (void) testExtensionRepeatedSetters {
-  TestAllExtensions_Builder* builder = [TestAllExtensions builder];
+  TestAllExtensionsBuilder* builder = [TestAllExtensions builder];
   [TestUtilities setAllExtensions:builder];
   [TestUtilities modifyRepeatedExtensions:builder];
   TestAllExtensions* message = [builder build];
