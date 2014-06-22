@@ -19,9 +19,9 @@
 
 @class PBCodedInputStream;
 @class PBCodedOutputStream;
-@class PBExtendableMessage_Builder;
+@class PBExtendableMessageBuilder;
 @class PBExtensionRegistry;
-@class PBUnknownFieldSet_Builder;
+@class PBUnknownFieldSetBuilder;
 
 @protocol PBExtensionField
 - (long) fieldNumber;
@@ -31,9 +31,9 @@
 - (id) defaultValue;
 
 - (void) mergeFromCodedInputStream:(PBCodedInputStream*) input
-                     unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
+                     unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
                  extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                           builder:(PBExtendableMessage_Builder*) builder
+                           builder:(PBExtendableMessageBuilder*) builder
                                tag:(long) tag;
 - (void) writeValue:(id) value includingTagToCodedOutputStream:(PBCodedOutputStream*) output;
 - (long) computeSerializedSizeIncludingTag:(id) value;

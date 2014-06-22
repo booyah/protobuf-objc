@@ -20,8 +20,8 @@
 #import "AbstractMessage.h"
 #import "CodedInputStream.h"
 #import "CodedOutputStream.h"
-#import "ExtendableMessage_Builder.h"
-#import "Message_Builder.h"
+#import "ExtendableMessageBuilder.h"
+#import "MessageBuilder.h"
 #import "Utilities.h"
 #import "WireFormat.h"
 
@@ -29,7 +29,7 @@
 @property PBExtensionType type;
 @property (assign) Class extendedClass;
 @property long fieldNumber;
-@property (retain) id defaultValue;
+@property (strong) id defaultValue;
 @property (assign) Class messageOrGroupClass;
 @property BOOL isRepeated;
 @property BOOL isPacked;
@@ -47,17 +47,6 @@
 @synthesize isPacked;
 @synthesize isMessageSetWireFormat;
 
-- (void) dealloc {
-  self.type = 0;
-  self.extendedClass = nil;
-  self.fieldNumber = 0;
-  self.defaultValue = nil;
-  self.messageOrGroupClass = nil;
-  self.isRepeated = NO;
-  self.isPacked = NO;
-  self.isMessageSetWireFormat = NO;
-  [super dealloc];
-}
 
 
 - (id)     initWithType:(PBExtensionType) type_
@@ -91,14 +80,14 @@
                                    isRepeated:(BOOL) isRepeated
                                      isPacked:(BOOL) isPacked
                        isMessageSetWireFormat:(BOOL) isMessageSetWireFormat {
-  return [[[PBConcreteExtensionField alloc] initWithType:type
+  return [[PBConcreteExtensionField alloc] initWithType:type
                                          extendedClass:extendedClass
                                            fieldNumber:fieldNumber
                                           defaultValue:defaultValue
                              messageOrGroupClass:messageOrGroupClass
                                             isRepeated:isRepeated
                                               isPacked:isPacked
-                                isMessageSetWireFormat:isMessageSetWireFormat] autorelease];
+                                 isMessageSetWireFormat:isMessageSetWireFormat];
 }
 
 
@@ -175,10 +164,10 @@ long typeSize(PBExtensionType type) {
       [output writeBool:fieldNumber value:[value boolValue]];
       return;
     case PBExtensionTypeFixed32:
-      [output writeFixed32:fieldNumber value:[value intValue]];
+      [output writeFixed32:fieldNumber value:[value integerValue]];
       return;
     case PBExtensionTypeSFixed32:
-      [output writeSFixed32:fieldNumber value:[value intValue]];
+      [output writeSFixed32:fieldNumber value:[value integerValue]];
       return;
     case PBExtensionTypeFloat:
       [output writeFloat:fieldNumber value:[value floatValue]];
@@ -193,19 +182,19 @@ long typeSize(PBExtensionType type) {
       [output writeDouble:fieldNumber value:[value doubleValue]];
       return;
     case PBExtensionTypeInt32:
-      [output writeInt32:fieldNumber value:[value intValue]];
+      [output writeInt32:fieldNumber value:[value integerValue]];
       return;
     case PBExtensionTypeInt64:
       [output writeInt64:fieldNumber value:[value longLongValue]];
       return;
     case PBExtensionTypeSInt32:
-      [output writeSInt32:fieldNumber value:[value intValue]];
+      [output writeSInt32:fieldNumber value:[value integerValue]];
       return;
     case PBExtensionTypeSInt64:
       [output writeSInt64:fieldNumber value:[value longLongValue]];
       return;
     case PBExtensionTypeUInt32:
-      [output writeUInt32:fieldNumber value:[value intValue]];
+      [output writeUInt32:fieldNumber value:[value integerValue]];
       return;
     case PBExtensionTypeUInt64:
       [output writeUInt64:fieldNumber value:[value longLongValue]];
@@ -220,7 +209,7 @@ long typeSize(PBExtensionType type) {
       [output writeGroup:fieldNumber value:value];
       return;
     case PBExtensionTypeEnum:
-      [output writeEnum:fieldNumber value:[value intValue]];
+      [output writeEnum:fieldNumber value:[value integerValue]];
       return;
     case PBExtensionTypeMessage:
       if (isMessageSetWireFormat) {
@@ -242,10 +231,10 @@ long typeSize(PBExtensionType type) {
       [output writeBoolNoTag:[value boolValue]];
       return;
     case PBExtensionTypeFixed32:
-      [output writeFixed32NoTag:[value intValue]];
+      [output writeFixed32NoTag:[value integerValue]];
       return;
     case PBExtensionTypeSFixed32:
-      [output writeSFixed32NoTag:[value intValue]];
+      [output writeSFixed32NoTag:[value integerValue]];
       return;
     case PBExtensionTypeFloat:
       [output writeFloatNoTag:[value floatValue]];
@@ -260,19 +249,19 @@ long typeSize(PBExtensionType type) {
       [output writeDoubleNoTag:[value doubleValue]];
       return;
     case PBExtensionTypeInt32:
-      [output writeInt32NoTag:[value intValue]];
+      [output writeInt32NoTag:[value integerValue]];
       return;
     case PBExtensionTypeInt64:
       [output writeInt64NoTag:[value longLongValue]];
       return;
     case PBExtensionTypeSInt32:
-      [output writeSInt32NoTag:[value intValue]];
+      [output writeSInt32NoTag:[value integerValue]];
       return;
     case PBExtensionTypeSInt64:
       [output writeSInt64NoTag:[value longLongValue]];
       return;
     case PBExtensionTypeUInt32:
-      [output writeUInt32NoTag:[value intValue]];
+      [output writeUInt32NoTag:[value integerValue]];
       return;
     case PBExtensionTypeUInt64:
       [output writeUInt64NoTag:[value longLongValue]];
@@ -287,7 +276,7 @@ long typeSize(PBExtensionType type) {
       [output writeGroupNoTag:fieldNumber value:value];
       return;
     case PBExtensionTypeEnum:
-      [output writeEnumNoTag:[value intValue]];
+      [output writeEnumNoTag:[value integerValue]];
       return;
     case PBExtensionTypeMessage:
       [output writeMessageNoTag:value];
@@ -301,22 +290,22 @@ long typeSize(PBExtensionType type) {
 - (long) computeSingleSerializedSizeNoTag:(id) value {
   switch (type) {
     case PBExtensionTypeBool:     return computeBoolSizeNoTag([value boolValue]);
-    case PBExtensionTypeFixed32:  return computeFixed32SizeNoTag([value intValue]);
-    case PBExtensionTypeSFixed32: return computeSFixed32SizeNoTag([value intValue]);
+    case PBExtensionTypeFixed32:  return computeFixed32SizeNoTag([value integerValue]);
+    case PBExtensionTypeSFixed32: return computeSFixed32SizeNoTag([value integerValue]);
     case PBExtensionTypeFloat:    return computeFloatSizeNoTag([value floatValue]);
     case PBExtensionTypeFixed64:  return computeFixed64SizeNoTag([value longLongValue]);
     case PBExtensionTypeSFixed64: return computeSFixed64SizeNoTag([value longLongValue]);
     case PBExtensionTypeDouble:   return computeDoubleSizeNoTag([value doubleValue]);
-    case PBExtensionTypeInt32:    return computeInt32SizeNoTag([value intValue]);
+    case PBExtensionTypeInt32:    return computeInt32SizeNoTag([value integerValue]);
     case PBExtensionTypeInt64:    return computeInt64SizeNoTag([value longLongValue]);
-    case PBExtensionTypeSInt32:   return computeSInt32SizeNoTag([value intValue]);
+    case PBExtensionTypeSInt32:   return computeSInt32SizeNoTag([value integerValue]);
     case PBExtensionTypeSInt64:   return computeSInt64SizeNoTag([value longLongValue]);
-    case PBExtensionTypeUInt32:   return computeUInt32SizeNoTag([value intValue]);
+    case PBExtensionTypeUInt32:   return computeUInt32SizeNoTag([value integerValue]);
     case PBExtensionTypeUInt64:   return computeUInt64SizeNoTag([value longLongValue]);
     case PBExtensionTypeBytes:    return computeDataSizeNoTag(value);
     case PBExtensionTypeString:   return computeStringSizeNoTag(value);
     case PBExtensionTypeGroup:    return computeGroupSizeNoTag(value);
-    case PBExtensionTypeEnum:     return computeEnumSizeNoTag([value intValue]);
+    case PBExtensionTypeEnum:     return computeEnumSizeNoTag([value integerValue]);
     case PBExtensionTypeMessage:  return computeMessageSizeNoTag(value);
   }
 
@@ -327,22 +316,22 @@ long typeSize(PBExtensionType type) {
 - (long) computeSingleSerializedSizeIncludingTag:(id) value {
   switch (type) {
     case PBExtensionTypeBool:     return computeBoolSize(fieldNumber, [value boolValue]);
-    case PBExtensionTypeFixed32:  return computeFixed32Size(fieldNumber, [value intValue]);
-    case PBExtensionTypeSFixed32: return computeSFixed32Size(fieldNumber, [value intValue]);
+    case PBExtensionTypeFixed32:  return computeFixed32Size(fieldNumber, [value integerValue]);
+    case PBExtensionTypeSFixed32: return computeSFixed32Size(fieldNumber, [value integerValue]);
     case PBExtensionTypeFloat:    return computeFloatSize(fieldNumber, [value floatValue]);
     case PBExtensionTypeFixed64:  return computeFixed64Size(fieldNumber, [value longLongValue]);
     case PBExtensionTypeSFixed64: return computeSFixed64Size(fieldNumber, [value longLongValue]);
     case PBExtensionTypeDouble:   return computeDoubleSize(fieldNumber, [value doubleValue]);
-    case PBExtensionTypeInt32:    return computeInt32Size(fieldNumber, [value intValue]);
+    case PBExtensionTypeInt32:    return computeInt32Size(fieldNumber, [value integerValue]);
     case PBExtensionTypeInt64:    return computeInt64Size(fieldNumber, [value longLongValue]);
-    case PBExtensionTypeSInt32:   return computeSInt32Size(fieldNumber, [value intValue]);
+    case PBExtensionTypeSInt32:   return computeSInt32Size(fieldNumber, [value integerValue]);
     case PBExtensionTypeSInt64:   return computeSInt64Size(fieldNumber, [value longLongValue]);
-    case PBExtensionTypeUInt32:   return computeUInt32Size(fieldNumber, [value intValue]);
+    case PBExtensionTypeUInt32:   return computeUInt32Size(fieldNumber, [value integerValue]);
     case PBExtensionTypeUInt64:   return computeUInt64Size(fieldNumber, [value longLongValue]);
     case PBExtensionTypeBytes:    return computeDataSize(fieldNumber, value);
     case PBExtensionTypeString:   return computeStringSize(fieldNumber, value);
     case PBExtensionTypeGroup:    return computeGroupSize(fieldNumber, value);
-    case PBExtensionTypeEnum:     return computeEnumSize(fieldNumber, [value intValue]);
+    case PBExtensionTypeEnum:     return computeEnumSize(fieldNumber, [value integerValue]);
     case PBExtensionTypeMessage:
       if (isMessageSetWireFormat) {
         return computeMessageSetExtensionSize(fieldNumber, value);
@@ -463,7 +452,7 @@ long typeSize(PBExtensionType type) {
 }
 
 - (void) mergeMessageSetExtentionFromCodedInputStream:(PBCodedInputStream*) input
-                                        unknownFields:(PBUnknownFieldSet_Builder*) unknownFields {
+                                        unknownFields:(PBUnknownFieldSetBuilder*) unknownFields {
   @throw [NSException exceptionWithName:@"NYI" reason:@"" userInfo:nil];
 
   // The wire format for MessageSet is:
@@ -547,14 +536,14 @@ long typeSize(PBExtensionType type) {
     case PBExtensionTypeEnum:     return @([input readEnum]);
     case PBExtensionTypeGroup:
     {
-      id<PBMessage_Builder> builder = [messageOrGroupClass builder];
+      id<PBMessageBuilder> builder = [messageOrGroupClass builder];
       [input readGroup:fieldNumber builder:builder extensionRegistry:extensionRegistry];
       return [builder build];
     }
 
     case PBExtensionTypeMessage:
     {
-      id<PBMessage_Builder> builder = [messageOrGroupClass builder];
+      id<PBMessageBuilder> builder = [messageOrGroupClass builder];
       [input readMessage:builder extensionRegistry:extensionRegistry];
       return [builder build];
     }
@@ -565,9 +554,9 @@ long typeSize(PBExtensionType type) {
 
 
 - (void) mergeFromCodedInputStream:(PBCodedInputStream*) input
-                     unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
+                     unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
      extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-    builder:(PBExtendableMessage_Builder*) builder
+    builder:(PBExtendableMessageBuilder*) builder
                                tag:(long) tag {
   if (isPacked) {
     long length = [input readRawVarint32];

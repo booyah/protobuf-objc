@@ -15,13 +15,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "ExtendableMessage_Builder.h"
+#import "ExtendableMessageBuilder.h"
 
 #import "ExtendableMessage.h"
 #import "ExtensionRegistry.h"
 #import "WireFormat.h"
 
-@implementation PBExtendableMessage_Builder
+@implementation PBExtendableMessageBuilder
 
 - (PBExtendableMessage*) internalGetResult {
   @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
@@ -33,7 +33,7 @@
  * @return {@code YES} unless the tag is an end-group tag.
  */
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input
-             unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
+             unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
          extensionRegistry:(PBExtensionRegistry*) extensionRegistry
                        tag:(long) tag {
   PBExtendableMessage* message = [self internalGetResult];
@@ -68,7 +68,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
+- (PBExtendableMessageBuilder*) setExtension:(id<PBExtensionField>) extension
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
@@ -85,7 +85,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) addExtension:(id<PBExtensionField>) extension
+- (PBExtendableMessageBuilder*) addExtension:(id<PBExtensionField>) extension
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
@@ -109,7 +109,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
+- (PBExtendableMessageBuilder*) setExtension:(id<PBExtensionField>) extension
                                         index:(long) index
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
@@ -132,7 +132,7 @@
 }
 
 
-- (PBExtendableMessage_Builder*) clearExtension:(id<PBExtensionField>) extension {
+- (PBExtendableMessageBuilder*) clearExtension:(id<PBExtensionField>) extension {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];
   [message.extensionMap removeObjectForKey:@([extension fieldNumber])];

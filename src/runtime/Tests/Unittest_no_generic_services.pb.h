@@ -58,7 +58,7 @@ BOOL TestEnumIsValidValue(TestEnum value);
 + (TestMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMessageBuilder : PBExtendableMessage_Builder {
+@interface TestMessageBuilder : PBExtendableMessageBuilder {
 @private
   TestMessage* result;
 }

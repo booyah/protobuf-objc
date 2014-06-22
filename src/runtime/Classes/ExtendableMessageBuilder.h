@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "GeneratedMessage_Builder.h"
+#import "GeneratedMessageBuilder.h"
 
 #import "ExtensionField.h"
 
@@ -58,19 +58,19 @@
  *
  * <p>See also {@link ExtendableMessage}.
  */
-@interface PBExtendableMessage_Builder : PBGeneratedMessage_Builder {
+@interface PBExtendableMessageBuilder : PBGeneratedMessageBuilder {
 }
 
 - (id) getExtension:(id<PBExtensionField>) extension;
 - (BOOL) hasExtension:(id<PBExtensionField>) extension;
-- (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
+- (PBExtendableMessageBuilder*) setExtension:(id<PBExtensionField>) extension
                                         value:(id) value;
-- (PBExtendableMessage_Builder*) addExtension:(id<PBExtensionField>) extension
+- (PBExtendableMessageBuilder*) addExtension:(id<PBExtensionField>) extension
                                         value:(id) value;
-- (PBExtendableMessage_Builder*) setExtension:(id<PBExtensionField>) extension
+- (PBExtendableMessageBuilder*) setExtension:(id<PBExtensionField>) extension
                                         index:(long) index
                                         value:(id) value;
-- (PBExtendableMessage_Builder*) clearExtension:(id<PBExtensionField>) extension;
+- (PBExtendableMessageBuilder*) clearExtension:(id<PBExtensionField>) extension;
 
 /* @protected */
 - (void) mergeExtensionFields:(PBExtendableMessage*) other;

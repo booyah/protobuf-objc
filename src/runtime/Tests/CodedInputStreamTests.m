@@ -240,7 +240,7 @@
   // skipField() to skip each field on the other.  Expect the same tags.
   PBCodedInputStream* input1 = [PBCodedInputStream streamWithData:rawBytes];
   PBCodedInputStream* input2 = [PBCodedInputStream streamWithData:rawBytes];
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builder];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builder];
 
   while (YES) {
     long tag = [input1 readTag];

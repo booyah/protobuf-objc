@@ -267,15 +267,15 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   PBAppendableArray * repeatedInt32Array;
   PBAppendableArray * repeatedFixed64Array;
   PBAppendableArray * repeatedFixed32Array;
-  PBAppendableArray * repeatedStringArray;
-  PBAppendableArray * repeatedStringPieceArray;
-  PBAppendableArray * repeatedCordArray;
-  PBAppendableArray * repeatedGroupArray;
-  PBAppendableArray * repeatedLazyMessageArray;
-  PBAppendableArray * repeatedImportMessageArray;
-  PBAppendableArray * repeatedForeignMessageArray;
-  PBAppendableArray * repeatedNestedMessageArray;
-  PBAppendableArray * repeatedBytesArray;
+  NSMutableArray * repeatedStringArray;
+  NSMutableArray * repeatedStringPieceArray;
+  NSMutableArray * repeatedCordArray;
+  NSMutableArray * repeatedGroupArray;
+  NSMutableArray * repeatedLazyMessageArray;
+  NSMutableArray * repeatedImportMessageArray;
+  NSMutableArray * repeatedForeignMessageArray;
+  NSMutableArray * repeatedNestedMessageArray;
+  NSMutableArray * repeatedBytesArray;
   PBAppendableArray * repeatedUint32Array;
   PBAppendableArray * repeatedImportEnumArray;
   PBAppendableArray * repeatedForeignEnumArray;
@@ -372,16 +372,16 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @property (readonly, strong) PBArray * repeatedBool;
 @property (readonly, strong) PBArray * repeatedString;
 @property (readonly, strong) PBArray * repeatedBytes;
-@property (readonly, strong) PBArray * repeatedGroup;
-@property (readonly, strong) PBArray * repeatedNestedMessage;
-@property (readonly, strong) PBArray * repeatedForeignMessage;
-@property (readonly, strong) PBArray * repeatedImportMessage;
+@property (readonly, strong) NSArray * repeatedGroup;
+@property (readonly, strong) NSArray * repeatedNestedMessage;
+@property (readonly, strong) NSArray * repeatedForeignMessage;
+@property (readonly, strong) NSArray * repeatedImportMessage;
 @property (readonly, strong) PBArray * repeatedNestedEnum;
 @property (readonly, strong) PBArray * repeatedForeignEnum;
 @property (readonly, strong) PBArray * repeatedImportEnum;
 @property (readonly, strong) PBArray * repeatedStringPiece;
 @property (readonly, strong) PBArray * repeatedCord;
-@property (readonly, strong) PBArray * repeatedLazyMessage;
+@property (readonly, strong) NSArray * repeatedLazyMessage;
 @property (readonly) long defaultInt32;
 @property (readonly) long long defaultInt64;
 @property (readonly) unsigned long defaultUint32;
@@ -472,7 +472,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestAllTypesLiteNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllTypesLiteNestedMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesLiteNestedMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesLiteNestedMessage* result;
 }
@@ -521,7 +521,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestAllTypesLiteOptionalGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllTypesLiteOptionalGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesLiteOptionalGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesLiteOptionalGroup* result;
 }
@@ -570,7 +570,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestAllTypesLiteRepeatedGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllTypesLiteRepeatedGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesLiteRepeatedGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesLiteRepeatedGroup* result;
 }
@@ -593,7 +593,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteRepeatedGroupBuilder*) clearA;
 @end
 
-@interface TestAllTypesLiteBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesLiteBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesLite* result;
 }
@@ -843,46 +843,40 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteBuilder *)setRepeatedBoolValues:(const BOOL *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedBool;
 
-- (PBAppendableArray *)repeatedString;
+- (NSMutableArray *)repeatedString;
 - (NSString*)repeatedStringAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedString:(NSString*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedStringArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedStringValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedString;
 
-- (PBAppendableArray *)repeatedBytes;
+- (NSMutableArray *)repeatedBytes;
 - (NSData*)repeatedBytesAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedBytes:(NSData*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedBytesArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedBytesValues:(const NSData* *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedBytes;
 
-- (PBAppendableArray *)repeatedGroup;
+- (NSMutableArray *)repeatedGroup;
 - (TestAllTypesLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedGroup:(TestAllTypesLiteRepeatedGroup*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedGroupArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedGroupValues:(const TestAllTypesLiteRepeatedGroup* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedGroup;
 
-- (PBAppendableArray *)repeatedNestedMessage;
+- (NSMutableArray *)repeatedNestedMessage;
 - (TestAllTypesLiteNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedNestedMessage:(TestAllTypesLiteNestedMessage*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedNestedMessageArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedNestedMessageValues:(const TestAllTypesLiteNestedMessage* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedNestedMessage;
 
-- (PBAppendableArray *)repeatedForeignMessage;
+- (NSMutableArray *)repeatedForeignMessage;
 - (ForeignMessageLite*)repeatedForeignMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedForeignMessage:(ForeignMessageLite*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedForeignMessageArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedForeignMessageValues:(const ForeignMessageLite* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedForeignMessage;
 
-- (PBAppendableArray *)repeatedImportMessage;
+- (NSMutableArray *)repeatedImportMessage;
 - (ImportMessageLite*)repeatedImportMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedImportMessage:(ImportMessageLite*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedImportMessageArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedImportMessageValues:(const ImportMessageLite* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedImportMessage;
 
 - (PBAppendableArray *)repeatedNestedEnum;
@@ -906,25 +900,22 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteBuilder *)setRepeatedImportEnumValues:(const ImportEnumLite *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedImportEnum;
 
-- (PBAppendableArray *)repeatedStringPiece;
+- (NSMutableArray *)repeatedStringPiece;
 - (NSString*)repeatedStringPieceAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedStringPiece:(NSString*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedStringPieceArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedStringPieceValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedStringPiece;
 
-- (PBAppendableArray *)repeatedCord;
+- (NSMutableArray *)repeatedCord;
 - (NSString*)repeatedCordAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedCord:(NSString*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedCordArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedCordValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedCord;
 
-- (PBAppendableArray *)repeatedLazyMessage;
+- (NSMutableArray *)repeatedLazyMessage;
 - (TestAllTypesLiteNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesLiteBuilder *)addRepeatedLazyMessage:(TestAllTypesLiteNestedMessage*)value;
 - (TestAllTypesLiteBuilder *)setRepeatedLazyMessageArray:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedLazyMessageValues:(const TestAllTypesLiteNestedMessage* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedLazyMessage;
 
 - (BOOL) hasDefaultInt32;
@@ -1054,7 +1045,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (ForeignMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface ForeignMessageLiteBuilder : PBGeneratedMessage_Builder {
+@interface ForeignMessageLiteBuilder : PBGeneratedMessageBuilder {
 @private
   ForeignMessageLite* result;
 }
@@ -1155,7 +1146,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestPackedTypesLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestPackedTypesLiteBuilder : PBGeneratedMessage_Builder {
+@interface TestPackedTypesLiteBuilder : PBGeneratedMessageBuilder {
 @private
   TestPackedTypesLite* result;
 }
@@ -1293,7 +1284,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestAllExtensionsLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllExtensionsLiteBuilder : PBExtendableMessage_Builder {
+@interface TestAllExtensionsLiteBuilder : PBExtendableMessageBuilder {
 @private
   TestAllExtensionsLite* result;
 }
@@ -1337,7 +1328,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (OptionalGroup_extension_lite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface OptionalGroup_extension_liteBuilder : PBGeneratedMessage_Builder {
+@interface OptionalGroup_extension_liteBuilder : PBGeneratedMessageBuilder {
 @private
   OptionalGroup_extension_lite* result;
 }
@@ -1386,7 +1377,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (RepeatedGroup_extension_lite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface RepeatedGroup_extension_liteBuilder : PBGeneratedMessage_Builder {
+@interface RepeatedGroup_extension_liteBuilder : PBGeneratedMessageBuilder {
 @private
   RepeatedGroup_extension_lite* result;
 }
@@ -1431,7 +1422,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestPackedExtensionsLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestPackedExtensionsLiteBuilder : PBExtendableMessage_Builder {
+@interface TestPackedExtensionsLiteBuilder : PBExtendableMessageBuilder {
 @private
   TestPackedExtensionsLite* result;
 }
@@ -1472,7 +1463,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestNestedExtensionLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestNestedExtensionLiteBuilder : PBGeneratedMessage_Builder {
+@interface TestNestedExtensionLiteBuilder : PBGeneratedMessageBuilder {
 @private
   TestNestedExtensionLite* result;
 }
@@ -1516,7 +1507,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestDeprecatedLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestDeprecatedLiteBuilder : PBGeneratedMessage_Builder {
+@interface TestDeprecatedLiteBuilder : PBGeneratedMessageBuilder {
 @private
   TestDeprecatedLite* result;
 }
@@ -1547,17 +1538,17 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   TestParsingMergeLiteOptionalGroup* optionalGroup;
   TestAllTypesLite* requiredAllTypes;
   TestAllTypesLite* optionalAllTypes;
-  PBAppendableArray * repeatedGroupArray;
-  PBAppendableArray * repeatedAllTypesArray;
+  NSMutableArray * repeatedGroupArray;
+  NSMutableArray * repeatedAllTypesArray;
 }
 - (BOOL) hasRequiredAllTypes;
 - (BOOL) hasOptionalAllTypes;
 - (BOOL) hasOptionalGroup;
 @property (readonly, strong) TestAllTypesLite* requiredAllTypes;
 @property (readonly, strong) TestAllTypesLite* optionalAllTypes;
-@property (readonly, strong) PBArray * repeatedAllTypes;
+@property (readonly, strong) NSArray * repeatedAllTypes;
 @property (readonly, strong) TestParsingMergeLiteOptionalGroup* optionalGroup;
-@property (readonly, strong) PBArray * repeatedGroup;
+@property (readonly, strong) NSArray * repeatedGroup;
 - (TestAllTypesLite*)repeatedAllTypesAtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 
@@ -1583,21 +1574,21 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 
 @interface TestParsingMergeLiteRepeatedFieldsGenerator : PBGeneratedMessage {
 @private
-  PBAppendableArray * group1Array;
-  PBAppendableArray * group2Array;
-  PBAppendableArray * field1Array;
-  PBAppendableArray * field2Array;
-  PBAppendableArray * field3Array;
-  PBAppendableArray * ext1Array;
-  PBAppendableArray * ext2Array;
+  NSMutableArray * group1Array;
+  NSMutableArray * group2Array;
+  NSMutableArray * field1Array;
+  NSMutableArray * field2Array;
+  NSMutableArray * field3Array;
+  NSMutableArray * ext1Array;
+  NSMutableArray * ext2Array;
 }
-@property (readonly, strong) PBArray * field1;
-@property (readonly, strong) PBArray * field2;
-@property (readonly, strong) PBArray * field3;
-@property (readonly, strong) PBArray * group1;
-@property (readonly, strong) PBArray * group2;
-@property (readonly, strong) PBArray * ext1;
-@property (readonly, strong) PBArray * ext2;
+@property (readonly, strong) NSArray * field1;
+@property (readonly, strong) NSArray * field2;
+@property (readonly, strong) NSArray * field3;
+@property (readonly, strong) NSArray * group1;
+@property (readonly, strong) NSArray * group2;
+@property (readonly, strong) NSArray * ext1;
+@property (readonly, strong) NSArray * ext2;
 - (TestAllTypesLite*)field1AtIndex:(NSUInteger)index;
 - (TestAllTypesLite*)field2AtIndex:(NSUInteger)index;
 - (TestAllTypesLite*)field3AtIndex:(NSUInteger)index;
@@ -1650,7 +1641,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeLiteRepeatedFieldsGeneratorGroup1Builder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeLiteRepeatedFieldsGeneratorGroup1Builder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* result;
 }
@@ -1701,7 +1692,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeLiteRepeatedFieldsGeneratorGroup2Builder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeLiteRepeatedFieldsGeneratorGroup2Builder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* result;
 }
@@ -1726,7 +1717,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2Builder*) clearField1;
 @end
 
-@interface TestParsingMergeLiteRepeatedFieldsGeneratorBuilder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeLiteRepeatedFieldsGeneratorBuilder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeLiteRepeatedFieldsGenerator* result;
 }
@@ -1743,53 +1734,46 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (PBAppendableArray *)field1;
+- (NSMutableArray *)field1;
 - (TestAllTypesLite*)field1AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addField1:(TestAllTypesLite*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField1Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearField1;
 
-- (PBAppendableArray *)field2;
+- (NSMutableArray *)field2;
 - (TestAllTypesLite*)field2AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addField2:(TestAllTypesLite*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField2Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearField2;
 
-- (PBAppendableArray *)field3;
+- (NSMutableArray *)field3;
 - (TestAllTypesLite*)field3AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addField3:(TestAllTypesLite*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField3Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearField3;
 
-- (PBAppendableArray *)group1;
+- (NSMutableArray *)group1;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addGroup1:(TestParsingMergeLiteRepeatedFieldsGeneratorGroup1*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup1Values:(const TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearGroup1;
 
-- (PBAppendableArray *)group2;
+- (NSMutableArray *)group2;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addGroup2:(TestParsingMergeLiteRepeatedFieldsGeneratorGroup2*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup2Values:(const TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearGroup2;
 
-- (PBAppendableArray *)ext1;
+- (NSMutableArray *)ext1;
 - (TestAllTypesLite*)ext1AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addExt1:(TestAllTypesLite*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt1Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearExt1;
 
-- (PBAppendableArray *)ext2;
+- (NSMutableArray *)ext2;
 - (TestAllTypesLite*)ext2AtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addExt2:(TestAllTypesLite*)value;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray *)array;
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt2Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearExt2;
 @end
 
@@ -1819,7 +1803,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestParsingMergeLiteOptionalGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeLiteOptionalGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeLiteOptionalGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeLiteOptionalGroup* result;
 }
@@ -1870,7 +1854,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (TestParsingMergeLiteRepeatedGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeLiteRepeatedGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeLiteRepeatedGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeLiteRepeatedGroup* result;
 }
@@ -1895,7 +1879,7 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestParsingMergeLiteRepeatedGroupBuilder*) clearRepeatedGroupAllTypes;
 @end
 
-@interface TestParsingMergeLiteBuilder : PBExtendableMessage_Builder {
+@interface TestParsingMergeLiteBuilder : PBExtendableMessageBuilder {
 @private
   TestParsingMergeLite* result;
 }
@@ -1926,11 +1910,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestParsingMergeLiteBuilder*) mergeOptionalAllTypes:(TestAllTypesLite*) value;
 - (TestParsingMergeLiteBuilder*) clearOptionalAllTypes;
 
-- (PBAppendableArray *)repeatedAllTypes;
+- (NSMutableArray *)repeatedAllTypes;
 - (TestAllTypesLite*)repeatedAllTypesAtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteBuilder *)addRepeatedAllTypes:(TestAllTypesLite*)value;
 - (TestParsingMergeLiteBuilder *)setRepeatedAllTypesArray:(NSArray *)array;
-- (TestParsingMergeLiteBuilder *)setRepeatedAllTypesValues:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteBuilder *)clearRepeatedAllTypes;
 
 - (BOOL) hasOptionalGroup;
@@ -1940,11 +1923,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestParsingMergeLiteBuilder*) mergeOptionalGroup:(TestParsingMergeLiteOptionalGroup*) value;
 - (TestParsingMergeLiteBuilder*) clearOptionalGroup;
 
-- (PBAppendableArray *)repeatedGroup;
+- (NSMutableArray *)repeatedGroup;
 - (TestParsingMergeLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 - (TestParsingMergeLiteBuilder *)addRepeatedGroup:(TestParsingMergeLiteRepeatedGroup*)value;
 - (TestParsingMergeLiteBuilder *)setRepeatedGroupArray:(NSArray *)array;
-- (TestParsingMergeLiteBuilder *)setRepeatedGroupValues:(const TestParsingMergeLiteRepeatedGroup* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeLiteBuilder *)clearRepeatedGroup;
 @end
 

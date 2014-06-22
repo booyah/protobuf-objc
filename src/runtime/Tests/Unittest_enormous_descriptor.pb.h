@@ -4047,7 +4047,7 @@
 + (TestEnormousDescriptor*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestEnormousDescriptorBuilder : PBGeneratedMessage_Builder {
+@interface TestEnormousDescriptorBuilder : PBGeneratedMessageBuilder {
 @private
   TestEnormousDescriptor* result;
 }

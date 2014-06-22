@@ -20,7 +20,7 @@
   long blockSize;
 }
 
-@property (retain) NSInputStream* underlyingStream;
+@property (strong) NSInputStream* underlyingStream;
 
 + (SmallBlockInputStream*) streamWithData:(NSData*) data blockSize:(long) blockSize;
 

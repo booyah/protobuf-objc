@@ -24,7 +24,6 @@ extern NSString * const PBArrayAllocationFailureException;
 
 typedef enum _PBArrayValueType
 {
-	PBArrayValueTypeObject,
 	PBArrayValueTypeBool,
 	PBArrayValueTypeInt32,
 	PBArrayValueTypeUInt32,
@@ -48,7 +47,6 @@ typedef enum _PBArrayValueType
 }
 
 - (NSUInteger)count;
-- (id)objectAtIndex:(NSUInteger)index;
 - (BOOL)boolAtIndex:(NSUInteger)index;
 - (long)int32AtIndex:(NSUInteger)index;
 - (long)enumAtIndex:(NSUInteger)index;
@@ -93,7 +91,6 @@ typedef enum _PBArrayValueType
 // the end of the array.
 @interface PBAppendableArray : PBArray
 
-- (void)addObject:(id)value;
 - (void)addBool:(BOOL)value;
 - (void)addInt32:(long)value;
 - (void)addUint32:(unsigned long)value;

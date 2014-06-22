@@ -62,7 +62,7 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value);
 + (ImportMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface ImportMessageLiteBuilder : PBGeneratedMessage_Builder {
+@interface ImportMessageLiteBuilder : PBGeneratedMessageBuilder {
 @private
   ImportMessageLite* result;
 }

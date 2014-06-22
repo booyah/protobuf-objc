@@ -60,7 +60,7 @@
 // numbers as allFieldsData except that each field is some other wire
 // type.
 - (NSData*) getBizarroData {
-  PBUnknownFieldSet_Builder* bizarroFields = [PBUnknownFieldSet builder];
+  PBUnknownFieldSetBuilder* bizarroFields = [PBUnknownFieldSet builder];
 
   PBField* varintField = [[PBMutableField field] addVarint:1];
   PBField* fixed32Field = [[PBMutableField field] addFixed32:1];

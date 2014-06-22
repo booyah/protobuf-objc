@@ -27,15 +27,15 @@
 	PBAppendableArray *	_varintArray;
 	PBAppendableArray *	_fixed32Array;
 	PBAppendableArray *	_fixed64Array;
-	PBAppendableArray *	_lengthDelimitedArray;
-	PBAppendableArray *	_groupArray;
+	NSMutableArray *	_lengthDelimitedArray;
+	NSMutableArray *	_groupArray;
 }
 
-@property (nonatomic,retain,readonly) PBArray *	varintArray;
-@property (nonatomic,retain,readonly) PBArray *	fixed32Array;
-@property (nonatomic,retain,readonly) PBArray *	fixed64Array;
-@property (nonatomic,retain,readonly) PBArray *	lengthDelimitedArray;
-@property (nonatomic,retain,readonly) PBArray *	groupArray;
+@property (nonatomic,strong,readonly) PBArray *	varintArray;
+@property (nonatomic,strong,readonly) PBArray *	fixed32Array;
+@property (nonatomic,strong,readonly) PBArray *	fixed64Array;
+@property (nonatomic,strong,readonly) NSArray *	lengthDelimitedArray;
+@property (nonatomic,strong,readonly) NSArray *	groupArray;
 
 + (PBField *)defaultInstance;
 

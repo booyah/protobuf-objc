@@ -29,23 +29,15 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 - (id)initWithOutputStream:(NSOutputStream*)_output data:(NSMutableData*)data {
 	if ( (self = [super init]) ) {
-		output = [_output retain];
+		output = _output;
 		buffer = [[RingBuffer alloc] initWithData:data];
 	}
 	return self;
 }
 
-
-- (void)dealloc {
-	[output release];
-	[buffer release];
-	[super dealloc];
-}
-
-
 + (PBCodedOutputStream*)streamWithOutputStream:(NSOutputStream*)output bufferSize:(long)bufferSize {
 	NSMutableData *data = [NSMutableData dataWithLength:bufferSize];
-	return [[[PBCodedOutputStream alloc] initWithOutputStream:output data:data] autorelease];
+	return [[PBCodedOutputStream alloc] initWithOutputStream:output data:data];
 }
 
 
@@ -55,7 +47,7 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 + (PBCodedOutputStream*)streamWithData:(NSMutableData*)data {
-	return [[[PBCodedOutputStream alloc] initWithOutputStream:nil data:data] autorelease];
+	return [[PBCodedOutputStream alloc] initWithOutputStream:nil data:data];
 }
 
 

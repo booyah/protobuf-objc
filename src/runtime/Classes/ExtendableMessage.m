@@ -24,11 +24,7 @@
 @synthesize extensionMap;
 @synthesize extensionRegistry;
 
-- (void) dealloc {
-  self.extensionMap = nil;
-  self.extensionRegistry = nil;
-  [super dealloc];
-}
+
 
 
 - (BOOL) isInitialized:(id) object {
@@ -86,7 +82,7 @@
   // man, i really wish Cocoa had a Sorted/TreeMap
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    long fieldNumber = [number intValue];
+    long fieldNumber = [number integerValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id<PBExtensionField> extension = [extensionRegistry objectForKey:number];
       id value = [extensionMap objectForKey:number];
@@ -102,7 +98,7 @@
                                        withIndent:(NSString*) indent {
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    long fieldNumber = [number intValue];
+    long fieldNumber = [number integerValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id<PBExtensionField> extension = [extensionRegistry objectForKey:number];
       id value = [extensionMap objectForKey:number];
@@ -117,7 +113,7 @@
                                to:(long) endExclusive {
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    long fieldNumber = [number intValue];
+    long fieldNumber = [number integerValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id value = [extensionMap objectForKey:number];
       id otherValue = [otherMessage.extensionMap objectForKey:number];
@@ -135,7 +131,7 @@
   unsigned long hashCode = 0;
   NSArray* sortedKeys = [extensionMap.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
-    long fieldNumber = [number intValue];
+    long fieldNumber = [number integerValue];
     if (fieldNumber >= startInclusive && fieldNumber < endExclusive) {
       id value = [extensionMap objectForKey:number];
       hashCode = hashCode * 31 + [value hash];

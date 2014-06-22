@@ -17,22 +17,22 @@
 
 @class PBCodedOutputStream;
 @class PBField;
-@class PBUnknownFieldSet_Builder;
+@class PBUnknownFieldSetBuilder;
 
 @interface PBUnknownFieldSet : NSObject {
 @private
   NSDictionary* fields;
 }
 
-@property (readonly, retain) NSDictionary* fields;
+@property (readonly, strong) NSDictionary* fields;
 
 + (PBUnknownFieldSet*) defaultInstance;
 
 + (PBUnknownFieldSet*) setWithFields:(NSMutableDictionary*) fields;
 + (PBUnknownFieldSet*) parseFromData:(NSData*) data;
 
-+ (PBUnknownFieldSet_Builder*) builder;
-+ (PBUnknownFieldSet_Builder*) builderWithUnknownFields:(PBUnknownFieldSet*) other;
++ (PBUnknownFieldSetBuilder*) builder;
++ (PBUnknownFieldSetBuilder*) builderWithUnknownFields:(PBUnknownFieldSet*) other;
 
 - (void) writeAsMessageSetTo:(PBCodedOutputStream*) output;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;

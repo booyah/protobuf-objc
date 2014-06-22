@@ -4,7 +4,7 @@
 
 - (id)initWithData:(NSMutableData*)data {
   if ((self = [super init])) {
-    buffer = [data retain];
+      buffer = data;
   }
 	return self;
 }
@@ -87,12 +87,6 @@
     }
 	
 	return totalWritten;
-}
-
-
-- (void)dealloc {
-	[buffer release];
-	[super dealloc];
 }
 
 @end

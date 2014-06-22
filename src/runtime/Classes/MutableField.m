@@ -22,20 +22,18 @@
 
 @implementation PBMutableField
 
-- (void)dealloc {
-	[super dealloc];
-}
 
 + (PBMutableField *)field {
-	return [[[PBMutableField alloc] init] autorelease];
+	return [[PBMutableField alloc] init];
 }
 
 - (PBMutableField *)clear {
-	[_varintArray release];		_varintArray = nil;
-	[_fixed32Array release];	_fixed32Array = nil;
-	[_fixed64Array release];	_fixed64Array = nil;
-	[_lengthDelimitedArray release];	_lengthDelimitedArray = nil;
-	[_groupArray release];		_groupArray = nil;
+
+    _varintArray = nil;
+	_fixed32Array = nil;
+    _fixed64Array = nil;
+    _lengthDelimitedArray = nil;
+    _groupArray = nil;
 
 	return self;
 }
@@ -69,7 +67,7 @@
 		if (_lengthDelimitedArray == nil) {
 			_lengthDelimitedArray = [other.lengthDelimitedArray copy];
 		} else {
-			[_lengthDelimitedArray appendArray:other.lengthDelimitedArray];
+			[_lengthDelimitedArray addObjectsFromArray:other.lengthDelimitedArray];
 		}
 	}
 
@@ -77,7 +75,7 @@
 		if (_groupArray == nil) {
 			_groupArray = [other.groupArray copy];
 		} else {
-			[_groupArray appendArray:other.groupArray];
+			[_groupArray addObjectsFromArray:other.groupArray];
 		}
 	}
 
@@ -113,7 +111,7 @@
 
 - (PBMutableField *)addLengthDelimited:(NSData *)value {
 	if (_lengthDelimitedArray == nil) {
-		_lengthDelimitedArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeObject];
+		_lengthDelimitedArray = [[NSMutableArray alloc] init];
 	}
 	[_lengthDelimitedArray addObject:value];
 
@@ -122,7 +120,7 @@
 
 - (PBMutableField *)addGroup:(PBUnknownFieldSet *)value {
 	if (_groupArray == nil) {
-		_groupArray = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeObject];
+		_groupArray = [[NSMutableArray alloc] init];
 	}
 	[_groupArray addObject:value];
 

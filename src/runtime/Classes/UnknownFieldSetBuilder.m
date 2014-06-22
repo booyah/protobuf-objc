@@ -15,7 +15,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "UnknownFieldSet_Builder.h"
+#import "UnknownFieldSetBuilder.h"
 
 #import "CodedInputStream.h"
 #import "Field.h"
@@ -23,14 +23,14 @@
 #import "UnknownFieldSet.h"
 #import "WireFormat.h"
 
-@interface PBUnknownFieldSet_Builder ()
-@property (retain) NSMutableDictionary* fields;
+@interface PBUnknownFieldSetBuilder ()
+@property (strong) NSMutableDictionary* fields;
 @property long lastFieldNumber;
-@property (retain) PBMutableField* lastField;
+@property (strong) PBMutableField* lastField;
 @end
 
 
-@implementation PBUnknownFieldSet_Builder
+@implementation PBUnknownFieldSetBuilder
 
 @synthesize fields;
 @synthesize lastFieldNumber;
@@ -41,8 +41,6 @@
   self.fields = nil;
   self.lastFieldNumber = 0;
   self.lastField = nil;
-
-  [super dealloc];
 }
 
 
@@ -54,8 +52,8 @@
 }
 
 
-+ (PBUnknownFieldSet_Builder*) createBuilder:(PBUnknownFieldSet*) unknownFields {
-  PBUnknownFieldSet_Builder* builder = [[[PBUnknownFieldSet_Builder alloc] init] autorelease];
++ (PBUnknownFieldSetBuilder*) createBuilder:(PBUnknownFieldSet*) unknownFields {
+    PBUnknownFieldSetBuilder* builder = [[PBUnknownFieldSetBuilder alloc] init];
   [builder mergeUnknownFields:unknownFields];
   return builder;
 }
@@ -65,7 +63,7 @@
  * Add a field to the {@code PBUnknownFieldSet}.  If a field with the same
  * number already exists, it is removed.
  */
-- (PBUnknownFieldSet_Builder*) addField:(PBField*) field forNumber:(long) number {
+- (PBUnknownFieldSetBuilder*) addField:(PBField*) field forNumber:(long) number {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"" userInfo:nil];
   }
@@ -137,7 +135,7 @@
   return [self build];
 }
 
-- (id<PBMessage_Builder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields {
+- (id<PBMessageBuilder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields {
   @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
 }
 
@@ -155,7 +153,7 @@
  * Add a field to the {@code PBUnknownFieldSet}.  If a field with the same
  * number already exists, the two are merged.
  */
-- (PBUnknownFieldSet_Builder*) mergeField:(PBField*) field forNumber:(long) number {
+- (PBUnknownFieldSetBuilder*) mergeField:(PBField*) field forNumber:(long) number {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"" userInfo:nil];
   }
@@ -172,18 +170,18 @@
 }
 
 
-- (PBUnknownFieldSet_Builder*) mergeUnknownFields:(PBUnknownFieldSet*) other {
+- (PBUnknownFieldSetBuilder*) mergeUnknownFields:(PBUnknownFieldSet*) other {
   if (other != [PBUnknownFieldSet defaultInstance]) {
     for (NSNumber* number in other.fields) {
       PBField* field = [other.fields objectForKey:number];
-      [self mergeField:field forNumber:[number intValue]];
+      [self mergeField:field forNumber:[number integerValue]];
     }
   }
   return self;
 }
 
 
-- (PBUnknownFieldSet_Builder*) mergeFromData:(NSData*) data {
+- (PBUnknownFieldSetBuilder*) mergeFromData:(NSData*) data {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
   [self mergeFromCodedInputStream:input];
   [input checkLastTagWas:0];
@@ -191,7 +189,7 @@
 }
 
 
-- (PBUnknownFieldSet_Builder*) mergeFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+- (PBUnknownFieldSetBuilder*) mergeFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
   [self mergeFromCodedInputStream:input extensionRegistry:extensionRegistry];
   [input checkLastTagWas:0];
@@ -199,15 +197,15 @@
 }
 
 
-- (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input {
+- (PBUnknownFieldSetBuilder*) mergeFromInputStream:(NSInputStream*) input {
   @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
 }
 
-- (PBUnknownFieldSet_Builder*) mergeFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+- (PBUnknownFieldSetBuilder*) mergeFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
 }
 
-- (PBUnknownFieldSet_Builder*) mergeVarintField:(long) number value:(long) value {
+- (PBUnknownFieldSetBuilder*) mergeVarintField:(long) number value:(long) value {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"Zero is not a valid field number." userInfo:nil];
   }
@@ -235,7 +233,7 @@
       [[self getFieldBuilder:number] addLengthDelimited:[input readData]];
       return YES;
     case PBWireFormatStartGroup: {
-      PBUnknownFieldSet_Builder* subBuilder = [PBUnknownFieldSet builder];
+      PBUnknownFieldSetBuilder* subBuilder = [PBUnknownFieldSet builder];
       [input readUnknownGroup:number builder:subBuilder];
       [[self getFieldBuilder:number] addGroup:[subBuilder build]];
       return YES;
@@ -255,7 +253,7 @@
  * Parse an entire message from {@code input} and merge its fields into
  * this set.
  */
-- (PBUnknownFieldSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+- (PBUnknownFieldSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
   while (YES) {
     long tag = [input readTag];
     if (tag == 0 || ![self mergeFieldFrom:tag input:input]) {
@@ -265,11 +263,11 @@
   return self;
 }
 
-- (PBUnknownFieldSet_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+- (PBUnknownFieldSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
 }
 
-- (PBUnknownFieldSet_Builder*) clear {
+- (PBUnknownFieldSetBuilder*) clear {
   self.fields = [NSMutableDictionary dictionary];
   self.lastFieldNumber = 0;
   self.lastField = nil;

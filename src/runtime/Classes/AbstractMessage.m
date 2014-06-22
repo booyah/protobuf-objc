@@ -69,12 +69,12 @@
 }
 
 
-- (id<PBMessage_Builder>) builder {
+- (id<PBMessageBuilder>) builder {
   @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
 }
 
 
-- (id<PBMessage_Builder>) toBuilder {
+- (id<PBMessageBuilder>) toBuilder {
   @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
 }
 

@@ -72,7 +72,6 @@ typedef struct _PBArrayValueTypeInfo
 
 static PBArrayValueTypeInfo PBValueTypes[] =
 {
-	{ sizeof(id),		NULL},
 	{ sizeof(BOOL),		PBArraySetBoolValue		},
 	{ sizeof(long),	PBArraySetInt32Value	},
 	{ sizeof(unsigned long),	PBArraySetUInt32Value	},
@@ -125,18 +124,17 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 		_valueType = valueType;
 		_count = count;
 		_capacity = count;
-
+        
 		if (_capacity)
 		{
-			_data = malloc(_capacity * PBArrayValueTypeSize(_valueType));
-			if (_data == NULL)
-			{
-				[self release];
-				self = nil;
-			}
+            _data = malloc(_capacity * PBArrayValueTypeSize(_valueType));
+            if (_data == NULL)
+            {
+                self = nil;
+            }
 		}
 	}
-
+    
 	return self;
 }
 
@@ -146,7 +144,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	if (copy)
 	{
 		memcpy(copy->_data, _data, _count * PBArrayValueTypeSize(_valueType));
-		PBArrayForEachObject(_data, _count, retain);
 	}
 
 	return copy;
@@ -156,11 +153,8 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	if (_data)
 	{
-		PBArrayForEachObject(_data, _count, release);
 		free(_data);
 	}
-
-	[super dealloc];
 }
 
 - (NSString *)description
@@ -179,7 +173,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return _data;
 }
 
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(id *)stackbuf count:(NSUInteger)len
+- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id *)buffer count:(NSUInteger)len
 {
 	// TODO: We only support enumeration of object values.  In the future, we
 	// can extend this code to return a new list of NSNumber* objects wrapping
@@ -191,19 +185,13 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 		return 0; // terminate iteration
 	}
 
-	state->itemsPtr = (id *)_data;
+	state->itemsPtr = (__unsafe_unretained id *)_data;
 	state->state = _count;
-	state->mutationsPtr = (unsigned long *)self;
+	state->mutationsPtr =  &state->extra[0];
 
 	return _count;
 }
 
-- (id)objectAtIndex:(NSUInteger)index
-{
-	PBArrayValueRangeAssert(index);
-	PBArrayValueTypeAssert(PBArrayValueTypeObject);
-	return ((id *)_data)[index];
-}
 
 - (BOOL)boolAtIndex:(NSUInteger)index
 {
@@ -308,10 +296,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
  
     if (idx < self.count) {
-        if (PBArrayValueTypeObject == _valueType) {
-            return [self objectAtIndex:idx];
-        }
-        else if (PBArrayValueTypeBool == _valueType)
+        if (PBArrayValueTypeBool == _valueType)
         {
             return [NSNumber numberWithBool:[self boolAtIndex:idx]];
         }
@@ -382,12 +367,45 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 -(PBArray *) filteredArrayUsingPredicate:(NSPredicate *)predicate
 {
-    __block PBAppendableArray *newArray = [[PBAppendableArray alloc] init];
+    __block PBAppendableArray *newArray = [[PBAppendableArray alloc] initWithValueType:_valueType];
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+
         BOOL result = [predicate evaluateWithObject:obj];
-        if (result) [newArray addObject:obj];
+        if (result)
+        {
+            if (PBArrayValueTypeBool == _valueType)
+            {
+                [newArray addBool:[(NSNumber *)obj boolValue]];
+            }
+            else if (PBArrayValueTypeInt32 == _valueType)
+            {
+                [newArray addInt32:[(NSNumber *)obj longValue]];
+            }
+            else if (PBArrayValueTypeInt64 == _valueType)
+            {
+                [newArray addInt64:[(NSNumber *)obj longLongValue]];
+            }
+            else if (PBArrayValueTypeUInt32 == _valueType)
+            {
+                 [newArray addUint32:[(NSNumber *)obj unsignedLongValue]];
+            }
+            else if (PBArrayValueTypeUInt64 == _valueType)
+            {
+                [newArray addUint64:[(NSNumber *)obj unsignedLongLongValue]];
+            }
+            else if (_valueType == PBArrayValueTypeFloat)
+            {
+                 [newArray addFloat:[(NSNumber *)obj floatValue]];
+            }
+            else if (_valueType == PBArrayValueTypeDouble)
+            {
+                 [newArray addDouble:[(NSNumber *)obj doubleValue]];
+            }
+
+            
+        }
     }];
-    return [newArray autorelease];
+    return newArray;
 }
 
 - (id)arrayByAppendingArray:(PBArray *)array
@@ -402,11 +420,9 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 		memcpy(result->_data, _data, originalSize);
 		memcpy(result->_data + originalSize, array.data, array.count * elementSize);
-
-		PBArrayForEachObject(result->_data, result->_count, retain);
 	}
 
-	return [result autorelease];
+	return result;
 }
 
 @end
@@ -415,17 +431,17 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 + (id)arrayWithValueType:(PBArrayValueType)valueType
 {
-	return [[[self alloc] initWithValueType:valueType] autorelease];
+	return [[self alloc] initWithValueType:valueType];
 }
 
 + (id)arrayWithValues:(const void *)values count:(NSUInteger)count valueType:(PBArrayValueType)valueType
 {
-	return [[[self alloc] initWithValues:values count:count valueType:valueType] autorelease];
+	return [[self alloc] initWithValues:values count:count valueType:valueType];
 }
 
 + (id)arrayWithArray:(NSArray *)array valueType:(PBArrayValueType)valueType
 {
-	return [[[self alloc] initWithArray:array valueType:valueType] autorelease];
+	return [[self alloc] initWithArray:array valueType:valueType];
 }
 
 - (id)initWithValueType:(PBArrayValueType)valueType
@@ -438,7 +454,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	if ((self = [self initWithCount:count valueType:valueType]))
 	{
 		memcpy(_data, values, count * PBArrayValueTypeSize(_valueType));
-		PBArrayForEachObject(_data, _count, retain);
 	}
 
 	return self;
@@ -451,24 +466,14 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 		const size_t elementSize = PBArrayValueTypeSize(valueType);
 		size_t offset = 0;
 
-		if (valueType == PBArrayValueTypeObject)
-		{
-			for (id object in array)
-			{
-				*(id *)(_data + offset) = [object retain];
-				offset += elementSize;
-			}
-		}
-		else
-		{
-			PBArrayValueSetter setter = PBArrayValueTypeSetter(valueType);
-			for (id object in array)
-			{
-				PBArrayNumberAssert(object);
-				setter((NSNumber *)object, _data + offset);
-				offset += elementSize;
-			}
-		}
+        PBArrayValueSetter setter = PBArrayValueTypeSetter(valueType);
+        for (id object in array)
+        {
+            PBArrayNumberAssert(object);
+            setter((NSNumber *)object, _data + offset);
+            offset += elementSize;
+        }
+
 	}
 
 	return self;
@@ -509,13 +514,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	}
 }
 
-- (void)addObject:(id)value
-{
-	PBArrayValueTypeAssert(PBArrayValueTypeObject);
-	[self ensureAdditionalCapacity:1];
-	*(id *)PBArraySlot(_count) = [value retain];
-	_count++;
-}
+
 
 - (void)addBool:(BOOL)value
 {
@@ -589,8 +588,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	const size_t elementSize = PBArrayValueTypeSize(_valueType);
 	memcpy(_data + (_count * elementSize), array.data, array.count * elementSize);
 	_count += array.count;
-
-	PBArrayForEachObject(array->_data, array->_count, retain);
 }
 
 - (void)appendValues:(const void *)values count:(unsigned long)count
@@ -600,8 +597,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	const size_t elementSize = PBArrayValueTypeSize(_valueType);
 	memcpy(_data + (_count * elementSize), values, count * elementSize);
 	_count += count;
-
-	PBArrayForEachObject(values, count, retain);
 }
 
 @end

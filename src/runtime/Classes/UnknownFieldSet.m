@@ -20,10 +20,10 @@
 #import "CodedInputStream.h"
 #import "CodedOutputStream.h"
 #import "Field.h"
-#import "UnknownFieldSet_Builder.h"
+#import "UnknownFieldSetBuilder.h"
 
 @interface PBUnknownFieldSet()
-@property (retain) NSDictionary* fields;
+@property (strong) NSDictionary* fields;
 @end
 
 
@@ -33,7 +33,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 + (void) initialize {
   if (self == [PBUnknownFieldSet class]) {
-    defaultInstance = [[PBUnknownFieldSet setWithFields:[NSMutableDictionary dictionary]] retain];
+      defaultInstance = [PBUnknownFieldSet setWithFields:[NSMutableDictionary dictionary]];
   }
 }
 
@@ -42,8 +42,6 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 - (void) dealloc {
   self.fields = nil;
-
-  [super dealloc];
 }
 
 
@@ -62,7 +60,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 
 + (PBUnknownFieldSet*) setWithFields:(NSMutableDictionary*) fields {
-  return [[[PBUnknownFieldSet alloc] initWithFields:fields] autorelease];
+    return [[PBUnknownFieldSet alloc] initWithFields:fields];
 }
 
 
@@ -81,7 +79,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
   NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
     PBField* value = [fields objectForKey:number];
-    [value writeTo:number.intValue output:output];
+    [value writeTo:number.integerValue output:output];
   }
 }
 
@@ -98,7 +96,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
   NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
     PBField* value = [fields objectForKey:number];
-    [value writeDescriptionFor:number.intValue to:output withIndent:indent];
+    [value writeDescriptionFor:number.integerValue to:output withIndent:indent];
   }
 }
 
@@ -118,12 +116,12 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
-+ (PBUnknownFieldSet_Builder*) builder {
-  return [[[PBUnknownFieldSet_Builder alloc] init] autorelease];
++ (PBUnknownFieldSetBuilder*) builder {
+    return [[PBUnknownFieldSetBuilder alloc] init];
 }
 
 
-+ (PBUnknownFieldSet_Builder*) builderWithUnknownFields:(PBUnknownFieldSet*) copyFrom {
++ (PBUnknownFieldSetBuilder*) builderWithUnknownFields:(PBUnknownFieldSet*) copyFrom {
   return [[PBUnknownFieldSet builder] mergeUnknownFields:copyFrom];
 }
 
@@ -132,7 +130,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 - (long) serializedSize {
   long result = 0;
   for (NSNumber* number in fields) {
-    result += [[fields objectForKey:number] getSerializedSize:number.intValue];
+    result += [[fields objectForKey:number] getSerializedSize:number.integerValue];
   }
   return result;
 }
@@ -143,7 +141,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
  */
 - (void) writeAsMessageSetTo:(PBCodedOutputStream*) output {
   for (NSNumber* number in fields) {
-    [[fields objectForKey:number] writeAsMessageSetExtensionTo:number.intValue output:output];
+    [[fields objectForKey:number] writeAsMessageSetExtensionTo:number.integerValue output:output];
   }
 }
 
@@ -155,7 +153,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 - (long) serializedSizeAsMessageSet {
   long result = 0;
   for (NSNumber* number in fields) {
-    result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:number.intValue];
+    result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:number.integerValue];
   }
   return result;
 }

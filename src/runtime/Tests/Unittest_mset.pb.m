@@ -197,7 +197,7 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -391,7 +391,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestMessageSetContainerBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -618,7 +618,7 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestMessageSetExtension1Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -827,7 +827,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestMessageSetExtension2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -867,7 +867,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 @end
 
 @interface RawMessageSet ()
-@property (strong) PBAppendableArray * itemArray;
+@property (strong) NSMutableArray * itemArray;
 @end
 
 @implementation RawMessageSet
@@ -894,7 +894,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 - (RawMessageSet*) defaultInstance {
   return defaultRawMessageSetInstance;
 }
-- (PBArray *)item {
+- (NSArray *)item {
   return itemArray;
 }
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index {
@@ -1188,7 +1188,7 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (RawMessageSetItemBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -1290,9 +1290,9 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
   }
   if (other.itemArray.count > 0) {
     if (result.itemArray == nil) {
-      result.itemArray = [other.itemArray copy];
+      result.itemArray = [[NSMutableArray alloc] initWithArray:other.itemArray];
     } else {
-      [result.itemArray appendArray:other.itemArray];
+      [result.itemArray addObjectsFromArray:other.itemArray];
     }
   }
   [self mergeUnknownFields:other.unknownFields];
@@ -1302,7 +1302,7 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (RawMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -1325,7 +1325,7 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
     }
   }
 }
-- (PBAppendableArray *)item {
+- (NSMutableArray *)item {
   return result.itemArray;
 }
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index {
@@ -1333,17 +1333,13 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
 }
 - (RawMessageSetBuilder *)addItem:(RawMessageSetItem*)value {
   if (result.itemArray == nil) {
-    result.itemArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.itemArray = [[NSMutableArray alloc]init];
   }
   [result.itemArray addObject:value];
   return self;
 }
 - (RawMessageSetBuilder *)setItemArray:(NSArray *)array {
-  result.itemArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (RawMessageSetBuilder *)setItemValues:(const RawMessageSetItem* __strong *)values count:(NSUInteger)count {
-  result.itemArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.itemArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (RawMessageSetBuilder *)clearItem {

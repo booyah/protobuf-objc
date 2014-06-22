@@ -60,8 +60,8 @@
   NSMutableDictionary* extensionRegistry;
 }
 
-@property (retain) NSMutableDictionary* extensionMap;
-@property (retain) NSMutableDictionary* extensionRegistry;
+@property (strong) NSMutableDictionary* extensionMap;
+@property (strong) NSMutableDictionary* extensionRegistry;
 
 - (BOOL) hasExtension:(id<PBExtensionField>) extension;
 - (id) getExtension:(id<PBExtensionField>) extension;

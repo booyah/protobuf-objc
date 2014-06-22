@@ -15,21 +15,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "GeneratedMessage_Builder.h"
+#import "GeneratedMessageBuilder.h"
 
 #import "GeneratedMessage.h"
 #import "Message.h"
-#import "Message_Builder.h"
+#import "MessageBuilder.h"
 #import "UnknownFieldSet.h"
-#import "UnknownFieldSet_Builder.h"
+#import "UnknownFieldSetBuilder.h"
 
 
 @interface PBGeneratedMessage ()
-@property (retain) PBUnknownFieldSet* unknownFields;
+@property (strong) PBUnknownFieldSet* unknownFields;
 @end
 
 
-@implementation PBGeneratedMessage_Builder
+@implementation PBGeneratedMessageBuilder
 
 /**
  * Get the message being built.  We don't just pass this to the
@@ -53,13 +53,13 @@
 }
 
 
-- (id<PBMessage_Builder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields {
+- (id<PBMessageBuilder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields {
   self.internalGetResult.unknownFields = unknownFields;
   return self;
 }
 
 
-- (id<PBMessage_Builder>) mergeUnknownFields:(PBUnknownFieldSet*) unknownFields {
+- (id<PBMessageBuilder>) mergeUnknownFields:(PBUnknownFieldSet*) unknownFields {
   PBGeneratedMessage* result = self.internalGetResult;
   result.unknownFields =
   [[[PBUnknownFieldSet builderWithUnknownFields:result.unknownFields]
@@ -78,7 +78,7 @@
  * @return {@code YES} unless the tag is an end-group tag.
  */
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input
-             unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
+             unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
          extensionRegistry:(PBExtensionRegistry*) extensionRegistry
                        tag:(long) tag {
   return [unknownFields mergeFieldFrom:tag input:input];

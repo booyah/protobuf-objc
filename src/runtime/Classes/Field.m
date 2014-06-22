@@ -38,14 +38,6 @@ static PBField *sDefaultInstance = nil;
 	}
 }
 
-- (void)dealloc {
-	[_varintArray release];
-	[_fixed32Array release];
-	[_fixed64Array release];
-	[_lengthDelimitedArray release];
-	[_groupArray release];
-	[super dealloc];
-}
 
 + (PBField *)defaultInstance {
 	return sDefaultInstance;
@@ -140,10 +132,10 @@ static PBField *sDefaultInstance = nil;
     [output appendFormat:@"%@%ld: %qi\n", indent, (long)fieldNumber, value.longLongValue];
   }
   for (NSNumber* value in self.fixed32Array) {
-    [output appendFormat:@"%@%ld: %d\n", indent, (long)fieldNumber, value.intValue];
+    [output appendFormat:@"%@%ld: %ld\n", indent, (long)fieldNumber, (long)value.integerValue];
   }
   for (NSNumber* value in self.fixed64Array) {
-    [output appendFormat:@"%@%ld: %qi\n", indent, (long)fieldNumber, value.longLongValue];
+    [output appendFormat:@"%@%ld: %lld\n", indent, (long)fieldNumber, value.longLongValue];
   }
   for (NSData* value in self.lengthDelimitedArray) {
     [output appendFormat:@"%@%ld: %@\n", indent, (long)fieldNumber, value];

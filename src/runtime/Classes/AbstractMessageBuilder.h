@@ -15,19 +15,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import "AbstractMessage_Builder.h"
+#import "MessageBuilder.h"
 
-@class PBUnknownFieldSet_Builder;
-
-@interface PBGeneratedMessage_Builder : PBAbstractMessage_Builder {
+/**
+ * A partial implementation of the {@link Message.Builder} interface which
+ * implements as many methods of that interface as possible in terms of
+ * other methods.
+ */
+@interface PBAbstractMessageBuilder : NSObject<PBMessageBuilder> {
 }
 
-/* @protected */
-- (BOOL) parseUnknownField:(PBCodedInputStream*) input
-             unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
-         extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                       tag:(long) tag;
-
-- (void) checkInitialized;
-
 @end
+

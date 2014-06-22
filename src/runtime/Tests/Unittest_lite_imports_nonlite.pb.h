@@ -164,7 +164,7 @@
 + (TestLiteImportsNonlite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestLiteImportsNonliteBuilder : PBGeneratedMessage_Builder {
+@interface TestLiteImportsNonliteBuilder : PBGeneratedMessageBuilder {
 @private
   TestLiteImportsNonlite* result;
 }

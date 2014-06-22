@@ -51,7 +51,7 @@
 + (PublicImportMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface PublicImportMessageLiteBuilder : PBGeneratedMessage_Builder {
+@interface PublicImportMessageLiteBuilder : PBGeneratedMessageBuilder {
 @private
   PublicImportMessageLite* result;
 }

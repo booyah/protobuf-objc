@@ -454,7 +454,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:44
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSString class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -463,7 +463,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:45
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSData class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -472,7 +472,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeGroup
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:46
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[RepeatedGroup_extension_lite class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -481,7 +481,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:48
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[TestAllTypesLiteNestedMessage class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -490,7 +490,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:49
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[ForeignMessageLite class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -499,7 +499,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:50
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[ImportMessageLite class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -508,7 +508,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:51
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSNumber class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -517,7 +517,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:52
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSNumber class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -526,7 +526,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:53
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSNumber class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -535,7 +535,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:54
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSString class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -544,7 +544,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:55
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSString class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -553,7 +553,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestAllExtensionsLite class]
                                        fieldNumber:57
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[TestAllTypesLiteNestedMessage class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -859,7 +859,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
                                      extendedClass:[TestPackedExtensionsLite class]
                                        fieldNumber:103
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[NSNumber class]
                                         isRepeated:YES
                                           isPacked:YES
@@ -886,7 +886,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
                                      extendedClass:[TestParsingMergeLite class]
                                        fieldNumber:1001
-                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeObject]
+                                      defaultValue:[[NSArray alloc] init]
                                messageOrGroupClass:[TestAllTypesLite class]
                                         isRepeated:YES
                                           isPacked:NO
@@ -1294,18 +1294,18 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
 @property (strong) PBAppendableArray * repeatedFloatArray;
 @property (strong) PBAppendableArray * repeatedDoubleArray;
 @property (strong) PBAppendableArray * repeatedBoolArray;
-@property (strong) PBAppendableArray * repeatedStringArray;
-@property (strong) PBAppendableArray * repeatedBytesArray;
-@property (strong) PBAppendableArray * repeatedGroupArray;
-@property (strong) PBAppendableArray * repeatedNestedMessageArray;
-@property (strong) PBAppendableArray * repeatedForeignMessageArray;
-@property (strong) PBAppendableArray * repeatedImportMessageArray;
+@property (strong) NSMutableArray * repeatedStringArray;
+@property (strong) NSMutableArray * repeatedBytesArray;
+@property (strong) NSMutableArray * repeatedGroupArray;
+@property (strong) NSMutableArray * repeatedNestedMessageArray;
+@property (strong) NSMutableArray * repeatedForeignMessageArray;
+@property (strong) NSMutableArray * repeatedImportMessageArray;
 @property (strong) PBAppendableArray * repeatedNestedEnumArray;
 @property (strong) PBAppendableArray * repeatedForeignEnumArray;
 @property (strong) PBAppendableArray * repeatedImportEnumArray;
-@property (strong) PBAppendableArray * repeatedStringPieceArray;
-@property (strong) PBAppendableArray * repeatedCordArray;
-@property (strong) PBAppendableArray * repeatedLazyMessageArray;
+@property (strong) NSMutableArray * repeatedStringPieceArray;
+@property (strong) NSMutableArray * repeatedCordArray;
+@property (strong) NSMutableArray * repeatedLazyMessageArray;
 @property long defaultInt32;
 @property long long defaultInt64;
 @property unsigned long defaultUint32;
@@ -1894,37 +1894,37 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (BOOL)repeatedBoolAtIndex:(NSUInteger)index {
   return [repeatedBoolArray boolAtIndex:index];
 }
-- (PBArray *)repeatedString {
+- (NSArray *)repeatedString {
   return repeatedStringArray;
 }
 - (NSString*)repeatedStringAtIndex:(NSUInteger)index {
   return [repeatedStringArray objectAtIndex:index];
 }
-- (PBArray *)repeatedBytes {
+- (NSArray *)repeatedBytes {
   return repeatedBytesArray;
 }
 - (NSData*)repeatedBytesAtIndex:(NSUInteger)index {
   return [repeatedBytesArray objectAtIndex:index];
 }
-- (PBArray *)repeatedGroup {
+- (NSArray *)repeatedGroup {
   return repeatedGroupArray;
 }
 - (TestAllTypesLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
   return [repeatedGroupArray objectAtIndex:index];
 }
-- (PBArray *)repeatedNestedMessage {
+- (NSArray *)repeatedNestedMessage {
   return repeatedNestedMessageArray;
 }
 - (TestAllTypesLiteNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index {
   return [repeatedNestedMessageArray objectAtIndex:index];
 }
-- (PBArray *)repeatedForeignMessage {
+- (NSArray *)repeatedForeignMessage {
   return repeatedForeignMessageArray;
 }
 - (ForeignMessageLite*)repeatedForeignMessageAtIndex:(NSUInteger)index {
   return [repeatedForeignMessageArray objectAtIndex:index];
 }
-- (PBArray *)repeatedImportMessage {
+- (NSArray *)repeatedImportMessage {
   return repeatedImportMessageArray;
 }
 - (ImportMessageLite*)repeatedImportMessageAtIndex:(NSUInteger)index {
@@ -1948,19 +1948,19 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
 - (ImportEnumLite)repeatedImportEnumAtIndex:(NSUInteger)index {
   return (ImportEnumLite)[repeatedImportEnumArray enumAtIndex:index];
 }
-- (PBArray *)repeatedStringPiece {
+- (NSArray *)repeatedStringPiece {
   return repeatedStringPieceArray;
 }
 - (NSString*)repeatedStringPieceAtIndex:(NSUInteger)index {
   return [repeatedStringPieceArray objectAtIndex:index];
 }
-- (PBArray *)repeatedCord {
+- (NSArray *)repeatedCord {
   return repeatedCordArray;
 }
 - (NSString*)repeatedCordAtIndex:(NSUInteger)index {
   return [repeatedCordArray objectAtIndex:index];
 }
-- (PBArray *)repeatedLazyMessage {
+- (NSArray *)repeatedLazyMessage {
   return repeatedLazyMessageArray;
 }
 - (TestAllTypesLiteNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index {
@@ -2139,19 +2139,11 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
       [output writeBool:43 value:values[i]];
     }
   }
-  const NSUInteger repeatedStringArrayCount = self.repeatedStringArray.count;
-  if (repeatedStringArrayCount > 0) {
-    const __strong NSString* *values = (const __strong NSString* *)self.repeatedStringArray.data;
-    for (NSUInteger i = 0; i < repeatedStringArrayCount; ++i) {
-      [output writeString:44 value:values[i]];
-    }
+  for (NSString *element in self.repeatedStringArray) {
+    [output writeString:44 value:element];
   }
-  const NSUInteger repeatedBytesArrayCount = self.repeatedBytesArray.count;
-  if (repeatedBytesArrayCount > 0) {
-    const __strong NSData* *values = (const __strong NSData* *)self.repeatedBytesArray.data;
-    for (NSUInteger i = 0; i < repeatedBytesArrayCount; ++i) {
-      [output writeData:45 value:values[i]];
-    }
+  for (NSData *element in self.repeatedBytesArray) {
+    [output writeData:45 value:element];
   }
   for (TestAllTypesLiteRepeatedGroup *element in self.repeatedGroupArray) {
     [output writeGroup:46 value:element];
@@ -2180,19 +2172,11 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   for (NSUInteger i = 0; i < repeatedImportEnumArrayCount; ++i) {
     [output writeEnum:53 value:repeatedImportEnumArrayValues[i]];
   }
-  const NSUInteger repeatedStringPieceArrayCount = self.repeatedStringPieceArray.count;
-  if (repeatedStringPieceArrayCount > 0) {
-    const __strong NSString* *values = (const __strong NSString* *)self.repeatedStringPieceArray.data;
-    for (NSUInteger i = 0; i < repeatedStringPieceArrayCount; ++i) {
-      [output writeString:54 value:values[i]];
-    }
+  for (NSString *element in self.repeatedStringPieceArray) {
+    [output writeString:54 value:element];
   }
-  const NSUInteger repeatedCordArrayCount = self.repeatedCordArray.count;
-  if (repeatedCordArrayCount > 0) {
-    const __strong NSString* *values = (const __strong NSString* *)self.repeatedCordArray.data;
-    for (NSUInteger i = 0; i < repeatedCordArrayCount; ++i) {
-      [output writeString:55 value:values[i]];
-    }
+  for (NSString *element in self.repeatedCordArray) {
+    [output writeString:55 value:element];
   }
   for (TestAllTypesLiteNestedMessage *element in self.repeatedLazyMessageArray) {
     [output writeMessage:57 value:element];
@@ -2345,7 +2329,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += computeMessageSize(27, self.optionalLazyMessage);
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedInt32Array.count;
     const long *values = (const long *)self.repeatedInt32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2355,7 +2339,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedInt64Array.count;
     const long long *values = (const long long *)self.repeatedInt64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2365,7 +2349,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedUint32Array.count;
     const unsigned long *values = (const unsigned long *)self.repeatedUint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2375,7 +2359,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedUint64Array.count;
     const unsigned long long *values = (const unsigned long long *)self.repeatedUint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2385,7 +2369,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedSint32Array.count;
     const long *values = (const long *)self.repeatedSint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2395,7 +2379,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedSint64Array.count;
     const long long *values = (const long long *)self.repeatedSint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2405,70 +2389,68 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedFixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedFixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedSfixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedSfixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedFloatArray.count;
     dataSize = 4 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedDoubleArray.count;
     dataSize = 8 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedBoolArray.count;
     dataSize = 1 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedStringArray.count;
-    const __strong NSString* *values = (const __strong NSString* *)self.repeatedStringArray.data;
-    for (NSUInteger i = 0; i < count; ++i) {
-      dataSize += computeStringSizeNoTag(values[i]);
+    for (NSString *element in self.repeatedStringArray) {
+      dataSize += computeStringSizeNoTag(element);
     }
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedBytesArray.count;
-    const __strong NSData* *values = (const __strong NSData* *)self.repeatedBytesArray.data;
-    for (NSUInteger i = 0; i < count; ++i) {
-      dataSize += computeDataSizeNoTag(values[i]);
+    for (NSData *element in self.repeatedBytesArray) {
+      dataSize += computeDataSizeNoTag(element);
     }
     size_ += dataSize;
     size_ += 2 * count;
@@ -2516,21 +2498,19 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedStringPieceArray.count;
-    const __strong NSString* *values = (const __strong NSString* *)self.repeatedStringPieceArray.data;
-    for (NSUInteger i = 0; i < count; ++i) {
-      dataSize += computeStringSizeNoTag(values[i]);
+    for (NSString *element in self.repeatedStringPieceArray) {
+      dataSize += computeStringSizeNoTag(element);
     }
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.repeatedCordArray.count;
-    const __strong NSString* *values = (const __strong NSString* *)self.repeatedCordArray.data;
-    for (NSUInteger i = 0; i < count; ++i) {
-      dataSize += computeStringSizeNoTag(values[i]);
+    for (NSString *element in self.repeatedCordArray) {
+      dataSize += computeStringSizeNoTag(element);
     }
     size_ += dataSize;
     size_ += 2 * count;
@@ -3405,7 +3385,7 @@ static TestAllTypesLiteNestedMessage* defaultTestAllTypesLiteNestedMessageInstan
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestAllTypesLiteNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -3610,7 +3590,7 @@ static TestAllTypesLiteOptionalGroup* defaultTestAllTypesLiteOptionalGroupInstan
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestAllTypesLiteOptionalGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -3815,7 +3795,7 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestAllTypesLiteRepeatedGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -4066,44 +4046,44 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   }
   if (other.repeatedStringArray.count > 0) {
     if (result.repeatedStringArray == nil) {
-      result.repeatedStringArray = [other.repeatedStringArray copy];
+      result.repeatedStringArray = [[NSMutableArray alloc] initWithArray:other.repeatedStringArray];
     } else {
-      [result.repeatedStringArray appendArray:other.repeatedStringArray];
+      [result.repeatedStringArray addObjectsFromArray:other.repeatedStringArray];
     }
   }
   if (other.repeatedBytesArray.count > 0) {
     if (result.repeatedBytesArray == nil) {
-      result.repeatedBytesArray = [other.repeatedBytesArray copy];
+      result.repeatedBytesArray = [[NSMutableArray alloc] initWithArray:other.repeatedBytesArray];
     } else {
-      [result.repeatedBytesArray appendArray:other.repeatedBytesArray];
+      [result.repeatedBytesArray addObjectsFromArray:other.repeatedBytesArray];
     }
   }
   if (other.repeatedGroupArray.count > 0) {
     if (result.repeatedGroupArray == nil) {
-      result.repeatedGroupArray = [other.repeatedGroupArray copy];
+      result.repeatedGroupArray = [[NSMutableArray alloc] initWithArray:other.repeatedGroupArray];
     } else {
-      [result.repeatedGroupArray appendArray:other.repeatedGroupArray];
+      [result.repeatedGroupArray addObjectsFromArray:other.repeatedGroupArray];
     }
   }
   if (other.repeatedNestedMessageArray.count > 0) {
     if (result.repeatedNestedMessageArray == nil) {
-      result.repeatedNestedMessageArray = [other.repeatedNestedMessageArray copy];
+      result.repeatedNestedMessageArray = [[NSMutableArray alloc] initWithArray:other.repeatedNestedMessageArray];
     } else {
-      [result.repeatedNestedMessageArray appendArray:other.repeatedNestedMessageArray];
+      [result.repeatedNestedMessageArray addObjectsFromArray:other.repeatedNestedMessageArray];
     }
   }
   if (other.repeatedForeignMessageArray.count > 0) {
     if (result.repeatedForeignMessageArray == nil) {
-      result.repeatedForeignMessageArray = [other.repeatedForeignMessageArray copy];
+      result.repeatedForeignMessageArray = [[NSMutableArray alloc] initWithArray:other.repeatedForeignMessageArray];
     } else {
-      [result.repeatedForeignMessageArray appendArray:other.repeatedForeignMessageArray];
+      [result.repeatedForeignMessageArray addObjectsFromArray:other.repeatedForeignMessageArray];
     }
   }
   if (other.repeatedImportMessageArray.count > 0) {
     if (result.repeatedImportMessageArray == nil) {
-      result.repeatedImportMessageArray = [other.repeatedImportMessageArray copy];
+      result.repeatedImportMessageArray = [[NSMutableArray alloc] initWithArray:other.repeatedImportMessageArray];
     } else {
-      [result.repeatedImportMessageArray appendArray:other.repeatedImportMessageArray];
+      [result.repeatedImportMessageArray addObjectsFromArray:other.repeatedImportMessageArray];
     }
   }
   if (other.repeatedNestedEnumArray.count > 0) {
@@ -4129,23 +4109,23 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   }
   if (other.repeatedStringPieceArray.count > 0) {
     if (result.repeatedStringPieceArray == nil) {
-      result.repeatedStringPieceArray = [other.repeatedStringPieceArray copy];
+      result.repeatedStringPieceArray = [[NSMutableArray alloc] initWithArray:other.repeatedStringPieceArray];
     } else {
-      [result.repeatedStringPieceArray appendArray:other.repeatedStringPieceArray];
+      [result.repeatedStringPieceArray addObjectsFromArray:other.repeatedStringPieceArray];
     }
   }
   if (other.repeatedCordArray.count > 0) {
     if (result.repeatedCordArray == nil) {
-      result.repeatedCordArray = [other.repeatedCordArray copy];
+      result.repeatedCordArray = [[NSMutableArray alloc] initWithArray:other.repeatedCordArray];
     } else {
-      [result.repeatedCordArray appendArray:other.repeatedCordArray];
+      [result.repeatedCordArray addObjectsFromArray:other.repeatedCordArray];
     }
   }
   if (other.repeatedLazyMessageArray.count > 0) {
     if (result.repeatedLazyMessageArray == nil) {
-      result.repeatedLazyMessageArray = [other.repeatedLazyMessageArray copy];
+      result.repeatedLazyMessageArray = [[NSMutableArray alloc] initWithArray:other.repeatedLazyMessageArray];
     } else {
-      [result.repeatedLazyMessageArray appendArray:other.repeatedLazyMessageArray];
+      [result.repeatedLazyMessageArray addObjectsFromArray:other.repeatedLazyMessageArray];
     }
   }
   if (other.hasDefaultInt32) {
@@ -4215,7 +4195,7 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestAllTypesLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -5426,7 +5406,7 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   result.repeatedBoolArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedString {
+- (NSMutableArray *)repeatedString {
   return result.repeatedStringArray;
 }
 - (NSString*)repeatedStringAtIndex:(NSUInteger)index {
@@ -5434,24 +5414,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedString:(NSString*)value {
   if (result.repeatedStringArray == nil) {
-    result.repeatedStringArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedStringArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedStringArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedStringArray:(NSArray *)array {
-  result.repeatedStringArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedStringValues:(const NSString* *)values count:(NSUInteger)count {
-  result.repeatedStringArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedStringArray = [[NSMutableArray alloc] initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedString {
   result.repeatedStringArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedBytes {
+- (NSMutableArray *)repeatedBytes {
   return result.repeatedBytesArray;
 }
 - (NSData*)repeatedBytesAtIndex:(NSUInteger)index {
@@ -5459,24 +5435,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedBytes:(NSData*)value {
   if (result.repeatedBytesArray == nil) {
-    result.repeatedBytesArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedBytesArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedBytesArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedBytesArray:(NSArray *)array {
-  result.repeatedBytesArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedBytesValues:(const NSData* *)values count:(NSUInteger)count {
-  result.repeatedBytesArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedBytesArray = [[NSMutableArray alloc] initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedBytes {
   result.repeatedBytesArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedGroup {
+- (NSMutableArray *)repeatedGroup {
   return result.repeatedGroupArray;
 }
 - (TestAllTypesLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
@@ -5484,24 +5456,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedGroup:(TestAllTypesLiteRepeatedGroup*)value {
   if (result.repeatedGroupArray == nil) {
-    result.repeatedGroupArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedGroupArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedGroupArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedGroupArray:(NSArray *)array {
-  result.repeatedGroupArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedGroupValues:(const TestAllTypesLiteRepeatedGroup* __strong *)values count:(NSUInteger)count {
-  result.repeatedGroupArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedGroupArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedGroup {
   result.repeatedGroupArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedNestedMessage {
+- (NSMutableArray *)repeatedNestedMessage {
   return result.repeatedNestedMessageArray;
 }
 - (TestAllTypesLiteNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index {
@@ -5509,24 +5477,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedNestedMessage:(TestAllTypesLiteNestedMessage*)value {
   if (result.repeatedNestedMessageArray == nil) {
-    result.repeatedNestedMessageArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedNestedMessageArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedNestedMessageArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedNestedMessageArray:(NSArray *)array {
-  result.repeatedNestedMessageArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedNestedMessageValues:(const TestAllTypesLiteNestedMessage* __strong *)values count:(NSUInteger)count {
-  result.repeatedNestedMessageArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedNestedMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedNestedMessage {
   result.repeatedNestedMessageArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedForeignMessage {
+- (NSMutableArray *)repeatedForeignMessage {
   return result.repeatedForeignMessageArray;
 }
 - (ForeignMessageLite*)repeatedForeignMessageAtIndex:(NSUInteger)index {
@@ -5534,24 +5498,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedForeignMessage:(ForeignMessageLite*)value {
   if (result.repeatedForeignMessageArray == nil) {
-    result.repeatedForeignMessageArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedForeignMessageArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedForeignMessageArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedForeignMessageArray:(NSArray *)array {
-  result.repeatedForeignMessageArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedForeignMessageValues:(const ForeignMessageLite* __strong *)values count:(NSUInteger)count {
-  result.repeatedForeignMessageArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedForeignMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedForeignMessage {
   result.repeatedForeignMessageArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedImportMessage {
+- (NSMutableArray *)repeatedImportMessage {
   return result.repeatedImportMessageArray;
 }
 - (ImportMessageLite*)repeatedImportMessageAtIndex:(NSUInteger)index {
@@ -5559,17 +5519,13 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedImportMessage:(ImportMessageLite*)value {
   if (result.repeatedImportMessageArray == nil) {
-    result.repeatedImportMessageArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedImportMessageArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedImportMessageArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedImportMessageArray:(NSArray *)array {
-  result.repeatedImportMessageArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedImportMessageValues:(const ImportMessageLite* __strong *)values count:(NSUInteger)count {
-  result.repeatedImportMessageArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedImportMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedImportMessage {
@@ -5651,7 +5607,7 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   result.repeatedImportEnumArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedStringPiece {
+- (NSMutableArray *)repeatedStringPiece {
   return result.repeatedStringPieceArray;
 }
 - (NSString*)repeatedStringPieceAtIndex:(NSUInteger)index {
@@ -5659,24 +5615,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedStringPiece:(NSString*)value {
   if (result.repeatedStringPieceArray == nil) {
-    result.repeatedStringPieceArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedStringPieceArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedStringPieceArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedStringPieceArray:(NSArray *)array {
-  result.repeatedStringPieceArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedStringPieceValues:(const NSString* *)values count:(NSUInteger)count {
-  result.repeatedStringPieceArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedStringPieceArray = [[NSMutableArray alloc] initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedStringPiece {
   result.repeatedStringPieceArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedCord {
+- (NSMutableArray *)repeatedCord {
   return result.repeatedCordArray;
 }
 - (NSString*)repeatedCordAtIndex:(NSUInteger)index {
@@ -5684,24 +5636,20 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedCord:(NSString*)value {
   if (result.repeatedCordArray == nil) {
-    result.repeatedCordArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedCordArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedCordArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedCordArray:(NSArray *)array {
-  result.repeatedCordArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedCordValues:(const NSString* *)values count:(NSUInteger)count {
-  result.repeatedCordArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedCordArray = [[NSMutableArray alloc] initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedCord {
   result.repeatedCordArray = nil;
   return self;
 }
-- (PBAppendableArray *)repeatedLazyMessage {
+- (NSMutableArray *)repeatedLazyMessage {
   return result.repeatedLazyMessageArray;
 }
 - (TestAllTypesLiteNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index {
@@ -5709,17 +5657,13 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 }
 - (TestAllTypesLiteBuilder *)addRepeatedLazyMessage:(TestAllTypesLiteNestedMessage*)value {
   if (result.repeatedLazyMessageArray == nil) {
-    result.repeatedLazyMessageArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedLazyMessageArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedLazyMessageArray addObject:value];
   return self;
 }
 - (TestAllTypesLiteBuilder *)setRepeatedLazyMessageArray:(NSArray *)array {
-  result.repeatedLazyMessageArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestAllTypesLiteBuilder *)setRepeatedLazyMessageValues:(const TestAllTypesLiteNestedMessage* __strong *)values count:(NSUInteger)count {
-  result.repeatedLazyMessageArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedLazyMessageArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestAllTypesLiteBuilder *)clearRepeatedLazyMessage {
@@ -6214,7 +6158,7 @@ static ForeignMessageLite* defaultForeignMessageLiteInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (ForeignMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -6557,7 +6501,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
 
   size_ = 0;
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedInt32Array.count;
     const long *values = (const long *)self.packedInt32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6571,7 +6515,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedInt32MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedInt64Array.count;
     const long long *values = (const long long *)self.packedInt64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6585,7 +6529,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedInt64MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedUint32Array.count;
     const unsigned long *values = (const unsigned long *)self.packedUint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6599,7 +6543,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedUint32MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedUint64Array.count;
     const unsigned long long *values = (const unsigned long long *)self.packedUint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6613,7 +6557,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedUint64MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedSint32Array.count;
     const long *values = (const long *)self.packedSint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6627,7 +6571,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSint32MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedSint64Array.count;
     const long long *values = (const long long *)self.packedSint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6641,7 +6585,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSint64MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedFixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
@@ -6652,7 +6596,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFixed32MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedFixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
@@ -6663,7 +6607,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFixed64MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedSfixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
@@ -6674,7 +6618,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSfixed32MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedSfixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
@@ -6685,7 +6629,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSfixed64MemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedFloatArray.count;
     dataSize = 4 * count;
     size_ += dataSize;
@@ -6696,7 +6640,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFloatMemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedDoubleArray.count;
     dataSize = 8 * count;
     size_ += dataSize;
@@ -6707,7 +6651,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedDoubleMemoizedSerializedSize = dataSize;
   }
   {
-    NSInteger dataSize = 0;
+    long dataSize = 0;
     const NSUInteger count = self.packedBoolArray.count;
     dataSize = 1 * count;
     size_ += dataSize;
@@ -7030,7 +6974,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestPackedTypesLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -7045,8 +6989,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 722: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedInt32Array == nil) {
           result.packedInt32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -7057,8 +7001,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 730: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedInt64Array == nil) {
           result.packedInt64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt64];
         }
@@ -7069,8 +7013,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 738: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedUint32Array == nil) {
           result.packedUint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
         }
@@ -7081,8 +7025,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 746: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedUint64Array == nil) {
           result.packedUint64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
         }
@@ -7093,8 +7037,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 754: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedSint32Array == nil) {
           result.packedSint32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -7105,8 +7049,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 762: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedSint64Array == nil) {
           result.packedSint64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt64];
         }
@@ -7117,8 +7061,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 770: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedFixed32Array == nil) {
           result.packedFixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt32];
         }
@@ -7129,8 +7073,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 778: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedFixed64Array == nil) {
           result.packedFixed64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeUInt64];
         }
@@ -7141,8 +7085,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 786: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedSfixed32Array == nil) {
           result.packedSfixed32Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -7153,8 +7097,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 794: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedSfixed64Array == nil) {
           result.packedSfixed64Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt64];
         }
@@ -7165,8 +7109,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 802: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedFloatArray == nil) {
           result.packedFloatArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeFloat];
         }
@@ -7177,8 +7121,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 810: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedDoubleArray == nil) {
           result.packedDoubleArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeDouble];
         }
@@ -7189,8 +7133,8 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
         break;
       }
       case 818: {
-        NSInteger length = [input readRawVarint32];
-        NSInteger limit = [input pushLimit:length];
+        long length = [input readRawVarint32];
+        long limit = [input pushLimit:length];
         if (result.packedBoolArray == nil) {
           result.packedBoolArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeBool];
         }
@@ -7724,7 +7668,7 @@ static TestAllExtensionsLite* defaultTestAllExtensionsLiteInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestAllExtensionsLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -7909,7 +7853,7 @@ static OptionalGroup_extension_lite* defaultOptionalGroup_extension_liteInstance
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (OptionalGroup_extension_liteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -8114,7 +8058,7 @@ static RepeatedGroup_extension_lite* defaultRepeatedGroup_extension_liteInstance
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (RepeatedGroup_extension_liteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -8308,7 +8252,7 @@ static TestPackedExtensionsLite* defaultTestPackedExtensionsLiteInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestPackedExtensionsLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -8470,7 +8414,7 @@ static TestNestedExtensionLite* defaultTestNestedExtensionLiteInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestNestedExtensionLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -8655,7 +8599,7 @@ static TestDeprecatedLite* defaultTestDeprecatedLiteInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestDeprecatedLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -8697,9 +8641,9 @@ static TestDeprecatedLite* defaultTestDeprecatedLiteInstance = nil;
 @interface TestParsingMergeLite ()
 @property (strong) TestAllTypesLite* requiredAllTypes;
 @property (strong) TestAllTypesLite* optionalAllTypes;
-@property (strong) PBAppendableArray * repeatedAllTypesArray;
+@property (strong) NSMutableArray * repeatedAllTypesArray;
 @property (strong) TestParsingMergeLiteOptionalGroup* optionalGroup;
-@property (strong) PBAppendableArray * repeatedGroupArray;
+@property (strong) NSMutableArray * repeatedGroupArray;
 @end
 
 @implementation TestParsingMergeLite
@@ -8762,13 +8706,13 @@ static TestParsingMergeLite* defaultTestParsingMergeLiteInstance = nil;
 - (TestParsingMergeLite*) defaultInstance {
   return defaultTestParsingMergeLiteInstance;
 }
-- (PBArray *)repeatedAllTypes {
+- (NSArray *)repeatedAllTypes {
   return repeatedAllTypesArray;
 }
 - (TestAllTypesLite*)repeatedAllTypesAtIndex:(NSUInteger)index {
   return [repeatedAllTypesArray objectAtIndex:index];
 }
-- (PBArray *)repeatedGroup {
+- (NSArray *)repeatedGroup {
   return repeatedGroupArray;
 }
 - (TestParsingMergeLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
@@ -8943,13 +8887,13 @@ static TestParsingMergeLite* defaultTestParsingMergeLiteInstance = nil;
 @end
 
 @interface TestParsingMergeLiteRepeatedFieldsGenerator ()
-@property (strong) PBAppendableArray * field1Array;
-@property (strong) PBAppendableArray * field2Array;
-@property (strong) PBAppendableArray * field3Array;
-@property (strong) PBAppendableArray * group1Array;
-@property (strong) PBAppendableArray * group2Array;
-@property (strong) PBAppendableArray * ext1Array;
-@property (strong) PBAppendableArray * ext2Array;
+@property (strong) NSMutableArray * field1Array;
+@property (strong) NSMutableArray * field2Array;
+@property (strong) NSMutableArray * field3Array;
+@property (strong) NSMutableArray * group1Array;
+@property (strong) NSMutableArray * group2Array;
+@property (strong) NSMutableArray * ext1Array;
+@property (strong) NSMutableArray * ext2Array;
 @end
 
 @implementation TestParsingMergeLiteRepeatedFieldsGenerator
@@ -8994,43 +8938,43 @@ static TestParsingMergeLiteRepeatedFieldsGenerator* defaultTestParsingMergeLiteR
 - (TestParsingMergeLiteRepeatedFieldsGenerator*) defaultInstance {
   return defaultTestParsingMergeLiteRepeatedFieldsGeneratorInstance;
 }
-- (PBArray *)field1 {
+- (NSArray *)field1 {
   return field1Array;
 }
 - (TestAllTypesLite*)field1AtIndex:(NSUInteger)index {
   return [field1Array objectAtIndex:index];
 }
-- (PBArray *)field2 {
+- (NSArray *)field2 {
   return field2Array;
 }
 - (TestAllTypesLite*)field2AtIndex:(NSUInteger)index {
   return [field2Array objectAtIndex:index];
 }
-- (PBArray *)field3 {
+- (NSArray *)field3 {
   return field3Array;
 }
 - (TestAllTypesLite*)field3AtIndex:(NSUInteger)index {
   return [field3Array objectAtIndex:index];
 }
-- (PBArray *)group1 {
+- (NSArray *)group1 {
   return group1Array;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index {
   return [group1Array objectAtIndex:index];
 }
-- (PBArray *)group2 {
+- (NSArray *)group2 {
   return group2Array;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index {
   return [group2Array objectAtIndex:index];
 }
-- (PBArray *)ext1 {
+- (NSArray *)ext1 {
   return ext1Array;
 }
 - (TestAllTypesLite*)ext1AtIndex:(NSUInteger)index {
   return [ext1Array objectAtIndex:index];
 }
-- (PBArray *)ext2 {
+- (NSArray *)ext2 {
   return ext2Array;
 }
 - (TestAllTypesLite*)ext2AtIndex:(NSUInteger)index {
@@ -9386,7 +9330,7 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* defaultTestParsingMerg
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -9614,7 +9558,7 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -9715,51 +9659,51 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
   }
   if (other.field1Array.count > 0) {
     if (result.field1Array == nil) {
-      result.field1Array = [other.field1Array copy];
+      result.field1Array = [[NSMutableArray alloc] initWithArray:other.field1Array];
     } else {
-      [result.field1Array appendArray:other.field1Array];
+      [result.field1Array addObjectsFromArray:other.field1Array];
     }
   }
   if (other.field2Array.count > 0) {
     if (result.field2Array == nil) {
-      result.field2Array = [other.field2Array copy];
+      result.field2Array = [[NSMutableArray alloc] initWithArray:other.field2Array];
     } else {
-      [result.field2Array appendArray:other.field2Array];
+      [result.field2Array addObjectsFromArray:other.field2Array];
     }
   }
   if (other.field3Array.count > 0) {
     if (result.field3Array == nil) {
-      result.field3Array = [other.field3Array copy];
+      result.field3Array = [[NSMutableArray alloc] initWithArray:other.field3Array];
     } else {
-      [result.field3Array appendArray:other.field3Array];
+      [result.field3Array addObjectsFromArray:other.field3Array];
     }
   }
   if (other.group1Array.count > 0) {
     if (result.group1Array == nil) {
-      result.group1Array = [other.group1Array copy];
+      result.group1Array = [[NSMutableArray alloc] initWithArray:other.group1Array];
     } else {
-      [result.group1Array appendArray:other.group1Array];
+      [result.group1Array addObjectsFromArray:other.group1Array];
     }
   }
   if (other.group2Array.count > 0) {
     if (result.group2Array == nil) {
-      result.group2Array = [other.group2Array copy];
+      result.group2Array = [[NSMutableArray alloc] initWithArray:other.group2Array];
     } else {
-      [result.group2Array appendArray:other.group2Array];
+      [result.group2Array addObjectsFromArray:other.group2Array];
     }
   }
   if (other.ext1Array.count > 0) {
     if (result.ext1Array == nil) {
-      result.ext1Array = [other.ext1Array copy];
+      result.ext1Array = [[NSMutableArray alloc] initWithArray:other.ext1Array];
     } else {
-      [result.ext1Array appendArray:other.ext1Array];
+      [result.ext1Array addObjectsFromArray:other.ext1Array];
     }
   }
   if (other.ext2Array.count > 0) {
     if (result.ext2Array == nil) {
-      result.ext2Array = [other.ext2Array copy];
+      result.ext2Array = [[NSMutableArray alloc] initWithArray:other.ext2Array];
     } else {
-      [result.ext2Array appendArray:other.ext2Array];
+      [result.ext2Array addObjectsFromArray:other.ext2Array];
     }
   }
   [self mergeUnknownFields:other.unknownFields];
@@ -9769,7 +9713,7 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -9828,7 +9772,7 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
     }
   }
 }
-- (PBAppendableArray *)field1 {
+- (NSMutableArray *)field1 {
   return result.field1Array;
 }
 - (TestAllTypesLite*)field1AtIndex:(NSUInteger)index {
@@ -9836,24 +9780,20 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addField1:(TestAllTypesLite*)value {
   if (result.field1Array == nil) {
-    result.field1Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.field1Array = [[NSMutableArray alloc]init];
   }
   [result.field1Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray *)array {
-  result.field1Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField1Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count {
-  result.field1Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.field1Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearField1 {
   result.field1Array = nil;
   return self;
 }
-- (PBAppendableArray *)field2 {
+- (NSMutableArray *)field2 {
   return result.field2Array;
 }
 - (TestAllTypesLite*)field2AtIndex:(NSUInteger)index {
@@ -9861,24 +9801,20 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addField2:(TestAllTypesLite*)value {
   if (result.field2Array == nil) {
-    result.field2Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.field2Array = [[NSMutableArray alloc]init];
   }
   [result.field2Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray *)array {
-  result.field2Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField2Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count {
-  result.field2Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.field2Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearField2 {
   result.field2Array = nil;
   return self;
 }
-- (PBAppendableArray *)field3 {
+- (NSMutableArray *)field3 {
   return result.field3Array;
 }
 - (TestAllTypesLite*)field3AtIndex:(NSUInteger)index {
@@ -9886,24 +9822,20 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addField3:(TestAllTypesLite*)value {
   if (result.field3Array == nil) {
-    result.field3Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.field3Array = [[NSMutableArray alloc]init];
   }
   [result.field3Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray *)array {
-  result.field3Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setField3Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count {
-  result.field3Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.field3Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearField3 {
   result.field3Array = nil;
   return self;
 }
-- (PBAppendableArray *)group1 {
+- (NSMutableArray *)group1 {
   return result.group1Array;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index {
@@ -9911,24 +9843,20 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addGroup1:(TestParsingMergeLiteRepeatedFieldsGeneratorGroup1*)value {
   if (result.group1Array == nil) {
-    result.group1Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.group1Array = [[NSMutableArray alloc]init];
   }
   [result.group1Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray *)array {
-  result.group1Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup1Values:(const TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* __strong *)values count:(NSUInteger)count {
-  result.group1Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.group1Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearGroup1 {
   result.group1Array = nil;
   return self;
 }
-- (PBAppendableArray *)group2 {
+- (NSMutableArray *)group2 {
   return result.group2Array;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index {
@@ -9936,24 +9864,20 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addGroup2:(TestParsingMergeLiteRepeatedFieldsGeneratorGroup2*)value {
   if (result.group2Array == nil) {
-    result.group2Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.group2Array = [[NSMutableArray alloc]init];
   }
   [result.group2Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray *)array {
-  result.group2Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setGroup2Values:(const TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* __strong *)values count:(NSUInteger)count {
-  result.group2Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.group2Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearGroup2 {
   result.group2Array = nil;
   return self;
 }
-- (PBAppendableArray *)ext1 {
+- (NSMutableArray *)ext1 {
   return result.ext1Array;
 }
 - (TestAllTypesLite*)ext1AtIndex:(NSUInteger)index {
@@ -9961,24 +9885,20 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addExt1:(TestAllTypesLite*)value {
   if (result.ext1Array == nil) {
-    result.ext1Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.ext1Array = [[NSMutableArray alloc]init];
   }
   [result.ext1Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray *)array {
-  result.ext1Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt1Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count {
-  result.ext1Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.ext1Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearExt1 {
   result.ext1Array = nil;
   return self;
 }
-- (PBAppendableArray *)ext2 {
+- (NSMutableArray *)ext2 {
   return result.ext2Array;
 }
 - (TestAllTypesLite*)ext2AtIndex:(NSUInteger)index {
@@ -9986,17 +9906,13 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)addExt2:(TestAllTypesLite*)value {
   if (result.ext2Array == nil) {
-    result.ext2Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.ext2Array = [[NSMutableArray alloc]init];
   }
   [result.ext2Array addObject:value];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray *)array {
-  result.ext2Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)setExt2Values:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count {
-  result.ext2Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.ext2Array = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteRepeatedFieldsGeneratorBuilder *)clearExt2 {
@@ -10175,7 +10091,7 @@ static TestParsingMergeLiteOptionalGroup* defaultTestParsingMergeLiteOptionalGro
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestParsingMergeLiteOptionalGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -10403,7 +10319,7 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestParsingMergeLiteRepeatedGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -10510,9 +10426,9 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   }
   if (other.repeatedAllTypesArray.count > 0) {
     if (result.repeatedAllTypesArray == nil) {
-      result.repeatedAllTypesArray = [other.repeatedAllTypesArray copy];
+      result.repeatedAllTypesArray = [[NSMutableArray alloc] initWithArray:other.repeatedAllTypesArray];
     } else {
-      [result.repeatedAllTypesArray appendArray:other.repeatedAllTypesArray];
+      [result.repeatedAllTypesArray addObjectsFromArray:other.repeatedAllTypesArray];
     }
   }
   if (other.hasOptionalGroup) {
@@ -10520,9 +10436,9 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   }
   if (other.repeatedGroupArray.count > 0) {
     if (result.repeatedGroupArray == nil) {
-      result.repeatedGroupArray = [other.repeatedGroupArray copy];
+      result.repeatedGroupArray = [[NSMutableArray alloc] initWithArray:other.repeatedGroupArray];
     } else {
-      [result.repeatedGroupArray appendArray:other.repeatedGroupArray];
+      [result.repeatedGroupArray addObjectsFromArray:other.repeatedGroupArray];
     }
   }
   [self mergeExtensionFields:other];
@@ -10533,7 +10449,7 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestParsingMergeLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     NSInteger tag = [input readTag];
     switch (tag) {
@@ -10649,7 +10565,7 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   result.optionalAllTypes = [TestAllTypesLite defaultInstance];
   return self;
 }
-- (PBAppendableArray *)repeatedAllTypes {
+- (NSMutableArray *)repeatedAllTypes {
   return result.repeatedAllTypesArray;
 }
 - (TestAllTypesLite*)repeatedAllTypesAtIndex:(NSUInteger)index {
@@ -10657,17 +10573,13 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
 }
 - (TestParsingMergeLiteBuilder *)addRepeatedAllTypes:(TestAllTypesLite*)value {
   if (result.repeatedAllTypesArray == nil) {
-    result.repeatedAllTypesArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedAllTypesArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedAllTypesArray addObject:value];
   return self;
 }
 - (TestParsingMergeLiteBuilder *)setRepeatedAllTypesArray:(NSArray *)array {
-  result.repeatedAllTypesArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteBuilder *)setRepeatedAllTypesValues:(const TestAllTypesLite* __strong *)values count:(NSUInteger)count {
-  result.repeatedAllTypesArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedAllTypesArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteBuilder *)clearRepeatedAllTypes {
@@ -10704,7 +10616,7 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   result.optionalGroup = [TestParsingMergeLiteOptionalGroup defaultInstance];
   return self;
 }
-- (PBAppendableArray *)repeatedGroup {
+- (NSMutableArray *)repeatedGroup {
   return result.repeatedGroupArray;
 }
 - (TestParsingMergeLiteRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index {
@@ -10712,17 +10624,13 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
 }
 - (TestParsingMergeLiteBuilder *)addRepeatedGroup:(TestParsingMergeLiteRepeatedGroup*)value {
   if (result.repeatedGroupArray == nil) {
-    result.repeatedGroupArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeObject];
+    result.repeatedGroupArray = [[NSMutableArray alloc]init];
   }
   [result.repeatedGroupArray addObject:value];
   return self;
 }
 - (TestParsingMergeLiteBuilder *)setRepeatedGroupArray:(NSArray *)array {
-  result.repeatedGroupArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];
-  return self;
-}
-- (TestParsingMergeLiteBuilder *)setRepeatedGroupValues:(const TestParsingMergeLiteRepeatedGroup* __strong *)values count:(NSUInteger)count {
-  result.repeatedGroupArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];
+  result.repeatedGroupArray = [[NSMutableArray alloc]initWithArray:array];
   return self;
 }
 - (TestParsingMergeLiteBuilder *)clearRepeatedGroup {

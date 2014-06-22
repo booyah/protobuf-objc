@@ -57,7 +57,7 @@
 + (TestMessageSet*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMessageSetBuilder : PBExtendableMessage_Builder {
+@interface TestMessageSetBuilder : PBExtendableMessageBuilder {
 @private
   TestMessageSet* result;
 }
@@ -101,7 +101,7 @@
 + (TestMessageSetContainer*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMessageSetContainerBuilder : PBGeneratedMessage_Builder {
+@interface TestMessageSetContainerBuilder : PBGeneratedMessageBuilder {
 @private
   TestMessageSetContainer* result;
 }
@@ -153,7 +153,7 @@
 + (TestMessageSetExtension1*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMessageSetExtension1Builder : PBGeneratedMessage_Builder {
+@interface TestMessageSetExtension1Builder : PBGeneratedMessageBuilder {
 @private
   TestMessageSetExtension1* result;
 }
@@ -203,7 +203,7 @@
 + (TestMessageSetExtension2*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMessageSetExtension2Builder : PBGeneratedMessage_Builder {
+@interface TestMessageSetExtension2Builder : PBGeneratedMessageBuilder {
 @private
   TestMessageSetExtension2* result;
 }
@@ -228,9 +228,9 @@
 
 @interface RawMessageSet : PBGeneratedMessage {
 @private
-  PBAppendableArray * itemArray;
+  NSMutableArray * itemArray;
 }
-@property (readonly, strong) PBArray * item;
+@property (readonly, strong) NSArray * item;
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index;
 
 + (RawMessageSet*) defaultInstance;
@@ -281,7 +281,7 @@
 + (RawMessageSetItem*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface RawMessageSetItemBuilder : PBGeneratedMessage_Builder {
+@interface RawMessageSetItemBuilder : PBGeneratedMessageBuilder {
 @private
   RawMessageSetItem* result;
 }
@@ -309,7 +309,7 @@
 - (RawMessageSetItemBuilder*) clearMessage;
 @end
 
-@interface RawMessageSetBuilder : PBGeneratedMessage_Builder {
+@interface RawMessageSetBuilder : PBGeneratedMessageBuilder {
 @private
   RawMessageSet* result;
 }
@@ -326,11 +326,10 @@
 - (RawMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (RawMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (PBAppendableArray *)item;
+- (NSMutableArray *)item;
 - (RawMessageSetItem*)itemAtIndex:(NSUInteger)index;
 - (RawMessageSetBuilder *)addItem:(RawMessageSetItem*)value;
 - (RawMessageSetBuilder *)setItemArray:(NSArray *)array;
-- (RawMessageSetBuilder *)setItemValues:(const RawMessageSetItem* __strong *)values count:(NSUInteger)count;
 - (RawMessageSetBuilder *)clearItem;
 @end
 

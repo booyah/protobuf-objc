@@ -369,15 +369,15 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   PBAppendableArray * repeatedInt32Array;
   PBAppendableArray * repeatedFixed64Array;
   PBAppendableArray * repeatedFixed32Array;
-  PBAppendableArray * repeatedStringArray;
-  PBAppendableArray * repeatedStringPieceArray;
-  PBAppendableArray * repeatedCordArray;
-  PBAppendableArray * repeatedGroupArray;
-  PBAppendableArray * repeatedLazyMessageArray;
-  PBAppendableArray * repeatedImportMessageArray;
-  PBAppendableArray * repeatedForeignMessageArray;
-  PBAppendableArray * repeatedNestedMessageArray;
-  PBAppendableArray * repeatedBytesArray;
+  NSMutableArray * repeatedStringArray;
+  NSMutableArray * repeatedStringPieceArray;
+  NSMutableArray * repeatedCordArray;
+  NSMutableArray * repeatedGroupArray;
+  NSMutableArray * repeatedLazyMessageArray;
+  NSMutableArray * repeatedImportMessageArray;
+  NSMutableArray * repeatedForeignMessageArray;
+  NSMutableArray * repeatedNestedMessageArray;
+  NSMutableArray * repeatedBytesArray;
   PBAppendableArray * repeatedUint32Array;
   PBAppendableArray * repeatedImportEnumArray;
   PBAppendableArray * repeatedForeignEnumArray;
@@ -474,16 +474,16 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 @property (readonly, strong) PBArray * repeatedBool;
 @property (readonly, strong) PBArray * repeatedString;
 @property (readonly, strong) PBArray * repeatedBytes;
-@property (readonly, strong) PBArray * repeatedGroup;
-@property (readonly, strong) PBArray * repeatedNestedMessage;
-@property (readonly, strong) PBArray * repeatedForeignMessage;
-@property (readonly, strong) PBArray * repeatedImportMessage;
+@property (readonly, strong) NSArray * repeatedGroup;
+@property (readonly, strong) NSArray * repeatedNestedMessage;
+@property (readonly, strong) NSArray * repeatedForeignMessage;
+@property (readonly, strong) NSArray * repeatedImportMessage;
 @property (readonly, strong) PBArray * repeatedNestedEnum;
 @property (readonly, strong) PBArray * repeatedForeignEnum;
 @property (readonly, strong) PBArray * repeatedImportEnum;
 @property (readonly, strong) PBArray * repeatedStringPiece;
 @property (readonly, strong) PBArray * repeatedCord;
-@property (readonly, strong) PBArray * repeatedLazyMessage;
+@property (readonly, strong) NSArray * repeatedLazyMessage;
 @property (readonly) long defaultInt32;
 @property (readonly) long long defaultInt64;
 @property (readonly) unsigned long defaultUint32;
@@ -574,7 +574,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestAllTypesNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllTypesNestedMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesNestedMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesNestedMessage* result;
 }
@@ -623,7 +623,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestAllTypesOptionalGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllTypesOptionalGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesOptionalGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesOptionalGroup* result;
 }
@@ -672,7 +672,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestAllTypesRepeatedGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllTypesRepeatedGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesRepeatedGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypesRepeatedGroup* result;
 }
@@ -695,7 +695,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestAllTypesRepeatedGroupBuilder*) clearA;
 @end
 
-@interface TestAllTypesBuilder : PBGeneratedMessage_Builder {
+@interface TestAllTypesBuilder : PBGeneratedMessageBuilder {
 @private
   TestAllTypes* result;
 }
@@ -945,46 +945,40 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestAllTypesBuilder *)setRepeatedBoolValues:(const BOOL *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedBool;
 
-- (PBAppendableArray *)repeatedString;
+- (NSMutableArray *)repeatedString;
 - (NSString*)repeatedStringAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedString:(NSString*)value;
 - (TestAllTypesBuilder *)setRepeatedStringArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedStringValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedString;
 
-- (PBAppendableArray *)repeatedBytes;
+- (NSMutableArray *)repeatedBytes;
 - (NSData*)repeatedBytesAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedBytes:(NSData*)value;
 - (TestAllTypesBuilder *)setRepeatedBytesArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedBytesValues:(const NSData* *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedBytes;
 
-- (PBAppendableArray *)repeatedGroup;
+- (NSMutableArray *)repeatedGroup;
 - (TestAllTypesRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedGroup:(TestAllTypesRepeatedGroup*)value;
 - (TestAllTypesBuilder *)setRepeatedGroupArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedGroupValues:(const TestAllTypesRepeatedGroup* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedGroup;
 
-- (PBAppendableArray *)repeatedNestedMessage;
+- (NSMutableArray *)repeatedNestedMessage;
 - (TestAllTypesNestedMessage*)repeatedNestedMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedNestedMessage:(TestAllTypesNestedMessage*)value;
 - (TestAllTypesBuilder *)setRepeatedNestedMessageArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedNestedMessageValues:(const TestAllTypesNestedMessage* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedNestedMessage;
 
-- (PBAppendableArray *)repeatedForeignMessage;
+- (NSMutableArray *)repeatedForeignMessage;
 - (ForeignMessage*)repeatedForeignMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedForeignMessage:(ForeignMessage*)value;
 - (TestAllTypesBuilder *)setRepeatedForeignMessageArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedForeignMessageValues:(const ForeignMessage* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedForeignMessage;
 
-- (PBAppendableArray *)repeatedImportMessage;
+- (NSMutableArray *)repeatedImportMessage;
 - (ImportMessage*)repeatedImportMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedImportMessage:(ImportMessage*)value;
 - (TestAllTypesBuilder *)setRepeatedImportMessageArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedImportMessageValues:(const ImportMessage* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedImportMessage;
 
 - (PBAppendableArray *)repeatedNestedEnum;
@@ -1008,25 +1002,22 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestAllTypesBuilder *)setRepeatedImportEnumValues:(const ImportEnum *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedImportEnum;
 
-- (PBAppendableArray *)repeatedStringPiece;
+- (NSMutableArray *)repeatedStringPiece;
 - (NSString*)repeatedStringPieceAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedStringPiece:(NSString*)value;
 - (TestAllTypesBuilder *)setRepeatedStringPieceArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedStringPieceValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedStringPiece;
 
-- (PBAppendableArray *)repeatedCord;
+- (NSMutableArray *)repeatedCord;
 - (NSString*)repeatedCordAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedCord:(NSString*)value;
 - (TestAllTypesBuilder *)setRepeatedCordArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedCordValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedCord;
 
-- (PBAppendableArray *)repeatedLazyMessage;
+- (NSMutableArray *)repeatedLazyMessage;
 - (TestAllTypesNestedMessage*)repeatedLazyMessageAtIndex:(NSUInteger)index;
 - (TestAllTypesBuilder *)addRepeatedLazyMessage:(TestAllTypesNestedMessage*)value;
 - (TestAllTypesBuilder *)setRepeatedLazyMessageArray:(NSArray *)array;
-- (TestAllTypesBuilder *)setRepeatedLazyMessageValues:(const TestAllTypesNestedMessage* __strong *)values count:(NSUInteger)count;
 - (TestAllTypesBuilder *)clearRepeatedLazyMessage;
 
 - (BOOL) hasDefaultInt32;
@@ -1156,7 +1147,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestDeprecatedFields*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestDeprecatedFieldsBuilder : PBGeneratedMessage_Builder {
+@interface TestDeprecatedFieldsBuilder : PBGeneratedMessageBuilder {
 @private
   TestDeprecatedFields* result;
 }
@@ -1205,7 +1196,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (ForeignMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface ForeignMessageBuilder : PBGeneratedMessage_Builder {
+@interface ForeignMessageBuilder : PBGeneratedMessageBuilder {
 @private
   ForeignMessage* result;
 }
@@ -1250,7 +1241,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestAllExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestAllExtensionsBuilder : PBExtendableMessage_Builder {
+@interface TestAllExtensionsBuilder : PBExtendableMessageBuilder {
 @private
   TestAllExtensions* result;
 }
@@ -1294,7 +1285,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (OptionalGroup_extension*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface OptionalGroup_extensionBuilder : PBGeneratedMessage_Builder {
+@interface OptionalGroup_extensionBuilder : PBGeneratedMessageBuilder {
 @private
   OptionalGroup_extension* result;
 }
@@ -1343,7 +1334,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (RepeatedGroup_extension*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface RepeatedGroup_extensionBuilder : PBGeneratedMessage_Builder {
+@interface RepeatedGroup_extensionBuilder : PBGeneratedMessageBuilder {
 @private
   RepeatedGroup_extension* result;
 }
@@ -1389,7 +1380,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestNestedExtension*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestNestedExtensionBuilder : PBGeneratedMessage_Builder {
+@interface TestNestedExtensionBuilder : PBGeneratedMessageBuilder {
 @private
   TestNestedExtension* result;
 }
@@ -1563,7 +1554,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestRequired*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestRequiredBuilder : PBGeneratedMessage_Builder {
+@interface TestRequiredBuilder : PBGeneratedMessageBuilder {
 @private
   TestRequired* result;
 }
@@ -1752,12 +1743,12 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   BOOL hasOptionalMessage_:1;
   long dummy;
   TestRequired* optionalMessage;
-  PBAppendableArray * repeatedMessageArray;
+  NSMutableArray * repeatedMessageArray;
 }
 - (BOOL) hasOptionalMessage;
 - (BOOL) hasDummy;
 @property (readonly, strong) TestRequired* optionalMessage;
-@property (readonly, strong) PBArray * repeatedMessage;
+@property (readonly, strong) NSArray * repeatedMessage;
 @property (readonly) long dummy;
 - (TestRequired*)repeatedMessageAtIndex:(NSUInteger)index;
 
@@ -1779,7 +1770,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestRequiredForeign*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestRequiredForeignBuilder : PBGeneratedMessage_Builder {
+@interface TestRequiredForeignBuilder : PBGeneratedMessageBuilder {
 @private
   TestRequiredForeign* result;
 }
@@ -1803,11 +1794,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestRequiredForeignBuilder*) mergeOptionalMessage:(TestRequired*) value;
 - (TestRequiredForeignBuilder*) clearOptionalMessage;
 
-- (PBAppendableArray *)repeatedMessage;
+- (NSMutableArray *)repeatedMessage;
 - (TestRequired*)repeatedMessageAtIndex:(NSUInteger)index;
 - (TestRequiredForeignBuilder *)addRepeatedMessage:(TestRequired*)value;
 - (TestRequiredForeignBuilder *)setRepeatedMessageArray:(NSArray *)array;
-- (TestRequiredForeignBuilder *)setRepeatedMessageValues:(const TestRequired* __strong *)values count:(NSUInteger)count;
 - (TestRequiredForeignBuilder *)clearRepeatedMessage;
 
 - (BOOL) hasDummy;
@@ -1842,7 +1832,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestForeignNested*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestForeignNestedBuilder : PBGeneratedMessage_Builder {
+@interface TestForeignNestedBuilder : PBGeneratedMessageBuilder {
 @private
   TestForeignNested* result;
 }
@@ -1889,7 +1879,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestEmptyMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestEmptyMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestEmptyMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestEmptyMessage* result;
 }
@@ -1929,7 +1919,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestEmptyMessageWithExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestEmptyMessageWithExtensionsBuilder : PBExtendableMessage_Builder {
+@interface TestEmptyMessageWithExtensionsBuilder : PBExtendableMessageBuilder {
 @private
   TestEmptyMessageWithExtensions* result;
 }
@@ -1969,7 +1959,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestMultipleExtensionRanges*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMultipleExtensionRangesBuilder : PBExtendableMessage_Builder {
+@interface TestMultipleExtensionRangesBuilder : PBExtendableMessageBuilder {
 @private
   TestMultipleExtensionRanges* result;
 }
@@ -2017,7 +2007,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestReallyLargeTagNumber*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestReallyLargeTagNumberBuilder : PBGeneratedMessage_Builder {
+@interface TestReallyLargeTagNumberBuilder : PBGeneratedMessageBuilder {
 @private
   TestReallyLargeTagNumber* result;
 }
@@ -2075,7 +2065,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestRecursiveMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestRecursiveMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestRecursiveMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestRecursiveMessage* result;
 }
@@ -2131,7 +2121,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestMutualRecursionA*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMutualRecursionABuilder : PBGeneratedMessage_Builder {
+@interface TestMutualRecursionABuilder : PBGeneratedMessageBuilder {
 @private
   TestMutualRecursionA* result;
 }
@@ -2186,7 +2176,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestMutualRecursionB*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestMutualRecursionBBuilder : PBGeneratedMessage_Builder {
+@interface TestMutualRecursionBBuilder : PBGeneratedMessageBuilder {
 @private
   TestMutualRecursionB* result;
 }
@@ -2276,7 +2266,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestDupFieldNumberFoo*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestDupFieldNumberFooBuilder : PBGeneratedMessage_Builder {
+@interface TestDupFieldNumberFooBuilder : PBGeneratedMessageBuilder {
 @private
   TestDupFieldNumberFoo* result;
 }
@@ -2325,7 +2315,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestDupFieldNumberBar*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestDupFieldNumberBarBuilder : PBGeneratedMessage_Builder {
+@interface TestDupFieldNumberBarBuilder : PBGeneratedMessageBuilder {
 @private
   TestDupFieldNumberBar* result;
 }
@@ -2348,7 +2338,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestDupFieldNumberBarBuilder*) clearA;
 @end
 
-@interface TestDupFieldNumberBuilder : PBGeneratedMessage_Builder {
+@interface TestDupFieldNumberBuilder : PBGeneratedMessageBuilder {
 @private
   TestDupFieldNumber* result;
 }
@@ -2411,7 +2401,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestEagerMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestEagerMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestEagerMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestEagerMessage* result;
 }
@@ -2462,7 +2452,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestLazyMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestLazyMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestLazyMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestLazyMessage* result;
 }
@@ -2516,10 +2506,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 @interface TestNestedMessageHasBitsNestedMessage : PBGeneratedMessage {
 @private
   PBAppendableArray * nestedmessageRepeatedInt32Array;
-  PBAppendableArray * nestedmessageRepeatedForeignmessageArray;
+  NSMutableArray * nestedmessageRepeatedForeignmessageArray;
 }
 @property (readonly, strong) PBArray * nestedmessageRepeatedInt32;
-@property (readonly, strong) PBArray * nestedmessageRepeatedForeignmessage;
+@property (readonly, strong) NSArray * nestedmessageRepeatedForeignmessage;
 - (long)nestedmessageRepeatedInt32AtIndex:(NSUInteger)index;
 - (ForeignMessage*)nestedmessageRepeatedForeignmessageAtIndex:(NSUInteger)index;
 
@@ -2541,7 +2531,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestNestedMessageHasBitsNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestNestedMessageHasBitsNestedMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestNestedMessageHasBitsNestedMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestNestedMessageHasBitsNestedMessage* result;
 }
@@ -2565,15 +2555,14 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedInt32Values:(const long *)values count:(NSUInteger)count;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)clearNestedmessageRepeatedInt32;
 
-- (PBAppendableArray *)nestedmessageRepeatedForeignmessage;
+- (NSMutableArray *)nestedmessageRepeatedForeignmessage;
 - (ForeignMessage*)nestedmessageRepeatedForeignmessageAtIndex:(NSUInteger)index;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)addNestedmessageRepeatedForeignmessage:(ForeignMessage*)value;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedForeignmessageArray:(NSArray *)array;
-- (TestNestedMessageHasBitsNestedMessageBuilder *)setNestedmessageRepeatedForeignmessageValues:(const ForeignMessage* __strong *)values count:(NSUInteger)count;
 - (TestNestedMessageHasBitsNestedMessageBuilder *)clearNestedmessageRepeatedForeignmessage;
 @end
 
-@interface TestNestedMessageHasBitsBuilder : PBGeneratedMessage_Builder {
+@interface TestNestedMessageHasBitsBuilder : PBGeneratedMessageBuilder {
 @private
   TestNestedMessageHasBits* result;
 }
@@ -2613,10 +2602,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   ForeignMessage* messageField;
   ForeignEnum enumField;
   PBAppendableArray * repeatedPrimitiveFieldArray;
-  PBAppendableArray * repeatedStringFieldArray;
-  PBAppendableArray * repeatedStringPieceFieldArray;
-  PBAppendableArray * repeatedCordFieldArray;
-  PBAppendableArray * repeatedMessageFieldArray;
+  NSMutableArray * repeatedStringFieldArray;
+  NSMutableArray * repeatedStringPieceFieldArray;
+  NSMutableArray * repeatedCordFieldArray;
+  NSMutableArray * repeatedMessageFieldArray;
   PBAppendableArray * repeatedEnumFieldArray;
 }
 - (BOOL) hasPrimitiveField;
@@ -2634,7 +2623,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 @property (readonly, strong) PBArray * repeatedPrimitiveField;
 @property (readonly, strong) PBArray * repeatedStringField;
 @property (readonly, strong) PBArray * repeatedEnumField;
-@property (readonly, strong) PBArray * repeatedMessageField;
+@property (readonly, strong) NSArray * repeatedMessageField;
 @property (readonly, strong) PBArray * repeatedStringPieceField;
 @property (readonly, strong) PBArray * repeatedCordField;
 - (long)repeatedPrimitiveFieldAtIndex:(NSUInteger)index;
@@ -2662,7 +2651,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestCamelCaseFieldNames*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestCamelCaseFieldNamesBuilder : PBGeneratedMessage_Builder {
+@interface TestCamelCaseFieldNamesBuilder : PBGeneratedMessageBuilder {
 @private
   TestCamelCaseFieldNames* result;
 }
@@ -2718,11 +2707,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedPrimitiveFieldValues:(const long *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedPrimitiveField;
 
-- (PBAppendableArray *)repeatedStringField;
+- (NSMutableArray *)repeatedStringField;
 - (NSString*)repeatedStringFieldAtIndex:(NSUInteger)index;
 - (TestCamelCaseFieldNamesBuilder *)addRepeatedStringField:(NSString*)value;
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedStringFieldArray:(NSArray *)array;
-- (TestCamelCaseFieldNamesBuilder *)setRepeatedStringFieldValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedStringField;
 
 - (PBAppendableArray *)repeatedEnumField;
@@ -2732,25 +2720,22 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedEnumFieldValues:(const ForeignEnum *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedEnumField;
 
-- (PBAppendableArray *)repeatedMessageField;
+- (NSMutableArray *)repeatedMessageField;
 - (ForeignMessage*)repeatedMessageFieldAtIndex:(NSUInteger)index;
 - (TestCamelCaseFieldNamesBuilder *)addRepeatedMessageField:(ForeignMessage*)value;
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedMessageFieldArray:(NSArray *)array;
-- (TestCamelCaseFieldNamesBuilder *)setRepeatedMessageFieldValues:(const ForeignMessage* __strong *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedMessageField;
 
-- (PBAppendableArray *)repeatedStringPieceField;
+- (NSMutableArray *)repeatedStringPieceField;
 - (NSString*)repeatedStringPieceFieldAtIndex:(NSUInteger)index;
 - (TestCamelCaseFieldNamesBuilder *)addRepeatedStringPieceField:(NSString*)value;
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedStringPieceFieldArray:(NSArray *)array;
-- (TestCamelCaseFieldNamesBuilder *)setRepeatedStringPieceFieldValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedStringPieceField;
 
-- (PBAppendableArray *)repeatedCordField;
+- (NSMutableArray *)repeatedCordField;
 - (NSString*)repeatedCordFieldAtIndex:(NSUInteger)index;
 - (TestCamelCaseFieldNamesBuilder *)addRepeatedCordField:(NSString*)value;
 - (TestCamelCaseFieldNamesBuilder *)setRepeatedCordFieldArray:(NSArray *)array;
-- (TestCamelCaseFieldNamesBuilder *)setRepeatedCordFieldValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestCamelCaseFieldNamesBuilder *)clearRepeatedCordField;
 @end
 
@@ -2788,7 +2773,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestFieldOrderings*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestFieldOrderingsBuilder : PBExtendableMessage_Builder {
+@interface TestFieldOrderingsBuilder : PBExtendableMessageBuilder {
 @private
   TestFieldOrderings* result;
 }
@@ -2947,7 +2932,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestExtremeDefaultValues*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestExtremeDefaultValuesBuilder : PBGeneratedMessage_Builder {
+@interface TestExtremeDefaultValuesBuilder : PBGeneratedMessageBuilder {
 @private
   TestExtremeDefaultValues* result;
 }
@@ -3121,7 +3106,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (SparseEnumMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface SparseEnumMessageBuilder : PBGeneratedMessage_Builder {
+@interface SparseEnumMessageBuilder : PBGeneratedMessageBuilder {
 @private
   SparseEnumMessage* result;
 }
@@ -3170,7 +3155,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (OneString*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface OneStringBuilder : PBGeneratedMessage_Builder {
+@interface OneStringBuilder : PBGeneratedMessageBuilder {
 @private
   OneString* result;
 }
@@ -3195,7 +3180,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 
 @interface MoreString : PBGeneratedMessage {
 @private
-  PBAppendableArray * dataArray;
+  NSMutableArray * dataArray;
 }
 @property (readonly, strong) PBArray * data;
 - (NSString*)dataAtIndex:(NSUInteger)index;
@@ -3218,7 +3203,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (MoreString*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface MoreStringBuilder : PBGeneratedMessage_Builder {
+@interface MoreStringBuilder : PBGeneratedMessageBuilder {
 @private
   MoreString* result;
 }
@@ -3235,11 +3220,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (MoreStringBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (MoreStringBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (PBAppendableArray *)data;
+- (NSMutableArray *)data;
 - (NSString*)dataAtIndex:(NSUInteger)index;
 - (MoreStringBuilder *)addData:(NSString*)value;
 - (MoreStringBuilder *)setDataArray:(NSArray *)array;
-- (MoreStringBuilder *)setDataValues:(const NSString* *)values count:(NSUInteger)count;
 - (MoreStringBuilder *)clearData;
 @end
 
@@ -3269,7 +3253,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (OneBytes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface OneBytesBuilder : PBGeneratedMessage_Builder {
+@interface OneBytesBuilder : PBGeneratedMessageBuilder {
 @private
   OneBytes* result;
 }
@@ -3294,7 +3278,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 
 @interface MoreBytes : PBGeneratedMessage {
 @private
-  PBAppendableArray * dataArray;
+  NSMutableArray * dataArray;
 }
 @property (readonly, strong) PBArray * data;
 - (NSData*)dataAtIndex:(NSUInteger)index;
@@ -3317,7 +3301,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (MoreBytes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface MoreBytesBuilder : PBGeneratedMessage_Builder {
+@interface MoreBytesBuilder : PBGeneratedMessageBuilder {
 @private
   MoreBytes* result;
 }
@@ -3334,11 +3318,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (MoreBytesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (MoreBytesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (PBAppendableArray *)data;
+- (NSMutableArray *)data;
 - (NSData*)dataAtIndex:(NSUInteger)index;
 - (MoreBytesBuilder *)addData:(NSData*)value;
 - (MoreBytesBuilder *)setDataArray:(NSArray *)array;
-- (MoreBytesBuilder *)setDataValues:(const NSData* *)values count:(NSUInteger)count;
 - (MoreBytesBuilder *)clearData;
 @end
 
@@ -3420,7 +3403,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestPackedTypes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestPackedTypesBuilder : PBGeneratedMessage_Builder {
+@interface TestPackedTypesBuilder : PBGeneratedMessageBuilder {
 @private
   TestPackedTypes* result;
 }
@@ -3600,7 +3583,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestUnpackedTypes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestUnpackedTypesBuilder : PBGeneratedMessage_Builder {
+@interface TestUnpackedTypesBuilder : PBGeneratedMessageBuilder {
 @private
   TestUnpackedTypes* result;
 }
@@ -3738,7 +3721,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestPackedExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestPackedExtensionsBuilder : PBExtendableMessage_Builder {
+@interface TestPackedExtensionsBuilder : PBExtendableMessageBuilder {
 @private
   TestPackedExtensions* result;
 }
@@ -3768,7 +3751,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   TestDynamicExtensionsDynamicMessageType* dynamicMessageExtension;
   ForeignEnum enumExtension;
   TestDynamicExtensionsDynamicEnumType dynamicEnumExtension;
-  PBAppendableArray * repeatedExtensionArray;
+  NSMutableArray * repeatedExtensionArray;
   PBAppendableArray * packedExtensionArray;
   NSInteger packedExtensionMemoizedSerializedSize;
 }
@@ -3831,7 +3814,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestDynamicExtensionsDynamicMessageType*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestDynamicExtensionsDynamicMessageTypeBuilder : PBGeneratedMessage_Builder {
+@interface TestDynamicExtensionsDynamicMessageTypeBuilder : PBGeneratedMessageBuilder {
 @private
   TestDynamicExtensionsDynamicMessageType* result;
 }
@@ -3854,7 +3837,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestDynamicExtensionsDynamicMessageTypeBuilder*) clearDynamicField;
 @end
 
-@interface TestDynamicExtensionsBuilder : PBGeneratedMessage_Builder {
+@interface TestDynamicExtensionsBuilder : PBGeneratedMessageBuilder {
 @private
   TestDynamicExtensions* result;
 }
@@ -3900,11 +3883,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestDynamicExtensionsBuilder*) mergeDynamicMessageExtension:(TestDynamicExtensionsDynamicMessageType*) value;
 - (TestDynamicExtensionsBuilder*) clearDynamicMessageExtension;
 
-- (PBAppendableArray *)repeatedExtension;
+- (NSMutableArray *)repeatedExtension;
 - (NSString*)repeatedExtensionAtIndex:(NSUInteger)index;
 - (TestDynamicExtensionsBuilder *)addRepeatedExtension:(NSString*)value;
 - (TestDynamicExtensionsBuilder *)setRepeatedExtensionArray:(NSArray *)array;
-- (TestDynamicExtensionsBuilder *)setRepeatedExtensionValues:(const NSString* *)values count:(NSUInteger)count;
 - (TestDynamicExtensionsBuilder *)clearRepeatedExtension;
 
 - (PBAppendableArray *)packedExtension;
@@ -3955,7 +3937,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestRepeatedScalarDifferentTagSizes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestRepeatedScalarDifferentTagSizesBuilder : PBGeneratedMessage_Builder {
+@interface TestRepeatedScalarDifferentTagSizesBuilder : PBGeneratedMessageBuilder {
 @private
   TestRepeatedScalarDifferentTagSizes* result;
 }
@@ -4023,17 +4005,17 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   TestParsingMergeOptionalGroup* optionalGroup;
   TestAllTypes* requiredAllTypes;
   TestAllTypes* optionalAllTypes;
-  PBAppendableArray * repeatedGroupArray;
-  PBAppendableArray * repeatedAllTypesArray;
+  NSMutableArray * repeatedGroupArray;
+  NSMutableArray * repeatedAllTypesArray;
 }
 - (BOOL) hasRequiredAllTypes;
 - (BOOL) hasOptionalAllTypes;
 - (BOOL) hasOptionalGroup;
 @property (readonly, strong) TestAllTypes* requiredAllTypes;
 @property (readonly, strong) TestAllTypes* optionalAllTypes;
-@property (readonly, strong) PBArray * repeatedAllTypes;
+@property (readonly, strong) NSArray * repeatedAllTypes;
 @property (readonly, strong) TestParsingMergeOptionalGroup* optionalGroup;
-@property (readonly, strong) PBArray * repeatedGroup;
+@property (readonly, strong) NSArray * repeatedGroup;
 - (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 
@@ -4059,21 +4041,21 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 
 @interface TestParsingMergeRepeatedFieldsGenerator : PBGeneratedMessage {
 @private
-  PBAppendableArray * group1Array;
-  PBAppendableArray * group2Array;
-  PBAppendableArray * field1Array;
-  PBAppendableArray * field2Array;
-  PBAppendableArray * field3Array;
-  PBAppendableArray * ext1Array;
-  PBAppendableArray * ext2Array;
+  NSMutableArray * group1Array;
+  NSMutableArray * group2Array;
+  NSMutableArray * field1Array;
+  NSMutableArray * field2Array;
+  NSMutableArray * field3Array;
+  NSMutableArray * ext1Array;
+  NSMutableArray * ext2Array;
 }
-@property (readonly, strong) PBArray * field1;
-@property (readonly, strong) PBArray * field2;
-@property (readonly, strong) PBArray * field3;
-@property (readonly, strong) PBArray * group1;
-@property (readonly, strong) PBArray * group2;
-@property (readonly, strong) PBArray * ext1;
-@property (readonly, strong) PBArray * ext2;
+@property (readonly, strong) NSArray * field1;
+@property (readonly, strong) NSArray * field2;
+@property (readonly, strong) NSArray * field3;
+@property (readonly, strong) NSArray * group1;
+@property (readonly, strong) NSArray * group2;
+@property (readonly, strong) NSArray * ext1;
+@property (readonly, strong) NSArray * ext2;
 - (TestAllTypes*)field1AtIndex:(NSUInteger)index;
 - (TestAllTypes*)field2AtIndex:(NSUInteger)index;
 - (TestAllTypes*)field3AtIndex:(NSUInteger)index;
@@ -4126,7 +4108,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestParsingMergeRepeatedFieldsGeneratorGroup1*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeRepeatedFieldsGeneratorGroup1Builder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeRepeatedFieldsGeneratorGroup1Builder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeRepeatedFieldsGeneratorGroup1* result;
 }
@@ -4177,7 +4159,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestParsingMergeRepeatedFieldsGeneratorGroup2*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeRepeatedFieldsGeneratorGroup2Builder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeRepeatedFieldsGeneratorGroup2Builder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeRepeatedFieldsGeneratorGroup2* result;
 }
@@ -4202,7 +4184,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestParsingMergeRepeatedFieldsGeneratorGroup2Builder*) clearField1;
 @end
 
-@interface TestParsingMergeRepeatedFieldsGeneratorBuilder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeRepeatedFieldsGeneratorBuilder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeRepeatedFieldsGenerator* result;
 }
@@ -4219,53 +4201,46 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
-- (PBAppendableArray *)field1;
+- (NSMutableArray *)field1;
 - (TestAllTypes*)field1AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addField1:(TestAllTypes*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField1Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField1Values:(const TestAllTypes* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearField1;
 
-- (PBAppendableArray *)field2;
+- (NSMutableArray *)field2;
 - (TestAllTypes*)field2AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addField2:(TestAllTypes*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField2Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField2Values:(const TestAllTypes* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearField2;
 
-- (PBAppendableArray *)field3;
+- (NSMutableArray *)field3;
 - (TestAllTypes*)field3AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addField3:(TestAllTypes*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField3Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setField3Values:(const TestAllTypes* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearField3;
 
-- (PBAppendableArray *)group1;
+- (NSMutableArray *)group1;
 - (TestParsingMergeRepeatedFieldsGeneratorGroup1*)group1AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addGroup1:(TestParsingMergeRepeatedFieldsGeneratorGroup1*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup1Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup1Values:(const TestParsingMergeRepeatedFieldsGeneratorGroup1* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearGroup1;
 
-- (PBAppendableArray *)group2;
+- (NSMutableArray *)group2;
 - (TestParsingMergeRepeatedFieldsGeneratorGroup2*)group2AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addGroup2:(TestParsingMergeRepeatedFieldsGeneratorGroup2*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup2Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setGroup2Values:(const TestParsingMergeRepeatedFieldsGeneratorGroup2* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearGroup2;
 
-- (PBAppendableArray *)ext1;
+- (NSMutableArray *)ext1;
 - (TestAllTypes*)ext1AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addExt1:(TestAllTypes*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt1Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt1Values:(const TestAllTypes* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearExt1;
 
-- (PBAppendableArray *)ext2;
+- (NSMutableArray *)ext2;
 - (TestAllTypes*)ext2AtIndex:(NSUInteger)index;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)addExt2:(TestAllTypes*)value;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt2Array:(NSArray *)array;
-- (TestParsingMergeRepeatedFieldsGeneratorBuilder *)setExt2Values:(const TestAllTypes* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeRepeatedFieldsGeneratorBuilder *)clearExt2;
 @end
 
@@ -4295,7 +4270,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestParsingMergeOptionalGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeOptionalGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeOptionalGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeOptionalGroup* result;
 }
@@ -4346,7 +4321,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestParsingMergeRepeatedGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestParsingMergeRepeatedGroupBuilder : PBGeneratedMessage_Builder {
+@interface TestParsingMergeRepeatedGroupBuilder : PBGeneratedMessageBuilder {
 @private
   TestParsingMergeRepeatedGroup* result;
 }
@@ -4371,7 +4346,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestParsingMergeRepeatedGroupBuilder*) clearRepeatedGroupAllTypes;
 @end
 
-@interface TestParsingMergeBuilder : PBExtendableMessage_Builder {
+@interface TestParsingMergeBuilder : PBExtendableMessageBuilder {
 @private
   TestParsingMerge* result;
 }
@@ -4402,11 +4377,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestParsingMergeBuilder*) mergeOptionalAllTypes:(TestAllTypes*) value;
 - (TestParsingMergeBuilder*) clearOptionalAllTypes;
 
-- (PBAppendableArray *)repeatedAllTypes;
+- (NSMutableArray *)repeatedAllTypes;
 - (TestAllTypes*)repeatedAllTypesAtIndex:(NSUInteger)index;
 - (TestParsingMergeBuilder *)addRepeatedAllTypes:(TestAllTypes*)value;
 - (TestParsingMergeBuilder *)setRepeatedAllTypesArray:(NSArray *)array;
-- (TestParsingMergeBuilder *)setRepeatedAllTypesValues:(const TestAllTypes* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeBuilder *)clearRepeatedAllTypes;
 
 - (BOOL) hasOptionalGroup;
@@ -4416,11 +4390,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestParsingMergeBuilder*) mergeOptionalGroup:(TestParsingMergeOptionalGroup*) value;
 - (TestParsingMergeBuilder*) clearOptionalGroup;
 
-- (PBAppendableArray *)repeatedGroup;
+- (NSMutableArray *)repeatedGroup;
 - (TestParsingMergeRepeatedGroup*)repeatedGroupAtIndex:(NSUInteger)index;
 - (TestParsingMergeBuilder *)addRepeatedGroup:(TestParsingMergeRepeatedGroup*)value;
 - (TestParsingMergeBuilder *)setRepeatedGroupArray:(NSArray *)array;
-- (TestParsingMergeBuilder *)setRepeatedGroupValues:(const TestParsingMergeRepeatedGroup* __strong *)values count:(NSUInteger)count;
 - (TestParsingMergeBuilder *)clearRepeatedGroup;
 @end
 
@@ -4450,7 +4423,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (TestCommentInjectionMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestCommentInjectionMessageBuilder : PBGeneratedMessage_Builder {
+@interface TestCommentInjectionMessageBuilder : PBGeneratedMessageBuilder {
 @private
   TestCommentInjectionMessage* result;
 }
@@ -4495,7 +4468,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (FooRequest*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface FooRequestBuilder : PBGeneratedMessage_Builder {
+@interface FooRequestBuilder : PBGeneratedMessageBuilder {
 @private
   FooRequest* result;
 }
@@ -4535,7 +4508,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (FooResponse*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface FooResponseBuilder : PBGeneratedMessage_Builder {
+@interface FooResponseBuilder : PBGeneratedMessageBuilder {
 @private
   FooResponse* result;
 }
@@ -4575,7 +4548,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (FooClientMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface FooClientMessageBuilder : PBGeneratedMessage_Builder {
+@interface FooClientMessageBuilder : PBGeneratedMessageBuilder {
 @private
   FooClientMessage* result;
 }
@@ -4615,7 +4588,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (FooServerMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface FooServerMessageBuilder : PBGeneratedMessage_Builder {
+@interface FooServerMessageBuilder : PBGeneratedMessageBuilder {
 @private
   FooServerMessage* result;
 }
@@ -4655,7 +4628,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (BarRequest*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface BarRequestBuilder : PBGeneratedMessage_Builder {
+@interface BarRequestBuilder : PBGeneratedMessageBuilder {
 @private
   BarRequest* result;
 }
@@ -4695,7 +4668,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (BarResponse*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface BarResponseBuilder : PBGeneratedMessage_Builder {
+@interface BarResponseBuilder : PBGeneratedMessageBuilder {
 @private
   BarResponse* result;
 }

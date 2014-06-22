@@ -16,8 +16,8 @@
 // limitations under the License.
 
 @class PBExtensionRegistry;
-@class PBUnknownFieldSet_Builder;
-@protocol PBMessage_Builder;
+@class PBUnknownFieldSetBuilder;
+@protocol PBMessageBuilder;
 
 /**
  * Reads and decodes protocol message fields.
@@ -139,19 +139,19 @@
 
 
 /** Read an embedded message field value from the stream. */
-- (void) readMessage:(id<PBMessage_Builder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (void) readMessage:(id<PBMessageBuilder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) readBool;
 - (NSString*) readString;
 - (NSData*) readData;
 
-- (void) readGroup:(long) fieldNumber builder:(id<PBMessage_Builder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (void) readGroup:(long) fieldNumber builder:(id<PBMessageBuilder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 /**
  * Reads a {@code group} field value from the stream and merges it into the
  * given {@link UnknownFieldSet}.
  */
-- (void) readUnknownGroup:(long) fieldNumber builder:(PBUnknownFieldSet_Builder*) builder;
+- (void) readUnknownGroup:(long) fieldNumber builder:(PBUnknownFieldSetBuilder*) builder;
 
 /**
  * Verifies that the last call to readTag() returned the given tag value.

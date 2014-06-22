@@ -148,11 +148,11 @@
 @private
   BOOL hasOptionalMessage_:1;
   TestOptimizedForSize* optionalMessage;
-  PBAppendableArray * repeatedMessageArray;
+  NSMutableArray * repeatedMessageArray;
 }
 - (BOOL) hasOptionalMessage;
 @property (readonly, strong) TestOptimizedForSize* optionalMessage;
-@property (readonly, strong) PBArray * repeatedMessage;
+@property (readonly, strong) NSArray * repeatedMessage;
 - (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index;
 
 + (TestEmbedOptimizedForSize*) defaultInstance;
@@ -173,7 +173,7 @@
 + (TestEmbedOptimizedForSize*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestEmbedOptimizedForSizeBuilder : PBGeneratedMessage_Builder {
+@interface TestEmbedOptimizedForSizeBuilder : PBGeneratedMessageBuilder {
 @private
   TestEmbedOptimizedForSize* result;
 }
@@ -197,11 +197,10 @@
 - (TestEmbedOptimizedForSizeBuilder*) mergeOptionalMessage:(TestOptimizedForSize*) value;
 - (TestEmbedOptimizedForSizeBuilder*) clearOptionalMessage;
 
-- (PBAppendableArray *)repeatedMessage;
+- (NSMutableArray *)repeatedMessage;
 - (TestOptimizedForSize*)repeatedMessageAtIndex:(NSUInteger)index;
 - (TestEmbedOptimizedForSizeBuilder *)addRepeatedMessage:(TestOptimizedForSize*)value;
 - (TestEmbedOptimizedForSizeBuilder *)setRepeatedMessageArray:(NSArray *)array;
-- (TestEmbedOptimizedForSizeBuilder *)setRepeatedMessageValues:(const TestOptimizedForSize* __strong *)values count:(NSUInteger)count;
 - (TestEmbedOptimizedForSizeBuilder *)clearRepeatedMessage;
 @end
 

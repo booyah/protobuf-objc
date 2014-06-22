@@ -174,7 +174,7 @@
 + (TestOptimizedForSize*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestOptimizedForSizeBuilder : PBExtendableMessage_Builder {
+@interface TestOptimizedForSizeBuilder : PBExtendableMessageBuilder {
 @private
   TestOptimizedForSize* result;
 }
@@ -230,7 +230,7 @@
 + (TestRequiredOptimizedForSize*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestRequiredOptimizedForSizeBuilder : PBGeneratedMessage_Builder {
+@interface TestRequiredOptimizedForSizeBuilder : PBGeneratedMessageBuilder {
 @private
   TestRequiredOptimizedForSize* result;
 }
@@ -279,7 +279,7 @@
 + (TestOptionalOptimizedForSize*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
-@interface TestOptionalOptimizedForSizeBuilder : PBGeneratedMessage_Builder {
+@interface TestOptionalOptimizedForSizeBuilder : PBGeneratedMessageBuilder {
 @private
   TestOptionalOptimizedForSize* result;
 }

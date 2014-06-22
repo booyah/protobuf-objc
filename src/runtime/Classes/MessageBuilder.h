@@ -23,9 +23,9 @@
 /**
  * Abstract interface implemented by Protocol Message builders.
  */
-@protocol PBMessage_Builder<NSObject>
+@protocol PBMessageBuilder<NSObject>
 /** Resets all fields to their default values. */
-- (id<PBMessage_Builder>) clear;
+- (id<PBMessageBuilder>) clear;
 
 /**
  * Construct the final message.  Once this is called, the Builder is no
@@ -43,7 +43,7 @@
  * is missing required fields.  Instead, a partial message is returned.
  */
 - (id<PBMessage>) buildPartial;
-- (id<PBMessage_Builder>) clone;
+- (id<PBMessageBuilder>) clone;
 
 /**
  * Returns true if all required fields in the message and all embedded
@@ -58,13 +58,13 @@
 - (id<PBMessage>) defaultInstance;
 
 - (PBUnknownFieldSet*) unknownFields;
-- (id<PBMessage_Builder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields;
+- (id<PBMessageBuilder>) setUnknownFields:(PBUnknownFieldSet*) unknownFields;
 
 /**
  * Merge some unknown fields into the {@link UnknownFieldSet} for this
  * message.
  */
-- (id<PBMessage_Builder>) mergeUnknownFields:(PBUnknownFieldSet*) unknownFields;
+- (id<PBMessageBuilder>) mergeUnknownFields:(PBUnknownFieldSet*) unknownFields;
 
 /**
  * Parses a message of this type from the input and merges it with this
@@ -92,7 +92,7 @@
  * verify that the last tag seen was the appropriate end-group tag,
  * or zero for EOF.
  */
-- (id<PBMessage_Builder>) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (id<PBMessageBuilder>) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 
 /**
  * Like {@link Builder#mergeFrom(CodedInputStream)}, but also
@@ -100,21 +100,21 @@
  * must be registered in {@code extensionRegistry}.  Extensions not in
  * the registry will be treated as unknown fields.
  */
-- (id<PBMessage_Builder>) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (id<PBMessageBuilder>) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 /**
  * Parse {@code data} as a message of this type and merge it with the
  * message being built.  This is just a small wrapper around
  * {@link #mergeFrom(CodedInputStream)}.
  */
-- (id<PBMessage_Builder>) mergeFromData:(NSData*) data;
+- (id<PBMessageBuilder>) mergeFromData:(NSData*) data;
 
 /**
  * Parse {@code data} as a message of this type and merge it with the
  * message being built.  This is just a small wrapper around
  * {@link #mergeFrom(CodedInputStream,ExtensionRegistry)}.
  */
-- (id<PBMessage_Builder>) mergeFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (id<PBMessageBuilder>) mergeFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 /**
  * Parse a message of this type from {@code input} and merge it with the
@@ -125,12 +125,12 @@
  * wrapper stream that limits reading.  Despite usually reading the entire
  * input, this does not close the stream.
  */
-- (id<PBMessage_Builder>) mergeFromInputStream:(NSInputStream*) input;
+- (id<PBMessageBuilder>) mergeFromInputStream:(NSInputStream*) input;
 
 /**
  * Parse a message of this type from {@code input} and merge it with the
  * message being built.  This is just a small wrapper around
  * {@link #mergeFrom(CodedInputStream,ExtensionRegistry)}.
  */
-- (id<PBMessage_Builder>) mergeFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (id<PBMessageBuilder>) mergeFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
