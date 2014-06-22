@@ -173,26 +173,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return _data;
 }
 
-- (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state objects:(__unsafe_unretained id *)buffer count:(NSUInteger)len
-{
-	// TODO: We only support enumeration of object values.  In the future, we
-	// can extend this code to return a new list of NSNumber* objects wrapping
-	// our primitive values.
-//	PBArrayValueTypeAssert(PBArrayValueTypeObject);
-
-	if (state->state >= _count)
-	{
-		return 0; // terminate iteration
-	}
-
-	state->itemsPtr = (__unsafe_unretained id *)_data;
-	state->state = _count;
-	state->mutationsPtr =  &state->extra[0];
-
-	return _count;
-}
-
-
 - (BOOL)boolAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);

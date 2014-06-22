@@ -2,4 +2,4 @@
 make clean;
 ./autogen.sh;
 ./configure;
-make && make install;
+make -j8 && make install;

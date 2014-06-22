@@ -128,23 +128,26 @@ static PBField *sDefaultInstance = nil;
 - (void)writeDescriptionFor:(long) fieldNumber
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent {
-  for (NSNumber* value in self.varintArray) {
-    [output appendFormat:@"%@%ld: %qi\n", indent, (long)fieldNumber, value.longLongValue];
-  }
-  for (NSNumber* value in self.fixed32Array) {
-    [output appendFormat:@"%@%ld: %ld\n", indent, (long)fieldNumber, (long)value.integerValue];
-  }
-  for (NSNumber* value in self.fixed64Array) {
-    [output appendFormat:@"%@%ld: %lld\n", indent, (long)fieldNumber, value.longLongValue];
-  }
-  for (NSData* value in self.lengthDelimitedArray) {
-    [output appendFormat:@"%@%ld: %@\n", indent, (long)fieldNumber, value];
-  }
-  for (PBUnknownFieldSet* value in self.groupArray) {
-    [output appendFormat:@"%@%ld: [\n", indent, (long)fieldNumber];
-    [value writeDescriptionTo:output withIndent:[NSString stringWithFormat:@"%@  ", indent]];
-    [output appendFormat:@"%@]", indent];
-  }
+    [self.varintArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+    }];
+    [self.varintArray enumerateObjectsUsingBlock:^(NSNumber* value, NSUInteger idx, BOOL *stop) {
+        [output appendFormat:@"%@%ld: %qi\n", indent, (long)fieldNumber, value.longLongValue];
+    }];
+    [self.fixed32Array enumerateObjectsUsingBlock:^(NSNumber* value, NSUInteger idx, BOOL *stop) {
+        [output appendFormat:@"%@%ld: %ld\n", indent, (long)fieldNumber, (long)value.integerValue];
+    }];
+    [self.fixed64Array enumerateObjectsUsingBlock:^(NSNumber* value, NSUInteger idx, BOOL *stop) {
+         [output appendFormat:@"%@%ld: %lld\n", indent, (long)fieldNumber, value.longLongValue];
+    }];
+      for (NSData* value in self.lengthDelimitedArray) {
+        [output appendFormat:@"%@%ld: %@\n", indent, (long)fieldNumber, value];
+      }
+      for (PBUnknownFieldSet* value in self.groupArray) {
+        [output appendFormat:@"%@%ld: [\n", indent, (long)fieldNumber];
+        [value writeDescriptionTo:output withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+        [output appendFormat:@"%@]", indent];
+      }
 }
 
 - (void)writeAsMessageSetExtensionTo:(long)fieldNumber output:(PBCodedOutputStream *) output {

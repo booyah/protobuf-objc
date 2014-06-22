@@ -479,26 +479,26 @@ void RepeatedMessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* pr
 
   void RepeatedMessageFieldGenerator::GenerateSerializationCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for ($type$ *element in self.$list_name$) {\n"
+    "[self.$list_name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
       "  [output write$group_or_message$:$number$ value:element];\n"
-      "}\n");
+      "}];\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for ($type$ *element in self.$list_name$) {\n"
-      "  size_ += compute$group_or_message$Size($number$, element);\n"
-      "}\n");
+    "[self.$list_name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+    "  size_ += compute$group_or_message$Size($number$, element);\n"
+    "}];\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for ($type$* element in self.$list_name$) {\n"
-      "  [output appendFormat:@\"%@%@ {\\n\", indent, @\"$name$\"];\n"
-      "  [element writeDescriptionTo:output\n"
-      "                   withIndent:[NSString stringWithFormat:@\"%@  \", indent]];\n"
-      "  [output appendFormat:@\"%@}\\n\", indent];\n"
-      "}\n");
+    "[self.$list_name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+    "  [output appendFormat:@\"%@%@ {\\n\", indent, @\"$name$\"];\n"
+    "  [element writeDescriptionTo:output\n"
+    "                   withIndent:[NSString stringWithFormat:@\"%@  \", indent]];\n"
+    "  [output appendFormat:@\"%@}\\n\", indent];\n"
+    "}];\n");
   }
 
   void RepeatedMessageFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
@@ -507,9 +507,9 @@ void RepeatedMessageFieldGenerator::GenerateBuilderMembersHeader(io::Printer* pr
 
   void RepeatedMessageFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for ($type$* element in self.$list_name$) {\n"
-      "  hashCode = hashCode * 31 + [element hash];\n"
-      "}\n");
+    "[self.$list_name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+    "  hashCode = hashCode * 31 + [element hash];\n"
+    "}];\n");
   }
 
   string RepeatedMessageFieldGenerator::GetBoxedType() const {

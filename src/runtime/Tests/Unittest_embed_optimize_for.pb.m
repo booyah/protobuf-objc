@@ -71,24 +71,27 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
       return NO;
     }
   }
-  for (TestOptimizedForSize* element in self.repeatedMessage) {
+  __block BOOL isInitrepeatedMessage = YES;
+   [self.repeatedMessage enumerateObjectsUsingBlock:^(TestOptimizedForSize *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitrepeatedMessage = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitrepeatedMessage) return isInitrepeatedMessage;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   if (self.hasOptionalMessage) {
     [output writeMessage:1 value:self.optionalMessage];
   }
-  for (TestOptimizedForSize *element in self.repeatedMessageArray) {
+  [self.repeatedMessageArray enumerateObjectsUsingBlock:^(TestOptimizedForSize *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
-  }
+  }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -97,9 +100,9 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   if (self.hasOptionalMessage) {
     size_ += computeMessageSize(1, self.optionalMessage);
   }
-  for (TestOptimizedForSize *element in self.repeatedMessageArray) {
+  [self.repeatedMessageArray enumerateObjectsUsingBlock:^(TestOptimizedForSize *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
-  }
+  }];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -141,12 +144,12 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
                          withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }
-  for (TestOptimizedForSize* element in self.repeatedMessageArray) {
+  [self.repeatedMessageArray enumerateObjectsUsingBlock:^(TestOptimizedForSize *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedMessage"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -168,9 +171,9 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
   if (self.hasOptionalMessage) {
     hashCode = hashCode * 31 + [self.optionalMessage hash];
   }
-  for (TestOptimizedForSize* element in self.repeatedMessageArray) {
+  [self.repeatedMessageArray enumerateObjectsUsingBlock:^(TestOptimizedForSize *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }

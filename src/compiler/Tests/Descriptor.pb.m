@@ -55,29 +55,32 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   return [fileArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBFileDescriptorProto* element in self.file) {
+  __block BOOL isInitfile = YES;
+   [self.file enumerateObjectsUsingBlock:^(PBFileDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitfile = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitfile) return isInitfile;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (PBFileDescriptorProto *element in self.fileArray) {
+  [self.fileArray enumerateObjectsUsingBlock:^(PBFileDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:1 value:element];
-  }
+  }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (PBFileDescriptorProto *element in self.fileArray) {
+  [self.fileArray enumerateObjectsUsingBlock:^(PBFileDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(1, element);
-  }
+  }];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -113,12 +116,12 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   return [PBFileDescriptorSet builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (PBFileDescriptorProto* element in self.fileArray) {
+  [self.fileArray enumerateObjectsUsingBlock:^(PBFileDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"file"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -135,9 +138,9 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (PBFileDescriptorProto* element in self.fileArray) {
+  [self.fileArray enumerateObjectsUsingBlock:^(PBFileDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -379,26 +382,38 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   return [extensionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBDescriptorProto* element in self.messageType) {
+  __block BOOL isInitmessageType = YES;
+   [self.messageType enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitmessageType = NO;
+      stop = YES;
     }
-  }
-  for (PBEnumDescriptorProto* element in self.enumType) {
+  }];
+  if (!isInitmessageType) return isInitmessageType;
+  __block BOOL isInitenumType = YES;
+   [self.enumType enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitenumType = NO;
+      stop = YES;
     }
-  }
-  for (PBServiceDescriptorProto* element in self.service) {
+  }];
+  if (!isInitenumType) return isInitenumType;
+  __block BOOL isInitservice = YES;
+   [self.service enumerateObjectsUsingBlock:^(PBServiceDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitservice = NO;
+      stop = YES;
     }
-  }
-  for (PBFieldDescriptorProto* element in self.extension) {
+  }];
+  if (!isInitservice) return isInitservice;
+  __block BOOL isInitextension = YES;
+   [self.extension enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitextension = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitextension) return isInitextension;
   if (self.hasOptions) {
     if (!self.options.isInitialized) {
       return NO;
@@ -413,21 +428,21 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   if (self.hasPackage) {
     [output writeString:2 value:self.package];
   }
-  for (NSString *element in self.dependencyArray) {
+  [self.dependencyArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
     [output writeString:3 value:element];
-  }
-  for (PBDescriptorProto *element in self.messageTypeArray) {
+  }];
+  [self.messageTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:4 value:element];
-  }
-  for (PBEnumDescriptorProto *element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:5 value:element];
-  }
-  for (PBServiceDescriptorProto *element in self.serviceArray) {
+  }];
+  [self.serviceArray enumerateObjectsUsingBlock:^(PBServiceDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:6 value:element];
-  }
-  for (PBFieldDescriptorProto *element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:7 value:element];
-  }
+  }];
   if (self.hasOptions) {
     [output writeMessage:8 value:self.options];
   }
@@ -451,7 +466,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -464,26 +479,26 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
     size_ += computeStringSize(2, self.package);
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.dependencyArray.count;
-    for (NSString *element in self.dependencyArray) {
+    [self.dependencyArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
       dataSize += computeStringSizeNoTag(element);
-    }
+    }];
     size_ += dataSize;
     size_ += 1 * count;
   }
-  for (PBDescriptorProto *element in self.messageTypeArray) {
+  [self.messageTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(4, element);
-  }
-  for (PBEnumDescriptorProto *element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(5, element);
-  }
-  for (PBServiceDescriptorProto *element in self.serviceArray) {
+  }];
+  [self.serviceArray enumerateObjectsUsingBlock:^(PBServiceDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(6, element);
-  }
-  for (PBFieldDescriptorProto *element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(7, element);
-  }
+  }];
   if (self.hasOptions) {
     size_ += computeMessageSize(8, self.options);
   }
@@ -491,7 +506,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
     size_ += computeMessageSize(9, self.sourceCodeInfo);
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.publicDependencyArray.count;
     const long *values = (const long *)self.publicDependencyArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -501,7 +516,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
     size_ += 1 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.weakDependencyArray.count;
     const long *values = (const long *)self.weakDependencyArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -554,30 +569,30 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [self.dependencyArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@: %@\n", indent, @"dependency", obj];
   }];
-  for (PBDescriptorProto* element in self.messageTypeArray) {
+  [self.messageTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"messageType"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBEnumDescriptorProto* element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"enumType"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBServiceDescriptorProto* element in self.serviceArray) {
+  }];
+  [self.serviceArray enumerateObjectsUsingBlock:^(PBServiceDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"service"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBFieldDescriptorProto* element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"extension"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasOptions) {
     [output appendFormat:@"%@%@ {\n", indent, @"options"];
     [self.options writeDescriptionTo:output
@@ -635,18 +650,18 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   [self.dependencyArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
-  for (PBDescriptorProto* element in self.messageTypeArray) {
+  [self.messageTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBEnumDescriptorProto* element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBServiceDescriptorProto* element in self.serviceArray) {
+  }];
+  [self.serviceArray enumerateObjectsUsingBlock:^(PBServiceDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBFieldDescriptorProto* element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasOptions) {
     hashCode = hashCode * 31 + [self.options hash];
   }
@@ -1196,26 +1211,38 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   return [extensionRangeArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBFieldDescriptorProto* element in self.field) {
+  __block BOOL isInitfield = YES;
+   [self.field enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitfield = NO;
+      stop = YES;
     }
-  }
-  for (PBFieldDescriptorProto* element in self.extension) {
+  }];
+  if (!isInitfield) return isInitfield;
+  __block BOOL isInitextension = YES;
+   [self.extension enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitextension = NO;
+      stop = YES;
     }
-  }
-  for (PBDescriptorProto* element in self.nestedType) {
+  }];
+  if (!isInitextension) return isInitextension;
+  __block BOOL isInitnestedType = YES;
+   [self.nestedType enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitnestedType = NO;
+      stop = YES;
     }
-  }
-  for (PBEnumDescriptorProto* element in self.enumType) {
+  }];
+  if (!isInitnestedType) return isInitnestedType;
+  __block BOOL isInitenumType = YES;
+   [self.enumType enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitenumType = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitenumType) return isInitenumType;
   if (self.hasOptions) {
     if (!self.options.isInitialized) {
       return NO;
@@ -1227,28 +1254,28 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   if (self.hasName) {
     [output writeString:1 value:self.name];
   }
-  for (PBFieldDescriptorProto *element in self.fieldArray) {
+  [self.fieldArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
-  }
-  for (PBDescriptorProto *element in self.nestedTypeArray) {
+  }];
+  [self.nestedTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:3 value:element];
-  }
-  for (PBEnumDescriptorProto *element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:4 value:element];
-  }
-  for (PBDescriptorProtoExtensionRange *element in self.extensionRangeArray) {
+  }];
+  [self.extensionRangeArray enumerateObjectsUsingBlock:^(PBDescriptorProtoExtensionRange *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:5 value:element];
-  }
-  for (PBFieldDescriptorProto *element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:6 value:element];
-  }
+  }];
   if (self.hasOptions) {
     [output writeMessage:7 value:self.options];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1257,21 +1284,21 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   if (self.hasName) {
     size_ += computeStringSize(1, self.name);
   }
-  for (PBFieldDescriptorProto *element in self.fieldArray) {
+  [self.fieldArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
-  }
-  for (PBDescriptorProto *element in self.nestedTypeArray) {
+  }];
+  [self.nestedTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(3, element);
-  }
-  for (PBEnumDescriptorProto *element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(4, element);
-  }
-  for (PBDescriptorProtoExtensionRange *element in self.extensionRangeArray) {
+  }];
+  [self.extensionRangeArray enumerateObjectsUsingBlock:^(PBDescriptorProtoExtensionRange *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(5, element);
-  }
-  for (PBFieldDescriptorProto *element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(6, element);
-  }
+  }];
   if (self.hasOptions) {
     size_ += computeMessageSize(7, self.options);
   }
@@ -1313,36 +1340,36 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   if (self.hasName) {
     [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
-  for (PBFieldDescriptorProto* element in self.fieldArray) {
+  [self.fieldArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"field"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBDescriptorProto* element in self.nestedTypeArray) {
+  }];
+  [self.nestedTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"nestedType"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBEnumDescriptorProto* element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"enumType"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBDescriptorProtoExtensionRange* element in self.extensionRangeArray) {
+  }];
+  [self.extensionRangeArray enumerateObjectsUsingBlock:^(PBDescriptorProtoExtensionRange *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"extensionRange"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (PBFieldDescriptorProto* element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"extension"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasOptions) {
     [output appendFormat:@"%@%@ {\n", indent, @"options"];
     [self.options writeDescriptionTo:output
@@ -1376,21 +1403,21 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   if (self.hasName) {
     hashCode = hashCode * 31 + [self.name hash];
   }
-  for (PBFieldDescriptorProto* element in self.fieldArray) {
+  [self.fieldArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBDescriptorProto* element in self.nestedTypeArray) {
+  }];
+  [self.nestedTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBEnumDescriptorProto* element in self.enumTypeArray) {
+  }];
+  [self.enumTypeArray enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBDescriptorProtoExtensionRange* element in self.extensionRangeArray) {
+  }];
+  [self.extensionRangeArray enumerateObjectsUsingBlock:^(PBDescriptorProtoExtensionRange *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (PBFieldDescriptorProto* element in self.extensionArray) {
+  }];
+  [self.extensionArray enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasOptions) {
     hashCode = hashCode * 31 + [self.options hash];
   }
@@ -1454,7 +1481,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2089,7 +2116,7 @@ static PBFieldDescriptorProto* defaultPBFieldDescriptorProtoInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2611,11 +2638,14 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   return [valueArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBEnumValueDescriptorProto* element in self.value) {
+  __block BOOL isInitvalue = YES;
+   [self.value enumerateObjectsUsingBlock:^(PBEnumValueDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitvalue = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitvalue) return isInitvalue;
   if (self.hasOptions) {
     if (!self.options.isInitialized) {
       return NO;
@@ -2627,16 +2657,16 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   if (self.hasName) {
     [output writeString:1 value:self.name];
   }
-  for (PBEnumValueDescriptorProto *element in self.valueArray) {
+  [self.valueArray enumerateObjectsUsingBlock:^(PBEnumValueDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
-  }
+  }];
   if (self.hasOptions) {
     [output writeMessage:3 value:self.options];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2645,9 +2675,9 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   if (self.hasName) {
     size_ += computeStringSize(1, self.name);
   }
-  for (PBEnumValueDescriptorProto *element in self.valueArray) {
+  [self.valueArray enumerateObjectsUsingBlock:^(PBEnumValueDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
-  }
+  }];
   if (self.hasOptions) {
     size_ += computeMessageSize(3, self.options);
   }
@@ -2689,12 +2719,12 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   if (self.hasName) {
     [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
-  for (PBEnumValueDescriptorProto* element in self.valueArray) {
+  [self.valueArray enumerateObjectsUsingBlock:^(PBEnumValueDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"value"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasOptions) {
     [output appendFormat:@"%@%@ {\n", indent, @"options"];
     [self.options writeDescriptionTo:output
@@ -2724,9 +2754,9 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   if (self.hasName) {
     hashCode = hashCode * 31 + [self.name hash];
   }
-  for (PBEnumValueDescriptorProto* element in self.valueArray) {
+  [self.valueArray enumerateObjectsUsingBlock:^(PBEnumValueDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasOptions) {
     hashCode = hashCode * 31 + [self.options hash];
   }
@@ -2975,7 +3005,7 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3282,11 +3312,14 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   return [methodArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBMethodDescriptorProto* element in self.method) {
+  __block BOOL isInitmethod = YES;
+   [self.method enumerateObjectsUsingBlock:^(PBMethodDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitmethod = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitmethod) return isInitmethod;
   if (self.hasOptions) {
     if (!self.options.isInitialized) {
       return NO;
@@ -3298,16 +3331,16 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   if (self.hasName) {
     [output writeString:1 value:self.name];
   }
-  for (PBMethodDescriptorProto *element in self.methodArray) {
+  [self.methodArray enumerateObjectsUsingBlock:^(PBMethodDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
-  }
+  }];
   if (self.hasOptions) {
     [output writeMessage:3 value:self.options];
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3316,9 +3349,9 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   if (self.hasName) {
     size_ += computeStringSize(1, self.name);
   }
-  for (PBMethodDescriptorProto *element in self.methodArray) {
+  [self.methodArray enumerateObjectsUsingBlock:^(PBMethodDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
-  }
+  }];
   if (self.hasOptions) {
     size_ += computeMessageSize(3, self.options);
   }
@@ -3360,12 +3393,12 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   if (self.hasName) {
     [output appendFormat:@"%@%@: %@\n", indent, @"name", self.name];
   }
-  for (PBMethodDescriptorProto* element in self.methodArray) {
+  [self.methodArray enumerateObjectsUsingBlock:^(PBMethodDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"method"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasOptions) {
     [output appendFormat:@"%@%@ {\n", indent, @"options"];
     [self.options writeDescriptionTo:output
@@ -3395,9 +3428,9 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   if (self.hasName) {
     hashCode = hashCode * 31 + [self.name hash];
   }
-  for (PBMethodDescriptorProto* element in self.methodArray) {
+  [self.methodArray enumerateObjectsUsingBlock:^(PBMethodDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasOptions) {
     hashCode = hashCode * 31 + [self.options hash];
   }
@@ -3660,7 +3693,7 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4090,11 +4123,14 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
@@ -4128,16 +4164,16 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
   if (self.hasJavaGenerateEqualsAndHash) {
     [output writeBool:20 value:self.javaGenerateEqualsAndHash];
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4170,9 +4206,9 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
   if (self.hasJavaGenerateEqualsAndHash) {
     size_ += computeBoolSize(20, self.javaGenerateEqualsAndHash);
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -4236,12 +4272,12 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
   if (self.hasJavaGenerateEqualsAndHash) {
     [output appendFormat:@"%@%@: %@\n", indent, @"javaGenerateEqualsAndHash", [NSNumber numberWithBool:self.javaGenerateEqualsAndHash]];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -4309,9 +4345,9 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
   if (self.hasJavaGenerateEqualsAndHash) {
     hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.javaGenerateEqualsAndHash] hash];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -4705,11 +4741,14 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
@@ -4722,16 +4761,16 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   if (self.hasNoStandardDescriptorAccessor) {
     [output writeBool:2 value:self.noStandardDescriptorAccessor];
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4743,9 +4782,9 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   if (self.hasNoStandardDescriptorAccessor) {
     size_ += computeBoolSize(2, self.noStandardDescriptorAccessor);
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -4788,12 +4827,12 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   if (self.hasNoStandardDescriptorAccessor) {
     [output appendFormat:@"%@%@: %@\n", indent, @"noStandardDescriptorAccessor", [NSNumber numberWithBool:self.noStandardDescriptorAccessor]];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -4826,9 +4865,9 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
   if (self.hasNoStandardDescriptorAccessor) {
     hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.noStandardDescriptorAccessor] hash];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -5093,11 +5132,14 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
@@ -5122,16 +5164,16 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
   if (self.hasWeak) {
     [output writeBool:10 value:self.weak];
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5155,9 +5197,9 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
   if (self.hasWeak) {
     size_ += computeBoolSize(10, self.weak);
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -5212,12 +5254,12 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
   if (self.hasWeak) {
     [output appendFormat:@"%@%@: %@\n", indent, @"weak", [NSNumber numberWithBool:self.weak]];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -5270,9 +5312,9 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
   if (self.hasWeak) {
     hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.weak] hash];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -5583,11 +5625,14 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
@@ -5597,16 +5642,16 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   if (self.hasAllowAlias) {
     [output writeBool:2 value:self.allowAlias];
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5615,9 +5660,9 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   if (self.hasAllowAlias) {
     size_ += computeBoolSize(2, self.allowAlias);
   }
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -5657,12 +5702,12 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   if (self.hasAllowAlias) {
     [output appendFormat:@"%@%@: %@\n", indent, @"allowAlias", [NSNumber numberWithBool:self.allowAlias]];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -5690,9 +5735,9 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
   if (self.hasAllowAlias) {
     hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.allowAlias] hash];
   }
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -5859,35 +5904,38 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -5924,12 +5972,12 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
   return [PBEnumValueOptions builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -5952,9 +6000,9 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -6098,35 +6146,38 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -6163,12 +6214,12 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
   return [PBServiceOptions builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -6191,9 +6242,9 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -6337,35 +6388,38 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
   return [uninterpretedOptionArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOption* element in self.uninterpretedOption) {
+  __block BOOL isInituninterpretedOption = YES;
+   [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInituninterpretedOption = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInituninterpretedOption) return isInituninterpretedOption;
   if (!self.extensionsAreInitialized) {
     return NO;
   }
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:999 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (PBUninterpretedOption *element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(999, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -6402,12 +6456,12 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
   return [PBMethodOptions builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"uninterpretedOption"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -6430,9 +6484,9 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (PBUninterpretedOption* element in self.uninterpretedOptionArray) {
+  [self.uninterpretedOptionArray enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -6633,17 +6687,20 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
   return [nameArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (PBUninterpretedOptionNamePart* element in self.name) {
+  __block BOOL isInitname = YES;
+   [self.name enumerateObjectsUsingBlock:^(PBUninterpretedOptionNamePart *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInitname = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInitname) return isInitname;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (PBUninterpretedOptionNamePart *element in self.nameArray) {
+  [self.nameArray enumerateObjectsUsingBlock:^(PBUninterpretedOptionNamePart *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
-  }
+  }];
   if (self.hasIdentifierValue) {
     [output writeString:3 value:self.identifierValue];
   }
@@ -6665,15 +6722,15 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (PBUninterpretedOptionNamePart *element in self.nameArray) {
+  [self.nameArray enumerateObjectsUsingBlock:^(PBUninterpretedOptionNamePart *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
-  }
+  }];
   if (self.hasIdentifierValue) {
     size_ += computeStringSize(3, self.identifierValue);
   }
@@ -6727,12 +6784,12 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
   return [PBUninterpretedOption builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (PBUninterpretedOptionNamePart* element in self.nameArray) {
+  [self.nameArray enumerateObjectsUsingBlock:^(PBUninterpretedOptionNamePart *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"name"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasIdentifierValue) {
     [output appendFormat:@"%@%@: %@\n", indent, @"identifierValue", self.identifierValue];
   }
@@ -6779,9 +6836,9 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (PBUninterpretedOptionNamePart* element in self.nameArray) {
+  [self.nameArray enumerateObjectsUsingBlock:^(PBUninterpretedOptionNamePart *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasIdentifierValue) {
     hashCode = hashCode * 31 + [self.identifierValue hash];
   }
@@ -6872,7 +6929,7 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7345,21 +7402,21 @@ static PBSourceCodeInfo* defaultPBSourceCodeInfoInstance = nil;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (PBSourceCodeInfoLocation *element in self.locationArray) {
+  [self.locationArray enumerateObjectsUsingBlock:^(PBSourceCodeInfoLocation *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:1 value:element];
-  }
+  }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (PBSourceCodeInfoLocation *element in self.locationArray) {
+  [self.locationArray enumerateObjectsUsingBlock:^(PBSourceCodeInfoLocation *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(1, element);
-  }
+  }];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -7395,12 +7452,12 @@ static PBSourceCodeInfo* defaultPBSourceCodeInfoInstance = nil;
   return [PBSourceCodeInfo builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (PBSourceCodeInfoLocation* element in self.locationArray) {
+  [self.locationArray enumerateObjectsUsingBlock:^(PBSourceCodeInfoLocation *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"location"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -7417,9 +7474,9 @@ static PBSourceCodeInfo* defaultPBSourceCodeInfoInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (PBSourceCodeInfoLocation* element in self.locationArray) {
+  [self.locationArray enumerateObjectsUsingBlock:^(PBSourceCodeInfoLocation *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -7520,14 +7577,14 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.pathArray.count;
     const long *values = (const long *)self.pathArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -7541,7 +7598,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
     pathMemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.spanArray.count;
     const long *values = (const long *)self.spanArray.data;
     for (NSUInteger i = 0; i < count; ++i) {

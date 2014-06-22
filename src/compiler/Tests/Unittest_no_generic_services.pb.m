@@ -91,7 +91,7 @@ static TestMessage* defaultTestMessageInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }

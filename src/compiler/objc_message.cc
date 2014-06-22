@@ -582,7 +582,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(
       "}\n"
       "- (long) serializedSize {\n"
-      "  long size_ = memoizedSerializedSize;\n"
+      "  __block long size_ = memoizedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"
       "  }\n"
@@ -1051,11 +1051,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
               break;
             case FieldDescriptor::LABEL_REPEATED:
               printer->Print(vars,
-                "for ($type$* element in self.$name$) {\n"
-                "  if (!element.isInitialized) {\n"
-                "    return NO;\n"
-                "  }\n"
-                "}\n");
+               "__block BOOL isInit$name$ = YES;\n"
+               " [self.$name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+                        "  if (!element.isInitialized) {\n"
+                        "    isInit$name$ = NO;\n"
+                        "    stop = YES;\n"
+                        "  }\n"
+                        "}];\n"
+                "if (!isInit$name$) return isInit$name$;\n"
+                );
               break;
           }
       }

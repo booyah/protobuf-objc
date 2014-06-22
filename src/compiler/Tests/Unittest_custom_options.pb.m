@@ -686,7 +686,7 @@ static TestMessageWithCustomOptions* defaultTestMessageWithCustomOptionsInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -888,7 +888,7 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1047,7 +1047,7 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1206,7 +1206,7 @@ static CustomOptionFooClientMessage* defaultCustomOptionFooClientMessageInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1365,7 +1365,7 @@ static CustomOptionFooServerMessage* defaultCustomOptionFooServerMessageInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1524,7 +1524,7 @@ static DummyMessageContainingEnum* defaultDummyMessageContainingEnumInstance = n
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1692,7 +1692,7 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1851,7 +1851,7 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2010,7 +2010,7 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2169,7 +2169,7 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2328,7 +2328,7 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2487,7 +2487,7 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2688,7 +2688,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3007,7 +3007,7 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3161,7 +3161,7 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3554,7 +3554,7 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3683,7 +3683,7 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4020,7 +4020,7 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4213,7 +4213,7 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4378,7 +4378,7 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
   [self.unknownFields writeAsMessageSetTo:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4562,7 +4562,7 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4837,7 +4837,7 @@ static Aggregate* defaultAggregateInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5244,7 +5244,7 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5440,7 +5440,7 @@ static NestedOptionType* defaultNestedOptionTypeInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5552,7 +5552,7 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }

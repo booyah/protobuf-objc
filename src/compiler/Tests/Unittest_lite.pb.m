@@ -2139,24 +2139,24 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
       [output writeBool:43 value:values[i]];
     }
   }
-  for (NSString *element in self.repeatedStringArray) {
+  [self.repeatedStringArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
     [output writeString:44 value:element];
-  }
-  for (NSData *element in self.repeatedBytesArray) {
+  }];
+  [self.repeatedBytesArray enumerateObjectsUsingBlock:^(NSData *element, NSUInteger idx, BOOL *stop) {
     [output writeData:45 value:element];
-  }
-  for (TestAllTypesLiteRepeatedGroup *element in self.repeatedGroupArray) {
+  }];
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestAllTypesLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     [output writeGroup:46 value:element];
-  }
-  for (TestAllTypesLiteNestedMessage *element in self.repeatedNestedMessageArray) {
+  }];
+  [self.repeatedNestedMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:48 value:element];
-  }
-  for (ForeignMessageLite *element in self.repeatedForeignMessageArray) {
+  }];
+  [self.repeatedForeignMessageArray enumerateObjectsUsingBlock:^(ForeignMessageLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:49 value:element];
-  }
-  for (ImportMessageLite *element in self.repeatedImportMessageArray) {
+  }];
+  [self.repeatedImportMessageArray enumerateObjectsUsingBlock:^(ImportMessageLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:50 value:element];
-  }
+  }];
   const NSUInteger repeatedNestedEnumArrayCount = self.repeatedNestedEnumArray.count;
   const TestAllTypesLiteNestedEnum *repeatedNestedEnumArrayValues = (const TestAllTypesLiteNestedEnum *)self.repeatedNestedEnumArray.data;
   for (NSUInteger i = 0; i < repeatedNestedEnumArrayCount; ++i) {
@@ -2172,15 +2172,15 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   for (NSUInteger i = 0; i < repeatedImportEnumArrayCount; ++i) {
     [output writeEnum:53 value:repeatedImportEnumArrayValues[i]];
   }
-  for (NSString *element in self.repeatedStringPieceArray) {
+  [self.repeatedStringPieceArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
     [output writeString:54 value:element];
-  }
-  for (NSString *element in self.repeatedCordArray) {
+  }];
+  [self.repeatedCordArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
     [output writeString:55 value:element];
-  }
-  for (TestAllTypesLiteNestedMessage *element in self.repeatedLazyMessageArray) {
+  }];
+  [self.repeatedLazyMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:57 value:element];
-  }
+  }];
   if (self.hasDefaultInt32) {
     [output writeInt32:61 value:self.defaultInt32];
   }
@@ -2244,7 +2244,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2329,7 +2329,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += computeMessageSize(27, self.optionalLazyMessage);
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedInt32Array.count;
     const long *values = (const long *)self.repeatedInt32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2339,7 +2339,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedInt64Array.count;
     const long long *values = (const long long *)self.repeatedInt64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2349,7 +2349,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedUint32Array.count;
     const unsigned long *values = (const unsigned long *)self.repeatedUint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2359,7 +2359,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedUint64Array.count;
     const unsigned long long *values = (const unsigned long long *)self.repeatedUint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2369,7 +2369,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedSint32Array.count;
     const long *values = (const long *)self.repeatedSint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2379,7 +2379,7 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedSint64Array.count;
     const long long *values = (const long long *)self.repeatedSint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -2389,84 +2389,84 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedFixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedFixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedSfixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedSfixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedFloatArray.count;
     dataSize = 4 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedDoubleArray.count;
     dataSize = 8 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedBoolArray.count;
     dataSize = 1 * count;
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedStringArray.count;
-    for (NSString *element in self.repeatedStringArray) {
+    [self.repeatedStringArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
       dataSize += computeStringSizeNoTag(element);
-    }
+    }];
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedBytesArray.count;
-    for (NSData *element in self.repeatedBytesArray) {
+    [self.repeatedBytesArray enumerateObjectsUsingBlock:^(NSData *element, NSUInteger idx, BOOL *stop) {
       dataSize += computeDataSizeNoTag(element);
-    }
+    }];
     size_ += dataSize;
     size_ += 2 * count;
   }
-  for (TestAllTypesLiteRepeatedGroup *element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestAllTypesLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     size_ += computeGroupSize(46, element);
-  }
-  for (TestAllTypesLiteNestedMessage *element in self.repeatedNestedMessageArray) {
+  }];
+  [self.repeatedNestedMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(48, element);
-  }
-  for (ForeignMessageLite *element in self.repeatedForeignMessageArray) {
+  }];
+  [self.repeatedForeignMessageArray enumerateObjectsUsingBlock:^(ForeignMessageLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(49, element);
-  }
-  for (ImportMessageLite *element in self.repeatedImportMessageArray) {
+  }];
+  [self.repeatedImportMessageArray enumerateObjectsUsingBlock:^(ImportMessageLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(50, element);
-  }
+  }];
   {
     NSInteger dataSize = 0;
     const NSUInteger count = self.repeatedNestedEnumArray.count;
@@ -2498,26 +2498,26 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedStringPieceArray.count;
-    for (NSString *element in self.repeatedStringPieceArray) {
+    [self.repeatedStringPieceArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
       dataSize += computeStringSizeNoTag(element);
-    }
+    }];
     size_ += dataSize;
     size_ += 2 * count;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.repeatedCordArray.count;
-    for (NSString *element in self.repeatedCordArray) {
+    [self.repeatedCordArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
       dataSize += computeStringSizeNoTag(element);
-    }
+    }];
     size_ += dataSize;
     size_ += 2 * count;
   }
-  for (TestAllTypesLiteNestedMessage *element in self.repeatedLazyMessageArray) {
+  [self.repeatedLazyMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(57, element);
-  }
+  }];
   if (self.hasDefaultInt32) {
     size_ += computeInt32Size(61, self.defaultInt32);
   }
@@ -2754,51 +2754,51 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   [self.repeatedBytesArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@: %@\n", indent, @"repeatedBytes", obj];
   }];
-  for (TestAllTypesLiteRepeatedGroup* element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestAllTypesLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedGroup"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestAllTypesLiteNestedMessage* element in self.repeatedNestedMessageArray) {
+  }];
+  [self.repeatedNestedMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedNestedMessage"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (ForeignMessageLite* element in self.repeatedForeignMessageArray) {
+  }];
+  [self.repeatedForeignMessageArray enumerateObjectsUsingBlock:^(ForeignMessageLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedForeignMessage"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (ImportMessageLite* element in self.repeatedImportMessageArray) {
+  }];
+  [self.repeatedImportMessageArray enumerateObjectsUsingBlock:^(ImportMessageLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedImportMessage"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (id element in self.repeatedNestedEnumArray) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedNestedEnum", @((TestAllTypesLiteNestedEnum)element)];
-  }
-  for (id element in self.repeatedForeignEnumArray) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedForeignEnum", @((ForeignEnumLite)element)];
-  }
-  for (id element in self.repeatedImportEnumArray) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedImportEnum", @((ImportEnumLite)element)];
-  }
+  }];
+  [self.repeatedNestedEnumArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedNestedEnum", element];
+  }];
+  [self.repeatedForeignEnumArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedForeignEnum", element];
+  }];
+  [self.repeatedImportEnumArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"repeatedImportEnum", element];
+  }];
   [self.repeatedStringPieceArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@: %@\n", indent, @"repeatedStringPiece", obj];
   }];
   [self.repeatedCordArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@: %@\n", indent, @"repeatedCord", obj];
   }];
-  for (TestAllTypesLiteNestedMessage* element in self.repeatedLazyMessageArray) {
+  [self.repeatedLazyMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedLazyMessage"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasDefaultInt32) {
     [output appendFormat:@"%@%@: %@\n", indent, @"defaultInt32", [NSNumber numberWithInteger:self.defaultInt32]];
   }
@@ -3114,36 +3114,36 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   [self.repeatedBytesArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
-  for (TestAllTypesLiteRepeatedGroup* element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestAllTypesLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestAllTypesLiteNestedMessage* element in self.repeatedNestedMessageArray) {
+  }];
+  [self.repeatedNestedMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (ForeignMessageLite* element in self.repeatedForeignMessageArray) {
+  }];
+  [self.repeatedForeignMessageArray enumerateObjectsUsingBlock:^(ForeignMessageLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (ImportMessageLite* element in self.repeatedImportMessageArray) {
+  }];
+  [self.repeatedImportMessageArray enumerateObjectsUsingBlock:^(ImportMessageLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (NSNumber* element in self.repeatedNestedEnumArray) {
+  }];
+  [self.repeatedNestedEnumArray enumerateObjectsUsingBlock:^(NSNumber* element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + element.longValue;
-  }
-  for (NSNumber* element in self.repeatedForeignEnumArray) {
+  }];
+  [self.repeatedForeignEnumArray enumerateObjectsUsingBlock:^(NSNumber* element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + element.longValue;
-  }
-  for (NSNumber* element in self.repeatedImportEnumArray) {
+  }];
+  [self.repeatedImportEnumArray enumerateObjectsUsingBlock:^(NSNumber* element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + element.longValue;
-  }
+  }];
   [self.repeatedStringPieceArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
   [self.repeatedCordArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
   }];
-  for (TestAllTypesLiteNestedMessage* element in self.repeatedLazyMessageArray) {
+  [self.repeatedLazyMessageArray enumerateObjectsUsingBlock:^(TestAllTypesLiteNestedMessage *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasDefaultInt32) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.defaultInt32] hash];
   }
@@ -3262,7 +3262,7 @@ static TestAllTypesLiteNestedMessage* defaultTestAllTypesLiteNestedMessageInstan
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3467,7 +3467,7 @@ static TestAllTypesLiteOptionalGroup* defaultTestAllTypesLiteOptionalGroupInstan
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3672,7 +3672,7 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6035,7 +6035,7 @@ static ForeignMessageLite* defaultForeignMessageLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6494,14 +6494,14 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedInt32Array.count;
     const long *values = (const long *)self.packedInt32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6515,7 +6515,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedInt32MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedInt64Array.count;
     const long long *values = (const long long *)self.packedInt64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6529,7 +6529,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedInt64MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedUint32Array.count;
     const unsigned long *values = (const unsigned long *)self.packedUint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6543,7 +6543,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedUint32MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedUint64Array.count;
     const unsigned long long *values = (const unsigned long long *)self.packedUint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6557,7 +6557,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedUint64MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedSint32Array.count;
     const long *values = (const long *)self.packedSint32Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6571,7 +6571,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSint32MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedSint64Array.count;
     const long long *values = (const long long *)self.packedSint64Array.data;
     for (NSUInteger i = 0; i < count; ++i) {
@@ -6585,7 +6585,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSint64MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedFixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
@@ -6596,7 +6596,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFixed32MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedFixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
@@ -6607,7 +6607,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFixed64MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedSfixed32Array.count;
     dataSize = 4 * count;
     size_ += dataSize;
@@ -6618,7 +6618,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSfixed32MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedSfixed64Array.count;
     dataSize = 8 * count;
     size_ += dataSize;
@@ -6629,7 +6629,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedSfixed64MemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedFloatArray.count;
     dataSize = 4 * count;
     size_ += dataSize;
@@ -6640,7 +6640,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedFloatMemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedDoubleArray.count;
     dataSize = 8 * count;
     size_ += dataSize;
@@ -6651,7 +6651,7 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
     packedDoubleMemoizedSerializedSize = dataSize;
   }
   {
-    long dataSize = 0;
+    __block long dataSize = 0;
     const NSUInteger count = self.packedBoolArray.count;
     dataSize = 1 * count;
     size_ += dataSize;
@@ -6749,9 +6749,9 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   [self.packedBoolArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@: %@\n", indent, @"packedBool", obj];
   }];
-  for (id element in self.packedEnumArray) {
-    [output appendFormat:@"%@%@: %@\n", indent, @"packedEnum", @((ForeignEnumLite)element)];
-  }
+  [self.packedEnumArray enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"packedEnum", element];
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -6820,9 +6820,9 @@ static TestPackedTypesLite* defaultTestPackedTypesLiteInstance = nil;
   [self.packedBoolArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [obj longValue];
   }];
-  for (NSNumber* element in self.packedEnumArray) {
+  [self.packedEnumArray enumerateObjectsUsingBlock:^(NSNumber* element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + element.longValue;
-  }
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -7550,7 +7550,7 @@ static TestAllExtensionsLite* defaultTestAllExtensionsLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7730,7 +7730,7 @@ static OptionalGroup_extension_lite* defaultOptionalGroup_extension_liteInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7935,7 +7935,7 @@ static RepeatedGroup_extension_lite* defaultRepeatedGroup_extension_liteInstance
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -8134,7 +8134,7 @@ static TestPackedExtensionsLite* defaultTestPackedExtensionsLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -8305,7 +8305,7 @@ static TestNestedExtensionLite* defaultTestNestedExtensionLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -8476,7 +8476,7 @@ static TestDeprecatedLite* defaultTestDeprecatedLiteInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -8734,22 +8734,22 @@ static TestParsingMergeLite* defaultTestParsingMergeLiteInstance = nil;
   if (self.hasOptionalAllTypes) {
     [output writeMessage:2 value:self.optionalAllTypes];
   }
-  for (TestAllTypesLite *element in self.repeatedAllTypesArray) {
+  [self.repeatedAllTypesArray enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:3 value:element];
-  }
+  }];
   if (self.hasOptionalGroup) {
     [output writeGroup:10 value:self.optionalGroup];
   }
-  for (TestParsingMergeLiteRepeatedGroup *element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     [output writeGroup:20 value:element];
-  }
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:1000
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -8761,15 +8761,15 @@ static TestParsingMergeLite* defaultTestParsingMergeLiteInstance = nil;
   if (self.hasOptionalAllTypes) {
     size_ += computeMessageSize(2, self.optionalAllTypes);
   }
-  for (TestAllTypesLite *element in self.repeatedAllTypesArray) {
+  [self.repeatedAllTypesArray enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(3, element);
-  }
+  }];
   if (self.hasOptionalGroup) {
     size_ += computeGroupSize(10, self.optionalGroup);
   }
-  for (TestParsingMergeLiteRepeatedGroup *element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     size_ += computeGroupSize(20, element);
-  }
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -8818,24 +8818,24 @@ static TestParsingMergeLite* defaultTestParsingMergeLiteInstance = nil;
                          withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }
-  for (TestAllTypesLite* element in self.repeatedAllTypesArray) {
+  [self.repeatedAllTypesArray enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedAllTypes"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   if (self.hasOptionalGroup) {
     [output appendFormat:@"%@%@ {\n", indent, @"optionalGroup"];
     [self.optionalGroup writeDescriptionTo:output
                          withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }
-  for (TestParsingMergeLiteRepeatedGroup* element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"repeatedGroup"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:1000
                                               to:536870912
@@ -8871,15 +8871,15 @@ static TestParsingMergeLite* defaultTestParsingMergeLiteInstance = nil;
   if (self.hasOptionalAllTypes) {
     hashCode = hashCode * 31 + [self.optionalAllTypes hash];
   }
-  for (TestAllTypesLite* element in self.repeatedAllTypesArray) {
+  [self.repeatedAllTypesArray enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   if (self.hasOptionalGroup) {
     hashCode = hashCode * 31 + [self.optionalGroup hash];
   }
-  for (TestParsingMergeLiteRepeatedGroup* element in self.repeatedGroupArray) {
+  [self.repeatedGroupArray enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedGroup *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:1000 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -8984,57 +8984,57 @@ static TestParsingMergeLiteRepeatedFieldsGenerator* defaultTestParsingMergeLiteR
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (TestAllTypesLite *element in self.field1Array) {
+  [self.field1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:1 value:element];
-  }
-  for (TestAllTypesLite *element in self.field2Array) {
+  }];
+  [self.field2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:2 value:element];
-  }
-  for (TestAllTypesLite *element in self.field3Array) {
+  }];
+  [self.field3Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:3 value:element];
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1 *element in self.group1Array) {
+  }];
+  [self.group1Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup1 *element, NSUInteger idx, BOOL *stop) {
     [output writeGroup:10 value:element];
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2 *element in self.group2Array) {
+  }];
+  [self.group2Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup2 *element, NSUInteger idx, BOOL *stop) {
     [output writeGroup:20 value:element];
-  }
-  for (TestAllTypesLite *element in self.ext1Array) {
+  }];
+  [self.ext1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:1000 value:element];
-  }
-  for (TestAllTypesLite *element in self.ext2Array) {
+  }];
+  [self.ext2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output writeMessage:1001 value:element];
-  }
+  }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (TestAllTypesLite *element in self.field1Array) {
+  [self.field1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(1, element);
-  }
-  for (TestAllTypesLite *element in self.field2Array) {
+  }];
+  [self.field2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(2, element);
-  }
-  for (TestAllTypesLite *element in self.field3Array) {
+  }];
+  [self.field3Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(3, element);
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1 *element in self.group1Array) {
+  }];
+  [self.group1Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup1 *element, NSUInteger idx, BOOL *stop) {
     size_ += computeGroupSize(10, element);
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2 *element in self.group2Array) {
+  }];
+  [self.group2Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup2 *element, NSUInteger idx, BOOL *stop) {
     size_ += computeGroupSize(20, element);
-  }
-  for (TestAllTypesLite *element in self.ext1Array) {
+  }];
+  [self.ext1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(1000, element);
-  }
-  for (TestAllTypesLite *element in self.ext2Array) {
+  }];
+  [self.ext2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(1001, element);
-  }
+  }];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -9070,48 +9070,48 @@ static TestParsingMergeLiteRepeatedFieldsGenerator* defaultTestParsingMergeLiteR
   return [TestParsingMergeLiteRepeatedFieldsGenerator builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (TestAllTypesLite* element in self.field1Array) {
+  [self.field1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"field1"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestAllTypesLite* element in self.field2Array) {
+  }];
+  [self.field2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"field2"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestAllTypesLite* element in self.field3Array) {
+  }];
+  [self.field3Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"field3"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* element in self.group1Array) {
+  }];
+  [self.group1Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup1 *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"group1"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* element in self.group2Array) {
+  }];
+  [self.group2Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup2 *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"group2"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestAllTypesLite* element in self.ext1Array) {
+  }];
+  [self.ext1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"ext1"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
-  for (TestAllTypesLite* element in self.ext2Array) {
+  }];
+  [self.ext2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"ext2"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -9134,27 +9134,27 @@ static TestParsingMergeLiteRepeatedFieldsGenerator* defaultTestParsingMergeLiteR
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (TestAllTypesLite* element in self.field1Array) {
+  [self.field1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestAllTypesLite* element in self.field2Array) {
+  }];
+  [self.field2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestAllTypesLite* element in self.field3Array) {
+  }];
+  [self.field3Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* element in self.group1Array) {
+  }];
+  [self.group1Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup1 *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* element in self.group2Array) {
+  }];
+  [self.group2Array enumerateObjectsUsingBlock:^(TestParsingMergeLiteRepeatedFieldsGeneratorGroup2 *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestAllTypesLite* element in self.ext1Array) {
+  }];
+  [self.ext1Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
-  for (TestAllTypesLite* element in self.ext2Array) {
+  }];
+  [self.ext2Array enumerateObjectsUsingBlock:^(TestAllTypesLite *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -9204,7 +9204,7 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup1* defaultTestParsingMerg
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -9432,7 +9432,7 @@ static TestParsingMergeLiteRepeatedFieldsGeneratorGroup2* defaultTestParsingMerg
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -9965,7 +9965,7 @@ static TestParsingMergeLiteOptionalGroup* defaultTestParsingMergeLiteOptionalGro
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -10193,7 +10193,7 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }

@@ -462,9 +462,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedEnumFieldGenerator::GenerateDescriptionCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for (id element in self.$list_name$) {\n"
-      "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", @(($type$)element)];\n"
-      "}\n");
+    "[self.$list_name$ enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop) {\n"
+    "  [output appendFormat:@\"%@%@: %@\\n\", indent, @\"$name$\", element];\n"
+                   "}];\n");
   }
 
 
@@ -475,9 +475,9 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedEnumFieldGenerator::GenerateHashCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "for (NSNumber* element in self.$list_name$) {\n"
-      "  hashCode = hashCode * 31 + element.longValue;\n"
-      "}\n");
+    "[self.$list_name$ enumerateObjectsUsingBlock:^(NSNumber* element, NSUInteger idx, BOOL *stop) {\n"
+    "  hashCode = hashCode * 31 + element.longValue;\n"
+    "}];\n");
   }
 }  // namespace objectivec
 }  // namespace compiler

@@ -683,9 +683,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateSerializationCodeSource(io::Printer* printer) const {
     if(isObjectArray(descriptor_)){
       printer->Print(variables_,
-      "for ($type$ *element in self.$list_name$) {\n"
-      "  [output write$capitalized_type$:$number$ value:element];\n"
-      "}\n");
+      "[self.$list_name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+       "  [output write$capitalized_type$:$number$ value:element];\n"
+       "}];\n"
+     );
     }
     else {
       printer->Print(variables_,
@@ -717,13 +718,13 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
      printer->Print("{\n");
     printer->Indent();
     printer->Print(variables_,
-      "long dataSize = 0;\n"
+      "__block long dataSize = 0;\n"
       "const NSUInteger count = self.$list_name$.count;\n");
     if(isObjectArray(descriptor_)) {
       printer->Print(variables_,
-      "for ($type$ *element in self.$list_name$) {\n"
-      "  dataSize += compute$capitalized_type$SizeNoTag(element);\n"
-      "}\n");
+        "[self.$list_name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+        "  dataSize += compute$capitalized_type$SizeNoTag(element);\n"
+        "}];\n");
     }
     else {
       if (FixedSize(descriptor_->type()) == -1) {

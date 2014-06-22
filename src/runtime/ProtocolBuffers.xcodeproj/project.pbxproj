@@ -22,10 +22,10 @@
 		3F154977195761F1000F1056 /* Unittest_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154968195761F1000F1056 /* Unittest_optimize_for.pb.m */; };
 		3F154978195761F1000F1056 /* Unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15496A195761F1000F1056 /* Unittest.pb.m */; };
 		3F2404EA1955F7FE0022C703 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2404E91955F7FE0022C703 /* XCTest.framework */; };
+		3F7A405A1957772800B7AC58 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F7A40581957772800B7AC58 /* Descriptor.pb.h */; };
+		3F7A405B1957772800B7AC58 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A40591957772800B7AC58 /* Descriptor.pb.m */; };
 		3F7E14941955FB3400B3DD01 /* golden_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14901955FAEE00B3DD01 /* golden_message */; };
 		3F7E14951955FB3400B3DD01 /* golden_packed_fields_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */; };
-		3F8099EB1923DAF1006DA9D8 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F8099E91923DAF1006DA9D8 /* Descriptor.pb.h */; };
-		3F8099EC1923DAF1006DA9D8 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		3F887B4919102C6000AFDD46 /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
@@ -144,12 +144,12 @@
 		3F154969195761F1000F1056 /* Unittest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest.pb.h; path = Tests/Unittest.pb.h; sourceTree = "<group>"; };
 		3F15496A195761F1000F1056 /* Unittest.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest.pb.m; path = Tests/Unittest.pb.m; sourceTree = "<group>"; };
 		3F2404E91955F7FE0022C703 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		3F7A40581957772800B7AC58 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pb.h; sourceTree = "<group>"; };
+		3F7A40591957772800B7AC58 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pb.m; sourceTree = "<group>"; };
 		3F7E14901955FAEE00B3DD01 /* golden_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_message; sourceTree = "<group>"; };
 		3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_packed_fields_message; sourceTree = "<group>"; };
 		3F7E14921955FAEE00B3DD01 /* text_format_unittest_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text_format_unittest_data.txt; sourceTree = "<group>"; };
 		3F7E14931955FAEE00B3DD01 /* text_format_unittest_extensions_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text_format_unittest_extensions_data.txt; sourceTree = "<group>"; };
-		3F8099E91923DAF1006DA9D8 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = Descriptor.pb.h; path = Descriptor/Descriptor.pb.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = Descriptor.pb.m; path = Descriptor/Descriptor.pb.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C586261F12668B9F00204EE1 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
@@ -490,8 +490,8 @@
 		C5CBB803126CBD6700354923 /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				3F8099E91923DAF1006DA9D8 /* Descriptor.pb.h */,
-				3F8099EA1923DAF1006DA9D8 /* Descriptor.pb.m */,
+				3F7A40581957772800B7AC58 /* Descriptor.pb.h */,
+				3F7A40591957772800B7AC58 /* Descriptor.pb.m */,
 			);
 			name = Internal;
 			sourceTree = "<group>";
@@ -511,7 +511,7 @@
 				C586263012668BCF00204EE1 /* ExtendableMessageBuilder.h in Headers */,
 				C586263212668BCF00204EE1 /* ExtendableMessage.h in Headers */,
 				C586263412668BCF00204EE1 /* ExtensionField.h in Headers */,
-				3F8099EB1923DAF1006DA9D8 /* Descriptor.pb.h in Headers */,
+				3F7A405A1957772800B7AC58 /* Descriptor.pb.h in Headers */,
 				C586263512668BCF00204EE1 /* ExtensionRegistry.h in Headers */,
 				C586263912668BFD00204EE1 /* MutableExtensionRegistry.h in Headers */,
 				C586263D12668C0D00204EE1 /* Field.h in Headers */,
@@ -680,7 +680,7 @@
 				C586263112668BCF00204EE1 /* ExtendableMessageBuilder.m in Sources */,
 				C586263312668BCF00204EE1 /* ExtendableMessage.m in Sources */,
 				C586263612668BCF00204EE1 /* ExtensionRegistry.m in Sources */,
-				3F8099EC1923DAF1006DA9D8 /* Descriptor.pb.m in Sources */,
+				3F7A405B1957772800B7AC58 /* Descriptor.pb.m in Sources */,
 				C586263A12668BFD00204EE1 /* MutableExtensionRegistry.m in Sources */,
 				C586263E12668C0D00204EE1 /* Field.m in Sources */,
 				C586264212668C1800204EE1 /* MutableField.m in Sources */,

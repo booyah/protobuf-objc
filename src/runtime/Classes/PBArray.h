@@ -36,7 +36,7 @@ typedef enum _PBArrayValueType
 // PBArray is an immutable array class that's optimized for storing primitive
 // values.  All values stored in an PBArray instance must have the same type
 // (PBArrayValueType).  Object values (PBArrayValueTypeObject) are retained.
-@interface PBArray : NSObject <NSCopying, NSFastEnumeration>
+@interface PBArray : NSObject <NSCopying>
 {
 @protected
 	PBArrayValueType	_valueType;

@@ -79,7 +79,7 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
   [self.unknownFields writeAsMessageSetTo:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -265,7 +265,7 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -495,7 +495,7 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -704,7 +704,7 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -901,29 +901,32 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   return [itemArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
-  for (RawMessageSetItem* element in self.item) {
+  __block BOOL isInititem = YES;
+   [self.item enumerateObjectsUsingBlock:^(RawMessageSetItem *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
-      return NO;
+      isInititem = NO;
+      stop = YES;
     }
-  }
+  }];
+  if (!isInititem) return isInititem;
   return YES;
 }
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
-  for (RawMessageSetItem *element in self.itemArray) {
+  [self.itemArray enumerateObjectsUsingBlock:^(RawMessageSetItem *element, NSUInteger idx, BOOL *stop) {
     [output writeGroup:1 value:element];
-  }
+  }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
-  for (RawMessageSetItem *element in self.itemArray) {
+  [self.itemArray enumerateObjectsUsingBlock:^(RawMessageSetItem *element, NSUInteger idx, BOOL *stop) {
     size_ += computeGroupSize(1, element);
-  }
+  }];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -959,12 +962,12 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   return [RawMessageSet builderWithPrototype:self];
 }
 - (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
-  for (RawMessageSetItem* element in self.itemArray) {
+  [self.itemArray enumerateObjectsUsingBlock:^(RawMessageSetItem *element, NSUInteger idx, BOOL *stop) {
     [output appendFormat:@"%@%@ {\n", indent, @"item"];
     [element writeDescriptionTo:output
                      withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
-  }
+  }];
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -981,9 +984,9 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
 }
 - (NSUInteger) hash {
   __block NSUInteger hashCode = 7;
-  for (RawMessageSetItem* element in self.itemArray) {
+  [self.itemArray enumerateObjectsUsingBlock:^(RawMessageSetItem *element, NSUInteger idx, BOOL *stop) {
     hashCode = hashCode * 31 + [element hash];
-  }
+  }];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -1051,7 +1054,7 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (long) serializedSize {
-  long size_ = memoizedSerializedSize;
+  __block long size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
