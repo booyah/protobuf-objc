@@ -20,6 +20,8 @@
 #import "MessageBuilder.h"
 #import "Utilities.h"
 #import "WireFormat.h"
+#import "UnknownFieldSetBuilder.h"
+#import "UnknownFieldSet.h"
 
 
 @interface PBCodedInputStream ()
