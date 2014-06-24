@@ -30,7 +30,7 @@
   PBUnknownFieldSet* unknownFields;
 
 @protected
-  long memoizedSerializedSize;
+  SInt32 memoizedSerializedSize;
 }
 
 @end

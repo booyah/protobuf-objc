@@ -219,16 +219,16 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   Float64 optionalDouble;
   Float32 defaultFloat;
   Float32 optionalFloat;
-  long long optionalInt64;
-  long long defaultInt64;
-  unsigned long long optionalUint64;
-  unsigned long long defaultUint64;
-  long optionalInt32;
-  long defaultInt32;
-  unsigned long long optionalFixed64;
-  unsigned long long defaultFixed64;
-  unsigned long optionalFixed32;
-  unsigned long defaultFixed32;
+  SInt64 optionalInt64;
+  SInt64 defaultInt64;
+  UInt64 optionalUint64;
+  UInt64 defaultUint64;
+  SInt32 optionalInt32;
+  SInt32 defaultInt32;
+  UInt64 optionalFixed64;
+  UInt64 defaultFixed64;
+  UInt32 optionalFixed32;
+  UInt32 defaultFixed32;
   NSString* defaultCord;
   NSString* optionalStringPiece;
   NSString* optionalCord;
@@ -243,22 +243,22 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   TestAllTypesLiteNestedMessage* optionalNestedMessage;
   NSData* optionalBytes;
   NSData* defaultBytes;
-  unsigned long defaultUint32;
-  unsigned long optionalUint32;
+  UInt32 defaultUint32;
+  UInt32 optionalUint32;
   TestAllTypesLiteNestedEnum optionalNestedEnum;
   ForeignEnumLite optionalForeignEnum;
   ImportEnumLite optionalImportEnum;
   ImportEnumLite defaultImportEnum;
   ForeignEnumLite defaultForeignEnum;
   TestAllTypesLiteNestedEnum defaultNestedEnum;
-  long optionalSfixed32;
-  long defaultSfixed32;
-  long long optionalSfixed64;
-  long long defaultSfixed64;
-  long optionalSint32;
-  long defaultSint32;
-  long long optionalSint64;
-  long long defaultSint64;
+  SInt32 optionalSfixed32;
+  SInt32 defaultSfixed32;
+  SInt64 optionalSfixed64;
+  SInt64 defaultSfixed64;
+  SInt32 optionalSint32;
+  SInt32 defaultSint32;
+  SInt64 optionalSint64;
+  SInt64 defaultSint64;
   PBAppendableArray * repeatedBoolArray;
   PBAppendableArray * repeatedDoubleArray;
   PBAppendableArray * repeatedFloatArray;
@@ -331,16 +331,16 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (BOOL) hasDefaultImportEnum;
 - (BOOL) hasDefaultStringPiece;
 - (BOOL) hasDefaultCord;
-@property (readonly) long optionalInt32;
-@property (readonly) long long optionalInt64;
-@property (readonly) unsigned long optionalUint32;
-@property (readonly) unsigned long long optionalUint64;
-@property (readonly) long optionalSint32;
-@property (readonly) long long optionalSint64;
-@property (readonly) unsigned long optionalFixed32;
-@property (readonly) unsigned long long optionalFixed64;
-@property (readonly) long optionalSfixed32;
-@property (readonly) long long optionalSfixed64;
+@property (readonly) SInt32 optionalInt32;
+@property (readonly) SInt64 optionalInt64;
+@property (readonly) UInt32 optionalUint32;
+@property (readonly) UInt64 optionalUint64;
+@property (readonly) SInt32 optionalSint32;
+@property (readonly) SInt64 optionalSint64;
+@property (readonly) UInt32 optionalFixed32;
+@property (readonly) UInt64 optionalFixed64;
+@property (readonly) SInt32 optionalSfixed32;
+@property (readonly) SInt64 optionalSfixed64;
 @property (readonly) Float32 optionalFloat;
 @property (readonly) Float64 optionalDouble;
 - (BOOL) optionalBool;
@@ -382,16 +382,16 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @property (readonly, strong) PBArray * repeatedStringPiece;
 @property (readonly, strong) PBArray * repeatedCord;
 @property (readonly, strong) NSArray * repeatedLazyMessage;
-@property (readonly) long defaultInt32;
-@property (readonly) long long defaultInt64;
-@property (readonly) unsigned long defaultUint32;
-@property (readonly) unsigned long long defaultUint64;
-@property (readonly) long defaultSint32;
-@property (readonly) long long defaultSint64;
-@property (readonly) unsigned long defaultFixed32;
-@property (readonly) unsigned long long defaultFixed64;
-@property (readonly) long defaultSfixed32;
-@property (readonly) long long defaultSfixed64;
+@property (readonly) SInt32 defaultInt32;
+@property (readonly) SInt64 defaultInt64;
+@property (readonly) UInt32 defaultUint32;
+@property (readonly) UInt64 defaultUint64;
+@property (readonly) SInt32 defaultSint32;
+@property (readonly) SInt64 defaultSint64;
+@property (readonly) UInt32 defaultFixed32;
+@property (readonly) UInt64 defaultFixed64;
+@property (readonly) SInt32 defaultSfixed32;
+@property (readonly) SInt64 defaultSfixed64;
 @property (readonly) Float32 defaultFloat;
 @property (readonly) Float64 defaultDouble;
 - (BOOL) defaultBool;
@@ -402,16 +402,16 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @property (readonly) ImportEnumLite defaultImportEnum;
 @property (readonly, strong) NSString* defaultStringPiece;
 @property (readonly, strong) NSString* defaultCord;
-- (long)repeatedInt32AtIndex:(NSUInteger)index;
-- (long long)repeatedInt64AtIndex:(NSUInteger)index;
-- (unsigned long)repeatedUint32AtIndex:(NSUInteger)index;
-- (unsigned long long)repeatedUint64AtIndex:(NSUInteger)index;
-- (long)repeatedSint32AtIndex:(NSUInteger)index;
-- (long long)repeatedSint64AtIndex:(NSUInteger)index;
-- (unsigned long)repeatedFixed32AtIndex:(NSUInteger)index;
-- (unsigned long long)repeatedFixed64AtIndex:(NSUInteger)index;
-- (long)repeatedSfixed32AtIndex:(NSUInteger)index;
-- (long long)repeatedSfixed64AtIndex:(NSUInteger)index;
+- (SInt32)repeatedInt32AtIndex:(NSUInteger)index;
+- (SInt64)repeatedInt64AtIndex:(NSUInteger)index;
+- (UInt32)repeatedUint32AtIndex:(NSUInteger)index;
+- (UInt64)repeatedUint64AtIndex:(NSUInteger)index;
+- (SInt32)repeatedSint32AtIndex:(NSUInteger)index;
+- (SInt64)repeatedSint64AtIndex:(NSUInteger)index;
+- (UInt32)repeatedFixed32AtIndex:(NSUInteger)index;
+- (UInt64)repeatedFixed64AtIndex:(NSUInteger)index;
+- (SInt32)repeatedSfixed32AtIndex:(NSUInteger)index;
+- (SInt64)repeatedSfixed64AtIndex:(NSUInteger)index;
 - (Float32)repeatedFloatAtIndex:(NSUInteger)index;
 - (Float64)repeatedDoubleAtIndex:(NSUInteger)index;
 - (BOOL)repeatedBoolAtIndex:(NSUInteger)index;
@@ -449,10 +449,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @interface TestAllTypesLiteNestedMessage : PBGeneratedMessage {
 @private
   BOOL hasBb_:1;
-  long bb;
+  SInt32 bb;
 }
 - (BOOL) hasBb;
-@property (readonly) long bb;
+@property (readonly) SInt32 bb;
 
 + (TestAllTypesLiteNestedMessage*) defaultInstance;
 - (TestAllTypesLiteNestedMessage*) defaultInstance;
@@ -490,18 +490,18 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasBb;
-- (long) bb;
-- (TestAllTypesLiteNestedMessageBuilder*) setBb:(long) value;
+- (SInt32) bb;
+- (TestAllTypesLiteNestedMessageBuilder*) setBb:(SInt32) value;
 - (TestAllTypesLiteNestedMessageBuilder*) clearBb;
 @end
 
 @interface TestAllTypesLiteOptionalGroup : PBGeneratedMessage {
 @private
   BOOL hasA_:1;
-  long a;
+  SInt32 a;
 }
 - (BOOL) hasA;
-@property (readonly) long a;
+@property (readonly) SInt32 a;
 
 + (TestAllTypesLiteOptionalGroup*) defaultInstance;
 - (TestAllTypesLiteOptionalGroup*) defaultInstance;
@@ -539,18 +539,18 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteOptionalGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasA;
-- (long) a;
-- (TestAllTypesLiteOptionalGroupBuilder*) setA:(long) value;
+- (SInt32) a;
+- (TestAllTypesLiteOptionalGroupBuilder*) setA:(SInt32) value;
 - (TestAllTypesLiteOptionalGroupBuilder*) clearA;
 @end
 
 @interface TestAllTypesLiteRepeatedGroup : PBGeneratedMessage {
 @private
   BOOL hasA_:1;
-  long a;
+  SInt32 a;
 }
 - (BOOL) hasA;
-@property (readonly) long a;
+@property (readonly) SInt32 a;
 
 + (TestAllTypesLiteRepeatedGroup*) defaultInstance;
 - (TestAllTypesLiteRepeatedGroup*) defaultInstance;
@@ -588,8 +588,8 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteRepeatedGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasA;
-- (long) a;
-- (TestAllTypesLiteRepeatedGroupBuilder*) setA:(long) value;
+- (SInt32) a;
+- (TestAllTypesLiteRepeatedGroupBuilder*) setA:(SInt32) value;
 - (TestAllTypesLiteRepeatedGroupBuilder*) clearA;
 @end
 
@@ -611,53 +611,53 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasOptionalInt32;
-- (long) optionalInt32;
-- (TestAllTypesLiteBuilder*) setOptionalInt32:(long) value;
+- (SInt32) optionalInt32;
+- (TestAllTypesLiteBuilder*) setOptionalInt32:(SInt32) value;
 - (TestAllTypesLiteBuilder*) clearOptionalInt32;
 
 - (BOOL) hasOptionalInt64;
-- (long long) optionalInt64;
-- (TestAllTypesLiteBuilder*) setOptionalInt64:(long long) value;
+- (SInt64) optionalInt64;
+- (TestAllTypesLiteBuilder*) setOptionalInt64:(SInt64) value;
 - (TestAllTypesLiteBuilder*) clearOptionalInt64;
 
 - (BOOL) hasOptionalUint32;
-- (unsigned long) optionalUint32;
-- (TestAllTypesLiteBuilder*) setOptionalUint32:(unsigned long) value;
+- (UInt32) optionalUint32;
+- (TestAllTypesLiteBuilder*) setOptionalUint32:(UInt32) value;
 - (TestAllTypesLiteBuilder*) clearOptionalUint32;
 
 - (BOOL) hasOptionalUint64;
-- (unsigned long long) optionalUint64;
-- (TestAllTypesLiteBuilder*) setOptionalUint64:(unsigned long long) value;
+- (UInt64) optionalUint64;
+- (TestAllTypesLiteBuilder*) setOptionalUint64:(UInt64) value;
 - (TestAllTypesLiteBuilder*) clearOptionalUint64;
 
 - (BOOL) hasOptionalSint32;
-- (long) optionalSint32;
-- (TestAllTypesLiteBuilder*) setOptionalSint32:(long) value;
+- (SInt32) optionalSint32;
+- (TestAllTypesLiteBuilder*) setOptionalSint32:(SInt32) value;
 - (TestAllTypesLiteBuilder*) clearOptionalSint32;
 
 - (BOOL) hasOptionalSint64;
-- (long long) optionalSint64;
-- (TestAllTypesLiteBuilder*) setOptionalSint64:(long long) value;
+- (SInt64) optionalSint64;
+- (TestAllTypesLiteBuilder*) setOptionalSint64:(SInt64) value;
 - (TestAllTypesLiteBuilder*) clearOptionalSint64;
 
 - (BOOL) hasOptionalFixed32;
-- (unsigned long) optionalFixed32;
-- (TestAllTypesLiteBuilder*) setOptionalFixed32:(unsigned long) value;
+- (UInt32) optionalFixed32;
+- (TestAllTypesLiteBuilder*) setOptionalFixed32:(UInt32) value;
 - (TestAllTypesLiteBuilder*) clearOptionalFixed32;
 
 - (BOOL) hasOptionalFixed64;
-- (unsigned long long) optionalFixed64;
-- (TestAllTypesLiteBuilder*) setOptionalFixed64:(unsigned long long) value;
+- (UInt64) optionalFixed64;
+- (TestAllTypesLiteBuilder*) setOptionalFixed64:(UInt64) value;
 - (TestAllTypesLiteBuilder*) clearOptionalFixed64;
 
 - (BOOL) hasOptionalSfixed32;
-- (long) optionalSfixed32;
-- (TestAllTypesLiteBuilder*) setOptionalSfixed32:(long) value;
+- (SInt32) optionalSfixed32;
+- (TestAllTypesLiteBuilder*) setOptionalSfixed32:(SInt32) value;
 - (TestAllTypesLiteBuilder*) clearOptionalSfixed32;
 
 - (BOOL) hasOptionalSfixed64;
-- (long long) optionalSfixed64;
-- (TestAllTypesLiteBuilder*) setOptionalSfixed64:(long long) value;
+- (SInt64) optionalSfixed64;
+- (TestAllTypesLiteBuilder*) setOptionalSfixed64:(SInt64) value;
 - (TestAllTypesLiteBuilder*) clearOptionalSfixed64;
 
 - (BOOL) hasOptionalFloat;
@@ -753,73 +753,73 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteBuilder*) clearOptionalLazyMessage;
 
 - (PBAppendableArray *)repeatedInt32;
-- (long)repeatedInt32AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedInt32:(long)value;
+- (SInt32)repeatedInt32AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedInt32:(SInt32)value;
 - (TestAllTypesLiteBuilder *)setRepeatedInt32Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedInt32Values:(const long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedInt32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedInt32;
 
 - (PBAppendableArray *)repeatedInt64;
-- (long long)repeatedInt64AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedInt64:(long long)value;
+- (SInt64)repeatedInt64AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedInt64:(SInt64)value;
 - (TestAllTypesLiteBuilder *)setRepeatedInt64Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedInt64Values:(const long long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedInt64Values:(const SInt64 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedInt64;
 
 - (PBAppendableArray *)repeatedUint32;
-- (unsigned long)repeatedUint32AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedUint32:(unsigned long)value;
+- (UInt32)repeatedUint32AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedUint32:(UInt32)value;
 - (TestAllTypesLiteBuilder *)setRepeatedUint32Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedUint32Values:(const unsigned long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedUint32Values:(const UInt32 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedUint32;
 
 - (PBAppendableArray *)repeatedUint64;
-- (unsigned long long)repeatedUint64AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedUint64:(unsigned long long)value;
+- (UInt64)repeatedUint64AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedUint64:(UInt64)value;
 - (TestAllTypesLiteBuilder *)setRepeatedUint64Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedUint64Values:(const unsigned long long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedUint64Values:(const UInt64 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedUint64;
 
 - (PBAppendableArray *)repeatedSint32;
-- (long)repeatedSint32AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedSint32:(long)value;
+- (SInt32)repeatedSint32AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedSint32:(SInt32)value;
 - (TestAllTypesLiteBuilder *)setRepeatedSint32Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedSint32Values:(const long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedSint32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedSint32;
 
 - (PBAppendableArray *)repeatedSint64;
-- (long long)repeatedSint64AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedSint64:(long long)value;
+- (SInt64)repeatedSint64AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedSint64:(SInt64)value;
 - (TestAllTypesLiteBuilder *)setRepeatedSint64Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedSint64Values:(const long long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedSint64Values:(const SInt64 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedSint64;
 
 - (PBAppendableArray *)repeatedFixed32;
-- (unsigned long)repeatedFixed32AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedFixed32:(unsigned long)value;
+- (UInt32)repeatedFixed32AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedFixed32:(UInt32)value;
 - (TestAllTypesLiteBuilder *)setRepeatedFixed32Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedFixed32Values:(const unsigned long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedFixed32Values:(const UInt32 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedFixed32;
 
 - (PBAppendableArray *)repeatedFixed64;
-- (unsigned long long)repeatedFixed64AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedFixed64:(unsigned long long)value;
+- (UInt64)repeatedFixed64AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedFixed64:(UInt64)value;
 - (TestAllTypesLiteBuilder *)setRepeatedFixed64Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedFixed64Values:(const unsigned long long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedFixed64Values:(const UInt64 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedFixed64;
 
 - (PBAppendableArray *)repeatedSfixed32;
-- (long)repeatedSfixed32AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedSfixed32:(long)value;
+- (SInt32)repeatedSfixed32AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedSfixed32:(SInt32)value;
 - (TestAllTypesLiteBuilder *)setRepeatedSfixed32Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedSfixed32Values:(const long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedSfixed32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedSfixed32;
 
 - (PBAppendableArray *)repeatedSfixed64;
-- (long long)repeatedSfixed64AtIndex:(NSUInteger)index;
-- (TestAllTypesLiteBuilder *)addRepeatedSfixed64:(long long)value;
+- (SInt64)repeatedSfixed64AtIndex:(NSUInteger)index;
+- (TestAllTypesLiteBuilder *)addRepeatedSfixed64:(SInt64)value;
 - (TestAllTypesLiteBuilder *)setRepeatedSfixed64Array:(NSArray *)array;
-- (TestAllTypesLiteBuilder *)setRepeatedSfixed64Values:(const long long *)values count:(NSUInteger)count;
+- (TestAllTypesLiteBuilder *)setRepeatedSfixed64Values:(const SInt64 *)values count:(NSUInteger)count;
 - (TestAllTypesLiteBuilder *)clearRepeatedSfixed64;
 
 - (PBAppendableArray *)repeatedFloat;
@@ -919,53 +919,53 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestAllTypesLiteBuilder *)clearRepeatedLazyMessage;
 
 - (BOOL) hasDefaultInt32;
-- (long) defaultInt32;
-- (TestAllTypesLiteBuilder*) setDefaultInt32:(long) value;
+- (SInt32) defaultInt32;
+- (TestAllTypesLiteBuilder*) setDefaultInt32:(SInt32) value;
 - (TestAllTypesLiteBuilder*) clearDefaultInt32;
 
 - (BOOL) hasDefaultInt64;
-- (long long) defaultInt64;
-- (TestAllTypesLiteBuilder*) setDefaultInt64:(long long) value;
+- (SInt64) defaultInt64;
+- (TestAllTypesLiteBuilder*) setDefaultInt64:(SInt64) value;
 - (TestAllTypesLiteBuilder*) clearDefaultInt64;
 
 - (BOOL) hasDefaultUint32;
-- (unsigned long) defaultUint32;
-- (TestAllTypesLiteBuilder*) setDefaultUint32:(unsigned long) value;
+- (UInt32) defaultUint32;
+- (TestAllTypesLiteBuilder*) setDefaultUint32:(UInt32) value;
 - (TestAllTypesLiteBuilder*) clearDefaultUint32;
 
 - (BOOL) hasDefaultUint64;
-- (unsigned long long) defaultUint64;
-- (TestAllTypesLiteBuilder*) setDefaultUint64:(unsigned long long) value;
+- (UInt64) defaultUint64;
+- (TestAllTypesLiteBuilder*) setDefaultUint64:(UInt64) value;
 - (TestAllTypesLiteBuilder*) clearDefaultUint64;
 
 - (BOOL) hasDefaultSint32;
-- (long) defaultSint32;
-- (TestAllTypesLiteBuilder*) setDefaultSint32:(long) value;
+- (SInt32) defaultSint32;
+- (TestAllTypesLiteBuilder*) setDefaultSint32:(SInt32) value;
 - (TestAllTypesLiteBuilder*) clearDefaultSint32;
 
 - (BOOL) hasDefaultSint64;
-- (long long) defaultSint64;
-- (TestAllTypesLiteBuilder*) setDefaultSint64:(long long) value;
+- (SInt64) defaultSint64;
+- (TestAllTypesLiteBuilder*) setDefaultSint64:(SInt64) value;
 - (TestAllTypesLiteBuilder*) clearDefaultSint64;
 
 - (BOOL) hasDefaultFixed32;
-- (unsigned long) defaultFixed32;
-- (TestAllTypesLiteBuilder*) setDefaultFixed32:(unsigned long) value;
+- (UInt32) defaultFixed32;
+- (TestAllTypesLiteBuilder*) setDefaultFixed32:(UInt32) value;
 - (TestAllTypesLiteBuilder*) clearDefaultFixed32;
 
 - (BOOL) hasDefaultFixed64;
-- (unsigned long long) defaultFixed64;
-- (TestAllTypesLiteBuilder*) setDefaultFixed64:(unsigned long long) value;
+- (UInt64) defaultFixed64;
+- (TestAllTypesLiteBuilder*) setDefaultFixed64:(UInt64) value;
 - (TestAllTypesLiteBuilder*) clearDefaultFixed64;
 
 - (BOOL) hasDefaultSfixed32;
-- (long) defaultSfixed32;
-- (TestAllTypesLiteBuilder*) setDefaultSfixed32:(long) value;
+- (SInt32) defaultSfixed32;
+- (TestAllTypesLiteBuilder*) setDefaultSfixed32:(SInt32) value;
 - (TestAllTypesLiteBuilder*) clearDefaultSfixed32;
 
 - (BOOL) hasDefaultSfixed64;
-- (long long) defaultSfixed64;
-- (TestAllTypesLiteBuilder*) setDefaultSfixed64:(long long) value;
+- (SInt64) defaultSfixed64;
+- (TestAllTypesLiteBuilder*) setDefaultSfixed64:(SInt64) value;
 - (TestAllTypesLiteBuilder*) clearDefaultSfixed64;
 
 - (BOOL) hasDefaultFloat;
@@ -1022,10 +1022,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @interface ForeignMessageLite : PBGeneratedMessage {
 @private
   BOOL hasC_:1;
-  long c;
+  SInt32 c;
 }
 - (BOOL) hasC;
-@property (readonly) long c;
+@property (readonly) SInt32 c;
 
 + (ForeignMessageLite*) defaultInstance;
 - (ForeignMessageLite*) defaultInstance;
@@ -1063,41 +1063,41 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (ForeignMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasC;
-- (long) c;
-- (ForeignMessageLiteBuilder*) setC:(long) value;
+- (SInt32) c;
+- (ForeignMessageLiteBuilder*) setC:(SInt32) value;
 - (ForeignMessageLiteBuilder*) clearC;
 @end
 
 @interface TestPackedTypesLite : PBGeneratedMessage {
 @private
   PBAppendableArray * packedBoolArray;
-  NSInteger packedBoolMemoizedSerializedSize;
+  SInt32 packedBoolMemoizedSerializedSize;
   PBAppendableArray * packedDoubleArray;
-  NSInteger packedDoubleMemoizedSerializedSize;
+  SInt32 packedDoubleMemoizedSerializedSize;
   PBAppendableArray * packedFloatArray;
-  NSInteger packedFloatMemoizedSerializedSize;
+  SInt32 packedFloatMemoizedSerializedSize;
   PBAppendableArray * packedInt64Array;
-  NSInteger packedInt64MemoizedSerializedSize;
+  SInt32 packedInt64MemoizedSerializedSize;
   PBAppendableArray * packedUint64Array;
-  NSInteger packedUint64MemoizedSerializedSize;
+  SInt32 packedUint64MemoizedSerializedSize;
   PBAppendableArray * packedInt32Array;
-  NSInteger packedInt32MemoizedSerializedSize;
+  SInt32 packedInt32MemoizedSerializedSize;
   PBAppendableArray * packedFixed64Array;
-  NSInteger packedFixed64MemoizedSerializedSize;
+  SInt32 packedFixed64MemoizedSerializedSize;
   PBAppendableArray * packedFixed32Array;
-  NSInteger packedFixed32MemoizedSerializedSize;
+  SInt32 packedFixed32MemoizedSerializedSize;
   PBAppendableArray * packedUint32Array;
-  NSInteger packedUint32MemoizedSerializedSize;
+  SInt32 packedUint32MemoizedSerializedSize;
   PBAppendableArray * packedEnumArray;
-  NSInteger packedEnumMemoizedSerializedSize;
+  SInt32 packedEnumMemoizedSerializedSize;
   PBAppendableArray * packedSfixed32Array;
-  NSInteger packedSfixed32MemoizedSerializedSize;
+  SInt32 packedSfixed32MemoizedSerializedSize;
   PBAppendableArray * packedSfixed64Array;
-  NSInteger packedSfixed64MemoizedSerializedSize;
+  SInt32 packedSfixed64MemoizedSerializedSize;
   PBAppendableArray * packedSint32Array;
-  NSInteger packedSint32MemoizedSerializedSize;
+  SInt32 packedSint32MemoizedSerializedSize;
   PBAppendableArray * packedSint64Array;
-  NSInteger packedSint64MemoizedSerializedSize;
+  SInt32 packedSint64MemoizedSerializedSize;
 }
 @property (readonly, strong) PBArray * packedInt32;
 @property (readonly, strong) PBArray * packedInt64;
@@ -1113,16 +1113,16 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @property (readonly, strong) PBArray * packedDouble;
 @property (readonly, strong) PBArray * packedBool;
 @property (readonly, strong) PBArray * packedEnum;
-- (long)packedInt32AtIndex:(NSUInteger)index;
-- (long long)packedInt64AtIndex:(NSUInteger)index;
-- (unsigned long)packedUint32AtIndex:(NSUInteger)index;
-- (unsigned long long)packedUint64AtIndex:(NSUInteger)index;
-- (long)packedSint32AtIndex:(NSUInteger)index;
-- (long long)packedSint64AtIndex:(NSUInteger)index;
-- (unsigned long)packedFixed32AtIndex:(NSUInteger)index;
-- (unsigned long long)packedFixed64AtIndex:(NSUInteger)index;
-- (long)packedSfixed32AtIndex:(NSUInteger)index;
-- (long long)packedSfixed64AtIndex:(NSUInteger)index;
+- (SInt32)packedInt32AtIndex:(NSUInteger)index;
+- (SInt64)packedInt64AtIndex:(NSUInteger)index;
+- (UInt32)packedUint32AtIndex:(NSUInteger)index;
+- (UInt64)packedUint64AtIndex:(NSUInteger)index;
+- (SInt32)packedSint32AtIndex:(NSUInteger)index;
+- (SInt64)packedSint64AtIndex:(NSUInteger)index;
+- (UInt32)packedFixed32AtIndex:(NSUInteger)index;
+- (UInt64)packedFixed64AtIndex:(NSUInteger)index;
+- (SInt32)packedSfixed32AtIndex:(NSUInteger)index;
+- (SInt64)packedSfixed64AtIndex:(NSUInteger)index;
 - (Float32)packedFloatAtIndex:(NSUInteger)index;
 - (Float64)packedDoubleAtIndex:(NSUInteger)index;
 - (BOOL)packedBoolAtIndex:(NSUInteger)index;
@@ -1164,73 +1164,73 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestPackedTypesLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (PBAppendableArray *)packedInt32;
-- (long)packedInt32AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedInt32:(long)value;
+- (SInt32)packedInt32AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedInt32:(SInt32)value;
 - (TestPackedTypesLiteBuilder *)setPackedInt32Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedInt32Values:(const long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedInt32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedInt32;
 
 - (PBAppendableArray *)packedInt64;
-- (long long)packedInt64AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedInt64:(long long)value;
+- (SInt64)packedInt64AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedInt64:(SInt64)value;
 - (TestPackedTypesLiteBuilder *)setPackedInt64Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedInt64Values:(const long long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedInt64Values:(const SInt64 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedInt64;
 
 - (PBAppendableArray *)packedUint32;
-- (unsigned long)packedUint32AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedUint32:(unsigned long)value;
+- (UInt32)packedUint32AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedUint32:(UInt32)value;
 - (TestPackedTypesLiteBuilder *)setPackedUint32Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedUint32Values:(const unsigned long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedUint32Values:(const UInt32 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedUint32;
 
 - (PBAppendableArray *)packedUint64;
-- (unsigned long long)packedUint64AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedUint64:(unsigned long long)value;
+- (UInt64)packedUint64AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedUint64:(UInt64)value;
 - (TestPackedTypesLiteBuilder *)setPackedUint64Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedUint64Values:(const unsigned long long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedUint64Values:(const UInt64 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedUint64;
 
 - (PBAppendableArray *)packedSint32;
-- (long)packedSint32AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedSint32:(long)value;
+- (SInt32)packedSint32AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedSint32:(SInt32)value;
 - (TestPackedTypesLiteBuilder *)setPackedSint32Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedSint32Values:(const long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedSint32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedSint32;
 
 - (PBAppendableArray *)packedSint64;
-- (long long)packedSint64AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedSint64:(long long)value;
+- (SInt64)packedSint64AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedSint64:(SInt64)value;
 - (TestPackedTypesLiteBuilder *)setPackedSint64Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedSint64Values:(const long long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedSint64Values:(const SInt64 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedSint64;
 
 - (PBAppendableArray *)packedFixed32;
-- (unsigned long)packedFixed32AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedFixed32:(unsigned long)value;
+- (UInt32)packedFixed32AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedFixed32:(UInt32)value;
 - (TestPackedTypesLiteBuilder *)setPackedFixed32Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedFixed32Values:(const unsigned long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedFixed32Values:(const UInt32 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedFixed32;
 
 - (PBAppendableArray *)packedFixed64;
-- (unsigned long long)packedFixed64AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedFixed64:(unsigned long long)value;
+- (UInt64)packedFixed64AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedFixed64:(UInt64)value;
 - (TestPackedTypesLiteBuilder *)setPackedFixed64Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedFixed64Values:(const unsigned long long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedFixed64Values:(const UInt64 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedFixed64;
 
 - (PBAppendableArray *)packedSfixed32;
-- (long)packedSfixed32AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedSfixed32:(long)value;
+- (SInt32)packedSfixed32AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedSfixed32:(SInt32)value;
 - (TestPackedTypesLiteBuilder *)setPackedSfixed32Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedSfixed32Values:(const long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedSfixed32Values:(const SInt32 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedSfixed32;
 
 - (PBAppendableArray *)packedSfixed64;
-- (long long)packedSfixed64AtIndex:(NSUInteger)index;
-- (TestPackedTypesLiteBuilder *)addPackedSfixed64:(long long)value;
+- (SInt64)packedSfixed64AtIndex:(NSUInteger)index;
+- (TestPackedTypesLiteBuilder *)addPackedSfixed64:(SInt64)value;
 - (TestPackedTypesLiteBuilder *)setPackedSfixed64Array:(NSArray *)array;
-- (TestPackedTypesLiteBuilder *)setPackedSfixed64Values:(const long long *)values count:(NSUInteger)count;
+- (TestPackedTypesLiteBuilder *)setPackedSfixed64Values:(const SInt64 *)values count:(NSUInteger)count;
 - (TestPackedTypesLiteBuilder *)clearPackedSfixed64;
 
 - (PBAppendableArray *)packedFloat;
@@ -1305,10 +1305,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @interface OptionalGroup_extension_lite : PBGeneratedMessage {
 @private
   BOOL hasA_:1;
-  long a;
+  SInt32 a;
 }
 - (BOOL) hasA;
-@property (readonly) long a;
+@property (readonly) SInt32 a;
 
 + (OptionalGroup_extension_lite*) defaultInstance;
 - (OptionalGroup_extension_lite*) defaultInstance;
@@ -1346,18 +1346,18 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (OptionalGroup_extension_liteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasA;
-- (long) a;
-- (OptionalGroup_extension_liteBuilder*) setA:(long) value;
+- (SInt32) a;
+- (OptionalGroup_extension_liteBuilder*) setA:(SInt32) value;
 - (OptionalGroup_extension_liteBuilder*) clearA;
 @end
 
 @interface RepeatedGroup_extension_lite : PBGeneratedMessage {
 @private
   BOOL hasA_:1;
-  long a;
+  SInt32 a;
 }
 - (BOOL) hasA;
-@property (readonly) long a;
+@property (readonly) SInt32 a;
 
 + (RepeatedGroup_extension_lite*) defaultInstance;
 - (RepeatedGroup_extension_lite*) defaultInstance;
@@ -1395,8 +1395,8 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (RepeatedGroup_extension_liteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasA;
-- (long) a;
-- (RepeatedGroup_extension_liteBuilder*) setA:(long) value;
+- (SInt32) a;
+- (RepeatedGroup_extension_liteBuilder*) setA:(SInt32) value;
 - (RepeatedGroup_extension_liteBuilder*) clearA;
 @end
 
@@ -1484,10 +1484,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @interface TestDeprecatedLite : PBGeneratedMessage {
 @private
   BOOL hasDeprecatedField_:1;
-  long deprecatedField;
+  SInt32 deprecatedField;
 }
 - (BOOL) hasDeprecatedField;
-@property (readonly) long deprecatedField;
+@property (readonly) SInt32 deprecatedField;
 
 + (TestDeprecatedLite*) defaultInstance;
 - (TestDeprecatedLite*) defaultInstance;
@@ -1525,8 +1525,8 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestDeprecatedLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasDeprecatedField;
-- (long) deprecatedField;
-- (TestDeprecatedLiteBuilder*) setDeprecatedField:(long) value;
+- (SInt32) deprecatedField;
+- (TestDeprecatedLiteBuilder*) setDeprecatedField:(SInt32) value;
 - (TestDeprecatedLiteBuilder*) clearDeprecatedField;
 @end
 

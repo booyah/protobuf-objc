@@ -250,7 +250,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "NSInteger $name$MemoizedSerializedSize;\n");
+        "SInt32 $name$MemoizedSerializedSize;\n");
     }
   }
 
@@ -378,8 +378,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     // If packed, set up the while loop
     if (descriptor_->options().packed()) {
       printer->Print(variables_,
-        "NSInteger length = [input readRawVarint32];\n"
-        "NSInteger oldLimit = [input pushLimit:length];\n"
+        "SInt32 length = [input readRawVarint32];\n"
+        "SInt32 oldLimit = [input pushLimit:length];\n"
         "while (input.bytesUntilLimit > 0) {\n");
       printer->Indent();
     }
@@ -426,7 +426,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedEnumFieldGenerator::GenerateSerializedSizeCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "{\n"
-      "  NSInteger dataSize = 0;\n"
+      "  SInt32 dataSize = 0;\n"
       "  const NSUInteger count = self.$list_name$.count;\n");
     printer->Indent();
 
@@ -447,7 +447,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "}\n");
     } else {
       printer->Print(variables_,
-        "size_ += $tag_size$ * count;\n");
+        "size_ += (SInt32)($tag_size$ * count);\n");
     }
 
     if (descriptor_->options().packed()) {

@@ -37,6 +37,11 @@
                BlueprintName = "UnitTests"
                ReferencedContainer = "container:ProtocolBuffers.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TestUtilities">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

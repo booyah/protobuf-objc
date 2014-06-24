@@ -22,14 +22,14 @@
 
 @implementation CodedOutputStreamTests
 
-- (NSData*) bytes_with_sentinel:(long) unused, ... {
+- (NSData*) bytes_with_sentinel:(SInt32) unused, ... {
   va_list list;
   va_start(list, unused);
 
   NSMutableData* values = [NSMutableData dataWithCapacity:0];
-  long i;
+  SInt32 i;
 
-  while ((i = va_arg(list, long)) != 256) {
+  while ((i = va_arg(list, SInt32)) != 256) {
     NSAssert(i >= 0 && i < 256, @"");
     uint8_t u = (uint8_t)i;
     [values appendBytes:&u length:1];
@@ -58,10 +58,10 @@
  * Parses the given bytes using writeRawLittleEndian32() and checks
  * that the result matches the given value.
  */
-- (void) assertWriteLittleEndian32:(NSData*) data value:(long) value {
+- (void) assertWriteLittleEndian32:(NSData*) data value:(SInt32) value {
   NSOutputStream* rawOutput = [self openMemoryStream];
   PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
-  [output writeRawLittleEndian32:(long)value];
+  [output writeRawLittleEndian32:(SInt32)value];
   [output flush];
 
   NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
@@ -71,7 +71,7 @@
   for (int blockSize = 1; blockSize <= 16; blockSize *= 2) {
     NSOutputStream* rawOutput = [self openMemoryStream];
     PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput bufferSize:blockSize];
-    [output writeRawLittleEndian32:(long)value];
+    [output writeRawLittleEndian32:(SInt32)value];
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
@@ -84,7 +84,7 @@
  * Parses the given bytes using writeRawLittleEndian64() and checks
  * that the result matches the given value.
  */
-- (void) assertWriteLittleEndian64:(NSData*) data value:(long long) value {
+- (void) assertWriteLittleEndian64:(NSData*) data value:(SInt64) value {
   NSOutputStream* rawOutput = [self openMemoryStream];
   PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
   [output writeRawLittleEndian64:value];
@@ -111,19 +111,19 @@
  * Writes the given value using writeRawVarint32() and writeRawVarint64() and
  * checks that the result matches the given bytes.
  */
-- (void) assertWriteVarint:(NSData*) data value:(long long) value {
+- (void) assertWriteVarint:(NSData*) data value:(SInt64) value {
   // Only do 32-bit write if the value fits in 32 bits.
   if (logicalRightShift64(value, 32) == 0) {
     NSOutputStream* rawOutput = [self openMemoryStream];
     PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
-    [output writeRawVarint32:(long)value];
+    [output writeRawVarint32:(SInt32)value];
     [output flush];
 
     NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
     XCTAssertEqualObjects(data, actual, @"");
 
     // Also try computing size.
-    XCTAssertTrue(data.length == computeRawVarint32Size((long)value), @"");
+    XCTAssertTrue(data.length == computeRawVarint32Size((SInt32)value), @"");
   }
 
   {
@@ -147,7 +147,7 @@
       NSOutputStream* rawOutput = [self openMemoryStream];
       PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput bufferSize:blockSize];
 
-      [output writeRawVarint32:(long)value];
+      [output writeRawVarint32:(SInt32)value];
       [output flush];
 
       NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
@@ -276,43 +276,24 @@
 
 /** Tests writing a whole message with every field type. */
 
-#warning TODO check the test
 - (void) testWriteWholeMessage {
- 
     TestAllTypes* message = [TestUtilities allSet];
+    
     NSData* rawBytes = message.data;
-//    NSData* goldenData = [TestUtilities goldenData];
-//    TestAllTypes *all= [TestAllTypes parseFromData:goldenData];
+    NSData* goldenData = [TestUtilities goldenData];
+    NSAssert(goldenData != nil, @"Golden data must be present");
+    XCTAssertEqualObjects(rawBytes, goldenData, @"");
     
-//    const char *bytes = [goldenData bytes];
-//    
-//    for (int i = 0; i < [rawBytes length]; i++)
-//    {
-//        for (int j = 0; j < [goldenData length]; j++) {
-//            
-//            if ((unsigned char)rawBytes.bytes[i] != (unsigned char)goldenData.bytes[j]) {
-//                
-//            }
-//        }
-//        
-//    }
-//    NSLog(@"%@",message);
-//    NSLog(@"%@",all);
-//    STAssertTrue([message isEqual:all], @"");
-    
-    
-//  STAssertEqualObjects(rawBytes, goldenData, @"");
-
-  // Try different block sizes.
-  for (int blockSize = 1; blockSize < 256; blockSize *= 2) {
-    NSOutputStream* rawOutput = [self openMemoryStream];
-    PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput bufferSize:blockSize];
-    [message writeToCodedOutputStream:output];
-    [output flush];
-
-    NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
-    XCTAssertEqualObjects(rawBytes, actual, @"");
-  }
+    // Try different block sizes.
+    for (int blockSize = 1; blockSize < 256; blockSize *= 2) {
+        NSOutputStream* rawOutput = [self openMemoryStream];
+        PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput bufferSize:blockSize];
+        [message writeToCodedOutputStream:output];
+        [output flush];
+        
+        NSData* actual = [rawOutput propertyForKey:NSStreamDataWrittenToMemoryStreamKey];
+        XCTAssertEqualObjects(rawBytes, actual, @"");
+    }
 }
 
 @end

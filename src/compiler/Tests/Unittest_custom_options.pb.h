@@ -681,16 +681,16 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
   BOOL hasFoo_:1;
   BOOL hasFoo2_:1;
   BOOL hasFoo3_:1;
-  long foo;
-  long foo2;
-  long foo3;
+  SInt32 foo;
+  SInt32 foo2;
+  SInt32 foo3;
 }
 - (BOOL) hasFoo;
 - (BOOL) hasFoo2;
 - (BOOL) hasFoo3;
-@property (readonly) long foo;
-@property (readonly) long foo2;
-@property (readonly) long foo3;
+@property (readonly) SInt32 foo;
+@property (readonly) SInt32 foo2;
+@property (readonly) SInt32 foo3;
 
 + (ComplexOptionType1*) defaultInstance;
 - (ComplexOptionType1*) defaultInstance;
@@ -728,18 +728,18 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOptionType1Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasFoo;
-- (long) foo;
-- (ComplexOptionType1Builder*) setFoo:(long) value;
+- (SInt32) foo;
+- (ComplexOptionType1Builder*) setFoo:(SInt32) value;
 - (ComplexOptionType1Builder*) clearFoo;
 
 - (BOOL) hasFoo2;
-- (long) foo2;
-- (ComplexOptionType1Builder*) setFoo2:(long) value;
+- (SInt32) foo2;
+- (ComplexOptionType1Builder*) setFoo2:(SInt32) value;
 - (ComplexOptionType1Builder*) clearFoo2;
 
 - (BOOL) hasFoo3;
-- (long) foo3;
-- (ComplexOptionType1Builder*) setFoo3:(long) value;
+- (SInt32) foo3;
+- (ComplexOptionType1Builder*) setFoo3:(SInt32) value;
 - (ComplexOptionType1Builder*) clearFoo3;
 @end
 
@@ -748,7 +748,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
   BOOL hasBaz_:1;
   BOOL hasBar_:1;
   BOOL hasFred_:1;
-  long baz;
+  SInt32 baz;
   ComplexOptionType1* bar;
   ComplexOptionType2ComplexOptionType4* fred;
 }
@@ -756,7 +756,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (BOOL) hasBaz;
 - (BOOL) hasFred;
 @property (readonly, strong) ComplexOptionType1* bar;
-@property (readonly) long baz;
+@property (readonly) SInt32 baz;
 @property (readonly, strong) ComplexOptionType2ComplexOptionType4* fred;
 
 + (ComplexOptionType2*) defaultInstance;
@@ -780,10 +780,10 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @interface ComplexOptionType2ComplexOptionType4 : PBGeneratedMessage {
 @private
   BOOL hasWaldo_:1;
-  long waldo;
+  SInt32 waldo;
 }
 - (BOOL) hasWaldo;
-@property (readonly) long waldo;
+@property (readonly) SInt32 waldo;
 
 + (ComplexOptionType2ComplexOptionType4*) defaultInstance;
 - (ComplexOptionType2ComplexOptionType4*) defaultInstance;
@@ -822,8 +822,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOptionType2ComplexOptionType4Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasWaldo;
-- (long) waldo;
-- (ComplexOptionType2ComplexOptionType4Builder*) setWaldo:(long) value;
+- (SInt32) waldo;
+- (ComplexOptionType2ComplexOptionType4Builder*) setWaldo:(SInt32) value;
 - (ComplexOptionType2ComplexOptionType4Builder*) clearWaldo;
 @end
 
@@ -852,8 +852,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOptionType2Builder*) clearBar;
 
 - (BOOL) hasBaz;
-- (long) baz;
-- (ComplexOptionType2Builder*) setBaz:(long) value;
+- (SInt32) baz;
+- (ComplexOptionType2Builder*) setBaz:(SInt32) value;
 - (ComplexOptionType2Builder*) clearBaz;
 
 - (BOOL) hasFred;
@@ -868,12 +868,12 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @private
   BOOL hasQux_:1;
   BOOL hasComplexOptionType5_:1;
-  long qux;
+  SInt32 qux;
   ComplexOptionType3ComplexOptionType5* complexOptionType5;
 }
 - (BOOL) hasQux;
 - (BOOL) hasComplexOptionType5;
-@property (readonly) long qux;
+@property (readonly) SInt32 qux;
 @property (readonly, strong) ComplexOptionType3ComplexOptionType5* complexOptionType5;
 
 + (ComplexOptionType3*) defaultInstance;
@@ -897,10 +897,10 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @interface ComplexOptionType3ComplexOptionType5 : PBGeneratedMessage {
 @private
   BOOL hasPlugh_:1;
-  long plugh;
+  SInt32 plugh;
 }
 - (BOOL) hasPlugh;
-@property (readonly) long plugh;
+@property (readonly) SInt32 plugh;
 
 + (ComplexOptionType3ComplexOptionType5*) defaultInstance;
 - (ComplexOptionType3ComplexOptionType5*) defaultInstance;
@@ -938,8 +938,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOptionType3ComplexOptionType5Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasPlugh;
-- (long) plugh;
-- (ComplexOptionType3ComplexOptionType5Builder*) setPlugh:(long) value;
+- (SInt32) plugh;
+- (ComplexOptionType3ComplexOptionType5Builder*) setPlugh:(SInt32) value;
 - (ComplexOptionType3ComplexOptionType5Builder*) clearPlugh;
 @end
 
@@ -961,8 +961,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOptionType3Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasQux;
-- (long) qux;
-- (ComplexOptionType3Builder*) setQux:(long) value;
+- (SInt32) qux;
+- (ComplexOptionType3Builder*) setQux:(SInt32) value;
 - (ComplexOptionType3Builder*) clearQux;
 
 - (BOOL) hasComplexOptionType5;
@@ -976,10 +976,10 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @interface ComplexOpt6 : PBGeneratedMessage {
 @private
   BOOL hasXyzzy_:1;
-  long xyzzy;
+  SInt32 xyzzy;
 }
 - (BOOL) hasXyzzy;
-@property (readonly) long xyzzy;
+@property (readonly) SInt32 xyzzy;
 
 + (ComplexOpt6*) defaultInstance;
 - (ComplexOpt6*) defaultInstance;
@@ -1017,8 +1017,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOpt6Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasXyzzy;
-- (long) xyzzy;
-- (ComplexOpt6Builder*) setXyzzy:(long) value;
+- (SInt32) xyzzy;
+- (ComplexOpt6Builder*) setXyzzy:(SInt32) value;
 - (ComplexOpt6Builder*) clearXyzzy;
 @end
 
@@ -1159,7 +1159,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
   BOOL hasSub_:1;
   BOOL hasFile_:1;
   BOOL hasMset_:1;
-  long i;
+  SInt32 i;
   NSString* s;
   Aggregate* sub;
   PBFileOptions* file;
@@ -1170,7 +1170,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (BOOL) hasSub;
 - (BOOL) hasFile;
 - (BOOL) hasMset;
-@property (readonly) long i;
+@property (readonly) SInt32 i;
 @property (readonly, strong) NSString* s;
 @property (readonly, strong) Aggregate* sub;
 @property (readonly, strong) PBFileOptions* file;
@@ -1213,8 +1213,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (AggregateBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasI;
-- (long) i;
-- (AggregateBuilder*) setI:(long) value;
+- (SInt32) i;
+- (AggregateBuilder*) setI:(SInt32) value;
 - (AggregateBuilder*) clearI;
 
 - (BOOL) hasS;
@@ -1247,10 +1247,10 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @interface AggregateMessage : PBGeneratedMessage {
 @private
   BOOL hasFieldname_:1;
-  long fieldname;
+  SInt32 fieldname;
 }
 - (BOOL) hasFieldname;
-@property (readonly) long fieldname;
+@property (readonly) SInt32 fieldname;
 
 + (AggregateMessage*) defaultInstance;
 - (AggregateMessage*) defaultInstance;
@@ -1288,8 +1288,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (AggregateMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasFieldname;
-- (long) fieldname;
-- (AggregateMessageBuilder*) setFieldname:(long) value;
+- (SInt32) fieldname;
+- (AggregateMessageBuilder*) setFieldname:(SInt32) value;
 - (AggregateMessageBuilder*) clearFieldname;
 @end
 
@@ -1319,10 +1319,10 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @interface NestedOptionTypeNestedMessage : PBGeneratedMessage {
 @private
   BOOL hasNestedField_:1;
-  long nestedField;
+  SInt32 nestedField;
 }
 - (BOOL) hasNestedField;
-@property (readonly) long nestedField;
+@property (readonly) SInt32 nestedField;
 
 + (NestedOptionTypeNestedMessage*) defaultInstance;
 - (NestedOptionTypeNestedMessage*) defaultInstance;
@@ -1360,8 +1360,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (NestedOptionTypeNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasNestedField;
-- (long) nestedField;
-- (NestedOptionTypeNestedMessageBuilder*) setNestedField:(long) value;
+- (SInt32) nestedField;
+- (NestedOptionTypeNestedMessageBuilder*) setNestedField:(SInt32) value;
 - (NestedOptionTypeNestedMessageBuilder*) clearNestedField;
 @end
 

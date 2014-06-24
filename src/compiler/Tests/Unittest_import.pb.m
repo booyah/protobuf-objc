@@ -32,7 +32,7 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
   }
 }
 @interface ImportMessage ()
-@property long d;
+@property SInt32 d;
 @end
 
 @implementation ImportMessage
@@ -73,8 +73,8 @@ static ImportMessage* defaultImportMessageInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -199,7 +199,7 @@ static ImportMessage* defaultImportMessageInstance = nil;
 - (ImportMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -221,10 +221,10 @@ static ImportMessage* defaultImportMessageInstance = nil;
 - (BOOL) hasD {
   return result.hasD;
 }
-- (long) d {
+- (SInt32) d {
   return result.d;
 }
-- (ImportMessageBuilder*) setD:(long) value {
+- (ImportMessageBuilder*) setD:(SInt32) value {
   result.hasD = YES;
   result.d = value;
   return self;

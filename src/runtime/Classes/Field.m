@@ -43,29 +43,29 @@ static PBField *sDefaultInstance = nil;
 	return sDefaultInstance;
 }
 
-- (long)getSerializedSize:(long)fieldNumber {
-	long result = 0;
+- (SInt32)getSerializedSize:(SInt32)fieldNumber {
+	SInt32 result = 0;
 
-	const long long *varintValues = (const long long *)_varintArray.data;
+	const SInt64 *varintValues = (const SInt64 *)_varintArray.data;
 	if (varintValues) {
-		const unsigned long count = _varintArray.count;
-		for (unsigned long i = 0; i < count; ++i) {
+		const NSUInteger count = _varintArray.count;
+		for (UInt32 i = 0; i < count; ++i) {
 			result += computeInt64Size(fieldNumber, varintValues[i]);
 		}
 	}
 
-	const long *fixed32Values = (const long *)_fixed32Array.data;
+	const SInt32 *fixed32Values = (const SInt32 *)_fixed32Array.data;
 	if (fixed32Values) {
-		const unsigned long count = _fixed32Array.count;
-		for (unsigned long i = 0; i < count; ++i) {
+		const NSUInteger count = _fixed32Array.count;
+		for (UInt32 i = 0; i < count; ++i) {
 			result += computeFixed32Size(fieldNumber, fixed32Values[i]);
 		}
 	}
 
-	const long long *fixed64Values = (const long long *)_fixed64Array.data;
+	const SInt64 *fixed64Values = (const SInt64 *)_fixed64Array.data;
 	if (fixed64Values) {
-		const unsigned long count = _fixed64Array.count;
-		for (unsigned long i = 0; i < count; ++i) {
+		const NSUInteger count = _fixed64Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
 			result += computeFixed64Size(fieldNumber, fixed64Values[i]);
 		}
 	}
@@ -81,8 +81,8 @@ static PBField *sDefaultInstance = nil;
 	return result;
 }
 
-- (long)getSerializedSizeAsMessageSetExtension:(long)fieldNumber {
-	long result = 0;
+- (SInt32)getSerializedSizeAsMessageSetExtension:(SInt32)fieldNumber {
+	SInt32 result = 0;
 
 	for (NSData *value in _lengthDelimitedArray) {
 		result += computeRawMessageSetExtensionSize(fieldNumber, value);
@@ -91,27 +91,27 @@ static PBField *sDefaultInstance = nil;
 	return result;
 }
 
-- (void)writeTo:(long)fieldNumber output:(PBCodedOutputStream *) output {
-	const long long *varintValues = (const long long *)_varintArray.data;
+- (void)writeTo:(SInt32)fieldNumber output:(PBCodedOutputStream *) output {
+	const SInt64 *varintValues = (const SInt64 *)_varintArray.data;
 	if (varintValues) {
-		const unsigned long count = _varintArray.count;
-		for (unsigned long i = 0; i < count; ++i) {
+		const NSUInteger count = _varintArray.count;
+		for (NSUInteger i = 0; i < count; ++i) {
 			[output writeInt64:fieldNumber value:varintValues[i]];
 		}
 	}
 
-	const long *fixed32Values = (const long *)_fixed32Array.data;
+	const SInt32 *fixed32Values = (const SInt32 *)_fixed32Array.data;
 	if (fixed32Values) {
-		const unsigned long count = _fixed32Array.count;
-		for (unsigned long i = 0; i < count; ++i) {
+		const NSUInteger count = _fixed32Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
 			[output writeFixed32:fieldNumber value:fixed32Values[i]];
 		}
 	}
 
-	const long long *fixed64Values = (const long long *)_fixed64Array.data;
+	const SInt64 *fixed64Values = (const SInt64 *)_fixed64Array.data;
 	if (fixed64Values) {
-		const unsigned long count = _fixed64Array.count;
-		for (unsigned long i = 0; i < count; ++i) {
+		const NSUInteger count = _fixed64Array.count;
+		for (NSUInteger i = 0; i < count; ++i) {
 			[output writeFixed64:fieldNumber value:fixed64Values[i]];
 		}
 	}
@@ -125,7 +125,7 @@ static PBField *sDefaultInstance = nil;
 	}
 }
 
-- (void)writeDescriptionFor:(long) fieldNumber
+- (void)writeDescriptionFor:(SInt32) fieldNumber
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent {
     [self.varintArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -150,7 +150,7 @@ static PBField *sDefaultInstance = nil;
       }
 }
 
-- (void)writeAsMessageSetExtensionTo:(long)fieldNumber output:(PBCodedOutputStream *) output {
+- (void)writeAsMessageSetExtensionTo:(SInt32)fieldNumber output:(PBCodedOutputStream *) output {
 	for (NSData *value in _lengthDelimitedArray) {
 		[output writeRawMessageSetExtension:fieldNumber value:value];
 	}

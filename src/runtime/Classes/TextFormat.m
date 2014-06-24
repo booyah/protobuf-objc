@@ -53,7 +53,7 @@ BOOL isHex(unichar c) {
 }
 
 
-+ (long long) parseInteger:(NSString*) text
++ (SInt64) parseInteger:(NSString*) text
                 isSigned:(BOOL) isSigned
                   isLong:(BOOL) isLong {
   if (text.length == 0) {
@@ -71,7 +71,7 @@ BOOL isHex(unichar c) {
   }
 
   // now call into the appropriate conversion utilities.
-  long long result;
+ SInt64 result;
   const char* in_string = text.UTF8String;
   char* out_string = NULL;
   errno = 0;
@@ -85,7 +85,7 @@ BOOL isHex(unichar c) {
     if (isSigned) {
       result = strtol(in_string, &out_string, 0);
     } else {
-      result = convertUInt32ToInt32(strtoul(in_string, &out_string, 0));
+      result = convertUInt32ToInt32((SInt32)strtoul(in_string, &out_string, 0));
     }
   }
 
@@ -109,8 +109,8 @@ BOOL isHex(unichar c) {
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
  * respectively.
  */
-+ (long) parseInt32:(NSString*) text {
-  return (long)[self parseInteger:text isSigned:YES isLong:NO];
++ (SInt32) parseInt32:(NSString*) text {
+  return (SInt32)[self parseInteger:text isSigned:YES isLong:NO];
 }
 
 
@@ -119,8 +119,8 @@ BOOL isHex(unichar c) {
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
  * respectively.  The result is coerced to a (signed) {@code int} when returned.
  */
-+ (long) parseUInt32:(NSString*) text {
-  return (long)[self parseInteger:text isSigned:NO isLong:NO];
++ (SInt32) parseUInt32:(NSString*) text {
+  return (SInt32)[self parseInteger:text isSigned:NO isLong:NO];
 }
 
 
@@ -129,7 +129,7 @@ BOOL isHex(unichar c) {
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
  * respectively.
  */
-+ (long long) parseInt64:(NSString*) text {
++ (SInt64) parseInt64:(NSString*) text {
   return [self parseInteger:text isSigned:YES isLong:YES];
 }
 
@@ -137,10 +137,10 @@ BOOL isHex(unichar c) {
 /**
  * Parse a 64-bit unsigned integer from the text.  This function recognizes
  * the prefixes "0x" and "0" to signify hexidecimal and octal numbers,
- * respectively.  The result is coerced to a (signed) {@code long} when
+ * respectively.  The result is coerced to a (signed) {@code SInt32} when
  * returned.
  */
-+ (long long) parseUInt64:(NSString*) text {
++ (SInt64) parseUInt64:(NSString*) text {
   return [self parseInteger:text isSigned:NO isLong:YES];
 }
 
@@ -149,7 +149,7 @@ BOOL isHex(unichar c) {
  * numeric value.  This is like {@code Character.digit()} but we don't accept
  * non-ASCII digits.
  */
-long digitValue(unichar c) {
+SInt32 digitValue(unichar c) {
   if ('0' <= c && c <= '9') {
     return c - '0';
   } else if ('a' <= c && c <= 'z') {
@@ -168,8 +168,8 @@ long digitValue(unichar c) {
 + (NSData*) unescapeBytes:(NSString*) input {
   NSMutableData* result = [NSMutableData dataWithLength:input.length];
 
-  long pos = 0;
-  for (long i = 0; i < input.length; i++) {
+  SInt32 pos = 0;
+  for (SInt32 i = 0; i < input.length; i++) {
     unichar c = [input characterAtIndex:i];
     if (c == '\\') {
       if (i + 1 < input.length) {
@@ -177,7 +177,7 @@ long digitValue(unichar c) {
         c = [input characterAtIndex:i];
         if (isOctal(c)) {
           // Octal escape.
-          long code = digitValue(c);
+          SInt32 code = digitValue(c);
           if (i + 1 < input.length && isOctal([input characterAtIndex:(i + 1)])) {
             ++i;
             code = code * 8 + digitValue([input characterAtIndex:i]);
@@ -202,7 +202,7 @@ long digitValue(unichar c) {
 
             case 'x': // hex escape
             {
-              long code = 0;
+              SInt32 code = 0;
               if (i + 1 < input.length && isHex([input characterAtIndex:(i + 1)])) {
                 ++i;
                 code = digitValue([input characterAtIndex:i]);

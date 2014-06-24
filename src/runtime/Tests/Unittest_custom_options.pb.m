@@ -685,8 +685,8 @@ static TestMessageWithCustomOptions* defaultTestMessageWithCustomOptionsInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -820,7 +820,7 @@ BOOL TestMessageWithCustomOptionsAnEnumIsValidValue(TestMessageWithCustomOptions
 - (TestMessageWithCustomOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -887,8 +887,8 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -999,7 +999,7 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 - (CustomOptionFooRequestBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1046,8 +1046,8 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1158,7 +1158,7 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 - (CustomOptionFooResponseBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1205,8 +1205,8 @@ static CustomOptionFooClientMessage* defaultCustomOptionFooClientMessageInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1317,7 +1317,7 @@ static CustomOptionFooClientMessage* defaultCustomOptionFooClientMessageInstance
 - (CustomOptionFooClientMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1364,8 +1364,8 @@ static CustomOptionFooServerMessage* defaultCustomOptionFooServerMessageInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1476,7 +1476,7 @@ static CustomOptionFooServerMessage* defaultCustomOptionFooServerMessageInstance
 - (CustomOptionFooServerMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1523,8 +1523,8 @@ static DummyMessageContainingEnum* defaultDummyMessageContainingEnumInstance = n
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1644,7 +1644,7 @@ BOOL DummyMessageContainingEnumTestEnumTypeIsValidValue(DummyMessageContainingEn
 - (DummyMessageContainingEnumBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1691,8 +1691,8 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1803,7 +1803,7 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 - (DummyMessageInvalidAsOptionTypeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1850,8 +1850,8 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1962,7 +1962,7 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 - (CustomOptionMinIntegerValuesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2009,8 +2009,8 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2121,7 +2121,7 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 - (CustomOptionMaxIntegerValuesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2168,8 +2168,8 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2280,7 +2280,7 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 - (CustomOptionOtherValuesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2327,8 +2327,8 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2439,7 +2439,7 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 - (SettingRealsFromPositiveIntsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2486,8 +2486,8 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2598,7 +2598,7 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 - (SettingRealsFromNegativeIntsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2616,9 +2616,9 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 @end
 
 @interface ComplexOptionType1 ()
-@property long foo;
-@property long foo2;
-@property long foo3;
+@property SInt32 foo;
+@property SInt32 foo2;
+@property SInt32 foo3;
 @end
 
 @implementation ComplexOptionType1
@@ -2687,8 +2687,8 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2850,7 +2850,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (ComplexOptionType1Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2880,10 +2880,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (BOOL) hasFoo {
   return result.hasFoo;
 }
-- (long) foo {
+- (SInt32) foo {
   return result.foo;
 }
-- (ComplexOptionType1Builder*) setFoo:(long) value {
+- (ComplexOptionType1Builder*) setFoo:(SInt32) value {
   result.hasFoo = YES;
   result.foo = value;
   return self;
@@ -2896,10 +2896,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (BOOL) hasFoo2 {
   return result.hasFoo2;
 }
-- (long) foo2 {
+- (SInt32) foo2 {
   return result.foo2;
 }
-- (ComplexOptionType1Builder*) setFoo2:(long) value {
+- (ComplexOptionType1Builder*) setFoo2:(SInt32) value {
   result.hasFoo2 = YES;
   result.foo2 = value;
   return self;
@@ -2912,10 +2912,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (BOOL) hasFoo3 {
   return result.hasFoo3;
 }
-- (long) foo3 {
+- (SInt32) foo3 {
   return result.foo3;
 }
-- (ComplexOptionType1Builder*) setFoo3:(long) value {
+- (ComplexOptionType1Builder*) setFoo3:(SInt32) value {
   result.hasFoo3 = YES;
   result.foo3 = value;
   return self;
@@ -2929,7 +2929,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 
 @interface ComplexOptionType2 ()
 @property (strong) ComplexOptionType1* bar;
-@property long baz;
+@property SInt32 baz;
 @property (strong) ComplexOptionType2ComplexOptionType4* fred;
 @end
 
@@ -3006,8 +3006,8 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3116,7 +3116,7 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
 @end
 
 @interface ComplexOptionType2ComplexOptionType4 ()
-@property long waldo;
+@property SInt32 waldo;
 @end
 
 @implementation ComplexOptionType2ComplexOptionType4
@@ -3160,8 +3160,8 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3286,7 +3286,7 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 - (ComplexOptionType2ComplexOptionType4Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3308,10 +3308,10 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 - (BOOL) hasWaldo {
   return result.hasWaldo;
 }
-- (long) waldo {
+- (SInt32) waldo {
   return result.waldo;
 }
-- (ComplexOptionType2ComplexOptionType4Builder*) setWaldo:(long) value {
+- (ComplexOptionType2ComplexOptionType4Builder*) setWaldo:(SInt32) value {
   result.hasWaldo = YES;
   result.waldo = value;
   return self;
@@ -3383,7 +3383,7 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 - (ComplexOptionType2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3453,10 +3453,10 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 - (BOOL) hasBaz {
   return result.hasBaz;
 }
-- (long) baz {
+- (SInt32) baz {
   return result.baz;
 }
-- (ComplexOptionType2Builder*) setBaz:(long) value {
+- (ComplexOptionType2Builder*) setBaz:(SInt32) value {
   result.hasBaz = YES;
   result.baz = value;
   return self;
@@ -3499,7 +3499,7 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 @end
 
 @interface ComplexOptionType3 ()
-@property long qux;
+@property SInt32 qux;
 @property (strong) ComplexOptionType3ComplexOptionType5* complexOptionType5;
 @end
 
@@ -3553,8 +3553,8 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3641,7 +3641,7 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
 @end
 
 @interface ComplexOptionType3ComplexOptionType5 ()
-@property long plugh;
+@property SInt32 plugh;
 @end
 
 @implementation ComplexOptionType3ComplexOptionType5
@@ -3682,8 +3682,8 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3808,7 +3808,7 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 - (ComplexOptionType3ComplexOptionType5Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3830,10 +3830,10 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 - (BOOL) hasPlugh {
   return result.hasPlugh;
 }
-- (long) plugh {
+- (SInt32) plugh {
   return result.plugh;
 }
-- (ComplexOptionType3ComplexOptionType5Builder*) setPlugh:(long) value {
+- (ComplexOptionType3ComplexOptionType5Builder*) setPlugh:(SInt32) value {
   result.hasPlugh = YES;
   result.plugh = value;
   return self;
@@ -3901,7 +3901,7 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 - (ComplexOptionType3Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3932,10 +3932,10 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 - (BOOL) hasQux {
   return result.hasQux;
 }
-- (long) qux {
+- (SInt32) qux {
   return result.qux;
 }
-- (ComplexOptionType3Builder*) setQux:(long) value {
+- (ComplexOptionType3Builder*) setQux:(SInt32) value {
   result.hasQux = YES;
   result.qux = value;
   return self;
@@ -3978,7 +3978,7 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 @end
 
 @interface ComplexOpt6 ()
-@property long xyzzy;
+@property SInt32 xyzzy;
 @end
 
 @implementation ComplexOpt6
@@ -4019,8 +4019,8 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4145,7 +4145,7 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 - (ComplexOpt6Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4167,10 +4167,10 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 - (BOOL) hasXyzzy {
   return result.hasXyzzy;
 }
-- (long) xyzzy {
+- (SInt32) xyzzy {
   return result.xyzzy;
 }
-- (ComplexOpt6Builder*) setXyzzy:(long) value {
+- (ComplexOpt6Builder*) setXyzzy:(SInt32) value {
   result.hasXyzzy = YES;
   result.xyzzy = value;
   return self;
@@ -4212,8 +4212,8 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4324,7 +4324,7 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 - (VariousComplexOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4377,8 +4377,8 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
                                         to:2147483647];
   [self.unknownFields writeAsMessageSetTo:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4498,7 +4498,7 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
 - (AggregateMessageSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4561,8 +4561,8 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4687,7 +4687,7 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
 - (AggregateMessageSetElementBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4725,7 +4725,7 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
 @end
 
 @interface Aggregate ()
-@property long i;
+@property SInt32 i;
 @property (strong) NSString* s;
 @property (strong) Aggregate* sub;
 @property (strong) PBFileOptions* file;
@@ -4836,8 +4836,8 @@ static Aggregate* defaultAggregateInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5027,7 +5027,7 @@ static Aggregate* defaultAggregateInstance = nil;
 - (AggregateBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5080,10 +5080,10 @@ static Aggregate* defaultAggregateInstance = nil;
 - (BOOL) hasI {
   return result.hasI;
 }
-- (long) i {
+- (SInt32) i {
   return result.i;
 }
-- (AggregateBuilder*) setI:(long) value {
+- (AggregateBuilder*) setI:(SInt32) value {
   result.hasI = YES;
   result.i = value;
   return self;
@@ -5202,7 +5202,7 @@ static Aggregate* defaultAggregateInstance = nil;
 @end
 
 @interface AggregateMessage ()
-@property long fieldname;
+@property SInt32 fieldname;
 @end
 
 @implementation AggregateMessage
@@ -5243,8 +5243,8 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5369,7 +5369,7 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
 - (AggregateMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5391,10 +5391,10 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
 - (BOOL) hasFieldname {
   return result.hasFieldname;
 }
-- (long) fieldname {
+- (SInt32) fieldname {
   return result.fieldname;
 }
-- (AggregateMessageBuilder*) setFieldname:(long) value {
+- (AggregateMessageBuilder*) setFieldname:(SInt32) value {
   result.hasFieldname = YES;
   result.fieldname = value;
   return self;
@@ -5439,8 +5439,8 @@ static NestedOptionType* defaultNestedOptionTypeInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5510,7 +5510,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value) {
   }
 }
 @interface NestedOptionTypeNestedMessage ()
-@property long nestedField;
+@property SInt32 nestedField;
 @end
 
 @implementation NestedOptionTypeNestedMessage
@@ -5551,8 +5551,8 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5677,7 +5677,7 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
 - (NestedOptionTypeNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5699,10 +5699,10 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
 - (BOOL) hasNestedField {
   return result.hasNestedField;
 }
-- (long) nestedField {
+- (SInt32) nestedField {
   return result.nestedField;
 }
-- (NestedOptionTypeNestedMessageBuilder*) setNestedField:(long) value {
+- (NestedOptionTypeNestedMessageBuilder*) setNestedField:(SInt32) value {
   result.hasNestedField = YES;
   result.nestedField = value;
   return self;
@@ -5764,7 +5764,7 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
 - (NestedOptionTypeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];

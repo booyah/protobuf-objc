@@ -21,11 +21,11 @@
 - (void) testTypeSizes {
   XCTAssertEqual((size_t)4, sizeof(int));
   #ifdef __x86_64__	
-    XCTAssertEqual((size_t)8, sizeof(long));
+    XCTAssertEqual((size_t)4, sizeof(SInt32));
   #else
-    XCTAssertEqual((size_t)4, sizeof(long));
+    XCTAssertEqual((size_t)4, sizeof(SInt32));
   #endif
-  XCTAssertEqual((size_t)8, sizeof(long long));
+  XCTAssertEqual((size_t)8, sizeof(SInt64));
   XCTAssertEqual((size_t)4, sizeof(Float32));
   XCTAssertEqual((size_t)8, sizeof(Float64));
   XCTAssertEqual(0, !!0);

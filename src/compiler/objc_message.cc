@@ -581,8 +581,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Outdent();
     printer->Print(
       "}\n"
-      "- (long) serializedSize {\n"
-      "  __block long size_ = memoizedSerializedSize;\n"
+      "- (SInt32) serializedSize {\n"
+      "  __block SInt32 size_ = memoizedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"
       "  }\n"
@@ -959,7 +959,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Indent();
 
     printer->Print(
-      "NSInteger tag = [input readTag];\n"
+      "SInt32 tag = [input readTag];\n"
       "switch (tag) {\n");
     printer->Indent();
 

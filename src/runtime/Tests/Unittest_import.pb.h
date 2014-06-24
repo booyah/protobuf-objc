@@ -39,10 +39,10 @@ BOOL ImportEnumIsValidValue(ImportEnum value);
 @interface ImportMessage : PBGeneratedMessage {
 @private
   BOOL hasD_:1;
-  long d;
+  SInt32 d;
 }
 - (BOOL) hasD;
-@property (readonly) long d;
+@property (readonly) SInt32 d;
 
 + (ImportMessage*) defaultInstance;
 - (ImportMessage*) defaultInstance;
@@ -80,8 +80,8 @@ BOOL ImportEnumIsValidValue(ImportEnum value);
 - (ImportMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasD;
-- (long) d;
-- (ImportMessageBuilder*) setD:(long) value;
+- (SInt32) d;
+- (ImportMessageBuilder*) setD:(SInt32) value;
 - (ImportMessageBuilder*) clearD;
 @end
 

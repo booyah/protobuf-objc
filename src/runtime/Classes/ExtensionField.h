@@ -24,7 +24,7 @@
 @class PBUnknownFieldSetBuilder;
 
 @protocol PBExtensionField
-- (long) fieldNumber;
+- (SInt32) fieldNumber;
 - (PBWireFormat) wireType;
 - (BOOL) isRepeated;
 - (Class) extendedClass;
@@ -34,9 +34,9 @@
                      unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
                  extensionRegistry:(PBExtensionRegistry*) extensionRegistry
                            builder:(PBExtendableMessageBuilder*) builder
-                               tag:(long) tag;
+                               tag:(SInt32) tag;
 - (void) writeValue:(id) value includingTagToCodedOutputStream:(PBCodedOutputStream*) output;
-- (long) computeSerializedSizeIncludingTag:(id) value;
+- (SInt32) computeSerializedSizeIncludingTag:(id) value;
 - (void) writeDescriptionOf:(id) value
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent;

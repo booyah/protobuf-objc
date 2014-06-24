@@ -44,7 +44,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface TestOptimizedForSize ()
-@property long i;
+@property SInt32 i;
 @property (strong) ForeignMessage* msg;
 @end
 
@@ -110,8 +110,8 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -262,7 +262,7 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 - (TestOptimizedForSizeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -293,10 +293,10 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 - (BOOL) hasI {
   return result.hasI;
 }
-- (long) i {
+- (SInt32) i {
   return result.i;
 }
-- (TestOptimizedForSizeBuilder*) setI:(long) value {
+- (TestOptimizedForSizeBuilder*) setI:(SInt32) value {
   result.hasI = YES;
   result.i = value;
   return self;
@@ -339,7 +339,7 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 @end
 
 @interface TestRequiredOptimizedForSize ()
-@property long x;
+@property SInt32 x;
 @end
 
 @implementation TestRequiredOptimizedForSize
@@ -383,8 +383,8 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -509,7 +509,7 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
 - (TestRequiredOptimizedForSizeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -531,10 +531,10 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
 - (BOOL) hasX {
   return result.hasX;
 }
-- (long) x {
+- (SInt32) x {
   return result.x;
 }
-- (TestRequiredOptimizedForSizeBuilder*) setX:(long) value {
+- (TestRequiredOptimizedForSizeBuilder*) setX:(SInt32) value {
   result.hasX = YES;
   result.x = value;
   return self;
@@ -594,8 +594,8 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -723,7 +723,7 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
 - (TestOptionalOptimizedForSizeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];

@@ -41,7 +41,7 @@
 
 + (PBCodedOutputStream*) streamWithData:(NSMutableData*) data;
 + (PBCodedOutputStream*) streamWithOutputStream:(NSOutputStream*) output;
-+ (PBCodedOutputStream*) streamWithOutputStream:(NSOutputStream*) output bufferSize:(long) bufferSize;
++ (PBCodedOutputStream*) streamWithOutputStream:(NSOutputStream*) output bufferSize:(SInt32) bufferSize;
 
 /**
  * Flushes the stream and forces any buffered bytes to be written.  This
@@ -53,85 +53,85 @@
 - (void) writeRawByte:(uint8_t) value;
 
 /** Encode and write a tag. */
-- (void) writeTag:(long) fieldNumber format:(long) format;
+- (void) writeTag:(SInt32) fieldNumber format:(SInt32) format;
 
 /** Write a little-endian 32-bit integer. */
-- (void) writeRawLittleEndian32:(long) value;
+- (void) writeRawLittleEndian32:(SInt32) value;
 /** Write a little-endian 64-bit integer. */
-- (void) writeRawLittleEndian64:(long long) value;
+- (void) writeRawLittleEndian64:(SInt64) value;
 
 /**
  * Encode and write a varint.  {@code value} is treated as
  * unsigned, so it won't be sign-extended if negative.
  */
-- (void) writeRawVarint32:(long) value;
+- (void) writeRawVarint32:(SInt32) value;
 /** Encode and write a varint. */
-- (void) writeRawVarint64:(long long) value;
+- (void) writeRawVarint64:(SInt64) value;
 
-//- (void) writeRawLittleEndian32:(long) value;
-//- (void) writeRawLittleEndian64:(long long) value;
+//- (void) writeRawLittleEndian32:(SInt32) value;
+//- (void) writeRawLittleEndian64:(SInt64) value;
 
 /** Write an array of bytes. */
 - (void) writeRawData:(const NSData*) data;
-- (void) writeRawData:(const NSData*) data offset:(long) offset length:(long) length;
+- (void) writeRawData:(const NSData*) data offset:(SInt32) offset length:(SInt32) length;
 
-- (void) writeData:(long) fieldNumber value:(const NSData*) value;
+- (void) writeData:(SInt32) fieldNumber value:(const NSData*) value;
 
-- (void) writeDouble:(long) fieldNumber value:(Float64) value;
-- (void) writeFloat:(long) fieldNumber value:(Float32) value;
-- (void) writeUInt64:(long) fieldNumber value:(long long) value;
-- (void) writeInt64:(long) fieldNumber value:(long long) value;
-- (void) writeInt32:(long) fieldNumber value:(long) value;
-- (void) writeFixed64:(long) fieldNumber value:(long long) value;
-- (void) writeFixed32:(long) fieldNumber value:(long) value;
-- (void) writeBool:(long) fieldNumber value:(BOOL) value;
-- (void) writeString:(long) fieldNumber value:(const NSString*) value;
-- (void) writeGroup:(long) fieldNumber value:(const id<PBMessage>) value;
-- (void) writeUnknownGroup:(long) fieldNumber value:(const PBUnknownFieldSet*) value;
-- (void) writeMessage:(long) fieldNumber value:(const id<PBMessage>) value;
-- (void) writeUInt32:(long) fieldNumber value:(long) value;
-- (void) writeSFixed32:(long) fieldNumber value:(long) value;
-- (void) writeSFixed64:(long) fieldNumber value:(long long) value;
-- (void) writeSInt32:(long) fieldNumber value:(long) value;
-- (void) writeSInt64:(long) fieldNumber value:(long long) value;
+- (void) writeDouble:(SInt32) fieldNumber value:(Float64) value;
+- (void) writeFloat:(SInt32) fieldNumber value:(Float32) value;
+- (void) writeUInt64:(SInt32) fieldNumber value:(SInt64) value;
+- (void) writeInt64:(SInt32) fieldNumber value:(SInt64) value;
+- (void) writeInt32:(SInt32) fieldNumber value:(SInt32) value;
+- (void) writeFixed64:(SInt32) fieldNumber value:(SInt64) value;
+- (void) writeFixed32:(SInt32) fieldNumber value:(SInt32) value;
+- (void) writeBool:(SInt32) fieldNumber value:(BOOL) value;
+- (void) writeString:(SInt32) fieldNumber value:(const NSString*) value;
+- (void) writeGroup:(SInt32) fieldNumber value:(const id<PBMessage>) value;
+- (void) writeUnknownGroup:(SInt32) fieldNumber value:(const PBUnknownFieldSet*) value;
+- (void) writeMessage:(SInt32) fieldNumber value:(const id<PBMessage>) value;
+- (void) writeUInt32:(SInt32) fieldNumber value:(SInt32) value;
+- (void) writeSFixed32:(SInt32) fieldNumber value:(SInt32) value;
+- (void) writeSFixed64:(SInt32) fieldNumber value:(SInt64) value;
+- (void) writeSInt32:(SInt32) fieldNumber value:(SInt32) value;
+- (void) writeSInt64:(SInt32) fieldNumber value:(SInt64) value;
 
 - (void) writeDoubleNoTag:(Float64) value;
 - (void) writeFloatNoTag:(Float32) value;
-- (void) writeUInt64NoTag:(long long) value;
-- (void) writeInt64NoTag:(long long) value;
-- (void) writeInt32NoTag:(long) value;
-- (void) writeFixed64NoTag:(long long) value;
-- (void) writeFixed32NoTag:(long) value;
+- (void) writeUInt64NoTag:(SInt64) value;
+- (void) writeInt64NoTag:(SInt64) value;
+- (void) writeInt32NoTag:(SInt32) value;
+- (void) writeFixed64NoTag:(SInt64) value;
+- (void) writeFixed32NoTag:(SInt32) value;
 - (void) writeBoolNoTag:(BOOL) value;
 - (void) writeStringNoTag:(const NSString*) value;
-- (void) writeGroupNoTag:(long) fieldNumber value:(const id<PBMessage>) value;
-- (void) writeUnknownGroupNoTag:(long) fieldNumber value:(const PBUnknownFieldSet*) value;
+- (void) writeGroupNoTag:(SInt32) fieldNumber value:(const id<PBMessage>) value;
+- (void) writeUnknownGroupNoTag:(SInt32) fieldNumber value:(const PBUnknownFieldSet*) value;
 - (void) writeMessageNoTag:(const id<PBMessage>) value;
 - (void) writeDataNoTag:(const NSData*) value;
-- (void) writeUInt32NoTag:(long) value;
-- (void) writeEnumNoTag:(long) value;
-- (void) writeSFixed32NoTag:(long) value;
-- (void) writeSFixed64NoTag:(long long) value;
-- (void) writeSInt32NoTag:(long) value;
-- (void) writeSInt64NoTag:(long long) value;
+- (void) writeUInt32NoTag:(SInt32) value;
+- (void) writeEnumNoTag:(SInt32) value;
+- (void) writeSFixed32NoTag:(SInt32) value;
+- (void) writeSFixed64NoTag:(SInt64) value;
+- (void) writeSInt32NoTag:(SInt32) value;
+- (void) writeSInt64NoTag:(SInt64) value;
 
 
 /**
  * Write a MessageSet extension field to the stream.  For historical reasons,
  * the wire format differs from normal fields.
  */
-- (void) writeMessageSetExtension:(long) fieldNumber value:(const id<PBMessage>) value;
+- (void) writeMessageSetExtension:(SInt32) fieldNumber value:(const id<PBMessage>) value;
 
 /**
  * Write an unparsed MessageSet extension field to the stream.  For
  * historical reasons, the wire format differs from normal fields.
  */
-- (void) writeRawMessageSetExtension:(long) fieldNumber value:(const NSData*) value;
+- (void) writeRawMessageSetExtension:(SInt32) fieldNumber value:(const NSData*) value;
 
 /**
  * Write an enum field, including tag, to the stream.  Caller is responsible
  * for converting the enum value to its numeric value.
  */
-- (void) writeEnum:(long) fieldNumber value:(long) value;
+- (void) writeEnum:(SInt32) fieldNumber value:(SInt32) value;
 
 @end

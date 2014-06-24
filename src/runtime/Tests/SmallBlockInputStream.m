@@ -25,7 +25,7 @@
 
 
 - (id) initWithData:(NSData*) data_
-          blockSize:(long) blockSize_ {
+          blockSize:(SInt32) blockSize_ {
   if ((self = [super init])) {
     self.underlyingStream = [NSInputStream inputStreamWithData:data_];
     blockSize = blockSize_;
@@ -36,7 +36,7 @@
 
 
 + (SmallBlockInputStream*) streamWithData:(NSData*) data
-                                blockSize:(long) blockSize {
+                                blockSize:(SInt32) blockSize {
   return [[SmallBlockInputStream alloc] initWithData:data
                                            blockSize:blockSize];
 }

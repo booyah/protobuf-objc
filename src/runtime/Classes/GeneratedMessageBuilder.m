@@ -80,7 +80,7 @@
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input
              unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
          extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                       tag:(long) tag {
+                       tag:(SInt32) tag {
   return [unknownFields mergeFieldFrom:tag input:input];
 }
 

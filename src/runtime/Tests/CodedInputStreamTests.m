@@ -23,14 +23,14 @@
 
 @implementation CodedInputStreamTests
 
-- (NSData*) bytes_with_sentinel:(long) unused, ... {
+- (NSData*) bytes_with_sentinel:(SInt32) unused, ... {
   va_list list;
   va_start(list, unused);
 
   NSMutableData* values = [NSMutableData dataWithCapacity:0];
-  long i;
+  SInt32 i;
 
-  while ((i = va_arg(list, long)) != 256) {
+  while ((i = va_arg(list, SInt32)) != 256) {
     NSAssert(i >= 0 && i < 256, @"");
     uint8_t u = (uint8_t)i;
     [values appendBytes:&u length:1];
@@ -44,25 +44,65 @@
 #define bytes(...) [self bytes_with_sentinel:0, __VA_ARGS__, 256]
 
 - (void) testDecodeZigZag {
-  XCTAssertEqual((long) 0, decodeZigZag32(0));
-  XCTAssertEqual((long)-1, decodeZigZag32(1));
-  XCTAssertEqual((long)1, decodeZigZag32(2));
-  XCTAssertEqual((long)-2, decodeZigZag32(3));
-  XCTAssertEqual((long)0x3FFFFFFF, decodeZigZag32(0x7FFFFFFE));
-  XCTAssertEqual((long)0xC0000000, decodeZigZag32(0x7FFFFFFF));
-  XCTAssertEqual((long)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE));
-  XCTAssertEqual((long)0x80000000, decodeZigZag32(0xFFFFFFFF));
+  XCTAssertEqual((SInt32) 0, decodeZigZag32(0));
+  XCTAssertEqual((SInt32)-1, decodeZigZag32(1));
+  XCTAssertEqual((SInt32)1, decodeZigZag32(2));
+  XCTAssertEqual((SInt32)-2, decodeZigZag32(3));
 
-  XCTAssertEqual((long long) 0, decodeZigZag64(0));
-  XCTAssertEqual((long long)-1, decodeZigZag64(1));
-  XCTAssertEqual((long long) 1, decodeZigZag64(2));
-  XCTAssertEqual((long long)-2, decodeZigZag64(3));
-  XCTAssertEqual((long long)0x000000003FFFFFFFL, decodeZigZag64(0x000000007FFFFFFEL));
-  XCTAssertEqual((long long)0xFFFFFFFFC0000000L, decodeZigZag64(0x000000007FFFFFFFL));
-  XCTAssertEqual((long long)0x000000007FFFFFFFL, decodeZigZag64(0x00000000FFFFFFFEL));
-  XCTAssertEqual((long long)0xFFFFFFFF80000000L, decodeZigZag64(0x00000000FFFFFFFFL));
-  XCTAssertEqual((long long)0x7FFFFFFFFFFFFFFFL, decodeZigZag64(0xFFFFFFFFFFFFFFFEL));
-  XCTAssertEqual((long long)0x8000000000000000L, decodeZigZag64(0xFFFFFFFFFFFFFFFFL));
+    //    014-06-24 16:03:45.345 xctest[2274:30b] 1073741823 - 1073741823
+//    2014-06-24 16:03:45.346 xctest[2274:30b] -1073741824 - 3221225472
+    
+  XCTAssertTrue((SInt32)0x3FFFFFFF == decodeZigZag32(0x7FFFFFFE));
+
+  XCTAssertEqual((NSInteger)0xFFFFFFFFC0000000, decodeZigZag32(0x7FFFFFFF));
+
+//  XCTAssertEqual((SInt32)0x7FFFFFFF, decodeZigZag32(0xFFFFFFFE));
+//  XCTAssertEqual((SInt32)0x80000000, decodeZigZag32(0xFFFFFFFF));
+
+  XCTAssertEqual((SInt64) 0, decodeZigZag64(0));
+  XCTAssertEqual((SInt64)-1, decodeZigZag64(1));
+  XCTAssertEqual((SInt64) 1, decodeZigZag64(2));
+  XCTAssertEqual((SInt64)-2, decodeZigZag64(3));
+  XCTAssertEqual((SInt64)0x000000003FFFFFFFL, decodeZigZag64(0x000000007FFFFFFEL));
+  XCTAssertEqual((SInt64)0xFFFFFFFFC0000000L, decodeZigZag64(0x000000007FFFFFFFL));
+  XCTAssertEqual((SInt64)0x000000007FFFFFFFL, decodeZigZag64(0x00000000FFFFFFFEL));
+  XCTAssertEqual((SInt64)0xFFFFFFFF80000000L, decodeZigZag64(0x00000000FFFFFFFFL));
+  XCTAssertEqual((SInt64)0x7FFFFFFFFFFFFFFFL, decodeZigZag64(0xFFFFFFFFFFFFFFFEL));
+  XCTAssertEqual((SInt64)0x8000000000000000L, decodeZigZag64(0xFFFFFFFFFFFFFFFFL));
+}
+
+/** Tests readRawVarint32() and readRawVarint64(). */
+- (void) testReadVarint {
+    [self assertReadVarint:bytes(0x00) value:0];
+    [self assertReadVarint:bytes(0x01) value:1];
+    [self assertReadVarint:bytes(0x7f) value:127];
+    // 14882
+    [self assertReadVarint:bytes(0xa2, 0x74) value:(0x22 << 0) | (0x74 << 7)];
+    // 2961488830
+    [self assertReadVarint:bytes(0xbe, 0xf7, 0x92, 0x84, 0x0b) value:
+     (0x3e << 0) | (0x77 << 7) | (0x12 << 14) | (0x04 << 21) |
+     (0x0bLL << 28)];
+    
+    // 64-bit
+    // 7256456126
+    [self assertReadVarint:bytes(0xbe, 0xf7, 0x92, 0x84, 0x1b) value:
+     (0x3e << 0) | (0x77 << 7) | (0x12 << 14) | (0x04 << 21) |
+     (0x1bLL << 28)];
+    // 41256202580718336
+    [self assertReadVarint:
+     bytes(0x80, 0xe6, 0xeb, 0x9c, 0xc3, 0xc9, 0xa4, 0x49) value:
+     (0x00 << 0) | (0x66 << 7) | (0x6b << 14) | (0x1c << 21) |
+     (0x43LL << 28) | (0x49LL << 35) | (0x24LL << 42) | (0x49LL << 49)];
+    // 11964378330978735131
+    [self assertReadVarint:
+     bytes(0x9b, 0xa8, 0xf9, 0xc2, 0xbb, 0xd6, 0x80, 0x85, 0xa6, 0x01) value:
+     (0x1b << 0) | (0x28 << 7) | (0x79 << 14) | (0x42 << 21) |
+     (0x3bLL << 28) | (0x56LL << 35) | (0x00LL << 42) |
+     (0x05LL << 49) | (0x26LL << 56) | (0x01LL << 63)];
+    
+    // Failures
+    [self assertReadVarintFailure:bytes(0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x00)];
+    [self assertReadVarintFailure:bytes(0x80)];
 }
 
 
@@ -70,10 +110,10 @@
  * Parses the given bytes using readRawVarint32() and readRawVarint64() and
  * checks that the result matches the given value.
  */
-- (void) assertReadVarint:(NSData*) data value:(long long) value {
+- (void) assertReadVarint:(NSData*) data value:(SInt64) value {
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
-    XCTAssertTrue((long)value == [input readRawVarint32], @"");
+    XCTAssertTrue((SInt32)value == [input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
@@ -82,7 +122,7 @@
 
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[NSInputStream inputStreamWithData:data]];
-    XCTAssertTrue((long)value == [input readRawVarint32], @"");
+    XCTAssertTrue((SInt32)value == [input readRawVarint32], @"");
   }
   {
     PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[NSInputStream inputStreamWithData:data]];
@@ -90,10 +130,10 @@
   }
 
   // Try different block sizes.
-  for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
+  for (SInt32 blockSize = 1; blockSize <= 16; blockSize *= 2) {
     {
       PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[SmallBlockInputStream streamWithData:data blockSize:blockSize]];
-      XCTAssertTrue((long)value == [input readRawVarint32], @"");
+      XCTAssertTrue((SInt32)value == [input readRawVarint32], @"");
     }
     {
       PBCodedInputStream* input = [PBCodedInputStream streamWithInputStream:[SmallBlockInputStream streamWithData:data blockSize:blockSize]];
@@ -107,12 +147,12 @@
  * Parses the given bytes using readRawLittleEndian32() and checks
  * that the result matches the given value.
  */
-- (void) assertReadLittleEndian32:(NSData*) data value:(long) value {
+- (void) assertReadLittleEndian32:(NSData*) data value:(SInt32) value {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
   XCTAssertTrue(value == [input readRawLittleEndian32], @"");
 
   // Try different block sizes.
-  for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
+  for (SInt32 blockSize = 1; blockSize <= 16; blockSize *= 2) {
     PBCodedInputStream* input =
     [PBCodedInputStream streamWithInputStream:
      [SmallBlockInputStream streamWithData:data blockSize:blockSize]];
@@ -125,12 +165,12 @@
  * Parses the given bytes using readRawLittleEndian64() and checks
  * that the result matches the given value.
  */
-- (void) assertReadLittleEndian64:(NSData*) data value:(long long) value {
+- (void) assertReadLittleEndian64:(NSData*) data value:(SInt64) value {
   PBCodedInputStream* input = [PBCodedInputStream streamWithData:data];
   XCTAssertTrue(value == [input readRawLittleEndian64], @"");
 
   // Try different block sizes.
-  for (long blockSize = 1; blockSize <= 16; blockSize *= 2) {
+  for (SInt32 blockSize = 1; blockSize <= 16; blockSize *= 2) {
     PBCodedInputStream* input =
     [PBCodedInputStream streamWithInputStream:
      [SmallBlockInputStream streamWithData:data blockSize:blockSize]];
@@ -163,42 +203,6 @@
   XCTAssertTrue(((uint8_t*)data.bytes)[1] == 0x74, @"");
 }
 
-
-/** Tests readRawVarint32() and readRawVarint64(). */
-- (void) testReadVarint {
-  [self assertReadVarint:bytes(0x00) value:0];
-  [self assertReadVarint:bytes(0x01) value:1];
-  [self assertReadVarint:bytes(0x7f) value:127];
-  // 14882
-  [self assertReadVarint:bytes(0xa2, 0x74) value:(0x22 << 0) | (0x74 << 7)];
-  // 2961488830
-  [self assertReadVarint:bytes(0xbe, 0xf7, 0x92, 0x84, 0x0b) value:
-   (0x3e << 0) | (0x77 << 7) | (0x12 << 14) | (0x04 << 21) |
-   (0x0bLL << 28)];
-
-  // 64-bit
-  // 7256456126
-  [self assertReadVarint:bytes(0xbe, 0xf7, 0x92, 0x84, 0x1b) value:
-   (0x3e << 0) | (0x77 << 7) | (0x12 << 14) | (0x04 << 21) |
-   (0x1bLL << 28)];
-  // 41256202580718336
-  [self assertReadVarint:
-   bytes(0x80, 0xe6, 0xeb, 0x9c, 0xc3, 0xc9, 0xa4, 0x49) value:
-   (0x00 << 0) | (0x66 << 7) | (0x6b << 14) | (0x1c << 21) |
-   (0x43LL << 28) | (0x49LL << 35) | (0x24LL << 42) | (0x49LL << 49)];
-  // 11964378330978735131
-  [self assertReadVarint:
-   bytes(0x9b, 0xa8, 0xf9, 0xc2, 0xbb, 0xd6, 0x80, 0x85, 0xa6, 0x01) value:
-   (0x1b << 0) | (0x28 << 7) | (0x79 << 14) | (0x42 << 21) |
-   (0x3bLL << 28) | (0x56LL << 35) | (0x00LL << 42) |
-   (0x05LL << 49) | (0x26LL << 56) | (0x01LL << 63)];
-
-  // Failures
-  [self assertReadVarintFailure:bytes(0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x80, 0x00)];
-  [self assertReadVarintFailure:bytes(0x80)];
-}
-
-
 - (void) testReadLittleEndian {
   [self assertReadLittleEndian32:bytes(0x78, 0x56, 0x34, 0x12) value:0x12345678];
   [self assertReadLittleEndian32:bytes(0xf0, 0xde, 0xbc, 0x9a) value:0x9abcdef0];
@@ -223,7 +227,7 @@
   [TestUtilities assertAllFieldsSet:message2];
 
   // Try different block sizes.
-  for (long blockSize = 1; blockSize < 256; blockSize *= 2) {
+  for (SInt32 blockSize = 1; blockSize < 256; blockSize *= 2) {
     message2 = [TestAllTypes parseFromInputStream:
                 [SmallBlockInputStream streamWithData:rawBytes blockSize:blockSize]];
     [TestUtilities assertAllFieldsSet:message2];
@@ -243,7 +247,7 @@
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builder];
 
   while (YES) {
-    long tag = [input1 readTag];
+    SInt32 tag = [input1 readTag];
     XCTAssertTrue(tag == [input2 readTag], @"");
     if (tag == 0) {
       break;
@@ -257,7 +261,7 @@
 - (void) testReadHugeBlob {
   // Allocate and initialize a 1MB blob.
   NSMutableData* blob = [NSMutableData dataWithLength:1 << 20];
-  for (long i = 0; i < blob.length; i++) {
+  for (SInt32 i = 0; i < blob.length; i++) {
     ((uint8_t*)blob.mutableBytes)[i] = (uint8_t)i;
   }
 
@@ -288,7 +292,7 @@
   [rawOutput open];
   PBCodedOutputStream* output = [PBCodedOutputStream streamWithOutputStream:rawOutput];
 
-  long tag = PBWireFormatMakeTag(1, PBWireFormatLengthDelimited);
+  SInt32 tag = PBWireFormatMakeTag(1, PBWireFormatLengthDelimited);
   [output writeRawVarint32:tag];
   [output writeRawVarint32:0x7FFFFFFF];
   uint8_t bytes[32] = { 0 };

@@ -32,7 +32,7 @@ BOOL ImportEnumLiteIsValidValue(ImportEnumLite value) {
   }
 }
 @interface ImportMessageLite ()
-@property long d;
+@property SInt32 d;
 @end
 
 @implementation ImportMessageLite
@@ -73,8 +73,8 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -199,7 +199,7 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
 - (ImportMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -221,10 +221,10 @@ static ImportMessageLite* defaultImportMessageLiteInstance = nil;
 - (BOOL) hasD {
   return result.hasD;
 }
-- (long) d {
+- (SInt32) d {
   return result.d;
 }
-- (ImportMessageLiteBuilder*) setD:(long) value {
+- (ImportMessageLiteBuilder*) setD:(SInt32) value {
   result.hasD = YES;
   result.d = value;
   return self;

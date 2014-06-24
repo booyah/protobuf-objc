@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F15496B195761F1000F1056 /* Unittest_custom_options.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154950195761F1000F1056 /* Unittest_custom_options.pb.m */; };
-		3F15496C195761F1000F1056 /* Unittest_embed_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154952195761F1000F1056 /* Unittest_embed_optimize_for.pb.m */; };
-		3F15496D195761F1000F1056 /* Unittest_empty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154954195761F1000F1056 /* Unittest_empty.pb.m */; };
-		3F15496E195761F1000F1056 /* Unittest_enormous_descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154956195761F1000F1056 /* Unittest_enormous_descriptor.pb.m */; };
-		3F15496F195761F1000F1056 /* Unittest_import_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154958195761F1000F1056 /* Unittest_import_lite.pb.m */; };
-		3F154970195761F1000F1056 /* Unittest_import_public_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15495A195761F1000F1056 /* Unittest_import_public_lite.pb.m */; };
-		3F154971195761F1000F1056 /* Unittest_import_public.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15495C195761F1000F1056 /* Unittest_import_public.pb.m */; };
-		3F154972195761F1000F1056 /* Unittest_import.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15495E195761F1000F1056 /* Unittest_import.pb.m */; };
-		3F154973195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154960195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.m */; };
-		3F154974195761F1000F1056 /* Unittest_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154962195761F1000F1056 /* Unittest_lite.pb.m */; };
-		3F154975195761F1000F1056 /* Unittest_mset.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154964195761F1000F1056 /* Unittest_mset.pb.m */; };
-		3F154976195761F1000F1056 /* Unittest_no_generic_services.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154966195761F1000F1056 /* Unittest_no_generic_services.pb.m */; };
-		3F154977195761F1000F1056 /* Unittest_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F154968195761F1000F1056 /* Unittest_optimize_for.pb.m */; };
-		3F154978195761F1000F1056 /* Unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F15496A195761F1000F1056 /* Unittest.pb.m */; };
 		3F2404EA1955F7FE0022C703 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F2404E91955F7FE0022C703 /* XCTest.framework */; };
 		3F7A405A1957772800B7AC58 /* Descriptor.pb.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F7A40581957772800B7AC58 /* Descriptor.pb.h */; };
 		3F7A405B1957772800B7AC58 /* Descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A40591957772800B7AC58 /* Descriptor.pb.m */; };
-		3F7E14941955FB3400B3DD01 /* golden_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14901955FAEE00B3DD01 /* golden_message */; };
-		3F7E14951955FB3400B3DD01 /* golden_packed_fields_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */; };
 		3F887B4919102C6000AFDD46 /* libProtocolBuffers.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D2AAC07E0554694100DB518D /* libProtocolBuffers.a */; };
+		3FD0CF311959F700000C8F68 /* Unittest_custom_options.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF161959F700000C8F68 /* Unittest_custom_options.pb.m */; };
+		3FD0CF321959F700000C8F68 /* Unittest_embed_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF181959F700000C8F68 /* Unittest_embed_optimize_for.pb.m */; };
+		3FD0CF331959F700000C8F68 /* Unittest_empty.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF1A1959F700000C8F68 /* Unittest_empty.pb.m */; };
+		3FD0CF341959F700000C8F68 /* Unittest_enormous_descriptor.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF1C1959F700000C8F68 /* Unittest_enormous_descriptor.pb.m */; };
+		3FD0CF351959F700000C8F68 /* Unittest_import_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF1E1959F700000C8F68 /* Unittest_import_lite.pb.m */; };
+		3FD0CF361959F700000C8F68 /* Unittest_import_public_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF201959F700000C8F68 /* Unittest_import_public_lite.pb.m */; };
+		3FD0CF371959F700000C8F68 /* Unittest_import_public.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF221959F700000C8F68 /* Unittest_import_public.pb.m */; };
+		3FD0CF381959F700000C8F68 /* Unittest_import.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF241959F700000C8F68 /* Unittest_import.pb.m */; };
+		3FD0CF391959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF261959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.m */; };
+		3FD0CF3A1959F700000C8F68 /* Unittest_lite.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF281959F700000C8F68 /* Unittest_lite.pb.m */; };
+		3FD0CF3B1959F700000C8F68 /* Unittest_mset.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF2A1959F700000C8F68 /* Unittest_mset.pb.m */; };
+		3FD0CF3C1959F700000C8F68 /* Unittest_no_generic_services.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF2C1959F700000C8F68 /* Unittest_no_generic_services.pb.m */; };
+		3FD0CF3D1959F700000C8F68 /* Unittest_optimize_for.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF2E1959F700000C8F68 /* Unittest_optimize_for.pb.m */; };
+		3FD0CF3E1959F700000C8F68 /* Unittest.pb.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FD0CF301959F700000C8F68 /* Unittest.pb.m */; };
+		3FD2C4AE195A0E5B00ABFC84 /* golden_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14901955FAEE00B3DD01 /* golden_message */; };
+		3FD2C4AF195A0E5B00ABFC84 /* golden_packed_fields_message in Resources */ = {isa = PBXBuildFile; fileRef = 3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */; };
 		AA747D9F0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		C55591B1127A04EF002343CA /* PBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C5F36E041275FA5A00013BB4 /* PBArray.m */; };
@@ -115,62 +115,62 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3F15494F195761F1000F1056 /* Unittest_custom_options.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_custom_options.pb.h; path = Tests/Unittest_custom_options.pb.h; sourceTree = "<group>"; };
-		3F154950195761F1000F1056 /* Unittest_custom_options.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_custom_options.pb.m; path = Tests/Unittest_custom_options.pb.m; sourceTree = "<group>"; };
-		3F154951195761F1000F1056 /* Unittest_embed_optimize_for.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_embed_optimize_for.pb.h; path = Tests/Unittest_embed_optimize_for.pb.h; sourceTree = "<group>"; };
-		3F154952195761F1000F1056 /* Unittest_embed_optimize_for.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_embed_optimize_for.pb.m; path = Tests/Unittest_embed_optimize_for.pb.m; sourceTree = "<group>"; };
-		3F154953195761F1000F1056 /* Unittest_empty.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_empty.pb.h; path = Tests/Unittest_empty.pb.h; sourceTree = "<group>"; };
-		3F154954195761F1000F1056 /* Unittest_empty.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_empty.pb.m; path = Tests/Unittest_empty.pb.m; sourceTree = "<group>"; };
-		3F154955195761F1000F1056 /* Unittest_enormous_descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_enormous_descriptor.pb.h; path = Tests/Unittest_enormous_descriptor.pb.h; sourceTree = "<group>"; };
-		3F154956195761F1000F1056 /* Unittest_enormous_descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_enormous_descriptor.pb.m; path = Tests/Unittest_enormous_descriptor.pb.m; sourceTree = "<group>"; };
-		3F154957195761F1000F1056 /* Unittest_import_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_lite.pb.h; path = Tests/Unittest_import_lite.pb.h; sourceTree = "<group>"; };
-		3F154958195761F1000F1056 /* Unittest_import_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_lite.pb.m; path = Tests/Unittest_import_lite.pb.m; sourceTree = "<group>"; };
-		3F154959195761F1000F1056 /* Unittest_import_public_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_public_lite.pb.h; path = Tests/Unittest_import_public_lite.pb.h; sourceTree = "<group>"; };
-		3F15495A195761F1000F1056 /* Unittest_import_public_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_public_lite.pb.m; path = Tests/Unittest_import_public_lite.pb.m; sourceTree = "<group>"; };
-		3F15495B195761F1000F1056 /* Unittest_import_public.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_public.pb.h; path = Tests/Unittest_import_public.pb.h; sourceTree = "<group>"; };
-		3F15495C195761F1000F1056 /* Unittest_import_public.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_public.pb.m; path = Tests/Unittest_import_public.pb.m; sourceTree = "<group>"; };
-		3F15495D195761F1000F1056 /* Unittest_import.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import.pb.h; path = Tests/Unittest_import.pb.h; sourceTree = "<group>"; };
-		3F15495E195761F1000F1056 /* Unittest_import.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import.pb.m; path = Tests/Unittest_import.pb.m; sourceTree = "<group>"; };
-		3F15495F195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_lite_imports_nonlite.pb.h; path = Tests/Unittest_lite_imports_nonlite.pb.h; sourceTree = "<group>"; };
-		3F154960195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_lite_imports_nonlite.pb.m; path = Tests/Unittest_lite_imports_nonlite.pb.m; sourceTree = "<group>"; };
-		3F154961195761F1000F1056 /* Unittest_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_lite.pb.h; path = Tests/Unittest_lite.pb.h; sourceTree = "<group>"; };
-		3F154962195761F1000F1056 /* Unittest_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_lite.pb.m; path = Tests/Unittest_lite.pb.m; sourceTree = "<group>"; };
-		3F154963195761F1000F1056 /* Unittest_mset.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_mset.pb.h; path = Tests/Unittest_mset.pb.h; sourceTree = "<group>"; };
-		3F154964195761F1000F1056 /* Unittest_mset.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_mset.pb.m; path = Tests/Unittest_mset.pb.m; sourceTree = "<group>"; };
-		3F154965195761F1000F1056 /* Unittest_no_generic_services.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_no_generic_services.pb.h; path = Tests/Unittest_no_generic_services.pb.h; sourceTree = "<group>"; };
-		3F154966195761F1000F1056 /* Unittest_no_generic_services.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_no_generic_services.pb.m; path = Tests/Unittest_no_generic_services.pb.m; sourceTree = "<group>"; };
-		3F154967195761F1000F1056 /* Unittest_optimize_for.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_optimize_for.pb.h; path = Tests/Unittest_optimize_for.pb.h; sourceTree = "<group>"; };
-		3F154968195761F1000F1056 /* Unittest_optimize_for.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_optimize_for.pb.m; path = Tests/Unittest_optimize_for.pb.m; sourceTree = "<group>"; };
-		3F154969195761F1000F1056 /* Unittest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest.pb.h; path = Tests/Unittest.pb.h; sourceTree = "<group>"; };
-		3F15496A195761F1000F1056 /* Unittest.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest.pb.m; path = Tests/Unittest.pb.m; sourceTree = "<group>"; };
 		3F2404E91955F7FE0022C703 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3F7A40581957772800B7AC58 /* Descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Descriptor.pb.h; sourceTree = "<group>"; };
-		3F7A40591957772800B7AC58 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Descriptor.pb.m; sourceTree = "<group>"; };
+		3F7A40591957772800B7AC58 /* Descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Descriptor.pb.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		3F7E14901955FAEE00B3DD01 /* golden_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_message; sourceTree = "<group>"; };
 		3F7E14911955FAEE00B3DD01 /* golden_packed_fields_message */ = {isa = PBXFileReference; lastKnownFileType = file; path = golden_packed_fields_message; sourceTree = "<group>"; };
 		3F7E14921955FAEE00B3DD01 /* text_format_unittest_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text_format_unittest_data.txt; sourceTree = "<group>"; };
 		3F7E14931955FAEE00B3DD01 /* text_format_unittest_extensions_data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text_format_unittest_extensions_data.txt; sourceTree = "<group>"; };
+		3FD0CF151959F700000C8F68 /* Unittest_custom_options.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_custom_options.pb.h; path = Tests/Unittest_custom_options.pb.h; sourceTree = "<group>"; };
+		3FD0CF161959F700000C8F68 /* Unittest_custom_options.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_custom_options.pb.m; path = Tests/Unittest_custom_options.pb.m; sourceTree = "<group>"; };
+		3FD0CF171959F700000C8F68 /* Unittest_embed_optimize_for.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_embed_optimize_for.pb.h; path = Tests/Unittest_embed_optimize_for.pb.h; sourceTree = "<group>"; };
+		3FD0CF181959F700000C8F68 /* Unittest_embed_optimize_for.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_embed_optimize_for.pb.m; path = Tests/Unittest_embed_optimize_for.pb.m; sourceTree = "<group>"; };
+		3FD0CF191959F700000C8F68 /* Unittest_empty.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_empty.pb.h; path = Tests/Unittest_empty.pb.h; sourceTree = "<group>"; };
+		3FD0CF1A1959F700000C8F68 /* Unittest_empty.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_empty.pb.m; path = Tests/Unittest_empty.pb.m; sourceTree = "<group>"; };
+		3FD0CF1B1959F700000C8F68 /* Unittest_enormous_descriptor.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_enormous_descriptor.pb.h; path = Tests/Unittest_enormous_descriptor.pb.h; sourceTree = "<group>"; };
+		3FD0CF1C1959F700000C8F68 /* Unittest_enormous_descriptor.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_enormous_descriptor.pb.m; path = Tests/Unittest_enormous_descriptor.pb.m; sourceTree = "<group>"; };
+		3FD0CF1D1959F700000C8F68 /* Unittest_import_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_lite.pb.h; path = Tests/Unittest_import_lite.pb.h; sourceTree = "<group>"; };
+		3FD0CF1E1959F700000C8F68 /* Unittest_import_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_lite.pb.m; path = Tests/Unittest_import_lite.pb.m; sourceTree = "<group>"; };
+		3FD0CF1F1959F700000C8F68 /* Unittest_import_public_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_public_lite.pb.h; path = Tests/Unittest_import_public_lite.pb.h; sourceTree = "<group>"; };
+		3FD0CF201959F700000C8F68 /* Unittest_import_public_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_public_lite.pb.m; path = Tests/Unittest_import_public_lite.pb.m; sourceTree = "<group>"; };
+		3FD0CF211959F700000C8F68 /* Unittest_import_public.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import_public.pb.h; path = Tests/Unittest_import_public.pb.h; sourceTree = "<group>"; };
+		3FD0CF221959F700000C8F68 /* Unittest_import_public.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import_public.pb.m; path = Tests/Unittest_import_public.pb.m; sourceTree = "<group>"; };
+		3FD0CF231959F700000C8F68 /* Unittest_import.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_import.pb.h; path = Tests/Unittest_import.pb.h; sourceTree = "<group>"; };
+		3FD0CF241959F700000C8F68 /* Unittest_import.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_import.pb.m; path = Tests/Unittest_import.pb.m; sourceTree = "<group>"; };
+		3FD0CF251959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_lite_imports_nonlite.pb.h; path = Tests/Unittest_lite_imports_nonlite.pb.h; sourceTree = "<group>"; };
+		3FD0CF261959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_lite_imports_nonlite.pb.m; path = Tests/Unittest_lite_imports_nonlite.pb.m; sourceTree = "<group>"; };
+		3FD0CF271959F700000C8F68 /* Unittest_lite.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_lite.pb.h; path = Tests/Unittest_lite.pb.h; sourceTree = "<group>"; };
+		3FD0CF281959F700000C8F68 /* Unittest_lite.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_lite.pb.m; path = Tests/Unittest_lite.pb.m; sourceTree = "<group>"; };
+		3FD0CF291959F700000C8F68 /* Unittest_mset.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_mset.pb.h; path = Tests/Unittest_mset.pb.h; sourceTree = "<group>"; };
+		3FD0CF2A1959F700000C8F68 /* Unittest_mset.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_mset.pb.m; path = Tests/Unittest_mset.pb.m; sourceTree = "<group>"; };
+		3FD0CF2B1959F700000C8F68 /* Unittest_no_generic_services.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_no_generic_services.pb.h; path = Tests/Unittest_no_generic_services.pb.h; sourceTree = "<group>"; };
+		3FD0CF2C1959F700000C8F68 /* Unittest_no_generic_services.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_no_generic_services.pb.m; path = Tests/Unittest_no_generic_services.pb.m; sourceTree = "<group>"; };
+		3FD0CF2D1959F700000C8F68 /* Unittest_optimize_for.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest_optimize_for.pb.h; path = Tests/Unittest_optimize_for.pb.h; sourceTree = "<group>"; };
+		3FD0CF2E1959F700000C8F68 /* Unittest_optimize_for.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest_optimize_for.pb.m; path = Tests/Unittest_optimize_for.pb.m; sourceTree = "<group>"; };
+		3FD0CF2F1959F700000C8F68 /* Unittest.pb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Unittest.pb.h; path = Tests/Unittest.pb.h; sourceTree = "<group>"; };
+		3FD0CF301959F700000C8F68 /* Unittest.pb.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Unittest.pb.m; path = Tests/Unittest.pb.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* ProtocolBuffers_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C586261F12668B9F00204EE1 /* Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bootstrap.h; sourceTree = "<group>"; };
 		C586262112668BB100204EE1 /* ForwardDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForwardDeclarations.h; sourceTree = "<group>"; };
 		C586262312668BBF00204EE1 /* ProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProtocolBuffers.h; sourceTree = "<group>"; };
-		C586262512668BCF00204EE1 /* ConcreteExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConcreteExtensionField.h; sourceTree = "<group>"; };
+		C586262512668BCF00204EE1 /* ConcreteExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConcreteExtensionField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586262612668BCF00204EE1 /* ConcreteExtensionField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConcreteExtensionField.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C586262712668BCF00204EE1 /* ExtendableMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtendableMessageBuilder.h; sourceTree = "<group>"; };
-		C586262812668BCF00204EE1 /* ExtendableMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtendableMessageBuilder.m; sourceTree = "<group>"; };
+		C586262712668BCF00204EE1 /* ExtendableMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ExtendableMessageBuilder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586262812668BCF00204EE1 /* ExtendableMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ExtendableMessageBuilder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586262912668BCF00204EE1 /* ExtendableMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ExtendableMessage.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586262A12668BCF00204EE1 /* ExtendableMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ExtendableMessage.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C586262B12668BCF00204EE1 /* ExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionField.h; sourceTree = "<group>"; };
-		C586262C12668BCF00204EE1 /* ExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtensionRegistry.h; sourceTree = "<group>"; };
+		C586262B12668BCF00204EE1 /* ExtensionField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ExtensionField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586262C12668BCF00204EE1 /* ExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ExtensionRegistry.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586262D12668BCF00204EE1 /* ExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ExtensionRegistry.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586263712668BFD00204EE1 /* MutableExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableExtensionRegistry.h; sourceTree = "<group>"; };
 		C586263812668BFD00204EE1 /* MutableExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MutableExtensionRegistry.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586263B12668C0D00204EE1 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Field.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586263C12668C0D00204EE1 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = Field.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C586263F12668C1800204EE1 /* MutableField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableField.h; sourceTree = "<group>"; };
-		C586264012668C1800204EE1 /* MutableField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableField.m; sourceTree = "<group>"; };
-		C586264312668C2000204EE1 /* UnknownFieldSetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnknownFieldSetBuilder.h; sourceTree = "<group>"; };
+		C586263F12668C1800204EE1 /* MutableField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MutableField.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586264012668C1800204EE1 /* MutableField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = MutableField.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C586264312668C2000204EE1 /* UnknownFieldSetBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UnknownFieldSetBuilder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586264412668C2000204EE1 /* UnknownFieldSetBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UnknownFieldSetBuilder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586264512668C2000204EE1 /* UnknownFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UnknownFieldSet.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586264612668C2000204EE1 /* UnknownFieldSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = UnknownFieldSet.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
@@ -178,22 +178,22 @@
 		C586264C12668C2F00204EE1 /* CodedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = CodedInputStream.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586264D12668C2F00204EE1 /* CodedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CodedOutputStream.h; sourceTree = "<group>"; };
 		C586264E12668C2F00204EE1 /* CodedOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CodedOutputStream.m; sourceTree = "<group>"; };
-		C586265312668C3900204EE1 /* TextFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFormat.h; sourceTree = "<group>"; };
-		C586265412668C3900204EE1 /* TextFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFormat.m; sourceTree = "<group>"; };
-		C586265712668C4100204EE1 /* WireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WireFormat.h; sourceTree = "<group>"; };
-		C586265812668C4100204EE1 /* WireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WireFormat.m; sourceTree = "<group>"; };
+		C586265312668C3900204EE1 /* TextFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TextFormat.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586265412668C3900204EE1 /* TextFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = TextFormat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		C586265712668C4100204EE1 /* WireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = WireFormat.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586265812668C4100204EE1 /* WireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = WireFormat.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586265B12668C4D00204EE1 /* AbstractMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessageBuilder.h; sourceTree = "<group>"; };
 		C586265C12668C4D00204EE1 /* AbstractMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractMessageBuilder.m; sourceTree = "<group>"; };
 		C586265D12668C4D00204EE1 /* AbstractMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractMessage.h; sourceTree = "<group>"; };
 		C586265E12668C4D00204EE1 /* AbstractMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AbstractMessage.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C586266312668C5800204EE1 /* GeneratedMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratedMessageBuilder.h; sourceTree = "<group>"; };
+		C586266312668C5800204EE1 /* GeneratedMessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GeneratedMessageBuilder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586266412668C5800204EE1 /* GeneratedMessageBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GeneratedMessageBuilder.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C586266512668C5800204EE1 /* GeneratedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneratedMessage.h; sourceTree = "<group>"; };
+		C586266512668C5800204EE1 /* GeneratedMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GeneratedMessage.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C586266612668C5800204EE1 /* GeneratedMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = GeneratedMessage.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		C586266B12668C5F00204EE1 /* MessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBuilder.h; sourceTree = "<group>"; };
-		C586266C12668C5F00204EE1 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
-		C586266F12668C6C00204EE1 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RingBuffer.h; sourceTree = "<group>"; };
-		C586267012668C6C00204EE1 /* RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RingBuffer.m; sourceTree = "<group>"; };
+		C586266B12668C5F00204EE1 /* MessageBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = MessageBuilder.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586266C12668C5F00204EE1 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Message.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586266F12668C6C00204EE1 /* RingBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = RingBuffer.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C586267012668C6C00204EE1 /* RingBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RingBuffer.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C586267312668C7400204EE1 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		C586267412668C7400204EE1 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		C5B03F76125179F30087887C /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,7 +203,7 @@
 		C5B03F7D12517A1A0087887C /* CodedOuputStreamTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CodedOuputStreamTests.h; path = Tests/CodedOuputStreamTests.h; sourceTree = "<group>"; };
 		C5B03F7E12517A1A0087887C /* CodedOuputStreamTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CodedOuputStreamTests.m; path = Tests/CodedOuputStreamTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F7F12517A1A0087887C /* CoreTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreTests.h; path = Tests/CoreTests.h; sourceTree = "<group>"; };
-		C5B03F8012517A1A0087887C /* CoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreTests.m; path = Tests/CoreTests.m; sourceTree = "<group>"; };
+		C5B03F8012517A1A0087887C /* CoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = CoreTests.m; path = Tests/CoreTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F8112517A1A0087887C /* GeneratedMessageTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GeneratedMessageTests.h; path = Tests/GeneratedMessageTests.h; sourceTree = "<group>"; };
 		C5B03F8212517A1A0087887C /* GeneratedMessageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = GeneratedMessageTests.m; path = Tests/GeneratedMessageTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F8312517A1A0087887C /* Main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Main.m; path = Tests/Main.m; sourceTree = "<group>"; };
@@ -212,15 +212,15 @@
 		C5B03F8612517A1A0087887C /* MicroTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MicroTest.h; path = Tests/MicroTest.h; sourceTree = "<group>"; };
 		C5B03F8712517A1A0087887C /* MicroTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MicroTest.m; path = Tests/MicroTest.m; sourceTree = "<group>"; };
 		C5B03F8812517A1A0087887C /* SmallBlockInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = SmallBlockInputStream.h; path = Tests/SmallBlockInputStream.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C5B03F8912517A1A0087887C /* SmallBlockInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmallBlockInputStream.m; path = Tests/SmallBlockInputStream.m; sourceTree = "<group>"; };
+		C5B03F8912517A1A0087887C /* SmallBlockInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = SmallBlockInputStream.m; path = Tests/SmallBlockInputStream.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F8A12517A1A0087887C /* TestUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestUtilities.h; path = Tests/TestUtilities.h; sourceTree = "<group>"; };
 		C5B03F8B12517A1A0087887C /* TestUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = TestUtilities.m; path = Tests/TestUtilities.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F9812517A1A0087887C /* UnknownFieldSetTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = UnknownFieldSetTest.h; path = Tests/UnknownFieldSetTest.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C5B03F9912517A1A0087887C /* UnknownFieldSetTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = UnknownFieldSetTest.m; path = Tests/UnknownFieldSetTest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F9A12517A1A0087887C /* UtilitiesTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UtilitiesTests.h; path = Tests/UtilitiesTests.h; sourceTree = "<group>"; };
-		C5B03F9B12517A1A0087887C /* UtilitiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UtilitiesTests.m; path = Tests/UtilitiesTests.m; sourceTree = "<group>"; };
+		C5B03F9B12517A1A0087887C /* UtilitiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = UtilitiesTests.m; path = Tests/UtilitiesTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5B03F9C12517A1A0087887C /* WireFormatTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WireFormatTests.h; path = Tests/WireFormatTests.h; sourceTree = "<group>"; };
-		C5B03F9D12517A1A0087887C /* WireFormatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WireFormatTests.m; path = Tests/WireFormatTests.m; sourceTree = "<group>"; };
+		C5B03F9D12517A1A0087887C /* WireFormatTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = WireFormatTests.m; path = Tests/WireFormatTests.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5D8D6E912767BC300F0BAE4 /* ArrayTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayTests.h; path = Tests/ArrayTests.h; sourceTree = "<group>"; };
 		C5D8D6EA12767BC300F0BAE4 /* ArrayTests.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = ArrayTests.m; path = Tests/ArrayTests.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C5F36E031275FA5A00013BB4 /* PBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PBArray.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -447,34 +447,34 @@
 		C5B040B212517E930087887C /* Protocol Buffers */ = {
 			isa = PBXGroup;
 			children = (
-				3F15494F195761F1000F1056 /* Unittest_custom_options.pb.h */,
-				3F154950195761F1000F1056 /* Unittest_custom_options.pb.m */,
-				3F154951195761F1000F1056 /* Unittest_embed_optimize_for.pb.h */,
-				3F154952195761F1000F1056 /* Unittest_embed_optimize_for.pb.m */,
-				3F154953195761F1000F1056 /* Unittest_empty.pb.h */,
-				3F154954195761F1000F1056 /* Unittest_empty.pb.m */,
-				3F154955195761F1000F1056 /* Unittest_enormous_descriptor.pb.h */,
-				3F154956195761F1000F1056 /* Unittest_enormous_descriptor.pb.m */,
-				3F154957195761F1000F1056 /* Unittest_import_lite.pb.h */,
-				3F154958195761F1000F1056 /* Unittest_import_lite.pb.m */,
-				3F154959195761F1000F1056 /* Unittest_import_public_lite.pb.h */,
-				3F15495A195761F1000F1056 /* Unittest_import_public_lite.pb.m */,
-				3F15495B195761F1000F1056 /* Unittest_import_public.pb.h */,
-				3F15495C195761F1000F1056 /* Unittest_import_public.pb.m */,
-				3F15495D195761F1000F1056 /* Unittest_import.pb.h */,
-				3F15495E195761F1000F1056 /* Unittest_import.pb.m */,
-				3F15495F195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.h */,
-				3F154960195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.m */,
-				3F154961195761F1000F1056 /* Unittest_lite.pb.h */,
-				3F154962195761F1000F1056 /* Unittest_lite.pb.m */,
-				3F154963195761F1000F1056 /* Unittest_mset.pb.h */,
-				3F154964195761F1000F1056 /* Unittest_mset.pb.m */,
-				3F154965195761F1000F1056 /* Unittest_no_generic_services.pb.h */,
-				3F154966195761F1000F1056 /* Unittest_no_generic_services.pb.m */,
-				3F154967195761F1000F1056 /* Unittest_optimize_for.pb.h */,
-				3F154968195761F1000F1056 /* Unittest_optimize_for.pb.m */,
-				3F154969195761F1000F1056 /* Unittest.pb.h */,
-				3F15496A195761F1000F1056 /* Unittest.pb.m */,
+				3FD0CF151959F700000C8F68 /* Unittest_custom_options.pb.h */,
+				3FD0CF161959F700000C8F68 /* Unittest_custom_options.pb.m */,
+				3FD0CF171959F700000C8F68 /* Unittest_embed_optimize_for.pb.h */,
+				3FD0CF181959F700000C8F68 /* Unittest_embed_optimize_for.pb.m */,
+				3FD0CF191959F700000C8F68 /* Unittest_empty.pb.h */,
+				3FD0CF1A1959F700000C8F68 /* Unittest_empty.pb.m */,
+				3FD0CF1B1959F700000C8F68 /* Unittest_enormous_descriptor.pb.h */,
+				3FD0CF1C1959F700000C8F68 /* Unittest_enormous_descriptor.pb.m */,
+				3FD0CF1D1959F700000C8F68 /* Unittest_import_lite.pb.h */,
+				3FD0CF1E1959F700000C8F68 /* Unittest_import_lite.pb.m */,
+				3FD0CF1F1959F700000C8F68 /* Unittest_import_public_lite.pb.h */,
+				3FD0CF201959F700000C8F68 /* Unittest_import_public_lite.pb.m */,
+				3FD0CF211959F700000C8F68 /* Unittest_import_public.pb.h */,
+				3FD0CF221959F700000C8F68 /* Unittest_import_public.pb.m */,
+				3FD0CF231959F700000C8F68 /* Unittest_import.pb.h */,
+				3FD0CF241959F700000C8F68 /* Unittest_import.pb.m */,
+				3FD0CF251959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.h */,
+				3FD0CF261959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.m */,
+				3FD0CF271959F700000C8F68 /* Unittest_lite.pb.h */,
+				3FD0CF281959F700000C8F68 /* Unittest_lite.pb.m */,
+				3FD0CF291959F700000C8F68 /* Unittest_mset.pb.h */,
+				3FD0CF2A1959F700000C8F68 /* Unittest_mset.pb.m */,
+				3FD0CF2B1959F700000C8F68 /* Unittest_no_generic_services.pb.h */,
+				3FD0CF2C1959F700000C8F68 /* Unittest_no_generic_services.pb.m */,
+				3FD0CF2D1959F700000C8F68 /* Unittest_optimize_for.pb.h */,
+				3FD0CF2E1959F700000C8F68 /* Unittest_optimize_for.pb.m */,
+				3FD0CF2F1959F700000C8F68 /* Unittest.pb.h */,
+				3FD0CF301959F700000C8F68 /* Unittest.pb.m */,
 			);
 			name = "Protocol Buffers";
 			sourceTree = "<group>";
@@ -614,8 +614,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F7E14941955FB3400B3DD01 /* golden_message in Resources */,
-				3F7E14951955FB3400B3DD01 /* golden_packed_fields_message in Resources */,
+				3FD2C4AE195A0E5B00ABFC84 /* golden_message in Resources */,
+				3FD2C4AF195A0E5B00ABFC84 /* golden_packed_fields_message in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,31 +642,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F154974195761F1000F1056 /* Unittest_lite.pb.m in Sources */,
+				3FD0CF3A1959F700000C8F68 /* Unittest_lite.pb.m in Sources */,
 				C5B03FC712517AAE0087887C /* SmallBlockInputStream.m in Sources */,
 				C5B03FC912517AD90087887C /* CodedInputStreamTests.m in Sources */,
-				3F154978195761F1000F1056 /* Unittest.pb.m in Sources */,
-				3F154971195761F1000F1056 /* Unittest_import_public.pb.m in Sources */,
+				3FD0CF3E1959F700000C8F68 /* Unittest.pb.m in Sources */,
+				3FD0CF371959F700000C8F68 /* Unittest_import_public.pb.m in Sources */,
 				C5B03FCA12517AD90087887C /* CodedOuputStreamTests.m in Sources */,
-				3F154975195761F1000F1056 /* Unittest_mset.pb.m in Sources */,
-				3F15496F195761F1000F1056 /* Unittest_import_lite.pb.m in Sources */,
+				3FD0CF3B1959F700000C8F68 /* Unittest_mset.pb.m in Sources */,
+				3FD0CF351959F700000C8F68 /* Unittest_import_lite.pb.m in Sources */,
 				C5B03FCB12517AD90087887C /* CoreTests.m in Sources */,
-				3F15496C195761F1000F1056 /* Unittest_embed_optimize_for.pb.m in Sources */,
-				3F154970195761F1000F1056 /* Unittest_import_public_lite.pb.m in Sources */,
-				3F15496B195761F1000F1056 /* Unittest_custom_options.pb.m in Sources */,
-				3F154973195761F1000F1056 /* Unittest_lite_imports_nonlite.pb.m in Sources */,
+				3FD0CF321959F700000C8F68 /* Unittest_embed_optimize_for.pb.m in Sources */,
+				3FD0CF361959F700000C8F68 /* Unittest_import_public_lite.pb.m in Sources */,
+				3FD0CF311959F700000C8F68 /* Unittest_custom_options.pb.m in Sources */,
+				3FD0CF391959F700000C8F68 /* Unittest_lite_imports_nonlite.pb.m in Sources */,
 				C5B03FCC12517AD90087887C /* GeneratedMessageTests.m in Sources */,
 				C5B03FCD12517AD90087887C /* MessageTests.m in Sources */,
-				3F15496E195761F1000F1056 /* Unittest_enormous_descriptor.pb.m in Sources */,
+				3FD0CF341959F700000C8F68 /* Unittest_enormous_descriptor.pb.m in Sources */,
 				C5B03FCE12517AD90087887C /* MicroTest.m in Sources */,
-				3F154976195761F1000F1056 /* Unittest_no_generic_services.pb.m in Sources */,
+				3FD0CF3C1959F700000C8F68 /* Unittest_no_generic_services.pb.m in Sources */,
 				C5B03FCF12517AD90087887C /* TestUtilities.m in Sources */,
 				C5B03FD612517AD90087887C /* UnknownFieldSetTest.m in Sources */,
-				3F154977195761F1000F1056 /* Unittest_optimize_for.pb.m in Sources */,
+				3FD0CF3D1959F700000C8F68 /* Unittest_optimize_for.pb.m in Sources */,
 				C5B03FD712517AD90087887C /* UtilitiesTests.m in Sources */,
-				3F15496D195761F1000F1056 /* Unittest_empty.pb.m in Sources */,
+				3FD0CF331959F700000C8F68 /* Unittest_empty.pb.m in Sources */,
 				C5B03FD812517AD90087887C /* WireFormatTests.m in Sources */,
-				3F154972195761F1000F1056 /* Unittest_import.pb.m in Sources */,
+				3FD0CF381959F700000C8F68 /* Unittest_import.pb.m in Sources */,
 				C5B0406312517D0A0087887C /* Main.m in Sources */,
 				C5D8D6EB12767BC300F0BAE4 /* ArrayTests.m in Sources */,
 			);
@@ -726,6 +726,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				COPY_PHASE_STRIP = NO;
 				DSTROOT = /tmp/ProtocolBuffers.dst;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -750,6 +751,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
 				DSTROOT = /tmp/ProtocolBuffers.dst;
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -775,7 +777,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../ProtocolBuffers;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OBJROOT = Build;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
@@ -796,7 +798,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = ../ProtocolBuffers;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OBJROOT = Build;
 				OTHER_LDFLAGS = "-ObjC";
 				PRIVATE_HEADERS_FOLDER_PATH = ../ProtocolBuffers/private;

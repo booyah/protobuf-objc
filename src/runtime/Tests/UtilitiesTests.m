@@ -26,7 +26,7 @@
   XCTAssertEqual((1ULL << 63) >> 63, 1ULL);
   XCTAssertEqual((1LL << 63) >> 63, -1LL);
 
-  XCTAssertEqual(logicalRightShift32(((long)1 << 31), 31), (long)1);
+  XCTAssertEqual(logicalRightShift32(((SInt32)1 << 31), 31), (SInt32)1);
   XCTAssertEqual(logicalRightShift64((1LL << 63), 63), 1LL);
 }
 

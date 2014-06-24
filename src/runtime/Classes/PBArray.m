@@ -33,22 +33,22 @@ static void PBArraySetBoolValue(NSNumber *number, void *value)
 
 static void PBArraySetInt32Value(NSNumber *number, void *value)
 {
-	*((long *)value) = [number integerValue];
+	*((SInt32 *)value) = (SInt32)[number integerValue];
 }
 
 static void PBArraySetUInt32Value(NSNumber *number, void *value)
 {
-	*((unsigned long *)value) = [number unsignedIntegerValue];
+	*((UInt32 *)value) = (UInt32)[number unsignedIntegerValue];
 }
 
 static void PBArraySetInt64Value(NSNumber *number, void *value)
 {
-	*((long long *)value) = [number longLongValue];
+	*((SInt64 *)value) = (SInt64)[number longLongValue];
 }
 
 static void PBArraySetUInt64Value(NSNumber *number, void *value)
 {
-	*((unsigned long long *)value) = [number unsignedLongLongValue];
+	*((UInt64 *)value) = (UInt64)[number unsignedLongLongValue];
 }
 
 static void PBArraySetFloatValue(NSNumber *number, void *value)
@@ -73,10 +73,10 @@ typedef struct _PBArrayValueTypeInfo
 static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	{ sizeof(BOOL),		PBArraySetBoolValue		},
-	{ sizeof(long),	PBArraySetInt32Value	},
-	{ sizeof(unsigned long),	PBArraySetUInt32Value	},
-	{ sizeof(long long),	PBArraySetInt64Value	},
-	{ sizeof(unsigned long long),	PBArraySetUInt64Value	},
+	{ sizeof(SInt32),	PBArraySetInt32Value	},
+	{ sizeof(UInt32),	PBArraySetUInt32Value	},
+	{ sizeof(SInt64),	PBArraySetInt64Value	},
+	{ sizeof(UInt64),	PBArraySetUInt64Value	},
 	{ sizeof(Float32),	PBArraySetFloatValue	},
 	{ sizeof(Float64),	PBArraySetDoubleValue	},
 };
@@ -99,7 +99,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 
 #define PBArrayValueRangeAssert(index) \
 	if (__builtin_expect(index >= _count, 0)) \
-		[NSException raise:NSRangeException format: @"index (%ld) beyond bounds (%ld)", (long)index, (long)_count];
+		[NSException raise:NSRangeException format: @"index (%lu) beyond bounds (%lu)", (unsigned long)index, (unsigned long)_count];
 
 #define PBArrayNumberAssert(value) \
 	if (__builtin_expect(![value isKindOfClass:[NSNumber class]], 0)) \
@@ -180,40 +180,40 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return ((BOOL *)_data)[index];
 }
 
-- (long)int32AtIndex:(NSUInteger)index
+- (SInt32)int32AtIndex:(NSUInteger)index
 {
-	PBArrayValueRangeAssert(index);
+	PBArrayValueRangeAssert((unsigned long)index);
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
-	return ((long *)_data)[index];
+	return ((SInt32 *)_data)[index];
 }
 
-- (unsigned long)uint32AtIndex:(NSUInteger)index
+- (UInt32)uint32AtIndex:(NSUInteger)index
 {
-	PBArrayValueRangeAssert(index);
+	PBArrayValueRangeAssert((unsigned long)index);
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
-	return ((unsigned long *)_data)[index];
+	return ((UInt32 *)_data)[index];
 }
 
-- (long)enumAtIndex:(NSUInteger)index
+- (SInt32)enumAtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
-	return ((long *)_data)[index];
+	return ((SInt32 *)_data)[index];
 }
 
 
-- (long long)int64AtIndex:(NSUInteger)index
+- (SInt64)int64AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeInt64);
-	return ((long long *)_data)[index];
+	return ((SInt64 *)_data)[index];
 }
 
-- (unsigned long long)uint64AtIndex:(NSUInteger)index
+- (UInt64)uint64AtIndex:(NSUInteger)index
 {
 	PBArrayValueRangeAssert(index);
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt64);
-	return ((unsigned long long *)_data)[index];
+	return ((UInt64 *)_data)[index];
 }
 
 - (Float32)floatAtIndex:(NSUInteger)index
@@ -359,7 +359,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
             }
             else if (PBArrayValueTypeInt32 == _valueType)
             {
-                [newArray addInt32:[(NSNumber *)obj longValue]];
+                [newArray addInt32:(SInt32)[(NSNumber *)obj longValue]];
             }
             else if (PBArrayValueTypeInt64 == _valueType)
             {
@@ -367,7 +367,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
             }
             else if (PBArrayValueTypeUInt32 == _valueType)
             {
-                 [newArray addUint32:[(NSNumber *)obj unsignedLongValue]];
+                 [newArray addUint32:(UInt32)[(NSNumber *)obj unsignedLongValue]];
             }
             else if (PBArrayValueTypeUInt64 == _valueType)
             {
@@ -504,27 +504,27 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	_count++;
 }
 
-- (void)addInt32:(long)value
+- (void)addInt32:(SInt32)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
 	[self ensureAdditionalCapacity:1];
-	*(long *)PBArraySlot(_count) = value;
+	*(SInt32 *)PBArraySlot(_count) = value;
 	_count++;
 }
 
-- (void)addUint32:(unsigned long)value
+- (void)addUint32:(UInt32)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt32);
 	[self ensureAdditionalCapacity:1];
-	*(unsigned long *)PBArraySlot(_count) = value;
+	*(UInt32 *)PBArraySlot(_count) = value;
 	_count++;
 }
 
-- (void)addEnum:(long)value
+- (void)addEnum:(SInt32)value
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeInt32);
 	[self ensureAdditionalCapacity:1];
-	*(long *)PBArraySlot(_count) = value;
+	*(SInt32 *)PBArraySlot(_count) = value;
 	_count++;
 }
 
@@ -532,7 +532,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeInt64);
 	[self ensureAdditionalCapacity:1];
-	*(long long *)PBArraySlot(_count) = value;
+	*(SInt64 *)PBArraySlot(_count) = value;
 	_count++;
 }
 
@@ -540,7 +540,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 {
 	PBArrayValueTypeAssert(PBArrayValueTypeUInt64);
 	[self ensureAdditionalCapacity:1];
-	*(unsigned long long *)PBArraySlot(_count) = value;
+	*(UInt64 *)PBArraySlot(_count) = value;
 	_count++;
 }
 
@@ -570,7 +570,7 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	_count += array.count;
 }
 
-- (void)appendValues:(const void *)values count:(unsigned long)count
+- (void)appendValues:(const void *)values count:(UInt32)count
 {
 	[self ensureAdditionalCapacity:count];
 

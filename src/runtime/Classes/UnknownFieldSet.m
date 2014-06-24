@@ -64,12 +64,12 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
-- (BOOL) hasField:(long) number {
+- (BOOL) hasField:(SInt32) number {
   return [fields objectForKey:@(number)] != nil;
 }
 
 
-- (PBField*) getField:(long) number {
+- (PBField*) getField:(SInt32) number {
   PBField* result = [fields objectForKey:@(number)];
   return (result == nil) ? [PBField defaultInstance] : result;
 }
@@ -79,7 +79,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
   NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
     PBField* value = [fields objectForKey:number];
-    [value writeTo:number.integerValue output:output];
+    [value writeTo:(SInt32)number.integerValue output:output];
   }
 }
 
@@ -96,7 +96,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
   NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
     PBField* value = [fields objectForKey:number];
-    [value writeDescriptionFor:number.integerValue to:output withIndent:indent];
+    [value writeDescriptionFor:(SInt32)number.integerValue to:output withIndent:indent];
   }
 }
 
@@ -127,10 +127,10 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 
 /** Get the number of bytes required to encode this set. */
-- (long) serializedSize {
-  long result = 0;
+- (SInt32) serializedSize {
+  SInt32 result = 0;
   for (NSNumber* number in fields) {
-    result += [[fields objectForKey:number] getSerializedSize:number.integerValue];
+    result += [[fields objectForKey:number] getSerializedSize:(SInt32)number.integerValue];
   }
   return result;
 }
@@ -141,7 +141,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
  */
 - (void) writeAsMessageSetTo:(PBCodedOutputStream*) output {
   for (NSNumber* number in fields) {
-    [[fields objectForKey:number] writeAsMessageSetExtensionTo:number.integerValue output:output];
+    [[fields objectForKey:number] writeAsMessageSetExtensionTo:(SInt32)number.integerValue output:output];
   }
 }
 
@@ -150,10 +150,10 @@ static PBUnknownFieldSet* defaultInstance = nil;
  * Get the number of bytes required to encode this set using
  * {@code MessageSet} wire format.
  */
-- (long) serializedSizeAsMessageSet {
-  long result = 0;
+- (SInt32) serializedSizeAsMessageSet {
+  SInt32 result = 0;
   for (NSNumber* number in fields) {
-    result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:number.integerValue];
+    result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:(SInt32)number.integerValue];
   }
   return result;
 }

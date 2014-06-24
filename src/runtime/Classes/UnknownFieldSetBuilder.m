@@ -25,7 +25,7 @@
 
 @interface PBUnknownFieldSetBuilder ()
 @property (strong) NSMutableDictionary* fields;
-@property long lastFieldNumber;
+@property SInt32 lastFieldNumber;
 @property (strong) PBMutableField* lastField;
 @end
 
@@ -63,7 +63,7 @@
  * Add a field to the {@code PBUnknownFieldSet}.  If a field with the same
  * number already exists, it is removed.
  */
-- (PBUnknownFieldSetBuilder*) addField:(PBField*) field forNumber:(long) number {
+- (PBUnknownFieldSetBuilder*) addField:(PBField*) field forNumber:(SInt32) number {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"" userInfo:nil];
   }
@@ -81,7 +81,7 @@
  * Get a field builder for the given field number which includes any
  * values that already exist.
  */
-- (PBMutableField*) getFieldBuilder:(long) number {
+- (PBMutableField*) getFieldBuilder:(SInt32) number {
   if (lastField != nil) {
     if (number == lastFieldNumber) {
       return lastField;
@@ -140,7 +140,7 @@
 }
 
 /** Check if the given field number is present in the set. */
-- (BOOL) hasField:(long) number {
+- (BOOL) hasField:(SInt32) number {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"" userInfo:nil];
   }
@@ -153,7 +153,7 @@
  * Add a field to the {@code PBUnknownFieldSet}.  If a field with the same
  * number already exists, the two are merged.
  */
-- (PBUnknownFieldSetBuilder*) mergeField:(PBField*) field forNumber:(long) number {
+- (PBUnknownFieldSetBuilder*) mergeField:(PBField*) field forNumber:(SInt32) number {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"" userInfo:nil];
   }
@@ -174,7 +174,7 @@
   if (other != [PBUnknownFieldSet defaultInstance]) {
     for (NSNumber* number in other.fields) {
       PBField* field = [other.fields objectForKey:number];
-      [self mergeField:field forNumber:[number integerValue]];
+      [self mergeField:field forNumber:(SInt32)[number integerValue]];
     }
   }
   return self;
@@ -205,7 +205,7 @@
   @throw [NSException exceptionWithName:@"UnsupportedMethod" reason:@"" userInfo:nil];
 }
 
-- (PBUnknownFieldSetBuilder*) mergeVarintField:(long) number value:(long) value {
+- (PBUnknownFieldSetBuilder*) mergeVarintField:(SInt32) number value:(SInt32) value {
   if (number == 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"Zero is not a valid field number." userInfo:nil];
   }
@@ -220,8 +220,8 @@
  * @param tag The field's tag number, which was already parsed.
  * @return {@code NO} if the tag is an engroup tag.
  */
-- (BOOL) mergeFieldFrom:(long) tag input:(PBCodedInputStream*) input {
-  long number = PBWireFormatGetTagFieldNumber(tag);
+- (BOOL) mergeFieldFrom:(SInt32) tag input:(PBCodedInputStream*) input {
+  SInt32 number = PBWireFormatGetTagFieldNumber(tag);
   switch (PBWireFormatGetTagWireType(tag)) {
     case PBWireFormatVarint:
       [[self getFieldBuilder:number] addVarint:[input readInt64]];
@@ -255,7 +255,7 @@
  */
 - (PBUnknownFieldSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
   while (YES) {
-    long tag = [input readTag];
+    SInt32 tag = [input readTag];
     if (tag == 0 || ![self mergeFieldFrom:tag input:input]) {
       break;
     }

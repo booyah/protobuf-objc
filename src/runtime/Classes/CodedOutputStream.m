@@ -24,7 +24,7 @@
 
 @implementation PBCodedOutputStream
 
-const long DEFAULT_BUFFER_SIZE = 4 * 1024;
+const SInt32 DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 - (id)initWithOutputStream:(NSOutputStream*)_output data:(NSMutableData*)data {
@@ -35,7 +35,7 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 	return self;
 }
 
-+ (PBCodedOutputStream*)streamWithOutputStream:(NSOutputStream*)output bufferSize:(long)bufferSize {
++ (PBCodedOutputStream*)streamWithOutputStream:(NSOutputStream*)output bufferSize:(SInt32)bufferSize {
 	NSMutableData *data = [NSMutableData dataWithLength:bufferSize];
 	return [[PBCodedOutputStream alloc] initWithOutputStream:output data:data];
 }
@@ -69,13 +69,13 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 - (void)writeRawData:(const NSData*)data {
-	[self writeRawData:data offset:0 length:data.length];
+	[self writeRawData:data offset:0 length:(SInt32)data.length];
 }
 
 
-- (void)writeRawData:(const NSData*)value offset:(long)offset length:(long)length {
+- (void)writeRawData:(const NSData*)value offset:(SInt32)offset length:(SInt32)length {
 	while (length > 0) {
-		long written = [buffer appendData:value offset:offset length:length];
+		SInt32 written = [buffer appendData:value offset:offset length:length];
 		offset += written;
 		length -= written;
 		if (!written || length > 0) {
@@ -91,7 +91,7 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 /** Write a {@code double} field, including tag, to the stream. */
-- (void)writeDouble:(long)fieldNumber value:(Float64)value {
+- (void)writeDouble:(SInt32)fieldNumber value:(Float64)value {
 	[self writeTag:fieldNumber format:PBWireFormatFixed64];
 	[self writeDoubleNoTag:value];
 }
@@ -103,37 +103,37 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 /** Write a {@code float} field, including tag, to the stream. */
-- (void)writeFloat:(long)fieldNumber value:(Float32)value {
+- (void)writeFloat:(SInt32)fieldNumber value:(Float32)value {
 	[self writeTag:fieldNumber format:PBWireFormatFixed32];
 	[self writeFloatNoTag:value];
 }
 
 
-- (void)writeUInt64NoTag:(long long)value {
+- (void)writeUInt64NoTag:(SInt64)value {
 	[self writeRawVarint64:value];
 }
 
 
 /** Write a {@code uint64} field, including tag, to the stream. */
-- (void)writeUInt64:(long)fieldNumber value:(long long)value {
+- (void)writeUInt64:(SInt32)fieldNumber value:(SInt64)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeUInt64NoTag:value];
 }
 
 
-- (void)writeInt64NoTag:(long long)value {
+- (void)writeInt64NoTag:(SInt64)value {
 	[self writeRawVarint64:value];
 }
 
 
 /** Write an {@code int64} field, including tag, to the stream. */
-- (void)writeInt64:(long)fieldNumber value:(long long)value {
+- (void)writeInt64:(SInt32)fieldNumber value:(SInt64)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeInt64NoTag:value];
 }
 
 
-- (void)writeInt32NoTag:(long)value {
+- (void)writeInt32NoTag:(SInt32)value {
 	if (value >= 0) {
 		[self writeRawVarint32:value];
 	} else {
@@ -144,31 +144,31 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 /** Write an {@code int32} field, including tag, to the stream. */
-- (void)writeInt32:(long)fieldNumber value:(long)value {
+- (void)writeInt32:(SInt32)fieldNumber value:(SInt32)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeInt32NoTag:value];
 }
 
 
-- (void)writeFixed64NoTag:(long long)value {
+- (void)writeFixed64NoTag:(SInt64)value {
 	[self writeRawLittleEndian64:value];
 }
 
 
 /** Write a {@code fixed64} field, including tag, to the stream. */
-- (void)writeFixed64:(long)fieldNumber value:(long long)value {
+- (void)writeFixed64:(SInt32)fieldNumber value:(SInt64)value {
 	[self writeTag:fieldNumber format:PBWireFormatFixed64];
 	[self writeFixed64NoTag:value];
 }
 
 
-- (void)writeFixed32NoTag:(long)value {
+- (void)writeFixed32NoTag:(SInt32)value {
 	[self writeRawLittleEndian32:value];
 }
 
 
 /** Write a {@code fixed32} field, including tag, to the stream. */
-- (void)writeFixed32:(long)fieldNumber value:(long)value {
+- (void)writeFixed32:(SInt32)fieldNumber value:(SInt32)value {
 	[self writeTag:fieldNumber format:PBWireFormatFixed32];
 	[self writeFixed32NoTag:value];
 }
@@ -180,7 +180,7 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 /** Write a {@code bool} field, including tag, to the stream. */
-- (void)writeBool:(long)fieldNumber value:(BOOL)value {
+- (void)writeBool:(SInt32)fieldNumber value:(BOOL)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeBoolNoTag:value];
 }
@@ -188,39 +188,39 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 - (void)writeStringNoTag:(const NSString*)value {
 	NSData* data = [value dataUsingEncoding:NSUTF8StringEncoding];
-	[self writeRawVarint32:data.length];
+	[self writeRawVarint32:(SInt32)data.length];
 	[self writeRawData:data];
 }
 
 
 /** Write a {@code string} field, including tag, to the stream. */
-- (void)writeString:(long)fieldNumber value:(const NSString*)value {
+- (void)writeString:(SInt32)fieldNumber value:(const NSString*)value {
 	[self writeTag:fieldNumber format:PBWireFormatLengthDelimited];
 	[self writeStringNoTag:value];
 }
 
 
-- (void)writeGroupNoTag:(long)fieldNumber value:(const id<PBMessage>)value {
+- (void)writeGroupNoTag:(SInt32)fieldNumber value:(const id<PBMessage>)value {
 	[value writeToCodedOutputStream:self];
 	[self writeTag:fieldNumber format:PBWireFormatEndGroup];
 }
 
 
 /** Write a {@code group} field, including tag, to the stream. */
-- (void)writeGroup:(long)fieldNumber value:(const id<PBMessage>)value {
+- (void)writeGroup:(SInt32)fieldNumber value:(const id<PBMessage>)value {
 	[self writeTag:fieldNumber format:PBWireFormatStartGroup];
 	[self writeGroupNoTag:fieldNumber value:value];
 }
 
 
-- (void)writeUnknownGroupNoTag:(long)fieldNumber value:(const PBUnknownFieldSet*)value {
+- (void)writeUnknownGroupNoTag:(SInt32)fieldNumber value:(const PBUnknownFieldSet*)value {
 	[value writeToCodedOutputStream:self];
 	[self writeTag:fieldNumber format:PBWireFormatEndGroup];
 }
 
 
 /** Write a group represented by an {@link PBUnknownFieldSet}. */
-- (void)writeUnknownGroup:(long)fieldNumber value:(const PBUnknownFieldSet*)value {
+- (void)writeUnknownGroup:(SInt32)fieldNumber value:(const PBUnknownFieldSet*)value {
 	[self writeTag:fieldNumber format:PBWireFormatStartGroup];
 	[self writeUnknownGroupNoTag:fieldNumber value:value];
 }
@@ -233,91 +233,91 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 
 
 /** Write an embedded message field, including tag, to the stream. */
-- (void)writeMessage:(long)fieldNumber value:(const id<PBMessage>)value {
+- (void)writeMessage:(SInt32)fieldNumber value:(const id<PBMessage>)value {
 	[self writeTag:fieldNumber format:PBWireFormatLengthDelimited];
 	[self writeMessageNoTag:value];
 }
 
 
 - (void)writeDataNoTag:(const NSData*)value {
-	[self writeRawVarint32:value.length];
+	[self writeRawVarint32:(SInt32)value.length];
 	[self writeRawData:value];
 }
 
 
 /** Write a {@code bytes} field, including tag, to the stream. */
-- (void)writeData:(long)fieldNumber value:(const NSData*)value {
+- (void)writeData:(SInt32)fieldNumber value:(const NSData*)value {
 	[self writeTag:fieldNumber format:PBWireFormatLengthDelimited];
 	[self writeDataNoTag:value];
 }
 
 
-- (void)writeUInt32NoTag:(long)value {
+- (void)writeUInt32NoTag:(SInt32)value {
 	[self writeRawVarint32:value];
 }
 
 
 /** Write a {@code uint32} field, including tag, to the stream. */
-- (void)writeUInt32:(long)fieldNumber value:(long)value {
+- (void)writeUInt32:(SInt32)fieldNumber value:(SInt32)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeUInt32NoTag:value];
 }
 
 
-- (void)writeEnumNoTag:(long)value {
+- (void)writeEnumNoTag:(SInt32)value {
 	[self writeRawVarint32:value];
 }
 
 
-- (void)writeEnum:(long)fieldNumber value:(long)value {
+- (void)writeEnum:(SInt32)fieldNumber value:(SInt32)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeEnumNoTag:value];
 }
 
 
-- (void)writeSFixed32NoTag:(long)value {
+- (void)writeSFixed32NoTag:(SInt32)value {
 	[self writeRawLittleEndian32:value];
 }
 
 
 /** Write an {@code sfixed32} field, including tag, to the stream. */
-- (void)writeSFixed32:(long)fieldNumber value:(long)value {
+- (void)writeSFixed32:(SInt32)fieldNumber value:(SInt32)value {
 	[self writeTag:fieldNumber format:PBWireFormatFixed32];
 	[self writeSFixed32NoTag:value];
 }
 
 
-- (void)writeSFixed64NoTag:(long long)value {
+- (void)writeSFixed64NoTag:(SInt64)value {
 	[self writeRawLittleEndian64:value];
 }
 
 
 /** Write an {@code sfixed64} field, including tag, to the stream. */
-- (void)writeSFixed64:(long)fieldNumber value:(long long)value {
+- (void)writeSFixed64:(SInt32)fieldNumber value:(SInt64)value {
 	[self writeTag:fieldNumber format:PBWireFormatFixed64];
 	[self writeSFixed64NoTag:value];
 }
 
 
-- (void)writeSInt32NoTag:(long)value {
+- (void)writeSInt32NoTag:(SInt32)value {
 	[self writeRawVarint32:encodeZigZag32(value)];
 }
 
 
 /** Write an {@code sint32} field, including tag, to the stream. */
-- (void)writeSInt32:(long)fieldNumber value:(long)value {
+- (void)writeSInt32:(SInt32)fieldNumber value:(SInt32)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeSInt32NoTag:value];
 }
 
 
-- (void)writeSInt64NoTag:(long long)value {
+- (void)writeSInt64NoTag:(SInt64)value {
 	[self writeRawVarint64:encodeZigZag64(value)];
 }
 
 
 /** Write an {@code sint64} field, including tag, to the stream. */
-- (void)writeSInt64:(long)fieldNumber value:(long long)value {
+- (void)writeSInt64:(SInt32)fieldNumber value:(SInt64)value {
 	[self writeTag:fieldNumber format:PBWireFormatVarint];
 	[self writeSInt64NoTag:value];
 }
@@ -327,7 +327,7 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
  * Write a MessageSet extension field to the stream.  For historical reasons,
  * the wire format differs from normal fields.
  */
-- (void)writeMessageSetExtension:(long)fieldNumber value:(const id<PBMessage>)value {
+- (void)writeMessageSetExtension:(SInt32)fieldNumber value:(const id<PBMessage>)value {
 	[self writeTag:PBWireFormatMessageSetItem format:PBWireFormatStartGroup];
 	[self writeUInt32:PBWireFormatMessageSetTypeId value:fieldNumber];
 	[self writeMessage:PBWireFormatMessageSetMessage value:value];
@@ -339,7 +339,7 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
  * Write an unparsed MessageSet extension field to the stream.  For
  * historical reasons, the wire format differs from normal fields.
  */
-- (void)writeRawMessageSetExtension:(long)fieldNumber value:(const NSData*)value {
+- (void)writeRawMessageSetExtension:(SInt32)fieldNumber value:(const NSData*)value {
 	[self writeTag:PBWireFormatMessageSetItem format:PBWireFormatStartGroup];
 	[self writeUInt32:PBWireFormatMessageSetTypeId value:fieldNumber];
 	[self writeData:PBWireFormatMessageSetMessage value:value];
@@ -347,12 +347,12 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 }
 
 
-- (void)writeTag:(long)fieldNumber format:(long)format {
+- (void)writeTag:(SInt32)fieldNumber format:(SInt32)format {
 	[self writeRawVarint32:PBWireFormatMakeTag(fieldNumber, format)];
 }
 
 
-- (void)writeRawVarint32:(long)value {
+- (void)writeRawVarint32:(SInt32)value {
 	while (YES) {
 		if ((value & ~0x7F) == 0) {
 			[self writeRawByte:value];
@@ -365,20 +365,20 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 }
 
 
-- (void)writeRawVarint64:(long long)value {
+- (void)writeRawVarint64:(SInt64)value {
 	while (YES) {
 		if ((value & ~0x7FL) == 0) {
-			[self writeRawByte:((long)value)];
+			[self writeRawByte:((SInt32)value)];
 			return;
 		} else {
-			[self writeRawByte:(((long)value & 0x7F) | 0x80)];
+			[self writeRawByte:(((SInt32)value & 0x7F) | 0x80)];
 			value = logicalRightShift64(value, 7);
 		}
 	}
 }
 
 
-- (void)writeRawLittleEndian32:(long)value {
+- (void)writeRawLittleEndian32:(SInt32)value {
 	[self writeRawByte:((value      ) & 0xFF)];
 	[self writeRawByte:((value >>  8) & 0xFF)];
 	[self writeRawByte:((value >> 16) & 0xFF)];
@@ -386,15 +386,15 @@ const long DEFAULT_BUFFER_SIZE = 4 * 1024;
 }
 
 
-- (void)writeRawLittleEndian64:(long long)value {
-	[self writeRawByte:((long)(value      ) & 0xFF)];
-	[self writeRawByte:((long)(value >>  8) & 0xFF)];
-	[self writeRawByte:((long)(value >> 16) & 0xFF)];
-	[self writeRawByte:((long)(value >> 24) & 0xFF)];
-	[self writeRawByte:((long)(value >> 32) & 0xFF)];
-	[self writeRawByte:((long)(value >> 40) & 0xFF)];
-	[self writeRawByte:((long)(value >> 48) & 0xFF)];
-	[self writeRawByte:((long)(value >> 56) & 0xFF)];
+- (void)writeRawLittleEndian64:(SInt64)value {
+	[self writeRawByte:((SInt32)(value      ) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >>  8) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >> 16) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >> 24) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >> 32) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >> 40) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >> 48) & 0xFF)];
+	[self writeRawByte:((SInt32)(value >> 56) & 0xFF)];
 }
 
 @end

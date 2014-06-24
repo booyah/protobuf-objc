@@ -129,10 +129,10 @@
 @interface TestMessageSetExtension1 : PBGeneratedMessage {
 @private
   BOOL hasI_:1;
-  long i;
+  SInt32 i;
 }
 - (BOOL) hasI;
-@property (readonly) long i;
+@property (readonly) SInt32 i;
 
 + (TestMessageSetExtension1*) defaultInstance;
 - (TestMessageSetExtension1*) defaultInstance;
@@ -171,8 +171,8 @@
 - (TestMessageSetExtension1Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasI;
-- (long) i;
-- (TestMessageSetExtension1Builder*) setI:(long) value;
+- (SInt32) i;
+- (TestMessageSetExtension1Builder*) setI:(SInt32) value;
 - (TestMessageSetExtension1Builder*) clearI;
 @end
 
@@ -255,12 +255,12 @@
 @private
   BOOL hasTypeId_:1;
   BOOL hasMessage_:1;
-  long typeId;
+  SInt32 typeId;
   NSData* message;
 }
 - (BOOL) hasTypeId;
 - (BOOL) hasMessage;
-@property (readonly) long typeId;
+@property (readonly) SInt32 typeId;
 @property (readonly, strong) NSData* message;
 
 + (RawMessageSetItem*) defaultInstance;
@@ -299,8 +299,8 @@
 - (RawMessageSetItemBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasTypeId;
-- (long) typeId;
-- (RawMessageSetItemBuilder*) setTypeId:(long) value;
+- (SInt32) typeId;
+- (RawMessageSetItemBuilder*) setTypeId:(SInt32) value;
 - (RawMessageSetItemBuilder*) clearTypeId;
 
 - (BOOL) hasMessage;

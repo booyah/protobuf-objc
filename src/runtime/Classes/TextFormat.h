@@ -19,10 +19,10 @@
 
 }
 
-+ (long) parseInt32:(NSString*) text;
-+ (long) parseUInt32:(NSString*) text;
-+ (long long) parseInt64:(NSString*) text;
-+ (long long) parseUInt64:(NSString*) text;
++ (SInt32) parseInt32:(NSString*) text;
++ (SInt32) parseUInt32:(NSString*) text;
++ (SInt64) parseInt64:(NSString*) text;
++ (SInt64) parseUInt64:(NSString*) text;
 
 + (NSData*) unescapeBytes:(NSString*) input;
 

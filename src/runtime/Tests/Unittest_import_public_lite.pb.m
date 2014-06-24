@@ -21,7 +21,7 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @end
 
 @interface PublicImportMessageLite ()
-@property long e;
+@property SInt32 e;
 @end
 
 @implementation PublicImportMessageLite
@@ -62,8 +62,8 @@ static PublicImportMessageLite* defaultPublicImportMessageLiteInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -188,7 +188,7 @@ static PublicImportMessageLite* defaultPublicImportMessageLiteInstance = nil;
 - (PublicImportMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -210,10 +210,10 @@ static PublicImportMessageLite* defaultPublicImportMessageLiteInstance = nil;
 - (BOOL) hasE {
   return result.hasE;
 }
-- (long) e {
+- (SInt32) e {
   return result.e;
 }
-- (PublicImportMessageLiteBuilder*) setE:(long) value {
+- (PublicImportMessageLiteBuilder*) setE:(SInt32) value {
   result.hasE = YES;
   result.e = value;
   return self;

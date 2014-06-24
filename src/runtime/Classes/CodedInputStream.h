@@ -34,28 +34,28 @@
 @interface PBCodedInputStream : NSObject {
 @private
   NSMutableData* buffer;
-  long bufferSize;
-  long bufferSizeAfterLimit;
-  long bufferPos;
+  SInt32 bufferSize;
+  SInt32 bufferSizeAfterLimit;
+  SInt32 bufferPos;
   NSInputStream* input;
-  long lastTag;
+  SInt32 lastTag;
 
   /**
    * The total number of bytes read before the current buffer.  The total
    * bytes read up to the current position can be computed as
    * {@code totalBytesRetired + bufferPos}.
    */
-  long totalBytesRetired;
+  SInt32 totalBytesRetired;
 
   /** The absolute position of the end of the current message. */
-  long currentLimit;
+  SInt32 currentLimit;
 
   /** See setRecursionLimit() */
-  long recursionDepth;
-  long recursionLimit;
+  SInt32 recursionDepth;
+  SInt32 recursionLimit;
 
   /** See setSizeLimit() */
-  long sizeLimit;
+  SInt32 sizeLimit;
 }
 
 + (PBCodedInputStream*) streamWithData:(NSData*) data;
@@ -66,22 +66,22 @@
  * Protocol message parsers use this to read tags, since a protocol message
  * may legally end wherever a tag occurs, and zero is not a valid tag number.
  */
-- (long) readTag;
+- (SInt32) readTag;
 - (BOOL) refillBuffer:(BOOL) mustSucceed;
 
 - (Float64) readDouble;
 - (Float32) readFloat;
-- (long long) readUInt64;
-- (long) readUInt32;
-- (long long) readInt64;
-- (long) readInt32;
-- (long long) readFixed64;
-- (long) readFixed32;
-- (long) readEnum;
-- (long) readSFixed32;
-- (long long) readSFixed64;
-- (long) readSInt32;
-- (long long) readSInt64;
+- (SInt64) readUInt64;
+- (SInt32) readUInt32;
+- (SInt64) readInt64;
+- (SInt32) readInt32;
+- (SInt64) readFixed64;
+- (SInt32) readFixed32;
+- (SInt32) readEnum;
+- (SInt32) readSFixed32;
+- (SInt64) readSFixed64;
+- (SInt32) readSInt32;
+- (SInt64) readSInt64;
 
 /**
  * Read one byte from the input.
@@ -95,10 +95,10 @@
  * Read a raw Varint from the stream.  If larger than 32 bits, discard the
  * upper bits.
  */
-- (long) readRawVarint32;
-- (long long) readRawVarint64;
-- (long) readRawLittleEndian32;
-- (long long) readRawLittleEndian64;
+- (SInt32) readRawVarint32;
+- (SInt64) readRawVarint64;
+- (SInt32) readRawLittleEndian32;
+- (SInt64) readRawLittleEndian64;
 
 /**
  * Read a fixed size of bytes from the input.
@@ -106,7 +106,7 @@
  * @throws InvalidProtocolBuffer The end of the stream or the current
  *                                        limit was reached.
  */
-- (NSData*) readRawData:(long) size;
+- (NSData*) readRawData:(SInt32) size;
 
 /**
  * Reads and discards a single field, given its tag value.
@@ -114,7 +114,7 @@
  * @return {@code false} if the tag is an endgroup tag, in which case
  *         nothing is skipped.  Otherwise, returns {@code true}.
  */
-- (BOOL) skipField:(long) tag;
+- (BOOL) skipField:(SInt32) tag;
 
 
 /**
@@ -123,7 +123,7 @@
  * @throws InvalidProtocolBuffer The end of the stream or the current
  *                                        limit was reached.
  */
-- (void) skipRawData:(long) size;
+- (void) skipRawData:(SInt32) size;
 
 /**
  * Reads and discards an entire message.  This will read either until EOF
@@ -132,10 +132,10 @@
 - (void) skipMessage;
 
 - (BOOL) isAtEnd;
-- (long) pushLimit:(long) byteLimit;
+- (SInt32) pushLimit:(SInt32) byteLimit;
 - (void) recomputeBufferSizeAfterLimit;
-- (void) popLimit:(long) oldLimit;
-- (long) bytesUntilLimit;
+- (void) popLimit:(SInt32) oldLimit;
+- (SInt32) bytesUntilLimit;
 
 
 /** Read an embedded message field value from the stream. */
@@ -145,13 +145,13 @@
 - (NSString*) readString;
 - (NSData*) readData;
 
-- (void) readGroup:(long) fieldNumber builder:(id<PBMessageBuilder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+- (void) readGroup:(SInt32) fieldNumber builder:(id<PBMessageBuilder>) builder extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 /**
  * Reads a {@code group} field value from the stream and merges it into the
  * given {@link UnknownFieldSet}.
  */
-- (void) readUnknownGroup:(long) fieldNumber builder:(PBUnknownFieldSetBuilder*) builder;
+- (void) readUnknownGroup:(SInt32) fieldNumber builder:(PBUnknownFieldSetBuilder*) builder;
 
 /**
  * Verifies that the last call to readTag() returned the given tag value.
@@ -161,6 +161,6 @@
  * @throws InvalidProtocolBuffer {@code value} does not match the
  *                                        last tag.
  */
-- (void) checkLastTagWas:(long) value;
+- (void) checkLastTagWas:(SInt32) value;
 
 @end

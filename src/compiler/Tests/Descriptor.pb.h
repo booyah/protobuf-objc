@@ -191,8 +191,8 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 @property (readonly, strong) PBFileOptions* options;
 @property (readonly, strong) PBSourceCodeInfo* sourceCodeInfo;
 - (NSString*)dependencyAtIndex:(NSUInteger)index;
-- (long)publicDependencyAtIndex:(NSUInteger)index;
-- (long)weakDependencyAtIndex:(NSUInteger)index;
+- (SInt32)publicDependencyAtIndex:(NSUInteger)index;
+- (SInt32)weakDependencyAtIndex:(NSUInteger)index;
 - (PBDescriptorProto*)messageTypeAtIndex:(NSUInteger)index;
 - (PBEnumDescriptorProto*)enumTypeAtIndex:(NSUInteger)index;
 - (PBServiceDescriptorProto*)serviceAtIndex:(NSUInteger)index;
@@ -250,17 +250,17 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (PBFileDescriptorProtoBuilder *)clearDependency;
 
 - (PBAppendableArray *)publicDependency;
-- (long)publicDependencyAtIndex:(NSUInteger)index;
-- (PBFileDescriptorProtoBuilder *)addPublicDependency:(long)value;
+- (SInt32)publicDependencyAtIndex:(NSUInteger)index;
+- (PBFileDescriptorProtoBuilder *)addPublicDependency:(SInt32)value;
 - (PBFileDescriptorProtoBuilder *)setPublicDependencyArray:(NSArray *)array;
-- (PBFileDescriptorProtoBuilder *)setPublicDependencyValues:(const long *)values count:(NSUInteger)count;
+- (PBFileDescriptorProtoBuilder *)setPublicDependencyValues:(const SInt32 *)values count:(NSUInteger)count;
 - (PBFileDescriptorProtoBuilder *)clearPublicDependency;
 
 - (PBAppendableArray *)weakDependency;
-- (long)weakDependencyAtIndex:(NSUInteger)index;
-- (PBFileDescriptorProtoBuilder *)addWeakDependency:(long)value;
+- (SInt32)weakDependencyAtIndex:(NSUInteger)index;
+- (PBFileDescriptorProtoBuilder *)addWeakDependency:(SInt32)value;
 - (PBFileDescriptorProtoBuilder *)setWeakDependencyArray:(NSArray *)array;
-- (PBFileDescriptorProtoBuilder *)setWeakDependencyValues:(const long *)values count:(NSUInteger)count;
+- (PBFileDescriptorProtoBuilder *)setWeakDependencyValues:(const SInt32 *)values count:(NSUInteger)count;
 - (PBFileDescriptorProtoBuilder *)clearWeakDependency;
 
 - (NSMutableArray *)messageType;
@@ -351,13 +351,13 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 @private
   BOOL hasStart_:1;
   BOOL hasEnd_:1;
-  long start;
-  long end;
+  SInt32 start;
+  SInt32 end;
 }
 - (BOOL) hasStart;
 - (BOOL) hasEnd;
-@property (readonly) long start;
-@property (readonly) long end;
+@property (readonly) SInt32 start;
+@property (readonly) SInt32 end;
 
 + (PBDescriptorProtoExtensionRange*) defaultInstance;
 - (PBDescriptorProtoExtensionRange*) defaultInstance;
@@ -395,13 +395,13 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (PBDescriptorProtoExtensionRangeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasStart;
-- (long) start;
-- (PBDescriptorProtoExtensionRangeBuilder*) setStart:(long) value;
+- (SInt32) start;
+- (PBDescriptorProtoExtensionRangeBuilder*) setStart:(SInt32) value;
 - (PBDescriptorProtoExtensionRangeBuilder*) clearStart;
 
 - (BOOL) hasEnd;
-- (long) end;
-- (PBDescriptorProtoExtensionRangeBuilder*) setEnd:(long) value;
+- (SInt32) end;
+- (PBDescriptorProtoExtensionRangeBuilder*) setEnd:(SInt32) value;
 - (PBDescriptorProtoExtensionRangeBuilder*) clearEnd;
 @end
 
@@ -475,7 +475,7 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
   BOOL hasOptions_:1;
   BOOL hasLabel_:1;
   BOOL hasType_:1;
-  long number;
+  SInt32 number;
   NSString* name;
   NSString* typeName;
   NSString* extendee;
@@ -493,7 +493,7 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (BOOL) hasDefaultValue;
 - (BOOL) hasOptions;
 @property (readonly, strong) NSString* name;
-@property (readonly) long number;
+@property (readonly) SInt32 number;
 @property (readonly) PBFieldDescriptorProtoLabel label;
 @property (readonly) PBFieldDescriptorProtoType type;
 @property (readonly, strong) NSString* typeName;
@@ -542,8 +542,8 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (PBFieldDescriptorProtoBuilder*) clearName;
 
 - (BOOL) hasNumber;
-- (long) number;
-- (PBFieldDescriptorProtoBuilder*) setNumber:(long) value;
+- (SInt32) number;
+- (PBFieldDescriptorProtoBuilder*) setNumber:(SInt32) value;
 - (PBFieldDescriptorProtoBuilder*) clearNumber;
 
 - (BOOL) hasLabel;
@@ -653,7 +653,7 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
   BOOL hasNumber_:1;
   BOOL hasName_:1;
   BOOL hasOptions_:1;
-  long number;
+  SInt32 number;
   NSString* name;
   PBEnumValueOptions* options;
 }
@@ -661,7 +661,7 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (BOOL) hasNumber;
 - (BOOL) hasOptions;
 @property (readonly, strong) NSString* name;
-@property (readonly) long number;
+@property (readonly) SInt32 number;
 @property (readonly, strong) PBEnumValueOptions* options;
 
 + (PBEnumValueDescriptorProto*) defaultInstance;
@@ -705,8 +705,8 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (PBEnumValueDescriptorProtoBuilder*) clearName;
 
 - (BOOL) hasNumber;
-- (long) number;
-- (PBEnumValueDescriptorProtoBuilder*) setNumber:(long) value;
+- (SInt32) number;
+- (PBEnumValueDescriptorProtoBuilder*) setNumber:(SInt32) value;
 - (PBEnumValueDescriptorProtoBuilder*) clearNumber;
 
 - (BOOL) hasOptions;
@@ -1378,8 +1378,8 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
   BOOL hasAggregateValue_:1;
   BOOL hasStringValue_:1;
   Float64 doubleValue;
-  long long negativeIntValue;
-  unsigned long long positiveIntValue;
+  SInt64 negativeIntValue;
+  UInt64 positiveIntValue;
   NSString* identifierValue;
   NSString* aggregateValue;
   NSData* stringValue;
@@ -1393,8 +1393,8 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (BOOL) hasAggregateValue;
 @property (readonly, strong) NSArray * name;
 @property (readonly, strong) NSString* identifierValue;
-@property (readonly) unsigned long long positiveIntValue;
-@property (readonly) long long negativeIntValue;
+@property (readonly) UInt64 positiveIntValue;
+@property (readonly) SInt64 negativeIntValue;
 @property (readonly) Float64 doubleValue;
 @property (readonly, strong) NSData* stringValue;
 @property (readonly, strong) NSString* aggregateValue;
@@ -1505,13 +1505,13 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (PBUninterpretedOptionBuilder*) clearIdentifierValue;
 
 - (BOOL) hasPositiveIntValue;
-- (unsigned long long) positiveIntValue;
-- (PBUninterpretedOptionBuilder*) setPositiveIntValue:(unsigned long long) value;
+- (UInt64) positiveIntValue;
+- (PBUninterpretedOptionBuilder*) setPositiveIntValue:(UInt64) value;
 - (PBUninterpretedOptionBuilder*) clearPositiveIntValue;
 
 - (BOOL) hasNegativeIntValue;
-- (long long) negativeIntValue;
-- (PBUninterpretedOptionBuilder*) setNegativeIntValue:(long long) value;
+- (SInt64) negativeIntValue;
+- (PBUninterpretedOptionBuilder*) setNegativeIntValue:(SInt64) value;
 - (PBUninterpretedOptionBuilder*) clearNegativeIntValue;
 
 - (BOOL) hasDoubleValue;
@@ -1562,9 +1562,9 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
   NSString* leadingComments;
   NSString* trailingComments;
   PBAppendableArray * pathArray;
-  NSInteger pathMemoizedSerializedSize;
+  SInt32 pathMemoizedSerializedSize;
   PBAppendableArray * spanArray;
-  NSInteger spanMemoizedSerializedSize;
+  SInt32 spanMemoizedSerializedSize;
 }
 - (BOOL) hasLeadingComments;
 - (BOOL) hasTrailingComments;
@@ -1572,8 +1572,8 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 @property (readonly, strong) PBArray * span;
 @property (readonly, strong) NSString* leadingComments;
 @property (readonly, strong) NSString* trailingComments;
-- (long)pathAtIndex:(NSUInteger)index;
-- (long)spanAtIndex:(NSUInteger)index;
+- (SInt32)pathAtIndex:(NSUInteger)index;
+- (SInt32)spanAtIndex:(NSUInteger)index;
 
 + (PBSourceCodeInfoLocation*) defaultInstance;
 - (PBSourceCodeInfoLocation*) defaultInstance;
@@ -1611,17 +1611,17 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value);
 - (PBSourceCodeInfoLocationBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (PBAppendableArray *)path;
-- (long)pathAtIndex:(NSUInteger)index;
-- (PBSourceCodeInfoLocationBuilder *)addPath:(long)value;
+- (SInt32)pathAtIndex:(NSUInteger)index;
+- (PBSourceCodeInfoLocationBuilder *)addPath:(SInt32)value;
 - (PBSourceCodeInfoLocationBuilder *)setPathArray:(NSArray *)array;
-- (PBSourceCodeInfoLocationBuilder *)setPathValues:(const long *)values count:(NSUInteger)count;
+- (PBSourceCodeInfoLocationBuilder *)setPathValues:(const SInt32 *)values count:(NSUInteger)count;
 - (PBSourceCodeInfoLocationBuilder *)clearPath;
 
 - (PBAppendableArray *)span;
-- (long)spanAtIndex:(NSUInteger)index;
-- (PBSourceCodeInfoLocationBuilder *)addSpan:(long)value;
+- (SInt32)spanAtIndex:(NSUInteger)index;
+- (PBSourceCodeInfoLocationBuilder *)addSpan:(SInt32)value;
 - (PBSourceCodeInfoLocationBuilder *)setSpanArray:(NSArray *)array;
-- (PBSourceCodeInfoLocationBuilder *)setSpanValues:(const long *)values count:(NSUInteger)count;
+- (PBSourceCodeInfoLocationBuilder *)setSpanValues:(const SInt32 *)values count:(NSUInteger)count;
 - (PBSourceCodeInfoLocationBuilder *)clearSpan;
 
 - (BOOL) hasLeadingComments;

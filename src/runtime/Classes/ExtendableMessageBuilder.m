@@ -35,10 +35,10 @@
 - (BOOL) parseUnknownField:(PBCodedInputStream*) input
              unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
          extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                       tag:(long) tag {
+                       tag:(SInt32) tag {
   PBExtendableMessage* message = [self internalGetResult];
-  long wireType = PBWireFormatGetTagWireType(tag);
-  long fieldNumber = PBWireFormatGetTagFieldNumber(tag);
+  SInt32 wireType = PBWireFormatGetTagWireType(tag);
+  SInt32 fieldNumber = PBWireFormatGetTagFieldNumber(tag);
 
   id<PBExtensionField> extension = [extensionRegistry getExtension:[message class]
                                                        fieldNumber:fieldNumber];
@@ -110,7 +110,7 @@
 
 
 - (PBExtendableMessageBuilder*) setExtension:(id<PBExtensionField>) extension
-                                        index:(long) index
+                                        index:(SInt32) index
                                         value:(id) value {
   PBExtendableMessage* message = [self internalGetResult];
   [message ensureExtensionIsRegistered:extension];

@@ -146,12 +146,12 @@
 @private
   BOOL hasI_:1;
   BOOL hasMsg_:1;
-  long i;
+  SInt32 i;
   ForeignMessage* msg;
 }
 - (BOOL) hasI;
 - (BOOL) hasMsg;
-@property (readonly) long i;
+@property (readonly) SInt32 i;
 @property (readonly, strong) ForeignMessage* msg;
 
 + (TestOptimizedForSize*) defaultInstance;
@@ -192,8 +192,8 @@
 - (TestOptimizedForSizeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasI;
-- (long) i;
-- (TestOptimizedForSizeBuilder*) setI:(long) value;
+- (SInt32) i;
+- (TestOptimizedForSizeBuilder*) setI:(SInt32) value;
 - (TestOptimizedForSizeBuilder*) clearI;
 
 - (BOOL) hasMsg;
@@ -207,10 +207,10 @@
 @interface TestRequiredOptimizedForSize : PBGeneratedMessage {
 @private
   BOOL hasX_:1;
-  long x;
+  SInt32 x;
 }
 - (BOOL) hasX;
-@property (readonly) long x;
+@property (readonly) SInt32 x;
 
 + (TestRequiredOptimizedForSize*) defaultInstance;
 - (TestRequiredOptimizedForSize*) defaultInstance;
@@ -248,8 +248,8 @@
 - (TestRequiredOptimizedForSizeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasX;
-- (long) x;
-- (TestRequiredOptimizedForSizeBuilder*) setX:(long) value;
+- (SInt32) x;
+- (TestRequiredOptimizedForSizeBuilder*) setX:(SInt32) value;
 - (TestRequiredOptimizedForSizeBuilder*) clearX;
 @end
 

@@ -54,7 +54,7 @@ static PBExtensionRegistry* emptyRegistry = nil;
 }
 
 
-- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(long) fieldNumber {
+- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(SInt32) fieldNumber {
   NSDictionary* extensionMap = [classMap objectForKey:[self keyForClass:clazz]];
   return [extensionMap objectForKey:[NSNumber numberWithInteger:fieldNumber]];
 }

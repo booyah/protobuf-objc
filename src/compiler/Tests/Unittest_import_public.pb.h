@@ -28,10 +28,10 @@
 @interface PublicImportMessage : PBGeneratedMessage {
 @private
   BOOL hasE_:1;
-  long e;
+  SInt32 e;
 }
 - (BOOL) hasE;
-@property (readonly) long e;
+@property (readonly) SInt32 e;
 
 + (PublicImportMessage*) defaultInstance;
 - (PublicImportMessage*) defaultInstance;
@@ -69,8 +69,8 @@
 - (PublicImportMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 
 - (BOOL) hasE;
-- (long) e;
-- (PublicImportMessageBuilder*) setE:(long) value;
+- (SInt32) e;
+- (PublicImportMessageBuilder*) setE:(SInt32) value;
 - (PublicImportMessageBuilder*) clearE;
 @end
 

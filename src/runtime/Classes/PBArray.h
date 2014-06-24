@@ -48,11 +48,11 @@ typedef enum _PBArrayValueType
 
 - (NSUInteger)count;
 - (BOOL)boolAtIndex:(NSUInteger)index;
-- (long)int32AtIndex:(NSUInteger)index;
-- (long)enumAtIndex:(NSUInteger)index;
-- (unsigned long)uint32AtIndex:(NSUInteger)index;
-- (long long)int64AtIndex:(NSUInteger)index;
-- (unsigned long long)uint64AtIndex:(NSUInteger)index;
+- (SInt32)int32AtIndex:(NSUInteger)index;
+- (SInt32)enumAtIndex:(NSUInteger)index;
+- (UInt32)uint32AtIndex:(NSUInteger)index;
+- (SInt64)int64AtIndex:(NSUInteger)index;
+- (UInt64)uint64AtIndex:(NSUInteger)index;
 - (Float32)floatAtIndex:(NSUInteger)index;
 - (Float64)doubleAtIndex:(NSUInteger)index;
 - (BOOL)isEqualToArray:(PBArray *)array;
@@ -92,15 +92,15 @@ typedef enum _PBArrayValueType
 @interface PBAppendableArray : PBArray
 
 - (void)addBool:(BOOL)value;
-- (void)addInt32:(long)value;
-- (void)addUint32:(unsigned long)value;
-- (void)addInt64:(long long)value;
-- (void)addUint64:(unsigned long long)value;
+- (void)addInt32:(SInt32)value;
+- (void)addUint32:(UInt32)value;
+- (void)addInt64:(SInt64)value;
+- (void)addUint64:(UInt64)value;
 - (void)addFloat:(Float32)value;
 - (void)addDouble:(Float64)value;
-- (void)addEnum:(long)value;
+- (void)addEnum:(SInt32)value;
 
 - (void)appendArray:(PBArray *)array;
-- (void)appendValues:(const void *)values count:(unsigned long)count;
+- (void)appendValues:(const void *)values count:(UInt32)count;
 
 @end

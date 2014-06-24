@@ -37,7 +37,7 @@
 
 - (void)testCount
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	XCTAssertEqual([array count], (NSUInteger)3);
 	XCTAssertEqual(array.count, (NSUInteger)3);
@@ -46,17 +46,16 @@
 
 - (void)testValueType
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	XCTAssertEqual(array.valueType, PBArrayValueTypeInt32);
-
 }
 
 - (void)testPrimitiveAccess
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
-	XCTAssertEqual([array int32AtIndex:1], (long)2);
+	XCTAssertEqual([array int32AtIndex:1], (SInt32)2);
 
 }
 
@@ -79,7 +78,7 @@
 
 - (void)testCopy
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *original = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *copy = [original copy];
 	XCTAssertEqual(original.valueType, copy.valueType);
@@ -103,19 +102,18 @@
   NSArray *arrayFirst =  @[@1, @2];
 	PBArray *array = [[PBArray alloc] initWithArray:arrayFirst valueType:PBArrayValueTypeInt32];
 
-	__block unsigned long count = 0;
-  NSLog(@"%@",array[0]);
+	__block NSUInteger count = 0;
 	[array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
       count = idx;
   }];
-	XCTAssertEqual(count, (unsigned long)1);
+	XCTAssertEqual(count, (UInt32)1);
 
 
 }
 
 - (void)testArrayAppendingArray
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *a = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *b = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 
@@ -138,8 +136,8 @@
 
 - (void)testAppendArrayTypeException
 {
-	const long kValuesA[3] = { 1, 2, 3 };
-	const long long kValuesB[3] = { 1, 2, 3 };
+	const SInt32 kValuesA[3] = { 1, 2, 3 };
+	const SInt64 kValuesB[3] = { 1, 2, 3 };
 	PBArray *a = [[PBArray alloc] initWithValues:kValuesA count:3 valueType:PBArrayValueTypeInt32];
 	PBArray *b = [[PBArray alloc] initWithValues:kValuesB count:3 valueType:PBArrayValueTypeInt64];
 	XCTAssertThrowsSpecificNamed([a arrayByAppendingArray:b], NSException, PBArrayTypeMismatchException, @"");
@@ -148,7 +146,7 @@
 
 - (void)testRangeException
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	XCTAssertFalse(array[10] != nil);
 
@@ -156,7 +154,7 @@
 
 - (void)testTypeMismatchException
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *array = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	XCTAssertThrowsSpecificNamed([array boolAtIndex:0], NSException, PBArrayTypeMismatchException, @"");
 
@@ -194,28 +192,28 @@
 
 - (void)testAppendArray
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *source = [[PBArray alloc] initWithValues:kValues count:3 valueType:PBArrayValueTypeInt32];
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendArray:source];
   XCTAssertEqual(array.count, source.count);
-	XCTAssertEqual([array int32AtIndex:1], (long)2);
+	XCTAssertEqual([array int32AtIndex:1], (SInt32)2);
 
 }
 
 - (void)testAppendValues
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBAppendableArray *array = [[PBAppendableArray alloc] initWithValueType:PBArrayValueTypeInt32];
 	[array appendValues:kValues count:3];
 	XCTAssertEqual(array.count, (NSUInteger)3);
-	XCTAssertEqual([array int32AtIndex:1], (long)2);
+	XCTAssertEqual([array int32AtIndex:1], (SInt32)2);
 
 }
 
 - (void)testEqualValues
 {
-	const long kValues[3] = { 1, 2, 3 };
+	const SInt32 kValues[3] = { 1, 2, 3 };
 	PBArray *array1 = [[PBArray alloc] initWithValues:kValues count:2 valueType:PBArrayValueTypeInt32];
 
 	// Test self equality.
@@ -236,7 +234,7 @@
 	XCTAssertFalse([array1 isEqual:array3]);
 
 	// Test non equality of arrays of same sizes with different contents.
-	const long kValues2[2] = { 2, 1 };
+	const SInt32 kValues2[2] = { 2, 1 };
 	PBArray *array4 = [[PBArray alloc] initWithValues:kValues2 count:2 valueType:PBArrayValueTypeInt32];
 	XCTAssertFalse([array1 isEqual:array4]);
 

@@ -71,8 +71,8 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -203,7 +203,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 - (PBFileDescriptorSetBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -348,13 +348,13 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (PBArray *)publicDependency {
   return publicDependencyArray;
 }
-- (long)publicDependencyAtIndex:(NSUInteger)index {
+- (SInt32)publicDependencyAtIndex:(NSUInteger)index {
   return [publicDependencyArray int32AtIndex:index];
 }
 - (PBArray *)weakDependency {
   return weakDependencyArray;
 }
-- (long)weakDependencyAtIndex:(NSUInteger)index {
+- (SInt32)weakDependencyAtIndex:(NSUInteger)index {
   return [weakDependencyArray int32AtIndex:index];
 }
 - (NSArray *)messageType {
@@ -451,22 +451,22 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   }
   const NSUInteger publicDependencyArrayCount = self.publicDependencyArray.count;
   if (publicDependencyArrayCount > 0) {
-    const long *values = (const long *)self.publicDependencyArray.data;
+    const SInt32 *values = (const SInt32 *)self.publicDependencyArray.data;
     for (NSUInteger i = 0; i < publicDependencyArrayCount; ++i) {
       [output writeInt32:10 value:values[i]];
     }
   }
   const NSUInteger weakDependencyArrayCount = self.weakDependencyArray.count;
   if (weakDependencyArrayCount > 0) {
-    const long *values = (const long *)self.weakDependencyArray.data;
+    const SInt32 *values = (const SInt32 *)self.weakDependencyArray.data;
     for (NSUInteger i = 0; i < weakDependencyArrayCount; ++i) {
       [output writeInt32:11 value:values[i]];
     }
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -479,13 +479,13 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
     size_ += computeStringSize(2, self.package);
   }
   {
-    __block long dataSize = 0;
+    __block SInt32 dataSize = 0;
     const NSUInteger count = self.dependencyArray.count;
     [self.dependencyArray enumerateObjectsUsingBlock:^(NSString *element, NSUInteger idx, BOOL *stop) {
       dataSize += computeStringSizeNoTag(element);
     }];
     size_ += dataSize;
-    size_ += 1 * count;
+    size_ += (SInt32)(1 * count);
   }
   [self.messageTypeArray enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     size_ += computeMessageSize(4, element);
@@ -506,24 +506,24 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
     size_ += computeMessageSize(9, self.sourceCodeInfo);
   }
   {
-    __block long dataSize = 0;
+    __block SInt32 dataSize = 0;
     const NSUInteger count = self.publicDependencyArray.count;
-    const long *values = (const long *)self.publicDependencyArray.data;
+    const SInt32 *values = (const SInt32 *)self.publicDependencyArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeInt32SizeNoTag(values[i]);
     }
     size_ += dataSize;
-    size_ += 1 * count;
+    size_ += (SInt32)(1 * count);
   }
   {
-    __block long dataSize = 0;
+    __block SInt32 dataSize = 0;
     const NSUInteger count = self.weakDependencyArray.count;
-    const long *values = (const long *)self.weakDependencyArray.data;
+    const SInt32 *values = (const SInt32 *)self.weakDependencyArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeInt32SizeNoTag(values[i]);
     }
     size_ += dataSize;
-    size_ += 1 * count;
+    size_ += (SInt32)(1 * count);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -790,7 +790,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (PBFileDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -923,10 +923,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (PBAppendableArray *)publicDependency {
   return result.publicDependencyArray;
 }
-- (long)publicDependencyAtIndex:(NSUInteger)index {
+- (SInt32)publicDependencyAtIndex:(NSUInteger)index {
   return [result publicDependencyAtIndex:index];
 }
-- (PBFileDescriptorProtoBuilder *)addPublicDependency:(long)value {
+- (PBFileDescriptorProtoBuilder *)addPublicDependency:(SInt32)value {
   if (result.publicDependencyArray == nil) {
     result.publicDependencyArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -937,7 +937,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   result.publicDependencyArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (PBFileDescriptorProtoBuilder *)setPublicDependencyValues:(const long *)values count:(NSUInteger)count {
+- (PBFileDescriptorProtoBuilder *)setPublicDependencyValues:(const SInt32 *)values count:(NSUInteger)count {
   result.publicDependencyArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -948,10 +948,10 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 - (PBAppendableArray *)weakDependency {
   return result.weakDependencyArray;
 }
-- (long)weakDependencyAtIndex:(NSUInteger)index {
+- (SInt32)weakDependencyAtIndex:(NSUInteger)index {
   return [result weakDependencyAtIndex:index];
 }
-- (PBFileDescriptorProtoBuilder *)addWeakDependency:(long)value {
+- (PBFileDescriptorProtoBuilder *)addWeakDependency:(SInt32)value {
   if (result.weakDependencyArray == nil) {
     result.weakDependencyArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -962,7 +962,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   result.weakDependencyArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (PBFileDescriptorProtoBuilder *)setWeakDependencyValues:(const long *)values count:(NSUInteger)count {
+- (PBFileDescriptorProtoBuilder *)setWeakDependencyValues:(const SInt32 *)values count:(NSUInteger)count {
   result.weakDependencyArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -1274,8 +1274,8 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1427,8 +1427,8 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
 @end
 
 @interface PBDescriptorProtoExtensionRange ()
-@property long start;
-@property long end;
+@property SInt32 start;
+@property SInt32 end;
 @end
 
 @implementation PBDescriptorProtoExtensionRange
@@ -1480,8 +1480,8 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -1620,7 +1620,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 - (PBDescriptorProtoExtensionRangeBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1646,10 +1646,10 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 - (BOOL) hasStart {
   return result.hasStart;
 }
-- (long) start {
+- (SInt32) start {
   return result.start;
 }
-- (PBDescriptorProtoExtensionRangeBuilder*) setStart:(long) value {
+- (PBDescriptorProtoExtensionRangeBuilder*) setStart:(SInt32) value {
   result.hasStart = YES;
   result.start = value;
   return self;
@@ -1662,10 +1662,10 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 - (BOOL) hasEnd {
   return result.hasEnd;
 }
-- (long) end {
+- (SInt32) end {
   return result.end;
 }
-- (PBDescriptorProtoExtensionRangeBuilder*) setEnd:(long) value {
+- (PBDescriptorProtoExtensionRangeBuilder*) setEnd:(SInt32) value {
   result.hasEnd = YES;
   result.end = value;
   return self;
@@ -1768,7 +1768,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 - (PBDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -1981,7 +1981,7 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 
 @interface PBFieldDescriptorProto ()
 @property (strong) NSString* name;
-@property long number;
+@property SInt32 number;
 @property PBFieldDescriptorProtoLabel label;
 @property PBFieldDescriptorProtoType type;
 @property (strong) NSString* typeName;
@@ -2115,8 +2115,8 @@ static PBFieldDescriptorProto* defaultPBFieldDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2377,7 +2377,7 @@ BOOL PBFieldDescriptorProtoLabelIsValidValue(PBFieldDescriptorProtoLabel value) 
 - (PBFieldDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2458,10 +2458,10 @@ BOOL PBFieldDescriptorProtoLabelIsValidValue(PBFieldDescriptorProtoLabel value) 
 - (BOOL) hasNumber {
   return result.hasNumber;
 }
-- (long) number {
+- (SInt32) number {
   return result.number;
 }
-- (PBFieldDescriptorProtoBuilder*) setNumber:(long) value {
+- (PBFieldDescriptorProtoBuilder*) setNumber:(SInt32) value {
   result.hasNumber = YES;
   result.number = value;
   return self;
@@ -2665,8 +2665,8 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -2828,7 +2828,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 - (PBEnumDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -2933,7 +2933,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 
 @interface PBEnumValueDescriptorProto ()
 @property (strong) NSString* name;
-@property long number;
+@property SInt32 number;
 @property (strong) PBEnumValueOptions* options;
 @end
 
@@ -3004,8 +3004,8 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3161,7 +3161,7 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
 - (PBEnumValueDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3212,10 +3212,10 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
 - (BOOL) hasNumber {
   return result.hasNumber;
 }
-- (long) number {
+- (SInt32) number {
   return result.number;
 }
-- (PBEnumValueDescriptorProtoBuilder*) setNumber:(long) value {
+- (PBEnumValueDescriptorProtoBuilder*) setNumber:(SInt32) value {
   result.hasNumber = YES;
   result.number = value;
   return self;
@@ -3339,8 +3339,8 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3502,7 +3502,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
 - (PBServiceDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -3692,8 +3692,8 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -3863,7 +3863,7 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
 - (PBMethodDescriptorProtoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4172,8 +4172,8 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4449,7 +4449,7 @@ BOOL PBFileOptionsOptimizeModeIsValidValue(PBFileOptionsOptimizeMode value) {
 - (PBFileOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -4769,8 +4769,8 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -4938,7 +4938,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 - (PBMessageOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5172,8 +5172,8 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5407,7 +5407,7 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value) {
 - (PBFieldOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5650,8 +5650,8 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -5805,7 +5805,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 - (PBEnumOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -5926,8 +5926,8 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6067,7 +6067,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 - (PBEnumValueOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -6168,8 +6168,8 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6309,7 +6309,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 - (PBServiceOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -6410,8 +6410,8 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
                                         to:536870912];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6551,7 +6551,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 - (PBMethodOptionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -6598,8 +6598,8 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 @interface PBUninterpretedOption ()
 @property (strong) NSMutableArray * nameArray;
 @property (strong) NSString* identifierValue;
-@property unsigned long long positiveIntValue;
-@property long long negativeIntValue;
+@property UInt64 positiveIntValue;
+@property SInt64 negativeIntValue;
 @property Float64 doubleValue;
 @property (strong) NSData* stringValue;
 @property (strong) NSString* aggregateValue;
@@ -6721,8 +6721,8 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -6928,8 +6928,8 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7068,7 +7068,7 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 - (PBUninterpretedOptionNamePartBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -7200,7 +7200,7 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 - (PBUninterpretedOptionBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -7285,10 +7285,10 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 - (BOOL) hasPositiveIntValue {
   return result.hasPositiveIntValue;
 }
-- (unsigned long long) positiveIntValue {
+- (UInt64) positiveIntValue {
   return result.positiveIntValue;
 }
-- (PBUninterpretedOptionBuilder*) setPositiveIntValue:(unsigned long long) value {
+- (PBUninterpretedOptionBuilder*) setPositiveIntValue:(UInt64) value {
   result.hasPositiveIntValue = YES;
   result.positiveIntValue = value;
   return self;
@@ -7301,10 +7301,10 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 - (BOOL) hasNegativeIntValue {
   return result.hasNegativeIntValue;
 }
-- (long long) negativeIntValue {
+- (SInt64) negativeIntValue {
   return result.negativeIntValue;
 }
-- (PBUninterpretedOptionBuilder*) setNegativeIntValue:(long long) value {
+- (PBUninterpretedOptionBuilder*) setNegativeIntValue:(SInt64) value {
   result.hasNegativeIntValue = YES;
   result.negativeIntValue = value;
   return self;
@@ -7407,8 +7407,8 @@ static PBSourceCodeInfo* defaultPBSourceCodeInfoInstance = nil;
   }];
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
@@ -7537,13 +7537,13 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 - (PBArray *)path {
   return pathArray;
 }
-- (long)pathAtIndex:(NSUInteger)index {
+- (SInt32)pathAtIndex:(NSUInteger)index {
   return [pathArray int32AtIndex:index];
 }
 - (PBArray *)span {
   return spanArray;
 }
-- (long)spanAtIndex:(NSUInteger)index {
+- (SInt32)spanAtIndex:(NSUInteger)index {
   return [spanArray int32AtIndex:index];
 }
 - (BOOL) isInitialized {
@@ -7552,7 +7552,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
   const NSUInteger pathArrayCount = self.pathArray.count;
   if (pathArrayCount > 0) {
-    const long *values = (const long *)self.pathArray.data;
+    const SInt32 *values = (const SInt32 *)self.pathArray.data;
     [output writeRawVarint32:10];
     [output writeRawVarint32:pathMemoizedSerializedSize];
     for (NSUInteger i = 0; i < pathArrayCount; ++i) {
@@ -7561,7 +7561,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
   }
   const NSUInteger spanArrayCount = self.spanArray.count;
   if (spanArrayCount > 0) {
-    const long *values = (const long *)self.spanArray.data;
+    const SInt32 *values = (const SInt32 *)self.spanArray.data;
     [output writeRawVarint32:18];
     [output writeRawVarint32:spanMemoizedSerializedSize];
     for (NSUInteger i = 0; i < spanArrayCount; ++i) {
@@ -7576,17 +7576,17 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
   }
   [self.unknownFields writeToCodedOutputStream:output];
 }
-- (long) serializedSize {
-  __block long size_ = memoizedSerializedSize;
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
   if (size_ != -1) {
     return size_;
   }
 
   size_ = 0;
   {
-    __block long dataSize = 0;
+    __block SInt32 dataSize = 0;
     const NSUInteger count = self.pathArray.count;
-    const long *values = (const long *)self.pathArray.data;
+    const SInt32 *values = (const SInt32 *)self.pathArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeInt32SizeNoTag(values[i]);
     }
@@ -7598,9 +7598,9 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
     pathMemoizedSerializedSize = dataSize;
   }
   {
-    __block long dataSize = 0;
+    __block SInt32 dataSize = 0;
     const NSUInteger count = self.spanArray.count;
-    const long *values = (const long *)self.spanArray.data;
+    const SInt32 *values = (const SInt32 *)self.spanArray.data;
     for (NSUInteger i = 0; i < count; ++i) {
       dataSize += computeInt32SizeNoTag(values[i]);
     }
@@ -7772,7 +7772,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 - (PBSourceCodeInfoLocationBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];
@@ -7785,8 +7785,8 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
         break;
       }
       case 10: {
-        long length = [input readRawVarint32];
-        long limit = [input pushLimit:length];
+        SInt32 length = [input readRawVarint32];
+        SInt32 limit = [input pushLimit:length];
         if (result.pathArray == nil) {
           result.pathArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -7797,8 +7797,8 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
         break;
       }
       case 18: {
-        long length = [input readRawVarint32];
-        long limit = [input pushLimit:length];
+        SInt32 length = [input readRawVarint32];
+        SInt32 limit = [input pushLimit:length];
         if (result.spanArray == nil) {
           result.spanArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
         }
@@ -7822,10 +7822,10 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 - (PBAppendableArray *)path {
   return result.pathArray;
 }
-- (long)pathAtIndex:(NSUInteger)index {
+- (SInt32)pathAtIndex:(NSUInteger)index {
   return [result pathAtIndex:index];
 }
-- (PBSourceCodeInfoLocationBuilder *)addPath:(long)value {
+- (PBSourceCodeInfoLocationBuilder *)addPath:(SInt32)value {
   if (result.pathArray == nil) {
     result.pathArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -7836,7 +7836,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
   result.pathArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (PBSourceCodeInfoLocationBuilder *)setPathValues:(const long *)values count:(NSUInteger)count {
+- (PBSourceCodeInfoLocationBuilder *)setPathValues:(const SInt32 *)values count:(NSUInteger)count {
   result.pathArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -7847,10 +7847,10 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 - (PBAppendableArray *)span {
   return result.spanArray;
 }
-- (long)spanAtIndex:(NSUInteger)index {
+- (SInt32)spanAtIndex:(NSUInteger)index {
   return [result spanAtIndex:index];
 }
-- (PBSourceCodeInfoLocationBuilder *)addSpan:(long)value {
+- (PBSourceCodeInfoLocationBuilder *)addSpan:(SInt32)value {
   if (result.spanArray == nil) {
     result.spanArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
   }
@@ -7861,7 +7861,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
   result.spanArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
   return self;
 }
-- (PBSourceCodeInfoLocationBuilder *)setSpanValues:(const long *)values count:(NSUInteger)count {
+- (PBSourceCodeInfoLocationBuilder *)setSpanValues:(const SInt32 *)values count:(NSUInteger)count {
   result.spanArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
   return self;
 }
@@ -7960,7 +7960,7 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 - (PBSourceCodeInfoBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
-    NSInteger tag = [input readTag];
+    SInt32 tag = [input readTag];
     switch (tag) {
       case 0:
         [self setUnknownFields:[unknownFields build]];

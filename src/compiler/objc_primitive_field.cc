@@ -38,17 +38,17 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     const char* PrimitiveTypeName(const FieldDescriptor* field) {
       switch (field->type()) {
-        case FieldDescriptor::TYPE_INT32   : return "long" ;
-        case FieldDescriptor::TYPE_UINT32  : return "unsigned long";
-        case FieldDescriptor::TYPE_SINT32  : return "long" ;
-        case FieldDescriptor::TYPE_FIXED32 : return "unsigned long";
-        case FieldDescriptor::TYPE_SFIXED32: return "long" ;
+        case FieldDescriptor::TYPE_INT32   : return "SInt32" ;
+        case FieldDescriptor::TYPE_UINT32  : return "UInt32";
+        case FieldDescriptor::TYPE_SINT32  : return "SInt32" ;
+        case FieldDescriptor::TYPE_FIXED32 : return "UInt32";
+        case FieldDescriptor::TYPE_SFIXED32: return "SInt32" ;
 
-        case FieldDescriptor::TYPE_INT64   : return "long long" ;
-        case FieldDescriptor::TYPE_UINT64  : return "unsigned long long";
-        case FieldDescriptor::TYPE_SINT64  : return "long long" ;
-        case FieldDescriptor::TYPE_FIXED64 : return "unsigned long long";
-        case FieldDescriptor::TYPE_SFIXED64: return "long long" ;
+        case FieldDescriptor::TYPE_INT64   : return "SInt64" ;
+        case FieldDescriptor::TYPE_UINT64  : return "UInt64";
+        case FieldDescriptor::TYPE_SINT64  : return "SInt64" ;
+        case FieldDescriptor::TYPE_FIXED64 : return "UInt64";
+        case FieldDescriptor::TYPE_SFIXED64: return "SInt64" ;
         
         case FieldDescriptor::TYPE_FLOAT   : return "Float32" ;
         case FieldDescriptor::TYPE_DOUBLE  : return "Float64" ;
@@ -447,7 +447,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       printer->Print(variables_, "PBAppendableArray * $list_name$;\n");
     }
     if (descriptor_->options().packed()) {
-      printer->Print(variables_,"NSInteger $name$MemoizedSerializedSize;\n");
+      printer->Print(variables_,"SInt32 $name$MemoizedSerializedSize;\n");
     }
   }
 
@@ -648,8 +648,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
           if(isObjectArray(descriptor_))
           {
               printer->Print(variables_,
-                             "long length = [input readRawVarint32];\n"
-                             "long limit = [input pushLimit:length];\n"
+                             "SInt32 length = [input readRawVarint32];\n"
+                             "SInt32 limit = [input pushLimit:length];\n"
                              "if (result.$list_name$ == nil) {\n"
                              "  result.$list_name$ = [[NSMutableArray alloc]init];\n"
                              "}\n"
@@ -661,8 +661,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
           else
           {
               printer->Print(variables_,
-                             "long length = [input readRawVarint32];\n"
-                             "long limit = [input pushLimit:length];\n"
+                             "SInt32 length = [input readRawVarint32];\n"
+                             "SInt32 limit = [input pushLimit:length];\n"
                              "if (result.$list_name$ == nil) {\n"
                              "  result.$list_name$ = [PBAppendableArray arrayWithValueType:$array_value_type$];\n"
                              "}\n"
@@ -718,7 +718,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
      printer->Print("{\n");
     printer->Indent();
     printer->Print(variables_,
-      "__block long dataSize = 0;\n"
+      "__block SInt32 dataSize = 0;\n"
       "const NSUInteger count = self.$list_name$.count;\n");
     if(isObjectArray(descriptor_)) {
       printer->Print(variables_,
@@ -735,7 +735,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
           "}\n");
       } else {
         printer->Print(variables_,
-          "dataSize = $fixed_size$ * count;\n");
+          "dataSize = (SInt32)($fixed_size$ * count);\n");
       }
     }
 
@@ -750,7 +750,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
         "$name$MemoizedSerializedSize = dataSize;\n");
     } else {
       printer->Print(variables_,
-        "size_ += $tag_size$ * count;\n");
+        "size_ += (SInt32)($tag_size$ * count);\n");
     }
 
     printer->Outdent();

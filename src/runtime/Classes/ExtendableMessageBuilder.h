@@ -68,7 +68,7 @@
 - (PBExtendableMessageBuilder*) addExtension:(id<PBExtensionField>) extension
                                         value:(id) value;
 - (PBExtendableMessageBuilder*) setExtension:(id<PBExtensionField>) extension
-                                        index:(long) index
+                                        index:(SInt32) index
                                         value:(id) value;
 - (PBExtendableMessageBuilder*) clearExtension:(id<PBExtensionField>) extension;
 

@@ -51,7 +51,7 @@
 }
 
 
-- (PBField*) getField:(long) number {
+- (PBField*) getField:(SInt32) number {
   return [unknownFields getField:number];
 }
 
@@ -69,10 +69,10 @@
     PBField* field = [unknownFields.fields objectForKey:key];
     if (field.varintArray.count == 0) {
       // Original field is not a varint, so use a varint.
-      [bizarroFields addField:varintField forNumber:key.integerValue];
+      [bizarroFields addField:varintField forNumber:(SInt32)key.integerValue];
     } else {
       // Original field *is* a varint, so use something else.
-      [bizarroFields addField:fixed32Field forNumber:key.integerValue];
+      [bizarroFields addField:fixed32Field forNumber:(SInt32)key.integerValue];
     }
   }
 
@@ -150,11 +150,11 @@
   [[[PBUnknownFieldSet builderWithUnknownFields:unknownFields] addField:[[PBMutableField field] addVarint:654321]
                                                               forNumber:123456] build];
 
+
   NSData* data = fields.data;
   TestAllTypes* destination = [TestAllTypes parseFromData:data];
 
   [TestUtilities assertAllFieldsSet:destination];
-  
   XCTAssertTrue(1 == destination.unknownFields.fields.count, @"");
 
   PBField* field = [destination.unknownFields getField:123456];

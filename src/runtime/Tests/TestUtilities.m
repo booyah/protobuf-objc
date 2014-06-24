@@ -27,11 +27,9 @@
 
 
 + (NSData*) goldenData {
-  NSString* path = [[NSBundle mainBundle] pathForResource:@"golden_message" ofType:nil];
-  if (path == nil) {
-    path = @"golden_message";
-  }
-  NSData* goldenData = [NSData dataWithContentsOfFile:path];
+  
+  NSString *str = [[[NSBundle bundleForClass:[self class]] resourcePath] stringByAppendingPathComponent:@"golden_message"];
+  NSData* goldenData = [NSData dataWithContentsOfFile:str];
   return goldenData;
 }
 
