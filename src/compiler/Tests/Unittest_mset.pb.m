@@ -905,7 +905,7 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
    [self.item enumerateObjectsUsingBlock:^(RawMessageSetItem *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInititem = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInititem) return isInititem;

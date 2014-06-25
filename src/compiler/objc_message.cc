@@ -1055,7 +1055,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
                " [self.$name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
                         "  if (!element.isInitialized) {\n"
                         "    isInit$name$ = NO;\n"
-                        "    stop = YES;\n"
+                        "    *stop = YES;\n"
                         "  }\n"
                         "}];\n"
                 "if (!isInit$name$) return isInit$name$;\n"

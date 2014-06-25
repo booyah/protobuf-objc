@@ -75,7 +75,7 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
    [self.repeatedMessage enumerateObjectsUsingBlock:^(TestOptimizedForSize *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitrepeatedMessage = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitrepeatedMessage) return isInitrepeatedMessage;

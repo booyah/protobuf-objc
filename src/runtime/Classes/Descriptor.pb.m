@@ -59,7 +59,7 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
    [self.file enumerateObjectsUsingBlock:^(PBFileDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitfile = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitfile) return isInitfile;
@@ -386,7 +386,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
    [self.messageType enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitmessageType = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitmessageType) return isInitmessageType;
@@ -394,7 +394,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
    [self.enumType enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitenumType = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitenumType) return isInitenumType;
@@ -402,7 +402,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
    [self.service enumerateObjectsUsingBlock:^(PBServiceDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitservice = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitservice) return isInitservice;
@@ -410,7 +410,7 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
    [self.extension enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitextension = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitextension) return isInitextension;
@@ -1215,7 +1215,7 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
    [self.field enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitfield = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitfield) return isInitfield;
@@ -1223,7 +1223,7 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
    [self.extension enumerateObjectsUsingBlock:^(PBFieldDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitextension = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitextension) return isInitextension;
@@ -1231,7 +1231,7 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
    [self.nestedType enumerateObjectsUsingBlock:^(PBDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitnestedType = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitnestedType) return isInitnestedType;
@@ -1239,7 +1239,7 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
    [self.enumType enumerateObjectsUsingBlock:^(PBEnumDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitenumType = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitenumType) return isInitenumType;
@@ -2642,7 +2642,7 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
    [self.value enumerateObjectsUsingBlock:^(PBEnumValueDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitvalue = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitvalue) return isInitvalue;
@@ -3316,7 +3316,7 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
    [self.method enumerateObjectsUsingBlock:^(PBMethodDescriptorProto *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitmethod = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitmethod) return isInitmethod;
@@ -4127,7 +4127,7 @@ static PBFileOptions* defaultPBFileOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -4745,7 +4745,7 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -5136,7 +5136,7 @@ static PBFieldOptions* defaultPBFieldOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -5629,7 +5629,7 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -5908,7 +5908,7 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -6150,7 +6150,7 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -6392,7 +6392,7 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
    [self.uninterpretedOption enumerateObjectsUsingBlock:^(PBUninterpretedOption *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInituninterpretedOption = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInituninterpretedOption) return isInituninterpretedOption;
@@ -6691,7 +6691,7 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
    [self.name enumerateObjectsUsingBlock:^(PBUninterpretedOptionNamePart *element, NSUInteger idx, BOOL *stop) {
     if (!element.isInitialized) {
       isInitname = NO;
-      stop = YES;
+      *stop = YES;
     }
   }];
   if (!isInitname) return isInitname;
