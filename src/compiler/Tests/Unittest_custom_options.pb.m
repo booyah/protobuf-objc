@@ -655,9 +655,6 @@ BOOL AggregateEnumIsValidValue(AggregateEnum value) {
   hasField1_ = !!value_;
 }
 @synthesize field1;
-- (void) dealloc {
-  self.field1 = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.field1 = @"";
@@ -773,9 +770,6 @@ BOOL TestMessageWithCustomOptionsAnEnumIsValidValue(TestMessageWithCustomOptions
 
 @implementation TestMessageWithCustomOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMessageWithCustomOptions alloc] init];
@@ -862,8 +856,6 @@ BOOL TestMessageWithCustomOptionsAnEnumIsValidValue(TestMessageWithCustomOptions
 
 @implementation CustomOptionFooRequest
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -955,9 +947,6 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 
 @implementation CustomOptionFooRequestBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionFooRequest alloc] init];
@@ -1021,8 +1010,6 @@ static CustomOptionFooRequest* defaultCustomOptionFooRequestInstance = nil;
 
 @implementation CustomOptionFooResponse
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1114,9 +1101,6 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 
 @implementation CustomOptionFooResponseBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionFooResponse alloc] init];
@@ -1180,8 +1164,6 @@ static CustomOptionFooResponse* defaultCustomOptionFooResponseInstance = nil;
 
 @implementation CustomOptionFooClientMessage
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1273,9 +1255,6 @@ static CustomOptionFooClientMessage* defaultCustomOptionFooClientMessageInstance
 
 @implementation CustomOptionFooClientMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionFooClientMessage alloc] init];
@@ -1339,8 +1318,6 @@ static CustomOptionFooClientMessage* defaultCustomOptionFooClientMessageInstance
 
 @implementation CustomOptionFooServerMessage
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1432,9 +1409,6 @@ static CustomOptionFooServerMessage* defaultCustomOptionFooServerMessageInstance
 
 @implementation CustomOptionFooServerMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionFooServerMessage alloc] init];
@@ -1498,8 +1472,6 @@ static CustomOptionFooServerMessage* defaultCustomOptionFooServerMessageInstance
 
 @implementation DummyMessageContainingEnum
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1600,9 +1572,6 @@ BOOL DummyMessageContainingEnumTestEnumTypeIsValidValue(DummyMessageContainingEn
 
 @implementation DummyMessageContainingEnumBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[DummyMessageContainingEnum alloc] init];
@@ -1666,8 +1635,6 @@ BOOL DummyMessageContainingEnumTestEnumTypeIsValidValue(DummyMessageContainingEn
 
 @implementation DummyMessageInvalidAsOptionType
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1759,9 +1726,6 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 
 @implementation DummyMessageInvalidAsOptionTypeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[DummyMessageInvalidAsOptionType alloc] init];
@@ -1825,8 +1789,6 @@ static DummyMessageInvalidAsOptionType* defaultDummyMessageInvalidAsOptionTypeIn
 
 @implementation CustomOptionMinIntegerValues
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1918,9 +1880,6 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 
 @implementation CustomOptionMinIntegerValuesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionMinIntegerValues alloc] init];
@@ -1984,8 +1943,6 @@ static CustomOptionMinIntegerValues* defaultCustomOptionMinIntegerValuesInstance
 
 @implementation CustomOptionMaxIntegerValues
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -2077,9 +2034,6 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 
 @implementation CustomOptionMaxIntegerValuesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionMaxIntegerValues alloc] init];
@@ -2143,8 +2097,6 @@ static CustomOptionMaxIntegerValues* defaultCustomOptionMaxIntegerValuesInstance
 
 @implementation CustomOptionOtherValues
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -2236,9 +2188,6 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 
 @implementation CustomOptionOtherValuesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[CustomOptionOtherValues alloc] init];
@@ -2302,8 +2251,6 @@ static CustomOptionOtherValues* defaultCustomOptionOtherValuesInstance = nil;
 
 @implementation SettingRealsFromPositiveInts
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -2395,9 +2342,6 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 
 @implementation SettingRealsFromPositiveIntsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[SettingRealsFromPositiveInts alloc] init];
@@ -2461,8 +2405,6 @@ static SettingRealsFromPositiveInts* defaultSettingRealsFromPositiveIntsInstance
 
 @implementation SettingRealsFromNegativeInts
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -2554,9 +2496,6 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 
 @implementation SettingRealsFromNegativeIntsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[SettingRealsFromNegativeInts alloc] init];
@@ -2644,8 +2583,6 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
   hasFoo3_ = !!value_;
 }
 @synthesize foo3;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.foo = 0;
@@ -2796,9 +2733,6 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 
 @implementation ComplexOptionType1Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ComplexOptionType1 alloc] init];
@@ -2956,10 +2890,6 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   hasFred_ = !!value_;
 }
 @synthesize fred;
-- (void) dealloc {
-  self.bar = nil;
-  self.fred = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.bar = [ComplexOptionType1 defaultInstance];
@@ -3128,8 +3058,6 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
   hasWaldo_ = !!value_;
 }
 @synthesize waldo;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.waldo = 0;
@@ -3239,9 +3167,6 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 
 @implementation ComplexOptionType2ComplexOptionType4Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ComplexOptionType2ComplexOptionType4 alloc] init];
@@ -3329,9 +3254,6 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 
 @implementation ComplexOptionType2Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ComplexOptionType2 alloc] init];
@@ -3519,9 +3441,6 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
   hasComplexOptionType5_ = !!value_;
 }
 @synthesize complexOptionType5;
-- (void) dealloc {
-  self.complexOptionType5 = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.qux = 0;
@@ -3653,8 +3572,6 @@ static ComplexOptionType3* defaultComplexOptionType3Instance = nil;
   hasPlugh_ = !!value_;
 }
 @synthesize plugh;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.plugh = 0;
@@ -3761,9 +3678,6 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 
 @implementation ComplexOptionType3ComplexOptionType5Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ComplexOptionType3ComplexOptionType5 alloc] init];
@@ -3851,9 +3765,6 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
 
 @implementation ComplexOptionType3Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ComplexOptionType3 alloc] init];
@@ -3990,8 +3901,6 @@ static ComplexOptionType3ComplexOptionType5* defaultComplexOptionType3ComplexOpt
   hasXyzzy_ = !!value_;
 }
 @synthesize xyzzy;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.xyzzy = 0;
@@ -4098,9 +4007,6 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 
 @implementation ComplexOpt6Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ComplexOpt6 alloc] init];
@@ -4187,8 +4093,6 @@ static ComplexOpt6* defaultComplexOpt6Instance = nil;
 
 @implementation VariousComplexOptions
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -4280,9 +4184,6 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 
 @implementation VariousComplexOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[VariousComplexOptions alloc] init];
@@ -4346,8 +4247,6 @@ static VariousComplexOptions* defaultVariousComplexOptionsInstance = nil;
 
 @implementation AggregateMessageSet
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -4453,9 +4352,6 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
 
 @implementation AggregateMessageSetBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[AggregateMessageSet alloc] init];
@@ -4528,9 +4424,6 @@ static AggregateMessageSet* defaultAggregateMessageSetInstance = nil;
   hasS_ = !!value_;
 }
 @synthesize s;
-- (void) dealloc {
-  self.s = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.s = @"";
@@ -4640,9 +4533,6 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
 
 @implementation AggregateMessageSetElementBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[AggregateMessageSetElement alloc] init];
@@ -4769,12 +4659,6 @@ static AggregateMessageSetElement* defaultAggregateMessageSetElementInstance = n
   hasMset_ = !!value_;
 }
 @synthesize mset;
-- (void) dealloc {
-  self.s = nil;
-  self.sub = nil;
-  self.file = nil;
-  self.mset = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.i = 0;
@@ -4968,9 +4852,6 @@ static Aggregate* defaultAggregateInstance = nil;
 
 @implementation AggregateBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[Aggregate alloc] init];
@@ -5214,8 +5095,6 @@ static Aggregate* defaultAggregateInstance = nil;
   hasFieldname_ = !!value_;
 }
 @synthesize fieldname;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.fieldname = 0;
@@ -5322,9 +5201,6 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
 
 @implementation AggregateMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[AggregateMessage alloc] init];
@@ -5411,8 +5287,6 @@ static AggregateMessage* defaultAggregateMessageInstance = nil;
 
 @implementation NestedOptionType
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -5522,8 +5396,6 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value) {
   hasNestedField_ = !!value_;
 }
 @synthesize nestedField;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.nestedField = 0;
@@ -5630,9 +5502,6 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
 
 @implementation NestedOptionTypeNestedMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[NestedOptionTypeNestedMessage alloc] init];
@@ -5720,9 +5589,6 @@ static NestedOptionTypeNestedMessage* defaultNestedOptionTypeNestedMessageInstan
 
 @implementation NestedOptionTypeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[NestedOptionType alloc] init];

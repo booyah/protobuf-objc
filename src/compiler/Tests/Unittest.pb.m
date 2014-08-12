@@ -1786,47 +1786,6 @@ BOOL TestSparseEnumIsValidValue(TestSparseEnum value) {
   hasDefaultCord_ = !!value_;
 }
 @synthesize defaultCord;
-- (void) dealloc {
-  self.optionalString = nil;
-  self.optionalBytes = nil;
-  self.optionalGroup = nil;
-  self.optionalNestedMessage = nil;
-  self.optionalForeignMessage = nil;
-  self.optionalImportMessage = nil;
-  self.optionalStringPiece = nil;
-  self.optionalCord = nil;
-  self.optionalPublicImportMessage = nil;
-  self.optionalLazyMessage = nil;
-  self.repeatedInt32Array = nil;
-  self.repeatedInt64Array = nil;
-  self.repeatedUint32Array = nil;
-  self.repeatedUint64Array = nil;
-  self.repeatedSint32Array = nil;
-  self.repeatedSint64Array = nil;
-  self.repeatedFixed32Array = nil;
-  self.repeatedFixed64Array = nil;
-  self.repeatedSfixed32Array = nil;
-  self.repeatedSfixed64Array = nil;
-  self.repeatedFloatArray = nil;
-  self.repeatedDoubleArray = nil;
-  self.repeatedBoolArray = nil;
-  self.repeatedStringArray = nil;
-  self.repeatedBytesArray = nil;
-  self.repeatedGroupArray = nil;
-  self.repeatedNestedMessageArray = nil;
-  self.repeatedForeignMessageArray = nil;
-  self.repeatedImportMessageArray = nil;
-  self.repeatedNestedEnumArray = nil;
-  self.repeatedForeignEnumArray = nil;
-  self.repeatedImportEnumArray = nil;
-  self.repeatedStringPieceArray = nil;
-  self.repeatedCordArray = nil;
-  self.repeatedLazyMessageArray = nil;
-  self.defaultString = nil;
-  self.defaultBytes = nil;
-  self.defaultStringPiece = nil;
-  self.defaultCord = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.optionalInt32 = 0;
@@ -3306,8 +3265,6 @@ BOOL TestAllTypesNestedEnumIsValidValue(TestAllTypesNestedEnum value) {
   hasBb_ = !!value_;
 }
 @synthesize bb;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.bb = 0;
@@ -3414,9 +3371,6 @@ static TestAllTypesNestedMessage* defaultTestAllTypesNestedMessageInstance = nil
 
 @implementation TestAllTypesNestedMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestAllTypesNestedMessage alloc] init];
@@ -3511,8 +3465,6 @@ static TestAllTypesNestedMessage* defaultTestAllTypesNestedMessageInstance = nil
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -3619,9 +3571,6 @@ static TestAllTypesOptionalGroup* defaultTestAllTypesOptionalGroupInstance = nil
 
 @implementation TestAllTypesOptionalGroupBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestAllTypesOptionalGroup alloc] init];
@@ -3716,8 +3665,6 @@ static TestAllTypesOptionalGroup* defaultTestAllTypesOptionalGroupInstance = nil
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -3824,9 +3771,6 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
 
 @implementation TestAllTypesRepeatedGroupBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestAllTypesRepeatedGroup alloc] init];
@@ -3914,9 +3858,6 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
 
 @implementation TestAllTypesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestAllTypes alloc] init];
@@ -6079,8 +6020,6 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   hasDeprecatedInt32_ = !!value_;
 }
 @synthesize deprecatedInt32;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.deprecatedInt32 = 0;
@@ -6187,9 +6126,6 @@ static TestDeprecatedFields* defaultTestDeprecatedFieldsInstance = nil;
 
 @implementation TestDeprecatedFieldsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestDeprecatedFields alloc] init];
@@ -6284,8 +6220,6 @@ static TestDeprecatedFields* defaultTestDeprecatedFieldsInstance = nil;
   hasC_ = !!value_;
 }
 @synthesize c;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.c = 0;
@@ -6392,9 +6326,6 @@ static ForeignMessage* defaultForeignMessageInstance = nil;
 
 @implementation ForeignMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ForeignMessage alloc] init];
@@ -6481,8 +6412,6 @@ static ForeignMessage* defaultForeignMessageInstance = nil;
 
 @implementation TestAllExtensions
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -6588,9 +6517,6 @@ static TestAllExtensions* defaultTestAllExtensionsInstance = nil;
 
 @implementation TestAllExtensionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestAllExtensions alloc] init];
@@ -6663,8 +6589,6 @@ static TestAllExtensions* defaultTestAllExtensionsInstance = nil;
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -6771,9 +6695,6 @@ static OptionalGroup_extension* defaultOptionalGroup_extensionInstance = nil;
 
 @implementation OptionalGroup_extensionBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[OptionalGroup_extension alloc] init];
@@ -6868,8 +6789,6 @@ static OptionalGroup_extension* defaultOptionalGroup_extensionInstance = nil;
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -6976,9 +6895,6 @@ static RepeatedGroup_extension* defaultRepeatedGroup_extensionInstance = nil;
 
 @implementation RepeatedGroup_extensionBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[RepeatedGroup_extension alloc] init];
@@ -7065,8 +6981,6 @@ static RepeatedGroup_extension* defaultRepeatedGroup_extensionInstance = nil;
 
 @implementation TestNestedExtension
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -7161,9 +7075,6 @@ static TestNestedExtension* defaultTestNestedExtensionInstance = nil;
 
 @implementation TestNestedExtensionBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestNestedExtension alloc] init];
@@ -7491,8 +7402,6 @@ static TestNestedExtension* defaultTestNestedExtensionInstance = nil;
   hasC_ = !!value_;
 }
 @synthesize c;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -8094,9 +8003,6 @@ static TestRequired* defaultTestRequiredInstance = nil;
 
 @implementation TestRequiredBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestRequired alloc] init];
@@ -8938,10 +8844,6 @@ static TestRequired* defaultTestRequiredInstance = nil;
   hasDummy_ = !!value_;
 }
 @synthesize dummy;
-- (void) dealloc {
-  self.optionalMessage = nil;
-  self.repeatedMessageArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.optionalMessage = [TestRequired defaultInstance];
@@ -9101,9 +9003,6 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
 
 @implementation TestRequiredForeignBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestRequiredForeign alloc] init];
@@ -9274,9 +9173,6 @@ static TestRequiredForeign* defaultTestRequiredForeignInstance = nil;
   hasForeignNested_ = !!value_;
 }
 @synthesize foreignNested;
-- (void) dealloc {
-  self.foreignNested = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.foreignNested = [TestAllTypesNestedMessage defaultInstance];
@@ -9386,9 +9282,6 @@ static TestForeignNested* defaultTestForeignNestedInstance = nil;
 
 @implementation TestForeignNestedBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestForeignNested alloc] init];
@@ -9494,8 +9387,6 @@ static TestForeignNested* defaultTestForeignNestedInstance = nil;
 
 @implementation TestEmptyMessage
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -9587,9 +9478,6 @@ static TestEmptyMessage* defaultTestEmptyMessageInstance = nil;
 
 @implementation TestEmptyMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestEmptyMessage alloc] init];
@@ -9653,8 +9541,6 @@ static TestEmptyMessage* defaultTestEmptyMessageInstance = nil;
 
 @implementation TestEmptyMessageWithExtensions
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -9760,9 +9646,6 @@ static TestEmptyMessageWithExtensions* defaultTestEmptyMessageWithExtensionsInst
 
 @implementation TestEmptyMessageWithExtensionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestEmptyMessageWithExtensions alloc] init];
@@ -9827,8 +9710,6 @@ static TestEmptyMessageWithExtensions* defaultTestEmptyMessageWithExtensionsInst
 
 @implementation TestMultipleExtensionRanges
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -9954,9 +9835,6 @@ static TestMultipleExtensionRanges* defaultTestMultipleExtensionRangesInstance =
 
 @implementation TestMultipleExtensionRangesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMultipleExtensionRanges alloc] init];
@@ -10037,8 +9915,6 @@ static TestMultipleExtensionRanges* defaultTestMultipleExtensionRangesInstance =
   hasBb_ = !!value_;
 }
 @synthesize bb;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -10160,9 +10036,6 @@ static TestReallyLargeTagNumber* defaultTestReallyLargeTagNumberInstance = nil;
 
 @implementation TestReallyLargeTagNumberBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestReallyLargeTagNumber alloc] init];
@@ -10288,9 +10161,6 @@ static TestReallyLargeTagNumber* defaultTestReallyLargeTagNumberInstance = nil;
   hasI_ = !!value_;
 }
 @synthesize i;
-- (void) dealloc {
-  self.a = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = [TestRecursiveMessage defaultInstance];
@@ -10415,9 +10285,6 @@ static TestRecursiveMessage* defaultTestRecursiveMessageInstance = nil;
 
 @implementation TestRecursiveMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestRecursiveMessage alloc] init];
@@ -10554,9 +10421,6 @@ static TestRecursiveMessage* defaultTestRecursiveMessageInstance = nil;
   hasBb_ = !!value_;
 }
 @synthesize bb;
-- (void) dealloc {
-  self.bb = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.bb = [TestMutualRecursionB defaultInstance];
@@ -10666,9 +10530,6 @@ static TestMutualRecursionA* defaultTestMutualRecursionAInstance = nil;
 
 @implementation TestMutualRecursionABuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMutualRecursionA alloc] init];
@@ -10790,9 +10651,6 @@ static TestMutualRecursionA* defaultTestMutualRecursionAInstance = nil;
   hasOptionalInt32_ = !!value_;
 }
 @synthesize optionalInt32;
-- (void) dealloc {
-  self.a = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = [TestMutualRecursionA defaultInstance];
@@ -10917,9 +10775,6 @@ static TestMutualRecursionB* defaultTestMutualRecursionBInstance = nil;
 
 @implementation TestMutualRecursionBBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMutualRecursionB alloc] init];
@@ -11072,10 +10927,6 @@ static TestMutualRecursionB* defaultTestMutualRecursionBInstance = nil;
   hasBar_ = !!value_;
 }
 @synthesize bar;
-- (void) dealloc {
-  self.foo = nil;
-  self.bar = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -11225,8 +11076,6 @@ static TestDupFieldNumber* defaultTestDupFieldNumberInstance = nil;
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -11333,9 +11182,6 @@ static TestDupFieldNumberFoo* defaultTestDupFieldNumberFooInstance = nil;
 
 @implementation TestDupFieldNumberFooBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestDupFieldNumberFoo alloc] init];
@@ -11430,8 +11276,6 @@ static TestDupFieldNumberFoo* defaultTestDupFieldNumberFooInstance = nil;
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -11538,9 +11382,6 @@ static TestDupFieldNumberBar* defaultTestDupFieldNumberBarInstance = nil;
 
 @implementation TestDupFieldNumberBarBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestDupFieldNumberBar alloc] init];
@@ -11628,9 +11469,6 @@ static TestDupFieldNumberBar* defaultTestDupFieldNumberBarInstance = nil;
 
 @implementation TestDupFieldNumberBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestDupFieldNumber alloc] init];
@@ -11809,9 +11647,6 @@ static TestDupFieldNumberBar* defaultTestDupFieldNumberBarInstance = nil;
   hasSubMessage_ = !!value_;
 }
 @synthesize subMessage;
-- (void) dealloc {
-  self.subMessage = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.subMessage = [TestAllTypes defaultInstance];
@@ -11921,9 +11756,6 @@ static TestEagerMessage* defaultTestEagerMessageInstance = nil;
 
 @implementation TestEagerMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestEagerMessage alloc] init];
@@ -12037,9 +11869,6 @@ static TestEagerMessage* defaultTestEagerMessageInstance = nil;
   hasSubMessage_ = !!value_;
 }
 @synthesize subMessage;
-- (void) dealloc {
-  self.subMessage = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.subMessage = [TestAllTypes defaultInstance];
@@ -12149,9 +11978,6 @@ static TestLazyMessage* defaultTestLazyMessageInstance = nil;
 
 @implementation TestLazyMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestLazyMessage alloc] init];
@@ -12265,9 +12091,6 @@ static TestLazyMessage* defaultTestLazyMessageInstance = nil;
   hasOptionalNestedMessage_ = !!value_;
 }
 @synthesize optionalNestedMessage;
-- (void) dealloc {
-  self.optionalNestedMessage = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.optionalNestedMessage = [TestNestedMessageHasBitsNestedMessage defaultInstance];
@@ -12382,10 +12205,6 @@ static TestNestedMessageHasBits* defaultTestNestedMessageHasBitsInstance = nil;
 @dynamic nestedmessageRepeatedInt32;
 @synthesize nestedmessageRepeatedForeignmessageArray;
 @dynamic nestedmessageRepeatedForeignmessage;
-- (void) dealloc {
-  self.nestedmessageRepeatedInt32Array = nil;
-  self.nestedmessageRepeatedForeignmessageArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -12529,9 +12348,6 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
 
 @implementation TestNestedMessageHasBitsNestedMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestNestedMessageHasBitsNestedMessage alloc] init];
@@ -12666,9 +12482,6 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
 
 @implementation TestNestedMessageHasBitsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestNestedMessageHasBits alloc] init];
@@ -12840,18 +12653,6 @@ static TestNestedMessageHasBitsNestedMessage* defaultTestNestedMessageHasBitsNes
 @dynamic repeatedStringPieceField;
 @synthesize repeatedCordFieldArray;
 @dynamic repeatedCordField;
-- (void) dealloc {
-  self.stringField = nil;
-  self.messageField = nil;
-  self.stringPieceField = nil;
-  self.cordField = nil;
-  self.repeatedPrimitiveFieldArray = nil;
-  self.repeatedStringFieldArray = nil;
-  self.repeatedEnumFieldArray = nil;
-  self.repeatedMessageFieldArray = nil;
-  self.repeatedStringPieceFieldArray = nil;
-  self.repeatedCordFieldArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.primitiveField = 0;
@@ -13191,9 +12992,6 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
 
 @implementation TestCamelCaseFieldNamesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestCamelCaseFieldNames alloc] init];
@@ -13650,9 +13448,6 @@ static TestCamelCaseFieldNames* defaultTestCamelCaseFieldNamesInstance = nil;
   hasMyFloat_ = !!value_;
 }
 @synthesize myFloat;
-- (void) dealloc {
-  self.myString = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.myString = @"";
@@ -13813,9 +13608,6 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
 
 @implementation TestFieldOrderingsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestFieldOrderings alloc] init];
@@ -14157,15 +13949,6 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
   hasCordWithZero_ = !!value_;
 }
 @synthesize cordWithZero;
-- (void) dealloc {
-  self.escapedBytes = nil;
-  self.utf8String = nil;
-  self.cppTrigraph = nil;
-  self.stringWithZero = nil;
-  self.bytesWithZero = nil;
-  self.stringPieceWithZero = nil;
-  self.cordWithZero = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.escapedBytes = [NSData dataWithBytes:"\000\001\007\010\014\n\r\t\013\\\'\"\376" length:13];
@@ -14647,9 +14430,6 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
 
 @implementation TestExtremeDefaultValuesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestExtremeDefaultValues alloc] init];
@@ -15319,8 +15099,6 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   hasSparseEnum_ = !!value_;
 }
 @synthesize sparseEnum;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.sparseEnum = TestSparseEnumSparseA;
@@ -15427,9 +15205,6 @@ static SparseEnumMessage* defaultSparseEnumMessageInstance = nil;
 
 @implementation SparseEnumMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[SparseEnumMessage alloc] init];
@@ -15529,9 +15304,6 @@ static SparseEnumMessage* defaultSparseEnumMessageInstance = nil;
   hasData_ = !!value_;
 }
 @synthesize data;
-- (void) dealloc {
-  self.data = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.data = @"";
@@ -15638,9 +15410,6 @@ static OneString* defaultOneStringInstance = nil;
 
 @implementation OneStringBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[OneString alloc] init];
@@ -15730,9 +15499,6 @@ static OneString* defaultOneStringInstance = nil;
 
 @synthesize dataArray;
 @dynamic data;
-- (void) dealloc {
-  self.dataArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -15849,9 +15615,6 @@ static MoreString* defaultMoreStringInstance = nil;
 
 @implementation MoreStringBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[MoreString alloc] init];
@@ -15955,9 +15718,6 @@ static MoreString* defaultMoreStringInstance = nil;
   hasData_ = !!value_;
 }
 @synthesize data;
-- (void) dealloc {
-  self.data = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.data = [NSData data];
@@ -16064,9 +15824,6 @@ static OneBytes* defaultOneBytesInstance = nil;
 
 @implementation OneBytesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[OneBytes alloc] init];
@@ -16156,9 +15913,6 @@ static OneBytes* defaultOneBytesInstance = nil;
 
 @synthesize dataArray;
 @dynamic data;
-- (void) dealloc {
-  self.dataArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -16275,9 +16029,6 @@ static MoreBytes* defaultMoreBytesInstance = nil;
 
 @implementation MoreBytesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[MoreBytes alloc] init];
@@ -16415,22 +16166,6 @@ static MoreBytes* defaultMoreBytesInstance = nil;
 @dynamic packedBool;
 @synthesize packedEnumArray;
 @dynamic packedEnum;
-- (void) dealloc {
-  self.packedInt32Array = nil;
-  self.packedInt64Array = nil;
-  self.packedUint32Array = nil;
-  self.packedUint64Array = nil;
-  self.packedSint32Array = nil;
-  self.packedSint64Array = nil;
-  self.packedFixed32Array = nil;
-  self.packedFixed64Array = nil;
-  self.packedSfixed32Array = nil;
-  self.packedSfixed64Array = nil;
-  self.packedFloatArray = nil;
-  self.packedDoubleArray = nil;
-  self.packedBoolArray = nil;
-  self.packedEnumArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -17005,9 +16740,6 @@ static TestPackedTypes* defaultTestPackedTypesInstance = nil;
 
 @implementation TestPackedTypesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestPackedTypes alloc] init];
@@ -17731,22 +17463,6 @@ static TestPackedTypes* defaultTestPackedTypesInstance = nil;
 @dynamic unpackedBool;
 @synthesize unpackedEnumArray;
 @dynamic unpackedEnum;
-- (void) dealloc {
-  self.unpackedInt32Array = nil;
-  self.unpackedInt64Array = nil;
-  self.unpackedUint32Array = nil;
-  self.unpackedUint64Array = nil;
-  self.unpackedSint32Array = nil;
-  self.unpackedSint64Array = nil;
-  self.unpackedFixed32Array = nil;
-  self.unpackedFixed64Array = nil;
-  self.unpackedSfixed32Array = nil;
-  self.unpackedSfixed64Array = nil;
-  self.unpackedFloatArray = nil;
-  self.unpackedDoubleArray = nil;
-  self.unpackedBoolArray = nil;
-  self.unpackedEnumArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -18235,9 +17951,6 @@ static TestUnpackedTypes* defaultTestUnpackedTypesInstance = nil;
 
 @implementation TestUnpackedTypesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestUnpackedTypes alloc] init];
@@ -18810,8 +18523,6 @@ static TestUnpackedTypes* defaultTestUnpackedTypesInstance = nil;
 
 @implementation TestPackedExtensions
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -18917,9 +18628,6 @@ static TestPackedExtensions* defaultTestPackedExtensionsInstance = nil;
 
 @implementation TestPackedExtensionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestPackedExtensions alloc] init];
@@ -19030,12 +18738,6 @@ static TestPackedExtensions* defaultTestPackedExtensionsInstance = nil;
 @dynamic repeatedExtension;
 @synthesize packedExtensionArray;
 @dynamic packedExtension;
-- (void) dealloc {
-  self.messageExtension = nil;
-  self.dynamicMessageExtension = nil;
-  self.repeatedExtensionArray = nil;
-  self.packedExtensionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.scalarExtension = 0;
@@ -19286,8 +18988,6 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   hasDynamicField_ = !!value_;
 }
 @synthesize dynamicField;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.dynamicField = 0;
@@ -19394,9 +19094,6 @@ static TestDynamicExtensionsDynamicMessageType* defaultTestDynamicExtensionsDyna
 
 @implementation TestDynamicExtensionsDynamicMessageTypeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestDynamicExtensionsDynamicMessageType alloc] init];
@@ -19484,9 +19181,6 @@ static TestDynamicExtensionsDynamicMessageType* defaultTestDynamicExtensionsDyna
 
 @implementation TestDynamicExtensionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestDynamicExtensions alloc] init];
@@ -19807,14 +19501,6 @@ static TestDynamicExtensionsDynamicMessageType* defaultTestDynamicExtensionsDyna
 @dynamic repeatedFloat;
 @synthesize repeatedUint64Array;
 @dynamic repeatedUint64;
-- (void) dealloc {
-  self.repeatedFixed32Array = nil;
-  self.repeatedInt32Array = nil;
-  self.repeatedFixed64Array = nil;
-  self.repeatedInt64Array = nil;
-  self.repeatedFloatArray = nil;
-  self.repeatedUint64Array = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -20077,9 +19763,6 @@ static TestRepeatedScalarDifferentTagSizes* defaultTestRepeatedScalarDifferentTa
 
 @implementation TestRepeatedScalarDifferentTagSizesBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestRepeatedScalarDifferentTagSizes alloc] init];
@@ -20389,13 +20072,6 @@ static TestRepeatedScalarDifferentTagSizes* defaultTestRepeatedScalarDifferentTa
 @synthesize optionalGroup;
 @synthesize repeatedGroupArray;
 @dynamic repeatedGroup;
-- (void) dealloc {
-  self.requiredAllTypes = nil;
-  self.optionalAllTypes = nil;
-  self.repeatedAllTypesArray = nil;
-  self.optionalGroup = nil;
-  self.repeatedGroupArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.requiredAllTypes = [TestAllTypes defaultInstance];
@@ -20628,15 +20304,6 @@ static TestParsingMerge* defaultTestParsingMergeInstance = nil;
 @dynamic ext1;
 @synthesize ext2Array;
 @dynamic ext2;
-- (void) dealloc {
-  self.field1Array = nil;
-  self.field2Array = nil;
-  self.field3Array = nil;
-  self.group1Array = nil;
-  self.group2Array = nil;
-  self.ext1Array = nil;
-  self.ext2Array = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -20889,9 +20556,6 @@ static TestParsingMergeRepeatedFieldsGenerator* defaultTestParsingMergeRepeatedF
   hasField1_ = !!value_;
 }
 @synthesize field1;
-- (void) dealloc {
-  self.field1 = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.field1 = [TestAllTypes defaultInstance];
@@ -21001,9 +20665,6 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup1* defaultTestParsingMergeRep
 
 @implementation TestParsingMergeRepeatedFieldsGeneratorGroup1Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestParsingMergeRepeatedFieldsGeneratorGroup1 alloc] init];
@@ -21117,9 +20778,6 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup1* defaultTestParsingMergeRep
   hasField1_ = !!value_;
 }
 @synthesize field1;
-- (void) dealloc {
-  self.field1 = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.field1 = [TestAllTypes defaultInstance];
@@ -21229,9 +20887,6 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
 
 @implementation TestParsingMergeRepeatedFieldsGeneratorGroup2Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestParsingMergeRepeatedFieldsGeneratorGroup2 alloc] init];
@@ -21338,9 +20993,6 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
 
 @implementation TestParsingMergeRepeatedFieldsGeneratorBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestParsingMergeRepeatedFieldsGenerator alloc] init];
@@ -21650,9 +21302,6 @@ static TestParsingMergeRepeatedFieldsGeneratorGroup2* defaultTestParsingMergeRep
   hasOptionalGroupAllTypes_ = !!value_;
 }
 @synthesize optionalGroupAllTypes;
-- (void) dealloc {
-  self.optionalGroupAllTypes = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.optionalGroupAllTypes = [TestAllTypes defaultInstance];
@@ -21762,9 +21411,6 @@ static TestParsingMergeOptionalGroup* defaultTestParsingMergeOptionalGroupInstan
 
 @implementation TestParsingMergeOptionalGroupBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestParsingMergeOptionalGroup alloc] init];
@@ -21878,9 +21524,6 @@ static TestParsingMergeOptionalGroup* defaultTestParsingMergeOptionalGroupInstan
   hasRepeatedGroupAllTypes_ = !!value_;
 }
 @synthesize repeatedGroupAllTypes;
-- (void) dealloc {
-  self.repeatedGroupAllTypes = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.repeatedGroupAllTypes = [TestAllTypes defaultInstance];
@@ -21990,9 +21633,6 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
 
 @implementation TestParsingMergeRepeatedGroupBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestParsingMergeRepeatedGroup alloc] init];
@@ -22099,9 +21739,6 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
 
 @implementation TestParsingMergeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestParsingMerge alloc] init];
@@ -22368,9 +22005,6 @@ static TestParsingMergeRepeatedGroup* defaultTestParsingMergeRepeatedGroupInstan
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-  self.a = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = @"*/ <- Neither should this.";
@@ -22477,9 +22111,6 @@ static TestCommentInjectionMessage* defaultTestCommentInjectionMessageInstance =
 
 @implementation TestCommentInjectionMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestCommentInjectionMessage alloc] init];
@@ -22566,8 +22197,6 @@ static TestCommentInjectionMessage* defaultTestCommentInjectionMessageInstance =
 
 @implementation FooRequest
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -22659,9 +22288,6 @@ static FooRequest* defaultFooRequestInstance = nil;
 
 @implementation FooRequestBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[FooRequest alloc] init];
@@ -22725,8 +22351,6 @@ static FooRequest* defaultFooRequestInstance = nil;
 
 @implementation FooResponse
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -22818,9 +22442,6 @@ static FooResponse* defaultFooResponseInstance = nil;
 
 @implementation FooResponseBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[FooResponse alloc] init];
@@ -22884,8 +22505,6 @@ static FooResponse* defaultFooResponseInstance = nil;
 
 @implementation FooClientMessage
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -22977,9 +22596,6 @@ static FooClientMessage* defaultFooClientMessageInstance = nil;
 
 @implementation FooClientMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[FooClientMessage alloc] init];
@@ -23043,8 +22659,6 @@ static FooClientMessage* defaultFooClientMessageInstance = nil;
 
 @implementation FooServerMessage
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -23136,9 +22750,6 @@ static FooServerMessage* defaultFooServerMessageInstance = nil;
 
 @implementation FooServerMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[FooServerMessage alloc] init];
@@ -23202,8 +22813,6 @@ static FooServerMessage* defaultFooServerMessageInstance = nil;
 
 @implementation BarRequest
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -23295,9 +22904,6 @@ static BarRequest* defaultBarRequestInstance = nil;
 
 @implementation BarRequestBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[BarRequest alloc] init];
@@ -23361,8 +22967,6 @@ static BarRequest* defaultBarRequestInstance = nil;
 
 @implementation BarResponse
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -23454,9 +23058,6 @@ static BarResponse* defaultBarResponseInstance = nil;
 
 @implementation BarResponseBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[BarResponse alloc] init];

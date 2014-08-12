@@ -2,6 +2,7 @@
 
 // @@protoc_insertion_point(imports)
 #import "ProtocolBuffers.h"
+
 @class PBDescriptorProto;
 @class PBDescriptorProtoBuilder;
 @class PBDescriptorProtoExtensionRange;

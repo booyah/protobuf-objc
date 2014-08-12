@@ -47,7 +47,6 @@ class MessageFieldGenerator : public FieldGenerator {
 
   void GenerateExtensionSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
-  void GenerateDeallocSource(io::Printer* printer) const;
   void GenerateInitializationSource(io::Printer* printer) const;
   void GenerateMembersSource(io::Printer* printer) const;
   void GenerateBuilderMembersSource(io::Printer* printer) const;
@@ -88,7 +87,6 @@ class RepeatedMessageFieldGenerator : public FieldGenerator {
 
   void GenerateExtensionSource(io::Printer* printer) const;
   void GenerateSynthesizeSource(io::Printer* printer) const;
-  void GenerateDeallocSource(io::Printer* printer) const;
   void GenerateInitializationSource(io::Printer* printer) const;
   void GenerateMembersSource(io::Printer* printer) const;
   void GenerateBuilderMembersSource(io::Printer* printer) const;

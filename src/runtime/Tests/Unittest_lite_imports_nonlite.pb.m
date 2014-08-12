@@ -34,9 +34,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasMessage_ = !!value_;
 }
 @synthesize message;
-- (void) dealloc {
-  self.message = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.message = [TestAllTypes defaultInstance];
@@ -146,9 +143,6 @@ static TestLiteImportsNonlite* defaultTestLiteImportsNonliteInstance = nil;
 
 @implementation TestLiteImportsNonliteBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestLiteImportsNonlite alloc] init];

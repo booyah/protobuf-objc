@@ -33,8 +33,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasE_ = !!value_;
 }
 @synthesize e;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.e = 0;
@@ -141,9 +139,6 @@ static PublicImportMessage* defaultPublicImportMessageInstance = nil;
 
 @implementation PublicImportMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PublicImportMessage alloc] init];

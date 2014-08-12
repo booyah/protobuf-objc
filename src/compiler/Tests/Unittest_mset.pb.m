@@ -47,8 +47,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 @implementation TestMessageSet
 
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -154,9 +152,6 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
 
 @implementation TestMessageSetBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMessageSet alloc] init];
@@ -229,9 +224,6 @@ static TestMessageSet* defaultTestMessageSetInstance = nil;
   hasMessageSet_ = !!value_;
 }
 @synthesize messageSet;
-- (void) dealloc {
-  self.messageSet = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.messageSet = [TestMessageSet defaultInstance];
@@ -346,9 +338,6 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
 
 @implementation TestMessageSetContainerBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMessageSetContainer alloc] init];
@@ -462,8 +451,6 @@ static TestMessageSetContainer* defaultTestMessageSetContainerInstance = nil;
   hasI_ = !!value_;
 }
 @synthesize i;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.i = 0;
@@ -573,9 +560,6 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
 
 @implementation TestMessageSetExtension1Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMessageSetExtension1 alloc] init];
@@ -670,9 +654,6 @@ static TestMessageSetExtension1* defaultTestMessageSetExtension1Instance = nil;
   hasStr_ = !!value_;
 }
 @synthesize str;
-- (void) dealloc {
-  self.str = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.str = @"";
@@ -782,9 +763,6 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 
 @implementation TestMessageSetExtension2Builder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMessageSetExtension2 alloc] init];
@@ -874,9 +852,6 @@ static TestMessageSetExtension2* defaultTestMessageSetExtension2Instance = nil;
 
 @synthesize itemArray;
 @dynamic item;
-- (void) dealloc {
-  self.itemArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -1013,9 +988,6 @@ static RawMessageSet* defaultRawMessageSetInstance = nil;
   hasMessage_ = !!value_;
 }
 @synthesize message;
-- (void) dealloc {
-  self.message = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.typeId = 0;
@@ -1143,9 +1115,6 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
 
 @implementation RawMessageSetItemBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[RawMessageSetItem alloc] init];
@@ -1256,9 +1225,6 @@ static RawMessageSetItem* defaultRawMessageSetItemInstance = nil;
 
 @implementation RawMessageSetBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[RawMessageSet alloc] init];

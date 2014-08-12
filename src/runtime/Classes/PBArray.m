@@ -149,13 +149,6 @@ static PBArrayValueTypeInfo PBValueTypes[] =
 	return copy;
 }
 
-- (void)dealloc
-{
-	if (_data)
-	{
-		free(_data);
-	}
-}
 
 - (NSString *)description
 {

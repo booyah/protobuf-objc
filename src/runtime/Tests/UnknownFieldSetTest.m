@@ -27,13 +27,6 @@
 @synthesize emptyMessage;
 @synthesize unknownFields;
 
-- (void) dealloc {
-  self.allFields = nil;
-  self.allFieldsData = nil;
-  self.emptyMessage = nil;
-  self.unknownFields = nil;
-}
-
 
 - (void) setUp {
   self.allFields = [TestUtilities allSet];

@@ -55,8 +55,6 @@ BOOL TestEnumIsValidValue(TestEnum value) {
   hasA_ = !!value_;
 }
 @synthesize a;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.a = 0;
@@ -177,9 +175,6 @@ static TestMessage* defaultTestMessageInstance = nil;
 
 @implementation TestMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestMessage alloc] init];

@@ -292,14 +292,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   }
 
 
-  void PrimitiveFieldGenerator::GenerateDeallocSource(io::Printer* printer) const {
-    if (IsReferenceType(GetObjectiveCType(descriptor_))) {
-      printer->Print(variables_,
-        "self.$name$ = nil;\n");
-    }
-  }
-
-
   void PrimitiveFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {
     printer->Print(variables_,
       "self.$name$ = $default$;\n");
@@ -479,12 +471,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_, "@synthesize $list_name$;\n");
     printer->Print(variables_, "@dynamic $name$;\n");
   }
-
-
-  void RepeatedPrimitiveFieldGenerator::GenerateDeallocSource(io::Printer* printer) const {
-    printer->Print(variables_, "self.$list_name$ = nil;\n");
-  }
-
 
   void RepeatedPrimitiveFieldGenerator::GenerateInitializationSource(io::Printer* printer) const {;
   }

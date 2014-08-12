@@ -40,9 +40,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 @synthesize fields;
 
-- (void) dealloc {
-  self.fields = nil;
-}
+
 
 
 + (PBUnknownFieldSet*) defaultInstance {

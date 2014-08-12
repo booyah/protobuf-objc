@@ -37,10 +37,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @synthesize optionalMessage;
 @synthesize repeatedMessageArray;
 @dynamic repeatedMessage;
-- (void) dealloc {
-  self.optionalMessage = nil;
-  self.repeatedMessageArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.optionalMessage = [TestOptimizedForSize defaultInstance];
@@ -185,9 +181,6 @@ static TestEmbedOptimizedForSize* defaultTestEmbedOptimizedForSizeInstance = nil
 
 @implementation TestEmbedOptimizedForSizeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestEmbedOptimizedForSize alloc] init];

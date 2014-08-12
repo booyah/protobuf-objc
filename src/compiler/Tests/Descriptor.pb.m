@@ -28,9 +28,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
 
 @synthesize fileArray;
 @dynamic file;
-- (void) dealloc {
-  self.fileArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -152,9 +149,6 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
 
 @implementation PBFileDescriptorSetBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBFileDescriptorSet alloc] init];
@@ -305,19 +299,6 @@ static PBFileDescriptorSet* defaultPBFileDescriptorSetInstance = nil;
   hasSourceCodeInfo_ = !!value_;
 }
 @synthesize sourceCodeInfo;
-- (void) dealloc {
-  self.name = nil;
-  self.package = nil;
-  self.dependencyArray = nil;
-  self.publicDependencyArray = nil;
-  self.weakDependencyArray = nil;
-  self.messageTypeArray = nil;
-  self.enumTypeArray = nil;
-  self.serviceArray = nil;
-  self.extensionArray = nil;
-  self.options = nil;
-  self.sourceCodeInfo = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -685,9 +666,6 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
 
 @implementation PBFileDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBFileDescriptorProto alloc] init];
@@ -1152,15 +1130,6 @@ static PBFileDescriptorProto* defaultPBFileDescriptorProtoInstance = nil;
   hasOptions_ = !!value_;
 }
 @synthesize options;
-- (void) dealloc {
-  self.name = nil;
-  self.fieldArray = nil;
-  self.extensionArray = nil;
-  self.nestedTypeArray = nil;
-  self.enumTypeArray = nil;
-  self.extensionRangeArray = nil;
-  self.options = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -1447,8 +1416,6 @@ static PBDescriptorProto* defaultPBDescriptorProtoInstance = nil;
   hasEnd_ = !!value_;
 }
 @synthesize end;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.start = 0;
@@ -1570,9 +1537,6 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 
 @implementation PBDescriptorProtoExtensionRangeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBDescriptorProtoExtensionRange alloc] init];
@@ -1683,9 +1647,6 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
 
 @implementation PBDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBDescriptorProto alloc] init];
@@ -2048,13 +2009,6 @@ static PBDescriptorProtoExtensionRange* defaultPBDescriptorProtoExtensionRangeIn
   hasOptions_ = !!value_;
 }
 @synthesize options;
-- (void) dealloc {
-  self.name = nil;
-  self.typeName = nil;
-  self.extendee = nil;
-  self.defaultValue = nil;
-  self.options = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -2309,9 +2263,6 @@ BOOL PBFieldDescriptorProtoLabelIsValidValue(PBFieldDescriptorProtoLabel value) 
 
 @implementation PBFieldDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBFieldDescriptorProto alloc] init];
@@ -2607,11 +2558,6 @@ BOOL PBFieldDescriptorProtoLabelIsValidValue(PBFieldDescriptorProtoLabel value) 
   hasOptions_ = !!value_;
 }
 @synthesize options;
-- (void) dealloc {
-  self.name = nil;
-  self.valueArray = nil;
-  self.options = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -2771,9 +2717,6 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
 
 @implementation PBEnumDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBEnumDescriptorProto alloc] init];
@@ -2960,10 +2903,6 @@ static PBEnumDescriptorProto* defaultPBEnumDescriptorProtoInstance = nil;
   hasOptions_ = !!value_;
 }
 @synthesize options;
-- (void) dealloc {
-  self.name = nil;
-  self.options = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -3108,9 +3047,6 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
 
 @implementation PBEnumValueDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBEnumValueDescriptorProto alloc] init];
@@ -3281,11 +3217,6 @@ static PBEnumValueDescriptorProto* defaultPBEnumValueDescriptorProtoInstance = n
   hasOptions_ = !!value_;
 }
 @synthesize options;
-- (void) dealloc {
-  self.name = nil;
-  self.methodArray = nil;
-  self.options = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -3445,9 +3376,6 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
 
 @implementation PBServiceDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBServiceDescriptorProto alloc] init];
@@ -3642,12 +3570,6 @@ static PBServiceDescriptorProto* defaultPBServiceDescriptorProtoInstance = nil;
   hasOptions_ = !!value_;
 }
 @synthesize options;
-- (void) dealloc {
-  self.name = nil;
-  self.inputType = nil;
-  self.outputType = nil;
-  self.options = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.name = @"";
@@ -3807,9 +3729,6 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
 
 @implementation PBMethodDescriptorProtoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBMethodDescriptorProto alloc] init];
@@ -4084,12 +4003,6 @@ static PBMethodDescriptorProto* defaultPBMethodDescriptorProtoInstance = nil;
 }
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.javaPackage = nil;
-  self.javaOuterClassname = nil;
-  self.goPackage = nil;
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.javaPackage = @"";
@@ -4370,9 +4283,6 @@ BOOL PBFileOptionsOptimizeModeIsValidValue(PBFileOptionsOptimizeMode value) {
 
 @implementation PBFileOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBFileOptions alloc] init];
@@ -4712,9 +4622,6 @@ BOOL PBFileOptionsOptimizeModeIsValidValue(PBFileOptionsOptimizeMode value) {
 }
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.messageSetWireFormat = NO;
@@ -4880,9 +4787,6 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 
 @implementation PBMessageOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBMessageOptions alloc] init];
@@ -5098,10 +5002,6 @@ static PBMessageOptions* defaultPBMessageOptionsInstance = nil;
 }
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.experimentalMapKey = nil;
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.ctype = PBFieldOptionsCTypeString;
@@ -5337,9 +5237,6 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value) {
 
 @implementation PBFieldOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBFieldOptions alloc] init];
@@ -5597,9 +5494,6 @@ BOOL PBFieldOptionsCTypeIsValidValue(PBFieldOptionsCType value) {
 }
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.allowAlias = YES;
@@ -5750,9 +5644,6 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 
 @implementation PBEnumOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBEnumOptions alloc] init];
@@ -5877,9 +5768,6 @@ static PBEnumOptions* defaultPBEnumOptionsInstance = nil;
 
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -6015,9 +5903,6 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 
 @implementation PBEnumValueOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBEnumValueOptions alloc] init];
@@ -6119,9 +6004,6 @@ static PBEnumValueOptions* defaultPBEnumValueOptionsInstance = nil;
 
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -6257,9 +6139,6 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 
 @implementation PBServiceOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBServiceOptions alloc] init];
@@ -6361,9 +6240,6 @@ static PBServiceOptions* defaultPBServiceOptionsInstance = nil;
 
 @synthesize uninterpretedOptionArray;
 @dynamic uninterpretedOption;
-- (void) dealloc {
-  self.uninterpretedOptionArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -6499,9 +6375,6 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
 
 @implementation PBMethodOptionsBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBMethodOptions alloc] init];
@@ -6651,12 +6524,6 @@ static PBMethodOptions* defaultPBMethodOptionsInstance = nil;
   hasAggregateValue_ = !!value_;
 }
 @synthesize aggregateValue;
-- (void) dealloc {
-  self.nameArray = nil;
-  self.identifierValue = nil;
-  self.stringValue = nil;
-  self.aggregateValue = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.identifierValue = @"";
@@ -6888,9 +6755,6 @@ static PBUninterpretedOption* defaultPBUninterpretedOptionInstance = nil;
 - (void) setIsExtension:(BOOL) value_ {
   isExtension_ = !!value_;
 }
-- (void) dealloc {
-  self.namePart = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.namePart = @"";
@@ -7018,9 +6882,6 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 
 @implementation PBUninterpretedOptionNamePartBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBUninterpretedOptionNamePart alloc] init];
@@ -7131,9 +6992,6 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 
 @implementation PBUninterpretedOptionBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBUninterpretedOption alloc] init];
@@ -7372,9 +7230,6 @@ static PBUninterpretedOptionNamePart* defaultPBUninterpretedOptionNamePartInstan
 
 @synthesize locationArray;
 @dynamic location;
-- (void) dealloc {
-  self.locationArray = nil;
-}
 - (id) init {
   if ((self = [super init])) {
   }
@@ -7509,12 +7364,6 @@ static PBSourceCodeInfo* defaultPBSourceCodeInfoInstance = nil;
   hasTrailingComments_ = !!value_;
 }
 @synthesize trailingComments;
-- (void) dealloc {
-  self.pathArray = nil;
-  self.spanArray = nil;
-  self.leadingComments = nil;
-  self.trailingComments = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.leadingComments = @"";
@@ -7708,9 +7557,6 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 
 @implementation PBSourceCodeInfoLocationBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBSourceCodeInfoLocation alloc] init];
@@ -7909,9 +7755,6 @@ static PBSourceCodeInfoLocation* defaultPBSourceCodeInfoLocationInstance = nil;
 
 @implementation PBSourceCodeInfoBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[PBSourceCodeInfo alloc] init];

@@ -64,9 +64,6 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasMsg_ = !!value_;
 }
 @synthesize msg;
-- (void) dealloc {
-  self.msg = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.i = 0;
@@ -211,9 +208,6 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 
 @implementation TestOptimizedForSizeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestOptimizedForSize alloc] init];
@@ -351,8 +345,6 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   hasX_ = !!value_;
 }
 @synthesize x;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.x = 0;
@@ -462,9 +454,6 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
 
 @implementation TestRequiredOptimizedForSizeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestRequiredOptimizedForSize alloc] init];
@@ -559,9 +548,6 @@ static TestRequiredOptimizedForSize* defaultTestRequiredOptimizedForSizeInstance
   hasO_ = !!value_;
 }
 @synthesize o;
-- (void) dealloc {
-  self.o = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.o = [TestRequiredOptimizedForSize defaultInstance];
@@ -676,9 +662,6 @@ static TestOptionalOptimizedForSize* defaultTestOptionalOptimizedForSizeInstance
 
 @implementation TestOptionalOptimizedForSizeBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[TestOptionalOptimizedForSize alloc] init];

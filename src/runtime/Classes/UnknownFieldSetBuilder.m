@@ -37,13 +37,6 @@
 @synthesize lastField;
 
 
-- (void) dealloc {
-  self.fields = nil;
-  self.lastFieldNumber = 0;
-  self.lastField = nil;
-}
-
-
 - (id) init {
   if ((self = [super init])) {
     self.fields = [NSMutableDictionary dictionary];

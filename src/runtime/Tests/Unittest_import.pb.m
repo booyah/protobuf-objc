@@ -44,8 +44,6 @@ BOOL ImportEnumIsValidValue(ImportEnum value) {
   hasD_ = !!value_;
 }
 @synthesize d;
-- (void) dealloc {
-}
 - (id) init {
   if ((self = [super init])) {
     self.d = 0;
@@ -152,9 +150,6 @@ static ImportMessage* defaultImportMessageInstance = nil;
 
 @implementation ImportMessageBuilder
 @synthesize result;
-- (void) dealloc {
-  self.result = nil;
-}
 - (id) init {
   if ((self = [super init])) {
     self.result = [[ImportMessage alloc] init];
