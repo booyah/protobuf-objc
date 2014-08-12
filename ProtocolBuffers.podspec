@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ProtocolBuffers"
-  s.version      = "1.9"
+  s.version      = "1.9.1"
   s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
                       An implementation of Protocol Buffers 2.5 in Objective C.
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
                     }
 
   s.source       = {
-    :git => "https://github.com/alexeyxo/protobuf-objc.git", :tag => "1.9"
+    :git => "https://github.com/alexeyxo/protobuf-objc.git", :tag => "1.9.1"
   }
   s.header_dir = "ProtocolBuffers"
   s.source_files = 'src/runtime/Classes/*.{h,m}'
