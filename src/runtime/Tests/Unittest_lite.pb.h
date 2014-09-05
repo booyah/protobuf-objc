@@ -27,6 +27,10 @@
 @class TestAllTypesLiteRepeatedGroupBuilder;
 @class TestDeprecatedLite;
 @class TestDeprecatedLiteBuilder;
+@class TestEmptyMessageLite;
+@class TestEmptyMessageLiteBuilder;
+@class TestEmptyMessageWithExtensionsLite;
+@class TestEmptyMessageWithExtensionsLiteBuilder;
 @class TestNestedExtensionLite;
 @class TestNestedExtensionLiteBuilder;
 @class TestPackedExtensionsLite;
@@ -149,6 +153,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 + (id<PBExtensionField>) defaultImportEnumExtensionLite;
 + (id<PBExtensionField>) defaultStringPieceExtensionLite;
 + (id<PBExtensionField>) defaultCordExtensionLite;
++ (id<PBExtensionField>) oneofUint32ExtensionLite;
++ (id<PBExtensionField>) oneofNestedMessageExtensionLite;
++ (id<PBExtensionField>) oneofStringExtensionLite;
++ (id<PBExtensionField>) oneofBytesExtensionLite;
 + (id<PBExtensionField>) packedInt32ExtensionLite;
 + (id<PBExtensionField>) packedInt64ExtensionLite;
 + (id<PBExtensionField>) packedUint32ExtensionLite;
@@ -167,12 +175,12 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 
 @interface TestAllTypesLite : PBGeneratedMessage {
 @private
-  BOOL hasDefaultBool_:1;
   BOOL hasOptionalBool_:1;
-  BOOL hasDefaultDouble_:1;
+  BOOL hasDefaultBool_:1;
   BOOL hasOptionalDouble_:1;
-  BOOL hasDefaultFloat_:1;
+  BOOL hasDefaultDouble_:1;
   BOOL hasOptionalFloat_:1;
+  BOOL hasDefaultFloat_:1;
   BOOL hasOptionalInt64_:1;
   BOOL hasDefaultInt64_:1;
   BOOL hasOptionalUint64_:1;
@@ -183,28 +191,32 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   BOOL hasDefaultFixed64_:1;
   BOOL hasOptionalFixed32_:1;
   BOOL hasDefaultFixed32_:1;
+  BOOL hasOneofString_:1;
   BOOL hasDefaultCord_:1;
-  BOOL hasOptionalStringPiece_:1;
-  BOOL hasOptionalCord_:1;
-  BOOL hasOptionalString_:1;
   BOOL hasDefaultStringPiece_:1;
   BOOL hasDefaultString_:1;
+  BOOL hasOptionalString_:1;
+  BOOL hasOptionalStringPiece_:1;
+  BOOL hasOptionalCord_:1;
   BOOL hasOptionalGroup_:1;
+  BOOL hasOneofNestedMessage_:1;
+  BOOL hasOptionalNestedMessage_:1;
   BOOL hasOptionalForeignMessage_:1;
   BOOL hasOptionalImportMessage_:1;
   BOOL hasOptionalPublicImportMessage_:1;
   BOOL hasOptionalLazyMessage_:1;
-  BOOL hasOptionalNestedMessage_:1;
-  BOOL hasOptionalBytes_:1;
+  BOOL hasOneofBytes_:1;
   BOOL hasDefaultBytes_:1;
+  BOOL hasOptionalBytes_:1;
   BOOL hasDefaultUint32_:1;
   BOOL hasOptionalUint32_:1;
-  BOOL hasOptionalNestedEnum_:1;
-  BOOL hasOptionalForeignEnum_:1;
-  BOOL hasOptionalImportEnum_:1;
+  BOOL hasOneofUint32_:1;
   BOOL hasDefaultImportEnum_:1;
   BOOL hasDefaultForeignEnum_:1;
   BOOL hasDefaultNestedEnum_:1;
+  BOOL hasOptionalNestedEnum_:1;
+  BOOL hasOptionalForeignEnum_:1;
+  BOOL hasOptionalImportEnum_:1;
   BOOL hasOptionalSfixed32_:1;
   BOOL hasDefaultSfixed32_:1;
   BOOL hasOptionalSfixed64_:1;
@@ -213,12 +225,12 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   BOOL hasDefaultSint32_:1;
   BOOL hasOptionalSint64_:1;
   BOOL hasDefaultSint64_:1;
-  BOOL defaultBool_:1;
   BOOL optionalBool_:1;
-  Float64 defaultDouble;
+  BOOL defaultBool_:1;
   Float64 optionalDouble;
-  Float32 defaultFloat;
+  Float64 defaultDouble;
   Float32 optionalFloat;
+  Float32 defaultFloat;
   SInt64 optionalInt64;
   SInt64 defaultInt64;
   UInt64 optionalUint64;
@@ -229,28 +241,32 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   UInt64 defaultFixed64;
   UInt32 optionalFixed32;
   UInt32 defaultFixed32;
+  NSString* oneofString;
   NSString* defaultCord;
-  NSString* optionalStringPiece;
-  NSString* optionalCord;
-  NSString* optionalString;
   NSString* defaultStringPiece;
   NSString* defaultString;
+  NSString* optionalString;
+  NSString* optionalStringPiece;
+  NSString* optionalCord;
   TestAllTypesLiteOptionalGroup* optionalGroup;
+  TestAllTypesLiteNestedMessage* oneofNestedMessage;
+  TestAllTypesLiteNestedMessage* optionalNestedMessage;
   ForeignMessageLite* optionalForeignMessage;
   ImportMessageLite* optionalImportMessage;
   PublicImportMessageLite* optionalPublicImportMessage;
   TestAllTypesLiteNestedMessage* optionalLazyMessage;
-  TestAllTypesLiteNestedMessage* optionalNestedMessage;
-  NSData* optionalBytes;
+  NSData* oneofBytes;
   NSData* defaultBytes;
+  NSData* optionalBytes;
   UInt32 defaultUint32;
   UInt32 optionalUint32;
-  TestAllTypesLiteNestedEnum optionalNestedEnum;
-  ForeignEnumLite optionalForeignEnum;
-  ImportEnumLite optionalImportEnum;
+  UInt32 oneofUint32;
   ImportEnumLite defaultImportEnum;
   ForeignEnumLite defaultForeignEnum;
   TestAllTypesLiteNestedEnum defaultNestedEnum;
+  TestAllTypesLiteNestedEnum optionalNestedEnum;
+  ForeignEnumLite optionalForeignEnum;
+  ImportEnumLite optionalImportEnum;
   SInt32 optionalSfixed32;
   SInt32 defaultSfixed32;
   SInt64 optionalSfixed64;
@@ -267,9 +283,9 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
   PBAppendableArray * repeatedInt32Array;
   PBAppendableArray * repeatedFixed64Array;
   PBAppendableArray * repeatedFixed32Array;
-  NSMutableArray * repeatedStringArray;
-  NSMutableArray * repeatedStringPieceArray;
   NSMutableArray * repeatedCordArray;
+  NSMutableArray * repeatedStringPieceArray;
+  NSMutableArray * repeatedStringArray;
   NSMutableArray * repeatedGroupArray;
   NSMutableArray * repeatedLazyMessageArray;
   NSMutableArray * repeatedImportMessageArray;
@@ -331,6 +347,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (BOOL) hasDefaultImportEnum;
 - (BOOL) hasDefaultStringPiece;
 - (BOOL) hasDefaultCord;
+- (BOOL) hasOneofUint32;
+- (BOOL) hasOneofNestedMessage;
+- (BOOL) hasOneofString;
+- (BOOL) hasOneofBytes;
 @property (readonly) SInt32 optionalInt32;
 @property (readonly) SInt64 optionalInt64;
 @property (readonly) UInt32 optionalUint32;
@@ -402,6 +422,10 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 @property (readonly) ImportEnumLite defaultImportEnum;
 @property (readonly, strong) NSString* defaultStringPiece;
 @property (readonly, strong) NSString* defaultCord;
+@property (readonly) UInt32 oneofUint32;
+@property (readonly, strong) TestAllTypesLiteNestedMessage* oneofNestedMessage;
+@property (readonly, strong) NSString* oneofString;
+@property (readonly, strong) NSData* oneofBytes;
 - (SInt32)repeatedInt32AtIndex:(NSUInteger)index;
 - (SInt64)repeatedInt64AtIndex:(NSUInteger)index;
 - (UInt32)repeatedUint32AtIndex:(NSUInteger)index;
@@ -1017,6 +1041,28 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (NSString*) defaultCord;
 - (TestAllTypesLiteBuilder*) setDefaultCord:(NSString*) value;
 - (TestAllTypesLiteBuilder*) clearDefaultCord;
+
+- (BOOL) hasOneofUint32;
+- (UInt32) oneofUint32;
+- (TestAllTypesLiteBuilder*) setOneofUint32:(UInt32) value;
+- (TestAllTypesLiteBuilder*) clearOneofUint32;
+
+- (BOOL) hasOneofNestedMessage;
+- (TestAllTypesLiteNestedMessage*) oneofNestedMessage;
+- (TestAllTypesLiteBuilder*) setOneofNestedMessage:(TestAllTypesLiteNestedMessage*) value;
+- (TestAllTypesLiteBuilder*) setOneofNestedMessageBuilder:(TestAllTypesLiteNestedMessageBuilder*) builderForValue;
+- (TestAllTypesLiteBuilder*) mergeOneofNestedMessage:(TestAllTypesLiteNestedMessage*) value;
+- (TestAllTypesLiteBuilder*) clearOneofNestedMessage;
+
+- (BOOL) hasOneofString;
+- (NSString*) oneofString;
+- (TestAllTypesLiteBuilder*) setOneofString:(NSString*) value;
+- (TestAllTypesLiteBuilder*) clearOneofString;
+
+- (BOOL) hasOneofBytes;
+- (NSData*) oneofBytes;
+- (TestAllTypesLiteBuilder*) setOneofBytes:(NSData*) value;
+- (TestAllTypesLiteBuilder*) clearOneofBytes;
 @end
 
 @interface ForeignMessageLite : PBGeneratedMessage {
@@ -1928,6 +1974,86 @@ BOOL TestAllTypesLiteNestedEnumIsValidValue(TestAllTypesLiteNestedEnum value);
 - (TestParsingMergeLiteBuilder *)addRepeatedGroup:(TestParsingMergeLiteRepeatedGroup*)value;
 - (TestParsingMergeLiteBuilder *)setRepeatedGroupArray:(NSArray *)array;
 - (TestParsingMergeLiteBuilder *)clearRepeatedGroup;
+@end
+
+@interface TestEmptyMessageLite : PBGeneratedMessage {
+@private
+}
+
++ (TestEmptyMessageLite*) defaultInstance;
+- (TestEmptyMessageLite*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestEmptyMessageLiteBuilder*) builder;
++ (TestEmptyMessageLiteBuilder*) builder;
++ (TestEmptyMessageLiteBuilder*) builderWithPrototype:(TestEmptyMessageLite*) prototype;
+- (TestEmptyMessageLiteBuilder*) toBuilder;
+
++ (TestEmptyMessageLite*) parseFromData:(NSData*) data;
++ (TestEmptyMessageLite*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestEmptyMessageLite*) parseFromInputStream:(NSInputStream*) input;
++ (TestEmptyMessageLite*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestEmptyMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestEmptyMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestEmptyMessageLiteBuilder : PBGeneratedMessageBuilder {
+@private
+  TestEmptyMessageLite* result;
+}
+
+- (TestEmptyMessageLite*) defaultInstance;
+
+- (TestEmptyMessageLiteBuilder*) clear;
+- (TestEmptyMessageLiteBuilder*) clone;
+
+- (TestEmptyMessageLite*) build;
+- (TestEmptyMessageLite*) buildPartial;
+
+- (TestEmptyMessageLiteBuilder*) mergeFrom:(TestEmptyMessageLite*) other;
+- (TestEmptyMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestEmptyMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestEmptyMessageWithExtensionsLite : PBExtendableMessage {
+@private
+}
+
++ (TestEmptyMessageWithExtensionsLite*) defaultInstance;
+- (TestEmptyMessageWithExtensionsLite*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestEmptyMessageWithExtensionsLiteBuilder*) builder;
++ (TestEmptyMessageWithExtensionsLiteBuilder*) builder;
++ (TestEmptyMessageWithExtensionsLiteBuilder*) builderWithPrototype:(TestEmptyMessageWithExtensionsLite*) prototype;
+- (TestEmptyMessageWithExtensionsLiteBuilder*) toBuilder;
+
++ (TestEmptyMessageWithExtensionsLite*) parseFromData:(NSData*) data;
++ (TestEmptyMessageWithExtensionsLite*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestEmptyMessageWithExtensionsLite*) parseFromInputStream:(NSInputStream*) input;
++ (TestEmptyMessageWithExtensionsLite*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestEmptyMessageWithExtensionsLite*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestEmptyMessageWithExtensionsLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestEmptyMessageWithExtensionsLiteBuilder : PBExtendableMessageBuilder {
+@private
+  TestEmptyMessageWithExtensionsLite* result;
+}
+
+- (TestEmptyMessageWithExtensionsLite*) defaultInstance;
+
+- (TestEmptyMessageWithExtensionsLiteBuilder*) clear;
+- (TestEmptyMessageWithExtensionsLiteBuilder*) clone;
+
+- (TestEmptyMessageWithExtensionsLite*) build;
+- (TestEmptyMessageWithExtensionsLite*) buildPartial;
+
+- (TestEmptyMessageWithExtensionsLiteBuilder*) mergeFrom:(TestEmptyMessageWithExtensionsLite*) other;
+- (TestEmptyMessageWithExtensionsLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestEmptyMessageWithExtensionsLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
 

@@ -2558,6 +2558,7 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
 @property SInt32 foo;
 @property SInt32 foo2;
 @property SInt32 foo3;
+@property (strong) PBAppendableArray * foo4Array;
 @end
 
 @implementation ComplexOptionType1
@@ -2583,6 +2584,8 @@ static SettingRealsFromNegativeInts* defaultSettingRealsFromNegativeIntsInstance
   hasFoo3_ = !!value_;
 }
 @synthesize foo3;
+@synthesize foo4Array;
+@dynamic foo4;
 - (id) init {
   if ((self = [super init])) {
     self.foo = 0;
@@ -2603,6 +2606,12 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
 - (ComplexOptionType1*) defaultInstance {
   return defaultComplexOptionType1Instance;
 }
+- (PBArray *)foo4 {
+  return foo4Array;
+}
+- (SInt32)foo4AtIndex:(NSUInteger)index {
+  return [foo4Array int32AtIndex:index];
+}
 - (BOOL) isInitialized {
   if (!self.extensionsAreInitialized) {
     return NO;
@@ -2618,6 +2627,13 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   }
   if (self.hasFoo3) {
     [output writeInt32:3 value:self.foo3];
+  }
+  const NSUInteger foo4ArrayCount = self.foo4Array.count;
+  if (foo4ArrayCount > 0) {
+    const SInt32 *values = (const SInt32 *)self.foo4Array.data;
+    for (NSUInteger i = 0; i < foo4ArrayCount; ++i) {
+      [output writeInt32:4 value:values[i]];
+    }
   }
   [self writeExtensionsToCodedOutputStream:output
                                       from:100
@@ -2639,6 +2655,16 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   }
   if (self.hasFoo3) {
     size_ += computeInt32Size(3, self.foo3);
+  }
+  {
+    __block SInt32 dataSize = 0;
+    const NSUInteger count = self.foo4Array.count;
+    const SInt32 *values = (const SInt32 *)self.foo4Array.data;
+    for (NSUInteger i = 0; i < count; ++i) {
+      dataSize += computeInt32SizeNoTag(values[i]);
+    }
+    size_ += dataSize;
+    size_ += (SInt32)(1 * count);
   }
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
@@ -2685,6 +2711,9 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   if (self.hasFoo3) {
     [output appendFormat:@"%@%@: %@\n", indent, @"foo3", [NSNumber numberWithInteger:self.foo3]];
   }
+  [self.foo4Array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"foo4", obj];
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:100
                                               to:536870912
@@ -2706,6 +2735,7 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
       (!self.hasFoo2 || self.foo2 == otherMessage.foo2) &&
       self.hasFoo3 == otherMessage.hasFoo3 &&
       (!self.hasFoo3 || self.foo3 == otherMessage.foo3) &&
+      [self.foo4Array isEqualToArray:otherMessage.foo4Array] &&
       [self isEqualExtensionsInOther:otherMessage from:100 to:536870912] &&
 
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
@@ -2721,6 +2751,9 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   if (self.hasFoo3) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.foo3] hash];
   }
+  [self.foo4Array enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [obj longValue];
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:100 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -2774,6 +2807,13 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   if (other.hasFoo3) {
     [self setFoo3:other.foo3];
   }
+  if (other.foo4Array.count > 0) {
+    if (result.foo4Array == nil) {
+      result.foo4Array = [other.foo4Array copy];
+    } else {
+      [result.foo4Array appendArray:other.foo4Array];
+    }
+  }
   [self mergeExtensionFields:other];
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -2806,6 +2846,10 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
       }
       case 24: {
         [self setFoo3:[input readInt32]];
+        break;
+      }
+      case 32: {
+        [self addFoo4:[input readInt32]];
         break;
       }
     }
@@ -2859,12 +2903,38 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   result.foo3 = 0;
   return self;
 }
+- (PBAppendableArray *)foo4 {
+  return result.foo4Array;
+}
+- (SInt32)foo4AtIndex:(NSUInteger)index {
+  return [result foo4AtIndex:index];
+}
+- (ComplexOptionType1Builder *)addFoo4:(SInt32)value {
+  if (result.foo4Array == nil) {
+    result.foo4Array = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+  }
+  [result.foo4Array addInt32:value];
+  return self;
+}
+- (ComplexOptionType1Builder *)setFoo4Array:(NSArray *)array {
+  result.foo4Array = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (ComplexOptionType1Builder *)setFoo4Values:(const SInt32 *)values count:(NSUInteger)count {
+  result.foo4Array = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (ComplexOptionType1Builder *)clearFoo4 {
+  result.foo4Array = nil;
+  return self;
+}
 @end
 
 @interface ComplexOptionType2 ()
 @property (strong) ComplexOptionType1* bar;
 @property SInt32 baz;
 @property (strong) ComplexOptionType2ComplexOptionType4* fred;
+@property (strong) NSMutableArray * barneyArray;
 @end
 
 @implementation ComplexOptionType2
@@ -2890,6 +2960,8 @@ static ComplexOptionType1* defaultComplexOptionType1Instance = nil;
   hasFred_ = !!value_;
 }
 @synthesize fred;
+@synthesize barneyArray;
+@dynamic barney;
 - (id) init {
   if ((self = [super init])) {
     self.bar = [ComplexOptionType1 defaultInstance];
@@ -2909,6 +2981,12 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
 }
 - (ComplexOptionType2*) defaultInstance {
   return defaultComplexOptionType2Instance;
+}
+- (NSArray *)barney {
+  return barneyArray;
+}
+- (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index {
+  return [barneyArray objectAtIndex:index];
 }
 - (BOOL) isInitialized {
   if (self.hasBar) {
@@ -2931,6 +3009,9 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
   if (self.hasFred) {
     [output writeMessage:3 value:self.fred];
   }
+  [self.barneyArray enumerateObjectsUsingBlock:^(ComplexOptionType2ComplexOptionType4 *element, NSUInteger idx, BOOL *stop) {
+    [output writeMessage:4 value:element];
+  }];
   [self writeExtensionsToCodedOutputStream:output
                                       from:100
                                         to:536870912];
@@ -2952,6 +3033,9 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
   if (self.hasFred) {
     size_ += computeMessageSize(3, self.fred);
   }
+  [self.barneyArray enumerateObjectsUsingBlock:^(ComplexOptionType2ComplexOptionType4 *element, NSUInteger idx, BOOL *stop) {
+    size_ += computeMessageSize(4, element);
+  }];
   size_ += [self extensionsSerializedSize];
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -3003,6 +3087,12 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
                          withIndent:[NSString stringWithFormat:@"%@  ", indent]];
     [output appendFormat:@"%@}\n", indent];
   }
+  [self.barneyArray enumerateObjectsUsingBlock:^(ComplexOptionType2ComplexOptionType4 *element, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@ {\n", indent, @"barney"];
+    [element writeDescriptionTo:output
+                     withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }];
   [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
                                             from:100
                                               to:536870912
@@ -3024,6 +3114,7 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
       (!self.hasBaz || self.baz == otherMessage.baz) &&
       self.hasFred == otherMessage.hasFred &&
       (!self.hasFred || [self.fred isEqual:otherMessage.fred]) &&
+      [self.barneyArray isEqualToArray:otherMessage.barneyArray] &&
       [self isEqualExtensionsInOther:otherMessage from:100 to:536870912] &&
 
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
@@ -3039,6 +3130,9 @@ static ComplexOptionType2* defaultComplexOptionType2Instance = nil;
   if (self.hasFred) {
     hashCode = hashCode * 31 + [self.fred hash];
   }
+  [self.barneyArray enumerateObjectsUsingBlock:^(ComplexOptionType2ComplexOptionType4 *element, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [element hash];
+  }];
   hashCode = hashCode * 31 + [self hashExtensionsFrom:100 to:536870912];
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -3295,6 +3389,13 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
   if (other.hasFred) {
     [self mergeFred:other.fred];
   }
+  if (other.barneyArray.count > 0) {
+    if (result.barneyArray == nil) {
+      result.barneyArray = [[NSMutableArray alloc] initWithArray:other.barneyArray];
+    } else {
+      [result.barneyArray addObjectsFromArray:other.barneyArray];
+    }
+  }
   [self mergeExtensionFields:other];
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -3337,6 +3438,12 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
         }
         [input readMessage:subBuilder extensionRegistry:extensionRegistry];
         [self setFred:[subBuilder buildPartial]];
+        break;
+      }
+      case 34: {
+        ComplexOptionType2ComplexOptionType4Builder* subBuilder = [ComplexOptionType2ComplexOptionType4 builder];
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self addBarney:[subBuilder buildPartial]];
         break;
       }
     }
@@ -3416,6 +3523,27 @@ static ComplexOptionType2ComplexOptionType4* defaultComplexOptionType2ComplexOpt
 - (ComplexOptionType2Builder*) clearFred {
   result.hasFred = NO;
   result.fred = [ComplexOptionType2ComplexOptionType4 defaultInstance];
+  return self;
+}
+- (NSMutableArray *)barney {
+  return result.barneyArray;
+}
+- (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index {
+  return [result barneyAtIndex:index];
+}
+- (ComplexOptionType2Builder *)addBarney:(ComplexOptionType2ComplexOptionType4*)value {
+  if (result.barneyArray == nil) {
+    result.barneyArray = [[NSMutableArray alloc]init];
+  }
+  [result.barneyArray addObject:value];
+  return self;
+}
+- (ComplexOptionType2Builder *)setBarneyArray:(NSArray *)array {
+  result.barneyArray = [[NSMutableArray alloc]initWithArray:array];
+  return self;
+}
+- (ComplexOptionType2Builder *)clearBarney {
+  result.barneyArray = nil;
   return self;
 }
 @end

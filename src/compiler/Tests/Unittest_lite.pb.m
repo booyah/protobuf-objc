@@ -75,6 +75,10 @@ static id<PBExtensionField> UnittestLiteRoot_defaultForeignEnumExtensionLite = n
 static id<PBExtensionField> UnittestLiteRoot_defaultImportEnumExtensionLite = nil;
 static id<PBExtensionField> UnittestLiteRoot_defaultStringPieceExtensionLite = nil;
 static id<PBExtensionField> UnittestLiteRoot_defaultCordExtensionLite = nil;
+static id<PBExtensionField> UnittestLiteRoot_oneofUint32ExtensionLite = nil;
+static id<PBExtensionField> UnittestLiteRoot_oneofNestedMessageExtensionLite = nil;
+static id<PBExtensionField> UnittestLiteRoot_oneofStringExtensionLite = nil;
+static id<PBExtensionField> UnittestLiteRoot_oneofBytesExtensionLite = nil;
 static id<PBExtensionField> UnittestLiteRoot_packedInt32ExtensionLite = nil;
 static id<PBExtensionField> UnittestLiteRoot_packedInt64ExtensionLite = nil;
 static id<PBExtensionField> UnittestLiteRoot_packedUint32ExtensionLite = nil;
@@ -738,6 +742,42 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:NO
                                           isPacked:NO
                             isMessageSetWireFormat:NO];
+    UnittestLiteRoot_oneofUint32ExtensionLite =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
+                                     extendedClass:[TestAllExtensionsLite class]
+                                       fieldNumber:111
+                                      defaultValue:[NSNumber numberWithInteger:0]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestLiteRoot_oneofNestedMessageExtensionLite =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestAllExtensionsLite class]
+                                       fieldNumber:112
+                                      defaultValue:[TestAllTypesLiteNestedMessage defaultInstance]
+                               messageOrGroupClass:[TestAllTypesLiteNestedMessage class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestLiteRoot_oneofStringExtensionLite =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
+                                     extendedClass:[TestAllExtensionsLite class]
+                                       fieldNumber:113
+                                      defaultValue:@""
+                               messageOrGroupClass:[NSString class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestLiteRoot_oneofBytesExtensionLite =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
+                                     extendedClass:[TestAllExtensionsLite class]
+                                       fieldNumber:114
+                                      defaultValue:[NSData data]
+                               messageOrGroupClass:[NSData class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
     UnittestLiteRoot_packedInt32ExtensionLite =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
                                      extendedClass:[TestPackedExtensionsLite class]
@@ -969,6 +1009,10 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestLiteRoot_defaultImportEnumExtensionLite];
   [registry addExtension:UnittestLiteRoot_defaultStringPieceExtensionLite];
   [registry addExtension:UnittestLiteRoot_defaultCordExtensionLite];
+  [registry addExtension:UnittestLiteRoot_oneofUint32ExtensionLite];
+  [registry addExtension:UnittestLiteRoot_oneofNestedMessageExtensionLite];
+  [registry addExtension:UnittestLiteRoot_oneofStringExtensionLite];
+  [registry addExtension:UnittestLiteRoot_oneofBytesExtensionLite];
   [registry addExtension:UnittestLiteRoot_packedInt32ExtensionLite];
   [registry addExtension:UnittestLiteRoot_packedInt64ExtensionLite];
   [registry addExtension:UnittestLiteRoot_packedUint32ExtensionLite];
@@ -1200,6 +1244,18 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (id<PBExtensionField>) defaultCordExtensionLite {
   return UnittestLiteRoot_defaultCordExtensionLite;
 }
++ (id<PBExtensionField>) oneofUint32ExtensionLite {
+  return UnittestLiteRoot_oneofUint32ExtensionLite;
+}
++ (id<PBExtensionField>) oneofNestedMessageExtensionLite {
+  return UnittestLiteRoot_oneofNestedMessageExtensionLite;
+}
++ (id<PBExtensionField>) oneofStringExtensionLite {
+  return UnittestLiteRoot_oneofStringExtensionLite;
+}
++ (id<PBExtensionField>) oneofBytesExtensionLite {
+  return UnittestLiteRoot_oneofBytesExtensionLite;
+}
 + (id<PBExtensionField>) packedInt32ExtensionLite {
   return UnittestLiteRoot_packedInt32ExtensionLite;
 }
@@ -1326,6 +1382,10 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
 @property ImportEnumLite defaultImportEnum;
 @property (strong) NSString* defaultStringPiece;
 @property (strong) NSString* defaultCord;
+@property UInt32 oneofUint32;
+@property (strong) TestAllTypesLiteNestedMessage* oneofNestedMessage;
+@property (strong) NSString* oneofString;
+@property (strong) NSData* oneofBytes;
 @end
 
 @implementation TestAllTypesLite
@@ -1712,6 +1772,34 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
   hasDefaultCord_ = !!value_;
 }
 @synthesize defaultCord;
+- (BOOL) hasOneofUint32 {
+  return !!hasOneofUint32_;
+}
+- (void) setHasOneofUint32:(BOOL) value_ {
+  hasOneofUint32_ = !!value_;
+}
+@synthesize oneofUint32;
+- (BOOL) hasOneofNestedMessage {
+  return !!hasOneofNestedMessage_;
+}
+- (void) setHasOneofNestedMessage:(BOOL) value_ {
+  hasOneofNestedMessage_ = !!value_;
+}
+@synthesize oneofNestedMessage;
+- (BOOL) hasOneofString {
+  return !!hasOneofString_;
+}
+- (void) setHasOneofString:(BOOL) value_ {
+  hasOneofString_ = !!value_;
+}
+@synthesize oneofString;
+- (BOOL) hasOneofBytes {
+  return !!hasOneofBytes_;
+}
+- (void) setHasOneofBytes:(BOOL) value_ {
+  hasOneofBytes_ = !!value_;
+}
+@synthesize oneofBytes;
 - (id) init {
   if ((self = [super init])) {
     self.optionalInt32 = 0;
@@ -1760,6 +1848,10 @@ BOOL ForeignEnumLiteIsValidValue(ForeignEnumLite value) {
     self.defaultImportEnum = ImportEnumLiteImportLiteBar;
     self.defaultStringPiece = @"abc";
     self.defaultCord = @"123";
+    self.oneofUint32 = 0;
+    self.oneofNestedMessage = [TestAllTypesLiteNestedMessage defaultInstance];
+    self.oneofString = @"";
+    self.oneofBytes = [NSData data];
   }
   return self;
 }
@@ -2200,6 +2292,18 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   if (self.hasDefaultCord) {
     [output writeString:85 value:self.defaultCord];
   }
+  if (self.hasOneofUint32) {
+    [output writeUInt32:111 value:self.oneofUint32];
+  }
+  if (self.hasOneofNestedMessage) {
+    [output writeMessage:112 value:self.oneofNestedMessage];
+  }
+  if (self.hasOneofString) {
+    [output writeString:113 value:self.oneofString];
+  }
+  if (self.hasOneofBytes) {
+    [output writeData:114 value:self.oneofBytes];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (SInt32) serializedSize {
@@ -2537,6 +2641,18 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   if (self.hasDefaultCord) {
     size_ += computeStringSize(85, self.defaultCord);
   }
+  if (self.hasOneofUint32) {
+    size_ += computeUInt32Size(111, self.oneofUint32);
+  }
+  if (self.hasOneofNestedMessage) {
+    size_ += computeMessageSize(112, self.oneofNestedMessage);
+  }
+  if (self.hasOneofString) {
+    size_ += computeStringSize(113, self.oneofString);
+  }
+  if (self.hasOneofBytes) {
+    size_ += computeDataSize(114, self.oneofBytes);
+  }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -2818,6 +2934,21 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   if (self.hasDefaultCord) {
     [output appendFormat:@"%@%@: %@\n", indent, @"defaultCord", self.defaultCord];
   }
+  if (self.hasOneofUint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneofUint32", [NSNumber numberWithInteger:self.oneofUint32]];
+  }
+  if (self.hasOneofNestedMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"oneofNestedMessage"];
+    [self.oneofNestedMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOneofString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneofString", self.oneofString];
+  }
+  if (self.hasOneofBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneofBytes", self.oneofBytes];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -2946,6 +3077,14 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
       (!self.hasDefaultStringPiece || [self.defaultStringPiece isEqual:otherMessage.defaultStringPiece]) &&
       self.hasDefaultCord == otherMessage.hasDefaultCord &&
       (!self.hasDefaultCord || [self.defaultCord isEqual:otherMessage.defaultCord]) &&
+      self.hasOneofUint32 == otherMessage.hasOneofUint32 &&
+      (!self.hasOneofUint32 || self.oneofUint32 == otherMessage.oneofUint32) &&
+      self.hasOneofNestedMessage == otherMessage.hasOneofNestedMessage &&
+      (!self.hasOneofNestedMessage || [self.oneofNestedMessage isEqual:otherMessage.oneofNestedMessage]) &&
+      self.hasOneofString == otherMessage.hasOneofString &&
+      (!self.hasOneofString || [self.oneofString isEqual:otherMessage.oneofString]) &&
+      self.hasOneofBytes == otherMessage.hasOneofBytes &&
+      (!self.hasOneofBytes || [self.oneofBytes isEqual:otherMessage.oneofBytes]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -3162,6 +3301,18 @@ static TestAllTypesLite* defaultTestAllTypesLiteInstance = nil;
   }
   if (self.hasDefaultCord) {
     hashCode = hashCode * 31 + [self.defaultCord hash];
+  }
+  if (self.hasOneofUint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.oneofUint32] hash];
+  }
+  if (self.hasOneofNestedMessage) {
+    hashCode = hashCode * 31 + [self.oneofNestedMessage hash];
+  }
+  if (self.hasOneofString) {
+    hashCode = hashCode * 31 + [self.oneofString hash];
+  }
+  if (self.hasOneofBytes) {
+    hashCode = hashCode * 31 + [self.oneofBytes hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -4129,6 +4280,18 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
   if (other.hasDefaultCord) {
     [self setDefaultCord:other.defaultCord];
   }
+  if (other.hasOneofUint32) {
+    [self setOneofUint32:other.oneofUint32];
+  }
+  if (other.hasOneofNestedMessage) {
+    [self mergeOneofNestedMessage:other.oneofNestedMessage];
+  }
+  if (other.hasOneofString) {
+    [self setOneofString:other.oneofString];
+  }
+  if (other.hasOneofBytes) {
+    [self setOneofBytes:other.oneofBytes];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -4517,6 +4680,27 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
       }
       case 682: {
         [self setDefaultCord:[input readString]];
+        break;
+      }
+      case 888: {
+        [self setOneofUint32:[input readUInt32]];
+        break;
+      }
+      case 898: {
+        TestAllTypesLiteNestedMessageBuilder* subBuilder = [TestAllTypesLiteNestedMessage builder];
+        if (self.hasOneofNestedMessage) {
+          [subBuilder mergeFrom:self.oneofNestedMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setOneofNestedMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 906: {
+        [self setOneofString:[input readString]];
+        break;
+      }
+      case 914: {
+        [self setOneofBytes:[input readData]];
         break;
       }
     }
@@ -5929,6 +6113,84 @@ static TestAllTypesLiteRepeatedGroup* defaultTestAllTypesLiteRepeatedGroupInstan
 - (TestAllTypesLiteBuilder*) clearDefaultCord {
   result.hasDefaultCord = NO;
   result.defaultCord = @"123";
+  return self;
+}
+- (BOOL) hasOneofUint32 {
+  return result.hasOneofUint32;
+}
+- (UInt32) oneofUint32 {
+  return result.oneofUint32;
+}
+- (TestAllTypesLiteBuilder*) setOneofUint32:(UInt32) value {
+  result.hasOneofUint32 = YES;
+  result.oneofUint32 = value;
+  return self;
+}
+- (TestAllTypesLiteBuilder*) clearOneofUint32 {
+  result.hasOneofUint32 = NO;
+  result.oneofUint32 = 0;
+  return self;
+}
+- (BOOL) hasOneofNestedMessage {
+  return result.hasOneofNestedMessage;
+}
+- (TestAllTypesLiteNestedMessage*) oneofNestedMessage {
+  return result.oneofNestedMessage;
+}
+- (TestAllTypesLiteBuilder*) setOneofNestedMessage:(TestAllTypesLiteNestedMessage*) value {
+  result.hasOneofNestedMessage = YES;
+  result.oneofNestedMessage = value;
+  return self;
+}
+- (TestAllTypesLiteBuilder*) setOneofNestedMessageBuilder:(TestAllTypesLiteNestedMessageBuilder*) builderForValue {
+  return [self setOneofNestedMessage:[builderForValue build]];
+}
+- (TestAllTypesLiteBuilder*) mergeOneofNestedMessage:(TestAllTypesLiteNestedMessage*) value {
+  if (result.hasOneofNestedMessage &&
+      result.oneofNestedMessage != [TestAllTypesLiteNestedMessage defaultInstance]) {
+    result.oneofNestedMessage =
+      [[[TestAllTypesLiteNestedMessage builderWithPrototype:result.oneofNestedMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.oneofNestedMessage = value;
+  }
+  result.hasOneofNestedMessage = YES;
+  return self;
+}
+- (TestAllTypesLiteBuilder*) clearOneofNestedMessage {
+  result.hasOneofNestedMessage = NO;
+  result.oneofNestedMessage = [TestAllTypesLiteNestedMessage defaultInstance];
+  return self;
+}
+- (BOOL) hasOneofString {
+  return result.hasOneofString;
+}
+- (NSString*) oneofString {
+  return result.oneofString;
+}
+- (TestAllTypesLiteBuilder*) setOneofString:(NSString*) value {
+  result.hasOneofString = YES;
+  result.oneofString = value;
+  return self;
+}
+- (TestAllTypesLiteBuilder*) clearOneofString {
+  result.hasOneofString = NO;
+  result.oneofString = @"";
+  return self;
+}
+- (BOOL) hasOneofBytes {
+  return result.hasOneofBytes;
+}
+- (NSData*) oneofBytes {
+  return result.oneofBytes;
+}
+- (TestAllTypesLiteBuilder*) setOneofBytes:(NSData*) value {
+  result.hasOneofBytes = YES;
+  result.oneofBytes = value;
+  return self;
+}
+- (TestAllTypesLiteBuilder*) clearOneofBytes {
+  result.hasOneofBytes = NO;
+  result.oneofBytes = [NSData data];
   return self;
 }
 @end
@@ -10477,6 +10739,329 @@ static TestParsingMergeLiteRepeatedGroup* defaultTestParsingMergeLiteRepeatedGro
 - (TestParsingMergeLiteBuilder *)clearRepeatedGroup {
   result.repeatedGroupArray = nil;
   return self;
+}
+@end
+
+@interface TestEmptyMessageLite ()
+@end
+
+@implementation TestEmptyMessageLite
+
+- (id) init {
+  if ((self = [super init])) {
+  }
+  return self;
+}
+static TestEmptyMessageLite* defaultTestEmptyMessageLiteInstance = nil;
++ (void) initialize {
+  if (self == [TestEmptyMessageLite class]) {
+    defaultTestEmptyMessageLiteInstance = [[TestEmptyMessageLite alloc] init];
+  }
+}
++ (TestEmptyMessageLite*) defaultInstance {
+  return defaultTestEmptyMessageLiteInstance;
+}
+- (TestEmptyMessageLite*) defaultInstance {
+  return defaultTestEmptyMessageLiteInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestEmptyMessageLite*) parseFromData:(NSData*) data {
+  return (TestEmptyMessageLite*)[[[TestEmptyMessageLite builder] mergeFromData:data] build];
+}
++ (TestEmptyMessageLite*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestEmptyMessageLite*)[[[TestEmptyMessageLite builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestEmptyMessageLite*) parseFromInputStream:(NSInputStream*) input {
+  return (TestEmptyMessageLite*)[[[TestEmptyMessageLite builder] mergeFromInputStream:input] build];
+}
++ (TestEmptyMessageLite*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestEmptyMessageLite*)[[[TestEmptyMessageLite builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestEmptyMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestEmptyMessageLite*)[[[TestEmptyMessageLite builder] mergeFromCodedInputStream:input] build];
+}
++ (TestEmptyMessageLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestEmptyMessageLite*)[[[TestEmptyMessageLite builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestEmptyMessageLiteBuilder*) builder {
+  return [[TestEmptyMessageLiteBuilder alloc] init];
+}
++ (TestEmptyMessageLiteBuilder*) builderWithPrototype:(TestEmptyMessageLite*) prototype {
+  return [[TestEmptyMessageLite builder] mergeFrom:prototype];
+}
+- (TestEmptyMessageLiteBuilder*) builder {
+  return [TestEmptyMessageLite builder];
+}
+- (TestEmptyMessageLiteBuilder*) toBuilder {
+  return [TestEmptyMessageLite builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestEmptyMessageLite class]]) {
+    return NO;
+  }
+  TestEmptyMessageLite *otherMessage = other;
+  return
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestEmptyMessageLiteBuilder()
+@property (strong) TestEmptyMessageLite* result;
+@end
+
+@implementation TestEmptyMessageLiteBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestEmptyMessageLite alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestEmptyMessageLiteBuilder*) clear {
+  self.result = [[TestEmptyMessageLite alloc] init];
+  return self;
+}
+- (TestEmptyMessageLiteBuilder*) clone {
+  return [TestEmptyMessageLite builderWithPrototype:result];
+}
+- (TestEmptyMessageLite*) defaultInstance {
+  return [TestEmptyMessageLite defaultInstance];
+}
+- (TestEmptyMessageLite*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestEmptyMessageLite*) buildPartial {
+  TestEmptyMessageLite* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestEmptyMessageLiteBuilder*) mergeFrom:(TestEmptyMessageLite*) other {
+  if (other == [TestEmptyMessageLite defaultInstance]) {
+    return self;
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestEmptyMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestEmptyMessageLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+@end
+
+@interface TestEmptyMessageWithExtensionsLite ()
+@end
+
+@implementation TestEmptyMessageWithExtensionsLite
+
+- (id) init {
+  if ((self = [super init])) {
+  }
+  return self;
+}
+static TestEmptyMessageWithExtensionsLite* defaultTestEmptyMessageWithExtensionsLiteInstance = nil;
++ (void) initialize {
+  if (self == [TestEmptyMessageWithExtensionsLite class]) {
+    defaultTestEmptyMessageWithExtensionsLiteInstance = [[TestEmptyMessageWithExtensionsLite alloc] init];
+  }
+}
++ (TestEmptyMessageWithExtensionsLite*) defaultInstance {
+  return defaultTestEmptyMessageWithExtensionsLiteInstance;
+}
+- (TestEmptyMessageWithExtensionsLite*) defaultInstance {
+  return defaultTestEmptyMessageWithExtensionsLiteInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.extensionsAreInitialized) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  [self writeExtensionsToCodedOutputStream:output
+                                      from:1
+                                        to:536870912];
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += [self extensionsSerializedSize];
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestEmptyMessageWithExtensionsLite*) parseFromData:(NSData*) data {
+  return (TestEmptyMessageWithExtensionsLite*)[[[TestEmptyMessageWithExtensionsLite builder] mergeFromData:data] build];
+}
++ (TestEmptyMessageWithExtensionsLite*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestEmptyMessageWithExtensionsLite*)[[[TestEmptyMessageWithExtensionsLite builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestEmptyMessageWithExtensionsLite*) parseFromInputStream:(NSInputStream*) input {
+  return (TestEmptyMessageWithExtensionsLite*)[[[TestEmptyMessageWithExtensionsLite builder] mergeFromInputStream:input] build];
+}
++ (TestEmptyMessageWithExtensionsLite*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestEmptyMessageWithExtensionsLite*)[[[TestEmptyMessageWithExtensionsLite builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestEmptyMessageWithExtensionsLite*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestEmptyMessageWithExtensionsLite*)[[[TestEmptyMessageWithExtensionsLite builder] mergeFromCodedInputStream:input] build];
+}
++ (TestEmptyMessageWithExtensionsLite*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestEmptyMessageWithExtensionsLite*)[[[TestEmptyMessageWithExtensionsLite builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestEmptyMessageWithExtensionsLiteBuilder*) builder {
+  return [[TestEmptyMessageWithExtensionsLiteBuilder alloc] init];
+}
++ (TestEmptyMessageWithExtensionsLiteBuilder*) builderWithPrototype:(TestEmptyMessageWithExtensionsLite*) prototype {
+  return [[TestEmptyMessageWithExtensionsLite builder] mergeFrom:prototype];
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) builder {
+  return [TestEmptyMessageWithExtensionsLite builder];
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) toBuilder {
+  return [TestEmptyMessageWithExtensionsLite builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestEmptyMessageWithExtensionsLite class]]) {
+    return NO;
+  }
+  TestEmptyMessageWithExtensionsLite *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
+
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestEmptyMessageWithExtensionsLiteBuilder()
+@property (strong) TestEmptyMessageWithExtensionsLite* result;
+@end
+
+@implementation TestEmptyMessageWithExtensionsLiteBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestEmptyMessageWithExtensionsLite alloc] init];
+  }
+  return self;
+}
+- (PBExtendableMessage*) internalGetResult {
+  return result;
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) clear {
+  self.result = [[TestEmptyMessageWithExtensionsLite alloc] init];
+  return self;
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) clone {
+  return [TestEmptyMessageWithExtensionsLite builderWithPrototype:result];
+}
+- (TestEmptyMessageWithExtensionsLite*) defaultInstance {
+  return [TestEmptyMessageWithExtensionsLite defaultInstance];
+}
+- (TestEmptyMessageWithExtensionsLite*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestEmptyMessageWithExtensionsLite*) buildPartial {
+  TestEmptyMessageWithExtensionsLite* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) mergeFrom:(TestEmptyMessageWithExtensionsLite*) other {
+  if (other == [TestEmptyMessageWithExtensionsLite defaultInstance]) {
+    return self;
+  }
+  [self mergeExtensionFields:other];
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestEmptyMessageWithExtensionsLiteBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
 }
 @end
 

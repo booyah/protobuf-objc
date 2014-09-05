@@ -75,6 +75,10 @@ static id<PBExtensionField> UnittestRoot_defaultForeignEnumExtension = nil;
 static id<PBExtensionField> UnittestRoot_defaultImportEnumExtension = nil;
 static id<PBExtensionField> UnittestRoot_defaultStringPieceExtension = nil;
 static id<PBExtensionField> UnittestRoot_defaultCordExtension = nil;
+static id<PBExtensionField> UnittestRoot_oneofUint32Extension = nil;
+static id<PBExtensionField> UnittestRoot_oneofNestedMessageExtension = nil;
+static id<PBExtensionField> UnittestRoot_oneofStringExtension = nil;
+static id<PBExtensionField> UnittestRoot_oneofBytesExtension = nil;
 static id<PBExtensionField> UnittestRoot_myExtensionString = nil;
 static id<PBExtensionField> UnittestRoot_myExtensionInt = nil;
 static id<PBExtensionField> UnittestRoot_packedInt32Extension = nil;
@@ -91,7 +95,22 @@ static id<PBExtensionField> UnittestRoot_packedFloatExtension = nil;
 static id<PBExtensionField> UnittestRoot_packedDoubleExtension = nil;
 static id<PBExtensionField> UnittestRoot_packedBoolExtension = nil;
 static id<PBExtensionField> UnittestRoot_packedEnumExtension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedInt32Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedInt64Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedUint32Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedUint64Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedSint32Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedSint64Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedFixed32Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedFixed64Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedSfixed32Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedSfixed64Extension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedFloatExtension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedDoubleExtension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedBoolExtension = nil;
+static id<PBExtensionField> UnittestRoot_unpackedEnumExtension = nil;
 static id<PBExtensionField> TestNestedExtension_test = nil;
+static id<PBExtensionField> TestNestedExtension_nestedStringExtension = nil;
 static id<PBExtensionField> TestRequired_single = nil;
 static id<PBExtensionField> TestRequired_multi = nil;
 static id<PBExtensionField> TestParsingMerge_optionalExt = nil;
@@ -742,6 +761,42 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:NO
                                           isPacked:NO
                             isMessageSetWireFormat:NO];
+    UnittestRoot_oneofUint32Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:111
+                                      defaultValue:[NSNumber numberWithInteger:0]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_oneofNestedMessageExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeMessage
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:112
+                                      defaultValue:[TestAllTypesNestedMessage defaultInstance]
+                               messageOrGroupClass:[TestAllTypesNestedMessage class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_oneofStringExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:113
+                                      defaultValue:@""
+                               messageOrGroupClass:[NSString class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_oneofBytesExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBytes
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:114
+                                      defaultValue:[NSData data]
+                               messageOrGroupClass:[NSData class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
     UnittestRoot_myExtensionString =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
                                      extendedClass:[TestFieldOrderings class]
@@ -886,11 +941,146 @@ static PBExtensionRegistry* extensionRegistry = nil;
                                         isRepeated:YES
                                           isPacked:YES
                             isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedInt32Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt32
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:90
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedInt64Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeInt64
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:91
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedUint32Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt32
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:92
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedUint64Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeUInt64
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:93
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedSint32Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt32
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:94
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedSint64Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSInt64
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:95
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedFixed32Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed32
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:96
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt32]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedFixed64Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFixed64
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:97
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeUInt64]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedSfixed32Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed32
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:98
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt32]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedSfixed64Extension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeSFixed64
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:99
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeInt64]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedFloatExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeFloat
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:100
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeFloat]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedDoubleExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeDouble
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:101
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeDouble]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedBoolExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeBool
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:102
+                                      defaultValue:[PBArray arrayWithValueType:PBArrayValueTypeBool]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    UnittestRoot_unpackedEnumExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeEnum
+                                     extendedClass:[TestUnpackedExtensions class]
+                                       fieldNumber:103
+                                      defaultValue:[[NSArray alloc] init]
+                               messageOrGroupClass:[NSNumber class]
+                                        isRepeated:YES
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
     TestNestedExtension_test =
       [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
                                      extendedClass:[TestAllExtensions class]
                                        fieldNumber:1002
                                       defaultValue:@"test"
+                               messageOrGroupClass:[NSString class]
+                                        isRepeated:NO
+                                          isPacked:NO
+                            isMessageSetWireFormat:NO];
+    TestNestedExtension_nestedStringExtension =
+      [PBConcreteExtensionField extensionWithType:PBExtensionTypeString
+                                     extendedClass:[TestAllExtensions class]
+                                       fieldNumber:1003
+                                      defaultValue:@""
                                messageOrGroupClass:[NSString class]
                                         isRepeated:NO
                                           isPacked:NO
@@ -1009,6 +1199,10 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestRoot_defaultImportEnumExtension];
   [registry addExtension:UnittestRoot_defaultStringPieceExtension];
   [registry addExtension:UnittestRoot_defaultCordExtension];
+  [registry addExtension:UnittestRoot_oneofUint32Extension];
+  [registry addExtension:UnittestRoot_oneofNestedMessageExtension];
+  [registry addExtension:UnittestRoot_oneofStringExtension];
+  [registry addExtension:UnittestRoot_oneofBytesExtension];
   [registry addExtension:UnittestRoot_myExtensionString];
   [registry addExtension:UnittestRoot_myExtensionInt];
   [registry addExtension:UnittestRoot_packedInt32Extension];
@@ -1025,7 +1219,22 @@ static PBExtensionRegistry* extensionRegistry = nil;
   [registry addExtension:UnittestRoot_packedDoubleExtension];
   [registry addExtension:UnittestRoot_packedBoolExtension];
   [registry addExtension:UnittestRoot_packedEnumExtension];
+  [registry addExtension:UnittestRoot_unpackedInt32Extension];
+  [registry addExtension:UnittestRoot_unpackedInt64Extension];
+  [registry addExtension:UnittestRoot_unpackedUint32Extension];
+  [registry addExtension:UnittestRoot_unpackedUint64Extension];
+  [registry addExtension:UnittestRoot_unpackedSint32Extension];
+  [registry addExtension:UnittestRoot_unpackedSint64Extension];
+  [registry addExtension:UnittestRoot_unpackedFixed32Extension];
+  [registry addExtension:UnittestRoot_unpackedFixed64Extension];
+  [registry addExtension:UnittestRoot_unpackedSfixed32Extension];
+  [registry addExtension:UnittestRoot_unpackedSfixed64Extension];
+  [registry addExtension:UnittestRoot_unpackedFloatExtension];
+  [registry addExtension:UnittestRoot_unpackedDoubleExtension];
+  [registry addExtension:UnittestRoot_unpackedBoolExtension];
+  [registry addExtension:UnittestRoot_unpackedEnumExtension];
   [registry addExtension:TestNestedExtension_test];
+  [registry addExtension:TestNestedExtension_nestedStringExtension];
   [registry addExtension:TestRequired_single];
   [registry addExtension:TestRequired_multi];
   [registry addExtension:TestParsingMerge_optionalExt];
@@ -1244,6 +1453,18 @@ static PBExtensionRegistry* extensionRegistry = nil;
 + (id<PBExtensionField>) defaultCordExtension {
   return UnittestRoot_defaultCordExtension;
 }
++ (id<PBExtensionField>) oneofUint32Extension {
+  return UnittestRoot_oneofUint32Extension;
+}
++ (id<PBExtensionField>) oneofNestedMessageExtension {
+  return UnittestRoot_oneofNestedMessageExtension;
+}
++ (id<PBExtensionField>) oneofStringExtension {
+  return UnittestRoot_oneofStringExtension;
+}
++ (id<PBExtensionField>) oneofBytesExtension {
+  return UnittestRoot_oneofBytesExtension;
+}
 + (id<PBExtensionField>) myExtensionString {
   return UnittestRoot_myExtensionString;
 }
@@ -1291,6 +1512,48 @@ static PBExtensionRegistry* extensionRegistry = nil;
 }
 + (id<PBExtensionField>) packedEnumExtension {
   return UnittestRoot_packedEnumExtension;
+}
++ (id<PBExtensionField>) unpackedInt32Extension {
+  return UnittestRoot_unpackedInt32Extension;
+}
++ (id<PBExtensionField>) unpackedInt64Extension {
+  return UnittestRoot_unpackedInt64Extension;
+}
++ (id<PBExtensionField>) unpackedUint32Extension {
+  return UnittestRoot_unpackedUint32Extension;
+}
++ (id<PBExtensionField>) unpackedUint64Extension {
+  return UnittestRoot_unpackedUint64Extension;
+}
++ (id<PBExtensionField>) unpackedSint32Extension {
+  return UnittestRoot_unpackedSint32Extension;
+}
++ (id<PBExtensionField>) unpackedSint64Extension {
+  return UnittestRoot_unpackedSint64Extension;
+}
++ (id<PBExtensionField>) unpackedFixed32Extension {
+  return UnittestRoot_unpackedFixed32Extension;
+}
++ (id<PBExtensionField>) unpackedFixed64Extension {
+  return UnittestRoot_unpackedFixed64Extension;
+}
++ (id<PBExtensionField>) unpackedSfixed32Extension {
+  return UnittestRoot_unpackedSfixed32Extension;
+}
++ (id<PBExtensionField>) unpackedSfixed64Extension {
+  return UnittestRoot_unpackedSfixed64Extension;
+}
++ (id<PBExtensionField>) unpackedFloatExtension {
+  return UnittestRoot_unpackedFloatExtension;
+}
++ (id<PBExtensionField>) unpackedDoubleExtension {
+  return UnittestRoot_unpackedDoubleExtension;
+}
++ (id<PBExtensionField>) unpackedBoolExtension {
+  return UnittestRoot_unpackedBoolExtension;
+}
++ (id<PBExtensionField>) unpackedEnumExtension {
+  return UnittestRoot_unpackedEnumExtension;
 }
 @end
 
@@ -1400,6 +1663,10 @@ BOOL TestSparseEnumIsValidValue(TestSparseEnum value) {
 @property ImportEnum defaultImportEnum;
 @property (strong) NSString* defaultStringPiece;
 @property (strong) NSString* defaultCord;
+@property UInt32 oneofUint32;
+@property (strong) TestAllTypesNestedMessage* oneofNestedMessage;
+@property (strong) NSString* oneofString;
+@property (strong) NSData* oneofBytes;
 @end
 
 @implementation TestAllTypes
@@ -1786,6 +2053,34 @@ BOOL TestSparseEnumIsValidValue(TestSparseEnum value) {
   hasDefaultCord_ = !!value_;
 }
 @synthesize defaultCord;
+- (BOOL) hasOneofUint32 {
+  return !!hasOneofUint32_;
+}
+- (void) setHasOneofUint32:(BOOL) value_ {
+  hasOneofUint32_ = !!value_;
+}
+@synthesize oneofUint32;
+- (BOOL) hasOneofNestedMessage {
+  return !!hasOneofNestedMessage_;
+}
+- (void) setHasOneofNestedMessage:(BOOL) value_ {
+  hasOneofNestedMessage_ = !!value_;
+}
+@synthesize oneofNestedMessage;
+- (BOOL) hasOneofString {
+  return !!hasOneofString_;
+}
+- (void) setHasOneofString:(BOOL) value_ {
+  hasOneofString_ = !!value_;
+}
+@synthesize oneofString;
+- (BOOL) hasOneofBytes {
+  return !!hasOneofBytes_;
+}
+- (void) setHasOneofBytes:(BOOL) value_ {
+  hasOneofBytes_ = !!value_;
+}
+@synthesize oneofBytes;
 - (id) init {
   if ((self = [super init])) {
     self.optionalInt32 = 0;
@@ -1834,6 +2129,10 @@ BOOL TestSparseEnumIsValidValue(TestSparseEnum value) {
     self.defaultImportEnum = ImportEnumImportBar;
     self.defaultStringPiece = @"abc";
     self.defaultCord = @"123";
+    self.oneofUint32 = 0;
+    self.oneofNestedMessage = [TestAllTypesNestedMessage defaultInstance];
+    self.oneofString = @"";
+    self.oneofBytes = [NSData data];
   }
   return self;
 }
@@ -2274,6 +2573,18 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
   if (self.hasDefaultCord) {
     [output writeString:85 value:self.defaultCord];
   }
+  if (self.hasOneofUint32) {
+    [output writeUInt32:111 value:self.oneofUint32];
+  }
+  if (self.hasOneofNestedMessage) {
+    [output writeMessage:112 value:self.oneofNestedMessage];
+  }
+  if (self.hasOneofString) {
+    [output writeString:113 value:self.oneofString];
+  }
+  if (self.hasOneofBytes) {
+    [output writeData:114 value:self.oneofBytes];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (SInt32) serializedSize {
@@ -2611,6 +2922,18 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
   if (self.hasDefaultCord) {
     size_ += computeStringSize(85, self.defaultCord);
   }
+  if (self.hasOneofUint32) {
+    size_ += computeUInt32Size(111, self.oneofUint32);
+  }
+  if (self.hasOneofNestedMessage) {
+    size_ += computeMessageSize(112, self.oneofNestedMessage);
+  }
+  if (self.hasOneofString) {
+    size_ += computeStringSize(113, self.oneofString);
+  }
+  if (self.hasOneofBytes) {
+    size_ += computeDataSize(114, self.oneofBytes);
+  }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
   return size_;
@@ -2892,6 +3215,21 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
   if (self.hasDefaultCord) {
     [output appendFormat:@"%@%@: %@\n", indent, @"defaultCord", self.defaultCord];
   }
+  if (self.hasOneofUint32) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneofUint32", [NSNumber numberWithInteger:self.oneofUint32]];
+  }
+  if (self.hasOneofNestedMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"oneofNestedMessage"];
+    [self.oneofNestedMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasOneofString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneofString", self.oneofString];
+  }
+  if (self.hasOneofBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"oneofBytes", self.oneofBytes];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -3020,6 +3358,14 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
       (!self.hasDefaultStringPiece || [self.defaultStringPiece isEqual:otherMessage.defaultStringPiece]) &&
       self.hasDefaultCord == otherMessage.hasDefaultCord &&
       (!self.hasDefaultCord || [self.defaultCord isEqual:otherMessage.defaultCord]) &&
+      self.hasOneofUint32 == otherMessage.hasOneofUint32 &&
+      (!self.hasOneofUint32 || self.oneofUint32 == otherMessage.oneofUint32) &&
+      self.hasOneofNestedMessage == otherMessage.hasOneofNestedMessage &&
+      (!self.hasOneofNestedMessage || [self.oneofNestedMessage isEqual:otherMessage.oneofNestedMessage]) &&
+      self.hasOneofString == otherMessage.hasOneofString &&
+      (!self.hasOneofString || [self.oneofString isEqual:otherMessage.oneofString]) &&
+      self.hasOneofBytes == otherMessage.hasOneofBytes &&
+      (!self.hasOneofBytes || [self.oneofBytes isEqual:otherMessage.oneofBytes]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -3237,6 +3583,18 @@ static TestAllTypes* defaultTestAllTypesInstance = nil;
   if (self.hasDefaultCord) {
     hashCode = hashCode * 31 + [self.defaultCord hash];
   }
+  if (self.hasOneofUint32) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.oneofUint32] hash];
+  }
+  if (self.hasOneofNestedMessage) {
+    hashCode = hashCode * 31 + [self.oneofNestedMessage hash];
+  }
+  if (self.hasOneofString) {
+    hashCode = hashCode * 31 + [self.oneofString hash];
+  }
+  if (self.hasOneofBytes) {
+    hashCode = hashCode * 31 + [self.oneofBytes hash];
+  }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
 }
@@ -3247,6 +3605,7 @@ BOOL TestAllTypesNestedEnumIsValidValue(TestAllTypesNestedEnum value) {
     case TestAllTypesNestedEnumFoo:
     case TestAllTypesNestedEnumBar:
     case TestAllTypesNestedEnumBaz:
+    case TestAllTypesNestedEnumNeg:
       return YES;
     default:
       return NO;
@@ -4203,6 +4562,18 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   if (other.hasDefaultCord) {
     [self setDefaultCord:other.defaultCord];
   }
+  if (other.hasOneofUint32) {
+    [self setOneofUint32:other.oneofUint32];
+  }
+  if (other.hasOneofNestedMessage) {
+    [self mergeOneofNestedMessage:other.oneofNestedMessage];
+  }
+  if (other.hasOneofString) {
+    [self setOneofString:other.oneofString];
+  }
+  if (other.hasOneofBytes) {
+    [self setOneofBytes:other.oneofBytes];
+  }
   [self mergeUnknownFields:other.unknownFields];
   return self;
 }
@@ -4591,6 +4962,27 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
       }
       case 682: {
         [self setDefaultCord:[input readString]];
+        break;
+      }
+      case 888: {
+        [self setOneofUint32:[input readUInt32]];
+        break;
+      }
+      case 898: {
+        TestAllTypesNestedMessageBuilder* subBuilder = [TestAllTypesNestedMessage builder];
+        if (self.hasOneofNestedMessage) {
+          [subBuilder mergeFrom:self.oneofNestedMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setOneofNestedMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 906: {
+        [self setOneofString:[input readString]];
+        break;
+      }
+      case 914: {
+        [self setOneofBytes:[input readData]];
         break;
       }
     }
@@ -6005,6 +6397,374 @@ static TestAllTypesRepeatedGroup* defaultTestAllTypesRepeatedGroupInstance = nil
   result.defaultCord = @"123";
   return self;
 }
+- (BOOL) hasOneofUint32 {
+  return result.hasOneofUint32;
+}
+- (UInt32) oneofUint32 {
+  return result.oneofUint32;
+}
+- (TestAllTypesBuilder*) setOneofUint32:(UInt32) value {
+  result.hasOneofUint32 = YES;
+  result.oneofUint32 = value;
+  return self;
+}
+- (TestAllTypesBuilder*) clearOneofUint32 {
+  result.hasOneofUint32 = NO;
+  result.oneofUint32 = 0;
+  return self;
+}
+- (BOOL) hasOneofNestedMessage {
+  return result.hasOneofNestedMessage;
+}
+- (TestAllTypesNestedMessage*) oneofNestedMessage {
+  return result.oneofNestedMessage;
+}
+- (TestAllTypesBuilder*) setOneofNestedMessage:(TestAllTypesNestedMessage*) value {
+  result.hasOneofNestedMessage = YES;
+  result.oneofNestedMessage = value;
+  return self;
+}
+- (TestAllTypesBuilder*) setOneofNestedMessageBuilder:(TestAllTypesNestedMessageBuilder*) builderForValue {
+  return [self setOneofNestedMessage:[builderForValue build]];
+}
+- (TestAllTypesBuilder*) mergeOneofNestedMessage:(TestAllTypesNestedMessage*) value {
+  if (result.hasOneofNestedMessage &&
+      result.oneofNestedMessage != [TestAllTypesNestedMessage defaultInstance]) {
+    result.oneofNestedMessage =
+      [[[TestAllTypesNestedMessage builderWithPrototype:result.oneofNestedMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.oneofNestedMessage = value;
+  }
+  result.hasOneofNestedMessage = YES;
+  return self;
+}
+- (TestAllTypesBuilder*) clearOneofNestedMessage {
+  result.hasOneofNestedMessage = NO;
+  result.oneofNestedMessage = [TestAllTypesNestedMessage defaultInstance];
+  return self;
+}
+- (BOOL) hasOneofString {
+  return result.hasOneofString;
+}
+- (NSString*) oneofString {
+  return result.oneofString;
+}
+- (TestAllTypesBuilder*) setOneofString:(NSString*) value {
+  result.hasOneofString = YES;
+  result.oneofString = value;
+  return self;
+}
+- (TestAllTypesBuilder*) clearOneofString {
+  result.hasOneofString = NO;
+  result.oneofString = @"";
+  return self;
+}
+- (BOOL) hasOneofBytes {
+  return result.hasOneofBytes;
+}
+- (NSData*) oneofBytes {
+  return result.oneofBytes;
+}
+- (TestAllTypesBuilder*) setOneofBytes:(NSData*) value {
+  result.hasOneofBytes = YES;
+  result.oneofBytes = value;
+  return self;
+}
+- (TestAllTypesBuilder*) clearOneofBytes {
+  result.hasOneofBytes = NO;
+  result.oneofBytes = [NSData data];
+  return self;
+}
+@end
+
+@interface NestedTestAllTypes ()
+@property (strong) NestedTestAllTypes* child;
+@property (strong) TestAllTypes* payload;
+@end
+
+@implementation NestedTestAllTypes
+
+- (BOOL) hasChild {
+  return !!hasChild_;
+}
+- (void) setHasChild:(BOOL) value_ {
+  hasChild_ = !!value_;
+}
+@synthesize child;
+- (BOOL) hasPayload {
+  return !!hasPayload_;
+}
+- (void) setHasPayload:(BOOL) value_ {
+  hasPayload_ = !!value_;
+}
+@synthesize payload;
+- (id) init {
+  if ((self = [super init])) {
+    self.child = [NestedTestAllTypes defaultInstance];
+    self.payload = [TestAllTypes defaultInstance];
+  }
+  return self;
+}
+static NestedTestAllTypes* defaultNestedTestAllTypesInstance = nil;
++ (void) initialize {
+  if (self == [NestedTestAllTypes class]) {
+    defaultNestedTestAllTypesInstance = [[NestedTestAllTypes alloc] init];
+  }
+}
++ (NestedTestAllTypes*) defaultInstance {
+  return defaultNestedTestAllTypesInstance;
+}
+- (NestedTestAllTypes*) defaultInstance {
+  return defaultNestedTestAllTypesInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasChild) {
+    [output writeMessage:1 value:self.child];
+  }
+  if (self.hasPayload) {
+    [output writeMessage:2 value:self.payload];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasChild) {
+    size_ += computeMessageSize(1, self.child);
+  }
+  if (self.hasPayload) {
+    size_ += computeMessageSize(2, self.payload);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (NestedTestAllTypes*) parseFromData:(NSData*) data {
+  return (NestedTestAllTypes*)[[[NestedTestAllTypes builder] mergeFromData:data] build];
+}
++ (NestedTestAllTypes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (NestedTestAllTypes*)[[[NestedTestAllTypes builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (NestedTestAllTypes*) parseFromInputStream:(NSInputStream*) input {
+  return (NestedTestAllTypes*)[[[NestedTestAllTypes builder] mergeFromInputStream:input] build];
+}
++ (NestedTestAllTypes*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (NestedTestAllTypes*)[[[NestedTestAllTypes builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (NestedTestAllTypes*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (NestedTestAllTypes*)[[[NestedTestAllTypes builder] mergeFromCodedInputStream:input] build];
+}
++ (NestedTestAllTypes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (NestedTestAllTypes*)[[[NestedTestAllTypes builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (NestedTestAllTypesBuilder*) builder {
+  return [[NestedTestAllTypesBuilder alloc] init];
+}
++ (NestedTestAllTypesBuilder*) builderWithPrototype:(NestedTestAllTypes*) prototype {
+  return [[NestedTestAllTypes builder] mergeFrom:prototype];
+}
+- (NestedTestAllTypesBuilder*) builder {
+  return [NestedTestAllTypes builder];
+}
+- (NestedTestAllTypesBuilder*) toBuilder {
+  return [NestedTestAllTypes builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasChild) {
+    [output appendFormat:@"%@%@ {\n", indent, @"child"];
+    [self.child writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasPayload) {
+    [output appendFormat:@"%@%@ {\n", indent, @"payload"];
+    [self.payload writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[NestedTestAllTypes class]]) {
+    return NO;
+  }
+  NestedTestAllTypes *otherMessage = other;
+  return
+      self.hasChild == otherMessage.hasChild &&
+      (!self.hasChild || [self.child isEqual:otherMessage.child]) &&
+      self.hasPayload == otherMessage.hasPayload &&
+      (!self.hasPayload || [self.payload isEqual:otherMessage.payload]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasChild) {
+    hashCode = hashCode * 31 + [self.child hash];
+  }
+  if (self.hasPayload) {
+    hashCode = hashCode * 31 + [self.payload hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface NestedTestAllTypesBuilder()
+@property (strong) NestedTestAllTypes* result;
+@end
+
+@implementation NestedTestAllTypesBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[NestedTestAllTypes alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (NestedTestAllTypesBuilder*) clear {
+  self.result = [[NestedTestAllTypes alloc] init];
+  return self;
+}
+- (NestedTestAllTypesBuilder*) clone {
+  return [NestedTestAllTypes builderWithPrototype:result];
+}
+- (NestedTestAllTypes*) defaultInstance {
+  return [NestedTestAllTypes defaultInstance];
+}
+- (NestedTestAllTypes*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (NestedTestAllTypes*) buildPartial {
+  NestedTestAllTypes* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (NestedTestAllTypesBuilder*) mergeFrom:(NestedTestAllTypes*) other {
+  if (other == [NestedTestAllTypes defaultInstance]) {
+    return self;
+  }
+  if (other.hasChild) {
+    [self mergeChild:other.child];
+  }
+  if (other.hasPayload) {
+    [self mergePayload:other.payload];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (NestedTestAllTypesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (NestedTestAllTypesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 10: {
+        NestedTestAllTypesBuilder* subBuilder = [NestedTestAllTypes builder];
+        if (self.hasChild) {
+          [subBuilder mergeFrom:self.child];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setChild:[subBuilder buildPartial]];
+        break;
+      }
+      case 18: {
+        TestAllTypesBuilder* subBuilder = [TestAllTypes builder];
+        if (self.hasPayload) {
+          [subBuilder mergeFrom:self.payload];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setPayload:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasChild {
+  return result.hasChild;
+}
+- (NestedTestAllTypes*) child {
+  return result.child;
+}
+- (NestedTestAllTypesBuilder*) setChild:(NestedTestAllTypes*) value {
+  result.hasChild = YES;
+  result.child = value;
+  return self;
+}
+- (NestedTestAllTypesBuilder*) setChildBuilder:(NestedTestAllTypesBuilder*) builderForValue {
+  return [self setChild:[builderForValue build]];
+}
+- (NestedTestAllTypesBuilder*) mergeChild:(NestedTestAllTypes*) value {
+  if (result.hasChild &&
+      result.child != [NestedTestAllTypes defaultInstance]) {
+    result.child =
+      [[[NestedTestAllTypes builderWithPrototype:result.child] mergeFrom:value] buildPartial];
+  } else {
+    result.child = value;
+  }
+  result.hasChild = YES;
+  return self;
+}
+- (NestedTestAllTypesBuilder*) clearChild {
+  result.hasChild = NO;
+  result.child = [NestedTestAllTypes defaultInstance];
+  return self;
+}
+- (BOOL) hasPayload {
+  return result.hasPayload;
+}
+- (TestAllTypes*) payload {
+  return result.payload;
+}
+- (NestedTestAllTypesBuilder*) setPayload:(TestAllTypes*) value {
+  result.hasPayload = YES;
+  result.payload = value;
+  return self;
+}
+- (NestedTestAllTypesBuilder*) setPayloadBuilder:(TestAllTypesBuilder*) builderForValue {
+  return [self setPayload:[builderForValue build]];
+}
+- (NestedTestAllTypesBuilder*) mergePayload:(TestAllTypes*) value {
+  if (result.hasPayload &&
+      result.payload != [TestAllTypes defaultInstance]) {
+    result.payload =
+      [[[TestAllTypes builderWithPrototype:result.payload] mergeFrom:value] buildPartial];
+  } else {
+    result.payload = value;
+  }
+  result.hasPayload = YES;
+  return self;
+}
+- (NestedTestAllTypesBuilder*) clearPayload {
+  result.hasPayload = NO;
+  result.payload = [TestAllTypes defaultInstance];
+  return self;
+}
 @end
 
 @interface TestDeprecatedFields ()
@@ -6988,6 +7748,9 @@ static RepeatedGroup_extension* defaultRepeatedGroup_extensionInstance = nil;
 }
 + (id<PBExtensionField>) test {
   return TestNestedExtension_test;
+}
++ (id<PBExtensionField>) nestedStringExtension {
+  return TestNestedExtension_nestedStringExtension;
 }
 static TestNestedExtension* defaultTestNestedExtensionInstance = nil;
 + (void) initialize {
@@ -13763,6 +14526,7 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
 @property (strong) NSData* bytesWithZero;
 @property (strong) NSString* stringPieceWithZero;
 @property (strong) NSString* cordWithZero;
+@property (strong) NSString* replacementString;
 @end
 
 @implementation TestExtremeDefaultValues
@@ -13949,6 +14713,13 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
   hasCordWithZero_ = !!value_;
 }
 @synthesize cordWithZero;
+- (BOOL) hasReplacementString {
+  return !!hasReplacementString_;
+}
+- (void) setHasReplacementString:(BOOL) value_ {
+  hasReplacementString_ = !!value_;
+}
+@synthesize replacementString;
 - (id) init {
   if ((self = [super init])) {
     self.escapedBytes = [NSData dataWithBytes:"\000\001\007\010\014\n\r\t\013\\\'\"\376" length:13];
@@ -13977,6 +14748,7 @@ static TestFieldOrderings* defaultTestFieldOrderingsInstance = nil;
     self.bytesWithZero = [NSData dataWithBytes:"wor\000ld" length:6];
     self.stringPieceWithZero = @"ab\000c";
     self.cordWithZero = @"12\0003";
+    self.replacementString = @"${unknown}";
   }
   return self;
 }
@@ -14074,6 +14846,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   if (self.hasCordWithZero) {
     [output writeString:26 value:self.cordWithZero];
   }
+  if (self.hasReplacementString) {
+    [output writeString:27 value:self.replacementString];
+  }
   [self.unknownFields writeToCodedOutputStream:output];
 }
 - (SInt32) serializedSize {
@@ -14160,6 +14935,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   }
   if (self.hasCordWithZero) {
     size_ += computeStringSize(26, self.cordWithZero);
+  }
+  if (self.hasReplacementString) {
+    size_ += computeStringSize(27, self.replacementString);
   }
   size_ += self.unknownFields.serializedSize;
   memoizedSerializedSize = size_;
@@ -14274,6 +15052,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   if (self.hasCordWithZero) {
     [output appendFormat:@"%@%@: %@\n", indent, @"cordWithZero", self.cordWithZero];
   }
+  if (self.hasReplacementString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"replacementString", self.replacementString];
+  }
   [self.unknownFields writeDescriptionTo:output withIndent:indent];
 }
 - (BOOL) isEqual:(id)other {
@@ -14337,6 +15118,8 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
       (!self.hasStringPieceWithZero || [self.stringPieceWithZero isEqual:otherMessage.stringPieceWithZero]) &&
       self.hasCordWithZero == otherMessage.hasCordWithZero &&
       (!self.hasCordWithZero || [self.cordWithZero isEqual:otherMessage.cordWithZero]) &&
+      self.hasReplacementString == otherMessage.hasReplacementString &&
+      (!self.hasReplacementString || [self.replacementString isEqual:otherMessage.replacementString]) &&
       (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
 }
 - (NSUInteger) hash {
@@ -14418,6 +15201,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   }
   if (self.hasCordWithZero) {
     hashCode = hashCode * 31 + [self.cordWithZero hash];
+  }
+  if (self.hasReplacementString) {
+    hashCode = hashCode * 31 + [self.replacementString hash];
   }
   hashCode = hashCode * 31 + [self.unknownFields hash];
   return hashCode;
@@ -14539,6 +15325,9 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
   }
   if (other.hasCordWithZero) {
     [self setCordWithZero:other.cordWithZero];
+  }
+  if (other.hasReplacementString) {
+    [self setReplacementString:other.replacementString];
   }
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -14663,6 +15452,10 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
       }
       case 210: {
         [self setCordWithZero:[input readString]];
+        break;
+      }
+      case 218: {
+        [self setReplacementString:[input readString]];
         break;
       }
     }
@@ -15082,6 +15875,22 @@ static TestExtremeDefaultValues* defaultTestExtremeDefaultValuesInstance = nil;
 - (TestExtremeDefaultValuesBuilder*) clearCordWithZero {
   result.hasCordWithZero = NO;
   result.cordWithZero = @"12\0003";
+  return self;
+}
+- (BOOL) hasReplacementString {
+  return result.hasReplacementString;
+}
+- (NSString*) replacementString {
+  return result.replacementString;
+}
+- (TestExtremeDefaultValuesBuilder*) setReplacementString:(NSString*) value {
+  result.hasReplacementString = YES;
+  result.replacementString = value;
+  return self;
+}
+- (TestExtremeDefaultValuesBuilder*) clearReplacementString {
+  result.hasReplacementString = NO;
+  result.replacementString = @"${unknown}";
   return self;
 }
 @end
@@ -16115,6 +16924,4326 @@ static MoreBytes* defaultMoreBytesInstance = nil;
 }
 - (MoreBytesBuilder *)clearData {
   result.dataArray = nil;
+  return self;
+}
+@end
+
+@interface Int32Message ()
+@property SInt32 data;
+@end
+
+@implementation Int32Message
+
+- (BOOL) hasData {
+  return !!hasData_;
+}
+- (void) setHasData:(BOOL) value_ {
+  hasData_ = !!value_;
+}
+@synthesize data;
+- (id) init {
+  if ((self = [super init])) {
+    self.data = 0;
+  }
+  return self;
+}
+static Int32Message* defaultInt32MessageInstance = nil;
++ (void) initialize {
+  if (self == [Int32Message class]) {
+    defaultInt32MessageInstance = [[Int32Message alloc] init];
+  }
+}
++ (Int32Message*) defaultInstance {
+  return defaultInt32MessageInstance;
+}
+- (Int32Message*) defaultInstance {
+  return defaultInt32MessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasData) {
+    [output writeInt32:1 value:self.data];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasData) {
+    size_ += computeInt32Size(1, self.data);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (Int32Message*) parseFromData:(NSData*) data {
+  return (Int32Message*)[[[Int32Message builder] mergeFromData:data] build];
+}
++ (Int32Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Int32Message*)[[[Int32Message builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (Int32Message*) parseFromInputStream:(NSInputStream*) input {
+  return (Int32Message*)[[[Int32Message builder] mergeFromInputStream:input] build];
+}
++ (Int32Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Int32Message*)[[[Int32Message builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Int32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (Int32Message*)[[[Int32Message builder] mergeFromCodedInputStream:input] build];
+}
++ (Int32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Int32Message*)[[[Int32Message builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Int32MessageBuilder*) builder {
+  return [[Int32MessageBuilder alloc] init];
+}
++ (Int32MessageBuilder*) builderWithPrototype:(Int32Message*) prototype {
+  return [[Int32Message builder] mergeFrom:prototype];
+}
+- (Int32MessageBuilder*) builder {
+  return [Int32Message builder];
+}
+- (Int32MessageBuilder*) toBuilder {
+  return [Int32Message builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", [NSNumber numberWithInteger:self.data]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[Int32Message class]]) {
+    return NO;
+  }
+  Int32Message *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || self.data == otherMessage.data) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.data] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface Int32MessageBuilder()
+@property (strong) Int32Message* result;
+@end
+
+@implementation Int32MessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[Int32Message alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (Int32MessageBuilder*) clear {
+  self.result = [[Int32Message alloc] init];
+  return self;
+}
+- (Int32MessageBuilder*) clone {
+  return [Int32Message builderWithPrototype:result];
+}
+- (Int32Message*) defaultInstance {
+  return [Int32Message defaultInstance];
+}
+- (Int32Message*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (Int32Message*) buildPartial {
+  Int32Message* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (Int32MessageBuilder*) mergeFrom:(Int32Message*) other {
+  if (other == [Int32Message defaultInstance]) {
+    return self;
+  }
+  if (other.hasData) {
+    [self setData:other.data];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (Int32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (Int32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setData:[input readInt32]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasData {
+  return result.hasData;
+}
+- (SInt32) data {
+  return result.data;
+}
+- (Int32MessageBuilder*) setData:(SInt32) value {
+  result.hasData = YES;
+  result.data = value;
+  return self;
+}
+- (Int32MessageBuilder*) clearData {
+  result.hasData = NO;
+  result.data = 0;
+  return self;
+}
+@end
+
+@interface Uint32Message ()
+@property UInt32 data;
+@end
+
+@implementation Uint32Message
+
+- (BOOL) hasData {
+  return !!hasData_;
+}
+- (void) setHasData:(BOOL) value_ {
+  hasData_ = !!value_;
+}
+@synthesize data;
+- (id) init {
+  if ((self = [super init])) {
+    self.data = 0;
+  }
+  return self;
+}
+static Uint32Message* defaultUint32MessageInstance = nil;
++ (void) initialize {
+  if (self == [Uint32Message class]) {
+    defaultUint32MessageInstance = [[Uint32Message alloc] init];
+  }
+}
++ (Uint32Message*) defaultInstance {
+  return defaultUint32MessageInstance;
+}
+- (Uint32Message*) defaultInstance {
+  return defaultUint32MessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasData) {
+    [output writeUInt32:1 value:self.data];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasData) {
+    size_ += computeUInt32Size(1, self.data);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (Uint32Message*) parseFromData:(NSData*) data {
+  return (Uint32Message*)[[[Uint32Message builder] mergeFromData:data] build];
+}
++ (Uint32Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Uint32Message*)[[[Uint32Message builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (Uint32Message*) parseFromInputStream:(NSInputStream*) input {
+  return (Uint32Message*)[[[Uint32Message builder] mergeFromInputStream:input] build];
+}
++ (Uint32Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Uint32Message*)[[[Uint32Message builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Uint32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (Uint32Message*)[[[Uint32Message builder] mergeFromCodedInputStream:input] build];
+}
++ (Uint32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Uint32Message*)[[[Uint32Message builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Uint32MessageBuilder*) builder {
+  return [[Uint32MessageBuilder alloc] init];
+}
++ (Uint32MessageBuilder*) builderWithPrototype:(Uint32Message*) prototype {
+  return [[Uint32Message builder] mergeFrom:prototype];
+}
+- (Uint32MessageBuilder*) builder {
+  return [Uint32Message builder];
+}
+- (Uint32MessageBuilder*) toBuilder {
+  return [Uint32Message builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", [NSNumber numberWithInteger:self.data]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[Uint32Message class]]) {
+    return NO;
+  }
+  Uint32Message *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || self.data == otherMessage.data) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.data] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface Uint32MessageBuilder()
+@property (strong) Uint32Message* result;
+@end
+
+@implementation Uint32MessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[Uint32Message alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (Uint32MessageBuilder*) clear {
+  self.result = [[Uint32Message alloc] init];
+  return self;
+}
+- (Uint32MessageBuilder*) clone {
+  return [Uint32Message builderWithPrototype:result];
+}
+- (Uint32Message*) defaultInstance {
+  return [Uint32Message defaultInstance];
+}
+- (Uint32Message*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (Uint32Message*) buildPartial {
+  Uint32Message* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (Uint32MessageBuilder*) mergeFrom:(Uint32Message*) other {
+  if (other == [Uint32Message defaultInstance]) {
+    return self;
+  }
+  if (other.hasData) {
+    [self setData:other.data];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (Uint32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (Uint32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setData:[input readUInt32]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasData {
+  return result.hasData;
+}
+- (UInt32) data {
+  return result.data;
+}
+- (Uint32MessageBuilder*) setData:(UInt32) value {
+  result.hasData = YES;
+  result.data = value;
+  return self;
+}
+- (Uint32MessageBuilder*) clearData {
+  result.hasData = NO;
+  result.data = 0;
+  return self;
+}
+@end
+
+@interface Int64Message ()
+@property SInt64 data;
+@end
+
+@implementation Int64Message
+
+- (BOOL) hasData {
+  return !!hasData_;
+}
+- (void) setHasData:(BOOL) value_ {
+  hasData_ = !!value_;
+}
+@synthesize data;
+- (id) init {
+  if ((self = [super init])) {
+    self.data = 0L;
+  }
+  return self;
+}
+static Int64Message* defaultInt64MessageInstance = nil;
++ (void) initialize {
+  if (self == [Int64Message class]) {
+    defaultInt64MessageInstance = [[Int64Message alloc] init];
+  }
+}
++ (Int64Message*) defaultInstance {
+  return defaultInt64MessageInstance;
+}
+- (Int64Message*) defaultInstance {
+  return defaultInt64MessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasData) {
+    [output writeInt64:1 value:self.data];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasData) {
+    size_ += computeInt64Size(1, self.data);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (Int64Message*) parseFromData:(NSData*) data {
+  return (Int64Message*)[[[Int64Message builder] mergeFromData:data] build];
+}
++ (Int64Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Int64Message*)[[[Int64Message builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (Int64Message*) parseFromInputStream:(NSInputStream*) input {
+  return (Int64Message*)[[[Int64Message builder] mergeFromInputStream:input] build];
+}
++ (Int64Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Int64Message*)[[[Int64Message builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Int64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (Int64Message*)[[[Int64Message builder] mergeFromCodedInputStream:input] build];
+}
++ (Int64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Int64Message*)[[[Int64Message builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Int64MessageBuilder*) builder {
+  return [[Int64MessageBuilder alloc] init];
+}
++ (Int64MessageBuilder*) builderWithPrototype:(Int64Message*) prototype {
+  return [[Int64Message builder] mergeFrom:prototype];
+}
+- (Int64MessageBuilder*) builder {
+  return [Int64Message builder];
+}
+- (Int64MessageBuilder*) toBuilder {
+  return [Int64Message builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", [NSNumber numberWithLongLong:self.data]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[Int64Message class]]) {
+    return NO;
+  }
+  Int64Message *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || self.data == otherMessage.data) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.data] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface Int64MessageBuilder()
+@property (strong) Int64Message* result;
+@end
+
+@implementation Int64MessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[Int64Message alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (Int64MessageBuilder*) clear {
+  self.result = [[Int64Message alloc] init];
+  return self;
+}
+- (Int64MessageBuilder*) clone {
+  return [Int64Message builderWithPrototype:result];
+}
+- (Int64Message*) defaultInstance {
+  return [Int64Message defaultInstance];
+}
+- (Int64Message*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (Int64Message*) buildPartial {
+  Int64Message* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (Int64MessageBuilder*) mergeFrom:(Int64Message*) other {
+  if (other == [Int64Message defaultInstance]) {
+    return self;
+  }
+  if (other.hasData) {
+    [self setData:other.data];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (Int64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (Int64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setData:[input readInt64]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasData {
+  return result.hasData;
+}
+- (SInt64) data {
+  return result.data;
+}
+- (Int64MessageBuilder*) setData:(SInt64) value {
+  result.hasData = YES;
+  result.data = value;
+  return self;
+}
+- (Int64MessageBuilder*) clearData {
+  result.hasData = NO;
+  result.data = 0L;
+  return self;
+}
+@end
+
+@interface Uint64Message ()
+@property UInt64 data;
+@end
+
+@implementation Uint64Message
+
+- (BOOL) hasData {
+  return !!hasData_;
+}
+- (void) setHasData:(BOOL) value_ {
+  hasData_ = !!value_;
+}
+@synthesize data;
+- (id) init {
+  if ((self = [super init])) {
+    self.data = 0L;
+  }
+  return self;
+}
+static Uint64Message* defaultUint64MessageInstance = nil;
++ (void) initialize {
+  if (self == [Uint64Message class]) {
+    defaultUint64MessageInstance = [[Uint64Message alloc] init];
+  }
+}
++ (Uint64Message*) defaultInstance {
+  return defaultUint64MessageInstance;
+}
+- (Uint64Message*) defaultInstance {
+  return defaultUint64MessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasData) {
+    [output writeUInt64:1 value:self.data];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasData) {
+    size_ += computeUInt64Size(1, self.data);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (Uint64Message*) parseFromData:(NSData*) data {
+  return (Uint64Message*)[[[Uint64Message builder] mergeFromData:data] build];
+}
++ (Uint64Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Uint64Message*)[[[Uint64Message builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (Uint64Message*) parseFromInputStream:(NSInputStream*) input {
+  return (Uint64Message*)[[[Uint64Message builder] mergeFromInputStream:input] build];
+}
++ (Uint64Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Uint64Message*)[[[Uint64Message builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Uint64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (Uint64Message*)[[[Uint64Message builder] mergeFromCodedInputStream:input] build];
+}
++ (Uint64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (Uint64Message*)[[[Uint64Message builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (Uint64MessageBuilder*) builder {
+  return [[Uint64MessageBuilder alloc] init];
+}
++ (Uint64MessageBuilder*) builderWithPrototype:(Uint64Message*) prototype {
+  return [[Uint64Message builder] mergeFrom:prototype];
+}
+- (Uint64MessageBuilder*) builder {
+  return [Uint64Message builder];
+}
+- (Uint64MessageBuilder*) toBuilder {
+  return [Uint64Message builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", [NSNumber numberWithLongLong:self.data]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[Uint64Message class]]) {
+    return NO;
+  }
+  Uint64Message *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || self.data == otherMessage.data) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.data] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface Uint64MessageBuilder()
+@property (strong) Uint64Message* result;
+@end
+
+@implementation Uint64MessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[Uint64Message alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (Uint64MessageBuilder*) clear {
+  self.result = [[Uint64Message alloc] init];
+  return self;
+}
+- (Uint64MessageBuilder*) clone {
+  return [Uint64Message builderWithPrototype:result];
+}
+- (Uint64Message*) defaultInstance {
+  return [Uint64Message defaultInstance];
+}
+- (Uint64Message*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (Uint64Message*) buildPartial {
+  Uint64Message* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (Uint64MessageBuilder*) mergeFrom:(Uint64Message*) other {
+  if (other == [Uint64Message defaultInstance]) {
+    return self;
+  }
+  if (other.hasData) {
+    [self setData:other.data];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (Uint64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (Uint64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setData:[input readUInt64]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasData {
+  return result.hasData;
+}
+- (UInt64) data {
+  return result.data;
+}
+- (Uint64MessageBuilder*) setData:(UInt64) value {
+  result.hasData = YES;
+  result.data = value;
+  return self;
+}
+- (Uint64MessageBuilder*) clearData {
+  result.hasData = NO;
+  result.data = 0L;
+  return self;
+}
+@end
+
+@interface BoolMessage ()
+@property BOOL data;
+@end
+
+@implementation BoolMessage
+
+- (BOOL) hasData {
+  return !!hasData_;
+}
+- (void) setHasData:(BOOL) value_ {
+  hasData_ = !!value_;
+}
+- (BOOL) data {
+  return !!data_;
+}
+- (void) setData:(BOOL) value_ {
+  data_ = !!value_;
+}
+- (id) init {
+  if ((self = [super init])) {
+    self.data = NO;
+  }
+  return self;
+}
+static BoolMessage* defaultBoolMessageInstance = nil;
++ (void) initialize {
+  if (self == [BoolMessage class]) {
+    defaultBoolMessageInstance = [[BoolMessage alloc] init];
+  }
+}
++ (BoolMessage*) defaultInstance {
+  return defaultBoolMessageInstance;
+}
+- (BoolMessage*) defaultInstance {
+  return defaultBoolMessageInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasData) {
+    [output writeBool:1 value:self.data];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasData) {
+    size_ += computeBoolSize(1, self.data);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (BoolMessage*) parseFromData:(NSData*) data {
+  return (BoolMessage*)[[[BoolMessage builder] mergeFromData:data] build];
+}
++ (BoolMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (BoolMessage*)[[[BoolMessage builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (BoolMessage*) parseFromInputStream:(NSInputStream*) input {
+  return (BoolMessage*)[[[BoolMessage builder] mergeFromInputStream:input] build];
+}
++ (BoolMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (BoolMessage*)[[[BoolMessage builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (BoolMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (BoolMessage*)[[[BoolMessage builder] mergeFromCodedInputStream:input] build];
+}
++ (BoolMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (BoolMessage*)[[[BoolMessage builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (BoolMessageBuilder*) builder {
+  return [[BoolMessageBuilder alloc] init];
+}
++ (BoolMessageBuilder*) builderWithPrototype:(BoolMessage*) prototype {
+  return [[BoolMessage builder] mergeFrom:prototype];
+}
+- (BoolMessageBuilder*) builder {
+  return [BoolMessage builder];
+}
+- (BoolMessageBuilder*) toBuilder {
+  return [BoolMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasData) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"data", [NSNumber numberWithBool:self.data]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[BoolMessage class]]) {
+    return NO;
+  }
+  BoolMessage *otherMessage = other;
+  return
+      self.hasData == otherMessage.hasData &&
+      (!self.hasData || self.data == otherMessage.data) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasData) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithBool:self.data] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface BoolMessageBuilder()
+@property (strong) BoolMessage* result;
+@end
+
+@implementation BoolMessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[BoolMessage alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (BoolMessageBuilder*) clear {
+  self.result = [[BoolMessage alloc] init];
+  return self;
+}
+- (BoolMessageBuilder*) clone {
+  return [BoolMessage builderWithPrototype:result];
+}
+- (BoolMessage*) defaultInstance {
+  return [BoolMessage defaultInstance];
+}
+- (BoolMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (BoolMessage*) buildPartial {
+  BoolMessage* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (BoolMessageBuilder*) mergeFrom:(BoolMessage*) other {
+  if (other == [BoolMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasData) {
+    [self setData:other.data];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (BoolMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (BoolMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setData:[input readBool]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasData {
+  return result.hasData;
+}
+- (BOOL) data {
+  return result.data;
+}
+- (BoolMessageBuilder*) setData:(BOOL) value {
+  result.hasData = YES;
+  result.data = value;
+  return self;
+}
+- (BoolMessageBuilder*) clearData {
+  result.hasData = NO;
+  result.data = NO;
+  return self;
+}
+@end
+
+@interface TestOneof ()
+@property SInt32 fooInt;
+@property (strong) NSString* fooString;
+@property (strong) TestAllTypes* fooMessage;
+@property (strong) TestOneofFooGroup* fooGroup;
+@end
+
+@implementation TestOneof
+
+- (BOOL) hasFooInt {
+  return !!hasFooInt_;
+}
+- (void) setHasFooInt:(BOOL) value_ {
+  hasFooInt_ = !!value_;
+}
+@synthesize fooInt;
+- (BOOL) hasFooString {
+  return !!hasFooString_;
+}
+- (void) setHasFooString:(BOOL) value_ {
+  hasFooString_ = !!value_;
+}
+@synthesize fooString;
+- (BOOL) hasFooMessage {
+  return !!hasFooMessage_;
+}
+- (void) setHasFooMessage:(BOOL) value_ {
+  hasFooMessage_ = !!value_;
+}
+@synthesize fooMessage;
+- (BOOL) hasFooGroup {
+  return !!hasFooGroup_;
+}
+- (void) setHasFooGroup:(BOOL) value_ {
+  hasFooGroup_ = !!value_;
+}
+@synthesize fooGroup;
+- (id) init {
+  if ((self = [super init])) {
+    self.fooInt = 0;
+    self.fooString = @"";
+    self.fooMessage = [TestAllTypes defaultInstance];
+    self.fooGroup = [TestOneofFooGroup defaultInstance];
+  }
+  return self;
+}
+static TestOneof* defaultTestOneofInstance = nil;
++ (void) initialize {
+  if (self == [TestOneof class]) {
+    defaultTestOneofInstance = [[TestOneof alloc] init];
+  }
+}
++ (TestOneof*) defaultInstance {
+  return defaultTestOneofInstance;
+}
+- (TestOneof*) defaultInstance {
+  return defaultTestOneofInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasFooInt) {
+    [output writeInt32:1 value:self.fooInt];
+  }
+  if (self.hasFooString) {
+    [output writeString:2 value:self.fooString];
+  }
+  if (self.hasFooMessage) {
+    [output writeMessage:3 value:self.fooMessage];
+  }
+  if (self.hasFooGroup) {
+    [output writeGroup:4 value:self.fooGroup];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasFooInt) {
+    size_ += computeInt32Size(1, self.fooInt);
+  }
+  if (self.hasFooString) {
+    size_ += computeStringSize(2, self.fooString);
+  }
+  if (self.hasFooMessage) {
+    size_ += computeMessageSize(3, self.fooMessage);
+  }
+  if (self.hasFooGroup) {
+    size_ += computeGroupSize(4, self.fooGroup);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneof*) parseFromData:(NSData*) data {
+  return (TestOneof*)[[[TestOneof builder] mergeFromData:data] build];
+}
++ (TestOneof*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof*)[[[TestOneof builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneof*)[[[TestOneof builder] mergeFromInputStream:input] build];
+}
++ (TestOneof*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof*)[[[TestOneof builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneof*)[[[TestOneof builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof*)[[[TestOneof builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBuilder*) builder {
+  return [[TestOneofBuilder alloc] init];
+}
++ (TestOneofBuilder*) builderWithPrototype:(TestOneof*) prototype {
+  return [[TestOneof builder] mergeFrom:prototype];
+}
+- (TestOneofBuilder*) builder {
+  return [TestOneof builder];
+}
+- (TestOneofBuilder*) toBuilder {
+  return [TestOneof builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasFooInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooInt", [NSNumber numberWithInteger:self.fooInt]];
+  }
+  if (self.hasFooString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooString", self.fooString];
+  }
+  if (self.hasFooMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooMessage"];
+    [self.fooMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasFooGroup) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooGroup"];
+    [self.fooGroup writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneof class]]) {
+    return NO;
+  }
+  TestOneof *otherMessage = other;
+  return
+      self.hasFooInt == otherMessage.hasFooInt &&
+      (!self.hasFooInt || self.fooInt == otherMessage.fooInt) &&
+      self.hasFooString == otherMessage.hasFooString &&
+      (!self.hasFooString || [self.fooString isEqual:otherMessage.fooString]) &&
+      self.hasFooMessage == otherMessage.hasFooMessage &&
+      (!self.hasFooMessage || [self.fooMessage isEqual:otherMessage.fooMessage]) &&
+      self.hasFooGroup == otherMessage.hasFooGroup &&
+      (!self.hasFooGroup || [self.fooGroup isEqual:otherMessage.fooGroup]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasFooInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.fooInt] hash];
+  }
+  if (self.hasFooString) {
+    hashCode = hashCode * 31 + [self.fooString hash];
+  }
+  if (self.hasFooMessage) {
+    hashCode = hashCode * 31 + [self.fooMessage hash];
+  }
+  if (self.hasFooGroup) {
+    hashCode = hashCode * 31 + [self.fooGroup hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestOneofFooGroup ()
+@property SInt32 a;
+@property (strong) NSString* b;
+@end
+
+@implementation TestOneofFooGroup
+
+- (BOOL) hasA {
+  return !!hasA_;
+}
+- (void) setHasA:(BOOL) value_ {
+  hasA_ = !!value_;
+}
+@synthesize a;
+- (BOOL) hasB {
+  return !!hasB_;
+}
+- (void) setHasB:(BOOL) value_ {
+  hasB_ = !!value_;
+}
+@synthesize b;
+- (id) init {
+  if ((self = [super init])) {
+    self.a = 0;
+    self.b = @"";
+  }
+  return self;
+}
+static TestOneofFooGroup* defaultTestOneofFooGroupInstance = nil;
++ (void) initialize {
+  if (self == [TestOneofFooGroup class]) {
+    defaultTestOneofFooGroupInstance = [[TestOneofFooGroup alloc] init];
+  }
+}
++ (TestOneofFooGroup*) defaultInstance {
+  return defaultTestOneofFooGroupInstance;
+}
+- (TestOneofFooGroup*) defaultInstance {
+  return defaultTestOneofFooGroupInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasA) {
+    [output writeInt32:5 value:self.a];
+  }
+  if (self.hasB) {
+    [output writeString:6 value:self.b];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasA) {
+    size_ += computeInt32Size(5, self.a);
+  }
+  if (self.hasB) {
+    size_ += computeStringSize(6, self.b);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneofFooGroup*) parseFromData:(NSData*) data {
+  return (TestOneofFooGroup*)[[[TestOneofFooGroup builder] mergeFromData:data] build];
+}
++ (TestOneofFooGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofFooGroup*)[[[TestOneofFooGroup builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofFooGroup*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneofFooGroup*)[[[TestOneofFooGroup builder] mergeFromInputStream:input] build];
+}
++ (TestOneofFooGroup*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofFooGroup*)[[[TestOneofFooGroup builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneofFooGroup*)[[[TestOneofFooGroup builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneofFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofFooGroup*)[[[TestOneofFooGroup builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofFooGroupBuilder*) builder {
+  return [[TestOneofFooGroupBuilder alloc] init];
+}
++ (TestOneofFooGroupBuilder*) builderWithPrototype:(TestOneofFooGroup*) prototype {
+  return [[TestOneofFooGroup builder] mergeFrom:prototype];
+}
+- (TestOneofFooGroupBuilder*) builder {
+  return [TestOneofFooGroup builder];
+}
+- (TestOneofFooGroupBuilder*) toBuilder {
+  return [TestOneofFooGroup builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInteger:self.a]];
+  }
+  if (self.hasB) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"b", self.b];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneofFooGroup class]]) {
+    return NO;
+  }
+  TestOneofFooGroup *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      self.hasB == otherMessage.hasB &&
+      (!self.hasB || [self.b isEqual:otherMessage.b]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.a] hash];
+  }
+  if (self.hasB) {
+    hashCode = hashCode * 31 + [self.b hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestOneofFooGroupBuilder()
+@property (strong) TestOneofFooGroup* result;
+@end
+
+@implementation TestOneofFooGroupBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneofFooGroup alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneofFooGroupBuilder*) clear {
+  self.result = [[TestOneofFooGroup alloc] init];
+  return self;
+}
+- (TestOneofFooGroupBuilder*) clone {
+  return [TestOneofFooGroup builderWithPrototype:result];
+}
+- (TestOneofFooGroup*) defaultInstance {
+  return [TestOneofFooGroup defaultInstance];
+}
+- (TestOneofFooGroup*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneofFooGroup*) buildPartial {
+  TestOneofFooGroup* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneofFooGroupBuilder*) mergeFrom:(TestOneofFooGroup*) other {
+  if (other == [TestOneofFooGroup defaultInstance]) {
+    return self;
+  }
+  if (other.hasA) {
+    [self setA:other.a];
+  }
+  if (other.hasB) {
+    [self setB:other.b];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneofFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneofFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 40: {
+        [self setA:[input readInt32]];
+        break;
+      }
+      case 50: {
+        [self setB:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasA {
+  return result.hasA;
+}
+- (SInt32) a {
+  return result.a;
+}
+- (TestOneofFooGroupBuilder*) setA:(SInt32) value {
+  result.hasA = YES;
+  result.a = value;
+  return self;
+}
+- (TestOneofFooGroupBuilder*) clearA {
+  result.hasA = NO;
+  result.a = 0;
+  return self;
+}
+- (BOOL) hasB {
+  return result.hasB;
+}
+- (NSString*) b {
+  return result.b;
+}
+- (TestOneofFooGroupBuilder*) setB:(NSString*) value {
+  result.hasB = YES;
+  result.b = value;
+  return self;
+}
+- (TestOneofFooGroupBuilder*) clearB {
+  result.hasB = NO;
+  result.b = @"";
+  return self;
+}
+@end
+
+@interface TestOneofBuilder()
+@property (strong) TestOneof* result;
+@end
+
+@implementation TestOneofBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneof alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneofBuilder*) clear {
+  self.result = [[TestOneof alloc] init];
+  return self;
+}
+- (TestOneofBuilder*) clone {
+  return [TestOneof builderWithPrototype:result];
+}
+- (TestOneof*) defaultInstance {
+  return [TestOneof defaultInstance];
+}
+- (TestOneof*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneof*) buildPartial {
+  TestOneof* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneofBuilder*) mergeFrom:(TestOneof*) other {
+  if (other == [TestOneof defaultInstance]) {
+    return self;
+  }
+  if (other.hasFooInt) {
+    [self setFooInt:other.fooInt];
+  }
+  if (other.hasFooString) {
+    [self setFooString:other.fooString];
+  }
+  if (other.hasFooMessage) {
+    [self mergeFooMessage:other.fooMessage];
+  }
+  if (other.hasFooGroup) {
+    [self mergeFooGroup:other.fooGroup];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setFooInt:[input readInt32]];
+        break;
+      }
+      case 18: {
+        [self setFooString:[input readString]];
+        break;
+      }
+      case 26: {
+        TestAllTypesBuilder* subBuilder = [TestAllTypes builder];
+        if (self.hasFooMessage) {
+          [subBuilder mergeFrom:self.fooMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 35: {
+        TestOneofFooGroupBuilder* subBuilder = [TestOneofFooGroup builder];
+        if (self.hasFooGroup) {
+          [subBuilder mergeFrom:self.fooGroup];
+        }
+        [input readGroup:4 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooGroup:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasFooInt {
+  return result.hasFooInt;
+}
+- (SInt32) fooInt {
+  return result.fooInt;
+}
+- (TestOneofBuilder*) setFooInt:(SInt32) value {
+  result.hasFooInt = YES;
+  result.fooInt = value;
+  return self;
+}
+- (TestOneofBuilder*) clearFooInt {
+  result.hasFooInt = NO;
+  result.fooInt = 0;
+  return self;
+}
+- (BOOL) hasFooString {
+  return result.hasFooString;
+}
+- (NSString*) fooString {
+  return result.fooString;
+}
+- (TestOneofBuilder*) setFooString:(NSString*) value {
+  result.hasFooString = YES;
+  result.fooString = value;
+  return self;
+}
+- (TestOneofBuilder*) clearFooString {
+  result.hasFooString = NO;
+  result.fooString = @"";
+  return self;
+}
+- (BOOL) hasFooMessage {
+  return result.hasFooMessage;
+}
+- (TestAllTypes*) fooMessage {
+  return result.fooMessage;
+}
+- (TestOneofBuilder*) setFooMessage:(TestAllTypes*) value {
+  result.hasFooMessage = YES;
+  result.fooMessage = value;
+  return self;
+}
+- (TestOneofBuilder*) setFooMessageBuilder:(TestAllTypesBuilder*) builderForValue {
+  return [self setFooMessage:[builderForValue build]];
+}
+- (TestOneofBuilder*) mergeFooMessage:(TestAllTypes*) value {
+  if (result.hasFooMessage &&
+      result.fooMessage != [TestAllTypes defaultInstance]) {
+    result.fooMessage =
+      [[[TestAllTypes builderWithPrototype:result.fooMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.fooMessage = value;
+  }
+  result.hasFooMessage = YES;
+  return self;
+}
+- (TestOneofBuilder*) clearFooMessage {
+  result.hasFooMessage = NO;
+  result.fooMessage = [TestAllTypes defaultInstance];
+  return self;
+}
+- (BOOL) hasFooGroup {
+  return result.hasFooGroup;
+}
+- (TestOneofFooGroup*) fooGroup {
+  return result.fooGroup;
+}
+- (TestOneofBuilder*) setFooGroup:(TestOneofFooGroup*) value {
+  result.hasFooGroup = YES;
+  result.fooGroup = value;
+  return self;
+}
+- (TestOneofBuilder*) setFooGroupBuilder:(TestOneofFooGroupBuilder*) builderForValue {
+  return [self setFooGroup:[builderForValue build]];
+}
+- (TestOneofBuilder*) mergeFooGroup:(TestOneofFooGroup*) value {
+  if (result.hasFooGroup &&
+      result.fooGroup != [TestOneofFooGroup defaultInstance]) {
+    result.fooGroup =
+      [[[TestOneofFooGroup builderWithPrototype:result.fooGroup] mergeFrom:value] buildPartial];
+  } else {
+    result.fooGroup = value;
+  }
+  result.hasFooGroup = YES;
+  return self;
+}
+- (TestOneofBuilder*) clearFooGroup {
+  result.hasFooGroup = NO;
+  result.fooGroup = [TestOneofFooGroup defaultInstance];
+  return self;
+}
+@end
+
+@interface TestOneofBackwardsCompatible ()
+@property SInt32 fooInt;
+@property (strong) NSString* fooString;
+@property (strong) TestAllTypes* fooMessage;
+@property (strong) TestOneofBackwardsCompatibleFooGroup* fooGroup;
+@end
+
+@implementation TestOneofBackwardsCompatible
+
+- (BOOL) hasFooInt {
+  return !!hasFooInt_;
+}
+- (void) setHasFooInt:(BOOL) value_ {
+  hasFooInt_ = !!value_;
+}
+@synthesize fooInt;
+- (BOOL) hasFooString {
+  return !!hasFooString_;
+}
+- (void) setHasFooString:(BOOL) value_ {
+  hasFooString_ = !!value_;
+}
+@synthesize fooString;
+- (BOOL) hasFooMessage {
+  return !!hasFooMessage_;
+}
+- (void) setHasFooMessage:(BOOL) value_ {
+  hasFooMessage_ = !!value_;
+}
+@synthesize fooMessage;
+- (BOOL) hasFooGroup {
+  return !!hasFooGroup_;
+}
+- (void) setHasFooGroup:(BOOL) value_ {
+  hasFooGroup_ = !!value_;
+}
+@synthesize fooGroup;
+- (id) init {
+  if ((self = [super init])) {
+    self.fooInt = 0;
+    self.fooString = @"";
+    self.fooMessage = [TestAllTypes defaultInstance];
+    self.fooGroup = [TestOneofBackwardsCompatibleFooGroup defaultInstance];
+  }
+  return self;
+}
+static TestOneofBackwardsCompatible* defaultTestOneofBackwardsCompatibleInstance = nil;
++ (void) initialize {
+  if (self == [TestOneofBackwardsCompatible class]) {
+    defaultTestOneofBackwardsCompatibleInstance = [[TestOneofBackwardsCompatible alloc] init];
+  }
+}
++ (TestOneofBackwardsCompatible*) defaultInstance {
+  return defaultTestOneofBackwardsCompatibleInstance;
+}
+- (TestOneofBackwardsCompatible*) defaultInstance {
+  return defaultTestOneofBackwardsCompatibleInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasFooInt) {
+    [output writeInt32:1 value:self.fooInt];
+  }
+  if (self.hasFooString) {
+    [output writeString:2 value:self.fooString];
+  }
+  if (self.hasFooMessage) {
+    [output writeMessage:3 value:self.fooMessage];
+  }
+  if (self.hasFooGroup) {
+    [output writeGroup:4 value:self.fooGroup];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasFooInt) {
+    size_ += computeInt32Size(1, self.fooInt);
+  }
+  if (self.hasFooString) {
+    size_ += computeStringSize(2, self.fooString);
+  }
+  if (self.hasFooMessage) {
+    size_ += computeMessageSize(3, self.fooMessage);
+  }
+  if (self.hasFooGroup) {
+    size_ += computeGroupSize(4, self.fooGroup);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneofBackwardsCompatible*) parseFromData:(NSData*) data {
+  return (TestOneofBackwardsCompatible*)[[[TestOneofBackwardsCompatible builder] mergeFromData:data] build];
+}
++ (TestOneofBackwardsCompatible*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofBackwardsCompatible*)[[[TestOneofBackwardsCompatible builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBackwardsCompatible*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneofBackwardsCompatible*)[[[TestOneofBackwardsCompatible builder] mergeFromInputStream:input] build];
+}
++ (TestOneofBackwardsCompatible*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofBackwardsCompatible*)[[[TestOneofBackwardsCompatible builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBackwardsCompatible*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneofBackwardsCompatible*)[[[TestOneofBackwardsCompatible builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneofBackwardsCompatible*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofBackwardsCompatible*)[[[TestOneofBackwardsCompatible builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBackwardsCompatibleBuilder*) builder {
+  return [[TestOneofBackwardsCompatibleBuilder alloc] init];
+}
++ (TestOneofBackwardsCompatibleBuilder*) builderWithPrototype:(TestOneofBackwardsCompatible*) prototype {
+  return [[TestOneofBackwardsCompatible builder] mergeFrom:prototype];
+}
+- (TestOneofBackwardsCompatibleBuilder*) builder {
+  return [TestOneofBackwardsCompatible builder];
+}
+- (TestOneofBackwardsCompatibleBuilder*) toBuilder {
+  return [TestOneofBackwardsCompatible builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasFooInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooInt", [NSNumber numberWithInteger:self.fooInt]];
+  }
+  if (self.hasFooString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooString", self.fooString];
+  }
+  if (self.hasFooMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooMessage"];
+    [self.fooMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasFooGroup) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooGroup"];
+    [self.fooGroup writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneofBackwardsCompatible class]]) {
+    return NO;
+  }
+  TestOneofBackwardsCompatible *otherMessage = other;
+  return
+      self.hasFooInt == otherMessage.hasFooInt &&
+      (!self.hasFooInt || self.fooInt == otherMessage.fooInt) &&
+      self.hasFooString == otherMessage.hasFooString &&
+      (!self.hasFooString || [self.fooString isEqual:otherMessage.fooString]) &&
+      self.hasFooMessage == otherMessage.hasFooMessage &&
+      (!self.hasFooMessage || [self.fooMessage isEqual:otherMessage.fooMessage]) &&
+      self.hasFooGroup == otherMessage.hasFooGroup &&
+      (!self.hasFooGroup || [self.fooGroup isEqual:otherMessage.fooGroup]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasFooInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.fooInt] hash];
+  }
+  if (self.hasFooString) {
+    hashCode = hashCode * 31 + [self.fooString hash];
+  }
+  if (self.hasFooMessage) {
+    hashCode = hashCode * 31 + [self.fooMessage hash];
+  }
+  if (self.hasFooGroup) {
+    hashCode = hashCode * 31 + [self.fooGroup hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestOneofBackwardsCompatibleFooGroup ()
+@property SInt32 a;
+@property (strong) NSString* b;
+@end
+
+@implementation TestOneofBackwardsCompatibleFooGroup
+
+- (BOOL) hasA {
+  return !!hasA_;
+}
+- (void) setHasA:(BOOL) value_ {
+  hasA_ = !!value_;
+}
+@synthesize a;
+- (BOOL) hasB {
+  return !!hasB_;
+}
+- (void) setHasB:(BOOL) value_ {
+  hasB_ = !!value_;
+}
+@synthesize b;
+- (id) init {
+  if ((self = [super init])) {
+    self.a = 0;
+    self.b = @"";
+  }
+  return self;
+}
+static TestOneofBackwardsCompatibleFooGroup* defaultTestOneofBackwardsCompatibleFooGroupInstance = nil;
++ (void) initialize {
+  if (self == [TestOneofBackwardsCompatibleFooGroup class]) {
+    defaultTestOneofBackwardsCompatibleFooGroupInstance = [[TestOneofBackwardsCompatibleFooGroup alloc] init];
+  }
+}
++ (TestOneofBackwardsCompatibleFooGroup*) defaultInstance {
+  return defaultTestOneofBackwardsCompatibleFooGroupInstance;
+}
+- (TestOneofBackwardsCompatibleFooGroup*) defaultInstance {
+  return defaultTestOneofBackwardsCompatibleFooGroupInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasA) {
+    [output writeInt32:5 value:self.a];
+  }
+  if (self.hasB) {
+    [output writeString:6 value:self.b];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasA) {
+    size_ += computeInt32Size(5, self.a);
+  }
+  if (self.hasB) {
+    size_ += computeStringSize(6, self.b);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromData:(NSData*) data {
+  return (TestOneofBackwardsCompatibleFooGroup*)[[[TestOneofBackwardsCompatibleFooGroup builder] mergeFromData:data] build];
+}
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofBackwardsCompatibleFooGroup*)[[[TestOneofBackwardsCompatibleFooGroup builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneofBackwardsCompatibleFooGroup*)[[[TestOneofBackwardsCompatibleFooGroup builder] mergeFromInputStream:input] build];
+}
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofBackwardsCompatibleFooGroup*)[[[TestOneofBackwardsCompatibleFooGroup builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneofBackwardsCompatibleFooGroup*)[[[TestOneofBackwardsCompatibleFooGroup builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneofBackwardsCompatibleFooGroup*)[[[TestOneofBackwardsCompatibleFooGroup builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneofBackwardsCompatibleFooGroupBuilder*) builder {
+  return [[TestOneofBackwardsCompatibleFooGroupBuilder alloc] init];
+}
++ (TestOneofBackwardsCompatibleFooGroupBuilder*) builderWithPrototype:(TestOneofBackwardsCompatibleFooGroup*) prototype {
+  return [[TestOneofBackwardsCompatibleFooGroup builder] mergeFrom:prototype];
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) builder {
+  return [TestOneofBackwardsCompatibleFooGroup builder];
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) toBuilder {
+  return [TestOneofBackwardsCompatibleFooGroup builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInteger:self.a]];
+  }
+  if (self.hasB) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"b", self.b];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneofBackwardsCompatibleFooGroup class]]) {
+    return NO;
+  }
+  TestOneofBackwardsCompatibleFooGroup *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      self.hasB == otherMessage.hasB &&
+      (!self.hasB || [self.b isEqual:otherMessage.b]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.a] hash];
+  }
+  if (self.hasB) {
+    hashCode = hashCode * 31 + [self.b hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestOneofBackwardsCompatibleFooGroupBuilder()
+@property (strong) TestOneofBackwardsCompatibleFooGroup* result;
+@end
+
+@implementation TestOneofBackwardsCompatibleFooGroupBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneofBackwardsCompatibleFooGroup alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clear {
+  self.result = [[TestOneofBackwardsCompatibleFooGroup alloc] init];
+  return self;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clone {
+  return [TestOneofBackwardsCompatibleFooGroup builderWithPrototype:result];
+}
+- (TestOneofBackwardsCompatibleFooGroup*) defaultInstance {
+  return [TestOneofBackwardsCompatibleFooGroup defaultInstance];
+}
+- (TestOneofBackwardsCompatibleFooGroup*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneofBackwardsCompatibleFooGroup*) buildPartial {
+  TestOneofBackwardsCompatibleFooGroup* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) mergeFrom:(TestOneofBackwardsCompatibleFooGroup*) other {
+  if (other == [TestOneofBackwardsCompatibleFooGroup defaultInstance]) {
+    return self;
+  }
+  if (other.hasA) {
+    [self setA:other.a];
+  }
+  if (other.hasB) {
+    [self setB:other.b];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 40: {
+        [self setA:[input readInt32]];
+        break;
+      }
+      case 50: {
+        [self setB:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasA {
+  return result.hasA;
+}
+- (SInt32) a {
+  return result.a;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) setA:(SInt32) value {
+  result.hasA = YES;
+  result.a = value;
+  return self;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clearA {
+  result.hasA = NO;
+  result.a = 0;
+  return self;
+}
+- (BOOL) hasB {
+  return result.hasB;
+}
+- (NSString*) b {
+  return result.b;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) setB:(NSString*) value {
+  result.hasB = YES;
+  result.b = value;
+  return self;
+}
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clearB {
+  result.hasB = NO;
+  result.b = @"";
+  return self;
+}
+@end
+
+@interface TestOneofBackwardsCompatibleBuilder()
+@property (strong) TestOneofBackwardsCompatible* result;
+@end
+
+@implementation TestOneofBackwardsCompatibleBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneofBackwardsCompatible alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneofBackwardsCompatibleBuilder*) clear {
+  self.result = [[TestOneofBackwardsCompatible alloc] init];
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) clone {
+  return [TestOneofBackwardsCompatible builderWithPrototype:result];
+}
+- (TestOneofBackwardsCompatible*) defaultInstance {
+  return [TestOneofBackwardsCompatible defaultInstance];
+}
+- (TestOneofBackwardsCompatible*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneofBackwardsCompatible*) buildPartial {
+  TestOneofBackwardsCompatible* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneofBackwardsCompatibleBuilder*) mergeFrom:(TestOneofBackwardsCompatible*) other {
+  if (other == [TestOneofBackwardsCompatible defaultInstance]) {
+    return self;
+  }
+  if (other.hasFooInt) {
+    [self setFooInt:other.fooInt];
+  }
+  if (other.hasFooString) {
+    [self setFooString:other.fooString];
+  }
+  if (other.hasFooMessage) {
+    [self mergeFooMessage:other.fooMessage];
+  }
+  if (other.hasFooGroup) {
+    [self mergeFooGroup:other.fooGroup];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneofBackwardsCompatibleBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setFooInt:[input readInt32]];
+        break;
+      }
+      case 18: {
+        [self setFooString:[input readString]];
+        break;
+      }
+      case 26: {
+        TestAllTypesBuilder* subBuilder = [TestAllTypes builder];
+        if (self.hasFooMessage) {
+          [subBuilder mergeFrom:self.fooMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 35: {
+        TestOneofBackwardsCompatibleFooGroupBuilder* subBuilder = [TestOneofBackwardsCompatibleFooGroup builder];
+        if (self.hasFooGroup) {
+          [subBuilder mergeFrom:self.fooGroup];
+        }
+        [input readGroup:4 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooGroup:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasFooInt {
+  return result.hasFooInt;
+}
+- (SInt32) fooInt {
+  return result.fooInt;
+}
+- (TestOneofBackwardsCompatibleBuilder*) setFooInt:(SInt32) value {
+  result.hasFooInt = YES;
+  result.fooInt = value;
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) clearFooInt {
+  result.hasFooInt = NO;
+  result.fooInt = 0;
+  return self;
+}
+- (BOOL) hasFooString {
+  return result.hasFooString;
+}
+- (NSString*) fooString {
+  return result.fooString;
+}
+- (TestOneofBackwardsCompatibleBuilder*) setFooString:(NSString*) value {
+  result.hasFooString = YES;
+  result.fooString = value;
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) clearFooString {
+  result.hasFooString = NO;
+  result.fooString = @"";
+  return self;
+}
+- (BOOL) hasFooMessage {
+  return result.hasFooMessage;
+}
+- (TestAllTypes*) fooMessage {
+  return result.fooMessage;
+}
+- (TestOneofBackwardsCompatibleBuilder*) setFooMessage:(TestAllTypes*) value {
+  result.hasFooMessage = YES;
+  result.fooMessage = value;
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) setFooMessageBuilder:(TestAllTypesBuilder*) builderForValue {
+  return [self setFooMessage:[builderForValue build]];
+}
+- (TestOneofBackwardsCompatibleBuilder*) mergeFooMessage:(TestAllTypes*) value {
+  if (result.hasFooMessage &&
+      result.fooMessage != [TestAllTypes defaultInstance]) {
+    result.fooMessage =
+      [[[TestAllTypes builderWithPrototype:result.fooMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.fooMessage = value;
+  }
+  result.hasFooMessage = YES;
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) clearFooMessage {
+  result.hasFooMessage = NO;
+  result.fooMessage = [TestAllTypes defaultInstance];
+  return self;
+}
+- (BOOL) hasFooGroup {
+  return result.hasFooGroup;
+}
+- (TestOneofBackwardsCompatibleFooGroup*) fooGroup {
+  return result.fooGroup;
+}
+- (TestOneofBackwardsCompatibleBuilder*) setFooGroup:(TestOneofBackwardsCompatibleFooGroup*) value {
+  result.hasFooGroup = YES;
+  result.fooGroup = value;
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) setFooGroupBuilder:(TestOneofBackwardsCompatibleFooGroupBuilder*) builderForValue {
+  return [self setFooGroup:[builderForValue build]];
+}
+- (TestOneofBackwardsCompatibleBuilder*) mergeFooGroup:(TestOneofBackwardsCompatibleFooGroup*) value {
+  if (result.hasFooGroup &&
+      result.fooGroup != [TestOneofBackwardsCompatibleFooGroup defaultInstance]) {
+    result.fooGroup =
+      [[[TestOneofBackwardsCompatibleFooGroup builderWithPrototype:result.fooGroup] mergeFrom:value] buildPartial];
+  } else {
+    result.fooGroup = value;
+  }
+  result.hasFooGroup = YES;
+  return self;
+}
+- (TestOneofBackwardsCompatibleBuilder*) clearFooGroup {
+  result.hasFooGroup = NO;
+  result.fooGroup = [TestOneofBackwardsCompatibleFooGroup defaultInstance];
+  return self;
+}
+@end
+
+@interface TestOneof2 ()
+@property SInt32 fooInt;
+@property (strong) NSString* fooString;
+@property (strong) NSString* fooCord;
+@property (strong) NSString* fooStringPiece;
+@property (strong) NSData* fooBytes;
+@property TestOneof2NestedEnum fooEnum;
+@property (strong) TestOneof2NestedMessage* fooMessage;
+@property (strong) TestOneof2FooGroup* fooGroup;
+@property (strong) TestOneof2NestedMessage* fooLazyMessage;
+@property SInt32 barInt;
+@property (strong) NSString* barString;
+@property (strong) NSString* barCord;
+@property (strong) NSString* barStringPiece;
+@property (strong) NSData* barBytes;
+@property TestOneof2NestedEnum barEnum;
+@property SInt32 bazInt;
+@property (strong) NSString* bazString;
+@end
+
+@implementation TestOneof2
+
+- (BOOL) hasFooInt {
+  return !!hasFooInt_;
+}
+- (void) setHasFooInt:(BOOL) value_ {
+  hasFooInt_ = !!value_;
+}
+@synthesize fooInt;
+- (BOOL) hasFooString {
+  return !!hasFooString_;
+}
+- (void) setHasFooString:(BOOL) value_ {
+  hasFooString_ = !!value_;
+}
+@synthesize fooString;
+- (BOOL) hasFooCord {
+  return !!hasFooCord_;
+}
+- (void) setHasFooCord:(BOOL) value_ {
+  hasFooCord_ = !!value_;
+}
+@synthesize fooCord;
+- (BOOL) hasFooStringPiece {
+  return !!hasFooStringPiece_;
+}
+- (void) setHasFooStringPiece:(BOOL) value_ {
+  hasFooStringPiece_ = !!value_;
+}
+@synthesize fooStringPiece;
+- (BOOL) hasFooBytes {
+  return !!hasFooBytes_;
+}
+- (void) setHasFooBytes:(BOOL) value_ {
+  hasFooBytes_ = !!value_;
+}
+@synthesize fooBytes;
+- (BOOL) hasFooEnum {
+  return !!hasFooEnum_;
+}
+- (void) setHasFooEnum:(BOOL) value_ {
+  hasFooEnum_ = !!value_;
+}
+@synthesize fooEnum;
+- (BOOL) hasFooMessage {
+  return !!hasFooMessage_;
+}
+- (void) setHasFooMessage:(BOOL) value_ {
+  hasFooMessage_ = !!value_;
+}
+@synthesize fooMessage;
+- (BOOL) hasFooGroup {
+  return !!hasFooGroup_;
+}
+- (void) setHasFooGroup:(BOOL) value_ {
+  hasFooGroup_ = !!value_;
+}
+@synthesize fooGroup;
+- (BOOL) hasFooLazyMessage {
+  return !!hasFooLazyMessage_;
+}
+- (void) setHasFooLazyMessage:(BOOL) value_ {
+  hasFooLazyMessage_ = !!value_;
+}
+@synthesize fooLazyMessage;
+- (BOOL) hasBarInt {
+  return !!hasBarInt_;
+}
+- (void) setHasBarInt:(BOOL) value_ {
+  hasBarInt_ = !!value_;
+}
+@synthesize barInt;
+- (BOOL) hasBarString {
+  return !!hasBarString_;
+}
+- (void) setHasBarString:(BOOL) value_ {
+  hasBarString_ = !!value_;
+}
+@synthesize barString;
+- (BOOL) hasBarCord {
+  return !!hasBarCord_;
+}
+- (void) setHasBarCord:(BOOL) value_ {
+  hasBarCord_ = !!value_;
+}
+@synthesize barCord;
+- (BOOL) hasBarStringPiece {
+  return !!hasBarStringPiece_;
+}
+- (void) setHasBarStringPiece:(BOOL) value_ {
+  hasBarStringPiece_ = !!value_;
+}
+@synthesize barStringPiece;
+- (BOOL) hasBarBytes {
+  return !!hasBarBytes_;
+}
+- (void) setHasBarBytes:(BOOL) value_ {
+  hasBarBytes_ = !!value_;
+}
+@synthesize barBytes;
+- (BOOL) hasBarEnum {
+  return !!hasBarEnum_;
+}
+- (void) setHasBarEnum:(BOOL) value_ {
+  hasBarEnum_ = !!value_;
+}
+@synthesize barEnum;
+- (BOOL) hasBazInt {
+  return !!hasBazInt_;
+}
+- (void) setHasBazInt:(BOOL) value_ {
+  hasBazInt_ = !!value_;
+}
+@synthesize bazInt;
+- (BOOL) hasBazString {
+  return !!hasBazString_;
+}
+- (void) setHasBazString:(BOOL) value_ {
+  hasBazString_ = !!value_;
+}
+@synthesize bazString;
+- (id) init {
+  if ((self = [super init])) {
+    self.fooInt = 0;
+    self.fooString = @"";
+    self.fooCord = @"";
+    self.fooStringPiece = @"";
+    self.fooBytes = [NSData data];
+    self.fooEnum = TestOneof2NestedEnumFoo;
+    self.fooMessage = [TestOneof2NestedMessage defaultInstance];
+    self.fooGroup = [TestOneof2FooGroup defaultInstance];
+    self.fooLazyMessage = [TestOneof2NestedMessage defaultInstance];
+    self.barInt = 5;
+    self.barString = @"STRING";
+    self.barCord = @"CORD";
+    self.barStringPiece = @"SPIECE";
+    self.barBytes = [NSData dataWithBytes:"BYTES" length:5];
+    self.barEnum = TestOneof2NestedEnumBar;
+    self.bazInt = 0;
+    self.bazString = @"BAZ";
+  }
+  return self;
+}
+static TestOneof2* defaultTestOneof2Instance = nil;
++ (void) initialize {
+  if (self == [TestOneof2 class]) {
+    defaultTestOneof2Instance = [[TestOneof2 alloc] init];
+  }
+}
++ (TestOneof2*) defaultInstance {
+  return defaultTestOneof2Instance;
+}
+- (TestOneof2*) defaultInstance {
+  return defaultTestOneof2Instance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasFooInt) {
+    [output writeInt32:1 value:self.fooInt];
+  }
+  if (self.hasFooString) {
+    [output writeString:2 value:self.fooString];
+  }
+  if (self.hasFooCord) {
+    [output writeString:3 value:self.fooCord];
+  }
+  if (self.hasFooStringPiece) {
+    [output writeString:4 value:self.fooStringPiece];
+  }
+  if (self.hasFooBytes) {
+    [output writeData:5 value:self.fooBytes];
+  }
+  if (self.hasFooEnum) {
+    [output writeEnum:6 value:self.fooEnum];
+  }
+  if (self.hasFooMessage) {
+    [output writeMessage:7 value:self.fooMessage];
+  }
+  if (self.hasFooGroup) {
+    [output writeGroup:8 value:self.fooGroup];
+  }
+  if (self.hasFooLazyMessage) {
+    [output writeMessage:11 value:self.fooLazyMessage];
+  }
+  if (self.hasBarInt) {
+    [output writeInt32:12 value:self.barInt];
+  }
+  if (self.hasBarString) {
+    [output writeString:13 value:self.barString];
+  }
+  if (self.hasBarCord) {
+    [output writeString:14 value:self.barCord];
+  }
+  if (self.hasBarStringPiece) {
+    [output writeString:15 value:self.barStringPiece];
+  }
+  if (self.hasBarBytes) {
+    [output writeData:16 value:self.barBytes];
+  }
+  if (self.hasBarEnum) {
+    [output writeEnum:17 value:self.barEnum];
+  }
+  if (self.hasBazInt) {
+    [output writeInt32:18 value:self.bazInt];
+  }
+  if (self.hasBazString) {
+    [output writeString:19 value:self.bazString];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasFooInt) {
+    size_ += computeInt32Size(1, self.fooInt);
+  }
+  if (self.hasFooString) {
+    size_ += computeStringSize(2, self.fooString);
+  }
+  if (self.hasFooCord) {
+    size_ += computeStringSize(3, self.fooCord);
+  }
+  if (self.hasFooStringPiece) {
+    size_ += computeStringSize(4, self.fooStringPiece);
+  }
+  if (self.hasFooBytes) {
+    size_ += computeDataSize(5, self.fooBytes);
+  }
+  if (self.hasFooEnum) {
+    size_ += computeEnumSize(6, self.fooEnum);
+  }
+  if (self.hasFooMessage) {
+    size_ += computeMessageSize(7, self.fooMessage);
+  }
+  if (self.hasFooGroup) {
+    size_ += computeGroupSize(8, self.fooGroup);
+  }
+  if (self.hasFooLazyMessage) {
+    size_ += computeMessageSize(11, self.fooLazyMessage);
+  }
+  if (self.hasBarInt) {
+    size_ += computeInt32Size(12, self.barInt);
+  }
+  if (self.hasBarString) {
+    size_ += computeStringSize(13, self.barString);
+  }
+  if (self.hasBarCord) {
+    size_ += computeStringSize(14, self.barCord);
+  }
+  if (self.hasBarStringPiece) {
+    size_ += computeStringSize(15, self.barStringPiece);
+  }
+  if (self.hasBarBytes) {
+    size_ += computeDataSize(16, self.barBytes);
+  }
+  if (self.hasBarEnum) {
+    size_ += computeEnumSize(17, self.barEnum);
+  }
+  if (self.hasBazInt) {
+    size_ += computeInt32Size(18, self.bazInt);
+  }
+  if (self.hasBazString) {
+    size_ += computeStringSize(19, self.bazString);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneof2*) parseFromData:(NSData*) data {
+  return (TestOneof2*)[[[TestOneof2 builder] mergeFromData:data] build];
+}
++ (TestOneof2*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2*)[[[TestOneof2 builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneof2*)[[[TestOneof2 builder] mergeFromInputStream:input] build];
+}
++ (TestOneof2*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2*)[[[TestOneof2 builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneof2*)[[[TestOneof2 builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneof2*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2*)[[[TestOneof2 builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2Builder*) builder {
+  return [[TestOneof2Builder alloc] init];
+}
++ (TestOneof2Builder*) builderWithPrototype:(TestOneof2*) prototype {
+  return [[TestOneof2 builder] mergeFrom:prototype];
+}
+- (TestOneof2Builder*) builder {
+  return [TestOneof2 builder];
+}
+- (TestOneof2Builder*) toBuilder {
+  return [TestOneof2 builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasFooInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooInt", [NSNumber numberWithInteger:self.fooInt]];
+  }
+  if (self.hasFooString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooString", self.fooString];
+  }
+  if (self.hasFooCord) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooCord", self.fooCord];
+  }
+  if (self.hasFooStringPiece) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooStringPiece", self.fooStringPiece];
+  }
+  if (self.hasFooBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooBytes", self.fooBytes];
+  }
+  if (self.hasFooEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"fooEnum", self.fooEnum];
+  }
+  if (self.hasFooMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooMessage"];
+    [self.fooMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasFooGroup) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooGroup"];
+    [self.fooGroup writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasFooLazyMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooLazyMessage"];
+    [self.fooLazyMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  if (self.hasBarInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"barInt", [NSNumber numberWithInteger:self.barInt]];
+  }
+  if (self.hasBarString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"barString", self.barString];
+  }
+  if (self.hasBarCord) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"barCord", self.barCord];
+  }
+  if (self.hasBarStringPiece) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"barStringPiece", self.barStringPiece];
+  }
+  if (self.hasBarBytes) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"barBytes", self.barBytes];
+  }
+  if (self.hasBarEnum) {
+    [output appendFormat:@"%@%@: %d\n", indent, @"barEnum", self.barEnum];
+  }
+  if (self.hasBazInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"bazInt", [NSNumber numberWithInteger:self.bazInt]];
+  }
+  if (self.hasBazString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"bazString", self.bazString];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneof2 class]]) {
+    return NO;
+  }
+  TestOneof2 *otherMessage = other;
+  return
+      self.hasFooInt == otherMessage.hasFooInt &&
+      (!self.hasFooInt || self.fooInt == otherMessage.fooInt) &&
+      self.hasFooString == otherMessage.hasFooString &&
+      (!self.hasFooString || [self.fooString isEqual:otherMessage.fooString]) &&
+      self.hasFooCord == otherMessage.hasFooCord &&
+      (!self.hasFooCord || [self.fooCord isEqual:otherMessage.fooCord]) &&
+      self.hasFooStringPiece == otherMessage.hasFooStringPiece &&
+      (!self.hasFooStringPiece || [self.fooStringPiece isEqual:otherMessage.fooStringPiece]) &&
+      self.hasFooBytes == otherMessage.hasFooBytes &&
+      (!self.hasFooBytes || [self.fooBytes isEqual:otherMessage.fooBytes]) &&
+      self.hasFooEnum == otherMessage.hasFooEnum &&
+      (!self.hasFooEnum || self.fooEnum == otherMessage.fooEnum) &&
+      self.hasFooMessage == otherMessage.hasFooMessage &&
+      (!self.hasFooMessage || [self.fooMessage isEqual:otherMessage.fooMessage]) &&
+      self.hasFooGroup == otherMessage.hasFooGroup &&
+      (!self.hasFooGroup || [self.fooGroup isEqual:otherMessage.fooGroup]) &&
+      self.hasFooLazyMessage == otherMessage.hasFooLazyMessage &&
+      (!self.hasFooLazyMessage || [self.fooLazyMessage isEqual:otherMessage.fooLazyMessage]) &&
+      self.hasBarInt == otherMessage.hasBarInt &&
+      (!self.hasBarInt || self.barInt == otherMessage.barInt) &&
+      self.hasBarString == otherMessage.hasBarString &&
+      (!self.hasBarString || [self.barString isEqual:otherMessage.barString]) &&
+      self.hasBarCord == otherMessage.hasBarCord &&
+      (!self.hasBarCord || [self.barCord isEqual:otherMessage.barCord]) &&
+      self.hasBarStringPiece == otherMessage.hasBarStringPiece &&
+      (!self.hasBarStringPiece || [self.barStringPiece isEqual:otherMessage.barStringPiece]) &&
+      self.hasBarBytes == otherMessage.hasBarBytes &&
+      (!self.hasBarBytes || [self.barBytes isEqual:otherMessage.barBytes]) &&
+      self.hasBarEnum == otherMessage.hasBarEnum &&
+      (!self.hasBarEnum || self.barEnum == otherMessage.barEnum) &&
+      self.hasBazInt == otherMessage.hasBazInt &&
+      (!self.hasBazInt || self.bazInt == otherMessage.bazInt) &&
+      self.hasBazString == otherMessage.hasBazString &&
+      (!self.hasBazString || [self.bazString isEqual:otherMessage.bazString]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasFooInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.fooInt] hash];
+  }
+  if (self.hasFooString) {
+    hashCode = hashCode * 31 + [self.fooString hash];
+  }
+  if (self.hasFooCord) {
+    hashCode = hashCode * 31 + [self.fooCord hash];
+  }
+  if (self.hasFooStringPiece) {
+    hashCode = hashCode * 31 + [self.fooStringPiece hash];
+  }
+  if (self.hasFooBytes) {
+    hashCode = hashCode * 31 + [self.fooBytes hash];
+  }
+  if (self.hasFooEnum) {
+    hashCode = hashCode * 31 + self.fooEnum;
+  }
+  if (self.hasFooMessage) {
+    hashCode = hashCode * 31 + [self.fooMessage hash];
+  }
+  if (self.hasFooGroup) {
+    hashCode = hashCode * 31 + [self.fooGroup hash];
+  }
+  if (self.hasFooLazyMessage) {
+    hashCode = hashCode * 31 + [self.fooLazyMessage hash];
+  }
+  if (self.hasBarInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.barInt] hash];
+  }
+  if (self.hasBarString) {
+    hashCode = hashCode * 31 + [self.barString hash];
+  }
+  if (self.hasBarCord) {
+    hashCode = hashCode * 31 + [self.barCord hash];
+  }
+  if (self.hasBarStringPiece) {
+    hashCode = hashCode * 31 + [self.barStringPiece hash];
+  }
+  if (self.hasBarBytes) {
+    hashCode = hashCode * 31 + [self.barBytes hash];
+  }
+  if (self.hasBarEnum) {
+    hashCode = hashCode * 31 + self.barEnum;
+  }
+  if (self.hasBazInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.bazInt] hash];
+  }
+  if (self.hasBazString) {
+    hashCode = hashCode * 31 + [self.bazString hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+BOOL TestOneof2NestedEnumIsValidValue(TestOneof2NestedEnum value) {
+  switch (value) {
+    case TestOneof2NestedEnumFoo:
+    case TestOneof2NestedEnumBar:
+    case TestOneof2NestedEnumBaz:
+      return YES;
+    default:
+      return NO;
+  }
+}
+@interface TestOneof2FooGroup ()
+@property SInt32 a;
+@property (strong) NSString* b;
+@end
+
+@implementation TestOneof2FooGroup
+
+- (BOOL) hasA {
+  return !!hasA_;
+}
+- (void) setHasA:(BOOL) value_ {
+  hasA_ = !!value_;
+}
+@synthesize a;
+- (BOOL) hasB {
+  return !!hasB_;
+}
+- (void) setHasB:(BOOL) value_ {
+  hasB_ = !!value_;
+}
+@synthesize b;
+- (id) init {
+  if ((self = [super init])) {
+    self.a = 0;
+    self.b = @"";
+  }
+  return self;
+}
+static TestOneof2FooGroup* defaultTestOneof2FooGroupInstance = nil;
++ (void) initialize {
+  if (self == [TestOneof2FooGroup class]) {
+    defaultTestOneof2FooGroupInstance = [[TestOneof2FooGroup alloc] init];
+  }
+}
++ (TestOneof2FooGroup*) defaultInstance {
+  return defaultTestOneof2FooGroupInstance;
+}
+- (TestOneof2FooGroup*) defaultInstance {
+  return defaultTestOneof2FooGroupInstance;
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasA) {
+    [output writeInt32:9 value:self.a];
+  }
+  if (self.hasB) {
+    [output writeString:10 value:self.b];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasA) {
+    size_ += computeInt32Size(9, self.a);
+  }
+  if (self.hasB) {
+    size_ += computeStringSize(10, self.b);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneof2FooGroup*) parseFromData:(NSData*) data {
+  return (TestOneof2FooGroup*)[[[TestOneof2FooGroup builder] mergeFromData:data] build];
+}
++ (TestOneof2FooGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2FooGroup*)[[[TestOneof2FooGroup builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2FooGroup*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneof2FooGroup*)[[[TestOneof2FooGroup builder] mergeFromInputStream:input] build];
+}
++ (TestOneof2FooGroup*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2FooGroup*)[[[TestOneof2FooGroup builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2FooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneof2FooGroup*)[[[TestOneof2FooGroup builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneof2FooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2FooGroup*)[[[TestOneof2FooGroup builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2FooGroupBuilder*) builder {
+  return [[TestOneof2FooGroupBuilder alloc] init];
+}
++ (TestOneof2FooGroupBuilder*) builderWithPrototype:(TestOneof2FooGroup*) prototype {
+  return [[TestOneof2FooGroup builder] mergeFrom:prototype];
+}
+- (TestOneof2FooGroupBuilder*) builder {
+  return [TestOneof2FooGroup builder];
+}
+- (TestOneof2FooGroupBuilder*) toBuilder {
+  return [TestOneof2FooGroup builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasA) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"a", [NSNumber numberWithInteger:self.a]];
+  }
+  if (self.hasB) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"b", self.b];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneof2FooGroup class]]) {
+    return NO;
+  }
+  TestOneof2FooGroup *otherMessage = other;
+  return
+      self.hasA == otherMessage.hasA &&
+      (!self.hasA || self.a == otherMessage.a) &&
+      self.hasB == otherMessage.hasB &&
+      (!self.hasB || [self.b isEqual:otherMessage.b]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasA) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.a] hash];
+  }
+  if (self.hasB) {
+    hashCode = hashCode * 31 + [self.b hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestOneof2FooGroupBuilder()
+@property (strong) TestOneof2FooGroup* result;
+@end
+
+@implementation TestOneof2FooGroupBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneof2FooGroup alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneof2FooGroupBuilder*) clear {
+  self.result = [[TestOneof2FooGroup alloc] init];
+  return self;
+}
+- (TestOneof2FooGroupBuilder*) clone {
+  return [TestOneof2FooGroup builderWithPrototype:result];
+}
+- (TestOneof2FooGroup*) defaultInstance {
+  return [TestOneof2FooGroup defaultInstance];
+}
+- (TestOneof2FooGroup*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneof2FooGroup*) buildPartial {
+  TestOneof2FooGroup* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneof2FooGroupBuilder*) mergeFrom:(TestOneof2FooGroup*) other {
+  if (other == [TestOneof2FooGroup defaultInstance]) {
+    return self;
+  }
+  if (other.hasA) {
+    [self setA:other.a];
+  }
+  if (other.hasB) {
+    [self setB:other.b];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneof2FooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneof2FooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 72: {
+        [self setA:[input readInt32]];
+        break;
+      }
+      case 82: {
+        [self setB:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasA {
+  return result.hasA;
+}
+- (SInt32) a {
+  return result.a;
+}
+- (TestOneof2FooGroupBuilder*) setA:(SInt32) value {
+  result.hasA = YES;
+  result.a = value;
+  return self;
+}
+- (TestOneof2FooGroupBuilder*) clearA {
+  result.hasA = NO;
+  result.a = 0;
+  return self;
+}
+- (BOOL) hasB {
+  return result.hasB;
+}
+- (NSString*) b {
+  return result.b;
+}
+- (TestOneof2FooGroupBuilder*) setB:(NSString*) value {
+  result.hasB = YES;
+  result.b = value;
+  return self;
+}
+- (TestOneof2FooGroupBuilder*) clearB {
+  result.hasB = NO;
+  result.b = @"";
+  return self;
+}
+@end
+
+@interface TestOneof2NestedMessage ()
+@property SInt64 quxInt;
+@property (strong) PBAppendableArray * corgeIntArray;
+@end
+
+@implementation TestOneof2NestedMessage
+
+- (BOOL) hasQuxInt {
+  return !!hasQuxInt_;
+}
+- (void) setHasQuxInt:(BOOL) value_ {
+  hasQuxInt_ = !!value_;
+}
+@synthesize quxInt;
+@synthesize corgeIntArray;
+@dynamic corgeInt;
+- (id) init {
+  if ((self = [super init])) {
+    self.quxInt = 0L;
+  }
+  return self;
+}
+static TestOneof2NestedMessage* defaultTestOneof2NestedMessageInstance = nil;
++ (void) initialize {
+  if (self == [TestOneof2NestedMessage class]) {
+    defaultTestOneof2NestedMessageInstance = [[TestOneof2NestedMessage alloc] init];
+  }
+}
++ (TestOneof2NestedMessage*) defaultInstance {
+  return defaultTestOneof2NestedMessageInstance;
+}
+- (TestOneof2NestedMessage*) defaultInstance {
+  return defaultTestOneof2NestedMessageInstance;
+}
+- (PBArray *)corgeInt {
+  return corgeIntArray;
+}
+- (SInt32)corgeIntAtIndex:(NSUInteger)index {
+  return [corgeIntArray int32AtIndex:index];
+}
+- (BOOL) isInitialized {
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasQuxInt) {
+    [output writeInt64:1 value:self.quxInt];
+  }
+  const NSUInteger corgeIntArrayCount = self.corgeIntArray.count;
+  if (corgeIntArrayCount > 0) {
+    const SInt32 *values = (const SInt32 *)self.corgeIntArray.data;
+    for (NSUInteger i = 0; i < corgeIntArrayCount; ++i) {
+      [output writeInt32:2 value:values[i]];
+    }
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasQuxInt) {
+    size_ += computeInt64Size(1, self.quxInt);
+  }
+  {
+    __block SInt32 dataSize = 0;
+    const NSUInteger count = self.corgeIntArray.count;
+    const SInt32 *values = (const SInt32 *)self.corgeIntArray.data;
+    for (NSUInteger i = 0; i < count; ++i) {
+      dataSize += computeInt32SizeNoTag(values[i]);
+    }
+    size_ += dataSize;
+    size_ += (SInt32)(1 * count);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestOneof2NestedMessage*) parseFromData:(NSData*) data {
+  return (TestOneof2NestedMessage*)[[[TestOneof2NestedMessage builder] mergeFromData:data] build];
+}
++ (TestOneof2NestedMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2NestedMessage*)[[[TestOneof2NestedMessage builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2NestedMessage*) parseFromInputStream:(NSInputStream*) input {
+  return (TestOneof2NestedMessage*)[[[TestOneof2NestedMessage builder] mergeFromInputStream:input] build];
+}
++ (TestOneof2NestedMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2NestedMessage*)[[[TestOneof2NestedMessage builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2NestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestOneof2NestedMessage*)[[[TestOneof2NestedMessage builder] mergeFromCodedInputStream:input] build];
+}
++ (TestOneof2NestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestOneof2NestedMessage*)[[[TestOneof2NestedMessage builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestOneof2NestedMessageBuilder*) builder {
+  return [[TestOneof2NestedMessageBuilder alloc] init];
+}
++ (TestOneof2NestedMessageBuilder*) builderWithPrototype:(TestOneof2NestedMessage*) prototype {
+  return [[TestOneof2NestedMessage builder] mergeFrom:prototype];
+}
+- (TestOneof2NestedMessageBuilder*) builder {
+  return [TestOneof2NestedMessage builder];
+}
+- (TestOneof2NestedMessageBuilder*) toBuilder {
+  return [TestOneof2NestedMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasQuxInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"quxInt", [NSNumber numberWithLongLong:self.quxInt]];
+  }
+  [self.corgeIntArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"corgeInt", obj];
+  }];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestOneof2NestedMessage class]]) {
+    return NO;
+  }
+  TestOneof2NestedMessage *otherMessage = other;
+  return
+      self.hasQuxInt == otherMessage.hasQuxInt &&
+      (!self.hasQuxInt || self.quxInt == otherMessage.quxInt) &&
+      [self.corgeIntArray isEqualToArray:otherMessage.corgeIntArray] &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasQuxInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithLongLong:self.quxInt] hash];
+  }
+  [self.corgeIntArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    hashCode = hashCode * 31 + [obj longValue];
+  }];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestOneof2NestedMessageBuilder()
+@property (strong) TestOneof2NestedMessage* result;
+@end
+
+@implementation TestOneof2NestedMessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneof2NestedMessage alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneof2NestedMessageBuilder*) clear {
+  self.result = [[TestOneof2NestedMessage alloc] init];
+  return self;
+}
+- (TestOneof2NestedMessageBuilder*) clone {
+  return [TestOneof2NestedMessage builderWithPrototype:result];
+}
+- (TestOneof2NestedMessage*) defaultInstance {
+  return [TestOneof2NestedMessage defaultInstance];
+}
+- (TestOneof2NestedMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneof2NestedMessage*) buildPartial {
+  TestOneof2NestedMessage* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneof2NestedMessageBuilder*) mergeFrom:(TestOneof2NestedMessage*) other {
+  if (other == [TestOneof2NestedMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasQuxInt) {
+    [self setQuxInt:other.quxInt];
+  }
+  if (other.corgeIntArray.count > 0) {
+    if (result.corgeIntArray == nil) {
+      result.corgeIntArray = [other.corgeIntArray copy];
+    } else {
+      [result.corgeIntArray appendArray:other.corgeIntArray];
+    }
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneof2NestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneof2NestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setQuxInt:[input readInt64]];
+        break;
+      }
+      case 16: {
+        [self addCorgeInt:[input readInt32]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasQuxInt {
+  return result.hasQuxInt;
+}
+- (SInt64) quxInt {
+  return result.quxInt;
+}
+- (TestOneof2NestedMessageBuilder*) setQuxInt:(SInt64) value {
+  result.hasQuxInt = YES;
+  result.quxInt = value;
+  return self;
+}
+- (TestOneof2NestedMessageBuilder*) clearQuxInt {
+  result.hasQuxInt = NO;
+  result.quxInt = 0L;
+  return self;
+}
+- (PBAppendableArray *)corgeInt {
+  return result.corgeIntArray;
+}
+- (SInt32)corgeIntAtIndex:(NSUInteger)index {
+  return [result corgeIntAtIndex:index];
+}
+- (TestOneof2NestedMessageBuilder *)addCorgeInt:(SInt32)value {
+  if (result.corgeIntArray == nil) {
+    result.corgeIntArray = [PBAppendableArray arrayWithValueType:PBArrayValueTypeInt32];
+  }
+  [result.corgeIntArray addInt32:value];
+  return self;
+}
+- (TestOneof2NestedMessageBuilder *)setCorgeIntArray:(NSArray *)array {
+  result.corgeIntArray = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (TestOneof2NestedMessageBuilder *)setCorgeIntValues:(const SInt32 *)values count:(NSUInteger)count {
+  result.corgeIntArray = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeInt32];
+  return self;
+}
+- (TestOneof2NestedMessageBuilder *)clearCorgeInt {
+  result.corgeIntArray = nil;
+  return self;
+}
+@end
+
+@interface TestOneof2Builder()
+@property (strong) TestOneof2* result;
+@end
+
+@implementation TestOneof2Builder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestOneof2 alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestOneof2Builder*) clear {
+  self.result = [[TestOneof2 alloc] init];
+  return self;
+}
+- (TestOneof2Builder*) clone {
+  return [TestOneof2 builderWithPrototype:result];
+}
+- (TestOneof2*) defaultInstance {
+  return [TestOneof2 defaultInstance];
+}
+- (TestOneof2*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestOneof2*) buildPartial {
+  TestOneof2* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestOneof2Builder*) mergeFrom:(TestOneof2*) other {
+  if (other == [TestOneof2 defaultInstance]) {
+    return self;
+  }
+  if (other.hasFooInt) {
+    [self setFooInt:other.fooInt];
+  }
+  if (other.hasFooString) {
+    [self setFooString:other.fooString];
+  }
+  if (other.hasFooCord) {
+    [self setFooCord:other.fooCord];
+  }
+  if (other.hasFooStringPiece) {
+    [self setFooStringPiece:other.fooStringPiece];
+  }
+  if (other.hasFooBytes) {
+    [self setFooBytes:other.fooBytes];
+  }
+  if (other.hasFooEnum) {
+    [self setFooEnum:other.fooEnum];
+  }
+  if (other.hasFooMessage) {
+    [self mergeFooMessage:other.fooMessage];
+  }
+  if (other.hasFooGroup) {
+    [self mergeFooGroup:other.fooGroup];
+  }
+  if (other.hasFooLazyMessage) {
+    [self mergeFooLazyMessage:other.fooLazyMessage];
+  }
+  if (other.hasBarInt) {
+    [self setBarInt:other.barInt];
+  }
+  if (other.hasBarString) {
+    [self setBarString:other.barString];
+  }
+  if (other.hasBarCord) {
+    [self setBarCord:other.barCord];
+  }
+  if (other.hasBarStringPiece) {
+    [self setBarStringPiece:other.barStringPiece];
+  }
+  if (other.hasBarBytes) {
+    [self setBarBytes:other.barBytes];
+  }
+  if (other.hasBarEnum) {
+    [self setBarEnum:other.barEnum];
+  }
+  if (other.hasBazInt) {
+    [self setBazInt:other.bazInt];
+  }
+  if (other.hasBazString) {
+    [self setBazString:other.bazString];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestOneof2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestOneof2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setFooInt:[input readInt32]];
+        break;
+      }
+      case 18: {
+        [self setFooString:[input readString]];
+        break;
+      }
+      case 26: {
+        [self setFooCord:[input readString]];
+        break;
+      }
+      case 34: {
+        [self setFooStringPiece:[input readString]];
+        break;
+      }
+      case 42: {
+        [self setFooBytes:[input readData]];
+        break;
+      }
+      case 48: {
+        TestOneof2NestedEnum value = (TestOneof2NestedEnum)[input readEnum];
+        if (TestOneof2NestedEnumIsValidValue(value)) {
+          [self setFooEnum:value];
+        } else {
+          [unknownFields mergeVarintField:6 value:value];
+        }
+        break;
+      }
+      case 58: {
+        TestOneof2NestedMessageBuilder* subBuilder = [TestOneof2NestedMessage builder];
+        if (self.hasFooMessage) {
+          [subBuilder mergeFrom:self.fooMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 67: {
+        TestOneof2FooGroupBuilder* subBuilder = [TestOneof2FooGroup builder];
+        if (self.hasFooGroup) {
+          [subBuilder mergeFrom:self.fooGroup];
+        }
+        [input readGroup:8 builder:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooGroup:[subBuilder buildPartial]];
+        break;
+      }
+      case 90: {
+        TestOneof2NestedMessageBuilder* subBuilder = [TestOneof2NestedMessage builder];
+        if (self.hasFooLazyMessage) {
+          [subBuilder mergeFrom:self.fooLazyMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooLazyMessage:[subBuilder buildPartial]];
+        break;
+      }
+      case 96: {
+        [self setBarInt:[input readInt32]];
+        break;
+      }
+      case 106: {
+        [self setBarString:[input readString]];
+        break;
+      }
+      case 114: {
+        [self setBarCord:[input readString]];
+        break;
+      }
+      case 122: {
+        [self setBarStringPiece:[input readString]];
+        break;
+      }
+      case 130: {
+        [self setBarBytes:[input readData]];
+        break;
+      }
+      case 136: {
+        TestOneof2NestedEnum value = (TestOneof2NestedEnum)[input readEnum];
+        if (TestOneof2NestedEnumIsValidValue(value)) {
+          [self setBarEnum:value];
+        } else {
+          [unknownFields mergeVarintField:17 value:value];
+        }
+        break;
+      }
+      case 144: {
+        [self setBazInt:[input readInt32]];
+        break;
+      }
+      case 154: {
+        [self setBazString:[input readString]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasFooInt {
+  return result.hasFooInt;
+}
+- (SInt32) fooInt {
+  return result.fooInt;
+}
+- (TestOneof2Builder*) setFooInt:(SInt32) value {
+  result.hasFooInt = YES;
+  result.fooInt = value;
+  return self;
+}
+- (TestOneof2Builder*) clearFooInt {
+  result.hasFooInt = NO;
+  result.fooInt = 0;
+  return self;
+}
+- (BOOL) hasFooString {
+  return result.hasFooString;
+}
+- (NSString*) fooString {
+  return result.fooString;
+}
+- (TestOneof2Builder*) setFooString:(NSString*) value {
+  result.hasFooString = YES;
+  result.fooString = value;
+  return self;
+}
+- (TestOneof2Builder*) clearFooString {
+  result.hasFooString = NO;
+  result.fooString = @"";
+  return self;
+}
+- (BOOL) hasFooCord {
+  return result.hasFooCord;
+}
+- (NSString*) fooCord {
+  return result.fooCord;
+}
+- (TestOneof2Builder*) setFooCord:(NSString*) value {
+  result.hasFooCord = YES;
+  result.fooCord = value;
+  return self;
+}
+- (TestOneof2Builder*) clearFooCord {
+  result.hasFooCord = NO;
+  result.fooCord = @"";
+  return self;
+}
+- (BOOL) hasFooStringPiece {
+  return result.hasFooStringPiece;
+}
+- (NSString*) fooStringPiece {
+  return result.fooStringPiece;
+}
+- (TestOneof2Builder*) setFooStringPiece:(NSString*) value {
+  result.hasFooStringPiece = YES;
+  result.fooStringPiece = value;
+  return self;
+}
+- (TestOneof2Builder*) clearFooStringPiece {
+  result.hasFooStringPiece = NO;
+  result.fooStringPiece = @"";
+  return self;
+}
+- (BOOL) hasFooBytes {
+  return result.hasFooBytes;
+}
+- (NSData*) fooBytes {
+  return result.fooBytes;
+}
+- (TestOneof2Builder*) setFooBytes:(NSData*) value {
+  result.hasFooBytes = YES;
+  result.fooBytes = value;
+  return self;
+}
+- (TestOneof2Builder*) clearFooBytes {
+  result.hasFooBytes = NO;
+  result.fooBytes = [NSData data];
+  return self;
+}
+- (BOOL) hasFooEnum {
+  return result.hasFooEnum;
+}
+- (TestOneof2NestedEnum) fooEnum {
+  return result.fooEnum;
+}
+- (TestOneof2Builder*) setFooEnum:(TestOneof2NestedEnum) value {
+  result.hasFooEnum = YES;
+  result.fooEnum = value;
+  return self;
+}
+- (TestOneof2Builder*) clearFooEnum {
+  result.hasFooEnum = NO;
+  result.fooEnum = TestOneof2NestedEnumFoo;
+  return self;
+}
+- (BOOL) hasFooMessage {
+  return result.hasFooMessage;
+}
+- (TestOneof2NestedMessage*) fooMessage {
+  return result.fooMessage;
+}
+- (TestOneof2Builder*) setFooMessage:(TestOneof2NestedMessage*) value {
+  result.hasFooMessage = YES;
+  result.fooMessage = value;
+  return self;
+}
+- (TestOneof2Builder*) setFooMessageBuilder:(TestOneof2NestedMessageBuilder*) builderForValue {
+  return [self setFooMessage:[builderForValue build]];
+}
+- (TestOneof2Builder*) mergeFooMessage:(TestOneof2NestedMessage*) value {
+  if (result.hasFooMessage &&
+      result.fooMessage != [TestOneof2NestedMessage defaultInstance]) {
+    result.fooMessage =
+      [[[TestOneof2NestedMessage builderWithPrototype:result.fooMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.fooMessage = value;
+  }
+  result.hasFooMessage = YES;
+  return self;
+}
+- (TestOneof2Builder*) clearFooMessage {
+  result.hasFooMessage = NO;
+  result.fooMessage = [TestOneof2NestedMessage defaultInstance];
+  return self;
+}
+- (BOOL) hasFooGroup {
+  return result.hasFooGroup;
+}
+- (TestOneof2FooGroup*) fooGroup {
+  return result.fooGroup;
+}
+- (TestOneof2Builder*) setFooGroup:(TestOneof2FooGroup*) value {
+  result.hasFooGroup = YES;
+  result.fooGroup = value;
+  return self;
+}
+- (TestOneof2Builder*) setFooGroupBuilder:(TestOneof2FooGroupBuilder*) builderForValue {
+  return [self setFooGroup:[builderForValue build]];
+}
+- (TestOneof2Builder*) mergeFooGroup:(TestOneof2FooGroup*) value {
+  if (result.hasFooGroup &&
+      result.fooGroup != [TestOneof2FooGroup defaultInstance]) {
+    result.fooGroup =
+      [[[TestOneof2FooGroup builderWithPrototype:result.fooGroup] mergeFrom:value] buildPartial];
+  } else {
+    result.fooGroup = value;
+  }
+  result.hasFooGroup = YES;
+  return self;
+}
+- (TestOneof2Builder*) clearFooGroup {
+  result.hasFooGroup = NO;
+  result.fooGroup = [TestOneof2FooGroup defaultInstance];
+  return self;
+}
+- (BOOL) hasFooLazyMessage {
+  return result.hasFooLazyMessage;
+}
+- (TestOneof2NestedMessage*) fooLazyMessage {
+  return result.fooLazyMessage;
+}
+- (TestOneof2Builder*) setFooLazyMessage:(TestOneof2NestedMessage*) value {
+  result.hasFooLazyMessage = YES;
+  result.fooLazyMessage = value;
+  return self;
+}
+- (TestOneof2Builder*) setFooLazyMessageBuilder:(TestOneof2NestedMessageBuilder*) builderForValue {
+  return [self setFooLazyMessage:[builderForValue build]];
+}
+- (TestOneof2Builder*) mergeFooLazyMessage:(TestOneof2NestedMessage*) value {
+  if (result.hasFooLazyMessage &&
+      result.fooLazyMessage != [TestOneof2NestedMessage defaultInstance]) {
+    result.fooLazyMessage =
+      [[[TestOneof2NestedMessage builderWithPrototype:result.fooLazyMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.fooLazyMessage = value;
+  }
+  result.hasFooLazyMessage = YES;
+  return self;
+}
+- (TestOneof2Builder*) clearFooLazyMessage {
+  result.hasFooLazyMessage = NO;
+  result.fooLazyMessage = [TestOneof2NestedMessage defaultInstance];
+  return self;
+}
+- (BOOL) hasBarInt {
+  return result.hasBarInt;
+}
+- (SInt32) barInt {
+  return result.barInt;
+}
+- (TestOneof2Builder*) setBarInt:(SInt32) value {
+  result.hasBarInt = YES;
+  result.barInt = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBarInt {
+  result.hasBarInt = NO;
+  result.barInt = 5;
+  return self;
+}
+- (BOOL) hasBarString {
+  return result.hasBarString;
+}
+- (NSString*) barString {
+  return result.barString;
+}
+- (TestOneof2Builder*) setBarString:(NSString*) value {
+  result.hasBarString = YES;
+  result.barString = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBarString {
+  result.hasBarString = NO;
+  result.barString = @"STRING";
+  return self;
+}
+- (BOOL) hasBarCord {
+  return result.hasBarCord;
+}
+- (NSString*) barCord {
+  return result.barCord;
+}
+- (TestOneof2Builder*) setBarCord:(NSString*) value {
+  result.hasBarCord = YES;
+  result.barCord = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBarCord {
+  result.hasBarCord = NO;
+  result.barCord = @"CORD";
+  return self;
+}
+- (BOOL) hasBarStringPiece {
+  return result.hasBarStringPiece;
+}
+- (NSString*) barStringPiece {
+  return result.barStringPiece;
+}
+- (TestOneof2Builder*) setBarStringPiece:(NSString*) value {
+  result.hasBarStringPiece = YES;
+  result.barStringPiece = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBarStringPiece {
+  result.hasBarStringPiece = NO;
+  result.barStringPiece = @"SPIECE";
+  return self;
+}
+- (BOOL) hasBarBytes {
+  return result.hasBarBytes;
+}
+- (NSData*) barBytes {
+  return result.barBytes;
+}
+- (TestOneof2Builder*) setBarBytes:(NSData*) value {
+  result.hasBarBytes = YES;
+  result.barBytes = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBarBytes {
+  result.hasBarBytes = NO;
+  result.barBytes = [NSData dataWithBytes:"BYTES" length:5];
+  return self;
+}
+- (BOOL) hasBarEnum {
+  return result.hasBarEnum;
+}
+- (TestOneof2NestedEnum) barEnum {
+  return result.barEnum;
+}
+- (TestOneof2Builder*) setBarEnum:(TestOneof2NestedEnum) value {
+  result.hasBarEnum = YES;
+  result.barEnum = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBarEnum {
+  result.hasBarEnum = NO;
+  result.barEnum = TestOneof2NestedEnumBar;
+  return self;
+}
+- (BOOL) hasBazInt {
+  return result.hasBazInt;
+}
+- (SInt32) bazInt {
+  return result.bazInt;
+}
+- (TestOneof2Builder*) setBazInt:(SInt32) value {
+  result.hasBazInt = YES;
+  result.bazInt = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBazInt {
+  result.hasBazInt = NO;
+  result.bazInt = 0;
+  return self;
+}
+- (BOOL) hasBazString {
+  return result.hasBazString;
+}
+- (NSString*) bazString {
+  return result.bazString;
+}
+- (TestOneof2Builder*) setBazString:(NSString*) value {
+  result.hasBazString = YES;
+  result.bazString = value;
+  return self;
+}
+- (TestOneof2Builder*) clearBazString {
+  result.hasBazString = NO;
+  result.bazString = @"BAZ";
+  return self;
+}
+@end
+
+@interface TestRequiredOneof ()
+@property SInt32 fooInt;
+@property (strong) NSString* fooString;
+@property (strong) TestRequiredOneofNestedMessage* fooMessage;
+@end
+
+@implementation TestRequiredOneof
+
+- (BOOL) hasFooInt {
+  return !!hasFooInt_;
+}
+- (void) setHasFooInt:(BOOL) value_ {
+  hasFooInt_ = !!value_;
+}
+@synthesize fooInt;
+- (BOOL) hasFooString {
+  return !!hasFooString_;
+}
+- (void) setHasFooString:(BOOL) value_ {
+  hasFooString_ = !!value_;
+}
+@synthesize fooString;
+- (BOOL) hasFooMessage {
+  return !!hasFooMessage_;
+}
+- (void) setHasFooMessage:(BOOL) value_ {
+  hasFooMessage_ = !!value_;
+}
+@synthesize fooMessage;
+- (id) init {
+  if ((self = [super init])) {
+    self.fooInt = 0;
+    self.fooString = @"";
+    self.fooMessage = [TestRequiredOneofNestedMessage defaultInstance];
+  }
+  return self;
+}
+static TestRequiredOneof* defaultTestRequiredOneofInstance = nil;
++ (void) initialize {
+  if (self == [TestRequiredOneof class]) {
+    defaultTestRequiredOneofInstance = [[TestRequiredOneof alloc] init];
+  }
+}
++ (TestRequiredOneof*) defaultInstance {
+  return defaultTestRequiredOneofInstance;
+}
+- (TestRequiredOneof*) defaultInstance {
+  return defaultTestRequiredOneofInstance;
+}
+- (BOOL) isInitialized {
+  if (self.hasFooMessage) {
+    if (!self.fooMessage.isInitialized) {
+      return NO;
+    }
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasFooInt) {
+    [output writeInt32:1 value:self.fooInt];
+  }
+  if (self.hasFooString) {
+    [output writeString:2 value:self.fooString];
+  }
+  if (self.hasFooMessage) {
+    [output writeMessage:3 value:self.fooMessage];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasFooInt) {
+    size_ += computeInt32Size(1, self.fooInt);
+  }
+  if (self.hasFooString) {
+    size_ += computeStringSize(2, self.fooString);
+  }
+  if (self.hasFooMessage) {
+    size_ += computeMessageSize(3, self.fooMessage);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestRequiredOneof*) parseFromData:(NSData*) data {
+  return (TestRequiredOneof*)[[[TestRequiredOneof builder] mergeFromData:data] build];
+}
++ (TestRequiredOneof*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestRequiredOneof*)[[[TestRequiredOneof builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestRequiredOneof*) parseFromInputStream:(NSInputStream*) input {
+  return (TestRequiredOneof*)[[[TestRequiredOneof builder] mergeFromInputStream:input] build];
+}
++ (TestRequiredOneof*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestRequiredOneof*)[[[TestRequiredOneof builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestRequiredOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestRequiredOneof*)[[[TestRequiredOneof builder] mergeFromCodedInputStream:input] build];
+}
++ (TestRequiredOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestRequiredOneof*)[[[TestRequiredOneof builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestRequiredOneofBuilder*) builder {
+  return [[TestRequiredOneofBuilder alloc] init];
+}
++ (TestRequiredOneofBuilder*) builderWithPrototype:(TestRequiredOneof*) prototype {
+  return [[TestRequiredOneof builder] mergeFrom:prototype];
+}
+- (TestRequiredOneofBuilder*) builder {
+  return [TestRequiredOneof builder];
+}
+- (TestRequiredOneofBuilder*) toBuilder {
+  return [TestRequiredOneof builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasFooInt) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooInt", [NSNumber numberWithInteger:self.fooInt]];
+  }
+  if (self.hasFooString) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"fooString", self.fooString];
+  }
+  if (self.hasFooMessage) {
+    [output appendFormat:@"%@%@ {\n", indent, @"fooMessage"];
+    [self.fooMessage writeDescriptionTo:output
+                         withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+    [output appendFormat:@"%@}\n", indent];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRequiredOneof class]]) {
+    return NO;
+  }
+  TestRequiredOneof *otherMessage = other;
+  return
+      self.hasFooInt == otherMessage.hasFooInt &&
+      (!self.hasFooInt || self.fooInt == otherMessage.fooInt) &&
+      self.hasFooString == otherMessage.hasFooString &&
+      (!self.hasFooString || [self.fooString isEqual:otherMessage.fooString]) &&
+      self.hasFooMessage == otherMessage.hasFooMessage &&
+      (!self.hasFooMessage || [self.fooMessage isEqual:otherMessage.fooMessage]) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasFooInt) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.fooInt] hash];
+  }
+  if (self.hasFooString) {
+    hashCode = hashCode * 31 + [self.fooString hash];
+  }
+  if (self.hasFooMessage) {
+    hashCode = hashCode * 31 + [self.fooMessage hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestRequiredOneofNestedMessage ()
+@property Float64 requiredDouble;
+@end
+
+@implementation TestRequiredOneofNestedMessage
+
+- (BOOL) hasRequiredDouble {
+  return !!hasRequiredDouble_;
+}
+- (void) setHasRequiredDouble:(BOOL) value_ {
+  hasRequiredDouble_ = !!value_;
+}
+@synthesize requiredDouble;
+- (id) init {
+  if ((self = [super init])) {
+    self.requiredDouble = 0;
+  }
+  return self;
+}
+static TestRequiredOneofNestedMessage* defaultTestRequiredOneofNestedMessageInstance = nil;
++ (void) initialize {
+  if (self == [TestRequiredOneofNestedMessage class]) {
+    defaultTestRequiredOneofNestedMessageInstance = [[TestRequiredOneofNestedMessage alloc] init];
+  }
+}
++ (TestRequiredOneofNestedMessage*) defaultInstance {
+  return defaultTestRequiredOneofNestedMessageInstance;
+}
+- (TestRequiredOneofNestedMessage*) defaultInstance {
+  return defaultTestRequiredOneofNestedMessageInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.hasRequiredDouble) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  if (self.hasRequiredDouble) {
+    [output writeDouble:1 value:self.requiredDouble];
+  }
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  if (self.hasRequiredDouble) {
+    size_ += computeDoubleSize(1, self.requiredDouble);
+  }
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestRequiredOneofNestedMessage*) parseFromData:(NSData*) data {
+  return (TestRequiredOneofNestedMessage*)[[[TestRequiredOneofNestedMessage builder] mergeFromData:data] build];
+}
++ (TestRequiredOneofNestedMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestRequiredOneofNestedMessage*)[[[TestRequiredOneofNestedMessage builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestRequiredOneofNestedMessage*) parseFromInputStream:(NSInputStream*) input {
+  return (TestRequiredOneofNestedMessage*)[[[TestRequiredOneofNestedMessage builder] mergeFromInputStream:input] build];
+}
++ (TestRequiredOneofNestedMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestRequiredOneofNestedMessage*)[[[TestRequiredOneofNestedMessage builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestRequiredOneofNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestRequiredOneofNestedMessage*)[[[TestRequiredOneofNestedMessage builder] mergeFromCodedInputStream:input] build];
+}
++ (TestRequiredOneofNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestRequiredOneofNestedMessage*)[[[TestRequiredOneofNestedMessage builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestRequiredOneofNestedMessageBuilder*) builder {
+  return [[TestRequiredOneofNestedMessageBuilder alloc] init];
+}
++ (TestRequiredOneofNestedMessageBuilder*) builderWithPrototype:(TestRequiredOneofNestedMessage*) prototype {
+  return [[TestRequiredOneofNestedMessage builder] mergeFrom:prototype];
+}
+- (TestRequiredOneofNestedMessageBuilder*) builder {
+  return [TestRequiredOneofNestedMessage builder];
+}
+- (TestRequiredOneofNestedMessageBuilder*) toBuilder {
+  return [TestRequiredOneofNestedMessage builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  if (self.hasRequiredDouble) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"requiredDouble", [NSNumber numberWithDouble:self.requiredDouble]];
+  }
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestRequiredOneofNestedMessage class]]) {
+    return NO;
+  }
+  TestRequiredOneofNestedMessage *otherMessage = other;
+  return
+      self.hasRequiredDouble == otherMessage.hasRequiredDouble &&
+      (!self.hasRequiredDouble || self.requiredDouble == otherMessage.requiredDouble) &&
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  if (self.hasRequiredDouble) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithDouble:self.requiredDouble] hash];
+  }
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestRequiredOneofNestedMessageBuilder()
+@property (strong) TestRequiredOneofNestedMessage* result;
+@end
+
+@implementation TestRequiredOneofNestedMessageBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestRequiredOneofNestedMessage alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestRequiredOneofNestedMessageBuilder*) clear {
+  self.result = [[TestRequiredOneofNestedMessage alloc] init];
+  return self;
+}
+- (TestRequiredOneofNestedMessageBuilder*) clone {
+  return [TestRequiredOneofNestedMessage builderWithPrototype:result];
+}
+- (TestRequiredOneofNestedMessage*) defaultInstance {
+  return [TestRequiredOneofNestedMessage defaultInstance];
+}
+- (TestRequiredOneofNestedMessage*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestRequiredOneofNestedMessage*) buildPartial {
+  TestRequiredOneofNestedMessage* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestRequiredOneofNestedMessageBuilder*) mergeFrom:(TestRequiredOneofNestedMessage*) other {
+  if (other == [TestRequiredOneofNestedMessage defaultInstance]) {
+    return self;
+  }
+  if (other.hasRequiredDouble) {
+    [self setRequiredDouble:other.requiredDouble];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestRequiredOneofNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestRequiredOneofNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 9: {
+        [self setRequiredDouble:[input readDouble]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasRequiredDouble {
+  return result.hasRequiredDouble;
+}
+- (Float64) requiredDouble {
+  return result.requiredDouble;
+}
+- (TestRequiredOneofNestedMessageBuilder*) setRequiredDouble:(Float64) value {
+  result.hasRequiredDouble = YES;
+  result.requiredDouble = value;
+  return self;
+}
+- (TestRequiredOneofNestedMessageBuilder*) clearRequiredDouble {
+  result.hasRequiredDouble = NO;
+  result.requiredDouble = 0;
+  return self;
+}
+@end
+
+@interface TestRequiredOneofBuilder()
+@property (strong) TestRequiredOneof* result;
+@end
+
+@implementation TestRequiredOneofBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestRequiredOneof alloc] init];
+  }
+  return self;
+}
+- (PBGeneratedMessage*) internalGetResult {
+  return result;
+}
+- (TestRequiredOneofBuilder*) clear {
+  self.result = [[TestRequiredOneof alloc] init];
+  return self;
+}
+- (TestRequiredOneofBuilder*) clone {
+  return [TestRequiredOneof builderWithPrototype:result];
+}
+- (TestRequiredOneof*) defaultInstance {
+  return [TestRequiredOneof defaultInstance];
+}
+- (TestRequiredOneof*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestRequiredOneof*) buildPartial {
+  TestRequiredOneof* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestRequiredOneofBuilder*) mergeFrom:(TestRequiredOneof*) other {
+  if (other == [TestRequiredOneof defaultInstance]) {
+    return self;
+  }
+  if (other.hasFooInt) {
+    [self setFooInt:other.fooInt];
+  }
+  if (other.hasFooString) {
+    [self setFooString:other.fooString];
+  }
+  if (other.hasFooMessage) {
+    [self mergeFooMessage:other.fooMessage];
+  }
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestRequiredOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestRequiredOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+      case 8: {
+        [self setFooInt:[input readInt32]];
+        break;
+      }
+      case 18: {
+        [self setFooString:[input readString]];
+        break;
+      }
+      case 26: {
+        TestRequiredOneofNestedMessageBuilder* subBuilder = [TestRequiredOneofNestedMessage builder];
+        if (self.hasFooMessage) {
+          [subBuilder mergeFrom:self.fooMessage];
+        }
+        [input readMessage:subBuilder extensionRegistry:extensionRegistry];
+        [self setFooMessage:[subBuilder buildPartial]];
+        break;
+      }
+    }
+  }
+}
+- (BOOL) hasFooInt {
+  return result.hasFooInt;
+}
+- (SInt32) fooInt {
+  return result.fooInt;
+}
+- (TestRequiredOneofBuilder*) setFooInt:(SInt32) value {
+  result.hasFooInt = YES;
+  result.fooInt = value;
+  return self;
+}
+- (TestRequiredOneofBuilder*) clearFooInt {
+  result.hasFooInt = NO;
+  result.fooInt = 0;
+  return self;
+}
+- (BOOL) hasFooString {
+  return result.hasFooString;
+}
+- (NSString*) fooString {
+  return result.fooString;
+}
+- (TestRequiredOneofBuilder*) setFooString:(NSString*) value {
+  result.hasFooString = YES;
+  result.fooString = value;
+  return self;
+}
+- (TestRequiredOneofBuilder*) clearFooString {
+  result.hasFooString = NO;
+  result.fooString = @"";
+  return self;
+}
+- (BOOL) hasFooMessage {
+  return result.hasFooMessage;
+}
+- (TestRequiredOneofNestedMessage*) fooMessage {
+  return result.fooMessage;
+}
+- (TestRequiredOneofBuilder*) setFooMessage:(TestRequiredOneofNestedMessage*) value {
+  result.hasFooMessage = YES;
+  result.fooMessage = value;
+  return self;
+}
+- (TestRequiredOneofBuilder*) setFooMessageBuilder:(TestRequiredOneofNestedMessageBuilder*) builderForValue {
+  return [self setFooMessage:[builderForValue build]];
+}
+- (TestRequiredOneofBuilder*) mergeFooMessage:(TestRequiredOneofNestedMessage*) value {
+  if (result.hasFooMessage &&
+      result.fooMessage != [TestRequiredOneofNestedMessage defaultInstance]) {
+    result.fooMessage =
+      [[[TestRequiredOneofNestedMessage builderWithPrototype:result.fooMessage] mergeFrom:value] buildPartial];
+  } else {
+    result.fooMessage = value;
+  }
+  result.hasFooMessage = YES;
+  return self;
+}
+- (TestRequiredOneofBuilder*) clearFooMessage {
+  result.hasFooMessage = NO;
+  result.fooMessage = [TestRequiredOneofNestedMessage defaultInstance];
   return self;
 }
 @end
@@ -18668,6 +23797,175 @@ static TestPackedExtensions* defaultTestPackedExtensionsInstance = nil;
   return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
 }
 - (TestPackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
+  while (YES) {
+    SInt32 tag = [input readTag];
+    switch (tag) {
+      case 0:
+        [self setUnknownFields:[unknownFields build]];
+        return self;
+      default: {
+        if (![self parseUnknownField:input unknownFields:unknownFields extensionRegistry:extensionRegistry tag:tag]) {
+          [self setUnknownFields:[unknownFields build]];
+          return self;
+        }
+        break;
+      }
+    }
+  }
+}
+@end
+
+@interface TestUnpackedExtensions ()
+@end
+
+@implementation TestUnpackedExtensions
+
+- (id) init {
+  if ((self = [super init])) {
+  }
+  return self;
+}
+static TestUnpackedExtensions* defaultTestUnpackedExtensionsInstance = nil;
++ (void) initialize {
+  if (self == [TestUnpackedExtensions class]) {
+    defaultTestUnpackedExtensionsInstance = [[TestUnpackedExtensions alloc] init];
+  }
+}
++ (TestUnpackedExtensions*) defaultInstance {
+  return defaultTestUnpackedExtensionsInstance;
+}
+- (TestUnpackedExtensions*) defaultInstance {
+  return defaultTestUnpackedExtensionsInstance;
+}
+- (BOOL) isInitialized {
+  if (!self.extensionsAreInitialized) {
+    return NO;
+  }
+  return YES;
+}
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output {
+  [self writeExtensionsToCodedOutputStream:output
+                                      from:1
+                                        to:536870912];
+  [self.unknownFields writeToCodedOutputStream:output];
+}
+- (SInt32) serializedSize {
+  __block SInt32 size_ = memoizedSerializedSize;
+  if (size_ != -1) {
+    return size_;
+  }
+
+  size_ = 0;
+  size_ += [self extensionsSerializedSize];
+  size_ += self.unknownFields.serializedSize;
+  memoizedSerializedSize = size_;
+  return size_;
+}
++ (TestUnpackedExtensions*) parseFromData:(NSData*) data {
+  return (TestUnpackedExtensions*)[[[TestUnpackedExtensions builder] mergeFromData:data] build];
+}
++ (TestUnpackedExtensions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestUnpackedExtensions*)[[[TestUnpackedExtensions builder] mergeFromData:data extensionRegistry:extensionRegistry] build];
+}
++ (TestUnpackedExtensions*) parseFromInputStream:(NSInputStream*) input {
+  return (TestUnpackedExtensions*)[[[TestUnpackedExtensions builder] mergeFromInputStream:input] build];
+}
++ (TestUnpackedExtensions*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestUnpackedExtensions*)[[[TestUnpackedExtensions builder] mergeFromInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestUnpackedExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input {
+  return (TestUnpackedExtensions*)[[[TestUnpackedExtensions builder] mergeFromCodedInputStream:input] build];
+}
++ (TestUnpackedExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
+  return (TestUnpackedExtensions*)[[[TestUnpackedExtensions builder] mergeFromCodedInputStream:input extensionRegistry:extensionRegistry] build];
+}
++ (TestUnpackedExtensionsBuilder*) builder {
+  return [[TestUnpackedExtensionsBuilder alloc] init];
+}
++ (TestUnpackedExtensionsBuilder*) builderWithPrototype:(TestUnpackedExtensions*) prototype {
+  return [[TestUnpackedExtensions builder] mergeFrom:prototype];
+}
+- (TestUnpackedExtensionsBuilder*) builder {
+  return [TestUnpackedExtensions builder];
+}
+- (TestUnpackedExtensionsBuilder*) toBuilder {
+  return [TestUnpackedExtensions builderWithPrototype:self];
+}
+- (void) writeDescriptionTo:(NSMutableString*) output withIndent:(NSString*) indent {
+  [self writeExtensionDescriptionToMutableString:(NSMutableString*)output
+                                            from:1
+                                              to:536870912
+                                      withIndent:indent];
+  [self.unknownFields writeDescriptionTo:output withIndent:indent];
+}
+- (BOOL) isEqual:(id)other {
+  if (other == self) {
+    return YES;
+  }
+  if (![other isKindOfClass:[TestUnpackedExtensions class]]) {
+    return NO;
+  }
+  TestUnpackedExtensions *otherMessage = other;
+  return
+      [self isEqualExtensionsInOther:otherMessage from:1 to:536870912] &&
+
+      (self.unknownFields == otherMessage.unknownFields || (self.unknownFields != nil && [self.unknownFields isEqual:otherMessage.unknownFields]));
+}
+- (NSUInteger) hash {
+  __block NSUInteger hashCode = 7;
+  hashCode = hashCode * 31 + [self hashExtensionsFrom:1 to:536870912];
+  hashCode = hashCode * 31 + [self.unknownFields hash];
+  return hashCode;
+}
+@end
+
+@interface TestUnpackedExtensionsBuilder()
+@property (strong) TestUnpackedExtensions* result;
+@end
+
+@implementation TestUnpackedExtensionsBuilder
+@synthesize result;
+- (id) init {
+  if ((self = [super init])) {
+    self.result = [[TestUnpackedExtensions alloc] init];
+  }
+  return self;
+}
+- (PBExtendableMessage*) internalGetResult {
+  return result;
+}
+- (TestUnpackedExtensionsBuilder*) clear {
+  self.result = [[TestUnpackedExtensions alloc] init];
+  return self;
+}
+- (TestUnpackedExtensionsBuilder*) clone {
+  return [TestUnpackedExtensions builderWithPrototype:result];
+}
+- (TestUnpackedExtensions*) defaultInstance {
+  return [TestUnpackedExtensions defaultInstance];
+}
+- (TestUnpackedExtensions*) build {
+  [self checkInitialized];
+  return [self buildPartial];
+}
+- (TestUnpackedExtensions*) buildPartial {
+  TestUnpackedExtensions* returnMe = result;
+  self.result = nil;
+  return returnMe;
+}
+- (TestUnpackedExtensionsBuilder*) mergeFrom:(TestUnpackedExtensions*) other {
+  if (other == [TestUnpackedExtensions defaultInstance]) {
+    return self;
+  }
+  [self mergeExtensionFields:other];
+  [self mergeUnknownFields:other.unknownFields];
+  return self;
+}
+- (TestUnpackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {
+  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];
+}
+- (TestUnpackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];
   while (YES) {
     SInt32 tag = [input readTag];

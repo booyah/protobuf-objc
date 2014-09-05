@@ -75,6 +75,8 @@
 @class PBMethodDescriptorProtoBuilder;
 @class PBMethodOptions;
 @class PBMethodOptionsBuilder;
+@class PBOneofDescriptorProto;
+@class PBOneofDescriptorProtoBuilder;
 @class PBServiceDescriptorProto;
 @class PBServiceDescriptorProtoBuilder;
 @class PBServiceOptions;
@@ -684,6 +686,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
   SInt32 foo;
   SInt32 foo2;
   SInt32 foo3;
+  PBAppendableArray * foo4Array;
 }
 - (BOOL) hasFoo;
 - (BOOL) hasFoo2;
@@ -691,6 +694,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @property (readonly) SInt32 foo;
 @property (readonly) SInt32 foo2;
 @property (readonly) SInt32 foo3;
+@property (readonly, strong) PBArray * foo4;
+- (SInt32)foo4AtIndex:(NSUInteger)index;
 
 + (ComplexOptionType1*) defaultInstance;
 - (ComplexOptionType1*) defaultInstance;
@@ -741,6 +746,13 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (SInt32) foo3;
 - (ComplexOptionType1Builder*) setFoo3:(SInt32) value;
 - (ComplexOptionType1Builder*) clearFoo3;
+
+- (PBAppendableArray *)foo4;
+- (SInt32)foo4AtIndex:(NSUInteger)index;
+- (ComplexOptionType1Builder *)addFoo4:(SInt32)value;
+- (ComplexOptionType1Builder *)setFoo4Array:(NSArray *)array;
+- (ComplexOptionType1Builder *)setFoo4Values:(const SInt32 *)values count:(NSUInteger)count;
+- (ComplexOptionType1Builder *)clearFoo4;
 @end
 
 @interface ComplexOptionType2 : PBExtendableMessage {
@@ -751,6 +763,7 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
   SInt32 baz;
   ComplexOptionType1* bar;
   ComplexOptionType2ComplexOptionType4* fred;
+  NSMutableArray * barneyArray;
 }
 - (BOOL) hasBar;
 - (BOOL) hasBaz;
@@ -758,6 +771,8 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 @property (readonly, strong) ComplexOptionType1* bar;
 @property (readonly) SInt32 baz;
 @property (readonly, strong) ComplexOptionType2ComplexOptionType4* fred;
+@property (readonly, strong) NSArray * barney;
+- (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index;
 
 + (ComplexOptionType2*) defaultInstance;
 - (ComplexOptionType2*) defaultInstance;
@@ -862,6 +877,12 @@ BOOL NestedOptionTypeNestedEnumIsValidValue(NestedOptionTypeNestedEnum value);
 - (ComplexOptionType2Builder*) setFredBuilder:(ComplexOptionType2ComplexOptionType4Builder*) builderForValue;
 - (ComplexOptionType2Builder*) mergeFred:(ComplexOptionType2ComplexOptionType4*) value;
 - (ComplexOptionType2Builder*) clearFred;
+
+- (NSMutableArray *)barney;
+- (ComplexOptionType2ComplexOptionType4*)barneyAtIndex:(NSUInteger)index;
+- (ComplexOptionType2Builder *)addBarney:(ComplexOptionType2ComplexOptionType4*)value;
+- (ComplexOptionType2Builder *)setBarneyArray:(NSArray *)array;
+- (ComplexOptionType2Builder *)clearBarney;
 @end
 
 @interface ComplexOptionType3 : PBGeneratedMessage {

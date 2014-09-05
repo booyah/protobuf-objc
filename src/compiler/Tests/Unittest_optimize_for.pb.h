@@ -9,6 +9,8 @@
 @class BarRequestBuilder;
 @class BarResponse;
 @class BarResponseBuilder;
+@class BoolMessage;
+@class BoolMessageBuilder;
 @class FooClientMessage;
 @class FooClientMessageBuilder;
 @class FooRequest;
@@ -21,10 +23,16 @@
 @class ForeignMessageBuilder;
 @class ImportMessage;
 @class ImportMessageBuilder;
+@class Int32Message;
+@class Int32MessageBuilder;
+@class Int64Message;
+@class Int64MessageBuilder;
 @class MoreBytes;
 @class MoreBytesBuilder;
 @class MoreString;
 @class MoreStringBuilder;
+@class NestedTestAllTypes;
+@class NestedTestAllTypesBuilder;
 @class OneBytes;
 @class OneBytesBuilder;
 @class OneString;
@@ -89,6 +97,20 @@
 @class TestNestedMessageHasBitsBuilder;
 @class TestNestedMessageHasBitsNestedMessage;
 @class TestNestedMessageHasBitsNestedMessageBuilder;
+@class TestOneof;
+@class TestOneof2;
+@class TestOneof2Builder;
+@class TestOneof2FooGroup;
+@class TestOneof2FooGroupBuilder;
+@class TestOneof2NestedMessage;
+@class TestOneof2NestedMessageBuilder;
+@class TestOneofBackwardsCompatible;
+@class TestOneofBackwardsCompatibleBuilder;
+@class TestOneofBackwardsCompatibleFooGroup;
+@class TestOneofBackwardsCompatibleFooGroupBuilder;
+@class TestOneofBuilder;
+@class TestOneofFooGroup;
+@class TestOneofFooGroupBuilder;
 @class TestOptimizedForSize;
 @class TestOptimizedForSizeBuilder;
 @class TestOptionalOptimizedForSize;
@@ -119,10 +141,20 @@
 @class TestRequiredBuilder;
 @class TestRequiredForeign;
 @class TestRequiredForeignBuilder;
+@class TestRequiredOneof;
+@class TestRequiredOneofBuilder;
+@class TestRequiredOneofNestedMessage;
+@class TestRequiredOneofNestedMessageBuilder;
 @class TestRequiredOptimizedForSize;
 @class TestRequiredOptimizedForSizeBuilder;
+@class TestUnpackedExtensions;
+@class TestUnpackedExtensionsBuilder;
 @class TestUnpackedTypes;
 @class TestUnpackedTypesBuilder;
+@class Uint32Message;
+@class Uint32MessageBuilder;
+@class Uint64Message;
+@class Uint64MessageBuilder;
 #ifndef __has_feature
   #define __has_feature(x) 0 // Compatibility with non-clang compilers.
 #endif // __has_feature
@@ -145,14 +177,22 @@
 @interface TestOptimizedForSize : PBExtendableMessage {
 @private
   BOOL hasI_:1;
+  BOOL hasIntegerField_:1;
+  BOOL hasStringField_:1;
   BOOL hasMsg_:1;
   SInt32 i;
+  SInt32 integerField;
+  NSString* stringField;
   ForeignMessage* msg;
 }
 - (BOOL) hasI;
 - (BOOL) hasMsg;
+- (BOOL) hasIntegerField;
+- (BOOL) hasStringField;
 @property (readonly) SInt32 i;
 @property (readonly, strong) ForeignMessage* msg;
+@property (readonly) SInt32 integerField;
+@property (readonly, strong) NSString* stringField;
 
 + (TestOptimizedForSize*) defaultInstance;
 - (TestOptimizedForSize*) defaultInstance;
@@ -202,6 +242,16 @@
 - (TestOptimizedForSizeBuilder*) setMsgBuilder:(ForeignMessageBuilder*) builderForValue;
 - (TestOptimizedForSizeBuilder*) mergeMsg:(ForeignMessage*) value;
 - (TestOptimizedForSizeBuilder*) clearMsg;
+
+- (BOOL) hasIntegerField;
+- (SInt32) integerField;
+- (TestOptimizedForSizeBuilder*) setIntegerField:(SInt32) value;
+- (TestOptimizedForSizeBuilder*) clearIntegerField;
+
+- (BOOL) hasStringField;
+- (NSString*) stringField;
+- (TestOptimizedForSizeBuilder*) setStringField:(NSString*) value;
+- (TestOptimizedForSizeBuilder*) clearStringField;
 @end
 
 @interface TestRequiredOptimizedForSize : PBGeneratedMessage {

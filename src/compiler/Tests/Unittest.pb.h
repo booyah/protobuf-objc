@@ -9,6 +9,8 @@
 @class BarRequestBuilder;
 @class BarResponse;
 @class BarResponseBuilder;
+@class BoolMessage;
+@class BoolMessageBuilder;
 @class FooClientMessage;
 @class FooClientMessageBuilder;
 @class FooRequest;
@@ -21,10 +23,16 @@
 @class ForeignMessageBuilder;
 @class ImportMessage;
 @class ImportMessageBuilder;
+@class Int32Message;
+@class Int32MessageBuilder;
+@class Int64Message;
+@class Int64MessageBuilder;
 @class MoreBytes;
 @class MoreBytesBuilder;
 @class MoreString;
 @class MoreStringBuilder;
+@class NestedTestAllTypes;
+@class NestedTestAllTypesBuilder;
 @class OneBytes;
 @class OneBytesBuilder;
 @class OneString;
@@ -89,6 +97,20 @@
 @class TestNestedMessageHasBitsBuilder;
 @class TestNestedMessageHasBitsNestedMessage;
 @class TestNestedMessageHasBitsNestedMessageBuilder;
+@class TestOneof;
+@class TestOneof2;
+@class TestOneof2Builder;
+@class TestOneof2FooGroup;
+@class TestOneof2FooGroupBuilder;
+@class TestOneof2NestedMessage;
+@class TestOneof2NestedMessageBuilder;
+@class TestOneofBackwardsCompatible;
+@class TestOneofBackwardsCompatibleBuilder;
+@class TestOneofBackwardsCompatibleFooGroup;
+@class TestOneofBackwardsCompatibleFooGroupBuilder;
+@class TestOneofBuilder;
+@class TestOneofFooGroup;
+@class TestOneofFooGroupBuilder;
 @class TestPackedExtensions;
 @class TestPackedExtensionsBuilder;
 @class TestPackedTypes;
@@ -115,8 +137,18 @@
 @class TestRequiredBuilder;
 @class TestRequiredForeign;
 @class TestRequiredForeignBuilder;
+@class TestRequiredOneof;
+@class TestRequiredOneofBuilder;
+@class TestRequiredOneofNestedMessage;
+@class TestRequiredOneofNestedMessageBuilder;
+@class TestUnpackedExtensions;
+@class TestUnpackedExtensionsBuilder;
 @class TestUnpackedTypes;
 @class TestUnpackedTypesBuilder;
+@class Uint32Message;
+@class Uint32MessageBuilder;
+@class Uint64Message;
+@class Uint64MessageBuilder;
 #ifndef __has_feature
   #define __has_feature(x) 0 // Compatibility with non-clang compilers.
 #endif // __has_feature
@@ -161,9 +193,18 @@ typedef enum {
   TestAllTypesNestedEnumFoo = 1,
   TestAllTypesNestedEnumBar = 2,
   TestAllTypesNestedEnumBaz = 3,
+  TestAllTypesNestedEnumNeg = -1,
 } TestAllTypesNestedEnum;
 
 BOOL TestAllTypesNestedEnumIsValidValue(TestAllTypesNestedEnum value);
+
+typedef enum {
+  TestOneof2NestedEnumFoo = 1,
+  TestOneof2NestedEnumBar = 2,
+  TestOneof2NestedEnumBaz = 3,
+} TestOneof2NestedEnum;
+
+BOOL TestOneof2NestedEnumIsValidValue(TestOneof2NestedEnum value);
 
 typedef enum {
   TestDynamicExtensionsDynamicEnumTypeDynamicFoo = 2200,
@@ -249,6 +290,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (id<PBExtensionField>) defaultImportEnumExtension;
 + (id<PBExtensionField>) defaultStringPieceExtension;
 + (id<PBExtensionField>) defaultCordExtension;
++ (id<PBExtensionField>) oneofUint32Extension;
++ (id<PBExtensionField>) oneofNestedMessageExtension;
++ (id<PBExtensionField>) oneofStringExtension;
++ (id<PBExtensionField>) oneofBytesExtension;
 + (id<PBExtensionField>) myExtensionString;
 + (id<PBExtensionField>) myExtensionInt;
 + (id<PBExtensionField>) packedInt32Extension;
@@ -265,16 +310,30 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 + (id<PBExtensionField>) packedDoubleExtension;
 + (id<PBExtensionField>) packedBoolExtension;
 + (id<PBExtensionField>) packedEnumExtension;
++ (id<PBExtensionField>) unpackedInt32Extension;
++ (id<PBExtensionField>) unpackedInt64Extension;
++ (id<PBExtensionField>) unpackedUint32Extension;
++ (id<PBExtensionField>) unpackedUint64Extension;
++ (id<PBExtensionField>) unpackedSint32Extension;
++ (id<PBExtensionField>) unpackedSint64Extension;
++ (id<PBExtensionField>) unpackedFixed32Extension;
++ (id<PBExtensionField>) unpackedFixed64Extension;
++ (id<PBExtensionField>) unpackedSfixed32Extension;
++ (id<PBExtensionField>) unpackedSfixed64Extension;
++ (id<PBExtensionField>) unpackedFloatExtension;
++ (id<PBExtensionField>) unpackedDoubleExtension;
++ (id<PBExtensionField>) unpackedBoolExtension;
++ (id<PBExtensionField>) unpackedEnumExtension;
 @end
 
 @interface TestAllTypes : PBGeneratedMessage {
 @private
-  BOOL hasDefaultBool_:1;
   BOOL hasOptionalBool_:1;
-  BOOL hasDefaultDouble_:1;
+  BOOL hasDefaultBool_:1;
   BOOL hasOptionalDouble_:1;
-  BOOL hasDefaultFloat_:1;
+  BOOL hasDefaultDouble_:1;
   BOOL hasOptionalFloat_:1;
+  BOOL hasDefaultFloat_:1;
   BOOL hasOptionalInt64_:1;
   BOOL hasDefaultInt64_:1;
   BOOL hasOptionalUint64_:1;
@@ -285,28 +344,32 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   BOOL hasDefaultFixed64_:1;
   BOOL hasOptionalFixed32_:1;
   BOOL hasDefaultFixed32_:1;
+  BOOL hasOneofString_:1;
   BOOL hasDefaultCord_:1;
-  BOOL hasOptionalStringPiece_:1;
-  BOOL hasOptionalCord_:1;
-  BOOL hasOptionalString_:1;
   BOOL hasDefaultStringPiece_:1;
   BOOL hasDefaultString_:1;
+  BOOL hasOptionalString_:1;
+  BOOL hasOptionalStringPiece_:1;
+  BOOL hasOptionalCord_:1;
   BOOL hasOptionalGroup_:1;
+  BOOL hasOneofNestedMessage_:1;
+  BOOL hasOptionalNestedMessage_:1;
   BOOL hasOptionalForeignMessage_:1;
   BOOL hasOptionalImportMessage_:1;
   BOOL hasOptionalPublicImportMessage_:1;
   BOOL hasOptionalLazyMessage_:1;
-  BOOL hasOptionalNestedMessage_:1;
-  BOOL hasOptionalBytes_:1;
+  BOOL hasOneofBytes_:1;
   BOOL hasDefaultBytes_:1;
+  BOOL hasOptionalBytes_:1;
   BOOL hasDefaultUint32_:1;
   BOOL hasOptionalUint32_:1;
-  BOOL hasOptionalNestedEnum_:1;
-  BOOL hasOptionalForeignEnum_:1;
-  BOOL hasOptionalImportEnum_:1;
+  BOOL hasOneofUint32_:1;
   BOOL hasDefaultImportEnum_:1;
   BOOL hasDefaultForeignEnum_:1;
   BOOL hasDefaultNestedEnum_:1;
+  BOOL hasOptionalNestedEnum_:1;
+  BOOL hasOptionalForeignEnum_:1;
+  BOOL hasOptionalImportEnum_:1;
   BOOL hasOptionalSfixed32_:1;
   BOOL hasDefaultSfixed32_:1;
   BOOL hasOptionalSfixed64_:1;
@@ -315,12 +378,12 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   BOOL hasDefaultSint32_:1;
   BOOL hasOptionalSint64_:1;
   BOOL hasDefaultSint64_:1;
-  BOOL defaultBool_:1;
   BOOL optionalBool_:1;
-  Float64 defaultDouble;
+  BOOL defaultBool_:1;
   Float64 optionalDouble;
-  Float32 defaultFloat;
+  Float64 defaultDouble;
   Float32 optionalFloat;
+  Float32 defaultFloat;
   SInt64 optionalInt64;
   SInt64 defaultInt64;
   UInt64 optionalUint64;
@@ -331,28 +394,32 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   UInt64 defaultFixed64;
   UInt32 optionalFixed32;
   UInt32 defaultFixed32;
+  NSString* oneofString;
   NSString* defaultCord;
-  NSString* optionalStringPiece;
-  NSString* optionalCord;
-  NSString* optionalString;
   NSString* defaultStringPiece;
   NSString* defaultString;
+  NSString* optionalString;
+  NSString* optionalStringPiece;
+  NSString* optionalCord;
   TestAllTypesOptionalGroup* optionalGroup;
+  TestAllTypesNestedMessage* oneofNestedMessage;
+  TestAllTypesNestedMessage* optionalNestedMessage;
   ForeignMessage* optionalForeignMessage;
   ImportMessage* optionalImportMessage;
   PublicImportMessage* optionalPublicImportMessage;
   TestAllTypesNestedMessage* optionalLazyMessage;
-  TestAllTypesNestedMessage* optionalNestedMessage;
-  NSData* optionalBytes;
+  NSData* oneofBytes;
   NSData* defaultBytes;
+  NSData* optionalBytes;
   UInt32 defaultUint32;
   UInt32 optionalUint32;
-  TestAllTypesNestedEnum optionalNestedEnum;
-  ForeignEnum optionalForeignEnum;
-  ImportEnum optionalImportEnum;
+  UInt32 oneofUint32;
   ImportEnum defaultImportEnum;
   ForeignEnum defaultForeignEnum;
   TestAllTypesNestedEnum defaultNestedEnum;
+  TestAllTypesNestedEnum optionalNestedEnum;
+  ForeignEnum optionalForeignEnum;
+  ImportEnum optionalImportEnum;
   SInt32 optionalSfixed32;
   SInt32 defaultSfixed32;
   SInt64 optionalSfixed64;
@@ -369,9 +436,9 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   PBAppendableArray * repeatedInt32Array;
   PBAppendableArray * repeatedFixed64Array;
   PBAppendableArray * repeatedFixed32Array;
-  NSMutableArray * repeatedStringArray;
-  NSMutableArray * repeatedStringPieceArray;
   NSMutableArray * repeatedCordArray;
+  NSMutableArray * repeatedStringPieceArray;
+  NSMutableArray * repeatedStringArray;
   NSMutableArray * repeatedGroupArray;
   NSMutableArray * repeatedLazyMessageArray;
   NSMutableArray * repeatedImportMessageArray;
@@ -433,6 +500,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (BOOL) hasDefaultImportEnum;
 - (BOOL) hasDefaultStringPiece;
 - (BOOL) hasDefaultCord;
+- (BOOL) hasOneofUint32;
+- (BOOL) hasOneofNestedMessage;
+- (BOOL) hasOneofString;
+- (BOOL) hasOneofBytes;
 @property (readonly) SInt32 optionalInt32;
 @property (readonly) SInt64 optionalInt64;
 @property (readonly) UInt32 optionalUint32;
@@ -504,6 +575,10 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 @property (readonly) ImportEnum defaultImportEnum;
 @property (readonly, strong) NSString* defaultStringPiece;
 @property (readonly, strong) NSString* defaultCord;
+@property (readonly) UInt32 oneofUint32;
+@property (readonly, strong) TestAllTypesNestedMessage* oneofNestedMessage;
+@property (readonly, strong) NSString* oneofString;
+@property (readonly, strong) NSData* oneofBytes;
 - (SInt32)repeatedInt32AtIndex:(NSUInteger)index;
 - (SInt64)repeatedInt64AtIndex:(NSUInteger)index;
 - (UInt32)repeatedUint32AtIndex:(NSUInteger)index;
@@ -1119,6 +1194,90 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (NSString*) defaultCord;
 - (TestAllTypesBuilder*) setDefaultCord:(NSString*) value;
 - (TestAllTypesBuilder*) clearDefaultCord;
+
+- (BOOL) hasOneofUint32;
+- (UInt32) oneofUint32;
+- (TestAllTypesBuilder*) setOneofUint32:(UInt32) value;
+- (TestAllTypesBuilder*) clearOneofUint32;
+
+- (BOOL) hasOneofNestedMessage;
+- (TestAllTypesNestedMessage*) oneofNestedMessage;
+- (TestAllTypesBuilder*) setOneofNestedMessage:(TestAllTypesNestedMessage*) value;
+- (TestAllTypesBuilder*) setOneofNestedMessageBuilder:(TestAllTypesNestedMessageBuilder*) builderForValue;
+- (TestAllTypesBuilder*) mergeOneofNestedMessage:(TestAllTypesNestedMessage*) value;
+- (TestAllTypesBuilder*) clearOneofNestedMessage;
+
+- (BOOL) hasOneofString;
+- (NSString*) oneofString;
+- (TestAllTypesBuilder*) setOneofString:(NSString*) value;
+- (TestAllTypesBuilder*) clearOneofString;
+
+- (BOOL) hasOneofBytes;
+- (NSData*) oneofBytes;
+- (TestAllTypesBuilder*) setOneofBytes:(NSData*) value;
+- (TestAllTypesBuilder*) clearOneofBytes;
+@end
+
+@interface NestedTestAllTypes : PBGeneratedMessage {
+@private
+  BOOL hasChild_:1;
+  BOOL hasPayload_:1;
+  NestedTestAllTypes* child;
+  TestAllTypes* payload;
+}
+- (BOOL) hasChild;
+- (BOOL) hasPayload;
+@property (readonly, strong) NestedTestAllTypes* child;
+@property (readonly, strong) TestAllTypes* payload;
+
++ (NestedTestAllTypes*) defaultInstance;
+- (NestedTestAllTypes*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (NestedTestAllTypesBuilder*) builder;
++ (NestedTestAllTypesBuilder*) builder;
++ (NestedTestAllTypesBuilder*) builderWithPrototype:(NestedTestAllTypes*) prototype;
+- (NestedTestAllTypesBuilder*) toBuilder;
+
++ (NestedTestAllTypes*) parseFromData:(NSData*) data;
++ (NestedTestAllTypes*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (NestedTestAllTypes*) parseFromInputStream:(NSInputStream*) input;
++ (NestedTestAllTypes*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (NestedTestAllTypes*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (NestedTestAllTypes*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface NestedTestAllTypesBuilder : PBGeneratedMessageBuilder {
+@private
+  NestedTestAllTypes* result;
+}
+
+- (NestedTestAllTypes*) defaultInstance;
+
+- (NestedTestAllTypesBuilder*) clear;
+- (NestedTestAllTypesBuilder*) clone;
+
+- (NestedTestAllTypes*) build;
+- (NestedTestAllTypes*) buildPartial;
+
+- (NestedTestAllTypesBuilder*) mergeFrom:(NestedTestAllTypes*) other;
+- (NestedTestAllTypesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (NestedTestAllTypesBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasChild;
+- (NestedTestAllTypes*) child;
+- (NestedTestAllTypesBuilder*) setChild:(NestedTestAllTypes*) value;
+- (NestedTestAllTypesBuilder*) setChildBuilder:(NestedTestAllTypesBuilder*) builderForValue;
+- (NestedTestAllTypesBuilder*) mergeChild:(NestedTestAllTypes*) value;
+- (NestedTestAllTypesBuilder*) clearChild;
+
+- (BOOL) hasPayload;
+- (TestAllTypes*) payload;
+- (NestedTestAllTypesBuilder*) setPayload:(TestAllTypes*) value;
+- (NestedTestAllTypesBuilder*) setPayloadBuilder:(TestAllTypesBuilder*) builderForValue;
+- (NestedTestAllTypesBuilder*) mergePayload:(TestAllTypes*) value;
+- (NestedTestAllTypesBuilder*) clearPayload;
 @end
 
 @interface TestDeprecatedFields : PBGeneratedMessage {
@@ -1365,6 +1524,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestNestedExtension*) defaultInstance;
 
 + (id<PBExtensionField>) test;
++ (id<PBExtensionField>) nestedStringExtension;
 - (BOOL) isInitialized;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
 - (TestNestedExtensionBuilder*) builder;
@@ -2831,6 +2991,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   BOOL hasStringWithZero_:1;
   BOOL hasStringPieceWithZero_:1;
   BOOL hasCordWithZero_:1;
+  BOOL hasReplacementString_:1;
   BOOL hasEscapedBytes_:1;
   BOOL hasBytesWithZero_:1;
   BOOL hasLargeUint32_:1;
@@ -2857,6 +3018,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
   NSString* stringWithZero;
   NSString* stringPieceWithZero;
   NSString* cordWithZero;
+  NSString* replacementString;
   NSData* escapedBytes;
   NSData* bytesWithZero;
   UInt32 largeUint32;
@@ -2887,6 +3049,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (BOOL) hasBytesWithZero;
 - (BOOL) hasStringPieceWithZero;
 - (BOOL) hasCordWithZero;
+- (BOOL) hasReplacementString;
 @property (readonly, strong) NSData* escapedBytes;
 @property (readonly) UInt32 largeUint32;
 @property (readonly) UInt64 largeUint64;
@@ -2913,6 +3076,7 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 @property (readonly, strong) NSData* bytesWithZero;
 @property (readonly, strong) NSString* stringPieceWithZero;
 @property (readonly, strong) NSString* cordWithZero;
+@property (readonly, strong) NSString* replacementString;
 
 + (TestExtremeDefaultValues*) defaultInstance;
 - (TestExtremeDefaultValues*) defaultInstance;
@@ -3078,6 +3242,11 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (NSString*) cordWithZero;
 - (TestExtremeDefaultValuesBuilder*) setCordWithZero:(NSString*) value;
 - (TestExtremeDefaultValuesBuilder*) clearCordWithZero;
+
+- (BOOL) hasReplacementString;
+- (NSString*) replacementString;
+- (TestExtremeDefaultValuesBuilder*) setReplacementString:(NSString*) value;
+- (TestExtremeDefaultValuesBuilder*) clearReplacementString;
 @end
 
 @interface SparseEnumMessage : PBGeneratedMessage {
@@ -3323,6 +3492,961 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (MoreBytesBuilder *)addData:(NSData*)value;
 - (MoreBytesBuilder *)setDataArray:(NSArray *)array;
 - (MoreBytesBuilder *)clearData;
+@end
+
+@interface Int32Message : PBGeneratedMessage {
+@private
+  BOOL hasData_:1;
+  SInt32 data;
+}
+- (BOOL) hasData;
+@property (readonly) SInt32 data;
+
++ (Int32Message*) defaultInstance;
+- (Int32Message*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (Int32MessageBuilder*) builder;
++ (Int32MessageBuilder*) builder;
++ (Int32MessageBuilder*) builderWithPrototype:(Int32Message*) prototype;
+- (Int32MessageBuilder*) toBuilder;
+
++ (Int32Message*) parseFromData:(NSData*) data;
++ (Int32Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Int32Message*) parseFromInputStream:(NSInputStream*) input;
++ (Int32Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Int32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (Int32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface Int32MessageBuilder : PBGeneratedMessageBuilder {
+@private
+  Int32Message* result;
+}
+
+- (Int32Message*) defaultInstance;
+
+- (Int32MessageBuilder*) clear;
+- (Int32MessageBuilder*) clone;
+
+- (Int32Message*) build;
+- (Int32Message*) buildPartial;
+
+- (Int32MessageBuilder*) mergeFrom:(Int32Message*) other;
+- (Int32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (Int32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasData;
+- (SInt32) data;
+- (Int32MessageBuilder*) setData:(SInt32) value;
+- (Int32MessageBuilder*) clearData;
+@end
+
+@interface Uint32Message : PBGeneratedMessage {
+@private
+  BOOL hasData_:1;
+  UInt32 data;
+}
+- (BOOL) hasData;
+@property (readonly) UInt32 data;
+
++ (Uint32Message*) defaultInstance;
+- (Uint32Message*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (Uint32MessageBuilder*) builder;
++ (Uint32MessageBuilder*) builder;
++ (Uint32MessageBuilder*) builderWithPrototype:(Uint32Message*) prototype;
+- (Uint32MessageBuilder*) toBuilder;
+
++ (Uint32Message*) parseFromData:(NSData*) data;
++ (Uint32Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Uint32Message*) parseFromInputStream:(NSInputStream*) input;
++ (Uint32Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Uint32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (Uint32Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface Uint32MessageBuilder : PBGeneratedMessageBuilder {
+@private
+  Uint32Message* result;
+}
+
+- (Uint32Message*) defaultInstance;
+
+- (Uint32MessageBuilder*) clear;
+- (Uint32MessageBuilder*) clone;
+
+- (Uint32Message*) build;
+- (Uint32Message*) buildPartial;
+
+- (Uint32MessageBuilder*) mergeFrom:(Uint32Message*) other;
+- (Uint32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (Uint32MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasData;
+- (UInt32) data;
+- (Uint32MessageBuilder*) setData:(UInt32) value;
+- (Uint32MessageBuilder*) clearData;
+@end
+
+@interface Int64Message : PBGeneratedMessage {
+@private
+  BOOL hasData_:1;
+  SInt64 data;
+}
+- (BOOL) hasData;
+@property (readonly) SInt64 data;
+
++ (Int64Message*) defaultInstance;
+- (Int64Message*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (Int64MessageBuilder*) builder;
++ (Int64MessageBuilder*) builder;
++ (Int64MessageBuilder*) builderWithPrototype:(Int64Message*) prototype;
+- (Int64MessageBuilder*) toBuilder;
+
++ (Int64Message*) parseFromData:(NSData*) data;
++ (Int64Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Int64Message*) parseFromInputStream:(NSInputStream*) input;
++ (Int64Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Int64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (Int64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface Int64MessageBuilder : PBGeneratedMessageBuilder {
+@private
+  Int64Message* result;
+}
+
+- (Int64Message*) defaultInstance;
+
+- (Int64MessageBuilder*) clear;
+- (Int64MessageBuilder*) clone;
+
+- (Int64Message*) build;
+- (Int64Message*) buildPartial;
+
+- (Int64MessageBuilder*) mergeFrom:(Int64Message*) other;
+- (Int64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (Int64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasData;
+- (SInt64) data;
+- (Int64MessageBuilder*) setData:(SInt64) value;
+- (Int64MessageBuilder*) clearData;
+@end
+
+@interface Uint64Message : PBGeneratedMessage {
+@private
+  BOOL hasData_:1;
+  UInt64 data;
+}
+- (BOOL) hasData;
+@property (readonly) UInt64 data;
+
++ (Uint64Message*) defaultInstance;
+- (Uint64Message*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (Uint64MessageBuilder*) builder;
++ (Uint64MessageBuilder*) builder;
++ (Uint64MessageBuilder*) builderWithPrototype:(Uint64Message*) prototype;
+- (Uint64MessageBuilder*) toBuilder;
+
++ (Uint64Message*) parseFromData:(NSData*) data;
++ (Uint64Message*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Uint64Message*) parseFromInputStream:(NSInputStream*) input;
++ (Uint64Message*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (Uint64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (Uint64Message*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface Uint64MessageBuilder : PBGeneratedMessageBuilder {
+@private
+  Uint64Message* result;
+}
+
+- (Uint64Message*) defaultInstance;
+
+- (Uint64MessageBuilder*) clear;
+- (Uint64MessageBuilder*) clone;
+
+- (Uint64Message*) build;
+- (Uint64Message*) buildPartial;
+
+- (Uint64MessageBuilder*) mergeFrom:(Uint64Message*) other;
+- (Uint64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (Uint64MessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasData;
+- (UInt64) data;
+- (Uint64MessageBuilder*) setData:(UInt64) value;
+- (Uint64MessageBuilder*) clearData;
+@end
+
+@interface BoolMessage : PBGeneratedMessage {
+@private
+  BOOL hasData_:1;
+  BOOL data_:1;
+}
+- (BOOL) hasData;
+- (BOOL) data;
+
++ (BoolMessage*) defaultInstance;
+- (BoolMessage*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (BoolMessageBuilder*) builder;
++ (BoolMessageBuilder*) builder;
++ (BoolMessageBuilder*) builderWithPrototype:(BoolMessage*) prototype;
+- (BoolMessageBuilder*) toBuilder;
+
++ (BoolMessage*) parseFromData:(NSData*) data;
++ (BoolMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (BoolMessage*) parseFromInputStream:(NSInputStream*) input;
++ (BoolMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (BoolMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (BoolMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface BoolMessageBuilder : PBGeneratedMessageBuilder {
+@private
+  BoolMessage* result;
+}
+
+- (BoolMessage*) defaultInstance;
+
+- (BoolMessageBuilder*) clear;
+- (BoolMessageBuilder*) clone;
+
+- (BoolMessage*) build;
+- (BoolMessage*) buildPartial;
+
+- (BoolMessageBuilder*) mergeFrom:(BoolMessage*) other;
+- (BoolMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (BoolMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasData;
+- (BOOL) data;
+- (BoolMessageBuilder*) setData:(BOOL) value;
+- (BoolMessageBuilder*) clearData;
+@end
+
+@interface TestOneof : PBGeneratedMessage {
+@private
+  BOOL hasFooInt_:1;
+  BOOL hasFooString_:1;
+  BOOL hasFooGroup_:1;
+  BOOL hasFooMessage_:1;
+  SInt32 fooInt;
+  NSString* fooString;
+  TestOneofFooGroup* fooGroup;
+  TestAllTypes* fooMessage;
+}
+- (BOOL) hasFooInt;
+- (BOOL) hasFooString;
+- (BOOL) hasFooMessage;
+- (BOOL) hasFooGroup;
+@property (readonly) SInt32 fooInt;
+@property (readonly, strong) NSString* fooString;
+@property (readonly, strong) TestAllTypes* fooMessage;
+@property (readonly, strong) TestOneofFooGroup* fooGroup;
+
++ (TestOneof*) defaultInstance;
+- (TestOneof*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneofBuilder*) builder;
++ (TestOneofBuilder*) builder;
++ (TestOneofBuilder*) builderWithPrototype:(TestOneof*) prototype;
+- (TestOneofBuilder*) toBuilder;
+
++ (TestOneof*) parseFromData:(NSData*) data;
++ (TestOneof*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneof*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneofFooGroup : PBGeneratedMessage {
+@private
+  BOOL hasA_:1;
+  BOOL hasB_:1;
+  SInt32 a;
+  NSString* b;
+}
+- (BOOL) hasA;
+- (BOOL) hasB;
+@property (readonly) SInt32 a;
+@property (readonly, strong) NSString* b;
+
++ (TestOneofFooGroup*) defaultInstance;
+- (TestOneofFooGroup*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneofFooGroupBuilder*) builder;
++ (TestOneofFooGroupBuilder*) builder;
++ (TestOneofFooGroupBuilder*) builderWithPrototype:(TestOneofFooGroup*) prototype;
+- (TestOneofFooGroupBuilder*) toBuilder;
+
++ (TestOneofFooGroup*) parseFromData:(NSData*) data;
++ (TestOneofFooGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneofFooGroup*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneofFooGroup*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneofFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneofFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneofFooGroupBuilder : PBGeneratedMessageBuilder {
+@private
+  TestOneofFooGroup* result;
+}
+
+- (TestOneofFooGroup*) defaultInstance;
+
+- (TestOneofFooGroupBuilder*) clear;
+- (TestOneofFooGroupBuilder*) clone;
+
+- (TestOneofFooGroup*) build;
+- (TestOneofFooGroup*) buildPartial;
+
+- (TestOneofFooGroupBuilder*) mergeFrom:(TestOneofFooGroup*) other;
+- (TestOneofFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneofFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasA;
+- (SInt32) a;
+- (TestOneofFooGroupBuilder*) setA:(SInt32) value;
+- (TestOneofFooGroupBuilder*) clearA;
+
+- (BOOL) hasB;
+- (NSString*) b;
+- (TestOneofFooGroupBuilder*) setB:(NSString*) value;
+- (TestOneofFooGroupBuilder*) clearB;
+@end
+
+@interface TestOneofBuilder : PBGeneratedMessageBuilder {
+@private
+  TestOneof* result;
+}
+
+- (TestOneof*) defaultInstance;
+
+- (TestOneofBuilder*) clear;
+- (TestOneofBuilder*) clone;
+
+- (TestOneof*) build;
+- (TestOneof*) buildPartial;
+
+- (TestOneofBuilder*) mergeFrom:(TestOneof*) other;
+- (TestOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasFooInt;
+- (SInt32) fooInt;
+- (TestOneofBuilder*) setFooInt:(SInt32) value;
+- (TestOneofBuilder*) clearFooInt;
+
+- (BOOL) hasFooString;
+- (NSString*) fooString;
+- (TestOneofBuilder*) setFooString:(NSString*) value;
+- (TestOneofBuilder*) clearFooString;
+
+- (BOOL) hasFooMessage;
+- (TestAllTypes*) fooMessage;
+- (TestOneofBuilder*) setFooMessage:(TestAllTypes*) value;
+- (TestOneofBuilder*) setFooMessageBuilder:(TestAllTypesBuilder*) builderForValue;
+- (TestOneofBuilder*) mergeFooMessage:(TestAllTypes*) value;
+- (TestOneofBuilder*) clearFooMessage;
+
+- (BOOL) hasFooGroup;
+- (TestOneofFooGroup*) fooGroup;
+- (TestOneofBuilder*) setFooGroup:(TestOneofFooGroup*) value;
+- (TestOneofBuilder*) setFooGroupBuilder:(TestOneofFooGroupBuilder*) builderForValue;
+- (TestOneofBuilder*) mergeFooGroup:(TestOneofFooGroup*) value;
+- (TestOneofBuilder*) clearFooGroup;
+@end
+
+@interface TestOneofBackwardsCompatible : PBGeneratedMessage {
+@private
+  BOOL hasFooInt_:1;
+  BOOL hasFooString_:1;
+  BOOL hasFooGroup_:1;
+  BOOL hasFooMessage_:1;
+  SInt32 fooInt;
+  NSString* fooString;
+  TestOneofBackwardsCompatibleFooGroup* fooGroup;
+  TestAllTypes* fooMessage;
+}
+- (BOOL) hasFooInt;
+- (BOOL) hasFooString;
+- (BOOL) hasFooMessage;
+- (BOOL) hasFooGroup;
+@property (readonly) SInt32 fooInt;
+@property (readonly, strong) NSString* fooString;
+@property (readonly, strong) TestAllTypes* fooMessage;
+@property (readonly, strong) TestOneofBackwardsCompatibleFooGroup* fooGroup;
+
++ (TestOneofBackwardsCompatible*) defaultInstance;
+- (TestOneofBackwardsCompatible*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneofBackwardsCompatibleBuilder*) builder;
++ (TestOneofBackwardsCompatibleBuilder*) builder;
++ (TestOneofBackwardsCompatibleBuilder*) builderWithPrototype:(TestOneofBackwardsCompatible*) prototype;
+- (TestOneofBackwardsCompatibleBuilder*) toBuilder;
+
++ (TestOneofBackwardsCompatible*) parseFromData:(NSData*) data;
++ (TestOneofBackwardsCompatible*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneofBackwardsCompatible*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneofBackwardsCompatible*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneofBackwardsCompatible*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneofBackwardsCompatible*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneofBackwardsCompatibleFooGroup : PBGeneratedMessage {
+@private
+  BOOL hasA_:1;
+  BOOL hasB_:1;
+  SInt32 a;
+  NSString* b;
+}
+- (BOOL) hasA;
+- (BOOL) hasB;
+@property (readonly) SInt32 a;
+@property (readonly, strong) NSString* b;
+
++ (TestOneofBackwardsCompatibleFooGroup*) defaultInstance;
+- (TestOneofBackwardsCompatibleFooGroup*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) builder;
++ (TestOneofBackwardsCompatibleFooGroupBuilder*) builder;
++ (TestOneofBackwardsCompatibleFooGroupBuilder*) builderWithPrototype:(TestOneofBackwardsCompatibleFooGroup*) prototype;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) toBuilder;
+
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromData:(NSData*) data;
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneofBackwardsCompatibleFooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneofBackwardsCompatibleFooGroupBuilder : PBGeneratedMessageBuilder {
+@private
+  TestOneofBackwardsCompatibleFooGroup* result;
+}
+
+- (TestOneofBackwardsCompatibleFooGroup*) defaultInstance;
+
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clear;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clone;
+
+- (TestOneofBackwardsCompatibleFooGroup*) build;
+- (TestOneofBackwardsCompatibleFooGroup*) buildPartial;
+
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) mergeFrom:(TestOneofBackwardsCompatibleFooGroup*) other;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasA;
+- (SInt32) a;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) setA:(SInt32) value;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clearA;
+
+- (BOOL) hasB;
+- (NSString*) b;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) setB:(NSString*) value;
+- (TestOneofBackwardsCompatibleFooGroupBuilder*) clearB;
+@end
+
+@interface TestOneofBackwardsCompatibleBuilder : PBGeneratedMessageBuilder {
+@private
+  TestOneofBackwardsCompatible* result;
+}
+
+- (TestOneofBackwardsCompatible*) defaultInstance;
+
+- (TestOneofBackwardsCompatibleBuilder*) clear;
+- (TestOneofBackwardsCompatibleBuilder*) clone;
+
+- (TestOneofBackwardsCompatible*) build;
+- (TestOneofBackwardsCompatible*) buildPartial;
+
+- (TestOneofBackwardsCompatibleBuilder*) mergeFrom:(TestOneofBackwardsCompatible*) other;
+- (TestOneofBackwardsCompatibleBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneofBackwardsCompatibleBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasFooInt;
+- (SInt32) fooInt;
+- (TestOneofBackwardsCompatibleBuilder*) setFooInt:(SInt32) value;
+- (TestOneofBackwardsCompatibleBuilder*) clearFooInt;
+
+- (BOOL) hasFooString;
+- (NSString*) fooString;
+- (TestOneofBackwardsCompatibleBuilder*) setFooString:(NSString*) value;
+- (TestOneofBackwardsCompatibleBuilder*) clearFooString;
+
+- (BOOL) hasFooMessage;
+- (TestAllTypes*) fooMessage;
+- (TestOneofBackwardsCompatibleBuilder*) setFooMessage:(TestAllTypes*) value;
+- (TestOneofBackwardsCompatibleBuilder*) setFooMessageBuilder:(TestAllTypesBuilder*) builderForValue;
+- (TestOneofBackwardsCompatibleBuilder*) mergeFooMessage:(TestAllTypes*) value;
+- (TestOneofBackwardsCompatibleBuilder*) clearFooMessage;
+
+- (BOOL) hasFooGroup;
+- (TestOneofBackwardsCompatibleFooGroup*) fooGroup;
+- (TestOneofBackwardsCompatibleBuilder*) setFooGroup:(TestOneofBackwardsCompatibleFooGroup*) value;
+- (TestOneofBackwardsCompatibleBuilder*) setFooGroupBuilder:(TestOneofBackwardsCompatibleFooGroupBuilder*) builderForValue;
+- (TestOneofBackwardsCompatibleBuilder*) mergeFooGroup:(TestOneofBackwardsCompatibleFooGroup*) value;
+- (TestOneofBackwardsCompatibleBuilder*) clearFooGroup;
+@end
+
+@interface TestOneof2 : PBGeneratedMessage {
+@private
+  BOOL hasFooInt_:1;
+  BOOL hasBarInt_:1;
+  BOOL hasBazInt_:1;
+  BOOL hasFooString_:1;
+  BOOL hasFooCord_:1;
+  BOOL hasFooStringPiece_:1;
+  BOOL hasBarString_:1;
+  BOOL hasBarCord_:1;
+  BOOL hasBarStringPiece_:1;
+  BOOL hasBazString_:1;
+  BOOL hasFooGroup_:1;
+  BOOL hasFooMessage_:1;
+  BOOL hasFooLazyMessage_:1;
+  BOOL hasFooBytes_:1;
+  BOOL hasBarBytes_:1;
+  BOOL hasFooEnum_:1;
+  BOOL hasBarEnum_:1;
+  SInt32 fooInt;
+  SInt32 barInt;
+  SInt32 bazInt;
+  NSString* fooString;
+  NSString* fooCord;
+  NSString* fooStringPiece;
+  NSString* barString;
+  NSString* barCord;
+  NSString* barStringPiece;
+  NSString* bazString;
+  TestOneof2FooGroup* fooGroup;
+  TestOneof2NestedMessage* fooMessage;
+  TestOneof2NestedMessage* fooLazyMessage;
+  NSData* fooBytes;
+  NSData* barBytes;
+  TestOneof2NestedEnum fooEnum;
+  TestOneof2NestedEnum barEnum;
+}
+- (BOOL) hasFooInt;
+- (BOOL) hasFooString;
+- (BOOL) hasFooCord;
+- (BOOL) hasFooStringPiece;
+- (BOOL) hasFooBytes;
+- (BOOL) hasFooEnum;
+- (BOOL) hasFooMessage;
+- (BOOL) hasFooGroup;
+- (BOOL) hasFooLazyMessage;
+- (BOOL) hasBarInt;
+- (BOOL) hasBarString;
+- (BOOL) hasBarCord;
+- (BOOL) hasBarStringPiece;
+- (BOOL) hasBarBytes;
+- (BOOL) hasBarEnum;
+- (BOOL) hasBazInt;
+- (BOOL) hasBazString;
+@property (readonly) SInt32 fooInt;
+@property (readonly, strong) NSString* fooString;
+@property (readonly, strong) NSString* fooCord;
+@property (readonly, strong) NSString* fooStringPiece;
+@property (readonly, strong) NSData* fooBytes;
+@property (readonly) TestOneof2NestedEnum fooEnum;
+@property (readonly, strong) TestOneof2NestedMessage* fooMessage;
+@property (readonly, strong) TestOneof2FooGroup* fooGroup;
+@property (readonly, strong) TestOneof2NestedMessage* fooLazyMessage;
+@property (readonly) SInt32 barInt;
+@property (readonly, strong) NSString* barString;
+@property (readonly, strong) NSString* barCord;
+@property (readonly, strong) NSString* barStringPiece;
+@property (readonly, strong) NSData* barBytes;
+@property (readonly) TestOneof2NestedEnum barEnum;
+@property (readonly) SInt32 bazInt;
+@property (readonly, strong) NSString* bazString;
+
++ (TestOneof2*) defaultInstance;
+- (TestOneof2*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneof2Builder*) builder;
++ (TestOneof2Builder*) builder;
++ (TestOneof2Builder*) builderWithPrototype:(TestOneof2*) prototype;
+- (TestOneof2Builder*) toBuilder;
+
++ (TestOneof2*) parseFromData:(NSData*) data;
++ (TestOneof2*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof2*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneof2*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof2*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneof2*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneof2FooGroup : PBGeneratedMessage {
+@private
+  BOOL hasA_:1;
+  BOOL hasB_:1;
+  SInt32 a;
+  NSString* b;
+}
+- (BOOL) hasA;
+- (BOOL) hasB;
+@property (readonly) SInt32 a;
+@property (readonly, strong) NSString* b;
+
++ (TestOneof2FooGroup*) defaultInstance;
+- (TestOneof2FooGroup*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneof2FooGroupBuilder*) builder;
++ (TestOneof2FooGroupBuilder*) builder;
++ (TestOneof2FooGroupBuilder*) builderWithPrototype:(TestOneof2FooGroup*) prototype;
+- (TestOneof2FooGroupBuilder*) toBuilder;
+
++ (TestOneof2FooGroup*) parseFromData:(NSData*) data;
++ (TestOneof2FooGroup*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof2FooGroup*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneof2FooGroup*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof2FooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneof2FooGroup*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneof2FooGroupBuilder : PBGeneratedMessageBuilder {
+@private
+  TestOneof2FooGroup* result;
+}
+
+- (TestOneof2FooGroup*) defaultInstance;
+
+- (TestOneof2FooGroupBuilder*) clear;
+- (TestOneof2FooGroupBuilder*) clone;
+
+- (TestOneof2FooGroup*) build;
+- (TestOneof2FooGroup*) buildPartial;
+
+- (TestOneof2FooGroupBuilder*) mergeFrom:(TestOneof2FooGroup*) other;
+- (TestOneof2FooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneof2FooGroupBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasA;
+- (SInt32) a;
+- (TestOneof2FooGroupBuilder*) setA:(SInt32) value;
+- (TestOneof2FooGroupBuilder*) clearA;
+
+- (BOOL) hasB;
+- (NSString*) b;
+- (TestOneof2FooGroupBuilder*) setB:(NSString*) value;
+- (TestOneof2FooGroupBuilder*) clearB;
+@end
+
+@interface TestOneof2NestedMessage : PBGeneratedMessage {
+@private
+  BOOL hasQuxInt_:1;
+  SInt64 quxInt;
+  PBAppendableArray * corgeIntArray;
+}
+- (BOOL) hasQuxInt;
+@property (readonly) SInt64 quxInt;
+@property (readonly, strong) PBArray * corgeInt;
+- (SInt32)corgeIntAtIndex:(NSUInteger)index;
+
++ (TestOneof2NestedMessage*) defaultInstance;
+- (TestOneof2NestedMessage*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestOneof2NestedMessageBuilder*) builder;
++ (TestOneof2NestedMessageBuilder*) builder;
++ (TestOneof2NestedMessageBuilder*) builderWithPrototype:(TestOneof2NestedMessage*) prototype;
+- (TestOneof2NestedMessageBuilder*) toBuilder;
+
++ (TestOneof2NestedMessage*) parseFromData:(NSData*) data;
++ (TestOneof2NestedMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof2NestedMessage*) parseFromInputStream:(NSInputStream*) input;
++ (TestOneof2NestedMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestOneof2NestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestOneof2NestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestOneof2NestedMessageBuilder : PBGeneratedMessageBuilder {
+@private
+  TestOneof2NestedMessage* result;
+}
+
+- (TestOneof2NestedMessage*) defaultInstance;
+
+- (TestOneof2NestedMessageBuilder*) clear;
+- (TestOneof2NestedMessageBuilder*) clone;
+
+- (TestOneof2NestedMessage*) build;
+- (TestOneof2NestedMessage*) buildPartial;
+
+- (TestOneof2NestedMessageBuilder*) mergeFrom:(TestOneof2NestedMessage*) other;
+- (TestOneof2NestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneof2NestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasQuxInt;
+- (SInt64) quxInt;
+- (TestOneof2NestedMessageBuilder*) setQuxInt:(SInt64) value;
+- (TestOneof2NestedMessageBuilder*) clearQuxInt;
+
+- (PBAppendableArray *)corgeInt;
+- (SInt32)corgeIntAtIndex:(NSUInteger)index;
+- (TestOneof2NestedMessageBuilder *)addCorgeInt:(SInt32)value;
+- (TestOneof2NestedMessageBuilder *)setCorgeIntArray:(NSArray *)array;
+- (TestOneof2NestedMessageBuilder *)setCorgeIntValues:(const SInt32 *)values count:(NSUInteger)count;
+- (TestOneof2NestedMessageBuilder *)clearCorgeInt;
+@end
+
+@interface TestOneof2Builder : PBGeneratedMessageBuilder {
+@private
+  TestOneof2* result;
+}
+
+- (TestOneof2*) defaultInstance;
+
+- (TestOneof2Builder*) clear;
+- (TestOneof2Builder*) clone;
+
+- (TestOneof2*) build;
+- (TestOneof2*) buildPartial;
+
+- (TestOneof2Builder*) mergeFrom:(TestOneof2*) other;
+- (TestOneof2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestOneof2Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasFooInt;
+- (SInt32) fooInt;
+- (TestOneof2Builder*) setFooInt:(SInt32) value;
+- (TestOneof2Builder*) clearFooInt;
+
+- (BOOL) hasFooString;
+- (NSString*) fooString;
+- (TestOneof2Builder*) setFooString:(NSString*) value;
+- (TestOneof2Builder*) clearFooString;
+
+- (BOOL) hasFooCord;
+- (NSString*) fooCord;
+- (TestOneof2Builder*) setFooCord:(NSString*) value;
+- (TestOneof2Builder*) clearFooCord;
+
+- (BOOL) hasFooStringPiece;
+- (NSString*) fooStringPiece;
+- (TestOneof2Builder*) setFooStringPiece:(NSString*) value;
+- (TestOneof2Builder*) clearFooStringPiece;
+
+- (BOOL) hasFooBytes;
+- (NSData*) fooBytes;
+- (TestOneof2Builder*) setFooBytes:(NSData*) value;
+- (TestOneof2Builder*) clearFooBytes;
+
+- (BOOL) hasFooEnum;
+- (TestOneof2NestedEnum) fooEnum;
+- (TestOneof2Builder*) setFooEnum:(TestOneof2NestedEnum) value;
+- (TestOneof2Builder*) clearFooEnum;
+
+- (BOOL) hasFooMessage;
+- (TestOneof2NestedMessage*) fooMessage;
+- (TestOneof2Builder*) setFooMessage:(TestOneof2NestedMessage*) value;
+- (TestOneof2Builder*) setFooMessageBuilder:(TestOneof2NestedMessageBuilder*) builderForValue;
+- (TestOneof2Builder*) mergeFooMessage:(TestOneof2NestedMessage*) value;
+- (TestOneof2Builder*) clearFooMessage;
+
+- (BOOL) hasFooGroup;
+- (TestOneof2FooGroup*) fooGroup;
+- (TestOneof2Builder*) setFooGroup:(TestOneof2FooGroup*) value;
+- (TestOneof2Builder*) setFooGroupBuilder:(TestOneof2FooGroupBuilder*) builderForValue;
+- (TestOneof2Builder*) mergeFooGroup:(TestOneof2FooGroup*) value;
+- (TestOneof2Builder*) clearFooGroup;
+
+- (BOOL) hasFooLazyMessage;
+- (TestOneof2NestedMessage*) fooLazyMessage;
+- (TestOneof2Builder*) setFooLazyMessage:(TestOneof2NestedMessage*) value;
+- (TestOneof2Builder*) setFooLazyMessageBuilder:(TestOneof2NestedMessageBuilder*) builderForValue;
+- (TestOneof2Builder*) mergeFooLazyMessage:(TestOneof2NestedMessage*) value;
+- (TestOneof2Builder*) clearFooLazyMessage;
+
+- (BOOL) hasBarInt;
+- (SInt32) barInt;
+- (TestOneof2Builder*) setBarInt:(SInt32) value;
+- (TestOneof2Builder*) clearBarInt;
+
+- (BOOL) hasBarString;
+- (NSString*) barString;
+- (TestOneof2Builder*) setBarString:(NSString*) value;
+- (TestOneof2Builder*) clearBarString;
+
+- (BOOL) hasBarCord;
+- (NSString*) barCord;
+- (TestOneof2Builder*) setBarCord:(NSString*) value;
+- (TestOneof2Builder*) clearBarCord;
+
+- (BOOL) hasBarStringPiece;
+- (NSString*) barStringPiece;
+- (TestOneof2Builder*) setBarStringPiece:(NSString*) value;
+- (TestOneof2Builder*) clearBarStringPiece;
+
+- (BOOL) hasBarBytes;
+- (NSData*) barBytes;
+- (TestOneof2Builder*) setBarBytes:(NSData*) value;
+- (TestOneof2Builder*) clearBarBytes;
+
+- (BOOL) hasBarEnum;
+- (TestOneof2NestedEnum) barEnum;
+- (TestOneof2Builder*) setBarEnum:(TestOneof2NestedEnum) value;
+- (TestOneof2Builder*) clearBarEnum;
+
+- (BOOL) hasBazInt;
+- (SInt32) bazInt;
+- (TestOneof2Builder*) setBazInt:(SInt32) value;
+- (TestOneof2Builder*) clearBazInt;
+
+- (BOOL) hasBazString;
+- (NSString*) bazString;
+- (TestOneof2Builder*) setBazString:(NSString*) value;
+- (TestOneof2Builder*) clearBazString;
+@end
+
+@interface TestRequiredOneof : PBGeneratedMessage {
+@private
+  BOOL hasFooInt_:1;
+  BOOL hasFooString_:1;
+  BOOL hasFooMessage_:1;
+  SInt32 fooInt;
+  NSString* fooString;
+  TestRequiredOneofNestedMessage* fooMessage;
+}
+- (BOOL) hasFooInt;
+- (BOOL) hasFooString;
+- (BOOL) hasFooMessage;
+@property (readonly) SInt32 fooInt;
+@property (readonly, strong) NSString* fooString;
+@property (readonly, strong) TestRequiredOneofNestedMessage* fooMessage;
+
++ (TestRequiredOneof*) defaultInstance;
+- (TestRequiredOneof*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestRequiredOneofBuilder*) builder;
++ (TestRequiredOneofBuilder*) builder;
++ (TestRequiredOneofBuilder*) builderWithPrototype:(TestRequiredOneof*) prototype;
+- (TestRequiredOneofBuilder*) toBuilder;
+
++ (TestRequiredOneof*) parseFromData:(NSData*) data;
++ (TestRequiredOneof*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestRequiredOneof*) parseFromInputStream:(NSInputStream*) input;
++ (TestRequiredOneof*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestRequiredOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestRequiredOneof*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestRequiredOneofNestedMessage : PBGeneratedMessage {
+@private
+  BOOL hasRequiredDouble_:1;
+  Float64 requiredDouble;
+}
+- (BOOL) hasRequiredDouble;
+@property (readonly) Float64 requiredDouble;
+
++ (TestRequiredOneofNestedMessage*) defaultInstance;
+- (TestRequiredOneofNestedMessage*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestRequiredOneofNestedMessageBuilder*) builder;
++ (TestRequiredOneofNestedMessageBuilder*) builder;
++ (TestRequiredOneofNestedMessageBuilder*) builderWithPrototype:(TestRequiredOneofNestedMessage*) prototype;
+- (TestRequiredOneofNestedMessageBuilder*) toBuilder;
+
++ (TestRequiredOneofNestedMessage*) parseFromData:(NSData*) data;
++ (TestRequiredOneofNestedMessage*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestRequiredOneofNestedMessage*) parseFromInputStream:(NSInputStream*) input;
++ (TestRequiredOneofNestedMessage*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestRequiredOneofNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestRequiredOneofNestedMessage*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestRequiredOneofNestedMessageBuilder : PBGeneratedMessageBuilder {
+@private
+  TestRequiredOneofNestedMessage* result;
+}
+
+- (TestRequiredOneofNestedMessage*) defaultInstance;
+
+- (TestRequiredOneofNestedMessageBuilder*) clear;
+- (TestRequiredOneofNestedMessageBuilder*) clone;
+
+- (TestRequiredOneofNestedMessage*) build;
+- (TestRequiredOneofNestedMessage*) buildPartial;
+
+- (TestRequiredOneofNestedMessageBuilder*) mergeFrom:(TestRequiredOneofNestedMessage*) other;
+- (TestRequiredOneofNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestRequiredOneofNestedMessageBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasRequiredDouble;
+- (Float64) requiredDouble;
+- (TestRequiredOneofNestedMessageBuilder*) setRequiredDouble:(Float64) value;
+- (TestRequiredOneofNestedMessageBuilder*) clearRequiredDouble;
+@end
+
+@interface TestRequiredOneofBuilder : PBGeneratedMessageBuilder {
+@private
+  TestRequiredOneof* result;
+}
+
+- (TestRequiredOneof*) defaultInstance;
+
+- (TestRequiredOneofBuilder*) clear;
+- (TestRequiredOneofBuilder*) clone;
+
+- (TestRequiredOneof*) build;
+- (TestRequiredOneof*) buildPartial;
+
+- (TestRequiredOneofBuilder*) mergeFrom:(TestRequiredOneof*) other;
+- (TestRequiredOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestRequiredOneofBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+
+- (BOOL) hasFooInt;
+- (SInt32) fooInt;
+- (TestRequiredOneofBuilder*) setFooInt:(SInt32) value;
+- (TestRequiredOneofBuilder*) clearFooInt;
+
+- (BOOL) hasFooString;
+- (NSString*) fooString;
+- (TestRequiredOneofBuilder*) setFooString:(NSString*) value;
+- (TestRequiredOneofBuilder*) clearFooString;
+
+- (BOOL) hasFooMessage;
+- (TestRequiredOneofNestedMessage*) fooMessage;
+- (TestRequiredOneofBuilder*) setFooMessage:(TestRequiredOneofNestedMessage*) value;
+- (TestRequiredOneofBuilder*) setFooMessageBuilder:(TestRequiredOneofNestedMessageBuilder*) builderForValue;
+- (TestRequiredOneofBuilder*) mergeFooMessage:(TestRequiredOneofNestedMessage*) value;
+- (TestRequiredOneofBuilder*) clearFooMessage;
 @end
 
 @interface TestPackedTypes : PBGeneratedMessage {
@@ -3737,6 +4861,46 @@ BOOL TestDynamicExtensionsDynamicEnumTypeIsValidValue(TestDynamicExtensionsDynam
 - (TestPackedExtensionsBuilder*) mergeFrom:(TestPackedExtensions*) other;
 - (TestPackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
 - (TestPackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestUnpackedExtensions : PBExtendableMessage {
+@private
+}
+
++ (TestUnpackedExtensions*) defaultInstance;
+- (TestUnpackedExtensions*) defaultInstance;
+
+- (BOOL) isInitialized;
+- (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
+- (TestUnpackedExtensionsBuilder*) builder;
++ (TestUnpackedExtensionsBuilder*) builder;
++ (TestUnpackedExtensionsBuilder*) builderWithPrototype:(TestUnpackedExtensions*) prototype;
+- (TestUnpackedExtensionsBuilder*) toBuilder;
+
++ (TestUnpackedExtensions*) parseFromData:(NSData*) data;
++ (TestUnpackedExtensions*) parseFromData:(NSData*) data extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestUnpackedExtensions*) parseFromInputStream:(NSInputStream*) input;
++ (TestUnpackedExtensions*) parseFromInputStream:(NSInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
++ (TestUnpackedExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input;
++ (TestUnpackedExtensions*) parseFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
+@end
+
+@interface TestUnpackedExtensionsBuilder : PBExtendableMessageBuilder {
+@private
+  TestUnpackedExtensions* result;
+}
+
+- (TestUnpackedExtensions*) defaultInstance;
+
+- (TestUnpackedExtensionsBuilder*) clear;
+- (TestUnpackedExtensionsBuilder*) clone;
+
+- (TestUnpackedExtensions*) build;
+- (TestUnpackedExtensions*) buildPartial;
+
+- (TestUnpackedExtensionsBuilder*) mergeFrom:(TestUnpackedExtensions*) other;
+- (TestUnpackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;
+- (TestUnpackedExtensionsBuilder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;
 @end
 
 @interface TestDynamicExtensions : PBGeneratedMessage {

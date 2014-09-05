@@ -46,6 +46,8 @@ static PBExtensionRegistry* extensionRegistry = nil;
 @interface TestOptimizedForSize ()
 @property SInt32 i;
 @property (strong) ForeignMessage* msg;
+@property SInt32 integerField;
+@property (strong) NSString* stringField;
 @end
 
 @implementation TestOptimizedForSize
@@ -64,10 +66,26 @@ static PBExtensionRegistry* extensionRegistry = nil;
   hasMsg_ = !!value_;
 }
 @synthesize msg;
+- (BOOL) hasIntegerField {
+  return !!hasIntegerField_;
+}
+- (void) setHasIntegerField:(BOOL) value_ {
+  hasIntegerField_ = !!value_;
+}
+@synthesize integerField;
+- (BOOL) hasStringField {
+  return !!hasStringField_;
+}
+- (void) setHasStringField:(BOOL) value_ {
+  hasStringField_ = !!value_;
+}
+@synthesize stringField;
 - (id) init {
   if ((self = [super init])) {
     self.i = 0;
     self.msg = [ForeignMessage defaultInstance];
+    self.integerField = 0;
+    self.stringField = @"";
   }
   return self;
 }
@@ -99,6 +117,12 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   if (self.hasI) {
     [output writeInt32:1 value:self.i];
   }
+  if (self.hasIntegerField) {
+    [output writeInt32:2 value:self.integerField];
+  }
+  if (self.hasStringField) {
+    [output writeString:3 value:self.stringField];
+  }
   if (self.hasMsg) {
     [output writeMessage:19 value:self.msg];
   }
@@ -116,6 +140,12 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   size_ = 0;
   if (self.hasI) {
     size_ += computeInt32Size(1, self.i);
+  }
+  if (self.hasIntegerField) {
+    size_ += computeInt32Size(2, self.integerField);
+  }
+  if (self.hasStringField) {
+    size_ += computeStringSize(3, self.stringField);
   }
   if (self.hasMsg) {
     size_ += computeMessageSize(19, self.msg);
@@ -159,6 +189,12 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   if (self.hasI) {
     [output appendFormat:@"%@%@: %@\n", indent, @"i", [NSNumber numberWithInteger:self.i]];
   }
+  if (self.hasIntegerField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"integerField", [NSNumber numberWithInteger:self.integerField]];
+  }
+  if (self.hasStringField) {
+    [output appendFormat:@"%@%@: %@\n", indent, @"stringField", self.stringField];
+  }
   if (self.hasMsg) {
     [output appendFormat:@"%@%@ {\n", indent, @"msg"];
     [self.msg writeDescriptionTo:output
@@ -182,6 +218,10 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   return
       self.hasI == otherMessage.hasI &&
       (!self.hasI || self.i == otherMessage.i) &&
+      self.hasIntegerField == otherMessage.hasIntegerField &&
+      (!self.hasIntegerField || self.integerField == otherMessage.integerField) &&
+      self.hasStringField == otherMessage.hasStringField &&
+      (!self.hasStringField || [self.stringField isEqual:otherMessage.stringField]) &&
       self.hasMsg == otherMessage.hasMsg &&
       (!self.hasMsg || [self.msg isEqual:otherMessage.msg]) &&
       [self isEqualExtensionsInOther:otherMessage from:1000 to:536870912] &&
@@ -192,6 +232,12 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   __block NSUInteger hashCode = 7;
   if (self.hasI) {
     hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.i] hash];
+  }
+  if (self.hasIntegerField) {
+    hashCode = hashCode * 31 + [[NSNumber numberWithInteger:self.integerField] hash];
+  }
+  if (self.hasStringField) {
+    hashCode = hashCode * 31 + [self.stringField hash];
   }
   if (self.hasMsg) {
     hashCode = hashCode * 31 + [self.msg hash];
@@ -246,6 +292,12 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
   if (other.hasMsg) {
     [self mergeMsg:other.msg];
   }
+  if (other.hasIntegerField) {
+    [self setIntegerField:other.integerField];
+  }
+  if (other.hasStringField) {
+    [self setStringField:other.stringField];
+  }
   [self mergeExtensionFields:other];
   [self mergeUnknownFields:other.unknownFields];
   return self;
@@ -270,6 +322,14 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
       }
       case 8: {
         [self setI:[input readInt32]];
+        break;
+      }
+      case 16: {
+        [self setIntegerField:[input readInt32]];
+        break;
+      }
+      case 26: {
+        [self setStringField:[input readString]];
         break;
       }
       case 154: {
@@ -328,6 +388,38 @@ static TestOptimizedForSize* defaultTestOptimizedForSizeInstance = nil;
 - (TestOptimizedForSizeBuilder*) clearMsg {
   result.hasMsg = NO;
   result.msg = [ForeignMessage defaultInstance];
+  return self;
+}
+- (BOOL) hasIntegerField {
+  return result.hasIntegerField;
+}
+- (SInt32) integerField {
+  return result.integerField;
+}
+- (TestOptimizedForSizeBuilder*) setIntegerField:(SInt32) value {
+  result.hasIntegerField = YES;
+  result.integerField = value;
+  return self;
+}
+- (TestOptimizedForSizeBuilder*) clearIntegerField {
+  result.hasIntegerField = NO;
+  result.integerField = 0;
+  return self;
+}
+- (BOOL) hasStringField {
+  return result.hasStringField;
+}
+- (NSString*) stringField {
+  return result.stringField;
+}
+- (TestOptimizedForSizeBuilder*) setStringField:(NSString*) value {
+  result.hasStringField = YES;
+  result.stringField = value;
+  return self;
+}
+- (TestOptimizedForSizeBuilder*) clearStringField {
+  result.hasStringField = NO;
+  result.stringField = @"";
   return self;
 }
 @end
