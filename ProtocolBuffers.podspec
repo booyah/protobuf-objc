@@ -1,9 +1,9 @@
 Pod::Spec.new do |s|
   s.name         = "ProtocolBuffers"
-  s.version      = "1.9.1"
+  s.version      = "1.9.2"
   s.summary      = "Protocol Buffers for Objective-C"
   s.description  = <<-DESC
-                      An implementation of Protocol Buffers 2.5 in Objective C.
+                      An implementation of Protocol Buffers 2.6 in Objective C.
 
                       Supported arm64 and early architectures. This realisation
                       contains only ARC version of library.
@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
                       Buffers from Google.
 
                       DESC
-  s.homepage     = "http://protobuf.axo.io"
+  s.homepage     = "http://protobuf.axo.io#objc"
   s.license      = "Apache 2.0"
 
   s.license      = { :type => 'Apache License, Version 2.0', :text =>
@@ -31,7 +31,6 @@ Pod::Spec.new do |s|
     See the License for the specific language governing permissions and
     limitations under the License.
 
-    Copyright 2010 Booyah Inc.
     Copyright 2008 Google Inc.
 
      LICENSE
@@ -39,21 +38,15 @@ Pod::Spec.new do |s|
 
   s.author       = { "Alexey Khokhlov" => "alexeyxo@gmail.com" }
 
-  s.authors      = {  "Alexey Khokhlov" => "alexeyxo@gmail.com",
-                      "David Bonnefoy" => nil,
-                      "Ragy Eleish" => nil,
-                      "Jon Parise" => nil,
-                      "Kenton Varda" => nil,
-                      "Sanjay Ghemawat" => nil,
-                      "Jeff Dean" => nil
-                    }
+  s.authors      = {  "Alexey Khokhlov" => "alexeyxo@gmail.com" }
 
   s.source       = {
-    :git => "https://github.com/alexeyxo/protobuf-objc.git", :tag => "1.9.1"
+    :git => "https://github.com/alexeyxo/protobuf-objc.git", :tag => "1.9.2"
   }
   s.header_dir = "ProtocolBuffers"
   s.source_files = 'src/runtime/Classes/*.{h,m}'
   s.preserve_paths = 'README.md'
+  s.framework    = 'Foundation'
 
   s.ios.deployment_target = '6.0'
   s.osx.deployment_target = '10.8'
