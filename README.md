@@ -20,7 +20,7 @@ This fork contains only ARC version of library.
 
 4.`brew instal protobuf`
 
-5.`ln -s /usr/local/Cellar/protobuf/2.5.0/bin/protoc /usr/local/bin` (optional)
+5.`ln -s /usr/local/Cellar/protobuf/2.6.0/bin/protoc /usr/local/bin` (optional)
 
 6.`git clone git@github.com:alexeyxo/protobuf-objc.git`
 
