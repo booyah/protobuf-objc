@@ -17,32 +17,32 @@
 
 @class PBCodedOutputStream;
 @class PBField;
-@class PBUnknownFieldSet_Builder;
+@class PBUnknownFieldSetBuilder;
 
 @interface PBUnknownFieldSet : NSObject {
 @private
   NSDictionary* fields;
 }
 
-@property (readonly, retain) NSDictionary* fields;
+@property (readonly, strong) NSDictionary* fields;
 
 + (PBUnknownFieldSet*) defaultInstance;
 
 + (PBUnknownFieldSet*) setWithFields:(NSMutableDictionary*) fields;
 + (PBUnknownFieldSet*) parseFromData:(NSData*) data;
 
-+ (PBUnknownFieldSet_Builder*) builder;
-+ (PBUnknownFieldSet_Builder*) builderWithUnknownFields:(PBUnknownFieldSet*) other;
++ (PBUnknownFieldSetBuilder*) builder;
++ (PBUnknownFieldSetBuilder*) builderWithUnknownFields:(PBUnknownFieldSet*) other;
 
 - (void) writeAsMessageSetTo:(PBCodedOutputStream*) output;
 - (void) writeToCodedOutputStream:(PBCodedOutputStream*) output;
 - (NSData*) data;
 
-- (int32_t) serializedSize;
-- (int32_t) serializedSizeAsMessageSet;
+- (SInt32) serializedSize;
+- (SInt32) serializedSizeAsMessageSet;
 
-- (BOOL) hasField:(int32_t) number;
-- (PBField*) getField:(int32_t) number;
+- (BOOL) hasField:(SInt32) number;
+- (PBField*) getField:(SInt32) number;
 
 - (void) writeDescriptionTo:(NSMutableString*) output
                  withIndent:(NSString*) indent;

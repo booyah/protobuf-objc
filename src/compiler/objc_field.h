@@ -52,7 +52,6 @@ class FieldGenerator {
 
   virtual void GenerateExtensionSource(io::Printer* printer) const = 0;
   virtual void GenerateSynthesizeSource(io::Printer* printer) const = 0;
-  virtual void GenerateDeallocSource(io::Printer* printer) const = 0;
   virtual void GenerateInitializationSource(io::Printer* printer) const = 0;
   virtual void GenerateMembersSource(io::Printer* printer) const = 0;
   virtual void GenerateBuilderMembersSource(io::Printer* printer) const = 0;

@@ -38,39 +38,31 @@ static PBField *sDefaultInstance = nil;
 	}
 }
 
-- (void)dealloc {
-	[_varintArray release];
-	[_fixed32Array release];
-	[_fixed64Array release];
-	[_lengthDelimitedArray release];
-	[_groupArray release];
-	[super dealloc];
-}
 
 + (PBField *)defaultInstance {
 	return sDefaultInstance;
 }
 
-- (int32_t)getSerializedSize:(int32_t)fieldNumber {
-	int32_t result = 0;
+- (SInt32)getSerializedSize:(SInt32)fieldNumber {
+	SInt32 result = 0;
 
-	const int64_t *varintValues = (const int64_t *)_varintArray.data;
+	const SInt64 *varintValues = (const SInt64 *)_varintArray.data;
 	if (varintValues) {
 		const NSUInteger count = _varintArray.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		for (UInt32 i = 0; i < count; ++i) {
 			result += computeInt64Size(fieldNumber, varintValues[i]);
 		}
 	}
 
-	const int32_t *fixed32Values = (const int32_t *)_fixed32Array.data;
+	const SInt32 *fixed32Values = (const SInt32 *)_fixed32Array.data;
 	if (fixed32Values) {
 		const NSUInteger count = _fixed32Array.count;
-		for (NSUInteger i = 0; i < count; ++i) {
+		for (UInt32 i = 0; i < count; ++i) {
 			result += computeFixed32Size(fieldNumber, fixed32Values[i]);
 		}
 	}
 
-	const int64_t *fixed64Values = (const int64_t *)_fixed64Array.data;
+	const SInt64 *fixed64Values = (const SInt64 *)_fixed64Array.data;
 	if (fixed64Values) {
 		const NSUInteger count = _fixed64Array.count;
 		for (NSUInteger i = 0; i < count; ++i) {
@@ -89,8 +81,8 @@ static PBField *sDefaultInstance = nil;
 	return result;
 }
 
-- (int32_t)getSerializedSizeAsMessageSetExtension:(int32_t)fieldNumber {
-	int32_t result = 0;
+- (SInt32)getSerializedSizeAsMessageSetExtension:(SInt32)fieldNumber {
+	SInt32 result = 0;
 
 	for (NSData *value in _lengthDelimitedArray) {
 		result += computeRawMessageSetExtensionSize(fieldNumber, value);
@@ -99,8 +91,8 @@ static PBField *sDefaultInstance = nil;
 	return result;
 }
 
-- (void)writeTo:(int32_t)fieldNumber output:(PBCodedOutputStream *) output {
-	const int64_t *varintValues = (const int64_t *)_varintArray.data;
+- (void)writeTo:(SInt32)fieldNumber output:(PBCodedOutputStream *) output {
+	const SInt64 *varintValues = (const SInt64 *)_varintArray.data;
 	if (varintValues) {
 		const NSUInteger count = _varintArray.count;
 		for (NSUInteger i = 0; i < count; ++i) {
@@ -108,7 +100,7 @@ static PBField *sDefaultInstance = nil;
 		}
 	}
 
-	const int32_t *fixed32Values = (const int32_t *)_fixed32Array.data;
+	const SInt32 *fixed32Values = (const SInt32 *)_fixed32Array.data;
 	if (fixed32Values) {
 		const NSUInteger count = _fixed32Array.count;
 		for (NSUInteger i = 0; i < count; ++i) {
@@ -116,7 +108,7 @@ static PBField *sDefaultInstance = nil;
 		}
 	}
 
-	const int64_t *fixed64Values = (const int64_t *)_fixed64Array.data;
+	const SInt64 *fixed64Values = (const SInt64 *)_fixed64Array.data;
 	if (fixed64Values) {
 		const NSUInteger count = _fixed64Array.count;
 		for (NSUInteger i = 0; i < count; ++i) {
@@ -133,29 +125,32 @@ static PBField *sDefaultInstance = nil;
 	}
 }
 
-- (void)writeDescriptionFor:(int32_t) fieldNumber
+- (void)writeDescriptionFor:(SInt32) fieldNumber
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent {
-  for (NSNumber* value in self.varintArray) {
-    [output appendFormat:@"%@%d: %qi\n", indent, fieldNumber, value.longLongValue];
-  }
-  for (NSNumber* value in self.fixed32Array) {
-    [output appendFormat:@"%@%d: %d\n", indent, fieldNumber, value.intValue];
-  }
-  for (NSNumber* value in self.fixed64Array) {
-    [output appendFormat:@"%@%d: %qi\n", indent, fieldNumber, value.longLongValue];
-  }
-  for (NSData* value in self.lengthDelimitedArray) {
-    [output appendFormat:@"%@%d: %@\n", indent, fieldNumber, value];
-  }
-  for (PBUnknownFieldSet* value in self.groupArray) {
-    [output appendFormat:@"%@%d: [\n", indent, fieldNumber];
-    [value writeDescriptionTo:output withIndent:[NSString stringWithFormat:@"%@  ", indent]];
-    [output appendFormat:@"%@]", indent];
-  }
+    [self.varintArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        
+    }];
+    [self.varintArray enumerateObjectsUsingBlock:^(NSNumber* value, NSUInteger idx, BOOL *stop) {
+        [output appendFormat:@"%@%ld: %qi\n", indent, (long)fieldNumber, value.longLongValue];
+    }];
+    [self.fixed32Array enumerateObjectsUsingBlock:^(NSNumber* value, NSUInteger idx, BOOL *stop) {
+        [output appendFormat:@"%@%ld: %ld\n", indent, (long)fieldNumber, (long)value.integerValue];
+    }];
+    [self.fixed64Array enumerateObjectsUsingBlock:^(NSNumber* value, NSUInteger idx, BOOL *stop) {
+         [output appendFormat:@"%@%ld: %lld\n", indent, (long)fieldNumber, value.longLongValue];
+    }];
+      for (NSData* value in self.lengthDelimitedArray) {
+        [output appendFormat:@"%@%ld: %@\n", indent, (long)fieldNumber, value];
+      }
+      for (PBUnknownFieldSet* value in self.groupArray) {
+        [output appendFormat:@"%@%ld: [\n", indent, (long)fieldNumber];
+        [value writeDescriptionTo:output withIndent:[NSString stringWithFormat:@"%@  ", indent]];
+        [output appendFormat:@"%@]", indent];
+      }
 }
 
-- (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *) output {
+- (void)writeAsMessageSetExtensionTo:(SInt32)fieldNumber output:(PBCodedOutputStream *) output {
 	for (NSData *value in _lengthDelimitedArray) {
 		[output writeRawMessageSetExtension:fieldNumber value:value];
 	}

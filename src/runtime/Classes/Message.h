@@ -17,7 +17,7 @@
 
 @class PBCodedOutputStream;
 @class PBUnknownFieldSet;
-@protocol PBMessage_Builder;
+@protocol PBMessageBuilder;
 
 /**
  * Abstract interface implemented by Protocol Message objects.
@@ -44,7 +44,7 @@
  * Get the number of bytes required to encode this message.  The result
  * is only computed on the first call and memoized after that.
  */
-- (int32_t) serializedSize;
+- (SInt32) serializedSize;
 
 /**
  * Returns true if all required fields in the message and all embedded
@@ -69,13 +69,13 @@
 /**
  * Constructs a new builder for a message of the same type as this message.
  */
-- (id<PBMessage_Builder>) builder;
+- (id<PBMessageBuilder>) builder;
 
 /**
  * Constructs a builder initialized with the current message.  Use this to
  * derive a new message from the current one.
  */
-- (id<PBMessage_Builder>) toBuilder;
+- (id<PBMessageBuilder>) toBuilder;
 
 /**
  * Returns a string description of the message.

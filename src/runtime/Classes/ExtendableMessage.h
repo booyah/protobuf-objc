@@ -60,27 +60,27 @@
   NSMutableDictionary* extensionRegistry;
 }
 
-@property (retain) NSMutableDictionary* extensionMap;
-@property (retain) NSMutableDictionary* extensionRegistry;
+@property (strong) NSMutableDictionary* extensionMap;
+@property (strong) NSMutableDictionary* extensionRegistry;
 
 - (BOOL) hasExtension:(id<PBExtensionField>) extension;
 - (id) getExtension:(id<PBExtensionField>) extension;
 
 //@protected
 - (BOOL) extensionsAreInitialized;
-- (int32_t) extensionsSerializedSize;
+- (SInt32) extensionsSerializedSize;
 - (void) writeExtensionsToCodedOutputStream:(PBCodedOutputStream*) output
-                                       from:(int32_t) startInclusive
-                                         to:(int32_t) endExclusive;
+                                       from:(SInt32) startInclusive
+                                         to:(SInt32) endExclusive;
 - (void) writeExtensionDescriptionToMutableString:(NSMutableString*) output
-                                             from:(int32_t) startInclusive
-                                               to:(int32_t) endExclusive
+                                             from:(SInt32) startInclusive
+                                               to:(SInt32) endExclusive
                                        withIndent:(NSString*) indent;
 - (BOOL) isEqualExtensionsInOther:(PBExtendableMessage*)otherMessage
-                             from:(int32_t) startInclusive
-                               to:(int32_t) endExclusive;
-- (NSUInteger) hashExtensionsFrom:(int32_t) startInclusive
-                               to:(int32_t) endExclusive;
+                             from:(SInt32) startInclusive
+                               to:(SInt32) endExclusive;
+- (NSUInteger) hashExtensionsFrom:(SInt32) startInclusive
+                               to:(SInt32) endExclusive;
 
 
 

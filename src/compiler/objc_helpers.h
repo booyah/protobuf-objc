@@ -51,6 +51,7 @@ bool IsRetainedName(const string& name);
 
 bool IsBootstrapFile(const FileDescriptor* file);
 
+bool isObjectArray(const FieldDescriptor* field);
 // Gets the name of the file we're going to generate (sans the .pb.h
 // extension).  This does not include the path to that file.
 string FileName(const FileDescriptor* file);

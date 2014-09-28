@@ -17,18 +17,18 @@
 
 #import "Message.h"
 
-int64_t convertFloat64ToInt64(Float64 f);
-int32_t convertFloat32ToInt32(Float32 f);
-Float64 convertInt64ToFloat64(int64_t f);
-Float32 convertInt32ToFloat32(int32_t f);
+SInt64 convertFloat64ToInt64(Float64 f);
+SInt32 convertFloat32ToInt32(Float32 f);
+Float64 convertInt64ToFloat64(SInt64 f);
+Float32 convertInt32ToFloat32(SInt32 f);
 
-uint64_t convertInt64ToUInt64(int64_t i);
-int64_t  convertUInt64ToInt64(uint64_t u);
-uint32_t convertInt32ToUInt32(int32_t i);
-int64_t  convertUInt32ToInt32(uint32_t u);
+UInt64 convertInt64ToUInt64(SInt64 i);
+SInt64  convertUInt64ToInt64(UInt64 u);
+UInt32 convertInt32ToUInt32(SInt32 i);
+SInt32  convertUInt32ToInt32(UInt32 u);
 
-int32_t logicalRightShift32(int32_t value, int32_t spaces);
-int64_t logicalRightShift64(int64_t value, int32_t spaces);
+SInt32 logicalRightShift32(SInt32 value, SInt32 spaces);
+SInt64 logicalRightShift64(SInt64 value, SInt32 spaces);
 
 
 /**
@@ -40,7 +40,7 @@ int64_t logicalRightShift64(int64_t value, int32_t spaces);
  * @param n An unsigned 32-bit integer, stored in a signed int.
  * @return A signed 32-bit integer.
  */
-int32_t decodeZigZag32(int32_t n);
+SInt32 decodeZigZag32(SInt32 n);
 
 /**
  * Decode a ZigZag-encoded 64-bit value.  ZigZag encodes signed integers
@@ -51,7 +51,7 @@ int32_t decodeZigZag32(int32_t n);
  * @param n An unsigned 64-bit integer, stored in a signed int.
  * @return A signed 64-bit integer.
  */
-int64_t decodeZigZag64(int64_t n);
+SInt64 decodeZigZag64(SInt64 n);
 
 
 /**
@@ -63,7 +63,7 @@ int64_t decodeZigZag64(int64_t n);
  * @param n A signed 32-bit integer.
  * @return An unsigned 32-bit integer, stored in a signed int.
  */
-int32_t encodeZigZag32(int32_t n);
+SInt32 encodeZigZag32(SInt32 n);
 
 /**
  * Encode a ZigZag-encoded 64-bit value.  ZigZag encodes signed integers
@@ -74,262 +74,262 @@ int32_t encodeZigZag32(int32_t n);
  * @param n A signed 64-bit integer.
  * @return An unsigned 64-bit integer, stored in a signed int.
  */
-int64_t encodeZigZag64(int64_t n);
+SInt64 encodeZigZag64(SInt64 n);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code double} field, including tag.
  */
-int32_t computeDoubleSize(int32_t fieldNumber, Float64 value);
+SInt32 computeDoubleSize(SInt32 fieldNumber, Float64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code float} field, including tag.
  */
-int32_t computeFloatSize(int32_t fieldNumber, Float32 value);
+SInt32 computeFloatSize(SInt32 fieldNumber, Float32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code uint64} field, including tag.
  */
-int32_t computeUInt64Size(int32_t fieldNumber, int64_t value);
+SInt32 computeUInt64Size(SInt32 fieldNumber, SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code int64} field, including tag.
  */
-int32_t computeInt64Size(int32_t fieldNumber, int64_t value);
+SInt32 computeInt64Size(SInt32 fieldNumber, SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code int32} field, including tag.
  */
-int32_t computeInt32Size(int32_t fieldNumber, int32_t value);
+SInt32 computeInt32Size(SInt32 fieldNumber, SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code fixed64} field, including tag.
  */
-int32_t computeFixed64Size(int32_t fieldNumber, int64_t value);
+SInt32 computeFixed64Size(SInt32 fieldNumber, SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code fixed32} field, including tag.
  */
-int32_t computeFixed32Size(int32_t fieldNumber, int32_t value);
+SInt32 computeFixed32Size(SInt32 fieldNumber, SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code bool} field, including tag.
  */
-int32_t computeBoolSize(int32_t fieldNumber, BOOL value);
+SInt32 computeBoolSize(SInt32 fieldNumber, BOOL value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code string} field, including tag.
  */
-int32_t computeStringSize(int32_t fieldNumber, const NSString* value);
+SInt32 computeStringSize(SInt32 fieldNumber, const NSString* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field, including tag.
  */
-int32_t computeGroupSize(int32_t fieldNumber, const id<PBMessage> value);
+SInt32 computeGroupSize(SInt32 fieldNumber, const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field represented by an {@code PBUnknownFieldSet}, including
  * tag.
  */
-int32_t computeUnknownGroupSize(int32_t fieldNumber, const PBUnknownFieldSet* value);
+SInt32 computeUnknownGroupSize(SInt32 fieldNumber, const PBUnknownFieldSet* value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * embedded message field, including tag.
  */
-int32_t computeMessageSize(int32_t fieldNumber, const id<PBMessage> value);
+SInt32 computeMessageSize(SInt32 fieldNumber, const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code bytes} field, including tag.
  */
-int32_t computeDataSize(int32_t fieldNumber, const NSData* value);
+SInt32 computeDataSize(SInt32 fieldNumber, const NSData* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code uint32} field, including tag.
  */
-int32_t computeUInt32Size(int32_t fieldNumber, int32_t value);
+SInt32 computeUInt32Size(SInt32 fieldNumber, SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sfixed32} field, including tag.
  */
-int32_t computeSFixed32Size(int32_t fieldNumber, int32_t value);
+SInt32 computeSFixed32Size(SInt32 fieldNumber, SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sfixed64} field, including tag.
  */
-int32_t computeSFixed64Size(int32_t fieldNumber, int64_t value);
+SInt32 computeSFixed64Size(SInt32 fieldNumber, SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sint32} field, including tag.
  */
-int32_t computeSInt32Size(int32_t fieldNumber, int32_t value);
+SInt32 computeSInt32Size(SInt32 fieldNumber, SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sint64} field, including tag.
  */
-int32_t computeSInt64Size(int32_t fieldNumber, int64_t value);
+SInt32 computeSInt64Size(SInt32 fieldNumber, SInt64 value);
 
 /** Compute the number of bytes that would be needed to encode a tag. */
-int32_t computeTagSize(int32_t fieldNumber);
+SInt32 computeTagSize(SInt32 fieldNumber);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code double} field, including tag.
  */
-int32_t computeDoubleSizeNoTag(Float64 value);
+SInt32 computeDoubleSizeNoTag(Float64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code float} field, including tag.
  */
-int32_t computeFloatSizeNoTag(Float32 value);
+SInt32 computeFloatSizeNoTag(Float32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code uint64} field, including tag.
  */
-int32_t computeUInt64SizeNoTag(int64_t value);
+SInt32 computeUInt64SizeNoTag(SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code int64} field, including tag.
  */
-int32_t computeInt64SizeNoTag(int64_t value);
+SInt32 computeInt64SizeNoTag(SInt64 value);
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code int32} field, including tag.
  */
-int32_t computeInt32SizeNoTag(int32_t value);
+SInt32 computeInt32SizeNoTag(SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code fixed64} field, including tag.
  */
-int32_t computeFixed64SizeNoTag(int64_t value);
+SInt32 computeFixed64SizeNoTag(SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code fixed32} field, including tag.
  */
-int32_t computeFixed32SizeNoTag(int32_t value);
+SInt32 computeFixed32SizeNoTag(SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code bool} field, including tag.
  */
-int32_t computeBoolSizeNoTag(BOOL value);
+SInt32 computeBoolSizeNoTag(BOOL value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code string} field, including tag.
  */
-int32_t computeStringSizeNoTag(const NSString* value);
+SInt32 computeStringSizeNoTag(const NSString* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field, including tag.
  */
-int32_t computeGroupSizeNoTag(const id<PBMessage> value);
+SInt32 computeGroupSizeNoTag(const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code group} field represented by an {@code PBUnknownFieldSet}, including
  * tag.
  */
-int32_t computeUnknownGroupSizeNoTag(const PBUnknownFieldSet* value);
+SInt32 computeUnknownGroupSizeNoTag(const PBUnknownFieldSet* value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * embedded message field, including tag.
  */
-int32_t computeMessageSizeNoTag(const id<PBMessage> value);
+SInt32 computeMessageSizeNoTag(const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code bytes} field, including tag.
  */
-int32_t computeDataSizeNoTag(const NSData* value);
+SInt32 computeDataSizeNoTag(const NSData* value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * {@code uint32} field, including tag.
  */
-int32_t computeUInt32SizeNoTag(int32_t value);
+SInt32 computeUInt32SizeNoTag(SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * enum field, including tag.  Caller is responsible for converting the
  * enum value to its numeric value.
  */
-int32_t computeEnumSizeNoTag(int32_t value);
+SInt32 computeEnumSizeNoTag(SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sfixed32} field, including tag.
  */
-int32_t computeSFixed32SizeNoTag(int32_t value);
+SInt32 computeSFixed32SizeNoTag(SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sfixed64} field, including tag.
  */
-int32_t computeSFixed64SizeNoTag(int64_t value);
+SInt32 computeSFixed64SizeNoTag(SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sint32} field, including tag.
  */
-int32_t computeSInt32SizeNoTag(int32_t value);
+SInt32 computeSInt32SizeNoTag(SInt32 value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * {@code sint64} field, including tag.
  */
-int32_t computeSInt64SizeNoTag(int64_t value);
+SInt32 computeSInt64SizeNoTag(SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a varint.
  * {@code value} is treated as unsigned, so it won't be sign-extended if
  * negative.
  */
-int32_t computeRawVarint32Size(int32_t value);
+SInt32 computeRawVarint32Size(SInt32 value);
 
 /** Compute the number of bytes that would be needed to encode a varint. */
-int32_t computeRawVarint64Size(int64_t value);
+SInt32 computeRawVarint64Size(SInt64 value);
 
 /**
  * Compute the number of bytes that would be needed to encode a
  * MessageSet extension to the stream.  For historical reasons,
  * the wire format differs from normal fields.
  */
-int32_t computeMessageSetExtensionSize(int32_t fieldNumber, const id<PBMessage> value);
+SInt32 computeMessageSetExtensionSize(SInt32 fieldNumber, const id<PBMessage> value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * unparsed MessageSet extension field to the stream.  For
  * historical reasons, the wire format differs from normal fields.
  */
-int32_t computeRawMessageSetExtensionSize(int32_t fieldNumber, const NSData* value);
+SInt32 computeRawMessageSetExtensionSize(SInt32 fieldNumber, const NSData* value);
 
 /**
  * Compute the number of bytes that would be needed to encode an
  * enum field, including tag.  Caller is responsible for converting the
  * enum value to its numeric value.
  */
-int32_t computeEnumSize(int32_t fieldNumber, int32_t value);
+SInt32 computeEnumSize(SInt32 fieldNumber, SInt32 value);

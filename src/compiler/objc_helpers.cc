@@ -39,6 +39,32 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       }
     }
   }
+  
+  bool isObjectArray(const FieldDescriptor* field){
+	 switch (field->type()) {
+		  case FieldDescriptor::TYPE_STRING  : 
+	      case FieldDescriptor::TYPE_BYTES   : 
+	      case FieldDescriptor::TYPE_ENUM    : 
+	      case FieldDescriptor::TYPE_GROUP   : 
+	      case FieldDescriptor::TYPE_MESSAGE : return true;
+	      case FieldDescriptor::TYPE_INT32   : 
+	      case FieldDescriptor::TYPE_UINT32  :
+	      case FieldDescriptor::TYPE_SINT32  :
+	      case FieldDescriptor::TYPE_FIXED32 :
+	      case FieldDescriptor::TYPE_SFIXED32:
+	      case FieldDescriptor::TYPE_INT64   :
+	      case FieldDescriptor::TYPE_UINT64  : 
+	      case FieldDescriptor::TYPE_SINT64  : 
+	      case FieldDescriptor::TYPE_FIXED64 : 
+	      case FieldDescriptor::TYPE_SFIXED64: 
+	      case FieldDescriptor::TYPE_FLOAT   :
+	      case FieldDescriptor::TYPE_DOUBLE  :
+	      case FieldDescriptor::TYPE_BOOL    : return false  ;
+	      
+	    }
+	    GOOGLE_LOG(FATAL) << "Can't get here.";
+	    return NULL;
+  }
 
 
     string UnderscoresToCapitalizedCamelCase(const string& input) {
@@ -48,7 +74,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       bool last_char_was_number = false;
       bool last_char_was_lower = false;
       bool last_char_was_upper = false;
-      for (int i = 0; i < input.size(); i++) {
+      for (unsigned int i = 0; i < input.size(); i++) {
         char c = input[i];
         if (c >= '0' && c <= '9') {
           if (!last_char_was_number) {
@@ -83,7 +109,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
       for (vector<string>::iterator i = values.begin(); i != values.end(); ++i) {
         string value = *i;
-        for (int j = 0; j < value.length(); j++) {
+        for (unsigned int j = 0; j < value.length(); j++) {
           if (j == 0) {
             value[j] = toupper(value[j]);
           } else {
@@ -250,7 +276,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     string name;
     if (descriptor->containing_type() != NULL) {
       name = ClassNameWorker(descriptor->containing_type());
-      name += "_";
+      name += "";
     }
     return name + descriptor->name();
   }
@@ -260,7 +286,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     string name;
     if (descriptor->containing_type() != NULL) {
       name = ClassNameWorker(descriptor->containing_type());
-      name += "_";
+      name += "";
     }
     return name + descriptor->name();
   }
@@ -368,9 +394,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     case OBJECTIVECTYPE_BOOLEAN:
     case OBJECTIVECTYPE_ENUM   :
       return true;
-    }
 
-    return false;
+    default:
+        return false;
+    }
   }
 
 
@@ -401,7 +428,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     hash_set<string> MakeKeywordsMap() {
       hash_set<string> result;
-      for (int i = 0; i < GOOGLE_ARRAYSIZE(kKeywordList); i++) {
+      for (unsigned int i = 0; i < GOOGLE_ARRAYSIZE(kKeywordList); i++) {
         result.insert(kKeywordList[i]);
       }
       return result;
@@ -422,7 +449,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   string BoxValue(const FieldDescriptor* field, const string& value) {
     switch (GetObjectiveCType(field)) {
       case OBJECTIVECTYPE_INT:
-        return "[NSNumber numberWithInt:" + value + "]";
+        return "[NSNumber numberWithInteger:" + value + "]";
       case OBJECTIVECTYPE_LONG:
         return "[NSNumber numberWithLongLong:" + value + "]";
       case OBJECTIVECTYPE_FLOAT:
@@ -432,14 +459,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       case OBJECTIVECTYPE_BOOLEAN:
         return "[NSNumber numberWithBool:" + value + "]";
       case OBJECTIVECTYPE_ENUM:
-        return "[NSNumber numberWithInt:" + value + "]";
+        return "[NSNumber numberWithInteger:" + value + "]";
+    default:
+        return value;
     }
-
-    return value;
   }
 
   bool AllAscii(const string& text) {
-    for (int i = 0; i < text.size(); i++) {
+    for (unsigned int i = 0; i < text.size(); i++) {
       if ((text[i] & 0x80) != 0) {
         return false;
       }

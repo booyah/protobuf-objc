@@ -21,8 +21,8 @@
 @implementation MicroTest
 
 - (void)testIntegers {
-  STAssertNil(nil, @"nil should be nil");
-  STAssertEquals(2, 2, @"2 should equal 2");
+  XCTAssertNil(nil, @"nil should be nil");
+  XCTAssertEqual(2, 2, @"2 should equal 2");
 }
 
 @end

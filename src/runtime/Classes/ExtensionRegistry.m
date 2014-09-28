@@ -18,17 +18,13 @@
 #import "ExtensionRegistry.h"
 
 @interface PBExtensionRegistry()
-@property (retain) NSDictionary* classMap;
+@property (strong) NSDictionary* classMap;
 @end
 
 @implementation PBExtensionRegistry
 
 @synthesize classMap;
 
-- (void) dealloc {
-  self.classMap = nil;
-  [super dealloc];
-}
 
 static PBExtensionRegistry* emptyRegistry = nil;
 
@@ -58,7 +54,7 @@ static PBExtensionRegistry* emptyRegistry = nil;
 }
 
 
-- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(NSInteger) fieldNumber {
+- (id<PBExtensionField>) getExtension:(Class) clazz fieldNumber:(SInt32) fieldNumber {
   NSDictionary* extensionMap = [classMap objectForKey:[self keyForClass:clazz]];
   return [extensionMap objectForKey:[NSNumber numberWithInteger:fieldNumber]];
 }

@@ -21,13 +21,13 @@
 @implementation UtilitiesTests
 
 - (void) testRightShiftFunctions {
-  STAssertEquals((1UL << 31) >> 31, 1UL, nil);
-  STAssertEquals((1 << 31) >> 31, -1, nil);
-  STAssertEquals((1ULL << 63) >> 63, 1ULL, nil);
-  STAssertEquals((1LL << 63) >> 63, -1LL, nil);
+  XCTAssertEqual((1UL << 31) >> 31, 1UL);
+  XCTAssertEqual((1 << 31) >> 31, -1);
+  XCTAssertEqual((1ULL << 63) >> 63, 1ULL);
+  XCTAssertEqual((1LL << 63) >> 63, -1LL);
 
-  STAssertEquals(logicalRightShift32((1 << 31), 31), 1, nil);
-  STAssertEquals(logicalRightShift64((1LL << 63), 63), 1LL, nil);
+  XCTAssertEqual(logicalRightShift32(((SInt32)1 << 31), 31), (SInt32)1);
+  XCTAssertEqual(logicalRightShift64((1LL << 63), 63), 1LL);
 }
 
 @end

@@ -17,33 +17,29 @@
 
 #import "CodedInputStream.h"
 
-#import "Message_Builder.h"
+#import "MessageBuilder.h"
 #import "Utilities.h"
 #import "WireFormat.h"
+#import "UnknownFieldSetBuilder.h"
+#import "UnknownFieldSet.h"
 
 
 @interface PBCodedInputStream ()
-@property (retain) NSMutableData* buffer;
-@property (retain) NSInputStream* input;
+@property (strong) NSMutableData* buffer;
+@property (strong) NSInputStream* input;
 @end
 
 
 @implementation PBCodedInputStream
 
-const int32_t DEFAULT_RECURSION_LIMIT = 64;
-const int32_t DEFAULT_SIZE_LIMIT = 64 << 20;  // 64MB
-const int32_t BUFFER_SIZE = 4096;
+const SInt32 DEFAULT_RECURSION_LIMIT = 64;
+const SInt32 DEFAULT_SIZE_LIMIT = 64 << 20;  // 64MB
+const SInt32 BUFFER_SIZE = 4096;
 
 @synthesize buffer;
 @synthesize input;
 
-- (void) dealloc {
-  [input close];
-  self.buffer = nil;
-  self.input = nil;
 
-  [super dealloc];
-}
 
 
 - (void) commonInit {
@@ -56,7 +52,7 @@ const int32_t BUFFER_SIZE = 4096;
 - (id) initWithData:(NSData*) data {
   if ((self = [super init])) {
     self.buffer = [NSMutableData dataWithData:data];
-    bufferSize = buffer.length;
+    bufferSize = (UInt32)buffer.length;
     self.input = nil;
     [self commonInit];
   }
@@ -79,12 +75,12 @@ const int32_t BUFFER_SIZE = 4096;
 
 
 + (PBCodedInputStream*) streamWithData:(NSData*) data {
-  return [[[PBCodedInputStream alloc] initWithData:data] autorelease];
+    return [[PBCodedInputStream alloc] initWithData:data];
 }
 
 
 + (PBCodedInputStream*) streamWithInputStream:(NSInputStream*) input {
-  return [[[PBCodedInputStream alloc] initWithInputStream:input] autorelease];
+    return [[PBCodedInputStream alloc] initWithInputStream:input];
 }
 
 
@@ -93,7 +89,7 @@ const int32_t BUFFER_SIZE = 4096;
  * Protocol message parsers use this to read tags, since a protocol message
  * may legally end wherever a tag occurs, and zero is not a valid tag number.
  */
-- (int32_t) readTag {
+- (SInt32) readTag {
   if (self.isAtEnd) {
     lastTag = 0;
     return 0;
@@ -115,7 +111,7 @@ const int32_t BUFFER_SIZE = 4096;
  * @throws InvalidProtocolBufferException {@code value} does not match the
  *                                        last tag.
  */
-- (void) checkLastTagWas:(int32_t) value {
+- (void) checkLastTagWas:(SInt32) value {
   if (lastTag != value) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"Invalid End Tag" userInfo:nil];
   }
@@ -127,7 +123,7 @@ const int32_t BUFFER_SIZE = 4096;
  * @return {@code NO} if the tag is an endgroup tag, in which case
  *         nothing is skipped.  Otherwise, returns {@code YES}.
  */
-- (BOOL) skipField:(int32_t) tag {
+- (BOOL) skipField:(SInt32) tag {
   switch (PBWireFormatGetTagWireType(tag)) {
     case PBWireFormatVarint:
       [self readInt32];
@@ -161,7 +157,7 @@ const int32_t BUFFER_SIZE = 4096;
  */
 - (void) skipMessage {
   while (YES) {
-    int32_t tag = [self readTag];
+    SInt32 tag = [self readTag];
     if (tag == 0 || ![self skipField:tag]) {
       return;
     }
@@ -182,31 +178,31 @@ const int32_t BUFFER_SIZE = 4096;
 
 
 /** Read a {@code uint64} field value from the stream. */
-- (int64_t) readUInt64 {
+- (SInt64) readUInt64 {
   return [self readRawVarint64];
 }
 
 
 /** Read an {@code int64} field value from the stream. */
-- (int64_t) readInt64 {
+- (SInt64) readInt64 {
   return [self readRawVarint64];
 }
 
 
 /** Read an {@code int32} field value from the stream. */
-- (int32_t) readInt32 {
+- (SInt32) readInt32 {
   return [self readRawVarint32];
 }
 
 
 /** Read a {@code fixed64} field value from the stream. */
-- (int64_t) readFixed64 {
+- (SInt64) readFixed64 {
   return [self readRawLittleEndian64];
 }
 
 
 /** Read a {@code fixed32} field value from the stream. */
-- (int32_t) readFixed32 {
+- (SInt32) readFixed32 {
   return [self readRawLittleEndian32];
 }
 
@@ -219,27 +215,27 @@ const int32_t BUFFER_SIZE = 4096;
 
 /** Read a {@code string} field value from the stream. */
 - (NSString*) readString {
-  int32_t size = [self readRawVarint32];
+  SInt32 size = [self readRawVarint32];
   if (size <= (bufferSize - bufferPos) && size > 0) {
     // Fast path:  We already have the bytes in a contiguous buffer, so
     //   just copy directly from it.
     //  new String(buffer, bufferPos, size, "UTF-8");
-    NSString* result = [[[NSString alloc] initWithBytes:(((uint8_t*) buffer.bytes) + bufferPos)
+    NSString* result = [[NSString alloc] initWithBytes:(((uint8_t*) buffer.bytes) + bufferPos)
                                                  length:size
-                                               encoding:NSUTF8StringEncoding] autorelease];
+                                               encoding:NSUTF8StringEncoding];
     bufferPos += size;
     return result;
   } else {
     // Slow path:  Build a byte array first then copy it.
     NSData* data = [self readRawData:size];
-    return [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] autorelease];
+      return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
   }
 }
 
 
 /** Read a {@code group} field value from the stream. */
-- (void)      readGroup:(int32_t) fieldNumber
-                builder:(id<PBMessage_Builder>) builder
+- (void)      readGroup:(SInt32) fieldNumber
+                builder:(id<PBMessageBuilder>) builder
       extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
   if (recursionDepth >= recursionLimit) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"Recursion Limit Exceeded" userInfo:nil];
@@ -255,8 +251,8 @@ const int32_t BUFFER_SIZE = 4096;
  * Reads a {@code group} field value from the stream and merges it into the
  * given {@link PBUnknownFieldSet}.
  */
-- (void) readUnknownGroup:(int32_t) fieldNumber
-                  builder:(PBUnknownFieldSet_Builder*) builder {
+- (void) readUnknownGroup:(SInt32) fieldNumber
+                  builder:(PBUnknownFieldSetBuilder*) builder {
   if (recursionDepth >= recursionLimit) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"Recursion Limit Exceeded" userInfo:nil];
   }
@@ -268,13 +264,13 @@ const int32_t BUFFER_SIZE = 4096;
 
 
 /** Read an embedded message field value from the stream. */
-- (void) readMessage:(id<PBMessage_Builder>) builder
+- (void) readMessage:(id<PBMessageBuilder>) builder
    extensionRegistry:(PBExtensionRegistry*) extensionRegistry {
-  int32_t length = [self readRawVarint32];
+  SInt32 length = [self readRawVarint32];
   if (recursionDepth >= recursionLimit) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"Recursion Limit Exceeded" userInfo:nil];
   }
-  int32_t oldLimit = [self pushLimit:length];
+  SInt32 oldLimit = [self pushLimit:length];
   ++recursionDepth;
   [builder mergeFromCodedInputStream:self extensionRegistry:extensionRegistry];
   [self checkLastTagWas:0];
@@ -285,7 +281,7 @@ const int32_t BUFFER_SIZE = 4096;
 
 /** Read a {@code bytes} field value from the stream. */
 - (NSData*) readData {
-  int32_t size = [self readRawVarint32];
+  SInt32 size = [self readRawVarint32];
   if (size < bufferSize - bufferPos && size > 0) {
     // Fast path:  We already have the bytes in a contiguous buffer, so
     //   just copy directly from it.
@@ -300,7 +296,7 @@ const int32_t BUFFER_SIZE = 4096;
 
 
 /** Read a {@code uint32} field value from the stream. */
-- (int32_t) readUInt32 {
+- (SInt32) readUInt32 {
   return [self readRawVarint32];
 }
 
@@ -309,31 +305,31 @@ const int32_t BUFFER_SIZE = 4096;
  * Read an enum field value from the stream.  Caller is responsible
  * for converting the numeric value to an actual enum.
  */
-- (int32_t) readEnum {
+- (SInt32) readEnum {
   return [self readRawVarint32];
 }
 
 
 /** Read an {@code sfixed32} field value from the stream. */
-- (int32_t) readSFixed32 {
+- (SInt32) readSFixed32 {
   return [self readRawLittleEndian32];
 }
 
 
 /** Read an {@code sfixed64} field value from the stream. */
-- (int64_t) readSFixed64 {
+- (SInt64) readSFixed64 {
   return [self readRawLittleEndian64];
 }
 
 
 /** Read an {@code sint32} field value from the stream. */
-- (int32_t) readSInt32 {
+- (SInt32) readSInt32 {
   return decodeZigZag32([self readRawVarint32]);
 }
 
 
 /** Read an {@code sint64} field value from the stream. */
-- (int64_t) readSInt64 {
+- (SInt64) readSInt64 {
   return decodeZigZag64([self readRawVarint64]);
 }
 
@@ -344,12 +340,12 @@ const int32_t BUFFER_SIZE = 4096;
  * Read a raw Varint from the stream.  If larger than 32 bits, discard the
  * upper bits.
  */
-- (int32_t) readRawVarint32 {
+- (SInt32) readRawVarint32 {
   int8_t tmp = [self readRawByte];
   if (tmp >= 0) {
     return tmp;
   }
-  int32_t result = tmp & 0x7f;
+  SInt32 result = tmp & 0x7f;
   if ((tmp = [self readRawByte]) >= 0) {
     result |= tmp << 7;
   } else {
@@ -380,12 +376,12 @@ const int32_t BUFFER_SIZE = 4096;
 
 
 /** Read a raw Varint from the stream. */
-- (int64_t) readRawVarint64 {
-  int32_t shift = 0;
-  int64_t result = 0;
+- (SInt64) readRawVarint64 {
+  SInt32 shift = 0;
+  SInt64 result = 0;
   while (shift < 64) {
     int8_t b = [self readRawByte];
-    result |= (int64_t)(b & 0x7F) << shift;
+    result |= (SInt64)(b & 0x7F) << shift;
     if ((b & 0x80) == 0) {
       return result;
     }
@@ -396,21 +392,21 @@ const int32_t BUFFER_SIZE = 4096;
 
 
 /** Read a 32-bit little-endian integer from the stream. */
-- (int32_t) readRawLittleEndian32 {
+- (SInt32) readRawLittleEndian32 {
   int8_t b1 = [self readRawByte];
   int8_t b2 = [self readRawByte];
   int8_t b3 = [self readRawByte];
   int8_t b4 = [self readRawByte];
   return
-  (((int32_t)b1 & 0xff)      ) |
-  (((int32_t)b2 & 0xff) <<  8) |
-  (((int32_t)b3 & 0xff) << 16) |
-  (((int32_t)b4 & 0xff) << 24);
+  (((SInt32)b1 & 0xff)      ) |
+  (((SInt32)b2 & 0xff) <<  8) |
+  (((SInt32)b3 & 0xff) << 16) |
+  (((SInt32)b4 & 0xff) << 24);
 }
 
 
 /** Read a 64-bit little-endian integer from the stream. */
-- (int64_t) readRawLittleEndian64 {
+- (SInt64) readRawLittleEndian64 {
   int8_t b1 = [self readRawByte];
   int8_t b2 = [self readRawByte];
   int8_t b3 = [self readRawByte];
@@ -420,14 +416,14 @@ const int32_t BUFFER_SIZE = 4096;
   int8_t b7 = [self readRawByte];
   int8_t b8 = [self readRawByte];
   return
-  (((int64_t)b1 & 0xff)      ) |
-  (((int64_t)b2 & 0xff) <<  8) |
-  (((int64_t)b3 & 0xff) << 16) |
-  (((int64_t)b4 & 0xff) << 24) |
-  (((int64_t)b5 & 0xff) << 32) |
-  (((int64_t)b6 & 0xff) << 40) |
-  (((int64_t)b7 & 0xff) << 48) |
-  (((int64_t)b8 & 0xff) << 56);
+  (((SInt64)b1 & 0xff)      ) |
+  (((SInt64)b2 & 0xff) <<  8) |
+  (((SInt64)b3 & 0xff) << 16) |
+  (((SInt64)b4 & 0xff) << 24) |
+  (((SInt64)b5 & 0xff) << 32) |
+  (((SInt64)b6 & 0xff) << 40) |
+  (((SInt64)b7 & 0xff) << 48) |
+  (((SInt64)b8 & 0xff) << 56);
 }
 
 
@@ -438,11 +434,11 @@ const int32_t BUFFER_SIZE = 4096;
  *
  * @return the old limit.
  */
-- (int32_t) setRecursionLimit:(int32_t) limit {
+- (SInt32) setRecursionLimit:(SInt32) limit {
   if (limit < 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"Recursion limit cannot be negative" userInfo:nil];
   }
-  int32_t oldLimit = recursionLimit;
+  SInt32 oldLimit = recursionLimit;
   recursionLimit = limit;
   return oldLimit;
 }
@@ -459,11 +455,11 @@ const int32_t BUFFER_SIZE = 4096;
  *
  * @return the old limit.
  */
-- (int32_t) setSizeLimit:(int32_t) limit {
+- (SInt32) setSizeLimit:(SInt32) limit {
   if (limit < 0) {
     @throw [NSException exceptionWithName:@"IllegalArgument" reason:@"Size limit cannot be negative:" userInfo:nil];
   }
-  int32_t oldLimit = sizeLimit;
+  SInt32 oldLimit = sizeLimit;
   sizeLimit = limit;
   return oldLimit;
 }
@@ -483,12 +479,12 @@ const int32_t BUFFER_SIZE = 4096;
  *
  * @return the old limit.
  */
-- (int32_t) pushLimit:(int32_t) byteLimit {
+- (SInt32) pushLimit:(SInt32) byteLimit {
   if (byteLimit < 0) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"negativeSize" userInfo:nil];
   }
   byteLimit += totalBytesRetired + bufferPos;
-  int32_t oldLimit = currentLimit;
+  SInt32 oldLimit = currentLimit;
   if (byteLimit > oldLimit) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"truncatedMessage" userInfo:nil];
   }
@@ -502,7 +498,7 @@ const int32_t BUFFER_SIZE = 4096;
 
 - (void) recomputeBufferSizeAfterLimit {
   bufferSize += bufferSizeAfterLimit;
-  int32_t bufferEnd = totalBytesRetired + bufferSize;
+  SInt32 bufferEnd = totalBytesRetired + bufferSize;
   if (bufferEnd > currentLimit) {
     // Limit is in current buffer.
     bufferSizeAfterLimit = bufferEnd - currentLimit;
@@ -518,7 +514,7 @@ const int32_t BUFFER_SIZE = 4096;
  *
  * @param oldLimit The old limit, as returned by {@code pushLimit}.
  */
-- (void) popLimit:(int32_t) oldLimit {
+- (void) popLimit:(SInt32) oldLimit {
   currentLimit = oldLimit;
   [self recomputeBufferSizeAfterLimit];
 }
@@ -528,12 +524,12 @@ const int32_t BUFFER_SIZE = 4096;
  * Returns the number of bytes to be read before the current limit.
  * If no limit is set, returns -1.
  */
-- (int32_t) bytesUntilLimit {
+- (SInt32) bytesUntilLimit {
   if (currentLimit == INT_MAX) {
     return -1;
   }
 
-  int32_t currentAbsolutePosition = totalBytesRetired + bufferPos;
+  SInt32 currentAbsolutePosition = totalBytesRetired + bufferPos;
   return currentLimit - currentAbsolutePosition;
 }
 
@@ -575,7 +571,7 @@ const int32_t BUFFER_SIZE = 4096;
   bufferPos = 0;
   bufferSize = 0;
   if (input != nil) {
-    bufferSize = [input read:buffer.mutableBytes maxLength:buffer.length];
+    bufferSize = (SInt32)[input read:buffer.mutableBytes maxLength:buffer.length];
   }
 
   if (bufferSize <= 0) {
@@ -587,7 +583,7 @@ const int32_t BUFFER_SIZE = 4096;
     }
   } else {
     [self recomputeBufferSizeAfterLimit];
-    int32_t totalBytesRead = totalBytesRetired + bufferSize + bufferSizeAfterLimit;
+    SInt32 totalBytesRead = totalBytesRetired + bufferSize + bufferSizeAfterLimit;
     if (totalBytesRead > sizeLimit || totalBytesRead < 0) {
       @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"sizeLimitExceeded" userInfo:nil];
     }
@@ -617,7 +613,7 @@ const int32_t BUFFER_SIZE = 4096;
  * @throws InvalidProtocolBufferException The end of the stream or the current
  *                                        limit was reached.
  */
-- (NSData*) readRawData:(int32_t) size {
+- (NSData*) readRawData:(SInt32) size {
   if (size < 0) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"negativeSize" userInfo:nil];
   }
@@ -640,7 +636,7 @@ const int32_t BUFFER_SIZE = 4096;
 
     // First copy what we have.
     NSMutableData* bytes = [NSMutableData dataWithLength:size];
-    int32_t pos = bufferSize - bufferPos;
+    SInt32 pos = bufferSize - bufferPos;
     memcpy(bytes.mutableBytes, ((int8_t*)buffer.bytes) + bufferPos, pos);
     bufferPos = bufferSize;
 
@@ -671,8 +667,8 @@ const int32_t BUFFER_SIZE = 4096;
 
     // Remember the buffer markers since we'll have to copy the bytes out of
     // it later.
-    int32_t originalBufferPos = bufferPos;
-    int32_t originalBufferSize = bufferSize;
+    SInt32 originalBufferPos = bufferPos;
+    SInt32 originalBufferSize = bufferSize;
 
     // Mark the current buffer consumed.
     totalBytesRetired += bufferSize;
@@ -680,17 +676,17 @@ const int32_t BUFFER_SIZE = 4096;
     bufferSize = 0;
 
     // Read all the rest of the bytes we need.
-    int32_t sizeLeft = size - (originalBufferSize - originalBufferPos);
+    SInt32 sizeLeft = size - (originalBufferSize - originalBufferPos);
     NSMutableArray* chunks = [NSMutableArray array];
 
     while (sizeLeft > 0) {
       NSMutableData* chunk = [NSMutableData dataWithLength:MIN(sizeLeft, BUFFER_SIZE)];
 
-      int32_t pos = 0;
+      SInt32 pos = 0;
       while (pos < chunk.length) {
-        int32_t n = 0;
+        SInt32 n = 0;
         if (input != nil) {
-          n = [input read:(((uint8_t*) chunk.mutableBytes) + pos) maxLength:chunk.length - pos];
+          n = (SInt32)[input read:(((uint8_t*) chunk.mutableBytes) + pos) maxLength:chunk.length - pos];
         }
         if (n <= 0) {
           @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"truncatedMessage" userInfo:nil];
@@ -706,7 +702,7 @@ const int32_t BUFFER_SIZE = 4096;
     NSMutableData* bytes = [NSMutableData dataWithLength:size];
 
     // Start by copying the leftover bytes from this.buffer.
-    int32_t pos = originalBufferSize - originalBufferPos;
+    SInt32 pos = originalBufferSize - originalBufferPos;
     memcpy(bytes.mutableBytes, ((int8_t*)buffer.bytes) + originalBufferPos, pos);
 
     // And now all the chunks.
@@ -727,7 +723,7 @@ const int32_t BUFFER_SIZE = 4096;
  * @throws InvalidProtocolBufferException The end of the stream or the current
  *                                        limit was reached.
  */
-- (void) skipRawData:(int32_t) size {
+- (void) skipRawData:(SInt32) size {
   if (size < 0) {
     @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"negativeSize" userInfo:nil];
   }
@@ -744,7 +740,7 @@ const int32_t BUFFER_SIZE = 4096;
     bufferPos += size;
   } else {
     // Skipping more bytes than are in the buffer.  First skip what we have.
-    int32_t pos = bufferSize - bufferPos;
+    SInt32 pos = bufferSize - bufferPos;
     totalBytesRetired += pos;
     bufferPos = 0;
     bufferSize = 0;
@@ -752,7 +748,7 @@ const int32_t BUFFER_SIZE = 4096;
     // Then skip directly from the InputStream for the rest.
     while (pos < size) {
       NSMutableData* data = [NSMutableData dataWithLength:(size - pos)];
-      int32_t n = (input == nil) ? -1 : (int32_t)[input read:data.mutableBytes maxLength:(size - pos)];
+      SInt32 n = (input == nil) ? -1 : (SInt32)[input read:data.mutableBytes maxLength:(size - pos)];
       if (n <= 0) {
         @throw [NSException exceptionWithName:@"InvalidProtocolBuffer" reason:@"truncatedMessage" userInfo:nil];
       }

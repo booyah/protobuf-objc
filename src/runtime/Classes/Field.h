@@ -27,24 +27,24 @@
 	PBAppendableArray *	_varintArray;
 	PBAppendableArray *	_fixed32Array;
 	PBAppendableArray *	_fixed64Array;
-	PBAppendableArray *	_lengthDelimitedArray;
-	PBAppendableArray *	_groupArray;
+	NSMutableArray *	_lengthDelimitedArray;
+	NSMutableArray *	_groupArray;
 }
 
-@property (nonatomic,retain,readonly) PBArray *	varintArray;
-@property (nonatomic,retain,readonly) PBArray *	fixed32Array;
-@property (nonatomic,retain,readonly) PBArray *	fixed64Array;
-@property (nonatomic,retain,readonly) PBArray *	lengthDelimitedArray;
-@property (nonatomic,retain,readonly) PBArray *	groupArray;
+@property (nonatomic,strong,readonly) PBArray *	varintArray;
+@property (nonatomic,strong,readonly) PBArray *	fixed32Array;
+@property (nonatomic,strong,readonly) PBArray *	fixed64Array;
+@property (nonatomic,strong,readonly) NSArray *	lengthDelimitedArray;
+@property (nonatomic,strong,readonly) NSArray *	groupArray;
 
 + (PBField *)defaultInstance;
 
-- (int32_t)getSerializedSize:(int32_t)fieldNumber;
-- (int32_t)getSerializedSizeAsMessageSetExtension:(int32_t)fieldNumber;
+- (SInt32)getSerializedSize:(SInt32)fieldNumber;
+- (SInt32)getSerializedSizeAsMessageSetExtension:(SInt32)fieldNumber;
 
-- (void)writeTo:(int32_t) fieldNumber output:(PBCodedOutputStream *)output;
-- (void)writeAsMessageSetExtensionTo:(int32_t)fieldNumber output:(PBCodedOutputStream *)output;
-- (void)writeDescriptionFor:(int32_t) fieldNumber
+- (void)writeTo:(SInt32) fieldNumber output:(PBCodedOutputStream *)output;
+- (void)writeAsMessageSetExtensionTo:(SInt32)fieldNumber output:(PBCodedOutputStream *)output;
+- (void)writeDescriptionFor:(SInt32) fieldNumber
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent;
 @end

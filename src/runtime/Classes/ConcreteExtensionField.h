@@ -43,7 +43,7 @@ typedef enum {
   PBExtensionType type;
 
   Class extendedClass;
-  int32_t fieldNumber;
+  SInt32 fieldNumber;
   id defaultValue;
 
   Class messageOrGroupClass;
@@ -55,7 +55,7 @@ typedef enum {
 
 + (PBConcreteExtensionField*) extensionWithType:(PBExtensionType) type
                                 extendedClass:(Class) extendedClass
-                                  fieldNumber:(int32_t) fieldNumber
+                                  fieldNumber:(SInt32) fieldNumber
                                  defaultValue:(id) defaultValue
                             messageOrGroupClass:(Class) messageOrGroupClass
                                    isRepeated:(BOOL) isRepeated

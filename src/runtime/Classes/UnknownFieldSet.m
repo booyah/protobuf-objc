@@ -20,10 +20,10 @@
 #import "CodedInputStream.h"
 #import "CodedOutputStream.h"
 #import "Field.h"
-#import "UnknownFieldSet_Builder.h"
+#import "UnknownFieldSetBuilder.h"
 
 @interface PBUnknownFieldSet()
-@property (retain) NSDictionary* fields;
+@property (strong) NSDictionary* fields;
 @end
 
 
@@ -33,18 +33,14 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 + (void) initialize {
   if (self == [PBUnknownFieldSet class]) {
-    defaultInstance = [[PBUnknownFieldSet setWithFields:[NSMutableDictionary dictionary]] retain];
+      defaultInstance = [PBUnknownFieldSet setWithFields:[NSMutableDictionary dictionary]];
   }
 }
 
 
 @synthesize fields;
 
-- (void) dealloc {
-  self.fields = nil;
 
-  [super dealloc];
-}
 
 
 + (PBUnknownFieldSet*) defaultInstance {
@@ -62,17 +58,17 @@ static PBUnknownFieldSet* defaultInstance = nil;
 
 
 + (PBUnknownFieldSet*) setWithFields:(NSMutableDictionary*) fields {
-  return [[[PBUnknownFieldSet alloc] initWithFields:fields] autorelease];
+    return [[PBUnknownFieldSet alloc] initWithFields:fields];
 }
 
 
-- (BOOL) hasField:(int32_t) number {
-  return [fields objectForKey:[NSNumber numberWithInt:number]] != nil;
+- (BOOL) hasField:(SInt32) number {
+  return [fields objectForKey:@(number)] != nil;
 }
 
 
-- (PBField*) getField:(int32_t) number {
-  PBField* result = [fields objectForKey:[NSNumber numberWithInt:number]];
+- (PBField*) getField:(SInt32) number {
+  PBField* result = [fields objectForKey:@(number)];
   return (result == nil) ? [PBField defaultInstance] : result;
 }
 
@@ -81,7 +77,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
   NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
     PBField* value = [fields objectForKey:number];
-    [value writeTo:number.intValue output:output];
+    [value writeTo:(SInt32)number.integerValue output:output];
   }
 }
 
@@ -98,7 +94,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
   NSArray* sortedKeys = [fields.allKeys sortedArrayUsingSelector:@selector(compare:)];
   for (NSNumber* number in sortedKeys) {
     PBField* value = [fields objectForKey:number];
-    [value writeDescriptionFor:number.intValue to:output withIndent:indent];
+    [value writeDescriptionFor:(SInt32)number.integerValue to:output withIndent:indent];
   }
 }
 
@@ -118,21 +114,21 @@ static PBUnknownFieldSet* defaultInstance = nil;
 }
 
 
-+ (PBUnknownFieldSet_Builder*) builder {
-  return [[[PBUnknownFieldSet_Builder alloc] init] autorelease];
++ (PBUnknownFieldSetBuilder*) builder {
+    return [[PBUnknownFieldSetBuilder alloc] init];
 }
 
 
-+ (PBUnknownFieldSet_Builder*) builderWithUnknownFields:(PBUnknownFieldSet*) copyFrom {
++ (PBUnknownFieldSetBuilder*) builderWithUnknownFields:(PBUnknownFieldSet*) copyFrom {
   return [[PBUnknownFieldSet builder] mergeUnknownFields:copyFrom];
 }
 
 
 /** Get the number of bytes required to encode this set. */
-- (int32_t) serializedSize {
-  int32_t result = 0;
+- (SInt32) serializedSize {
+  SInt32 result = 0;
   for (NSNumber* number in fields) {
-    result += [[fields objectForKey:number] getSerializedSize:number.intValue];
+    result += [[fields objectForKey:number] getSerializedSize:(SInt32)number.integerValue];
   }
   return result;
 }
@@ -143,7 +139,7 @@ static PBUnknownFieldSet* defaultInstance = nil;
  */
 - (void) writeAsMessageSetTo:(PBCodedOutputStream*) output {
   for (NSNumber* number in fields) {
-    [[fields objectForKey:number] writeAsMessageSetExtensionTo:number.intValue output:output];
+    [[fields objectForKey:number] writeAsMessageSetExtensionTo:(SInt32)number.integerValue output:output];
   }
 }
 
@@ -152,10 +148,10 @@ static PBUnknownFieldSet* defaultInstance = nil;
  * Get the number of bytes required to encode this set using
  * {@code MessageSet} wire format.
  */
-- (int32_t) serializedSizeAsMessageSet {
-  int32_t result = 0;
+- (SInt32) serializedSizeAsMessageSet {
+  SInt32 result = 0;
   for (NSNumber* number in fields) {
-    result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:number.intValue];
+    result += [[fields objectForKey:number] getSerializedSizeAsMessageSetExtension:(SInt32)number.integerValue];
   }
   return result;
 }

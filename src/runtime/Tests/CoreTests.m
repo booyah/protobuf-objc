@@ -19,20 +19,18 @@
 @implementation CoreTests
 
 - (void) testTypeSizes {
-  STAssertEquals(4, (int)sizeof(int), nil);	
+  XCTAssertEqual((size_t)4, sizeof(int));
   #ifdef __x86_64__	
-    STAssertEquals(8, (int)sizeof(long), nil);
+    XCTAssertEqual((size_t)4, sizeof(SInt32));
   #else
-    STAssertEquals(4, (int)sizeof(long), nil);
+    XCTAssertEqual((size_t)4, sizeof(SInt32));
   #endif
-  STAssertEquals(8, (int)sizeof(long long), nil);
-  STAssertEquals(4, (int)sizeof(int32_t), nil);
-  STAssertEquals(8, (int)sizeof(int64_t), nil);
-  STAssertEquals(4, (int)sizeof(Float32), nil);
-  STAssertEquals(8, (int)sizeof(Float64), nil);
-  STAssertEquals(0, !!0, nil);
-  STAssertEquals(1, !!1, nil);
-  STAssertEquals(1, !!2, nil);
+  XCTAssertEqual((size_t)8, sizeof(SInt64));
+  XCTAssertEqual((size_t)4, sizeof(Float32));
+  XCTAssertEqual((size_t)8, sizeof(Float64));
+  XCTAssertEqual(0, !!0);
+  XCTAssertEqual(1, !!1);
+  XCTAssertEqual(1, !!2);
 }
 
 @end

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>9B23CDF1-3E41-4594-B1B8-0C6DBDFAE2B3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ProtocolBuffers</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D</key>
+		<string>https://github.com/alexeyxo/protobuf-objc.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>src/runtime/ProtocolBuffers.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/alexeyxo/protobuf-objc.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0188F2A2CDE1E23FB54BA7DEC720DB0076A94A2D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>protobuf-objc</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -217,7 +217,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::DetermineDependencies(set<string>* dependencies) {
     dependencies->insert("@class " + ClassName(descriptor_));
-    dependencies->insert("@class " + ClassName(descriptor_) + "_Builder");
+    dependencies->insert("@class " + ClassName(descriptor_) + "Builder");
 
     for (int i = 0; i < descriptor_->nested_type_count(); i++) {
       MessageGenerator(descriptor_->nested_type(i)).DetermineDependencies(dependencies);
@@ -300,10 +300,10 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     GenerateMessageSerializationMethodsHeader(printer);
 
     printer->Print(
-      "- ($classname$_Builder*) builder;\n"
-      "+ ($classname$_Builder*) builder;\n"
-      "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype;\n"
-      "- ($classname$_Builder*) toBuilder;\n",
+      "- ($classname$Builder*) builder;\n"
+      "+ ($classname$Builder*) builder;\n"
+      "+ ($classname$Builder*) builderWithPrototype:($classname$*) prototype;\n"
+      "- ($classname$Builder*) toBuilder;\n",
       "classname", ClassName(descriptor_));
 
     GenerateParseFromMethodsHeader(printer);
@@ -333,16 +333,6 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     for (int i = 0; i < descriptor_->field_count(); i++) {
       field_generators_.get(descriptor_->field(i)).GenerateSynthesizeSource(printer);
     }
-
-    printer->Print("- (void) dealloc {\n");
-    printer->Indent();
-    for (int i = 0; i < descriptor_->field_count(); i++) {
-      field_generators_.get(descriptor_->field(i)).GenerateDeallocSource(printer);
-    }
-    printer->Outdent();
-    printer->Print(
-      "  [super dealloc];\n"
-      "}\n");
 
     printer->Print(
       "- (id) init {\n"
@@ -391,16 +381,16 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     GenerateParseFromMethodsSource(printer);
 
     printer->Print(
-      "+ ($classname$_Builder*) builder {\n"
-      "  return [[[$classname$_Builder alloc] init] autorelease];\n"
+      "+ ($classname$Builder*) builder {\n"
+      "  return [[$classname$Builder alloc] init];\n"
       "}\n"
-      "+ ($classname$_Builder*) builderWithPrototype:($classname$*) prototype {\n"
+      "+ ($classname$Builder*) builderWithPrototype:($classname$*) prototype {\n"
       "  return [[$classname$ builder] mergeFrom:prototype];\n"
       "}\n"
-      "- ($classname$_Builder*) builder {\n"
+      "- ($classname$Builder*) builder {\n"
       "  return [$classname$ builder];\n"
       "}\n"
-      "- ($classname$_Builder*) toBuilder {\n"
+      "- ($classname$Builder*) toBuilder {\n"
       "  return [$classname$ builderWithPrototype:self];\n"
       "}\n",
       "classname", ClassName(descriptor_));
@@ -466,11 +456,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void MessageGenerator::GenerateBuilderHeader(io::Printer* printer) {
     if (descriptor_->extension_range_count() > 0) {
       printer->Print(
-        "@interface $classname$_Builder : PBExtendableMessage_Builder {\n",
+        "@interface $classname$Builder : PBExtendableMessageBuilder {\n",
         "classname", ClassName(descriptor_));
     } else {
       printer->Print(
-        "@interface $classname$_Builder : PBGeneratedMessage_Builder {\n",
+        "@interface $classname$Builder : PBGeneratedMessageBuilder {\n",
         "classname", ClassName(descriptor_));
     }
 
@@ -497,8 +487,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "\n"
       "- ($classname$*) defaultInstance;\n"
       "\n"
-      "- ($classname$_Builder*) clear;\n"
-      "- ($classname$_Builder*) clone;\n",
+      "- ($classname$Builder*) clear;\n"
+      "- ($classname$Builder*) clone;\n",
       "classname", ClassName(descriptor_));
 
     printer->Print(
@@ -516,7 +506,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Print(
       "\n"
-      "- ($classname$_Builder*) mergeFrom:($classname$*) other;\n",
+      "- ($classname$Builder*) mergeFrom:($classname$*) other;\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
@@ -532,8 +522,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     scoped_array<const FieldDescriptor*> sorted_fields(SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;\n"
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
+      "- ($classname$Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input;\n"
+      "- ($classname$Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry;\n",
       "classname", ClassName(descriptor_));
   }
 
@@ -583,8 +573,8 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Outdent();
     printer->Print(
       "}\n"
-      "- (int32_t) serializedSize {\n"
-      "  int32_t size_ = memoizedSerializedSize;\n"
+      "- (SInt32) serializedSize {\n"
+      "  __block SInt32 size_ = memoizedSerializedSize;\n"
       "  if (size_ != -1) {\n"
       "    return size_;\n"
       "  }\n"
@@ -722,7 +712,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- (NSUInteger) hash {\n");
     printer->Indent();
 
-    printer->Print("NSUInteger hashCode = 7;\n");
+    printer->Print("__block NSUInteger hashCode = 7;\n");
 
     // Merge the fields and the extension ranges, both sorted by field number.
     for (int i = 0, j = 0;
@@ -836,22 +826,19 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void MessageGenerator::GenerateBuilderSource(io::Printer* printer) {
     printer->Print(
-      "@interface $classname$_Builder()\n"
-      "@property (retain) $classname$* result;\n"
+     "@interface $classname$Builder()\n"
+     "@property (strong) $classname$* result;\n"
       "@end\n"
       "\n"
-      "@implementation $classname$_Builder\n"
+      "@implementation $classname$Builder\n"
       "@synthesize result;\n"
-      "- (void) dealloc {\n"
-      "  self.result = nil;\n"
-      "  [super dealloc];\n"
-      "}\n",
+      ,
       "classname", ClassName(descriptor_));
 
     printer->Print(
       "- (id) init {\n"
       "  if ((self = [super init])) {\n"
-      "    self.result = [[[$classname$ alloc] init] autorelease];\n"
+      "    self.result = [[$classname$ alloc] init];\n"
       "  }\n"
       "  return self;\n"
       "}\n",
@@ -882,11 +869,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     }
 
     printer->Print(
-      "- ($classname$_Builder*) clear {\n"
-      "  self.result = [[[$classname$ alloc] init] autorelease];\n"
+      "- ($classname$Builder*) clear {\n"
+      "  self.result = [[$classname$ alloc] init];\n"
       "  return self;\n"
       "}\n"
-      "- ($classname$_Builder*) clone {\n"
+      "- ($classname$Builder*) clone {\n"
       "  return [$classname$ builderWithPrototype:result];\n"
       "}\n"
       "- ($classname$*) defaultInstance {\n"
@@ -909,14 +896,14 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
     printer->Outdent();
     printer->Print(
-      "  $classname$* returnMe = [[result retain] autorelease];\n"
+      "  $classname$* returnMe = result;\n"
       "  self.result = nil;\n"
       "  return returnMe;\n"
       "}\n",
       "classname", ClassName(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFrom:($classname$*) other {\n"
+      "- ($classname$Builder*) mergeFrom:($classname$*) other {\n"
       // Optimization:  If other is the default instance, we know none of its
       //   fields are set so we can skip the merge.
       "  if (other == [$classname$ defaultInstance]) {\n"
@@ -948,20 +935,20 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       SortFieldsByNumber(descriptor_));
 
     printer->Print(
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {\n"
+      "- ($classname$Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input {\n"
       "  return [self mergeFromCodedInputStream:input extensionRegistry:[PBExtensionRegistry emptyRegistry]];\n"
       "}\n"
-      "- ($classname$_Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {\n",
+      "- ($classname$Builder*) mergeFromCodedInputStream:(PBCodedInputStream*) input extensionRegistry:(PBExtensionRegistry*) extensionRegistry {\n",
       "classname", ClassName(descriptor_));
     printer->Indent();
 
     printer->Print(
-      "PBUnknownFieldSet_Builder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];\n"
+      "PBUnknownFieldSetBuilder* unknownFields = [PBUnknownFieldSet builderWithUnknownFields:self.unknownFields];\n"
       "while (YES) {\n");
     printer->Indent();
 
     printer->Print(
-      "int32_t tag = [input readTag];\n"
+      "SInt32 tag = [input readTag];\n"
       "switch (tag) {\n");
     printer->Indent();
 
@@ -1053,11 +1040,15 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
               break;
             case FieldDescriptor::LABEL_REPEATED:
               printer->Print(vars,
-                "for ($type$* element in self.$name$) {\n"
-                "  if (!element.isInitialized) {\n"
-                "    return NO;\n"
-                "  }\n"
-                "}\n");
+               "__block BOOL isInit$name$ = YES;\n"
+               " [self.$name$ enumerateObjectsUsingBlock:^($type$ *element, NSUInteger idx, BOOL *stop) {\n"
+                        "  if (!element.isInitialized) {\n"
+                        "    isInit$name$ = NO;\n"
+                        "    *stop = YES;\n"
+                        "  }\n"
+                        "}];\n"
+                "if (!isInit$name$) return isInit$name$;\n"
+                );
               break;
           }
       }

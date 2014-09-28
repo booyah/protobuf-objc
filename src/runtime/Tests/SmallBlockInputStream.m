@@ -22,14 +22,10 @@
 
 @synthesize underlyingStream;
 
-- (void) dealloc {
-  self.underlyingStream = nil;
-  [super dealloc];
-}
 
 
 - (id) initWithData:(NSData*) data_
-          blockSize:(int32_t) blockSize_ {
+          blockSize:(SInt32) blockSize_ {
   if ((self = [super init])) {
     self.underlyingStream = [NSInputStream inputStreamWithData:data_];
     blockSize = blockSize_;
@@ -40,9 +36,9 @@
 
 
 + (SmallBlockInputStream*) streamWithData:(NSData*) data
-                                blockSize:(int32_t) blockSize {
-  return [[[SmallBlockInputStream alloc] initWithData:data
-                                            blockSize:blockSize] autorelease];
+                                blockSize:(SInt32) blockSize {
+  return [[SmallBlockInputStream alloc] initWithData:data
+                                           blockSize:blockSize];
 }
 
 - (void)open {
@@ -55,8 +51,7 @@
 }
 
 
-- (NSInteger) read:(uint8_t*) buffer
-         maxLength:(NSUInteger) len {
+- (NSInteger) read:(uint8_t*) buffer maxLength:(NSUInteger) len {
   return [underlyingStream read:buffer maxLength:MIN(len, blockSize)];
 }
 

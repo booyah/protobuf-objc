@@ -19,24 +19,24 @@
 
 @class PBCodedInputStream;
 @class PBCodedOutputStream;
-@class PBExtendableMessage_Builder;
+@class PBExtendableMessageBuilder;
 @class PBExtensionRegistry;
-@class PBUnknownFieldSet_Builder;
+@class PBUnknownFieldSetBuilder;
 
 @protocol PBExtensionField
-- (int32_t) fieldNumber;
+- (SInt32) fieldNumber;
 - (PBWireFormat) wireType;
 - (BOOL) isRepeated;
 - (Class) extendedClass;
 - (id) defaultValue;
 
 - (void) mergeFromCodedInputStream:(PBCodedInputStream*) input
-                     unknownFields:(PBUnknownFieldSet_Builder*) unknownFields
+                     unknownFields:(PBUnknownFieldSetBuilder*) unknownFields
                  extensionRegistry:(PBExtensionRegistry*) extensionRegistry
-                           builder:(PBExtendableMessage_Builder*) builder
-                               tag:(int32_t) tag;
+                           builder:(PBExtendableMessageBuilder*) builder
+                               tag:(SInt32) tag;
 - (void) writeValue:(id) value includingTagToCodedOutputStream:(PBCodedOutputStream*) output;
-- (int32_t) computeSerializedSizeIncludingTag:(id) value;
+- (SInt32) computeSerializedSizeIncludingTag:(id) value;
 - (void) writeDescriptionOf:(id) value
                          to:(NSMutableString*) output
                  withIndent:(NSString*) indent;

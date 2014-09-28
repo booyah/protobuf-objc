@@ -15,13 +15,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
 @class PBUnknownFieldSet;
 @class TestAllTypes;
 @class TestEmptyMessage;
 
-@interface UnknownFieldSetTest : SenTestCase {
+@interface UnknownFieldSetTest : XCTestCase {
   TestAllTypes* allFields;
   NSData* allFieldsData;
 
@@ -31,12 +31,12 @@
   PBUnknownFieldSet* unknownFields;
 }
 
-@property (retain) TestAllTypes* allFields;
-@property (retain) NSData* allFieldsData;
+@property (strong) TestAllTypes* allFields;
+@property (strong) NSData* allFieldsData;
 
 // An empty message that has been parsed from allFieldsData.  So, it has
 // unknown fields of every type.
-@property (retain) TestEmptyMessage* emptyMessage;
-@property (retain) PBUnknownFieldSet* unknownFields;
+@property (strong) TestEmptyMessage* emptyMessage;
+@property (strong) PBUnknownFieldSet* unknownFields;
 
 @end

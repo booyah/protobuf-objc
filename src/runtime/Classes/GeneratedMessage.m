@@ -20,19 +20,13 @@
 #import "UnknownFieldSet.h"
 
 @interface PBGeneratedMessage ()
-@property (retain) PBUnknownFieldSet* unknownFields;
+@property (strong) PBUnknownFieldSet* unknownFields;
 @end
 
 
 @implementation PBGeneratedMessage
 
 @synthesize unknownFields;
-
-- (void) dealloc {
-  self.unknownFields = nil;
-  [super dealloc];
-}
-
 
 - (id) init {
   if ((self = [super init])) {
