@@ -12,7 +12,7 @@ This project is based on an implementation of Protocol Buffers from Google.  See
 This fork contains only ARC version of library.
 
 ## How To Install Protobuf
-1.`ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+1.`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 
 2.`brew install automake`
 
