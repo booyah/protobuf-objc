@@ -1,27 +1,12 @@
-# Protocol Buffers, Objective C
+# This fork is deprecated
 
-An implementation of Protocol Buffers in Objective C.
+Hi folks,
 
-Protocol Buffers are a way of encoding structured data in an efficient yet extensible format.
-This project is based on an implementation of Protocol Buffers from Google.  See the
-[Google protobuf project][g-protobuf] for more information.
+Sorry to say, this fork just isn't being maintained any more.  I suggest you check out one of the following, which is being maintained and is more up to date:
 
-[g-protobuf]: http://code.google.com/p/protobuf/
+https://github.com/qzix/protobuf-objc
 
-
-# Credits
-
-Booyah Inc.
--------------------------------------------------------------------------------
-- Jon Parise <jon@booyah.com>
+https://github.com/alexeyxo/protobuf-objc
 
 
-Google Protocol Buffers, Objective C
--------------------------------------------------------------------------------
-- Cyrus Najmabadi  (http://code.google.com/p/metasyntactic/wiki/ProtocolBuffers)
-- Sergey Martynov  (http://github.com/martynovs/protobuf-objc)
-
-
-Google Protocol Buffers
--------------------------------------------------------------------------------
-- Kenton Varda, Sanjay Ghemawat, Jeff Dean, and others
+Special thanks to Jon Parise for putting this repository together in the first place.
