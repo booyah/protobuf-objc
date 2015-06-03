@@ -338,7 +338,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "- ($storage_type$)$name$AtIndex:(NSUInteger)index;\n"
       "- ($classname$_Builder *)add$capitalized_name$:($storage_type$)value;\n"
       "- ($classname$_Builder *)set$capitalized_name$Array:(NSArray *)array;\n"
+#ifdef OBJC_ARC
+      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ __strong *)values count:(NSUInteger)count;\n"
+#else
       "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count;\n"
+#endif
       "- ($classname$_Builder *)clear$capitalized_name$;\n");
   }
 
@@ -361,7 +365,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "  result.$list_name$ = [PBAppendableArray arrayWithArray:array valueType:PBArrayValueTypeObject];\n"
       "  return self;\n"
       "}\n"
+#ifdef OBJC_ARC
+      "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ __strong *)values count:(NSUInteger)count {\n"
+#else
       "- ($classname$_Builder *)set$capitalized_name$Values:(const $storage_type$ *)values count:(NSUInteger)count {\n"
+#endif
       "  result.$list_name$ = [PBAppendableArray arrayWithValues:values count:count valueType:PBArrayValueTypeObject];\n"
       "  return self;\n"
       "}\n"
@@ -396,7 +404,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
       "  if (result.$list_name$ == nil) {\n"
+#ifdef OBJC_ARC
+      "    result.$list_name$ = [other.$list_name$ copy];\n"
+#else
       "    result.$list_name$ = [[other.$list_name$ copyWithZone:[other.$list_name$ zone]] autorelease];\n"
+#endif
       "  } else {\n"
       "    [result.$list_name$ appendArray:other.$list_name$];\n"
       "  }\n"

@@ -551,7 +551,11 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
     printer->Print(variables_,
       "if (other.$list_name$.count > 0) {\n"
       "  if (result.$list_name$ == nil) {\n"
+#ifdef OBJC_ARC
+      "    result.$list_name$ = [other.$list_name$ copy];\n"
+#else
       "    result.$list_name$ = [[other.$list_name$ copyWithZone:[other.$list_name$ zone]] autorelease];\n"
+#endif
       "  } else {\n"
       "    [result.$list_name$ appendArray:other.$list_name$];\n"
       "  }\n"
@@ -585,8 +589,20 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
   void RepeatedPrimitiveFieldGenerator::GenerateSerializationCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
       "const NSUInteger $list_name$Count = self.$list_name$.count;\n"
-      "if ($list_name$Count > 0) {\n"
-      "  const $storage_type$ *values = (const $storage_type$ *)self.$list_name$.data;\n");
+      "if ($list_name$Count > 0) {\n");
+#ifdef OBJC_ARC      
+    if (IsPrimitiveType(GetObjectiveCType(descriptor_))) {
+#endif
+        printer->Print(variables_,
+        "  const $storage_type$ *values = (const $storage_type$ *)self.$list_name$.data;\n");
+#ifdef OBJC_ARC
+    } else {
+        printer->Print(variables_,
+        "  const __strong $storage_type$ *values = (const __strong $storage_type$ *)self.$list_name$.data;\n");
+    }
+#endif
+
+
     printer->Indent();
 
     if (descriptor_->options().packed()) {
@@ -617,8 +633,19 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
       "const NSUInteger count = self.$list_name$.count;\n");
 
     if (FixedSize(descriptor_->type()) == -1) {
+#ifdef OBJC_ARC
+        if (IsPrimitiveType(GetObjectiveCType(descriptor_))) {
+#endif
+            printer->Print(variables_,
+                "const $storage_type$ *values = (const $storage_type$ *)self.$list_name$.data;\n");
+#ifdef OBJC_ARC
+        } else {
+            printer->Print(variables_,
+                "const __strong $storage_type$ *values = (const __strong $storage_type$ *)self.$list_name$.data;\n");
+        }
+#endif
+
       printer->Print(variables_,
-        "const $storage_type$ *values = (const $storage_type$ *)self.$list_name$.data;\n"
         "for (NSUInteger i = 0; i < count; ++i) {\n"
         "  dataSize += compute$capitalized_type$SizeNoTag(values[i]);\n"
         "}\n");
