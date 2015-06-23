@@ -663,7 +663,7 @@ namespace google { namespace protobuf { namespace compiler { namespace objective
 
   void RepeatedPrimitiveFieldGenerator::GenerateIsEqualCodeSource(io::Printer* printer) const {
     printer->Print(variables_,
-      "[self.$list_name$ isEqualToArray:otherMessage.$list_name$] &&");
+      "((self.$list_name$ == nil && otherMessage.$list_name$ == nil) || [self.$list_name$ isEqualToArray:otherMessage.$list_name$]) &&");
   }
 
 
