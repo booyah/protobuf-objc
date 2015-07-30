@@ -20,6 +20,8 @@ missing
 m4
 stamp-h1
 
+src/runtime/command_line*
+
 # Targets
 src/compiler/protoc-gen-objc
 
@@ -33,3 +35,5 @@ Build/
 *.perspectivev3
 *.mode1v3
 *.mode2v3
+
+*xcuserdata*
