@@ -84,11 +84,21 @@
   @throw [NSException exceptionWithName:@"ImproperSubclassing" reason:@"" userInfo:nil];
 }
 
+- (BOOL) equalData: (PBAbstractMessage *) other {
+    return [[self data] isEqualToData:[other data]];
+}
+
 
 - (NSString*) description {
   NSMutableString* output = [NSMutableString string];
   [self writeDescriptionTo:output withIndent:@""];
   return output;
+}
+
+- (NSString*) debugDescription {
+    NSMutableString* output = [NSMutableString string];
+    [self writeDescriptionTo:output withIndent:@""];
+    return output;
 }
 
 

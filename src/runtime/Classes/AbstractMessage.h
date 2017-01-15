@@ -34,4 +34,6 @@
 - (void)writeDescriptionTo:(NSMutableString*) output
                 withIndent:(NSString*) indent;
 
+- (BOOL) equalData: (PBAbstractMessage *) other;
+
 @end
